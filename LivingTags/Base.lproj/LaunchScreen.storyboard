@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="5sK-7I-Zdo">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-Xb-U6L">
+                                <rect key="frame" x="69" y="213" width="462" height="120"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIq-Qd-fue">
+                                <rect key="frame" x="0.0" y="590" width="300" height="10"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.50588235294117645" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7B-H9-0HF">
+                                <rect key="frame" x="300" y="590" width="300" height="10"/>
+                                <color key="backgroundColor" red="0.31372549019607843" green="0.72156862745098038" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Copyright@livingtags.com, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ly-ns-Pdb">
+                                <rect key="frame" x="69" y="503" width="462" height="75"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.42352941176470588" green="0.45098039215686275" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Ly-ns-Pdb" firstAttribute="centerY" secondItem="5sK-7I-Zdo" secondAttribute="centerY" multiplier="1.8" id="0HE-Fe-80e"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="width" secondItem="7Ly-ns-Pdb" secondAttribute="width" multiplier="1.3" id="6ls-0M-dO4"/>
+                            <constraint firstItem="7Ly-ns-Pdb" firstAttribute="centerX" secondItem="5sK-7I-Zdo" secondAttribute="centerX" id="7lB-j2-PYv"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="width" secondItem="YK9-Xb-U6L" secondAttribute="width" multiplier="1.3" id="CCF-Dj-NIE"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="CJN-Vl-FgS"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="7Ly-ns-Pdb" secondAttribute="height" multiplier="8" id="GDf-lC-L7I"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="centerY" secondItem="YK9-Xb-U6L" secondAttribute="centerY" multiplier="1.1" id="JeU-lT-pe2"/>
+                            <constraint firstItem="X7B-H9-0HF" firstAttribute="leading" secondItem="ZIq-Qd-fue" secondAttribute="trailing" id="MTs-SN-HGJ"/>
+                            <constraint firstItem="X7B-H9-0HF" firstAttribute="width" secondItem="ZIq-Qd-fue" secondAttribute="width" id="Oqa-Eu-ZAR"/>
+                            <constraint firstItem="YK9-Xb-U6L" firstAttribute="centerX" secondItem="5sK-7I-Zdo" secondAttribute="centerX" id="Qrq-CS-cxL"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="YCi-m3-YKW"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="YK9-Xb-U6L" secondAttribute="height" multiplier="5" id="ZlM-sf-gTx"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="width" secondItem="ZIq-Qd-fue" secondAttribute="width" multiplier="2" id="dY4-OA-gAd"/>
+                            <constraint firstItem="X7B-H9-0HF" firstAttribute="height" secondItem="ZIq-Qd-fue" secondAttribute="height" id="jAY-3M-prR"/>
+                            <constraint firstItem="ZIq-Qd-fue" firstAttribute="bottom" secondItem="5sK-7I-Zdo" secondAttribute="bottom" id="qX5-VN-h9a"/>
+                            <constraint firstItem="X7B-H9-0HF" firstAttribute="centerY" secondItem="ZIq-Qd-fue" secondAttribute="centerY" id="sO3-oP-iYK"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uss-Cb-g4C"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="vOy-e6-Nlc"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="ZIq-Qd-fue" secondAttribute="height" multiplier="60" id="wrC-cs-5hq"/>
+                            <constraint firstItem="ZIq-Qd-fue" firstAttribute="leading" secondItem="5sK-7I-Zdo" secondAttribute="leading" id="yys-UF-eFc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="435" y="334"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg_image" width="1242" height="2208"/>
+        <image name="logo" width="926" height="227"/>
+    </resources>
+</document>
