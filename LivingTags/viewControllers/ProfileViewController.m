@@ -393,6 +393,19 @@
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField.tag==2)
+    {
+        NSString *currentString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        long length = [currentString length];
+        if (length > 10)
+        {
+            return NO;
+        }
+    }
+    return YES;
+}
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     CGPoint textFieldOriginInTableView = [textField convertPoint:textField.frame.origin toView:tblProfile];
@@ -588,7 +601,8 @@
                 }
                 else
                 {
-                    [self displayErrorWithMessage:@"Please enter a valid youtube URL!!"];
+                    //[self displayErrorWithMessage:@"Please enter a valid youtube URL!!"];
+                    strVideoID=@"";
                 }
             }
             else if([domain containsString:@"vimeo.com"])
@@ -600,11 +614,13 @@
             else
             {
                 strVideoID=@"";
+                
             }
         }
         else
         {
             [self displayErrorWithMessage:@"Please enter a valid URL"];
+            strVideoID=@"";
         }
     }
     else
@@ -627,6 +643,11 @@
     if (strPhoneNumber.length<10)
     {
         [self displayErrorWithMessage:@"Please enter a proper phone number."];
+        return NO;
+    }
+    if (strVideoID.length==0)
+    {
+        [self displayErrorWithMessage:@"Please enter a valid URL."];
         return NO;
     }
     return YES;

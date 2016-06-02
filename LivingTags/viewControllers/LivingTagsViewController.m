@@ -6,7 +6,7 @@
 
 #import "LivingTagsViewController.h"
 
-@interface LivingTagsViewController ()<UIWebViewDelegate>
+@interface LivingTagsViewController ()
 {
     IBOutlet UIWebView *wbLivingTags;
     IBOutlet UILabel *lblHeader;

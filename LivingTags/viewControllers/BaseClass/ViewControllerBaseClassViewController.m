@@ -207,16 +207,45 @@
                 case 3:
                     controller=(MyLivingTagesViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
                     break;
-                    
+                case 7:
+                    [self displayAlertControllerForLogout];
+                    break;
+
                 default:
                     break;
             }
             NSLog(@"%@",self.navigationController.topViewController);
-            if (![[self.navigationController topViewController] isKindOfClass:[controller class]])
+            if (![[self.navigationController topViewController] isKindOfClass:[controller class]] && indexPath.row!=7)
             {
                 [self.navigationController pushViewController:controller animated:YES];
             }
         }];
     }
+}
+
+#pragma mark
+#pragma mark Display AlertController
+#pragma mark
+
+-(void)displayAlertControllerForLogout
+{
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to logout from the application?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+
+    [alertController addAction:actionOK];
+    [alertController addAction:actionCancel];
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+
 }
 @end

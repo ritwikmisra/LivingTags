@@ -369,6 +369,10 @@
 {
     [super viewWillDisappear:animated];
     [self.view removeFromSuperview];
+    [arrClusters removeAllObjects];
+    [arrSingle removeAllObjects];
+    [dict removeAllObjects];
+    NSLog(@"%@",dict);
 }
 
 #pragma mark 

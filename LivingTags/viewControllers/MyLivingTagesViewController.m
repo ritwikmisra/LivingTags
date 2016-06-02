@@ -272,7 +272,6 @@
     [master.view removeFromSuperview];
     [master removeFromParentViewController];
     master=nil;
-    //[self callWebService];
 }
 
 #pragma mark
