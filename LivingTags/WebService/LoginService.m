@@ -77,7 +77,6 @@
                                 [[NSUserDefaults standardUserDefaults] synchronize];
                                 NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
                                 appDel.objUser=[[ModelUser alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"account"]];
-                                
                                 NSLog(@"%@",appDel.objUser.strName);
                                 handler([responseDict objectForKey:@"response"],NO,nil);
                             }

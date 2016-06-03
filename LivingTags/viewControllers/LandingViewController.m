@@ -65,7 +65,16 @@
         [lblLifeCelebrated setFont:boldFont];
     } completion:^(BOOL finished) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1* NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [self performSegueWithIdentifier:@"segueToLogin" sender:self];
+            NSString *strUserID=[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"];
+            if (strUserID.length>0)
+            {
+                //segueProfile
+                [self performSegueWithIdentifier:@"segueProfile" sender:self];
+            }
+            else
+            {
+                [self performSegueWithIdentifier:@"segueToLogin" sender:self];
+            }
         });
     }];
 }

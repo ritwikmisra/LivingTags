@@ -63,23 +63,4 @@ NSString *const strAPI[]={
     }];
     [dataTask resume];
 }
-/*-(void)storeUserDetails
-{
-    NSMutableArray *arr = [[NSMutableArray alloc]init];
-    NSMutableDictionary *dicDocuments=[[NSMutableDictionary alloc]init];
-    [dicDocuments setObject:appDel.objUser.strID forKey:@"id"];
-    [dicDocuments setObject:appDel.objUser.strUserType forKey:@"user_type"];
-    [dicDocuments setObject:appDel.objUser.strFirstName forKey:@"first_name"];
-    [dicDocuments setObject:appDel.objUser.strLastName forKey:@"last_name"];
-    [dicDocuments setObject:appDel.objUser.strBusinessName forKey:@"business_name"];
-    [dicDocuments setObject:appDel.objUser.strEmail forKey:@"email"];
-    [dicDocuments setObject:appDel.objUser.strPhoneNumber forKey:@"phone"];
-    [dicDocuments setObject:appDel.objUser.strProfileImageLink forKey:@"profile_picture"];
-    //firstTimeLoginStatus
-    NSLog(@"%@",dicDocuments);
-    [arr addObject:dicDocuments];
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:arr];
-    [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:@"UserLoginDetails"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}*/
 @end

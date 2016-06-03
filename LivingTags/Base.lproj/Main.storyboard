@@ -11,7 +11,7 @@
         <!--Navigation Controller-->
         <scene sceneID="y2h-fL-Rj8">
             <objects>
-                <navigationController navigationBarHidden="YES" id="zRp-Ot-prd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="baseNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zRp-Ot-prd" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -543,12 +543,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKj-gE-U59" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1741" y="-581"/>
+            <point key="canvasLocation" x="384" y="-311"/>
         </scene>
         <!--Landing View Controller-->
         <scene sceneID="9iv-rA-dqW">
             <objects>
-                <viewController id="Tj9-0a-9KG" customClass="LandingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LandingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tj9-0a-9KG" customClass="LandingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0mj-Xo-dDG"/>
                         <viewControllerLayoutGuide type="bottom" id="J2d-IX-lQa"/>
@@ -616,6 +616,7 @@
                     <connections>
                         <outlet property="lblLifeCelebrated" destination="y5O-ys-7Ox" id="ox8-gI-RfD"/>
                         <segue destination="4Sb-Zd-sf4" kind="show" identifier="segueToLogin" id="str-8H-as5"/>
+                        <segue destination="Pdb-TV-PZm" kind="show" identifier="segueProfile" id="nEO-TC-sYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djo-0a-vhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -757,7 +758,7 @@
         <!--Logging View Controller-->
         <scene sceneID="dI6-LV-JFy">
             <objects>
-                <viewController id="4Sb-Zd-sf4" customClass="LoggingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoggingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Sb-Zd-sf4" customClass="LoggingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IqT-sg-AiI"/>
                         <viewControllerLayoutGuide type="bottom" id="7Pi-EU-u6A"/>
@@ -892,12 +893,6 @@
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate Account" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-N5-yEq">
-                                <rect key="frame" x="300" y="395" width="214" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeI-Ne-pau">
                                 <rect key="frame" x="86" y="453" width="428" height="115"/>
                                 <subviews>
@@ -983,6 +978,12 @@
                                     <action selector="btnForgetPasswordPressed:" destination="4Sb-Zd-sf4" eventType="touchUpInside" id="b6d-A3-bOA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate Account" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-N5-yEq">
+                                <rect key="frame" x="300" y="395" width="214" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1050,4 +1051,7 @@
         <image name="password_icon.png" width="73" height="94"/>
         <image name="search_icon.png" width="61" height="63"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BAk-ag-BgH"/>
+    </inferredMetricsTieBreakers>
 </document>

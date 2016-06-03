@@ -31,7 +31,6 @@ static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqo
 {
     // Override point for customization after application launch.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-    
     //Change the host name here to change the server you want to monitor.
     NSString *remoteHostName = @"www.google.com";
     hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
@@ -47,17 +46,8 @@ static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqo
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     [self callLocationManager];
-        return YES;
+    return YES;
 }
-//
-//- (BOOL)application:(UIApplication *)app
-//            openURL:(NSURL *)url
-//            options:(NSDictionary *)options
-//{
-//    return [[GIDSignIn sharedInstance] handleURL:url
-//                               sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-//                                      annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
-//}
 
 #pragma mark
 #pragma mark CLLOCATION METHODS

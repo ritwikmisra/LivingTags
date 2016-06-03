@@ -43,6 +43,7 @@
 {
     [super viewWillAppear:animated];
     i=0;
+    NSLog(@"%@",arrList);
     isLazyLoading=YES;
     [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
@@ -59,6 +60,7 @@
                     ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:k]];
                     [arrList addObject:obj];
                 }
+                NSLog(@"%@",arrList);
                 NSLog(@"%lu",(unsigned long)arrNames.count);
             }
             else
@@ -285,5 +287,13 @@
         LivingTagsViewController *master1=[segue destinationViewController];
         master1.objHTML=objSegue;
     }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"Disappear");
+    [arrNames removeAllObjects];
+    [arrList removeAllObjects];
 }
  @end

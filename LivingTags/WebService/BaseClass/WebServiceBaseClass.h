@@ -38,9 +38,6 @@ typedef NS_ENUM(NSUInteger, WEB_SERVICES) {
 
 -(void)hideNetworkActivity;
 
-//-(void)storeUserDetails;
-
-
 -(void)callWebServiceWithRequest:( NSMutableURLRequest* _Nullable)request Compeltion:(void(^ _Nullable )(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))handler;
 
 @end

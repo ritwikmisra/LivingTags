@@ -17,6 +17,8 @@
         if ([dict objectForKey:@"id"] && ![[dict objectForKey:@"id"] isKindOfClass:[NSNull class]])
         {
             self.strUserID=[dict objectForKey:@"id"];
+            [[NSUserDefaults standardUserDefaults]setValue:self.strUserID forKey:@"user_id"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
         else
         {

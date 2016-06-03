@@ -24,6 +24,10 @@
 
 -(void)callProfileEditServiceWithUserID:(NSString *)strUserID withCompletionHandler:(WebServiceCompletion)handler
 {
+    if (strUserID.length==0)
+    {
+        strUserID=[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"];
+    }
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];

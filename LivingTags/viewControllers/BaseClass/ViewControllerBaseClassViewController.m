@@ -11,6 +11,7 @@
 #import "ProfileViewController.h"
 #import "SlideMenuController.h"
 #import "MyLivingTagesViewController.h"
+#import "LoggingViewController.h"
 
 
 @interface ViewControllerBaseClassViewController ()<sideBarDelegate>
@@ -231,9 +232,7 @@
 {
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to logout from the application?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [alertController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+        [self logout];
     }];
     UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [alertController dismissViewControllerAnimated:YES completion:^{
@@ -246,6 +245,18 @@
     [self presentViewController:alertController animated:YES completion:^{
         
     }];
+}
 
+#pragma mark
+#pragma mark logout function
+#pragma mark
+
+-(void)logout
+{
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"user_id"];
+    //Token
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"Token"];
+    LoggingViewController *master=[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"LoggingViewController"];
+    [self.navigationController pushViewController:master animated:YES];
 }
 @end
