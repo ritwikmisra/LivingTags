@@ -17,11 +17,11 @@
 
 @implementation LandingViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     NSString *string =@"Life...Celebrated";
-    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:string forKey:@"string"];
     [dict setObject:@0 forKey:@"currentCount"];
@@ -29,14 +29,18 @@
     [timer fire];
 }
 
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 }
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 }
+
 
 //-(void)didChangeAlphaForLblLife
 //{
@@ -45,7 +49,8 @@
 //        [self performSelector:@selector(didChangeAlphaForLblCelebration) withObject:nil afterDelay:1.0 ];
 //    }];
 //}
-//
+
+
 //-(void)didChangeAlphaForLblCelebration
 //{
 //    [UIView animateWithDuration:1.0 animations:^{
@@ -53,6 +58,7 @@
 //        [self performSelector:@selector(didMoveToLogin) withObject:nil afterDelay:2.0];
 //    }];
 //}
+
 
 #pragma mark
 #pragma mark segue login
