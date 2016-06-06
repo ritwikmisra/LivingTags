@@ -36,13 +36,15 @@
     [super viewDidLoad];
     [txtSearch setValue:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
     [tblTags setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    arrList=[[NSMutableArray alloc]init];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    tblTags.delegate=self;
+    tblTags.dataSource=self;
     i=0;
+    arrList=[[NSMutableArray alloc]init];
     NSLog(@"%@",arrList);
     isLazyLoading=YES;
     [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
@@ -293,7 +295,11 @@
 {
     [super viewWillDisappear:animated];
     NSLog(@"Disappear");
+    NSLog(@"Names:%@\n List:%@",arrNames,arrList);
     [arrNames removeAllObjects];
     [arrList removeAllObjects];
+    NSLog(@"Names:%@\n List:%@",arrNames,arrList);
+    tblTags.delegate=nil;
+    tblTags.dataSource=nil;
 }
  @end
