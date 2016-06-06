@@ -626,6 +626,7 @@
     else
     {
         NSLog(@"not entered");
+        strVideoID=@"";
     }
 }
 
@@ -645,10 +646,13 @@
         [self displayErrorWithMessage:@"Please enter a proper phone number."];
         return NO;
     }
-    if (strVideoID.length==0)
+    if (strVideoLink.length>0)
     {
-        [self displayErrorWithMessage:@"Please enter a valid URL."];
-        return NO;
+        if (strVideoID.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter a valid URL."];
+            return NO;
+        }
     }
     return YES;
 }
