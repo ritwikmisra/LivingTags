@@ -105,6 +105,8 @@
 		0D922FFA1CF8707D00EC1945 /* top_header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D922FEE1CF8707D00EC1945 /* top_header_bg.png */; };
 		0D922FFB1CF8707D00EC1945 /* top_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D922FEF1CF8707D00EC1945 /* top_shadow.png */; };
 		0D922FFD1CF8739C00EC1945 /* menu_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D922FFC1CF8739C00EC1945 /* menu_icon2.png */; };
+		0D933B571D07056A00072DE1 /* ImageHoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D933B551D07056A00072DE1 /* ImageHoverController.m */; };
+		0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D933B561D07056A00072DE1 /* ImageHoverController.xib */; };
 		0D9350A71CDB60AE00E403B2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350A61CDB60AE00E403B2 /* MediaPlayer.framework */; };
 		0D9350A91CDB60B800E403B2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350A81CDB60B800E403B2 /* AVFoundation.framework */; };
 		0D9350AB1CDB60C200E403B2 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350AA1CDB60C200E403B2 /* AVKit.framework */; };
@@ -282,6 +284,9 @@
 		0D922FEE1CF8707D00EC1945 /* top_header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_header_bg.png; sourceTree = "<group>"; };
 		0D922FEF1CF8707D00EC1945 /* top_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_shadow.png; sourceTree = "<group>"; };
 		0D922FFC1CF8739C00EC1945 /* menu_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon2.png; sourceTree = "<group>"; };
+		0D933B541D07056A00072DE1 /* ImageHoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHoverController.h; sourceTree = "<group>"; };
+		0D933B551D07056A00072DE1 /* ImageHoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHoverController.m; sourceTree = "<group>"; };
+		0D933B561D07056A00072DE1 /* ImageHoverController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHoverController.xib; sourceTree = "<group>"; };
 		0D9350A61CDB60AE00E403B2 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		0D9350A81CDB60B800E403B2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0D9350AA1CDB60C200E403B2 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -556,6 +561,9 @@
 				0D80DAF41CFD9B0E00B79C6B /* GroupPopupController.h */,
 				0D80DAF51CFD9B0E00B79C6B /* GroupPopupController.m */,
 				0D80DAF61CFD9B0E00B79C6B /* GroupPopupController.xib */,
+				0D933B541D07056A00072DE1 /* ImageHoverController.h */,
+				0D933B551D07056A00072DE1 /* ImageHoverController.m */,
+				0D933B561D07056A00072DE1 /* ImageHoverController.xib */,
 			);
 			path = CustomDelegate;
 			sourceTree = "<group>";
@@ -888,6 +896,7 @@
 				0D9350B91CDB61F800E403B2 /* Info.plist in Resources */,
 				0D698D0E1CC8CF2500F64745 /* Assets.xcassets in Resources */,
 				0D80DAF81CFD9B0E00B79C6B /* GroupPopupController.xib in Resources */,
+				0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */,
 				0D5EA23B1CCB6A0000CA0DAE /* NetworkActivityViewController.xib in Resources */,
 				0D922FF51CF8707D00EC1945 /* pin.png in Resources */,
 				0D698D3C1CC90AEC00F64745 /* password_icon.png in Resources */,
@@ -949,6 +958,7 @@
 				0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */,
 				0D80DAF71CFD9B0E00B79C6B /* GroupPopupController.m in Sources */,
 				0D939D321CD34B5B002C954B /* EditProfilePicCellTableViewCell.m in Sources */,
+				0D933B571D07056A00072DE1 /* ImageHoverController.m in Sources */,
 				0D698D2F1CC8D90500F64745 /* LandingViewController.m in Sources */,
 				0D922FB11CF86D3E00EC1945 /* customAnnotationGroups.m in Sources */,
 				0D3731481CD8A10B00EDC547 /* UIImage+GIF.m in Sources */,

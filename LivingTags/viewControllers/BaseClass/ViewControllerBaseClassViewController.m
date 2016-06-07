@@ -12,12 +12,13 @@
 #import "SlideMenuController.h"
 #import "MyLivingTagesViewController.h"
 #import "LoggingViewController.h"
+#import "ImageHoverController.h"
 
 #define SLIDER_WIDTH [[UIScreen mainScreen] bounds].size.width/1.5f
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
 
-@interface ViewControllerBaseClassViewController ()<sideBarDelegate>
+@interface ViewControllerBaseClassViewController ()<sideBarDelegate,ImageTapDelegate>
 {
     IBOutlet  UIImageView *imgHeader;
     SlideMenuController *slideMenu;
@@ -58,7 +59,7 @@
     
     [[[UIApplication sharedApplication] keyWindow] addSubview:slideMenu.view];
     [[[UIApplication sharedApplication] keyWindow] sendSubviewToBack:slideMenu.view];
-
+    
     ////////
 }
 - (void)didReceiveMemoryWarning
@@ -143,7 +144,7 @@
 }
 
 #pragma mark
-#pragma mark back button 
+#pragma mark back button
 #pragma mark
 
 -(IBAction)btnBackPressed:(id)sender
@@ -173,7 +174,6 @@
     UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     slideMenu.view.frame=CGRectMake(0.0f, 0.0f, SLIDER_WIDTH, [[UIScreen mainScreen] bounds].size.height);
     [UIView animateWithDuration:0.5 animations:^{
-        
         navController.view.frame=CGRectMake(SLIDER_WIDTH,0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
     } completion:^(BOOL finished) {
         slideMenu.isSlideMenuVisible=YES;
@@ -184,14 +184,12 @@
 -(void)closeSlider
 {
     UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
-    
+    [self closeImageView];
     [UIView animateWithDuration:0.5 animations:^{
         navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
     } completion:^(BOOL finished) {
         slideMenu.isSlideMenuVisible=NO;
-        [self closeImageView];
     }];
-
 }
 
 #pragma mark
@@ -201,6 +199,7 @@
 -(void)selectedRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    [self closeImageView];
     [UIView animateWithDuration:0.5 animations:^{
         navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
     } completion:^(BOOL finished) {
@@ -271,11 +270,29 @@
 
 -(void)addImageViewOnController:(UINavigationController *)controller
 {
-
+    ImageHoverController *master=[ImageHoverController getSlideMenuInstance];
+    master.view.frame=CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
+    [controller.view addSubview:master.view];
+    [controller addChildViewController:master];
+    [master didMoveToParentViewController:controller];
+    master.delegate=self;
 }
 
 -(void)closeImageView
 {
+    ImageHoverController *master=[ImageHoverController getSlideMenuInstance];
+    [master.view removeFromSuperview];
+    [master removeFromParentViewController];
+    master=nil;
+}
 
+#pragma mark
+#pragma mark image tap delegate
+#pragma mark
+
+-(void)tapGesturePressed
+{
+    NSLog(@"Tap pressed");
+    [self closeSlider];
 }
 @end

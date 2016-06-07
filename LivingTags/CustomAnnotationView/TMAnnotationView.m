@@ -111,8 +111,6 @@
          {
             [self.superview bringSubviewToFront:self];
         }
-
-        
     //}
     return hitView;
 }

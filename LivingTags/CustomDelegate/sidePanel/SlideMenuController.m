@@ -67,6 +67,7 @@
     arrLabel=[[NSMutableArray alloc]initWithObjects:@"Profile",@"Create Tags",@"Read Tags",@"My Tags",@"Contacts",@"Payments",@"Comments",@"Logout", nil];
     tblSidePanel.delegate=self;
     tblSidePanel.dataSource=self;
+    [tblSidePanel setBounces:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -97,17 +98,17 @@
 {
     if (___isIphone6Plus)
     {
-        return 80.0f;
+        return 65.0f;
     }
     if (___isIphone5_5s)
     {
-        return 60.0f;
+        return 45.0f;
     }
     if (___isIphone6)
     {
-        return 70.0f;
+        return 55.0f;
     }
-    return 50.0f;
+    return 45.0f;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
