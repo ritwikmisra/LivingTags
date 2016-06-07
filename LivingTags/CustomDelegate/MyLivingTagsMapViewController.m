@@ -58,14 +58,14 @@
     mapTags.tintColor = [UIColor redColor];
     mapTags.showsUserLocation = YES;
     [mapTags setCenterCoordinate:appDel.location.coordinate animated:YES];
-    arrClusters=[[NSMutableArray alloc]init];
-    arrSingle=[[NSMutableArray alloc]init];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    arrClusters=[[NSMutableArray alloc]init];
+    arrSingle=[[NSMutableArray alloc]init];
     dict=[[NSMutableDictionary alloc]init];
     arrDuplicate=[[NSMutableArray alloc]init];
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(appDel.center,900000, 90000);
