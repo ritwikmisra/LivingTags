@@ -78,6 +78,7 @@
     {
         [arrDuplicate addObject:[self.arrListFromMap objectAtIndex:j]];
     }
+    NSLog(@"%@",arrDuplicate);
     [self getPrimaryLocations:arrDuplicate];
     mapTags.delegate=self;
 }
@@ -368,14 +369,16 @@
 {
     [super viewWillDisappear:animated];
     [self.view removeFromSuperview];
+    [mapTags removeAnnotations:arrSingle];
+    [mapTags removeAnnotations:arrClusters];
     NSLog(@"CLUSTERS:%@\n SINGLE:%@\n DICTIONARY:%@\n DUPLICATE:%@\n ORIGINAL ARRAY:%@",arrClusters,arrSingle,dict,arrDuplicate,self.arrListFromMap);
     [arrClusters removeAllObjects];
     [arrSingle removeAllObjects];
     [dict removeAllObjects];
     [arrDuplicate removeAllObjects];
     NSLog(@"CLUSTERS:%@\n SINGLE:%@\n DICTIONARY:%@\n DUPLICATE:%@\n ORIGINAL ARRAY:%@",arrClusters,arrSingle,dict,arrDuplicate,self.arrListFromMap);
-    mapTags.delegate=nil;
     NSLog(@"%@",dict);
+    mapTags.delegate=nil;
 }
 
 #pragma mark 
