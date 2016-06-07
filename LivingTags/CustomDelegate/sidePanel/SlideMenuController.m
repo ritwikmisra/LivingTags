@@ -9,10 +9,11 @@
 #import "SlideMenuController.h"
 #import "SidePanelCell.h"
 
-@interface SlideMenuController ()<UIGestureRecognizerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface SlideMenuController ()<UITableViewDataSource,UITableViewDelegate>
 {
     IBOutlet UITableView *tblSidePanel;
     NSMutableArray *arrLabel;
+    IBOutlet UIImageView *img;
 }
 
 @end
@@ -26,7 +27,6 @@
 -(id)init
 {
     if (self=[super init]) {
-        self.isSlideMenuPlaced=NO;
         self.isSlideMenuVisible=NO;
     }
     return self;
@@ -36,7 +36,6 @@
 {
     if (self=[super initWithCoder:aDecoder])
     {
-        self.isSlideMenuPlaced=NO;
         self.isSlideMenuVisible=NO;
     }
     return self;
@@ -46,7 +45,6 @@
 {
     if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
-        self.isSlideMenuPlaced=NO;
         self.isSlideMenuVisible=NO;
     }
     return self;
@@ -66,23 +64,14 @@
 {
     [super viewDidLoad];
     tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
-    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleFromTap:)];
-    tapGesture.numberOfTapsRequired=1;
-    self.imgBackground.userInteractionEnabled=YES;
-    [self.imgBackground addGestureRecognizer:tapGesture];
-    tapGesture.delegate=self;
     arrLabel=[[NSMutableArray alloc]initWithObjects:@"Profile",@"Create Tags",@"Read Tags",@"My Tags",@"Contacts",@"Payments",@"Comments",@"Logout", nil];
     tblSidePanel.delegate=self;
     tblSidePanel.dataSource=self;
 }
 
-
--(void)handleFromTap:(UITapGestureRecognizer *)gesture
+-(void)viewWillAppear:(BOOL)animated
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(tapGesturePressed)])
-    {
-        [self.delegate tapGesturePressed];
-    }
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

@@ -13,11 +13,17 @@
 #import "MyLivingTagesViewController.h"
 #import "LoggingViewController.h"
 
+#define SLIDER_WIDTH [[UIScreen mainScreen] bounds].size.width/1.5f
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+
 
 @interface ViewControllerBaseClassViewController ()<sideBarDelegate>
 {
     IBOutlet  UIImageView *imgHeader;
     SlideMenuController *slideMenu;
+    CGFloat leftPanelWidth;
+    UIImageView *img;
+    
 }
 @end
 
@@ -36,25 +42,24 @@
 {
     [super viewDidAppear:animated];
     NSLog(@"%@",self.navigationController.topViewController);
+    
+    ///slide menu initialisation
     slideMenu=[SlideMenuController getSlideMenuInstance];
-    if ([self.navigationController.topViewController isKindOfClass:[ProfileViewController class]])
-    {
-        if (!slideMenu.isSlideMenuPlaced)
-        {
-            NSLog(@"Left Panel not placed");
-            slideMenu.view.frame=CGRectMake(-slideMenu.view.frame.size.width,0,slideMenu.view.frame.size.width,slideMenu.view.frame.size.height);
-            UIWindow *myWindow=[[UIApplication sharedApplication] keyWindow];
-            [myWindow addSubview:slideMenu.view];
-            slideMenu.isSlideMenuPlaced=YES;
-            [myWindow addSubview:slideMenu.view];
-            slideMenu.delegate=self;
-            //[myWindow bringSubviewToFront:slideMenu.view];
-        }
-        else
-        {
-            NSLog(@"Slide Panel placed");
-        }
-    }
+    slideMenu.view.frame=CGRectMake(0,0, SLIDER_WIDTH, [[UIScreen mainScreen] bounds].size.height);
+    slideMenu.delegate=self;
+    slideMenu.isSlideMenuVisible=NO;
+    
+    CALayer *layer = self.navigationController.view.layer;
+    layer.shadowOffset = CGSizeMake(1, 1);
+    layer.shadowColor = [[UIColor darkTextColor] CGColor];
+    layer.shadowRadius = 10.0f;
+    layer.shadowOpacity = 1.0f;
+    layer.shadowPath = [[UIBezierPath bezierPathWithRect:layer.bounds] CGPath];
+    
+    [[[UIApplication sharedApplication] keyWindow] addSubview:slideMenu.view];
+    [[[UIApplication sharedApplication] keyWindow] sendSubviewToBack:slideMenu.view];
+
+    ////////
 }
 - (void)didReceiveMemoryWarning
 {
@@ -153,75 +158,76 @@
 -(IBAction)btnSidePanel:(id)sender
 {
     NSLog(@"sidePanel Pressed");
-    [self.view endEditing:YES];
-    NSLog(@"%f:%f:%f:%f",slideMenu.view.frame.origin.x,slideMenu.view.frame.origin.y,slideMenu.view.frame.size.width,slideMenu.view.frame.size.height);
-    if (!slideMenu.isSlideMenuVisible)
+    if (slideMenu.isSlideMenuVisible)
     {
-        [UIView animateWithDuration:0.5 delay:0.2 options:UIViewAnimationOptionCurveLinear animations:^{
-            slideMenu.view.frame=CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
-        } completion:^(BOOL finished) {
-            slideMenu.isSlideMenuVisible=YES;
-            //self.imgBackground.alpha=0.6f;
-        }];
+        [self closeSlider];
     }
     else
     {
-        [UIView animateWithDuration:0.5 delay:0.2 options:UIViewAnimationOptionCurveLinear animations:^{
-            slideMenu.view.frame=CGRectMake(-slideMenu.view.frame.size.width,0,slideMenu.view.frame.size.width,slideMenu.view.frame.size.height);
-        } completion:^(BOOL finished) {
-            slideMenu.isSlideMenuVisible=NO;
-        }];
+        [self openSlider];
     }
+}
+
+-(void)openSlider
+{
+    UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    slideMenu.view.frame=CGRectMake(0.0f, 0.0f, SLIDER_WIDTH, [[UIScreen mainScreen] bounds].size.height);
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        navController.view.frame=CGRectMake(SLIDER_WIDTH,0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+    } completion:^(BOOL finished) {
+        slideMenu.isSlideMenuVisible=YES;
+        [self addImageViewOnController:navController];
+    }];
+}
+
+-(void)closeSlider
+{
+    UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
+    } completion:^(BOOL finished) {
+        slideMenu.isSlideMenuVisible=NO;
+        [self closeImageView];
+    }];
+
 }
 
 #pragma mark
 #pragma mark sidebar Delegate
 #pragma mark
 
--(void)tapGesturePressed
-{
-    if (slideMenu.isSlideMenuVisible)
-    {
-        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
-            slideMenu.view.frame=CGRectMake(-slideMenu.view.frame.size.width,0,slideMenu.view.frame.size.width,slideMenu.view.frame.size.height);
-        } completion:^(BOOL finished) {
-            slideMenu.isSlideMenuVisible=NO;
-        }];
-    }
-}
-
 -(void)selectedRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (slideMenu.isSlideMenuVisible)
-    {
-        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
-            slideMenu.view.frame=CGRectMake(-slideMenu.view.frame.size.width,0,slideMenu.view.frame.size.width,slideMenu.view.frame.size.height);
-        } completion:^(BOOL finished) {
-            slideMenu.isSlideMenuVisible=NO;
-            UIViewController *controller;
-            UIStoryboard *mainStoryboard=[UIStoryboard storyboardWithName:@"Main"bundle: nil];
-            switch (indexPath.row)
-            {
-                case 0:
-                    controller=(ProfileViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
-                    break;
-                case 3:
-                    controller=(MyLivingTagesViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
-                    break;
-                case 7:
-                    [self displayAlertControllerForLogout];
-                    break;
-
-                default:
-                    break;
-            }
-            NSLog(@"%@",self.navigationController.topViewController);
-            if (![[self.navigationController topViewController] isKindOfClass:[controller class]] && indexPath.row!=7)
-            {
-                [self.navigationController pushViewController:controller animated:YES];
-            }
-        }];
-    }
+    UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    [UIView animateWithDuration:0.5 animations:^{
+        navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
+    } completion:^(BOOL finished) {
+        [slideMenu setIsSlideMenuVisible:YES];
+        UIViewController *controller;
+        UIStoryboard *mainStoryboard=[UIStoryboard storyboardWithName:@"Main"bundle: nil];
+        switch (indexPath.row)
+        {
+            case 0:
+                controller=(ProfileViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+                break;
+            case 3:
+                controller=(MyLivingTagesViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
+                break;
+            case 7:
+                [self displayAlertControllerForLogout];
+                break;
+                
+            default:
+                break;
+        }
+        NSLog(@"%@",self.navigationController.topViewController);
+        if (![[self.navigationController topViewController] isKindOfClass:[controller class]] && indexPath.row!=7)
+        {
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+    }];
 }
 
 #pragma mark
@@ -239,7 +245,6 @@
             
         }];
     }];
-
     [alertController addAction:actionOK];
     [alertController addAction:actionCancel];
     [self presentViewController:alertController animated:YES completion:^{
@@ -258,5 +263,19 @@
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"Token"];
     LoggingViewController *master=[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"LoggingViewController"];
     [self.navigationController pushViewController:master animated:YES];
+}
+
+#pragma mark
+#pragma mark ADD IMAGE VIEW ON NAVIGATION CONTROLLER
+#pragma mark
+
+-(void)addImageViewOnController:(UINavigationController *)controller
+{
+
+}
+
+-(void)closeImageView
+{
+
 }
 @end

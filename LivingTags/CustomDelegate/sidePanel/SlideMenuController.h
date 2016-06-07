@@ -13,7 +13,6 @@
 @optional
 
 -(void)selectedRowAtIndexPath:(NSIndexPath *)indexPath;
--(void)tapGesturePressed;
 
 @end
 
@@ -21,8 +20,8 @@
 
 +(id)getSlideMenuInstance;
 
-@property(nonatomic,assign) BOOL isSlideMenuPlaced;
-@property(nonatomic,assign) BOOL isSlideMenuVisible;
+@property(assign,nonatomic,getter=xyz) BOOL isSlideMenuVisible;
+
 
 @property(nonatomic,weak)id<sideBarDelegate>delegate;
 

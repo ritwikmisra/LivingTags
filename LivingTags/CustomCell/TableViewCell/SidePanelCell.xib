@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVw-zN-bC9">
-                        <rect key="frame" x="8" y="0.0" width="304" height="43"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                        <rect key="frame" x="21" y="0.0" width="278" height="43"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -28,7 +28,7 @@
                 <constraints>
                     <constraint firstItem="uKg-V1-lb8" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="6YB-B9-KZn"/>
                     <constraint firstItem="iVw-zN-bC9" firstAttribute="centerX" secondItem="uKg-V1-lb8" secondAttribute="centerX" id="Bj6-Lf-GCe"/>
-                    <constraint firstItem="uKg-V1-lb8" firstAttribute="width" secondItem="iVw-zN-bC9" secondAttribute="width" multiplier="1.05" id="E7O-vD-dNI"/>
+                    <constraint firstItem="uKg-V1-lb8" firstAttribute="width" secondItem="iVw-zN-bC9" secondAttribute="width" multiplier="1.15" id="E7O-vD-dNI"/>
                     <constraint firstItem="iVw-zN-bC9" firstAttribute="centerY" secondItem="uKg-V1-lb8" secondAttribute="centerY" id="HC6-dl-zce"/>
                     <constraint firstItem="uKg-V1-lb8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RqZ-cl-fw7"/>
                     <constraint firstItem="iVw-zN-bC9" firstAttribute="height" secondItem="uKg-V1-lb8" secondAttribute="height" id="UFe-Og-8pu"/>
