@@ -13,7 +13,6 @@
 {
     IBOutlet UITableView *tblSidePanel;
     NSMutableArray *arrLabel;
-    IBOutlet UIImageView *img;
 }
 
 @end
