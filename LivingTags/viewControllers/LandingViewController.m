@@ -105,7 +105,6 @@
         [self performSelector:@selector(didMoveToLogin) withObject:nil afterDelay:2.0f];
     }
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
