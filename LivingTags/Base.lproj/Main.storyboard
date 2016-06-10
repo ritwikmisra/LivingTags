@@ -175,6 +175,46 @@
             </objects>
             <point key="canvasLocation" x="1734" y="74"/>
         </scene>
+        <!--Create Living Tags View Controller-->
+        <scene sceneID="JHp-hK-Pat">
+            <objects>
+                <viewController storyboardIdentifier="CreateLivingTagsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zDV-ps-GaZ" customClass="CreateLivingTagsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CZV-I9-IxW"/>
+                        <viewControllerLayoutGuide type="bottom" id="jUe-En-uVo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aVK-Uw-Fdm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="PcX-0d-OMV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8Y-DM-GWl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PcX-0d-OMV" firstAttribute="height" secondItem="aVK-Uw-Fdm" secondAttribute="height" id="7CD-eE-v8L"/>
+                            <constraint firstItem="PcX-0d-OMV" firstAttribute="width" secondItem="aVK-Uw-Fdm" secondAttribute="width" id="8OP-Bd-1Mr"/>
+                            <constraint firstItem="U8Y-DM-GWl" firstAttribute="height" secondItem="PcX-0d-OMV" secondAttribute="height" id="9eq-SB-xrj"/>
+                            <constraint firstItem="U8Y-DM-GWl" firstAttribute="width" secondItem="PcX-0d-OMV" secondAttribute="width" id="Mgu-in-ZkU"/>
+                            <constraint firstItem="PcX-0d-OMV" firstAttribute="centerX" secondItem="aVK-Uw-Fdm" secondAttribute="centerX" id="O96-aF-ikO"/>
+                            <constraint firstItem="U8Y-DM-GWl" firstAttribute="centerX" secondItem="PcX-0d-OMV" secondAttribute="centerX" id="UCh-Ex-doz"/>
+                            <constraint firstItem="U8Y-DM-GWl" firstAttribute="centerY" secondItem="PcX-0d-OMV" secondAttribute="centerY" id="XKI-Bt-zUC"/>
+                            <constraint firstItem="PcX-0d-OMV" firstAttribute="centerY" secondItem="aVK-Uw-Fdm" secondAttribute="centerY" id="iET-xJ-hoB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="wbCreateTags" destination="U8Y-DM-GWl" id="YUA-ad-Hyf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i3w-pV-km9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723" y="758"/>
+        </scene>
         <!--Living Tags View Controller-->
         <scene sceneID="46b-er-H8U">
             <objects>

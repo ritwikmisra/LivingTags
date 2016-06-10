@@ -37,6 +37,7 @@
 		0D5EA23F1CCB6A0B00CA0DAE /* WebServiceBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA23E1CCB6A0B00CA0DAE /* WebServiceBaseClass.m */; };
 		0D5EA2421CCB7CFA00CA0DAE /* RegistrationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2411CCB7CFA00CA0DAE /* RegistrationService.m */; };
 		0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2451CCB7F3000CA0DAE /* Reachability.m */; };
+		0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */; };
 		0D698D001CC8CF2500F64745 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698CFF1CC8CF2500F64745 /* main.m */; };
 		0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D021CC8CF2500F64745 /* AppDelegate.m */; };
 		0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D698D071CC8CF2500F64745 /* Main.storyboard */; };
@@ -195,6 +196,8 @@
 		0D5EA2411CCB7CFA00CA0DAE /* RegistrationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationService.m; sourceTree = "<group>"; };
 		0D5EA2441CCB7F3000CA0DAE /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		0D5EA2451CCB7F3000CA0DAE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0D5FAEBA1D09C8E700A3384A /* CreateLivingTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLivingTagsViewController.h; sourceTree = "<group>"; };
+		0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLivingTagsViewController.m; sourceTree = "<group>"; };
 		0D698CFB1CC8CF2400F64745 /* LivingTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivingTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D698CFF1CC8CF2500F64745 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D698D011CC8CF2500F64745 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -496,6 +499,8 @@
 				0D389B991CDC8CA100841691 /* MyLivingTagesViewController.m */,
 				0D7DD3491CFF0F1500B6C4B9 /* LivingTagsViewController.h */,
 				0D7DD34A1CFF0F1500B6C4B9 /* LivingTagsViewController.m */,
+				0D5FAEBA1D09C8E700A3384A /* CreateLivingTagsViewController.h */,
+				0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -945,6 +950,7 @@
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
 				0D3731471CD8A10B00EDC547 /* UIButton+WebCache.m in Sources */,
+				0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */,
 				0DA226641CD21E9500B3A5BC /* ProfileViewController.m in Sources */,
 				0D922FAE1CF8664300EC1945 /* CustomAnnotationSingle.m in Sources */,
 				0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */,
