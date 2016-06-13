@@ -19,7 +19,6 @@
     NSMutableArray *arrTemplates;
     NSString *strSegueTemplateID;
 }
-
 @end
 
 @implementation LivingTagsTemplateListController
@@ -118,6 +117,7 @@
         master.strTemplateID=strSegueTemplateID;
     }
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
