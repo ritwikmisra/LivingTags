@@ -10,4 +10,6 @@
 
 @interface CreateLivingTagsViewController : ViewControllerBaseClassViewController
 
+@property(nonatomic,strong)NSString *strTemplateID;
+
 @end

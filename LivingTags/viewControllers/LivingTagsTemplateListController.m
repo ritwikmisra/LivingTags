@@ -11,11 +11,13 @@
 #import "TemplateCell.h"
 #import "UIImageView+WebCache.h"
 #import "ModelLivingTagsTemplateList.h"
+#import "CreateLivingTagsViewController.h"
 
 @interface LivingTagsTemplateListController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     IBOutlet UICollectionView *collLivingTagsTemplate;
     NSMutableArray *arrTemplates;
+    NSString *strSegueTemplateID;
 }
 
 @end
@@ -90,6 +92,7 @@
 {
     ModelLivingTagsTemplateList *obj=[arrTemplates objectAtIndex:indexPath.row];
     NSLog(@"%@",obj.strTemplateID);
+    strSegueTemplateID=obj.strTemplateID;
     [self performSegueWithIdentifier:@"segueTemplate" sender:self];
 }
 
@@ -103,6 +106,18 @@
     return 0.0f;
 }
 
+#pragma mark
+#pragma mark PREPARE FOR SEGUE
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueTemplate"])
+    {
+        CreateLivingTagsViewController *master=[segue destinationViewController];
+        master.strTemplateID=strSegueTemplateID;
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
