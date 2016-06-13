@@ -13,7 +13,7 @@
 #import "MyLivingTagesViewController.h"
 #import "LoggingViewController.h"
 #import "ImageHoverController.h"
-#import "CreateLivingTagsViewController.h"
+#import "LivingTagsTemplateListController.h"
 
 #define SLIDER_WIDTH [[UIScreen mainScreen] bounds].size.width/1.5f
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -213,7 +213,7 @@
                 break;
                 
             case 1:
-                controller=(CreateLivingTagsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"CreateLivingTagsViewController"];
+                controller=(LivingTagsTemplateListController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LivingTagsTemplateListController"];
                 break;
 
             case 3:

@@ -8,7 +8,7 @@
 
 #import "CreateLivingTagsViewController.h"
 
-@interface CreateLivingTagsViewController ()
+@interface CreateLivingTagsViewController ()<UIWebViewDelegate,UINavigationControllerDelegate>
 {
     IBOutlet UIWebView *wbCreateTags;
 }
@@ -21,21 +21,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     [wbCreateTags setBackgroundColor:[UIColor clearColor]];
     [wbCreateTags setOpaque:NO];
     
     NSLog(@"USER ID =%@\nTOKEN=%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"],[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
     ////set cookie
-    NSString *str=@"http://livingtags.digiopia.in/api/";
+    NSString *str=@"http://192.168.0.1/LivingTags/www/livingtags/template_fillup/1";
     NSURL* url = [NSURL URLWithString:str];
     NSString *strDomain = [url host];
     NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
-    [cookieProperties setObject:@"testCookie" forKey:NSHTTPCookieName];
+    [cookieProperties setObject:@"token" forKey:NSHTTPCookieName];
     [cookieProperties setObject:[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"] forKey:NSHTTPCookieValue];
     [cookieProperties setObject:strDomain forKey:NSHTTPCookieDomain];
     [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
@@ -48,12 +43,25 @@
     /////
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     [request setURL:[NSURL URLWithString:@"http://192.168.0.1/LivingTags/www/livingtags/template_fillup/1"]];
-    [request addValue:[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"] forHTTPHeaderField:@"id"];
-    [request addValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"] forHTTPHeaderField:@"token"];
+//    [request addValue:[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"] forHTTPHeaderField:@"id"];
+//    [request addValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"] forHTTPHeaderField:@"token"];
     [wbCreateTags loadRequest:request];
+    wbCreateTags.delegate=self;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     ///////
 }
 
+-(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
+{
+    if ( self.presentedViewController)
+    {
+        [super dismissViewControllerAnimated:flag completion:completion];
+    }
+}
 
 /*
  String cookieString = "token=" + App.getInstance().getAppPreference().getApiToken();

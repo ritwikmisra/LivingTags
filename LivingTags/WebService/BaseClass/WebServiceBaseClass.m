@@ -11,18 +11,19 @@
 
 //http://carlifestyle.digiopia.in/user/registration
 
-#define BASE_URL @"http://livingtags.digiopia.in/api/"
-//#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
+//#define BASE_URL @"http://livingtags.digiopia.in/api/"
+#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
 
 NSString *const strAPI[]={
     [WEB_SERVICES_REGISTRATION]         =          @"auths/signup",
-    [WEB_SERVICES_LOGIN]                        =           @"auths/signin",
-    [WEB_SERVICES_GET_PROFILE]            =           @"Accounts/getAccount",
-    [WEB_SERVICES_UPDATE_PROFILE]     =           @"Accounts/updateAccount",
-    [WEB_SERVICES_FORGET_PASSWORD]=            @"auths/forgotpass",
-    [WEB_SERVICES_LIVING_TAG_LISTING]=          @"Livingtags/myLivingtags",
-    [WEB_SERVICE_SOCIAL_LOGIN_FIRST]  =         @"auths/social_signin",
-    [WEB_SERVICE_SOCIAL_LOGIN]              =           @"auths/social_signup"
+    [WEB_SERVICES_LOGIN]                =          @"auths/signin",
+    [WEB_SERVICES_GET_PROFILE]          =          @"Accounts/getAccount",
+    [WEB_SERVICES_UPDATE_PROFILE]       =          @"Accounts/updateAccount",
+    [WEB_SERVICES_FORGET_PASSWORD]      =          @"auths/forgotpass",
+    [WEB_SERVICES_LIVING_TAG_LISTING]   =          @"Livingtags/myLivingtags",
+    [WEB_SERVICE_SOCIAL_LOGIN_FIRST]    =          @"auths/social_signin",
+    [WEB_SERVICE_SOCIAL_LOGIN]          =          @"auths/social_signup",
+    [WEB_SERVICES_GET_ALL_TEMPLATES]    =          @"Livingtags/getAllTemplates"
 };
 
 

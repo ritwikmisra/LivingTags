@@ -119,6 +119,9 @@
 		0D939D321CD34B5B002C954B /* EditProfilePicCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D939D301CD34B5B002C954B /* EditProfilePicCellTableViewCell.m */; };
 		0D939D331CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D939D311CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib */; };
 		0D939D351CD35106002C954B /* circle_with-camera_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D939D341CD35106002C954B /* circle_with-camera_icon.png */; };
+		0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9472A91D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m */; };
+		0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9472AC1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m */; };
+		0D9472B01D0AF74F00A85677 /* LivingTagsTemplateListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */; };
 		0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2265D1CD1F87E00B3A5BC /* LoginService.m */; };
 		0DA226611CD2020800B3A5BC /* ModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA226601CD2020800B3A5BC /* ModelUser.m */; };
 		0DA226641CD21E9500B3A5BC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA226631CD21E9500B3A5BC /* ProfileViewController.m */; };
@@ -308,6 +311,12 @@
 		0D939D301CD34B5B002C954B /* EditProfilePicCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfilePicCellTableViewCell.m; sourceTree = "<group>"; };
 		0D939D311CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfilePicCellTableViewCell.xib; sourceTree = "<group>"; };
 		0D939D341CD35106002C954B /* circle_with-camera_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle_with-camera_icon.png"; sourceTree = "<group>"; };
+		0D9472A81D0AF36800A85677 /* GetAllLivingTagsTemplatesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAllLivingTagsTemplatesService.h; sourceTree = "<group>"; };
+		0D9472A91D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAllLivingTagsTemplatesService.m; sourceTree = "<group>"; };
+		0D9472AB1D0AF5B200A85677 /* ModelLivingTagsTemplateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLivingTagsTemplateList.h; sourceTree = "<group>"; };
+		0D9472AC1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLivingTagsTemplateList.m; sourceTree = "<group>"; };
+		0D9472AE1D0AF74F00A85677 /* LivingTagsTemplateListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsTemplateListController.h; sourceTree = "<group>"; };
+		0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsTemplateListController.m; sourceTree = "<group>"; };
 		0DA2265C1CD1F87E00B3A5BC /* LoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
 		0DA2265D1CD1F87E00B3A5BC /* LoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginService.m; sourceTree = "<group>"; };
 		0DA2265F1CD2020800B3A5BC /* ModelUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelUser.h; sourceTree = "<group>"; };
@@ -501,6 +510,8 @@
 				0D7DD34A1CFF0F1500B6C4B9 /* LivingTagsViewController.m */,
 				0D5FAEBA1D09C8E700A3384A /* CreateLivingTagsViewController.h */,
 				0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */,
+				0D9472AE1D0AF74F00A85677 /* LivingTagsTemplateListController.h */,
+				0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -638,6 +649,8 @@
 				0DDFC9B21CE372B6004D5D46 /* socialLoginFirstService.m */,
 				0DC937FB1CEB5F8E0049BEC2 /* LivingTagsListingService.h */,
 				0DC937FC1CEB5F8E0049BEC2 /* LivingTagsListingService.m */,
+				0D9472A81D0AF36800A85677 /* GetAllLivingTagsTemplatesService.h */,
+				0D9472A91D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -700,6 +713,8 @@
 				0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */,
 				0DC937F81CEB43970049BEC2 /* ModelListing.h */,
 				0DC937F91CEB43970049BEC2 /* ModelListing.m */,
+				0D9472AB1D0AF5B200A85677 /* ModelLivingTagsTemplateList.h */,
+				0D9472AC1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -962,12 +977,14 @@
 				0D77F6B41CD7874C00671159 /* ProfileGetService.m in Sources */,
 				0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */,
 				0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */,
+				0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */,
 				0D80DAF71CFD9B0E00B79C6B /* GroupPopupController.m in Sources */,
 				0D939D321CD34B5B002C954B /* EditProfilePicCellTableViewCell.m in Sources */,
 				0D933B571D07056A00072DE1 /* ImageHoverController.m in Sources */,
 				0D698D2F1CC8D90500F64745 /* LandingViewController.m in Sources */,
 				0D922FB11CF86D3E00EC1945 /* customAnnotationGroups.m in Sources */,
 				0D3731481CD8A10B00EDC547 /* UIImage+GIF.m in Sources */,
+				0D9472B01D0AF74F00A85677 /* LivingTagsTemplateListController.m in Sources */,
 				0D80DF871CEDA30B000FE698 /* MyLivingTagsMapViewController.m in Sources */,
 				0D37314D1CD8A10B00EDC547 /* UIView+WebCacheOperation.m in Sources */,
 				0D698D321CC9026900F64745 /* LoggingViewController.m in Sources */,
@@ -992,6 +1009,7 @@
 				0D3731431CD8A10B00EDC547 /* SDWebImageDownloader.m in Sources */,
 				0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */,
 				0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */,
+				0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */,
 				0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */,
 				0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */,
 				0D5EA2421CCB7CFA00CA0DAE /* RegistrationService.m in Sources */,
