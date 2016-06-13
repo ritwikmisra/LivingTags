@@ -8,8 +8,16 @@
 
 #import "LivingTagsTemplateListController.h"
 #import "GetAllLivingTagsTemplatesService.h"
+#import "TemplateCell.h"
+#import "UIImageView+WebCache.h"
+#import "ModelLivingTagsTemplateList.h"
 
-@interface LivingTagsTemplateListController ()
+@interface LivingTagsTemplateListController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    IBOutlet UICollectionView *collLivingTagsTemplate;
+    NSMutableArray *arrTemplates;
+    NSString *strTemplateID;
+}
 
 @end
 
@@ -19,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UINib *cellNib = [UINib nibWithNibName:@"TemplateCell" bundle:nil];
+    [collLivingTagsTemplate registerNib:cellNib forCellWithReuseIdentifier:@"TemplateCell"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -32,8 +42,67 @@
         else
         {
             NSLog(@"%@",result);
+            if ([result isKindOfClass:[NSMutableArray class]])
+            {
+                arrTemplates=(id)result;
+            }
+            else
+            {
+                [arrTemplates removeAllObjects];
+            }
+            [collLivingTagsTemplate reloadData];
         }
     }];
+}
+
+#pragma mark
+#pragma mark Collection View Delegate and Datasource
+#pragma mark
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return arrTemplates.count;
+}
+
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString   *strIdentifier=@"TemplateCell";
+    TemplateCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
+    ModelLivingTagsTemplateList *obj=[arrTemplates objectAtIndex:indexPath.row];
+    //image download
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [cell.imgTemplate sd_setImageWithURL:[NSURL URLWithString:obj.strTemplateThumb]
+                            placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                                     options:SDWebImageHighPriority
+                                    progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                    }
+                                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                   }];
+    });
+    return cell;
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return collLivingTagsTemplate.frame.size;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ModelLivingTagsTemplateList *obj=[arrTemplates objectAtIndex:indexPath.row];
+    NSLog(@"%@",obj.strTemplateID);
+    strTemplateID=obj.strTemplateID;
+    [self performSegueWithIdentifier:@"segueTemplate" sender:self];
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.0f;
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.0f;
 }
 
 - (void)didReceiveMemoryWarning

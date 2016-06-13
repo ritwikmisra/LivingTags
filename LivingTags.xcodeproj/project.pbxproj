@@ -132,6 +132,8 @@
 		0DA226741CD22E4700B3A5BC /* phone_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA2266B1CD22E4700B3A5BC /* phone_icon.png */; };
 		0DA226751CD22E4700B3A5BC /* user_pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA2266C1CD22E4700B3A5BC /* user_pic1.png */; };
 		0DA226761CD22E4700B3A5BC /* video_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA2266D1CD22E4700B3A5BC /* video_icon.png */; };
+		0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */; };
+		0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */; };
 		0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937F91CEB43970049BEC2 /* ModelListing.m */; };
 		0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937FC1CEB5F8E0049BEC2 /* LivingTagsListingService.m */; };
 		0DDC798E1CFDC4D200AD8011 /* pop_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDC798D1CFDC4D200AD8011 /* pop_map.png */; };
@@ -330,6 +332,9 @@
 		0DA2266B1CD22E4700B3A5BC /* phone_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_icon.png; sourceTree = "<group>"; };
 		0DA2266C1CD22E4700B3A5BC /* user_pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_pic1.png; sourceTree = "<group>"; };
 		0DA2266D1CD22E4700B3A5BC /* video_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_icon.png; sourceTree = "<group>"; };
+		0DAD38F31D0EA9F90044B7A7 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCell.h; sourceTree = "<group>"; };
+		0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCell.m; sourceTree = "<group>"; };
+		0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateCell.xib; sourceTree = "<group>"; };
 		0DC937F81CEB43970049BEC2 /* ModelListing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelListing.h; sourceTree = "<group>"; };
 		0DC937F91CEB43970049BEC2 /* ModelListing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelListing.m; sourceTree = "<group>"; };
 		0DC937FB1CEB5F8E0049BEC2 /* LivingTagsListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsListingService.h; sourceTree = "<group>"; };
@@ -537,6 +542,9 @@
 		0D698D1B1CC8D79000F64745 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0DAD38F31D0EA9F90044B7A7 /* TemplateCell.h */,
+				0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */,
+				0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -923,6 +931,7 @@
 				0D922FF21CF8707D00EC1945 /* list_icon.png in Resources */,
 				0D77D4191CE4891C00CF2C24 /* SlideMenuController.xib in Resources */,
 				0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */,
+				0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */,
 				0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */,
 				0D922FF81CF8707D00EC1945 /* pin_orange.png in Resources */,
 				0D922FF91CF8707D00EC1945 /* search_icon.png in Resources */,
@@ -1010,6 +1019,7 @@
 				0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */,
 				0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */,
 				0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */,
+				0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */,
 				0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */,
 				0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */,
 				0D5EA2421CCB7CFA00CA0DAE /* RegistrationService.m in Sources */,

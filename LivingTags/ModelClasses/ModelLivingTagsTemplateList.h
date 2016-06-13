@@ -12,4 +12,9 @@
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 
+@property(nonatomic,strong)NSString *strTemplateID;
+@property(nonatomic,strong)NSString *strTemplateURI;
+@property(nonatomic,strong)NSString *strTemplateName;
+@property(nonatomic,strong)NSString *strTemplateThumb;
+
 @end

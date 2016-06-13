@@ -26,7 +26,9 @@
     
     NSLog(@"USER ID =%@\nTOKEN=%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"],[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
     ////set cookie
-    NSString *str=@"http://192.168.0.1/LivingTags/www/livingtags/template_fillup/1";
+    //http://192.168.0.1/LivingTags/invoke.php
+    //NSString *str=@"http://192.168.0.1/LivingTags/www/livingtags/template_fillup/1";
+    NSString *str=@"http://192.168.0.1/LivingTags/invoke.php";
     NSURL* url = [NSURL URLWithString:str];
     NSString *strDomain = [url host];
     NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
@@ -42,9 +44,8 @@
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
     /////
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
-    [request setURL:[NSURL URLWithString:@"http://192.168.0.1/LivingTags/www/livingtags/template_fillup/1"]];
-//    [request addValue:[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"] forHTTPHeaderField:@"id"];
-//    [request addValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"] forHTTPHeaderField:@"token"];
+    //[request setURL:[NSURL URLWithString:@"http://192.168.0.1/LivingTags/www/livingtags/template_fillup/1"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.1/LivingTags/invoke.php"]];
     [wbCreateTags loadRequest:request];
     wbCreateTags.delegate=self;
 }
