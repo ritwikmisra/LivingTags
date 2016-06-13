@@ -16,7 +16,6 @@
 {
     IBOutlet UICollectionView *collLivingTagsTemplate;
     NSMutableArray *arrTemplates;
-    NSString *strTemplateID;
 }
 
 @end
@@ -91,7 +90,6 @@
 {
     ModelLivingTagsTemplateList *obj=[arrTemplates objectAtIndex:indexPath.row];
     NSLog(@"%@",obj.strTemplateID);
-    strTemplateID=obj.strTemplateID;
     [self performSegueWithIdentifier:@"segueTemplate" sender:self];
 }
 

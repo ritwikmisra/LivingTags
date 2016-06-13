@@ -56,15 +56,18 @@
                     {
                         if ([[responseDict objectForKey:@"status"]boolValue])
                         {
-                            NSMutableArray *arrResponse=[responseDict objectForKey:@"response"];
-                            NSMutableArray *arr=[[NSMutableArray alloc]initWithCapacity:arrResponse.count];
-                            for (int i=0; i<arrResponse.count; i++)
+                            if ([[responseDict objectForKey:@"response"] isKindOfClass:[NSMutableArray class]])
                             {
-                                ModelLivingTagsTemplateList *obj=[[ModelLivingTagsTemplateList alloc]initWithDictionary:[arrResponse objectAtIndex:i]];
-                                [arr addObject:obj];
+                                NSMutableArray *arrResponse=[responseDict objectForKey:@"response"];
+                                NSMutableArray *arr=[[NSMutableArray alloc]initWithCapacity:arrResponse.count];
+                                for (int i=0; i<arrResponse.count; i++)
+                                {
+                                    ModelLivingTagsTemplateList *obj=[[ModelLivingTagsTemplateList alloc]initWithDictionary:[arrResponse objectAtIndex:i]];
+                                    [arr addObject:obj];
+                                }
+                                NSLog(@"%@",arr);
+                                handler(arr,NO,nil);
                             }
-                            NSLog(@"%@",arr);
-                            handler(arr,NO,nil);
                         }
                         else
                         {
