@@ -42,24 +42,6 @@
 }
 
 
-//-(void)didChangeAlphaForLblLife
-//{
-//    [UIView animateWithDuration:1.0 animations:^{
-//        lblLife.alpha=1.0f;
-//        [self performSelector:@selector(didChangeAlphaForLblCelebration) withObject:nil afterDelay:1.0 ];
-//    }];
-//}
-
-
-//-(void)didChangeAlphaForLblCelebration
-//{
-//    [UIView animateWithDuration:1.0 animations:^{
-//        lblCelebration.alpha=1.0f;
-//        [self performSelector:@selector(didMoveToLogin) withObject:nil afterDelay:2.0];
-//    }];
-//}
-
-
 #pragma mark
 #pragma mark segue login
 #pragma mark
