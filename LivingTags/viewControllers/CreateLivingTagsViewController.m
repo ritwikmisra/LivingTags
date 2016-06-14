@@ -10,8 +10,6 @@
 //#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
 #define BASE_URL @"http://livingtags.digiopia.in/"
 
-
-
 @interface CreateLivingTagsViewController ()<UIWebViewDelegate,UINavigationControllerDelegate>
 {
     IBOutlet UIWebView *wbCreateTags;
@@ -42,34 +40,19 @@
     // set expiration to one month from now or any NSDate of your choosing
     // this makes the cookie sessionless and it will persist across web sessions and app launches
     // if you want the cookie to be destroyed when your app exits, don't set this
+    
     NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
     /////
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     [request setURL:[NSURL URLWithString:str]];
     [wbCreateTags loadRequest:request];
-    wbCreateTags.delegate=self;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 }
-
--(void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
-{
-    if ( self.presentedViewController)
-    {
-        [super dismissViewControllerAnimated:flag completion:completion];
-    }
-}
-
-/*
- String cookieString = "token=" + App.getInstance().getAppPreference().getApiToken();
- String domainName = Util.getDomainName(Constant.URL.BASEURL);
- cookieManager.setCookie(domainName, cookieString);
- http://192.168.0.1/LivingTags/www/livingtags/template_fillup/1
- */
 
 - (void)didReceiveMemoryWarning
 {

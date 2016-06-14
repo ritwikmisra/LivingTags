@@ -173,7 +173,7 @@
 {
     UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     slideMenu.view.frame=CGRectMake(0.0f, 0.0f, SLIDER_WIDTH, [[UIScreen mainScreen] bounds].size.height);
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         navController.view.frame=CGRectMake(SLIDER_WIDTH,0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
     } completion:^(BOOL finished) {
         slideMenu.isSlideMenuVisible=YES;
@@ -185,7 +185,7 @@
 {
     UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     [self closeImageView];
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
     } completion:^(BOOL finished) {
         slideMenu.isSlideMenuVisible=NO;
@@ -198,12 +198,12 @@
 
 -(void)selectedRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     [self closeImageView];
-    [UIView animateWithDuration:0.5 animations:^{
+    UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    [UIView animateWithDuration:0.2 animations:^{
         navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
     } completion:^(BOOL finished) {
-        [slideMenu setIsSlideMenuVisible:YES];
+        [slideMenu setIsSlideMenuVisible:NO];
         UIViewController *controller;
         UIStoryboard *mainStoryboard=[UIStoryboard storyboardWithName:@"Main"bundle: nil];
         switch (indexPath.row)

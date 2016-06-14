@@ -378,6 +378,7 @@
         strVideoLink=textField.text;
         [arrTexts removeObjectAtIndex:textField.tag];
         [arrTexts insertObject:strVideoLink atIndex:textField.tag];
+        [self checkYoutubeLINK:strVideoLink];
     }
     else if (textField.tag==2)
     {

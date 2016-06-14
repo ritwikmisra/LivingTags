@@ -88,7 +88,7 @@
                                         [self hideNetworkActivity];
                                         if (isError)
                                         {
-                                            Completionhandler(nil,YES,[responseDict objectForKey:@"error"]);
+                                            Completionhandler(nil,YES,strMsg);
                                         }
                                         else
                                         {
