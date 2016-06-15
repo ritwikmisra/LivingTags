@@ -71,6 +71,7 @@
 #pragma mark label animation
 #pragma mark
 
+
 -(void)typingLabel:(NSTimer*)theTimer
 {
     NSString *theString = [theTimer.userInfo objectForKey:@"string"];
@@ -87,6 +88,8 @@
         [self performSelector:@selector(didMoveToLogin) withObject:nil afterDelay:2.0f];
     }
 }
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
