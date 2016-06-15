@@ -39,7 +39,7 @@
                 <constraint firstItem="BDX-Gb-tPL" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="TNE-gn-5PZ"/>
                 <constraint firstItem="i36-TL-kbf" firstAttribute="centerY" secondItem="BDX-Gb-tPL" secondAttribute="centerY" id="VIZ-QZ-hQm"/>
                 <constraint firstItem="i36-TL-kbf" firstAttribute="centerX" secondItem="BDX-Gb-tPL" secondAttribute="centerX" id="rFK-Ub-ZDn"/>
-                <constraint firstItem="i36-TL-kbf" firstAttribute="height" secondItem="BDX-Gb-tPL" secondAttribute="height" id="s1R-uL-miL"/>
+                <constraint firstItem="BDX-Gb-tPL" firstAttribute="height" secondItem="i36-TL-kbf" secondAttribute="height" id="s1R-uL-miL"/>
             </constraints>
             <point key="canvasLocation" x="-279" y="147"/>
         </view>

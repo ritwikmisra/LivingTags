@@ -7,8 +7,8 @@
 //
 
 #import "CreateLivingTagsViewController.h"
-//#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
-#define BASE_URL @"http://livingtags.digiopia.in/"
+#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
+//#define BASE_URL @"http://livingtags.digiopia.in/"
 
 @interface CreateLivingTagsViewController ()<UIWebViewDelegate,UINavigationControllerDelegate>
 {
@@ -28,7 +28,7 @@
     
     NSLog(@"USER ID =%@\nTOKEN=%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"],[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
     ////set cookie
-    NSString *str=[NSString stringWithFormat:@"%@livingtags/template_fillup/%@",BASE_URL,self.strTemplateID];
+    NSString *str=[NSString stringWithFormat:@"%@livingtags/use_template/%@",BASE_URL,self.strTemplateID];
     NSURL* url = [NSURL URLWithString:str];
     NSString *strDomain = [url host];
     NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
