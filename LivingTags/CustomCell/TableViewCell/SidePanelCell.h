@@ -12,4 +12,14 @@
 
 @property(nonatomic,strong)IBOutlet UILabel *lbl;
 
+/////first cell
+@property(nonatomic,strong)IBOutlet UIButton *btnLogout;
+@property(nonatomic,strong)IBOutlet UILabel *lblName;
+@property(nonatomic,strong)IBOutlet UILabel *lblEmail;
+
+//////other cells
+
+@property(nonatomic,strong)IBOutlet UIImageView *imgSidePanel;
+@property(nonatomic,strong)IBOutlet UILabel *lblSidePanel;
+
 @end

@@ -20,7 +20,7 @@
 
 +(id)getSlideMenuInstance;
 
-@property(assign,nonatomic,getter=xyz) BOOL isSlideMenuVisible;
+@property(assign,nonatomic) BOOL isSlideMenuVisible;
 
 
 @property(nonatomic,weak)id<sideBarDelegate>delegate;

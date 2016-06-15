@@ -13,7 +13,7 @@
 #import "ModelLivingTagsTemplateList.h"
 #import "CreateLivingTagsViewController.h"
 
-@interface LivingTagsTemplateListController ()<UIScrollViewDelegate>
+@interface LivingTagsTemplateListController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 {
     IBOutlet UICollectionView *collLivingTagsTemplate;
     NSMutableArray *arrTemplates;

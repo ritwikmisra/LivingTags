@@ -12,7 +12,7 @@
 @interface SlideMenuController ()<UITableViewDataSource,UITableViewDelegate>
 {
     IBOutlet UITableView *tblSidePanel;
-    NSMutableArray *arrLabel;
+    NSMutableArray *arrLabel,*arrImages;
 }
 
 @end
@@ -63,7 +63,8 @@
 {
     [super viewDidLoad];
     tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
-    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Profile",@"Create Tags",@"Read Tags",@"My Tags",@"Contacts",@"Payments",@"Comments",@"Logout", nil];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"",@"Profile",@"Create Tags",@"Read Tags",@"My Tags",@"Contacts",@"Payments",@"Comments", nil];
+    arrImages=[[NSMutableArray alloc]initWithObjects:@"",@"profile_icon_",@"creat_tag",@"read_tag",@"my_tag",@"contact",@"payments",@"comments", nil];
     tblSidePanel.delegate=self;
     tblSidePanel.dataSource=self;
     [tblSidePanel setBounces:NO];
@@ -95,32 +96,42 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (___isIphone6Plus)
+    if (indexPath.row==0)
     {
-        return 65.0f;
+        return 130.0;
     }
-    if (___isIphone5_5s)
+    else
     {
         return 45.0f;
     }
-    if (___isIphone6)
-    {
-        return 55.0f;
-    }
-    return 45.0f;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SidePanelCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
-    if (!cell)
+    if (indexPath.row==0)
     {
-        cell=[[[NSBundle mainBundle]loadNibNamed:@"SidePanelCell" owner:self options:nil]objectAtIndex:0];
+        SidePanelCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
+        if (!cell)
+        {
+            cell=[[[NSBundle mainBundle]loadNibNamed:@"SidePanelCell" owner:self options:nil]objectAtIndex:1];
+        }
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.backgroundColor=[UIColor clearColor];
+        return cell;
     }
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    cell.lbl.text=[arrLabel objectAtIndex:indexPath.row];
-    cell.backgroundColor=[UIColor clearColor];
-    return cell;
+    else
+    {
+        SidePanelCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
+        if (!cell)
+        {
+            cell=[[[NSBundle mainBundle]loadNibNamed:@"SidePanelCell" owner:self options:nil]objectAtIndex:0];
+        }
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.lblSidePanel.text=[arrLabel objectAtIndex:indexPath.row];
+        cell.imgSidePanel.image=[UIImage imageNamed:[arrImages objectAtIndex:indexPath.row]];
+        cell.backgroundColor=[UIColor clearColor];
+        return cell;
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath

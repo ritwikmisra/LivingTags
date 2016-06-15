@@ -47,6 +47,7 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     [request setURL:[NSURL URLWithString:str]];
     [wbCreateTags loadRequest:request];
+    wbCreateTags.delegate=self;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -59,5 +60,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark
+#pragma mark WEBVIEW DELEGATES
+#pragma mark
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+
 
 @end
