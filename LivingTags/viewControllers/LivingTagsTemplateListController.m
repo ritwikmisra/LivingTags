@@ -13,11 +13,12 @@
 #import "ModelLivingTagsTemplateList.h"
 #import "CreateLivingTagsViewController.h"
 
-@interface LivingTagsTemplateListController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface LivingTagsTemplateListController ()<UIScrollViewDelegate>
 {
     IBOutlet UICollectionView *collLivingTagsTemplate;
     NSMutableArray *arrTemplates;
     NSString *strSegueTemplateID;
+    IBOutlet UILabel *lblTemplate;
 }
 @end
 
@@ -34,6 +35,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    collLivingTagsTemplate.delegate=self;
+    collLivingTagsTemplate.dataSource=self;
     [[GetAllLivingTagsTemplatesService sharedInstance]getAllTemplateDesignsWithCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
@@ -45,10 +48,12 @@
             if ([result isKindOfClass:[NSMutableArray class]])
             {
                 arrTemplates=(id)result;
+                lblTemplate.text=[NSString stringWithFormat:@"Template Selection(1/%lu)",(unsigned long)arrTemplates.count];
             }
             else
             {
                 [arrTemplates removeAllObjects];
+                lblTemplate.text=@"Template Selection";
             }
             [collLivingTagsTemplate reloadData];
         }
@@ -118,9 +123,28 @@
     }
 }
 
+
+#pragma mark
+#pragma mark scrollView Delegate
+#pragma mark
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = collLivingTagsTemplate.frame.size.width;
+    int currentPage = collLivingTagsTemplate.contentOffset.x / pageWidth;
+    lblTemplate.text=[NSString stringWithFormat:@"Template Selection(%d/%lu)",currentPage+1,(unsigned long)arrTemplates.count];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    collLivingTagsTemplate.delegate=nil;
+    collLivingTagsTemplate.dataSource=nil;
 }
 
 @end
