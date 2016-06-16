@@ -11,8 +11,8 @@
 
 //http://carlifestyle.digiopia.in/user/registration
 
-//#define BASE_URL @"http://livingtags.digiopia.in/api/"
-#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
+#define BASE_URL @"http://livingtags.digiopia.in/api/"
+//#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
 
 NSString *const strAPI[]={
     [WEB_SERVICES_REGISTRATION]         =          @"auths/signup",

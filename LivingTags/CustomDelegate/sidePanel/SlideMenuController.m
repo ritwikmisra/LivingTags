@@ -141,6 +141,8 @@
         }
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         [cell.btnLogout addTarget:self action:@selector(btnLogoutPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cell.lblName.text=appDel.objUser.strName;
+        cell.lblEmail.text=appDel.objUser.strEmail;
         cell.backgroundColor=[UIColor clearColor];
         return cell;
     }
@@ -174,7 +176,7 @@
             [self.delegate selectedRowAtIndexPath:indexPath];
         }
     }
-    [self tableView:tblSidePanel didDeselectRowAtIndexPath:indexPath];
+    //[self tableView:tblSidePanel didDeselectRowAtIndexPath:indexPath];
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath

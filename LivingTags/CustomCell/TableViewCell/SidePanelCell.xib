@@ -90,20 +90,20 @@
                             <constraint firstAttribute="width" secondItem="zm7-dk-BxH" secondAttribute="height" multiplier="15:15" id="id8-vz-4I9"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RICHARD PYNE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghD-Tl-9YT">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghD-Tl-9YT">
                         <rect key="frame" x="80" y="146" width="160" height="32"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ritwik.misra92@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-NI-KzE">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-NI-KzE">
                         <rect key="frame" x="64" y="178" width="192" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDu-wn-X36">
-                        <rect key="frame" x="224" y="18" width="71" height="22"/>
+                        <rect key="frame" x="204" y="18" width="91" height="28"/>
                         <state key="normal" backgroundImage="logout_text.png"/>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IWH-A8-hkh">
@@ -126,7 +126,7 @@
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="width" secondItem="ghD-Tl-9YT" secondAttribute="width" multiplier="2" id="9ta-O1-aUP"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="height" secondItem="zm7-dk-BxH" secondAttribute="height" multiplier="2.5" id="AcZ-aw-qjV"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="height" secondItem="Hxa-uD-89c" secondAttribute="height" id="Da7-Gn-QcM"/>
-                    <constraint firstItem="Y1C-RX-rSj" firstAttribute="width" secondItem="zDu-wn-X36" secondAttribute="width" multiplier="4.5" id="I8v-ls-LGK"/>
+                    <constraint firstItem="Y1C-RX-rSj" firstAttribute="width" secondItem="zDu-wn-X36" secondAttribute="width" multiplier="3.5" id="I8v-ls-LGK"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="centerY" secondItem="zm7-dk-BxH" secondAttribute="centerY" multiplier="1.1" id="cQZ-9U-QfU"/>
                     <constraint firstItem="zm7-dk-BxH" firstAttribute="centerX" secondItem="Y1C-RX-rSj" secondAttribute="centerX" id="gBO-YK-9pE"/>
                     <constraint firstItem="zDu-wn-X36" firstAttribute="top" secondItem="Y1C-RX-rSj" secondAttribute="top" constant="18" id="in1-NC-giC"/>
@@ -134,7 +134,7 @@
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="width" secondItem="Hxa-uD-89c" secondAttribute="width" id="meO-gU-Wlj"/>
                     <constraint firstItem="ghD-Tl-9YT" firstAttribute="centerX" secondItem="zm7-dk-BxH" secondAttribute="centerX" id="poM-6k-7rp"/>
                     <constraint firstItem="IWH-A8-hkh" firstAttribute="width" secondItem="Y1C-RX-rSj" secondAttribute="width" id="qEH-n8-JfP"/>
-                    <constraint firstItem="Y1C-RX-rSj" firstAttribute="height" secondItem="zDu-wn-X36" secondAttribute="height" multiplier="10" id="tYk-yG-Fnp"/>
+                    <constraint firstItem="Y1C-RX-rSj" firstAttribute="height" secondItem="zDu-wn-X36" secondAttribute="height" multiplier="8" id="tYk-yG-Fnp"/>
                     <constraint firstItem="tbq-NI-KzE" firstAttribute="width" secondItem="ghD-Tl-9YT" secondAttribute="width" multiplier="1.2" id="vbK-bT-9XX"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="centerX" secondItem="Hxa-uD-89c" secondAttribute="centerX" id="zPc-5U-4gq"/>
                 </constraints>
@@ -144,7 +144,7 @@
                 <outlet property="lblEmail" destination="tbq-NI-KzE" id="d3t-xd-7Vy"/>
                 <outlet property="lblName" destination="ghD-Tl-9YT" id="Mwp-a0-KUy"/>
             </connections>
-            <point key="canvasLocation" x="320" y="365"/>
+            <point key="canvasLocation" x="372" y="249"/>
         </tableViewCell>
     </objects>
     <resources>

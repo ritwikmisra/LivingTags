@@ -71,7 +71,6 @@
 #pragma mark label animation
 #pragma mark
 
-
 -(void)typingLabel:(NSTimer*)theTimer
 {
     NSString *theString = [theTimer.userInfo objectForKey:@"string"];

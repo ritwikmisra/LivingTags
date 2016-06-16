@@ -46,10 +46,16 @@
     NSLog(@"%@",self.navigationController.topViewController);
     
     ///slide menu initialisation
-    slideMenu=[SlideMenuController getSlideMenuInstance];
-    slideMenu.view.frame=CGRectMake(0,0, SLIDER_WIDTH, [[UIScreen mainScreen] bounds].size.height);
-    slideMenu.delegate=self;
-    slideMenu.isSlideMenuVisible=NO;
+    if (!slideMenu)
+    {
+        if ([[self.navigationController topViewController]isKindOfClass:[ProfileViewController class]])
+        {
+            slideMenu=[SlideMenuController getSlideMenuInstance];
+            slideMenu.view.frame=CGRectMake(0,0, SLIDER_WIDTH, [[UIScreen mainScreen] bounds].size.height);
+            slideMenu.delegate=self;
+            slideMenu.isSlideMenuVisible=NO;
+        }
+    }
     
     CALayer *layer = self.navigationController.view.layer;
     layer.shadowOffset = CGSizeMake(-6, 0);
