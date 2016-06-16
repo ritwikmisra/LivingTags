@@ -28,7 +28,6 @@
     [wbLivingTags setOpaque:NO];
     lblHeader.text=self.objHTML.strName;
     [wbLivingTags loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://livingtags.digiopia.in/tags/%@",self.objHTML.strWebURI]]]];
-    wbLivingTags.delegate=self;
 }
 
 - (void)didReceiveMemoryWarning

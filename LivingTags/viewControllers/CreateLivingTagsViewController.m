@@ -67,8 +67,19 @@
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    //rel=@"yahoo"
+    NSLog(@"%@",[[request URL] absoluteString]);
+    if ([[[request URL] absoluteString] containsString:@"#"])
+    {
+        [self callNativeEndFunction];
+        return NO;
+    }
     return YES;
 }
 
+-(void)callNativeEndFunction
+{
+    NSLog(@"Native End Function Called");
+}
 
 @end

@@ -98,10 +98,34 @@
 {
     if (indexPath.row==0)
     {
+        if(___isIphone6Plus)
+        {
+            return 180.0f;
+        }
+        if (___isIphone6)
+        {
+            return 160.0f;
+        }
+        if (___isIphone5_5s)
+        {
+            return 150.0f;
+        }
         return 130.0;
     }
     else
     {
+        if (___isIphone6Plus)
+        {
+            return 65.0f;
+        }
+        if (___isIphone6)
+        {
+            return 60.0f;
+        }
+        if (___isIphone5_5s)
+        {
+            return 50.0f;
+        }
         return 45.0f;
     }
 }
@@ -116,6 +140,7 @@
             cell=[[[NSBundle mainBundle]loadNibNamed:@"SidePanelCell" owner:self options:nil]objectAtIndex:1];
         }
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        [cell.btnLogout addTarget:self action:@selector(btnLogoutPressed:) forControlEvents:UIControlEventTouchUpInside];
         cell.backgroundColor=[UIColor clearColor];
         return cell;
     }
@@ -138,16 +163,23 @@
 {
     SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.lbl.textColor=[UIColor whiteColor];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(selectedRowAtIndexPath:)])
+    if (indexPath.row==0)
     {
-        [self.delegate selectedRowAtIndexPath:indexPath];
+        
+    }
+    else
+    {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(selectedRowAtIndexPath:)])
+        {
+            [self.delegate selectedRowAtIndexPath:indexPath];
+        }
     }
     [self tableView:tblSidePanel didDeselectRowAtIndexPath:indexPath];
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    double delayInSeconds = 2.0;
+    double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         NSLog(@"Do some work");
@@ -155,5 +187,18 @@
         SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
         cell.lbl.textColor=[UIColor blackColor];
     });
+}
+
+#pragma mark
+#pragma mark BUTTON LOGOUT ACTION
+#pragma mark
+
+-(void)btnLogoutPressed:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(displayAlertControllerForLogout)])
+    {
+        [self.delegate displayAlertControllerForLogout];
+    }
+
 }
 @end

@@ -208,21 +208,17 @@
         UIStoryboard *mainStoryboard=[UIStoryboard storyboardWithName:@"Main"bundle: nil];
         switch (indexPath.row)
         {
-            case 0:
+            case 1:
                 controller=(ProfileViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
                 break;
                 
-            case 1:
+            case 2:
                 controller=(LivingTagsTemplateListController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LivingTagsTemplateListController"];
                 break;
 
-            case 3:
+            case 4:
                 controller=(MyLivingTagesViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
                 break;
-            case 7:
-                [self displayAlertControllerForLogout];
-                break;
-                
             default:
                 break;
         }
@@ -235,11 +231,12 @@
 }
 
 #pragma mark
-#pragma mark Display AlertController
+#pragma mark Display AlertController for logout
 #pragma mark
 
 -(void)displayAlertControllerForLogout
 {
+    [self closeSlider];
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to logout from the application?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self logout];

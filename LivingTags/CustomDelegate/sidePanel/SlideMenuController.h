@@ -13,6 +13,7 @@
 @optional
 
 -(void)selectedRowAtIndexPath:(NSIndexPath *)indexPath;
+-(void)displayAlertControllerForLogout;
 
 @end
 
