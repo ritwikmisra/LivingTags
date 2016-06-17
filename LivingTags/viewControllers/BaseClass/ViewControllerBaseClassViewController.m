@@ -14,6 +14,8 @@
 #import "LoggingViewController.h"
 #import "ImageHoverController.h"
 #import "LivingTagsTemplateListController.h"
+#import "NetworkActivityViewController.h"
+
 
 #define SLIDER_WIDTH [[UIScreen mainScreen] bounds].size.width/1.5f
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -303,4 +305,25 @@
     NSLog(@"Tap pressed");
     [self closeSlider];
 }
+
+#pragma mark
+#pragma mark activity indicator methods
+#pragma mark
+
+-(void)displayNetworkActivity
+{
+    NetworkActivityViewController *netwokActivity=[NetworkActivityViewController sharedInstance];
+    UIWindow *window=[[UIApplication sharedApplication] keyWindow];
+    netwokActivity.view.frame=CGRectMake(0, 0, window.frame.size.width, window.frame.size.height);
+    [window addSubview:netwokActivity.view];
+    [netwokActivity changeAnimatingStatusTo:YES];
+}
+
+-(void)hideNetworkActivity
+{
+    NetworkActivityViewController *netwokActivity=[NetworkActivityViewController sharedInstance];
+    [netwokActivity.view removeFromSuperview];
+    [netwokActivity changeAnimatingStatusTo:NO];
+}
+
 @end

@@ -19,7 +19,6 @@
 
 @implementation GroupPopupController
 
-
 #pragma mark
 #pragma mark singleton instance
 #pragma mark

@@ -7,8 +7,8 @@
 //
 
 #import "CreateLivingTagsViewController.h"
-#define BASE_URL @"http://192.168.0.1/LivingTags/www/"
-//#define BASE_URL @"http://livingtags.digiopia.in/"
+//#define BASE_URL @"http://192.168.0.1/LivingTags/www/"
+#define BASE_URL @"http://livingtags.digiopia.in/"
 
 @interface CreateLivingTagsViewController ()<UIWebViewDelegate,UINavigationControllerDelegate>
 {
@@ -47,6 +47,7 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     [request setURL:[NSURL URLWithString:str]];
     [wbCreateTags loadRequest:request];
+    wbCreateTags.allowsInlineMediaPlayback=YES;
     wbCreateTags.delegate=self;
 }
 
@@ -65,6 +66,41 @@
 #pragma mark WEBVIEW DELEGATES
 #pragma mark
 
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [self displayNetworkActivity];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self hideNetworkActivity];
+}
+
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Error!"
+                                  message:@"Failed to load the form. Please refresh."
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Refresh"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             [self viewDidLoad];
+                             
+                         }];
+    
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
 {
     //rel=@"yahoo"
@@ -80,6 +116,12 @@
 -(void)callNativeEndFunction
 {
     NSLog(@"Native End Function Called");
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
 
 @end

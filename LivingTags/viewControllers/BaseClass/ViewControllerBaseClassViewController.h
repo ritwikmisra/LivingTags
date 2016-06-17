@@ -24,5 +24,10 @@
 -(BOOL)isValidEmail:(NSString*)strEmailID;
 -(id)getSuperviewOfType:(Class)myClass fromView:(id)myView;
 -(NSString *)generateMD5:(NSString *)string;
+-(void)displayNetworkActivity;
+-(void)hideNetworkActivity;
+
+
+
 
 @end
