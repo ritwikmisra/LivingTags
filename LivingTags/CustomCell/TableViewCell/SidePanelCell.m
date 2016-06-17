@@ -10,8 +10,17 @@
 
 @implementation SidePanelCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (void)awakeFromNib
+{
+    [self.actIndicatorSidePanel setHidesWhenStopped:YES];
+
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.imgSidePanelProfile.layer.cornerRadius=self.imgSidePanelProfile.frame.size.height/2;
+    self.imgSidePanelProfile.layer.masksToBounds=YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

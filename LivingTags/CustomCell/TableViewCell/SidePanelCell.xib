@@ -84,7 +84,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y1C-RX-rSj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="223"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="zm7-dk-BxH">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zm7-dk-BxH">
                         <rect key="frame" x="116" y="57" width="89" height="89"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="zm7-dk-BxH" secondAttribute="height" multiplier="15:15" id="id8-vz-4I9"/>
@@ -96,6 +96,13 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="BmA-in-WHY">
+                        <rect key="frame" x="150" y="92" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="EtQ-JS-voy"/>
+                            <constraint firstAttribute="width" constant="20" id="oXa-To-ddf"/>
+                        </constraints>
+                    </activityIndicatorView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-NI-KzE">
                         <rect key="frame" x="64" y="178" width="192" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -130,7 +137,9 @@
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="centerY" secondItem="zm7-dk-BxH" secondAttribute="centerY" multiplier="1.1" id="cQZ-9U-QfU"/>
                     <constraint firstItem="zm7-dk-BxH" firstAttribute="centerX" secondItem="Y1C-RX-rSj" secondAttribute="centerX" id="gBO-YK-9pE"/>
                     <constraint firstItem="zDu-wn-X36" firstAttribute="top" secondItem="Y1C-RX-rSj" secondAttribute="top" constant="18" id="in1-NC-giC"/>
+                    <constraint firstItem="BmA-in-WHY" firstAttribute="centerY" secondItem="zm7-dk-BxH" secondAttribute="centerY" id="lLF-5b-fUB"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="centerY" secondItem="Hxa-uD-89c" secondAttribute="centerY" id="lQs-sW-vqt"/>
+                    <constraint firstItem="BmA-in-WHY" firstAttribute="centerX" secondItem="zm7-dk-BxH" secondAttribute="centerX" id="lgM-9Y-uTq"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="width" secondItem="Hxa-uD-89c" secondAttribute="width" id="meO-gU-Wlj"/>
                     <constraint firstItem="ghD-Tl-9YT" firstAttribute="centerX" secondItem="zm7-dk-BxH" secondAttribute="centerX" id="poM-6k-7rp"/>
                     <constraint firstItem="IWH-A8-hkh" firstAttribute="width" secondItem="Y1C-RX-rSj" secondAttribute="width" id="qEH-n8-JfP"/>
@@ -140,15 +149,21 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="actIndicatorSidePanel" destination="BmA-in-WHY" id="mgB-AP-jcI"/>
                 <outlet property="btnLogout" destination="zDu-wn-X36" id="A9z-aP-bGp"/>
+                <outlet property="imgSidePanelProfile" destination="zm7-dk-BxH" id="iBS-3e-i7k"/>
                 <outlet property="lblEmail" destination="tbq-NI-KzE" id="d3t-xd-7Vy"/>
                 <outlet property="lblName" destination="ghD-Tl-9YT" id="Mwp-a0-KUy"/>
             </connections>
             <point key="canvasLocation" x="372" y="249"/>
         </tableViewCell>
+        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="owb-dQ-fEw">
+            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <point key="canvasLocation" x="364" y="238"/>
+        </activityIndicatorView>
     </objects>
     <resources>
         <image name="logout_text.png" width="182" height="54"/>
-        <image name="profile.png" width="282" height="282"/>
     </resources>
 </document>

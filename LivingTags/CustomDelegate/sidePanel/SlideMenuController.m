@@ -9,6 +9,7 @@
 
 #import "SlideMenuController.h"
 #import "SidePanelCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface SlideMenuController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -132,6 +133,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //profile.png
     if (indexPath.row==0)
     {
         SidePanelCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
@@ -143,6 +145,22 @@
         [cell.btnLogout addTarget:self action:@selector(btnLogoutPressed:) forControlEvents:UIControlEventTouchUpInside];
         cell.lblName.text=appDel.objUser.strName;
         cell.lblEmail.text=appDel.objUser.strEmail;
+        NSURL *url=[NSURL URLWithString:appDel.objUser.strPicURI160];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.imgSidePanelProfile sd_setImageWithURL:url
+                                placeholderImage:[UIImage imageNamed:@"profile.png"]
+                                         options:SDWebImageHighPriority
+                                        progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                            if (cell.actIndicatorSidePanel)
+                                            {
+                                                [cell.actIndicatorSidePanel startAnimating];
+                                            }
+                                        }
+                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                           [cell.actIndicatorSidePanel stopAnimating];
+                                       }];
+        });
+
         cell.backgroundColor=[UIColor clearColor];
         return cell;
     }
@@ -163,32 +181,34 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
-    cell.lbl.textColor=[UIColor whiteColor];
     if (indexPath.row==0)
     {
         
     }
     else
     {
+        SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
+        cell.lblSidePanel.textColor=[UIColor whiteColor];
         if (self.delegate && [self.delegate respondsToSelector:@selector(selectedRowAtIndexPath:)])
         {
             [self.delegate selectedRowAtIndexPath:indexPath];
         }
     }
-    //[self tableView:tblSidePanel didDeselectRowAtIndexPath:indexPath];
+   // [self tableView:_tblSidePanel didDeselectRowAtIndexPath:indexPath];
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    double delayInSeconds = 1.0;
+   /* double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         NSLog(@"Do some work");
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
-        cell.lbl.textColor=[UIColor blackColor];
-    });
+        cell.lblSidePanel.textColor=[UIColor blackColor];
+    });*/
+    SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.lblSidePanel.textColor=[UIColor blackColor];
 }
 
 #pragma mark

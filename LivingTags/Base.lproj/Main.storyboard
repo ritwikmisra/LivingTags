@@ -366,22 +366,6 @@
                                     <constraint firstAttribute="width" secondItem="qDi-su-bzc" secondAttribute="height" id="fPr-i6-o34"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6c4-73-Y2m">
-                                <rect key="frame" x="555" y="15" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="6c4-73-Y2m" secondAttribute="height" multiplier="23:23" id="uDy-WD-COi"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="back_arrow.png"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gul-AH-dyo">
-                                <rect key="frame" x="525" y="0.0" width="55" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gul-AH-dyo" secondAttribute="height" id="I2R-jA-zxC"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="btnBackPressed:" destination="Bt0-ux-L1C" eventType="touchUpInside" id="jE8-Gs-B1q"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY LIVING TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4l-ck-gct">
                                 <rect key="frame" x="150" y="0.0" width="300" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -486,23 +470,18 @@
                         <constraints>
                             <constraint firstItem="wq7-sa-pOZ" firstAttribute="centerY" secondItem="aiX-zf-eT0" secondAttribute="centerY" id="0hB-Tj-B76"/>
                             <constraint firstItem="wq7-sa-pOZ" firstAttribute="height" secondItem="aiX-zf-eT0" secondAttribute="height" id="54V-pL-ls2"/>
-                            <constraint firstItem="6c4-73-Y2m" firstAttribute="centerY" secondItem="Ddl-sI-wXD" secondAttribute="centerY" id="B3Z-xj-b2O"/>
                             <constraint firstItem="U9h-zB-FSb" firstAttribute="top" secondItem="Ddl-sI-wXD" secondAttribute="bottom" id="BTM-k8-bKa"/>
                             <constraint firstItem="Ddl-sI-wXD" firstAttribute="width" secondItem="h4l-ck-gct" secondAttribute="width" multiplier="2" id="Bz9-Gc-VM8"/>
                             <constraint firstItem="U9h-zB-FSb" firstAttribute="centerX" secondItem="Ddl-sI-wXD" secondAttribute="centerX" id="Cw0-jh-C7a"/>
-                            <constraint firstItem="gul-AH-dyo" firstAttribute="height" secondItem="Ddl-sI-wXD" secondAttribute="height" id="DYF-P2-zxr"/>
                             <constraint firstItem="wq7-sa-pOZ" firstAttribute="height" secondItem="U9h-zB-FSb" secondAttribute="height" multiplier="1.11" id="Ibn-aK-pJh"/>
                             <constraint firstItem="wq7-sa-pOZ" firstAttribute="width" secondItem="aiX-zf-eT0" secondAttribute="width" id="MAs-W2-l9j"/>
                             <constraint firstItem="Ddl-sI-wXD" firstAttribute="top" secondItem="wq7-sa-pOZ" secondAttribute="top" id="O32-Hd-4lO"/>
                             <constraint firstItem="wq7-sa-pOZ" firstAttribute="height" secondItem="Ddl-sI-wXD" secondAttribute="height" multiplier="11" id="O8w-zB-ycU"/>
                             <constraint firstItem="wq7-sa-pOZ" firstAttribute="centerX" secondItem="aiX-zf-eT0" secondAttribute="centerX" id="RE5-Yh-VGd"/>
-                            <constraint firstItem="gul-AH-dyo" firstAttribute="centerY" secondItem="Ddl-sI-wXD" secondAttribute="centerY" id="UBX-r2-m20"/>
-                            <constraint firstItem="Ddl-sI-wXD" firstAttribute="trailing" secondItem="6c4-73-Y2m" secondAttribute="trailing" constant="20" id="WKX-fF-Y0T"/>
                             <constraint firstItem="jwb-dN-IL9" firstAttribute="centerY" secondItem="Ddl-sI-wXD" secondAttribute="centerY" id="e7p-zm-w3e"/>
                             <constraint firstItem="Ddl-sI-wXD" firstAttribute="centerX" secondItem="wq7-sa-pOZ" secondAttribute="centerX" id="fK2-8l-2Ru"/>
                             <constraint firstItem="Ddl-sI-wXD" firstAttribute="centerX" secondItem="jwb-dN-IL9" secondAttribute="centerX" multiplier="6" id="fsP-cf-A8X"/>
                             <constraint firstItem="U9h-zB-FSb" firstAttribute="width" secondItem="wq7-sa-pOZ" secondAttribute="width" id="gd0-fc-Qy2"/>
-                            <constraint firstItem="Ddl-sI-wXD" firstAttribute="height" secondItem="6c4-73-Y2m" secondAttribute="height" multiplier="2.2" id="heV-VP-QbQ"/>
                             <constraint firstItem="h4l-ck-gct" firstAttribute="centerX" secondItem="Ddl-sI-wXD" secondAttribute="centerX" id="hli-gQ-M0u"/>
                             <constraint firstItem="jwb-dN-IL9" firstAttribute="height" secondItem="qDi-su-bzc" secondAttribute="height" multiplier="1.7" id="i6r-Mh-1AG"/>
                             <constraint firstItem="Ddl-sI-wXD" firstAttribute="width" secondItem="wq7-sa-pOZ" secondAttribute="width" id="iHf-qc-1hE"/>
@@ -510,7 +489,6 @@
                             <constraint firstItem="h4l-ck-gct" firstAttribute="centerY" secondItem="Ddl-sI-wXD" secondAttribute="centerY" id="luc-QJ-5YZ"/>
                             <constraint firstItem="qDi-su-bzc" firstAttribute="centerY" secondItem="jwb-dN-IL9" secondAttribute="centerY" id="rrd-uY-esa"/>
                             <constraint firstItem="qDi-su-bzc" firstAttribute="centerX" secondItem="jwb-dN-IL9" secondAttribute="centerX" id="w8T-4B-swm"/>
-                            <constraint firstItem="gul-AH-dyo" firstAttribute="trailing" secondItem="6c4-73-Y2m" secondAttribute="trailing" id="xqo-Ny-BD4"/>
                             <constraint firstItem="jwb-dN-IL9" firstAttribute="height" secondItem="Ddl-sI-wXD" secondAttribute="height" id="yFt-u7-W99"/>
                         </constraints>
                     </view>
@@ -1162,22 +1140,6 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmo-EY-Nm2">
-                                <rect key="frame" x="555" y="15" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wmo-EY-Nm2" secondAttribute="height" multiplier="23:23" id="7L3-0c-232"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="back_arrow.png"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3W-4R-dSE">
-                                <rect key="frame" x="525" y="0.0" width="55" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="y3W-4R-dSE" secondAttribute="height" multiplier="23:23" id="qXB-p7-UHl"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="btnBackPressed:" destination="dOV-ca-GBs" eventType="touchUpInside" id="4Sg-zS-qzc"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0y-cy-uqd">
                                 <rect key="frame" x="124" y="0.0" width="353" height="55"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1191,7 +1153,6 @@
                             <constraint firstItem="PgY-JV-K9u" firstAttribute="centerX" secondItem="ue4-dI-042" secondAttribute="centerX" id="2yZ-Rr-MFt"/>
                             <constraint firstItem="gQ7-Vr-3vq" firstAttribute="width" secondItem="c0y-cy-uqd" secondAttribute="width" multiplier="1.7" id="9ca-0o-cAE"/>
                             <constraint firstItem="3aU-Sm-eNk" firstAttribute="width" secondItem="J2u-4s-oOs" secondAttribute="width" multiplier="1.01" id="G1L-5z-hSM"/>
-                            <constraint firstItem="y3W-4R-dSE" firstAttribute="height" secondItem="gQ7-Vr-3vq" secondAttribute="height" id="GV4-tB-0g1"/>
                             <constraint firstItem="3aU-Sm-eNk" firstAttribute="centerX" secondItem="fab-lr-Gpz" secondAttribute="centerX" id="IEG-YQ-gmu"/>
                             <constraint firstItem="3aU-Sm-eNk" firstAttribute="width" secondItem="fab-lr-Gpz" secondAttribute="width" id="JY4-Zo-8Jc"/>
                             <constraint firstItem="3aU-Sm-eNk" firstAttribute="centerY" secondItem="fab-lr-Gpz" secondAttribute="centerY" id="Mf5-2J-cDC"/>
@@ -1199,22 +1160,17 @@
                             <constraint firstItem="c0y-cy-uqd" firstAttribute="height" secondItem="gQ7-Vr-3vq" secondAttribute="height" id="QKz-tl-qun"/>
                             <constraint firstItem="ue4-dI-042" firstAttribute="height" secondItem="PgY-JV-K9u" secondAttribute="height" multiplier="1.7" id="TPO-Sx-btn"/>
                             <constraint firstItem="gQ7-Vr-3vq" firstAttribute="top" secondItem="3aU-Sm-eNk" secondAttribute="top" id="W5T-oI-COX"/>
-                            <constraint firstItem="gQ7-Vr-3vq" firstAttribute="height" secondItem="wmo-EY-Nm2" secondAttribute="height" multiplier="2.2" id="XEI-u6-0e8"/>
-                            <constraint firstItem="gQ7-Vr-3vq" firstAttribute="trailing" secondItem="wmo-EY-Nm2" secondAttribute="trailing" constant="20" id="bF8-Dd-RB2"/>
                             <constraint firstItem="3aU-Sm-eNk" firstAttribute="height" secondItem="J2u-4s-oOs" secondAttribute="height" multiplier="1.2" id="biN-CE-6w3"/>
-                            <constraint firstItem="y3W-4R-dSE" firstAttribute="trailing" secondItem="wmo-EY-Nm2" secondAttribute="trailing" id="cNk-nF-xPU"/>
                             <constraint firstItem="gQ7-Vr-3vq" firstAttribute="width" secondItem="3aU-Sm-eNk" secondAttribute="width" id="eCn-U4-5zn"/>
                             <constraint firstItem="J2u-4s-oOs" firstAttribute="top" secondItem="gQ7-Vr-3vq" secondAttribute="bottom" multiplier="1.1" id="f7I-CF-Brp"/>
                             <constraint firstItem="J2u-4s-oOs" firstAttribute="centerX" secondItem="gQ7-Vr-3vq" secondAttribute="centerX" id="gcg-mD-Ytw"/>
                             <constraint firstItem="c0y-cy-uqd" firstAttribute="centerX" secondItem="gQ7-Vr-3vq" secondAttribute="centerX" id="glB-VZ-N1T"/>
                             <constraint firstItem="gQ7-Vr-3vq" firstAttribute="centerX" secondItem="ue4-dI-042" secondAttribute="centerX" multiplier="6" id="glv-0m-JHN"/>
                             <constraint firstItem="ue4-dI-042" firstAttribute="height" secondItem="gQ7-Vr-3vq" secondAttribute="height" id="hhu-vq-JFK"/>
-                            <constraint firstItem="y3W-4R-dSE" firstAttribute="centerY" secondItem="gQ7-Vr-3vq" secondAttribute="centerY" id="htx-aV-rda"/>
                             <constraint firstItem="gQ7-Vr-3vq" firstAttribute="centerX" secondItem="3aU-Sm-eNk" secondAttribute="centerX" id="hvi-Dk-AN3"/>
                             <constraint firstItem="PgY-JV-K9u" firstAttribute="centerY" secondItem="ue4-dI-042" secondAttribute="centerY" id="iWT-Ul-8CI"/>
                             <constraint firstItem="3aU-Sm-eNk" firstAttribute="height" secondItem="fab-lr-Gpz" secondAttribute="height" id="pVY-eX-fJd"/>
                             <constraint firstItem="3aU-Sm-eNk" firstAttribute="height" secondItem="gQ7-Vr-3vq" secondAttribute="height" multiplier="11" id="qHr-1j-EN9"/>
-                            <constraint firstItem="wmo-EY-Nm2" firstAttribute="centerY" secondItem="gQ7-Vr-3vq" secondAttribute="centerY" id="ucn-Ta-chN"/>
                             <constraint firstItem="c0y-cy-uqd" firstAttribute="centerY" secondItem="gQ7-Vr-3vq" secondAttribute="centerY" id="upq-vb-kul"/>
                         </constraints>
                     </view>
