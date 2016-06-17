@@ -7,6 +7,7 @@
 //
 
 #import "UpdateProfileService.h"
+#import "SlideMenuController.h"
 
 @implementation UpdateProfileService
 
@@ -95,6 +96,8 @@
                      {
                          if ([[responseDict objectForKey:@"status"] boolValue])
                          {
+                             SlideMenuController *master=[SlideMenuController getSlideMenuInstance];
+                             [master.tblSidePanel reloadData];
                              appDel.objUser=[[ModelUser alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"account"]];
                              NSLog(@"%@",appDel.objUser.strName);
                              appDel.objLivingTags=[[ModelLivingTagsViewedAndCreated alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"livingtag"]];

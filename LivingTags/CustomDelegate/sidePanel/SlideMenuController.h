@@ -23,7 +23,7 @@
 
 @property(assign,nonatomic) BOOL isSlideMenuVisible;
 
-
+@property(nonatomic,strong) IBOutlet UITableView *tblSidePanel;
 @property(nonatomic,weak)id<sideBarDelegate>delegate;
 
 

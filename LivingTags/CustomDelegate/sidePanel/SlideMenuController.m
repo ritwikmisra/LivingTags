@@ -12,7 +12,6 @@
 
 @interface SlideMenuController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    IBOutlet UITableView *tblSidePanel;
     NSMutableArray *arrLabel,*arrImages;
 }
 
@@ -63,17 +62,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
+    _tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
     arrLabel=[[NSMutableArray alloc]initWithObjects:@"",@"Profile",@"Create Tags",@"Read Tags",@"My Tags",@"Contacts",@"Payments",@"Comments", nil];
     arrImages=[[NSMutableArray alloc]initWithObjects:@"",@"profile_icon_",@"creat_tag",@"read_tag",@"my_tag",@"contact",@"payments",@"comments", nil];
-    tblSidePanel.delegate=self;
-    tblSidePanel.dataSource=self;
-    [tblSidePanel setBounces:NO];
+    [_tblSidePanel setBounces:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _tblSidePanel.delegate=self;
+    _tblSidePanel.dataSource=self;
 }
 
 - (void)didReceiveMemoryWarning

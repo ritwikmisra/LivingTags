@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SlideMenuController">
             <connections>
                 <outlet property="imgBackground" destination="BDX-Gb-tPL" id="e4t-BT-Yqb"/>
-                <outlet property="tblSidePanel" destination="i36-TL-kbf" id="HUy-DY-Nhp"/>
+                <outlet property="tblSidePanel" destination="i36-TL-kbf" id="GgI-lG-bX5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,10 +24,6 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i36-TL-kbf">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="arL-hc-WoN"/>
-                        <outlet property="delegate" destination="-1" id="jh4-3k-FqM"/>
-                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
