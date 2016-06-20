@@ -7,8 +7,8 @@
 //
 
 #import "CreateLivingTagsViewController.h"
-#define BASE_URL @"http://192.168.0.1/LivingTags/www/"
-//#define BASE_URL @"http://livingtags.digiopia.in/"
+//#define BASE_URL @"http://192.168.0.1/LivingTags/www/"
+#define BASE_URL @"http://livingtags.digiopia.in/"
 
 @interface CreateLivingTagsViewController ()<UIWebViewDelegate,UINavigationControllerDelegate>
 {
