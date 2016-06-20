@@ -175,6 +175,95 @@
             </objects>
             <point key="canvasLocation" x="1734" y="74"/>
         </scene>
+        <!--Record View Controller-->
+        <scene sceneID="Gfh-WT-mbL">
+            <objects>
+                <viewController storyboardIdentifier="RecordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jc9-Lh-bc1" customClass="RecordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dKS-xY-GTS"/>
+                        <viewControllerLayoutGuide type="bottom" id="uSz-OR-kLD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pbD-ZK-6ha">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="IiC-qm-Wrm">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqc-jD-e9s">
+                                <rect key="frame" x="200" y="270" width="200" height="60"/>
+                                <state key="normal" title="Record"/>
+                                <connections>
+                                    <action selector="btnRecordPressed:" destination="jc9-Lh-bc1" eventType="touchUpInside" id="8yp-eB-89k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXS-2K-Xcp">
+                                <rect key="frame" x="200" y="347" width="200" height="60"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="btnPlayPressed:" destination="jc9-Lh-bc1" eventType="touchUpInside" id="xXg-No-VUa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg8-ML-qqf">
+                                <rect key="frame" x="200" y="427" width="200" height="60"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="btnStopPressed:" destination="jc9-Lh-bc1" eventType="touchUpInside" id="0Td-31-wP9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w06-cZ-UTR">
+                                <rect key="frame" x="200" y="197" width="200" height="60"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="btnBackPressed:" destination="jc9-Lh-bc1" eventType="touchUpInside" id="JuF-s8-cX9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ms-kB-VQ4">
+                                <rect key="frame" x="200" y="128" width="200" height="60"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="btnSavePressed:" destination="jc9-Lh-bc1" eventType="touchUpInside" id="X7e-aS-scV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UXS-2K-Xcp" firstAttribute="centerX" secondItem="Cqc-jD-e9s" secondAttribute="centerX" id="29E-vf-MsY"/>
+                            <constraint firstItem="w06-cZ-UTR" firstAttribute="width" secondItem="Cqc-jD-e9s" secondAttribute="width" id="3d5-TS-cjH"/>
+                            <constraint firstItem="IiC-qm-Wrm" firstAttribute="centerY" secondItem="pbD-ZK-6ha" secondAttribute="centerY" id="6D1-nl-56F"/>
+                            <constraint firstItem="cg8-ML-qqf" firstAttribute="width" secondItem="UXS-2K-Xcp" secondAttribute="width" id="Bd9-ba-UK1"/>
+                            <constraint firstItem="Cqc-jD-e9s" firstAttribute="centerY" secondItem="IiC-qm-Wrm" secondAttribute="centerY" id="FkR-og-qCi"/>
+                            <constraint firstItem="5ms-kB-VQ4" firstAttribute="centerX" secondItem="w06-cZ-UTR" secondAttribute="centerX" id="Jd5-K4-KHe"/>
+                            <constraint firstItem="5ms-kB-VQ4" firstAttribute="height" secondItem="w06-cZ-UTR" secondAttribute="height" id="Jsx-w3-c0j"/>
+                            <constraint firstItem="UXS-2K-Xcp" firstAttribute="top" secondItem="Cqc-jD-e9s" secondAttribute="bottom" multiplier="1.05" id="L3a-ie-NaQ"/>
+                            <constraint firstItem="IiC-qm-Wrm" firstAttribute="width" secondItem="pbD-ZK-6ha" secondAttribute="width" id="MUE-ud-91e"/>
+                            <constraint firstItem="Cqc-jD-e9s" firstAttribute="centerX" secondItem="IiC-qm-Wrm" secondAttribute="centerX" id="Tgm-x8-u0h"/>
+                            <constraint firstItem="w06-cZ-UTR" firstAttribute="height" secondItem="Cqc-jD-e9s" secondAttribute="height" id="UrR-wj-sXn"/>
+                            <constraint firstItem="Cqc-jD-e9s" firstAttribute="top" secondItem="w06-cZ-UTR" secondAttribute="bottom" multiplier="1.05" id="XW3-Bo-7oq"/>
+                            <constraint firstItem="w06-cZ-UTR" firstAttribute="centerX" secondItem="Cqc-jD-e9s" secondAttribute="centerX" id="YYO-5F-pm4"/>
+                            <constraint firstItem="UXS-2K-Xcp" firstAttribute="height" secondItem="Cqc-jD-e9s" secondAttribute="height" id="dcy-O4-dY9"/>
+                            <constraint firstItem="cg8-ML-qqf" firstAttribute="centerX" secondItem="UXS-2K-Xcp" secondAttribute="centerX" id="fot-n9-nux"/>
+                            <constraint firstItem="5ms-kB-VQ4" firstAttribute="width" secondItem="w06-cZ-UTR" secondAttribute="width" id="gLN-5t-EIQ"/>
+                            <constraint firstItem="IiC-qm-Wrm" firstAttribute="height" secondItem="Cqc-jD-e9s" secondAttribute="height" multiplier="10" id="ijX-ed-dL3"/>
+                            <constraint firstItem="IiC-qm-Wrm" firstAttribute="centerX" secondItem="pbD-ZK-6ha" secondAttribute="centerX" id="lvC-6V-TDg"/>
+                            <constraint firstItem="cg8-ML-qqf" firstAttribute="height" secondItem="UXS-2K-Xcp" secondAttribute="height" id="n2d-CY-KzA"/>
+                            <constraint firstItem="cg8-ML-qqf" firstAttribute="top" secondItem="UXS-2K-Xcp" secondAttribute="bottom" multiplier="1.05" id="nYN-n3-rlL"/>
+                            <constraint firstItem="w06-cZ-UTR" firstAttribute="top" secondItem="5ms-kB-VQ4" secondAttribute="bottom" multiplier="1.05" id="p1f-Gx-cVR"/>
+                            <constraint firstItem="IiC-qm-Wrm" firstAttribute="height" secondItem="pbD-ZK-6ha" secondAttribute="height" id="q7H-ug-VZV"/>
+                            <constraint firstItem="UXS-2K-Xcp" firstAttribute="width" secondItem="Cqc-jD-e9s" secondAttribute="width" id="tse-VX-Uav"/>
+                            <constraint firstItem="IiC-qm-Wrm" firstAttribute="width" secondItem="Cqc-jD-e9s" secondAttribute="width" multiplier="3" id="zGd-qd-I5N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnPlay" destination="UXS-2K-Xcp" id="Cs0-FY-vEt"/>
+                        <outlet property="btnRecord" destination="Cqc-jD-e9s" id="YtB-uk-iYC"/>
+                        <outlet property="btnStop" destination="cg8-ML-qqf" id="nkJ-ji-zWI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d5A-Gr-cjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2367" y="1080"/>
+        </scene>
         <!--Create Living Tags View Controller-->
         <scene sceneID="JHp-hK-Pat">
             <objects>
@@ -250,11 +339,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="wbCreateTags" destination="HLq-sz-J8b" id="4Mx-CL-nKC"/>
+                        <segue destination="jc9-Lh-bc1" kind="show" identifier="segueRecord" id="sUk-v3-2qq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3w-pV-km9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1807" y="1088"/>
+            <point key="canvasLocation" x="1711" y="1080"/>
         </scene>
         <!--Living Tags View Controller-->
         <scene sceneID="46b-er-H8U">

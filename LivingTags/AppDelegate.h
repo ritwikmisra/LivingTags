@@ -33,7 +33,7 @@
 @property(nonatomic,strong)ModelUser *objUser;
 @property(nonatomic,strong)ModelLivingTagsViewedAndCreated *objLivingTags;
 
-
+ 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

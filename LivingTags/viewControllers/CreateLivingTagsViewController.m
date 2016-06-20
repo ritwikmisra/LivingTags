@@ -7,10 +7,12 @@
 //
 
 #import "CreateLivingTagsViewController.h"
-//#define BASE_URL @"http://192.168.0.1/LivingTags/www/"
-#define BASE_URL @"http://livingtags.digiopia.in/"
+#import "RecordViewController.h"
 
-@interface CreateLivingTagsViewController ()<UIWebViewDelegate,UINavigationControllerDelegate>
+#define BASE_URL @"http://192.168.0.1/LivingTags/www/"
+//#define BASE_URL @"http://livingtags.digiopia.in/"
+
+@interface CreateLivingTagsViewController ()<UIWebViewDelegate,UINavigationControllerDelegate,RecordVoiceDelegate>
 {
     IBOutlet UIWebView *wbCreateTags;
 }
@@ -54,6 +56,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,12 +119,27 @@
 -(void)callNativeEndFunction
 {
     NSLog(@"Native End Function Called");
+    [self performSegueWithIdentifier:@"segueRecord" sender:self];
 }
 
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+}
+
+#pragma mark
+#pragma mark record voice delegate
+#pragma mark
+
+-(void)getVoice:(NSString *)strBase64
+{
+    }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    RecordViewController *master=[segue destinationViewController];
+    master.delegate=self;
 }
 
 @end

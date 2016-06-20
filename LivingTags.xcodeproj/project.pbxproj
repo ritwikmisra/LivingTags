@@ -75,6 +75,10 @@
 		0D7165CE1CE32E5A00C8B288 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7165CD1CE32E5A00C8B288 /* QuartzCore.framework */; };
 		0D7165D41CE32EBD00C8B288 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7165D31CE32EBD00C8B288 /* SafariServices.framework */; };
 		0D7165D81CE3318F00C8B288 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7165D71CE3318F00C8B288 /* libz.tbd */; };
+		0D764E711D1806AC00298BBE /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D764E701D1806AC00298BBE /* RecordViewController.m */; };
+		0D764E731D1808BD00298BBE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D764E721D1808BD00298BBE /* CoreGraphics.framework */; };
+		0D764E751D1808CE00298BBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D764E741D1808CE00298BBE /* Foundation.framework */; };
+		0D764E771D18094700298BBE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D764E761D18094700298BBE /* AudioToolbox.framework */; };
 		0D77D4181CE4891C00CF2C24 /* SlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D77D4161CE4891C00CF2C24 /* SlideMenuController.m */; };
 		0D77D4191CE4891C00CF2C24 /* SlideMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D77D4171CE4891C00CF2C24 /* SlideMenuController.xib */; };
 		0D77D41C1CE4983900CF2C24 /* side_menu_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D77D41B1CE4983900CF2C24 /* side_menu_image.png */; };
@@ -256,6 +260,11 @@
 		0D7165CD1CE32E5A00C8B288 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D7165D31CE32EBD00C8B288 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		0D7165D71CE3318F00C8B288 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0D764E6F1D1806AC00298BBE /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		0D764E701D1806AC00298BBE /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		0D764E721D1808BD00298BBE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0D764E741D1808CE00298BBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0D764E761D18094700298BBE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0D77D4151CE4891C00CF2C24 /* SlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuController.h; path = sidePanel/SlideMenuController.h; sourceTree = "<group>"; };
 		0D77D4161CE4891C00CF2C24 /* SlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideMenuController.m; path = sidePanel/SlideMenuController.m; sourceTree = "<group>"; };
 		0D77D4171CE4891C00CF2C24 /* SlideMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SlideMenuController.xib; path = sidePanel/SlideMenuController.xib; sourceTree = "<group>"; };
@@ -375,6 +384,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D764E771D18094700298BBE /* AudioToolbox.framework in Frameworks */,
+				0D764E751D1808CE00298BBE /* Foundation.framework in Frameworks */,
+				0D764E731D1808BD00298BBE /* CoreGraphics.framework in Frameworks */,
 				0D7165C21CE32DED00C8B288 /* CoreLocation.framework in Frameworks */,
 				0D80DF8A1CEDB0BA000FE698 /* MapKit.framework in Frameworks */,
 				0D7165D81CE3318F00C8B288 /* libz.tbd in Frameworks */,
@@ -554,6 +566,8 @@
 				0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */,
 				0D9472AE1D0AF74F00A85677 /* LivingTagsTemplateListController.h */,
 				0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */,
+				0D764E6F1D1806AC00298BBE /* RecordViewController.h */,
+				0D764E701D1806AC00298BBE /* RecordViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -816,6 +830,9 @@
 		0D9350AC1CDB612E00E403B2 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				0D764E761D18094700298BBE /* AudioToolbox.framework */,
+				0D764E741D1808CE00298BBE /* Foundation.framework */,
+				0D764E721D1808BD00298BBE /* CoreGraphics.framework */,
 				0D80DF891CEDB0B9000FE698 /* MapKit.framework */,
 				0D7165D31CE32EBD00C8B288 /* SafariServices.framework */,
 				0D7165CD1CE32E5A00C8B288 /* QuartzCore.framework */,
@@ -1044,6 +1061,7 @@
 				0D9472B01D0AF74F00A85677 /* LivingTagsTemplateListController.m in Sources */,
 				0D80DF871CEDA30B000FE698 /* MyLivingTagsMapViewController.m in Sources */,
 				0D37314D1CD8A10B00EDC547 /* UIView+WebCacheOperation.m in Sources */,
+				0D764E711D1806AC00298BBE /* RecordViewController.m in Sources */,
 				0D698D321CC9026900F64745 /* LoggingViewController.m in Sources */,
 				0D698D261CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m in Sources */,
 				0D80DAFF1CFDA7E100B79C6B /* GroupPopupCell.m in Sources */,
