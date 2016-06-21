@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 
-@interface RecordViewController ()<AVAudioRecorderDelegate,AVAudioPlayerDelegate,RecordVoiceDelegate>
+@interface RecordViewController ()<AVAudioRecorderDelegate,AVAudioPlayerDelegate>
 {
     IBOutlet UIButton *btnPlay;
     IBOutlet UIButton *btnRecord;

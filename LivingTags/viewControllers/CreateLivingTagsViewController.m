@@ -134,12 +134,17 @@
 
 -(void)getVoice:(NSString *)strBase64
 {
-    }
+    NSLog(@"%@",strBase64);
+    
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    RecordViewController *master=[segue destinationViewController];
-    master.delegate=self;
+    if ([segue.identifier isEqualToString:@"segueRecord"])
+    {
+        RecordViewController *master=[segue destinationViewController];
+        master.delegate=self;
+    }
 }
 
 @end
