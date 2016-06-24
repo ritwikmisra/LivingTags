@@ -185,6 +185,15 @@
         {
             self.strCreated=@"";
         }
+        //published
+        if ([dict objectForKey:@"published"]&& ![[dict objectForKey:@"published"]isKindOfClass:[NSNull class]])
+        {
+            self.strPublished=[dict objectForKey:@"published"];
+        }
+        else
+        {
+            self.strPublished=@"";
+        }
     }
     return self;
 }

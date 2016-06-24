@@ -23,9 +23,9 @@
         {
             self.strTemplateID=@"";
         }
-        if ([dict objectForKey:@"template_uri"] && ![[dict objectForKey:@"template_uri"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"template_screen_uri"] && ![[dict objectForKey:@"template_screen_uri"] isKindOfClass:[NSNull class]])
         {
-            self.strTemplateURI=[dict objectForKey:@"template_uri"];
+            self.strTemplateURI=[dict objectForKey:@"template_screen_uri"];
         }
         else
         {
@@ -39,9 +39,9 @@
         {
             self.strTemplateName=@"";
         }
-        if ([dict objectForKey:@"template_uri_thumb"] && ![[dict objectForKey:@"template_uri_thumb"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"template_screen_uri_small"] && ![[dict objectForKey:@"template_screen_uri_small"] isKindOfClass:[NSNull class]])
         {
-            self.strTemplateThumb=[dict objectForKey:@"template_uri_thumb"];
+            self.strTemplateThumb=[dict objectForKey:@"template_screen_uri_small"];
         }
         else
         {

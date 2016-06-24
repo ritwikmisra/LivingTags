@@ -6,6 +6,11 @@
 
 #import "LivingTagsViewController.h"
 
+
+//http://192.168.0.1/LivingTags/www/tags/ritwik246
+#define BASE_URL @"http://192.168.0.1/LivingTags/www/tags/"
+//#define BASE_URL @"http://livingtags.digiopia.in/"
+
 @interface LivingTagsViewController ()<UIWebViewDelegate>
 {
     IBOutlet UIWebView *wbLivingTags;
@@ -26,7 +31,8 @@
     [wbLivingTags setBackgroundColor:[UIColor clearColor]];
     [wbLivingTags setOpaque:NO];
     lblHeader.text=self.objHTML.strName;
-    [wbLivingTags loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://livingtags.digiopia.in/tags/%@",self.objHTML.strWebURI]]]];
+    NSString *str=[NSString stringWithFormat:@"%@%@",BASE_URL,self.objHTML.strWebURI];
+    [wbLivingTags loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
     wbLivingTags.delegate=self;
 }
 
@@ -67,9 +73,7 @@
                              [self viewDidLoad];
                              
                          }];
-    
     [alert addAction:ok];
-    
     [self presentViewController:alert animated:YES completion:nil];
 }
 @end

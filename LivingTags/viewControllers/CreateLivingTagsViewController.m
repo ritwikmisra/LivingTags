@@ -135,16 +135,13 @@
 -(void)getVoice:(NSString *)strBase64
 {
     NSLog(@"%@",strBase64);
-    
+    [wbCreateTags stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"javascript:setAudioBase64('%@');",strBase64]];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segueRecord"])
-    {
-        RecordViewController *master=[segue destinationViewController];
-        master.delegate=self;
-    }
+    RecordViewController *master=[segue destinationViewController];
+    master.delegate=self;
 }
 
 @end

@@ -29,6 +29,7 @@
 @property(nonatomic,strong)NSString *strLongitude3;
 @property(nonatomic,strong)NSString *strWebURI;
 @property(nonatomic,strong)NSString *strCreated;
+@property(nonatomic,strong)NSString *strPublished;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 

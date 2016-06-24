@@ -17,7 +17,6 @@
 
 @implementation LandingViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

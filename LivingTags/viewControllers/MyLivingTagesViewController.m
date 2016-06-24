@@ -4,7 +4,7 @@
 //
 //  Created by appsbeetech on 06/05/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
-//
+
 
 #import "MyLivingTagesViewController.h"
 #import "LivingTagsCell.h"
@@ -19,7 +19,7 @@
     IBOutlet UITextField *txtSearch;
     IBOutlet UITableView *tblTags;
     IBOutlet UIView *vwList;
-    NSMutableArray *arrNames,*arrList;
+    NSMutableArray *arrNames,*arrList,*arrMaps;
     BOOL isScrollDown;
     int i;
     MyLivingTagsMapViewController *master;
@@ -45,6 +45,7 @@
     tblTags.dataSource=self;
     i=0;
     arrList=[[NSMutableArray alloc]init];
+    arrMaps=[[NSMutableArray alloc]init];
     NSLog(@"%@",arrList);
     isLazyLoading=YES;
     [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
@@ -60,6 +61,10 @@
                 for (int k=0; k<arrNames.count; k++)
                 {
                     ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:k]];
+                    if ([obj.strPublished isEqualToString:@"Y"])
+                    {
+                        [arrMaps addObject:obj];
+                    }
                     [arrList addObject:obj];
                 }
                 NSLog(@"%@",arrList);
@@ -156,9 +161,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   objSegue=[arrList objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"segueLivingTagsDetails" sender:self];
-    
+    objSegue=[arrList objectAtIndex:indexPath.row];
+    if ([objSegue.strPublished isEqualToString:@"Y"])
+    {
+        [self performSegueWithIdentifier:@"segueLivingTagsDetails" sender:self];
+    }
 }
 #pragma mark
 #pragma mark scroll view delegate
@@ -205,8 +212,8 @@
     master.view.frame=CGRectMake(vwList.frame.origin.x,0,vwList.frame.size.width, vwList.frame.size.height);
     [self addChildViewController:master];
     [master didMoveToParentViewController:self];
-    NSLog(@"%@",arrList);
-    master.arrListFromMap=arrList;
+    NSLog(@"%@",arrMaps);
+    master.arrListFromMap=arrMaps;
     [vwList addSubview:master.view];
     master.delegate=self;
 }
@@ -229,30 +236,20 @@
             if ([result isKindOfClass:[NSMutableArray class]])
             {
                 NSMutableArray *arr=(id)result;
-                if (i==0)
+                [arrList removeAllObjects];
+                [arrMaps removeAllObjects];
+                for (NSDictionary *dict in arr)
                 {
-                    for (int k=0; k<arrNames.count; k++)
-                    {
-                        ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:k]];
-                        [arrList addObject:obj];
-                    }
-                    NSLog(@"%lu",(unsigned long)arrNames.count);
+                    [arrNames addObject:dict];
                 }
-                else
+                for (int m=0; m<arrNames.count; m++)
                 {
-                    for (NSDictionary *dict in arr)
+                    ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:m]];
+                    if ([obj.strPublished isEqualToString:@"Y"])
                     {
-                        [arrNames addObject:dict];
+                        [arrMaps addObject:obj];
                     }
-                    if (arrList.count>0)
-                    {
-                        [arrList removeAllObjects];
-                    }
-                    for (int m=0; m<arrNames.count; m++)
-                    {
-                        ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:m]];
-                        [arrList addObject: obj];
-                    }
+                    [arrList addObject: obj];
                 }
             }
             else
@@ -298,6 +295,7 @@
     NSLog(@"Names:%@\n List:%@",arrNames,arrList);
     [arrNames removeAllObjects];
     [arrList removeAllObjects];
+    [arrMaps removeAllObjects];
     NSLog(@"Names:%@\n List:%@",arrNames,arrList);
     tblTags.delegate=nil;
     tblTags.dataSource=nil;
