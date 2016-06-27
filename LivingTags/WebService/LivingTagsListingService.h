@@ -12,6 +12,6 @@
 
 +(id)service;
 
--(void)callListingServiceWithUserID:(NSString *)strUser paging:(int)i withCompletionHandler:(WebServiceCompletion)handler;
+-(void)callListingServiceWithUserID:(NSString *)strUser paging:(int)i name:(NSString *)strName withCompletionHandler:(WebServiceCompletion)handler;
 
 @end

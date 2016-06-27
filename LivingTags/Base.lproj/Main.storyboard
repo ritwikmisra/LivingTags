@@ -477,6 +477,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
                                                         <connections>
+                                                            <action selector="textfieldEdited:" destination="Bt0-ux-L1C" eventType="editingChanged" id="KuL-gh-EzM"/>
                                                             <outlet property="delegate" destination="Bt0-ux-L1C" id="o5Z-H7-XX8"/>
                                                         </connections>
                                                     </textField>
@@ -502,6 +503,9 @@
                                                     <constraint firstAttribute="width" secondItem="IoX-fv-vxv" secondAttribute="height" id="Sne-0S-vr4"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="search_icon.png"/>
+                                                <connections>
+                                                    <action selector="btnSearchPressed:" destination="Bt0-ux-L1C" eventType="touchUpInside" id="Lrm-wA-VDd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>

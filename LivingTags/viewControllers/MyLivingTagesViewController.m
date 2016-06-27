@@ -48,7 +48,7 @@
     arrMaps=[[NSMutableArray alloc]init];
     NSLog(@"%@",arrList);
     isLazyLoading=YES;
-    [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+    [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i name:txtSearch.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
             [self displayErrorWithMessage:strMsg];
@@ -96,6 +96,16 @@
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     
+}
+
+-(IBAction)textfieldEdited:(id)sender
+{
+    UITextField *textfield=(id)sender;
+    NSLog(@"%@",textfield.text);
+    if (textfield.text.length==0)
+    {
+        [self callWebService];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -218,6 +228,12 @@
     master.delegate=self;
 }
 
+-(IBAction)btnSearchPressed:(id)sender
+{
+    NSLog(@"%@",txtSearch.text);
+    [self callWebService];
+}
+
 #pragma mark
 #pragma mark call webservice
 #pragma mark
@@ -226,7 +242,7 @@
 {
     NSLog(@"%d",i);
     NSLog(@"%@",arrList);
-    [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID paging:i withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+    [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i name:txtSearch.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
             [self displayErrorWithMessage:strMsg];
@@ -238,6 +254,10 @@
                 NSMutableArray *arr=(id)result;
                 [arrList removeAllObjects];
                 [arrMaps removeAllObjects];
+                if (i==0)
+                {
+                    [arrNames removeAllObjects];
+                }
                 for (NSDictionary *dict in arr)
                 {
                     [arrNames addObject:dict];

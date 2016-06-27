@@ -21,13 +21,18 @@
 }
 
 
--(void)callListingServiceWithUserID:(NSString *)strUser paging:(int)i withCompletionHandler:(WebServiceCompletion)handler
+-(void)callListingServiceWithUserID:(NSString *)strUser paging:(int)i name:(NSString *)strName withCompletionHandler:(WebServiceCompletion)handler
 {
+    if (strName.length==0)
+    {
+        strName=@"";
+    }
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
         [arr addObject:[NSString stringWithFormat:@"account_id=%@",strUser]];
         [arr addObject:[NSString stringWithFormat:@"page=%d",i]];
+        [arr addObject:[NSString stringWithFormat:@"name=%@",strName]];
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         //postParams=[postParams stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         NSLog(@"postParams = %@",postParams);

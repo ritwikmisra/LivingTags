@@ -40,7 +40,6 @@
     [super viewDidAppear:animated];
 }
 
-
 #pragma mark
 #pragma mark segue login
 #pragma mark
