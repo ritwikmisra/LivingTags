@@ -54,7 +54,7 @@
 {
     [UIView animateWithDuration:0.5 animations:^{
         self.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    } completion:^(BOOL finished) {
+    } completion:^(BOOL finished){
         isViewUp=NO;
     }];
 }
