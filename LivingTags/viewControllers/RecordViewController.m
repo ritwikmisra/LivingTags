@@ -146,7 +146,9 @@
     NSError *playerError;
     AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:&playerError];
     NSLog(@"%f",audioPlayer.duration);
-    strBase64Conversion=[NSString stringWithFormat:@"data:audio/m4a;base64,%@",str];
+    //strBase64Conversion=[NSString stringWithFormat:@"data:audio/m4a;base64,%@",str];
+    strBase64Conversion=[NSString stringWithFormat:@"<textarea name=\"audio\" id=\"audio\" rows=\"6\" cols=\"100\">data:audio/m4a;base64,%@</textarea>",str];
+
 }
 
 

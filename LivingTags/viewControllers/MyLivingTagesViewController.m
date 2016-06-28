@@ -101,7 +101,6 @@
 -(IBAction)textfieldEdited:(id)sender
 {
     UITextField *textfield=(id)sender;
-    NSLog(@"%@",textfield.text);
     if (textfield.text.length==0)
     {
         [self callWebService];
@@ -230,7 +229,6 @@
 
 -(IBAction)btnSearchPressed:(id)sender
 {
-    NSLog(@"%@",txtSearch.text);
     [self callWebService];
 }
 
