@@ -122,7 +122,6 @@
     [self performSegueWithIdentifier:@"segueRecord" sender:self];
 }
 
-
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -135,7 +134,10 @@
 -(void)getVoice:(NSString *)strBase64
 {
     NSLog(@"%@",strBase64);
-    [wbCreateTags stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"javascript:setAudioBase64('%@');",strBase64]];
+    if (strBase64.length>0)
+    {
+        [wbCreateTags stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"javascript:setAudioBase64('%@');",strBase64]];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -143,5 +145,4 @@
     RecordViewController *master=[segue destinationViewController];
     master.delegate=self;
 }
-
 @end

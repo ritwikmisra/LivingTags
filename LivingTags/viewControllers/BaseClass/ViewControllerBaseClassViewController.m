@@ -58,14 +58,6 @@
             slideMenu.isSlideMenuVisible=NO;
         }
     }
-    
-    CALayer *layer = self.navigationController.view.layer;
-    layer.shadowOffset = CGSizeMake(-6, 0);
-    layer.shadowColor = [[UIColor darkTextColor] CGColor];
-    layer.shadowRadius = 2.0f;
-    layer.shadowOpacity = 0.4f;
-    layer.shadowPath = [[UIBezierPath bezierPathWithRect:layer.bounds] CGPath];
-    
     [[[UIApplication sharedApplication] keyWindow] addSubview:slideMenu.view];
     [[[UIApplication sharedApplication] keyWindow] sendSubviewToBack:slideMenu.view];
     ////////
