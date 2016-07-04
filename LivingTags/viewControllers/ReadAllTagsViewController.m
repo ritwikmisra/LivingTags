@@ -109,7 +109,11 @@
 
 -(IBAction)textfieldEdited:(id)sender
 {
-    
+    UITextField *textfield=(id)sender;
+    if (textfield.text.length==0)
+    {
+        [self callWebService];
+    }
 }
 
 #pragma mark
