@@ -15,6 +15,7 @@
 #import "ImageHoverController.h"
 #import "LivingTagsTemplateListController.h"
 #import "NetworkActivityViewController.h"
+#import "ReadAllTagsViewController.h"
 
 
 #define SLIDER_WIDTH [[UIScreen mainScreen] bounds].size.width/1.5f
@@ -215,6 +216,11 @@
             case 2:
                 controller=(LivingTagsTemplateListController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LivingTagsTemplateListController"];
                 break;
+                
+            case 3:
+                controller=(ReadAllTagsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ReadAllTagsViewController"];
+                break;
+
 
             case 4:
                 controller=(MyLivingTagesViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];

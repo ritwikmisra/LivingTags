@@ -13,6 +13,7 @@
 		0D066AD81D2A86B200C910E8 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D066AD51D2A86B200C910E8 /* Roboto-Light.ttf */; };
 		0D066AD91D2A86B200C910E8 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D066AD61D2A86B200C910E8 /* Roboto-Regular.ttf */; };
 		0D066ADC1D2A8DA800C910E8 /* ReadAllTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D066ADB1D2A8DA800C910E8 /* ReadAllTagsViewController.m */; };
+		0D066ADF1D2AA5FF00C910E8 /* AllTagsReadService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D066ADE1D2AA5FF00C910E8 /* AllTagsReadService.m */; };
 		0D0DDD071D11AAC600C0E9DD /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDCFD1D11AAC600C0E9DD /* comments.png */; };
 		0D0DDD081D11AAC600C0E9DD /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDCFE1D11AAC600C0E9DD /* contact.png */; };
 		0D0DDD091D11AAC600C0E9DD /* creat_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDCFF1D11AAC600C0E9DD /* creat_tag.png */; };
@@ -177,6 +178,8 @@
 		0D066AD61D2A86B200C910E8 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		0D066ADA1D2A8DA800C910E8 /* ReadAllTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadAllTagsViewController.h; sourceTree = "<group>"; };
 		0D066ADB1D2A8DA800C910E8 /* ReadAllTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadAllTagsViewController.m; sourceTree = "<group>"; };
+		0D066ADD1D2AA5FF00C910E8 /* AllTagsReadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTagsReadService.h; sourceTree = "<group>"; };
+		0D066ADE1D2AA5FF00C910E8 /* AllTagsReadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTagsReadService.m; sourceTree = "<group>"; };
 		0D0DDCFD1D11AAC600C0E9DD /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = "<group>"; };
 		0D0DDCFE1D11AAC600C0E9DD /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
 		0D0DDCFF1D11AAC600C0E9DD /* creat_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creat_tag.png; sourceTree = "<group>"; };
@@ -752,6 +755,8 @@
 				0DC937FC1CEB5F8E0049BEC2 /* LivingTagsListingService.m */,
 				0D9472A81D0AF36800A85677 /* GetAllLivingTagsTemplatesService.h */,
 				0D9472A91D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m */,
+				0D066ADD1D2AA5FF00C910E8 /* AllTagsReadService.h */,
+				0D066ADE1D2AA5FF00C910E8 /* AllTagsReadService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1117,6 +1122,7 @@
 				0D3731461CD8A10B00EDC547 /* SDWebImagePrefetcher.m in Sources */,
 				0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */,
 				0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */,
+				0D066ADF1D2AA5FF00C910E8 /* AllTagsReadService.m in Sources */,
 				0D3731401CD8A10B00EDC547 /* SDImageCache.m in Sources */,
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,

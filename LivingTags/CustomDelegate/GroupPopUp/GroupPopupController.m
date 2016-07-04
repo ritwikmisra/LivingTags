@@ -43,7 +43,7 @@
     [super viewWillAppear:animated];
     ModelListing *obj=[self.arrGroupPopup firstObject];
     NSLog(@"%@",self.arrGroupPopup);
-    NSString *str=[NSString stringWithFormat:@"%@ and %lu others",obj.strName,self.arrGroupPopup.count-1];
+    NSString *str=[NSString stringWithFormat:@"%@ and %u others",obj.strName,self.arrGroupPopup.count-1];
     self.lblHeader.text=str;
     tblPopup.delegate=self;
     tblPopup.dataSource=self;
