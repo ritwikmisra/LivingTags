@@ -7,6 +7,26 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Cinzel-Regular_1.ttf">
+            <string>Cinzel-Regular</string>
+            <string>Cinzel-Regular</string>
+            <string>Cinzel-Regular</string>
+            <string>Cinzel-Regular</string>
+            <string>Cinzel-Regular</string>
+            <string>Cinzel-Regular</string>
+            <string>Cinzel-Regular</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="y2h-fL-Rj8">
@@ -91,7 +111,7 @@
                                                             <rect key="frame" x="35" y="1" width="412" height="23"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" red="0.38431372549019605" green="0.41176470588235292" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
                                                         </textField>
                                                     </subviews>
@@ -216,7 +236,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUND RECORDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6E-J1-guj">
                                 <rect key="frame" x="124" y="0.0" width="352" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="17"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -388,9 +408,9 @@
                                 <rect key="frame" x="0.0" y="65" width="600" height="531"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Tags" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCZ-gl-jdU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCZ-gl-jdU">
                                 <rect key="frame" x="150" y="0.0" width="300" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="18"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -452,7 +472,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbC-8V-1V5">
                                 <rect key="frame" x="123" y="0.0" width="300" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="17"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -512,6 +532,61 @@
             </objects>
             <point key="canvasLocation" x="2396" y="148"/>
         </scene>
+        <!--Read All Tags View Controller-->
+        <scene sceneID="5UG-gk-LBZ">
+            <objects>
+                <viewController storyboardIdentifier="ReadAllTagsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="URk-px-9XJ" customClass="ReadAllTagsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gT0-HI-FWC"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Qi-p4-dBH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l2a-Lo-Dj8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="Jhh-mc-mOF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTn-mP-z2y">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUI-Et-hJD">
+                                <rect key="frame" x="150" y="0.0" width="300" height="55"/>
+                                <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="16"/>
+                                <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEH-zy-dkG">
+                                <rect key="frame" x="23" y="1" width="54" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bEH-zy-dkG" secondAttribute="height" id="qVi-Yb-wEB"/>
+                                </constraints>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bEH-zy-dkG" firstAttribute="height" secondItem="oTn-mP-z2y" secondAttribute="height" id="1UL-Br-lcF"/>
+                            <constraint firstItem="oTn-mP-z2y" firstAttribute="width" secondItem="LUI-Et-hJD" secondAttribute="width" multiplier="2" id="4aV-u9-5tm"/>
+                            <constraint firstItem="oTn-mP-z2y" firstAttribute="width" secondItem="Jhh-mc-mOF" secondAttribute="width" id="LSz-bJ-Nev"/>
+                            <constraint firstItem="Jhh-mc-mOF" firstAttribute="centerX" secondItem="l2a-Lo-Dj8" secondAttribute="centerX" id="Mmo-6h-oOM"/>
+                            <constraint firstItem="oTn-mP-z2y" firstAttribute="centerX" secondItem="Jhh-mc-mOF" secondAttribute="centerX" id="Vgz-73-Y1x"/>
+                            <constraint firstItem="oTn-mP-z2y" firstAttribute="centerX" secondItem="bEH-zy-dkG" secondAttribute="centerX" multiplier="6" id="WZ8-5N-Gup"/>
+                            <constraint firstItem="Jhh-mc-mOF" firstAttribute="width" secondItem="l2a-Lo-Dj8" secondAttribute="width" id="Yla-dz-4TD"/>
+                            <constraint firstItem="Jhh-mc-mOF" firstAttribute="centerY" secondItem="l2a-Lo-Dj8" secondAttribute="centerY" id="aNq-QS-mB5"/>
+                            <constraint firstItem="LUI-Et-hJD" firstAttribute="centerY" secondItem="oTn-mP-z2y" secondAttribute="centerY" id="cxz-Ze-3GQ"/>
+                            <constraint firstItem="Jhh-mc-mOF" firstAttribute="height" secondItem="oTn-mP-z2y" secondAttribute="height" multiplier="11" id="e32-PS-xpz"/>
+                            <constraint firstItem="LUI-Et-hJD" firstAttribute="centerX" secondItem="oTn-mP-z2y" secondAttribute="centerX" id="jTt-eO-QBp"/>
+                            <constraint firstItem="oTn-mP-z2y" firstAttribute="top" secondItem="Jhh-mc-mOF" secondAttribute="top" id="pCC-GG-Ct7"/>
+                            <constraint firstItem="Jhh-mc-mOF" firstAttribute="height" secondItem="l2a-Lo-Dj8" secondAttribute="height" id="rU2-aL-nKv"/>
+                            <constraint firstItem="bEH-zy-dkG" firstAttribute="centerY" secondItem="oTn-mP-z2y" secondAttribute="centerY" id="w42-Ym-b4X"/>
+                            <constraint firstItem="LUI-Et-hJD" firstAttribute="height" secondItem="oTn-mP-z2y" secondAttribute="height" id="wPD-ec-3CI"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8D-A5-rx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3024" y="-581"/>
+        </scene>
         <!--My Living Tages View Controller-->
         <scene sceneID="66P-iW-VjV">
             <objects>
@@ -526,6 +601,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="wq7-sa-pOZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ddl-sI-wXD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwb-dN-IL9">
                                 <rect key="frame" x="23" y="1" width="54" height="54"/>
@@ -544,7 +622,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY LIVING TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4l-ck-gct">
                                 <rect key="frame" x="150" y="0.0" width="300" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="16"/>
                                 <color key="textColor" red="0.38431372549019605" green="0.41176470588235292" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -560,7 +638,7 @@
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search By Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mju-oG-Zfk">
                                                         <rect key="frame" x="0.0" y="0.0" width="480" height="27"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
                                                         <connections>
                                                             <action selector="textfieldEdited:" destination="Bt0-ux-L1C" eventType="editingChanged" id="KuL-gh-EzM"/>
@@ -642,9 +720,6 @@
                                     <constraint firstAttribute="height" secondItem="SY6-kC-xVP" secondAttribute="height" multiplier="10" id="vMP-Rr-UUr"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ddl-sI-wXD">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -702,9 +777,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Abu-dv-cuU">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MC-lg-2G0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MC-lg-2G0">
                                 <rect key="frame" x="150" y="0.0" width="300" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="20"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -902,7 +977,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAE-fs-DHI">
                                         <rect key="frame" x="35" y="10" width="373" height="30"/>
                                         <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="done"/>
                                         <connections>
                                             <action selector="txtfieldEditingChanged:" destination="EpU-QC-hhg" eventType="editingChanged" id="fc1-fT-qfB"/>
@@ -1027,7 +1102,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RhE-ov-5BK">
                                                 <rect key="frame" x="34" y="8" width="357" height="29"/>
                                                 <color key="textColor" red="0.38431372549019605" green="0.41176470588235292" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="4Sb-Zd-sf4" id="8oE-GK-nJc"/>
@@ -1059,7 +1134,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHa-bx-Gmd">
                                                 <rect key="frame" x="35" y="11" width="357" height="29"/>
                                                 <color key="textColor" red="0.38431372549019605" green="0.41176470588235292" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="4Sb-Zd-sf4" id="xrn-6D-9ff"/>
@@ -1128,7 +1203,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eN-2i-Mlq">
                                 <rect key="frame" x="86" y="395" width="214" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1219,7 +1294,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate Account" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-N5-yEq">
                                 <rect key="frame" x="300" y="395" width="214" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1323,7 +1398,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0y-cy-uqd">
                                 <rect key="frame" x="124" y="0.0" width="353" height="55"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="15"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

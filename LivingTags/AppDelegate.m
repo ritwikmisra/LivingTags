@@ -10,6 +10,8 @@
 #import "Reachability.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <GoogleSignIn/GoogleSignIn.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqord.apps.googleusercontent.com";
 
@@ -30,6 +32,7 @@ static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqo
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [Fabric with:@[[Crashlytics class]]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     //Change the host name here to change the server you want to monitor.
     NSString *remoteHostName = @"www.google.com";

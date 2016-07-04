@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D066AD11D2A815C00C910E8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D066ACF1D2A815C00C910E8 /* Fabric.framework */; };
+		0D066AD21D2A815C00C910E8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D066AD01D2A815C00C910E8 /* Crashlytics.framework */; };
+		0D066AD71D2A86B200C910E8 /* Cinzel-Regular_1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D066AD41D2A86B200C910E8 /* Cinzel-Regular_1.ttf */; };
+		0D066AD81D2A86B200C910E8 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D066AD51D2A86B200C910E8 /* Roboto-Light.ttf */; };
+		0D066AD91D2A86B200C910E8 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D066AD61D2A86B200C910E8 /* Roboto-Regular.ttf */; };
+		0D066ADC1D2A8DA800C910E8 /* ReadAllTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D066ADB1D2A8DA800C910E8 /* ReadAllTagsViewController.m */; };
 		0D0DDD071D11AAC600C0E9DD /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDCFD1D11AAC600C0E9DD /* comments.png */; };
 		0D0DDD081D11AAC600C0E9DD /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDCFE1D11AAC600C0E9DD /* contact.png */; };
 		0D0DDD091D11AAC600C0E9DD /* creat_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDCFF1D11AAC600C0E9DD /* creat_tag.png */; };
@@ -164,6 +170,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D066ACF1D2A815C00C910E8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		0D066AD01D2A815C00C910E8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		0D066AD41D2A86B200C910E8 /* Cinzel-Regular_1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cinzel-Regular_1.ttf"; sourceTree = "<group>"; };
+		0D066AD51D2A86B200C910E8 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		0D066AD61D2A86B200C910E8 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		0D066ADA1D2A8DA800C910E8 /* ReadAllTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadAllTagsViewController.h; sourceTree = "<group>"; };
+		0D066ADB1D2A8DA800C910E8 /* ReadAllTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadAllTagsViewController.m; sourceTree = "<group>"; };
 		0D0DDCFD1D11AAC600C0E9DD /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = "<group>"; };
 		0D0DDCFE1D11AAC600C0E9DD /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
 		0D0DDCFF1D11AAC600C0E9DD /* creat_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creat_tag.png; sourceTree = "<group>"; };
@@ -400,6 +413,7 @@
 				0D764E751D1808CE00298BBE /* Foundation.framework in Frameworks */,
 				0D764E731D1808BD00298BBE /* CoreGraphics.framework in Frameworks */,
 				0D7165C21CE32DED00C8B288 /* CoreLocation.framework in Frameworks */,
+				0D066AD21D2A815C00C910E8 /* Crashlytics.framework in Frameworks */,
 				0D80DF8A1CEDB0BA000FE698 /* MapKit.framework in Frameworks */,
 				0D7165D81CE3318F00C8B288 /* libz.tbd in Frameworks */,
 				0D7165D41CE32EBD00C8B288 /* SafariServices.framework in Frameworks */,
@@ -417,12 +431,23 @@
 				0D9350A91CDB60B800E403B2 /* AVFoundation.framework in Frameworks */,
 				0D9350A71CDB60AE00E403B2 /* MediaPlayer.framework in Frameworks */,
 				0D7165BC1CE32D5500C8B288 /* GoogleSignIn.framework in Frameworks */,
+				0D066AD11D2A815C00C910E8 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D066AD31D2A86B200C910E8 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0D066AD41D2A86B200C910E8 /* Cinzel-Regular_1.ttf */,
+				0D066AD51D2A86B200C910E8 /* Roboto-Light.ttf */,
+				0D066AD61D2A86B200C910E8 /* Roboto-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		0D0DDCFC1D11AAC600C0E9DD /* side_panel_images */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +605,8 @@
 				0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */,
 				0D764E6F1D1806AC00298BBE /* RecordViewController.h */,
 				0D764E701D1806AC00298BBE /* RecordViewController.m */,
+				0D066ADA1D2A8DA800C910E8 /* ReadAllTagsViewController.h */,
+				0D066ADB1D2A8DA800C910E8 /* ReadAllTagsViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -658,6 +685,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D066AD31D2A86B200C910E8 /* fonts */,
 				0D9B88831D22B75D003B51F0 /* Recording */,
 				0D0DDCFC1D11AAC600C0E9DD /* side_panel_images */,
 				0DDC798C1CFDC4D200AD8011 /* Callout */,
@@ -843,6 +871,8 @@
 		0D9350AC1CDB612E00E403B2 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				0D066ACF1D2A815C00C910E8 /* Fabric.framework */,
+				0D066AD01D2A815C00C910E8 /* Crashlytics.framework */,
 				0D764E761D18094700298BBE /* AudioToolbox.framework */,
 				0D764E741D1808CE00298BBE /* Foundation.framework */,
 				0D764E721D1808BD00298BBE /* CoreGraphics.framework */,
@@ -933,6 +963,7 @@
 				0D698CF71CC8CF2400F64745 /* Sources */,
 				0D698CF81CC8CF2400F64745 /* Frameworks */,
 				0D698CF91CC8CF2400F64745 /* Resources */,
+				0D066ACE1D2A7D2200C910E8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -999,8 +1030,10 @@
 				0D0DDD0C1D11AAC600C0E9DD /* my_tag.png in Resources */,
 				0D0DDD091D11AAC600C0E9DD /* creat_tag.png in Resources */,
 				0D922FF31CF8707D00EC1945 /* location_icon.png in Resources */,
+				0D066AD91D2A86B200C910E8 /* Roboto-Regular.ttf in Resources */,
 				0D0DDD101D11AAC600C0E9DD /* read_tag.png in Resources */,
 				0DA226761CD22E4700B3A5BC /* video_icon.png in Resources */,
+				0D066AD71D2A86B200C910E8 /* Cinzel-Regular_1.ttf in Resources */,
 				0DA226711CD22E4700B3A5BC /* edit_icon1.png in Resources */,
 				0D7165B71CE323FA00C8B288 /* GoogleService-Info.plist in Resources */,
 				0D922FFB1CF8707D00EC1945 /* top_shadow.png in Resources */,
@@ -1026,6 +1059,7 @@
 				0D922FF91CF8707D00EC1945 /* search_icon.png in Resources */,
 				0D9B888D1D22B75D003B51F0 /* play_enable.png in Resources */,
 				0D77D41C1CE4983900CF2C24 /* side_menu_image.png in Resources */,
+				0D066AD81D2A86B200C910E8 /* Roboto-Light.ttf in Resources */,
 				0D922FF71CF8707D00EC1945 /* pin_main.png in Resources */,
 				0DA226731CD22E4700B3A5BC /* mail_icon1.png in Resources */,
 				0D922FF61CF8707D00EC1945 /* pin_green.png in Resources */,
@@ -1052,6 +1086,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D066ACE1D2A7D2200C910E8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 9b5ec61ad47c65b1a374a64ffc400fa3f9828d80 1170fcd4da847e50378cb3a524d0b30afdc10be2a3a89329557fdfd3c2146b64";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0D698CF71CC8CF2400F64745 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1070,6 +1120,7 @@
 				0D3731401CD8A10B00EDC547 /* SDImageCache.m in Sources */,
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
+				0D066ADC1D2A8DA800C910E8 /* ReadAllTagsViewController.m in Sources */,
 				0D3731471CD8A10B00EDC547 /* UIButton+WebCache.m in Sources */,
 				0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */,
 				0DA226641CD21E9500B3A5BC /* ProfileViewController.m in Sources */,
