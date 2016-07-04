@@ -37,8 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [btnStop setEnabled:NO];
-    [btnPlay setEnabled:NO];
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
                                @"MyAudioMemo.m4a",
@@ -86,6 +84,13 @@
     btnDiscard.layer.cornerRadius=7.0f;
     running = FALSE;
     startDate = [NSDate date];
+    [btnPlay setEnabled:NO];
+    [btnStop setEnabled:NO];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,7 +105,7 @@
 
 -(IBAction)btnRecordPressed:(id)sender
 {
-    if (player.playing)
+    /*if (player.playing)
     {
         [player stop];
     }
@@ -119,7 +124,13 @@
         [btnRecord setTitle:@"Record" forState:UIControlStateNormal];
     }
     [btnStop setEnabled:YES];
+    [btnPlay setEnabled:NO];*/
+    [btnRecord setEnabled:NO];
+    [btnRecord setBackgroundImage:[UIImage imageNamed:@"recording"] forState:UIControlStateNormal];
+    [btnStop setEnabled:YES];
+    [btnStop setBackgroundImage:[UIImage imageNamed:@"stop_enable"] forState:UIControlStateNormal];
     [btnPlay setEnabled:NO];
+    [btnPlay setBackgroundImage:[UIImage imageNamed:@"play_disable"] forState:UIControlStateNormal];
 }
 
 -(IBAction)btnPlayPressed:(id)sender
@@ -132,7 +143,7 @@
         player.volume=4.5;
         [player play];
     }*/
-    [self resetTimer];
+    //[self resetTimer];
 }
 
 -(IBAction)btnStopPressed:(id)sender
@@ -140,8 +151,7 @@
     /*[recorder stop];
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setActive:NO error:nil];*/
-    
-    if(!running)
+    /*if(!running)
     {
         running = TRUE;
         if (stopTimer == nil)
@@ -158,21 +168,32 @@
         running = FALSE;
         [stopTimer invalidate];
         stopTimer = nil;
-    }
+    }*/
+    [btnRecord setEnabled:YES];
+    [btnRecord setBackgroundImage:[UIImage imageNamed:@"record"] forState:UIControlStateNormal];
+    [btnStop setEnabled:NO];
+    [btnStop setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
+    [btnPlay setEnabled:YES];
+    [btnPlay setBackgroundImage:[UIImage imageNamed:@"play_enable"] forState:UIControlStateNormal];
 }
 
 
 
 -(IBAction)btnSavePressed:(id)sender
 {
-    if (strBase64Conversion.length>0)
+   /* if (strBase64Conversion.length>0)
     {
         [self.navigationController popViewControllerAnimated:YES];
         if (self.delegate && [self.delegate respondsToSelector:@selector(getVoice:)])
         {
             [self.delegate getVoice:strBase64Conversion];
         }
-    }
+    }*/
+}
+
+-(IBAction)btnDiscardPressed:(id)sender
+{
+    
 }
 
 #pragma mark
