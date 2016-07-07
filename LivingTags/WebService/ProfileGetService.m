@@ -35,6 +35,7 @@
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         //postParams=[postParams stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         NSLog(@"postParams = %@",postParams);
+        NSLog(@"%@",[urlForService absoluteString]);
         NSError *errorConversion;
         //NSData *postData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&errorConversion];
         NSData *postData = [NSData dataWithBytes: [postParams UTF8String] length: [postParams length]];

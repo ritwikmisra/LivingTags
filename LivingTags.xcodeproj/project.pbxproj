@@ -108,6 +108,7 @@
 		0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6D501CE08EA2003A28C7 /* LivingTagsCell.m */; };
 		0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */; };
 		0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6D551CE0BECE003A28C7 /* ListingService.m */; };
+		0D8BE0911D2E62E700527345 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8BE0901D2E62E700527345 /* Contacts.framework */; };
 		0D8F28F91CD09E03001AE322 /* logo_loader.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8F28F81CD09E03001AE322 /* logo_loader.png */; };
 		0D90D9F41CE1E0780004B0B9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D90D9F11CE1E0780004B0B9 /* FBSDKCoreKit.framework */; };
 		0D90D9F51CE1E0780004B0B9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D90D9F21CE1E0780004B0B9 /* FBSDKLoginKit.framework */; };
@@ -322,6 +323,7 @@
 		0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LivingTagsCell.xib; sourceTree = "<group>"; };
 		0D8A6D541CE0BECE003A28C7 /* ListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingService.h; sourceTree = "<group>"; };
 		0D8A6D551CE0BECE003A28C7 /* ListingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingService.m; sourceTree = "<group>"; };
+		0D8BE0901D2E62E700527345 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		0D8F28F81CD09E03001AE322 /* logo_loader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_loader.png; sourceTree = "<group>"; };
 		0D90D9F11CE1E0780004B0B9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		0D90D9F21CE1E0780004B0B9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8BE0911D2E62E700527345 /* Contacts.framework in Frameworks */,
 				0D764E771D18094700298BBE /* AudioToolbox.framework in Frameworks */,
 				0D764E751D1808CE00298BBE /* Foundation.framework in Frameworks */,
 				0D764E731D1808BD00298BBE /* CoreGraphics.framework in Frameworks */,
@@ -530,6 +533,7 @@
 		0D698CF21CC8CF2400F64745 = {
 			isa = PBXGroup;
 			children = (
+				0D8BE0901D2E62E700527345 /* Contacts.framework */,
 				0D7DD3431CFEEB5000B6C4B9 /* CustomAnnotationView */,
 				0D7165D71CE3318F00C8B288 /* libz.tbd */,
 				0D7165B61CE323FA00C8B288 /* GoogleService-Info.plist */,

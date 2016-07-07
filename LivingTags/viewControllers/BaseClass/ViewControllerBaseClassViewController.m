@@ -16,6 +16,7 @@
 #import "LivingTagsTemplateListController.h"
 #import "NetworkActivityViewController.h"
 #import "ReadAllTagsViewController.h"
+#import "ImportContactsViewController.h"
 
 
 #define SLIDER_WIDTH [[UIScreen mainScreen] bounds].size.width/1.5f
@@ -225,6 +226,11 @@
             case 4:
                 controller=(MyLivingTagesViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
                 break;
+                
+            case 5:
+                controller=(ImportContactsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ImportContactsViewController"];
+                break;
+
             default:
                 break;
         }

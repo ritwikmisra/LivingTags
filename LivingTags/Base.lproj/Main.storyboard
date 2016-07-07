@@ -48,6 +48,46 @@
             </objects>
             <point key="canvasLocation" x="-241" y="438"/>
         </scene>
+        <!--Import Contacts View Controller-->
+        <scene sceneID="WuN-w4-3JB">
+            <objects>
+                <viewController storyboardIdentifier="ImportContactsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ko7-Jt-5DZ" customClass="ImportContactsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U7r-tj-cwr"/>
+                        <viewControllerLayoutGuide type="bottom" id="iDH-CC-uHv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eIO-kI-rEO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="QCz-5x-LI6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtC-e0-PYD">
+                                <rect key="frame" x="180" y="250" width="240" height="100"/>
+                                <state key="normal" title="CONTACTS"/>
+                                <connections>
+                                    <action selector="btnContactPressed:" destination="ko7-Jt-5DZ" eventType="touchUpInside" id="2Sj-zU-4Oy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QCz-5x-LI6" firstAttribute="height" secondItem="HtC-e0-PYD" secondAttribute="height" multiplier="6" id="CxP-rs-46G"/>
+                            <constraint firstItem="QCz-5x-LI6" firstAttribute="centerX" secondItem="eIO-kI-rEO" secondAttribute="centerX" id="ELO-C8-iB2"/>
+                            <constraint firstItem="HtC-e0-PYD" firstAttribute="centerY" secondItem="QCz-5x-LI6" secondAttribute="centerY" id="JVQ-Wd-SAq"/>
+                            <constraint firstItem="QCz-5x-LI6" firstAttribute="width" secondItem="eIO-kI-rEO" secondAttribute="width" id="TJ5-o5-zcZ"/>
+                            <constraint firstItem="HtC-e0-PYD" firstAttribute="centerX" secondItem="QCz-5x-LI6" secondAttribute="centerX" id="en1-4c-dFm"/>
+                            <constraint firstItem="QCz-5x-LI6" firstAttribute="width" secondItem="HtC-e0-PYD" secondAttribute="width" multiplier="2.5" id="icj-Vv-L4Q"/>
+                            <constraint firstItem="QCz-5x-LI6" firstAttribute="height" secondItem="eIO-kI-rEO" secondAttribute="height" id="nY6-kf-61Y"/>
+                            <constraint firstItem="QCz-5x-LI6" firstAttribute="centerY" secondItem="eIO-kI-rEO" secondAttribute="centerY" id="uLV-9t-ZHx"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHp-ln-ZDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-241" y="1090"/>
+        </scene>
         <!--Registration View Controller-->
         <scene sceneID="RnU-Ut-y6M">
             <objects>
@@ -1563,6 +1603,6 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BAk-ag-BgH"/>
+        <segue reference="nEO-TC-sYU"/>
     </inferredMetricsTieBreakers>
 </document>
