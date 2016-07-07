@@ -4,7 +4,6 @@
 //
 //  Created by appsbeetech on 09/06/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
-//
 
 #import "CreateLivingTagsViewController.h"
 #import "RecordViewController.h"
