@@ -75,7 +75,6 @@
         NSArray * keysToFetch =@[CNContactEmailAddressesKey, CNContactPhoneNumbersKey, CNContactFamilyNameKey, CNContactGivenNameKey, CNContactPostalAddressesKey];
         CNContactFetchRequest * request = [[CNContactFetchRequest alloc]initWithKeysToFetch:keysToFetch];
         BOOL success = [addressBook enumerateContactsWithFetchRequest:request error:&contactError usingBlock:^(CNContact * __nonnull contact, BOOL * __nonnull stop){
-            NSLog(@"%d",success);
             [self parseContactWithContact:contact];
         }];
     }
@@ -85,13 +84,14 @@
 {
     NSString * firstName =  contact.givenName;
     NSString * lastName =  contact.familyName;
+    NSString *strContactID=contact.identifier;//the contact id which you want
     NSString * phone = [[contact.phoneNumbers valueForKey:@"value"] valueForKey:@"digits"];
     NSString * email = [contact.emailAddresses valueForKey:@"value"];
     NSArray * addrArr = [self parseAddressWithContac:contact];
-    NSLog(@"FIRSTNAME=%@\nLASTNAME=%@\nPHONE=%@\nEMAIL=%@",firstName,lastName,phone,email);
+    NSLog(@"FIRSTNAME=%@\nLASTNAME=%@\nPHONE=%@\nIDENTIFIER=%@",firstName,lastName,phone,strContactID);
 }
 
-- (NSMutableArray *)parseAddressWithContac: (CNContact *)contact
+-(NSMutableArray *)parseAddressWithContac: (CNContact *)contact
 {
     NSMutableArray * addrArr = [[NSMutableArray alloc]init];
     CNPostalAddressFormatter * formatter = [[CNPostalAddressFormatter alloc]init];
@@ -105,7 +105,5 @@
     }
     return addrArr;
 }
-
-
 
 @end
