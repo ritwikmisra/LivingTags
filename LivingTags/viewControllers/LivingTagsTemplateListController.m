@@ -111,10 +111,8 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ModelLivingTagsTemplateList *obj=[arrTemplates objectAtIndex:indexPath.row];
-    NSLog(@"%@",obj.strTemplateID);
-    strSegueTemplateID=obj.strTemplateID;
-    [self performSegueWithIdentifier:@"segueTemplate" sender:self];
+    //segueTemplateSecondStep
+    [self performSegueWithIdentifier:@"segueTemplateSecondStep" sender:self];
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
