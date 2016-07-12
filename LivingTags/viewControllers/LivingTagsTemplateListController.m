@@ -19,6 +19,9 @@
     NSMutableArray *arrTemplates;
     NSString *strSegueTemplateID;
     IBOutlet UILabel *lblTemplate;
+    IBOutlet UILabel *lbl3;
+    IBOutlet UILabel *lbl1;
+    IBOutlet UILabel *lbl2;
 }
 @end
 
@@ -60,6 +63,20 @@
     }];
 }
 
+
+-(void)viewWillLayoutSubviews
+{
+    lbl3.layer.cornerRadius=lbl3.frame.size.width/2;
+    lbl3.clipsToBounds=YES;
+    
+    lbl1.layer.cornerRadius=lbl3.frame.size.width/2;
+    lbl1.clipsToBounds=YES;
+    
+    lbl2.layer.cornerRadius=lbl3.frame.size.width/2;
+    lbl2.clipsToBounds=YES;
+
+
+}
 #pragma mark
 #pragma mark Collection View Delegate and Datasource
 #pragma mark
@@ -122,7 +139,6 @@
         master.strTemplateID=strSegueTemplateID;
     }
 }
-
 
 #pragma mark
 #pragma mark scrollView Delegate
