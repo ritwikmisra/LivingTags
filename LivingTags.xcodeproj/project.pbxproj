@@ -108,6 +108,12 @@
 		0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6D501CE08EA2003A28C7 /* LivingTagsCell.m */; };
 		0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */; };
 		0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6D551CE0BECE003A28C7 /* ListingService.m */; };
+		0D8AC8CE1D364F47001EFEBA /* CreateTagsSecondStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AC8CC1D364F47001EFEBA /* CreateTagsSecondStepCell.m */; };
+		0D8AC8CF1D364F47001EFEBA /* CreateTagsSecondStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AC8CD1D364F47001EFEBA /* CreateTagsSecondStepCell.xib */; };
+		0D8AC8D51D365C5D001EFEBA /* cover_pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AC8D11D365C5D001EFEBA /* cover_pic1.png */; };
+		0D8AC8D61D365C5D001EFEBA /* radio_btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AC8D21D365C5D001EFEBA /* radio_btn1.png */; };
+		0D8AC8D71D365C5D001EFEBA /* radio_btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AC8D31D365C5D001EFEBA /* radio_btn2.png */; };
+		0D8AC8D81D365C5D001EFEBA /* user_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AC8D41D365C5D001EFEBA /* user_pic.png */; };
 		0D8BE0911D2E62E700527345 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8BE0901D2E62E700527345 /* Contacts.framework */; };
 		0D8F28F91CD09E03001AE322 /* logo_loader.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8F28F81CD09E03001AE322 /* logo_loader.png */; };
 		0D90D9F41CE1E0780004B0B9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D90D9F11CE1E0780004B0B9 /* FBSDKCoreKit.framework */; };
@@ -324,6 +330,13 @@
 		0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LivingTagsCell.xib; sourceTree = "<group>"; };
 		0D8A6D541CE0BECE003A28C7 /* ListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingService.h; sourceTree = "<group>"; };
 		0D8A6D551CE0BECE003A28C7 /* ListingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingService.m; sourceTree = "<group>"; };
+		0D8AC8CB1D364F47001EFEBA /* CreateTagsSecondStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsSecondStepCell.h; sourceTree = "<group>"; };
+		0D8AC8CC1D364F47001EFEBA /* CreateTagsSecondStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsSecondStepCell.m; sourceTree = "<group>"; };
+		0D8AC8CD1D364F47001EFEBA /* CreateTagsSecondStepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTagsSecondStepCell.xib; sourceTree = "<group>"; };
+		0D8AC8D11D365C5D001EFEBA /* cover_pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_pic1.png; sourceTree = "<group>"; };
+		0D8AC8D21D365C5D001EFEBA /* radio_btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_btn1.png; sourceTree = "<group>"; };
+		0D8AC8D31D365C5D001EFEBA /* radio_btn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_btn2.png; sourceTree = "<group>"; };
+		0D8AC8D41D365C5D001EFEBA /* user_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_pic.png; sourceTree = "<group>"; };
 		0D8BE0901D2E62E700527345 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		0D8F28F81CD09E03001AE322 /* logo_loader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_loader.png; sourceTree = "<group>"; };
 		0D90D9F11CE1E0780004B0B9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -668,6 +681,9 @@
 				0D80DAFC1CFDA7E100B79C6B /* GroupPopupCell.h */,
 				0D80DAFD1CFDA7E100B79C6B /* GroupPopupCell.m */,
 				0D80DAFE1CFDA7E100B79C6B /* GroupPopupCell.xib */,
+				0D8AC8CB1D364F47001EFEBA /* CreateTagsSecondStepCell.h */,
+				0D8AC8CC1D364F47001EFEBA /* CreateTagsSecondStepCell.m */,
+				0D8AC8CD1D364F47001EFEBA /* CreateTagsSecondStepCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -697,6 +713,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D8AC8D01D365C5D001EFEBA /* CreateTagsStep1 */,
 				0D066AD31D2A86B200C910E8 /* fonts */,
 				0D9B88831D22B75D003B51F0 /* Recording */,
 				0D0DDCFC1D11AAC600C0E9DD /* side_panel_images */,
@@ -841,6 +858,17 @@
 				0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */,
 			);
 			path = ModelBaseClass;
+			sourceTree = "<group>";
+		};
+		0D8AC8D01D365C5D001EFEBA /* CreateTagsStep1 */ = {
+			isa = PBXGroup;
+			children = (
+				0D8AC8D11D365C5D001EFEBA /* cover_pic1.png */,
+				0D8AC8D21D365C5D001EFEBA /* radio_btn1.png */,
+				0D8AC8D31D365C5D001EFEBA /* radio_btn2.png */,
+				0D8AC8D41D365C5D001EFEBA /* user_pic.png */,
+			);
+			path = CreateTagsStep1;
 			sourceTree = "<group>";
 		};
 		0D922FAB1CF8657D00EC1945 /* customClass */ = {
@@ -1030,6 +1058,7 @@
 				0D80DF881CEDA30B000FE698 /* MyLivingTagsMapViewController.xib in Resources */,
 				0D9B888B1D22B75D003B51F0 /* pause.png in Resources */,
 				0D922FFA1CF8707D00EC1945 /* top_header_bg.png in Resources */,
+				0D8AC8D61D365C5D001EFEBA /* radio_btn1.png in Resources */,
 				0D77F6B01CD736AE00671159 /* Assets.bundle in Resources */,
 				0DA226701CD22E4700B3A5BC /* camera_icon.png in Resources */,
 				0D9B88911D22B75D003B51F0 /* stop_enable.png in Resources */,
@@ -1072,6 +1101,7 @@
 				0D922FF81CF8707D00EC1945 /* pin_orange.png in Resources */,
 				0D922FF91CF8707D00EC1945 /* search_icon.png in Resources */,
 				0D9B888D1D22B75D003B51F0 /* play_enable.png in Resources */,
+				0D8AC8CF1D364F47001EFEBA /* CreateTagsSecondStepCell.xib in Resources */,
 				0D77D41C1CE4983900CF2C24 /* side_menu_image.png in Resources */,
 				0D066AD81D2A86B200C910E8 /* Roboto-Light.ttf in Resources */,
 				0D922FF71CF8707D00EC1945 /* pin_main.png in Resources */,
@@ -1082,8 +1112,10 @@
 				0D939D331CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib in Resources */,
 				0D0DDD081D11AAC600C0E9DD /* contact.png in Resources */,
 				0D922FFD1CF8739C00EC1945 /* menu_icon2.png in Resources */,
+				0D8AC8D71D365C5D001EFEBA /* radio_btn2.png in Resources */,
 				0D5EA2361CCB624F00CA0DAE /* name_icon.png in Resources */,
 				0D922FF11CF8707D00EC1945 /* circle_icon.png in Resources */,
+				0D8AC8D51D365C5D001EFEBA /* cover_pic1.png in Resources */,
 				0DDC798E1CFDC4D200AD8011 /* pop_map.png in Resources */,
 				0D698D391CC90AEC00F64745 /* google_icon.png in Resources */,
 				0D0DDD121D11ACDE00C0E9DD /* logout_text.png in Resources */,
@@ -1093,6 +1125,7 @@
 				0DA2266F1CD22E4700B3A5BC /* bg_img.png in Resources */,
 				0D698D3B1CC90AEC00F64745 /* mail_icon.png in Resources */,
 				0D9B888F1D22B75D003B51F0 /* recording.png in Resources */,
+				0D8AC8D81D365C5D001EFEBA /* user_pic.png in Resources */,
 				0D0DDD0D1D11AAC600C0E9DD /* payments.png in Resources */,
 				0D939D351CD35106002C954B /* circle_with-camera_icon.png in Resources */,
 			);
@@ -1189,6 +1222,7 @@
 				0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */,
 				0D5EA2421CCB7CFA00CA0DAE /* RegistrationService.m in Sources */,
 				0D37314C1CD8A10B00EDC547 /* UIImageView+WebCache.m in Sources */,
+				0D8AC8CE1D364F47001EFEBA /* CreateTagsSecondStepCell.m in Sources */,
 				0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */,
 				0D5EA23A1CCB6A0000CA0DAE /* NetworkActivityViewController.m in Sources */,
 			);
