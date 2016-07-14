@@ -223,6 +223,8 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self updateTableView:textField.tag];
+    //cell = (UITableViewCell *) textField.superview.superview.superview;
+    //[tView scrollToRowAtIndexPath:[tView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
