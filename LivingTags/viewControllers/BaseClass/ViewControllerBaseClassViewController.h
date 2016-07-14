@@ -26,8 +26,4 @@
 -(NSString *)generateMD5:(NSString *)string;
 -(void)displayNetworkActivity;
 -(void)hideNetworkActivity;
-
-
-
-
 @end

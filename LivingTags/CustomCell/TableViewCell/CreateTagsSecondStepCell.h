@@ -20,9 +20,14 @@
 @property(nonatomic,strong)IBOutlet UIImageView *imgUser;
 @property(nonatomic,strong)IBOutlet UIButton *btnBrowseUserPic;
 
+@property(nonatomic,strong)IBOutlet UITextField *txtDateFrom;
+@property(nonatomic,strong)IBOutlet UITextField *txtDateTo;
+
+@property(nonatomic,strong)IBOutlet UIButton *btnGetLocation;
+
 @property(nonatomic,strong)IBOutlet UIImageView *imgCover;
 @property(nonatomic,strong)IBOutlet UIButton *btnBrowseCover;
 
-@property(nonatomic,strong)IBOutlet UITextView *txtMemorialQuote;
+@property(nonatomic,strong)IBOutlet UITextView *txtVwMemorialQuote;
 
 @end
