@@ -223,9 +223,6 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self updateTableView:textField.tag];
-    CGPoint textFieldOriginInTableView = [textField convertPoint:textField.frame.origin toView:tblSecondSteps];
-    [tblSecondSteps setContentOffset:CGPointMake(0, textFieldOriginInTableView.y-130) animated:YES];
-
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -266,8 +263,7 @@
     {
         NSLog(@"PAGE LOADED FULL");
     }
-    [tblSecondSteps scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]
-                          atScrollPosition:UITableViewScrollPositionNone animated:NO];
+
 }
 
 #pragma mark
