@@ -99,7 +99,7 @@
      return 70.0f;*/
     if (indexPath.row==2)
     {
-        return 110.0f;
+        return 160.0f;
     }
     else if (indexPath.row==3)
     {
@@ -174,7 +174,7 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:3];
             }
             cellTags.txtDateFrom.tag=indexPath.row;
-            cellTags.txtDateTo.tag=indexPath.row;
+            cellTags.txtDateTo.tag=9999;
             cellTags.txtDateFrom.delegate=self;
             cellTags.txtDateTo.delegate=self;
             
@@ -220,11 +220,18 @@
 #pragma mark textfield delegates
 #pragma mark
 
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self updateTableView:textField.tag];
-    //cell = (UITableViewCell *) textField.superview.superview.superview;
-    //[tView scrollToRowAtIndexPath:[tView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    if (textField.tag ==3)
+    {
+        [self setTableviewContentOffsetWithView:@"textfield"];
+
+    }
+   else
+   {
+        [self updateTableView:textField.tag];
+    }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -234,6 +241,10 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if (textField.tag ==3 || textField.tag==9999)
+    {
+        [self updateTableView:3];
+    }
     [textField resignFirstResponder];
     return YES;
 }
@@ -265,7 +276,6 @@
     {
         NSLog(@"PAGE LOADED FULL");
     }
-
 }
 
 #pragma mark
@@ -300,11 +310,13 @@
 -(void)btnGetLocationClicked:(id)sender
 {
     [self updateTableView:[sender tag]];
+    [self setTableviewContentOffsetWithView:@"Location"];
 }
 
 -(void)btnCoverPicPressed:(id)sender
 {
     [self updateTableView:[sender tag]];
+    [self setTableviewContentOffsetWithView:@"coverPic"];
 }
 
 #pragma mark
@@ -313,12 +325,12 @@
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [self updateTableView:textView.tag];
+    [self setTableviewContentOffsetWithView:@"textView"];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
-    
+    [tblSecondSteps setContentOffset:CGPointMake(0, textView.frame.origin.y) animated:YES];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -331,4 +343,23 @@
     return YES;
 }
 
+#pragma mark
+#pragma mark Set tableview Content offset
+#pragma mark
+
+-(void)setTableviewContentOffsetWithView:(NSString *)strView
+{
+    if ([strView isEqualToString:@"textView"])
+    {
+        [tblSecondSteps setContentOffset:CGPointMake(0, 500) animated:YES];
+    }
+    else if ([strView isEqualToString:@"coverPic"])
+    {
+        [tblSecondSteps setContentOffset:CGPointMake(0, 300) animated:YES];
+    }
+    else
+    {
+        [tblSecondSteps setContentOffset:CGPointMake(0, 200) animated:YES];
+    }
+}
 @end

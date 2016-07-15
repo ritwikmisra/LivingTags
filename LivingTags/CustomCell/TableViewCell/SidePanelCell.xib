@@ -98,7 +98,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghD-Tl-9YT">
-                        <rect key="frame" x="80" y="146" width="160" height="32"/>
+                        <rect key="frame" x="46" y="146" width="228" height="32"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                         </constraints>
                     </activityIndicatorView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-NI-KzE">
-                        <rect key="frame" x="64" y="178" width="192" height="15"/>
+                        <rect key="frame" x="23" y="178" width="274" height="15"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="9"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                     <constraint firstItem="IWH-A8-hkh" firstAttribute="centerX" secondItem="Y1C-RX-rSj" secondAttribute="centerX" id="6IG-RE-OEx"/>
                     <constraint firstItem="tbq-NI-KzE" firstAttribute="top" secondItem="ghD-Tl-9YT" secondAttribute="bottom" id="7RH-4x-jol"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="trailing" secondItem="zDu-wn-X36" secondAttribute="trailing" multiplier="1.085" id="9Od-5z-Zwa"/>
-                    <constraint firstItem="Y1C-RX-rSj" firstAttribute="width" secondItem="ghD-Tl-9YT" secondAttribute="width" multiplier="2" id="9ta-O1-aUP"/>
+                    <constraint firstItem="Y1C-RX-rSj" firstAttribute="width" secondItem="ghD-Tl-9YT" secondAttribute="width" multiplier="1.4" id="9ta-O1-aUP"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="height" secondItem="zm7-dk-BxH" secondAttribute="height" multiplier="2.5" id="AcZ-aw-qjV"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="height" secondItem="Hxa-uD-89c" secondAttribute="height" id="Da7-Gn-QcM"/>
                     <constraint firstItem="Y1C-RX-rSj" firstAttribute="width" secondItem="zDu-wn-X36" secondAttribute="width" multiplier="3.5" id="I8v-ls-LGK"/>

@@ -173,30 +173,30 @@
             </connections>
             <point key="canvasLocation" x="487.5" y="171"/>
         </tableViewCell>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="149" id="2vE-St-IPg" customClass="CreateTagsSecondStepCell">
-            <rect key="frame" x="0.0" y="0.0" width="365" height="149"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="2vE-St-IPg" customClass="CreateTagsSecondStepCell">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="179"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2vE-St-IPg" id="jSO-ts-txE">
-                <rect key="frame" x="0.0" y="0.0" width="365" height="148"/>
+                <rect key="frame" x="0.0" y="0.0" width="365" height="178"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CSZ-I3-caG">
-                        <rect key="frame" x="0.0" y="0.0" width="365" height="148"/>
+                        <rect key="frame" x="0.0" y="0.0" width="365" height="178"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is his/her name ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFV-9M-FqC">
-                        <rect key="frame" x="0.0" y="0.0" width="365" height="25"/>
+                        <rect key="frame" x="0.0" y="0.0" width="365" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="B1z-cV-oJf">
-                        <rect key="frame" x="0.0" y="27" width="78" height="78"/>
+                        <rect key="frame" x="0.0" y="33" width="94" height="94"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="B1z-cV-oJf" secondAttribute="height" id="C0E-a5-OVm"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U5-zd-6Gj">
-                        <rect key="frame" x="0.0" y="110" width="78" height="28"/>
+                        <rect key="frame" x="0.0" y="133" width="94" height="33"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <state key="normal" title="BROWSE">
@@ -226,7 +226,7 @@
                 <outlet property="btnBrowseUserPic" destination="7U5-zd-6Gj" id="Jbh-ug-bEF"/>
                 <outlet property="imgUser" destination="B1z-cV-oJf" id="ChG-Hp-p3w"/>
             </connections>
-            <point key="canvasLocation" x="302.5" y="271.5"/>
+            <point key="canvasLocation" x="267.5" y="79.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="mfH-xr-vHz" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="72"/>
