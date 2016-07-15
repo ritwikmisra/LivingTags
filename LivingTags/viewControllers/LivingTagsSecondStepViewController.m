@@ -143,13 +143,11 @@
             {
                 [cellTags.imgMale setImage:[UIImage imageNamed:@"radio_btn1"]];
                 [cellTags.imgMale setImage:[UIImage imageNamed:@"radio_btn1"]];
-                
             }
             else if ([strGender isEqualToString:@"M"])
             {
                 [cellTags.imgFemale setImage:[UIImage imageNamed:@"radio_btn1"]];
                 [cellTags.imgMale setImage:[UIImage imageNamed:@"radio_btn2"]];
-                
             }
             else
             {
@@ -310,13 +308,17 @@
 -(void)btnGetLocationClicked:(id)sender
 {
     [self updateTableView:[sender tag]];
-    [self setTableviewContentOffsetWithView:@"Location"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setTableviewContentOffsetWithView:@"coverPic"];
+    });
 }
 
 -(void)btnCoverPicPressed:(id)sender
 {
     [self updateTableView:[sender tag]];
-    [self setTableviewContentOffsetWithView:@"coverPic"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setTableviewContentOffsetWithView:@"coverPic"];
+});
 }
 
 #pragma mark
@@ -330,7 +332,7 @@
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
-    [tblSecondSteps setContentOffset:CGPointMake(0, textView.frame.origin.y) animated:YES];
+    [tblSecondSteps setContentOffset:CGPointMake(0, 300) animated:YES];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
