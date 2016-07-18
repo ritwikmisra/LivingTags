@@ -6,9 +6,11 @@
 //  Copyright © 2016 appsbeetech. All rights reserved.
 
 #import "LivingTagsSecondStepViewController.h"
+#import <CoreGraphics/CoreGraphics.h>
+#import "CKCalendarView.h"
 #import "CreateTagsSecondStepCell.h"
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
+@interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,CKCalendarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -16,7 +18,19 @@
     IBOutlet UITableView *tblSecondSteps;
     NSMutableArray *arrStatus;
     NSString *strGender;
+    CKCalendarView *calendar;
+    NSString *strDateFrom,*strDateTo;
+    int textTag;
+    UIImageView *img;
+    UIImage *imgChosen;
 }
+
+@property(nonatomic, weak) CKCalendarView *calendarCustom;
+@property(nonatomic, strong) NSDateFormatter *dateFormatter;
+@property(nonatomic, strong) NSDate *minimumDate;
+@property(nonatomic, strong) NSArray *disabledDates;
+
+
 
 @end
 
@@ -25,14 +39,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    calendar = [[CKCalendarView alloc] init];
+    self.calendarCustom = calendar;
+    calendar.delegate = self;
+    strDateFrom=strDateTo=@"";
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"dd-MMM-yyyy"];
+    self.minimumDate = [self.dateFormatter dateFromString:@"22-Nov-1950"];
+    
+    calendar.onlyShowCurrentMonth = NO;
+    calendar.adaptHeightToNumberOfWeeksInMonth = YES;
+    
+    calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
+    arrStatus=[[NSMutableArray alloc]initWithObjects:@"0", nil];
+    strGender=@"";
 }
+
+- (void)localeDidChange
+{
+    [self.calendarCustom setLocale:[NSLocale currentLocale]];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     //arrStatus=[[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0",@"0",@"0", nil];
-    arrStatus=[[NSMutableArray alloc]initWithObjects:@"0", nil];
-    strGender=@"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -161,6 +195,11 @@
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:2];
             }
+            img=cellTags.imgUser;
+            if (imgChosen)
+            {
+                cellTags.imgUser.image=imgChosen;
+            }
             cellTags.btnBrowseUserPic.tag=indexPath.row;
             [cellTags.btnBrowseUserPic addTarget:self action:@selector(btnUserPicSelected:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -175,7 +214,8 @@
             cellTags.txtDateTo.tag=9999;
             cellTags.txtDateFrom.delegate=self;
             cellTags.txtDateTo.delegate=self;
-            
+            cellTags.txtDateFrom.text=strDateFrom;
+            cellTags.txtDateTo.text=strDateTo;
             break;
             
         case 4:
@@ -221,10 +261,12 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (textField.tag ==3)
+    textTag=(int)textField.tag;
+    if (textField.tag ==3 || textField.tag==9999)
     {
-        [self setTableviewContentOffsetWithView:@"textfield"];
-
+        //[self setTableviewContentOffsetWithView:@"textfield"];
+        [textField resignFirstResponder];
+        [self.view addSubview:calendar];
     }
    else
    {
@@ -303,6 +345,28 @@
 -(void)btnUserPicSelected:(id)sender
 {
     [self updateTableView:[sender tag]];
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self imageUploadFromCamera];
+    }];
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self imageUploadFromGallery];
+    }];
+    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    [alertController addAction:actionCamera];
+    [alertController addAction:actionGallery];
+    [alertController addAction:actionCancel];
+    [alertController setModalPresentationStyle:UIModalPresentationPopover];
+    
+    UIPopoverPresentationController *popPresenter = [alertController
+                                                     popoverPresentationController];
+    popPresenter.sourceView = img;
+    popPresenter.sourceRect = img.bounds;
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 -(void)btnGetLocationClicked:(id)sender
@@ -318,7 +382,7 @@
     [self updateTableView:[sender tag]];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setTableviewContentOffsetWithView:@"coverPic"];
-});
+    });
 }
 
 #pragma mark
@@ -365,4 +429,110 @@
         [tblSecondSteps setContentOffset:CGPointMake(0, 200) animated:YES];
     }
 }
+
+#pragma mark
+#pragma mark CKCalender delegates and helper methods
+#pragma mark
+
+- (void)calendar:(CKCalendarView *)calendar configureDateItem:(CKDateItem *)dateItem forDate:(NSDate *)date
+{
+    // TODO: play with the coloring if we want to...
+    if ([self dateIsDisabled:date])
+    {
+        dateItem.backgroundColor = [UIColor redColor];
+        dateItem.textColor = [UIColor whiteColor];
+    }
+}
+
+- (BOOL)calendar:(CKCalendarView *)calendar willSelectDate:(NSDate *)date {
+    return ![self dateIsDisabled:date];
+}
+
+- (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date
+{
+    NSLog(@"%d",textTag);
+    if (textTag==3)
+    {
+        strDateFrom=[self.dateFormatter stringFromDate:date];
+    }
+    else
+    {
+        strDateTo=[self.dateFormatter stringFromDate:date];
+    }
+    [self.calendarCustom removeFromSuperview];
+    [tblSecondSteps reloadData];
+    [self updateTableView:3];
+}
+
+- (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
+    if ([date laterDate:self.minimumDate] == date)
+    {
+        self.calendarCustom.backgroundColor = [UIColor grayColor];
+        return YES;
+    }
+    else
+    {
+        self.calendarCustom.backgroundColor = [UIColor grayColor];
+        return NO;
+    }
+}
+
+- (void)calendar:(CKCalendarView *)calendar didLayoutInRect:(CGRect)frame
+{
+    NSLog(@"calendar layout: %@", NSStringFromCGRect(frame));
+}
+
+- (BOOL)dateIsDisabled:(NSDate *)date
+{
+    for (NSDate *disabledDate in self.disabledDates)
+    {
+        if ([disabledDate isEqualToDate:date])
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
+#pragma mark
+#pragma mark IMAGE PICKER CONTROLLER DELEGATE
+#pragma mark
+
+-(void)imageUploadFromGallery
+{
+    UIImagePickerController *picker=[[UIImagePickerController alloc] init];
+    picker.delegate=self;
+    picker.allowsEditing=YES;
+    picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:^{
+        
+    }];
+}
+
+-(void)imageUploadFromCamera
+{
+    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]|| [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear])
+    {
+        UIImagePickerController *picker=[[UIImagePickerController alloc]init] ;
+        picker.delegate=self ;
+        picker.sourceType=UIImagePickerControllerSourceTypeCamera ;
+        picker.allowsEditing=YES ;
+        [self presentViewController:picker animated:YES completion:nil] ;
+    }
+    else
+    {
+        [[[UIAlertView alloc]initWithTitle:@"ERROR" message:@"Camera not found." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    imgChosen=info[UIImagePickerControllerEditedImage] ;
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+        [tblSecondSteps reloadData ];
+    }] ;
+}
+
 @end

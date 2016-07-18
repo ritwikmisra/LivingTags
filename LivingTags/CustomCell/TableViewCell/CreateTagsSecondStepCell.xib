@@ -226,7 +226,7 @@
                 <outlet property="btnBrowseUserPic" destination="7U5-zd-6Gj" id="Jbh-ug-bEF"/>
                 <outlet property="imgUser" destination="B1z-cV-oJf" id="ChG-Hp-p3w"/>
             </connections>
-            <point key="canvasLocation" x="267.5" y="79.5"/>
+            <point key="canvasLocation" x="374.5" y="87.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="mfH-xr-vHz" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="72"/>
@@ -238,7 +238,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V5f-8u-daV">
                         <rect key="frame" x="0.0" y="0.0" width="365" height="71"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What was his age?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlW-Cz-0hG">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What was his/her age?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlW-Cz-0hG">
                         <rect key="frame" x="0.0" y="0.0" width="365" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
@@ -332,7 +332,7 @@
                 <outlet property="txtDateFrom" destination="kA7-wh-EaM" id="aqi-gu-kMz"/>
                 <outlet property="txtDateTo" destination="kDO-UN-Lg5" id="P2O-jF-hm0"/>
             </connections>
-            <point key="canvasLocation" x="219.5" y="200"/>
+            <point key="canvasLocation" x="319.5" y="307"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="0z3-qe-tdI" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="72"/>
@@ -377,7 +377,7 @@
             <connections>
                 <outlet property="btnGetLocation" destination="rl3-YO-XNV" id="GUe-PI-xJS"/>
             </connections>
-            <point key="canvasLocation" x="197.5" y="402"/>
+            <point key="canvasLocation" x="291.5" y="402"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="YI1-wI-gGX" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="164"/>
@@ -437,7 +437,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QP9-8E-CnR">
                         <rect key="frame" x="0.0" y="0.0" width="365" height="163"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any memorial quote about him?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8e-WC-wwi">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any memorial quote about him/her?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8e-WC-wwi">
                         <rect key="frame" x="0.0" y="0.0" width="365" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
