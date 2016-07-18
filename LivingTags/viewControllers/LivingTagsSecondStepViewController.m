@@ -327,6 +327,7 @@
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
+    textView.text=@"";
     [self setTableviewContentOffsetWithView:@"textView"];
 }
 
