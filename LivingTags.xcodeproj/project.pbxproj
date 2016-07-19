@@ -116,6 +116,8 @@
 		0D8AC8D81D365C5D001EFEBA /* user_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AC8D41D365C5D001EFEBA /* user_pic.png */; };
 		0D8BE0911D2E62E700527345 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8BE0901D2E62E700527345 /* Contacts.framework */; };
 		0D8F28F91CD09E03001AE322 /* logo_loader.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8F28F81CD09E03001AE322 /* logo_loader.png */; };
+		0D901B9A1D3E57CD002B6735 /* TemplateSelectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D901B991D3E57CD002B6735 /* TemplateSelectionService.m */; };
+		0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D901B9C1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m */; };
 		0D90D9F41CE1E0780004B0B9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D90D9F11CE1E0780004B0B9 /* FBSDKCoreKit.framework */; };
 		0D90D9F51CE1E0780004B0B9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D90D9F21CE1E0780004B0B9 /* FBSDKLoginKit.framework */; };
 		0D90D9F61CE1E0780004B0B9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D90D9F31CE1E0780004B0B9 /* FBSDKShareKit.framework */; };
@@ -344,6 +346,10 @@
 		0D8AC8D41D365C5D001EFEBA /* user_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_pic.png; sourceTree = "<group>"; };
 		0D8BE0901D2E62E700527345 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		0D8F28F81CD09E03001AE322 /* logo_loader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_loader.png; sourceTree = "<group>"; };
+		0D901B981D3E57CD002B6735 /* TemplateSelectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateSelectionService.h; sourceTree = "<group>"; };
+		0D901B991D3E57CD002B6735 /* TemplateSelectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateSelectionService.m; sourceTree = "<group>"; };
+		0D901B9B1D3E7C04002B6735 /* ModelCreateTagsSecondStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCreateTagsSecondStep.h; sourceTree = "<group>"; };
+		0D901B9C1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCreateTagsSecondStep.m; sourceTree = "<group>"; };
 		0D90D9F11CE1E0780004B0B9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		0D90D9F21CE1E0780004B0B9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0D90D9F31CE1E0780004B0B9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -796,6 +802,8 @@
 				0D9472A91D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m */,
 				0D066ADD1D2AA5FF00C910E8 /* AllTagsReadService.h */,
 				0D066ADE1D2AA5FF00C910E8 /* AllTagsReadService.m */,
+				0D901B981D3E57CD002B6735 /* TemplateSelectionService.h */,
+				0D901B991D3E57CD002B6735 /* TemplateSelectionService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -860,6 +868,8 @@
 				0DC937F91CEB43970049BEC2 /* ModelListing.m */,
 				0D9472AB1D0AF5B200A85677 /* ModelLivingTagsTemplateList.h */,
 				0D9472AC1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m */,
+				0D901B9B1D3E7C04002B6735 /* ModelCreateTagsSecondStep.h */,
+				0D901B9C1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -1215,11 +1225,13 @@
 				0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */,
 				0D9350BD1CDB61F800E403B2 /* YTVimeoVideo.m in Sources */,
 				0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */,
+				0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */,
 				0D37314A1CD8A10B00EDC547 /* UIImage+WebP.m in Sources */,
 				0D9350BB1CDB61F800E403B2 /* YTVimeoExtractorOperation.m in Sources */,
 				0D77F6B41CD7874C00671159 /* ProfileGetService.m in Sources */,
 				0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */,
 				0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */,
+				0D901B9A1D3E57CD002B6735 /* TemplateSelectionService.m in Sources */,
 				0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */,
 				0D80DAF71CFD9B0E00B79C6B /* GroupPopupController.m in Sources */,
 				0D939D321CD34B5B002C954B /* EditProfilePicCellTableViewCell.m in Sources */,

@@ -17,16 +17,17 @@
 //readtags
 
 NSString *const strAPI[]={
-    [WEB_SERVICES_REGISTRATION]         =          @"auths/signup",
-    [WEB_SERVICES_LOGIN]                =          @"auths/signin",
-    [WEB_SERVICES_GET_PROFILE]          =          @"Accounts/getAccount",
-    [WEB_SERVICES_UPDATE_PROFILE]       =          @"Accounts/updateAccount",
-    [WEB_SERVICES_FORGET_PASSWORD]      =          @"auths/forgotpass",
-    [WEB_SERVICES_LIVING_TAG_LISTING]   =          @"Livingtags/myLivingtags",
-    [WEB_SERVICE_SOCIAL_LOGIN_FIRST]    =          @"auths/social_signin",
-    [WEB_SERVICE_SOCIAL_LOGIN]          =          @"auths/social_signup",
-    [WEB_SERVICES_GET_ALL_TEMPLATES]    =          @"Livingtags/getAllTemplates",
-    [WEB_SERVICES_READ_ALL_TAGS]        =          @"Livingtags/readtags"
+    [WEB_SERVICES_REGISTRATION]                  =          @"auths/signup",
+    [WEB_SERVICES_LOGIN]                                  =          @"auths/signin",
+    [WEB_SERVICES_GET_PROFILE]                     =          @"Accounts/getAccount",
+    [WEB_SERVICES_UPDATE_PROFILE]             =          @"Accounts/updateAccount",
+    [WEB_SERVICES_FORGET_PASSWORD]        =          @"auths/forgotpass",
+    [WEB_SERVICES_LIVING_TAG_LISTING]      =          @"Livingtags/myLivingtags",
+    [WEB_SERVICE_SOCIAL_LOGIN_FIRST]        =          @"auths/social_signin",
+    [WEB_SERVICE_SOCIAL_LOGIN]                     =          @"auths/social_signup",
+    [WEB_SERVICES_GET_ALL_TEMPLATES]     =          @"Livingtags/getAllTemplates",
+    [WEB_SERVICES_READ_ALL_TAGS]               =          @"Livingtags/readtags",
+    [WEB_SERVICES_TEMPLATE_SELECTION]   =           @"Livingtags/createLivingTag"
 };
 
 

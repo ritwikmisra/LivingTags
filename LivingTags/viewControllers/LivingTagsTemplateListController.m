@@ -12,6 +12,8 @@
 #import "UIImageView+WebCache.h"
 #import "ModelLivingTagsTemplateList.h"
 #import "CreateLivingTagsViewController.h"
+#import "TemplateSelectionService.h"
+#import "LivingTagsSecondStepViewController.h"
 
 @interface LivingTagsTemplateListController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 {
@@ -112,7 +114,19 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //segueTemplateSecondStep
-    [self performSegueWithIdentifier:@"segueTemplateSecondStep" sender:self];
+    ModelLivingTagsTemplateList *obj=[arrTemplates objectAtIndex:indexPath.row];
+    [[TemplateSelectionService service]callTemplateServiceWithUserID:appDel.objUser.strUserID templateID:obj.strTemplateID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            NSLog(@"%@",result);
+            strSegueTemplateID=[NSString stringWithFormat:@"%@",result];
+            [self performSegueWithIdentifier:@"segueTemplateSecondStep" sender:self];
+        }
+    }];
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
@@ -131,9 +145,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segueTemplate"])
+    if ([segue.identifier isEqualToString:@"segueTemplateSecondStep"])
     {
-        CreateLivingTagsViewController *master=[segue destinationViewController];
+        LivingTagsSecondStepViewController *master=[segue destinationViewController];
         master.strTemplateID=strSegueTemplateID;
     }
 }

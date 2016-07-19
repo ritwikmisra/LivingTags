@@ -85,8 +85,8 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Show your location on the map</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

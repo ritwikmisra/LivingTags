@@ -17,20 +17,18 @@
     IBOutlet UILabel *lbl3;
     IBOutlet UITableView *tblSecondSteps;
     NSMutableArray *arrStatus;
-    NSString *strGender;
+    NSString *strGender,*strDateFrom,*strDateTo,*strName;
     CKCalendarView *calendar;
-    NSString *strDateFrom,*strDateTo;
-    int textTag;
+    int textTag,btnUserPicTag;
     UIImageView *img;
-    UIImage *imgChosen;
+    UIImage *imgChosen,*imgCoverPic;
+    NSMutableDictionary *dictAPI;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) NSDate *minimumDate;
 @property(nonatomic, strong) NSArray *disabledDates;
-
-
 
 @end
 
@@ -39,10 +37,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    dictAPI=[[NSMutableDictionary alloc]init];
     calendar = [[CKCalendarView alloc] init];
     self.calendarCustom = calendar;
     calendar.delegate = self;
     strDateFrom=strDateTo=@"";
+    strName=@"";
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"dd-MMM-yyyy"];
@@ -55,6 +55,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     arrStatus=[[NSMutableArray alloc]initWithObjects:@"0", nil];
     strGender=@"";
+    NSLog(@"%@",self.strTemplateID);
 }
 
 - (void)localeDidChange
@@ -62,11 +63,9 @@
     [self.calendarCustom setLocale:[NSLocale currentLocale]];
 }
 
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //arrStatus=[[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0",@"0",@"0", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -162,6 +161,10 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:0];
             }
             cellTags.txtName.delegate=self;
+            if (strName.length>0)
+            {
+                cellTags.txtName.text=strName;
+            }
             cellTags.txtName.tag=indexPath.row;
             break;
         case 1:
@@ -232,6 +235,11 @@
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:5];
             }
+            img=cellTags.imgCover;
+            if (imgCoverPic)
+            {
+                cellTags.imgCover.image=imgCoverPic;
+            }
             cellTags.btnBrowseCover.tag=indexPath.row;
             [cellTags.btnBrowseCover addTarget:self action:@selector(btnCoverPicPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -268,15 +276,14 @@
         [textField resignFirstResponder];
         [self.view addSubview:calendar];
     }
-   else
-   {
-        [self updateTableView:textField.tag];
-    }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
+    if (textField.tag==0)
+    {
+        strName=textField.text;
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -284,6 +291,10 @@
     if (textField.tag ==3 || textField.tag==9999)
     {
         [self updateTableView:3];
+    }
+    else
+    {
+        [self updateTableView:textField.tag];
     }
     [textField resignFirstResponder];
     return YES;
@@ -344,6 +355,7 @@
 
 -(void)btnUserPicSelected:(id)sender
 {
+    btnUserPicTag=(int)[sender tag];
     [self updateTableView:[sender tag]];
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -379,10 +391,33 @@
 
 -(void)btnCoverPicPressed:(id)sender
 {
+    btnUserPicTag=(int)[sender tag];
     [self updateTableView:[sender tag]];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setTableviewContentOffsetWithView:@"coverPic"];
     });
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self imageUploadFromCamera];
+    }];
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self imageUploadFromGallery];
+    }];
+    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    [alertController addAction:actionCamera];
+    [alertController addAction:actionGallery];
+    [alertController addAction:actionCancel];
+    [alertController setModalPresentationStyle:UIModalPresentationPopover];
+    
+    UIPopoverPresentationController *popPresenter = [alertController
+                                                     popoverPresentationController];
+    popPresenter.sourceView = img;
+    popPresenter.sourceRect = img.bounds;
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark
@@ -528,11 +563,28 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    imgChosen=info[UIImagePickerControllerEditedImage] ;
+    NSLog(@"%d",btnUserPicTag);
+    if(btnUserPicTag==2)
+    {
+        imgChosen=info[UIImagePickerControllerEditedImage] ;
+    }
+    else
+    {
+        imgCoverPic=info[UIImagePickerControllerEditedImage] ;
+    }
     [picker dismissViewControllerAnimated:YES completion:^{
-        
         [tblSecondSteps reloadData ];
     }] ;
+}
+
+#pragma mark
+#pragma mark UPDATE DICTIONARY FOR API SERVICE
+#pragma mark
+
+-(void)updateDictionaryForService
+{
+    [dictAPI setObject:strName forKey:@"name"];
+    
 }
 
 @end
