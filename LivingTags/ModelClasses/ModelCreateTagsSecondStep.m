@@ -54,6 +54,7 @@
         {
             self.strUserPicURI=@"";
         }
+        NSLog(@"%@",dict);
         if ([dict objectForKey:@"name"] && ![[dict objectForKey:@"name"] isKindOfClass:[NSNull class]])
         {
             self.strName=[dict objectForKey:@"name"];

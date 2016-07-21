@@ -82,8 +82,11 @@
                      {
                          if ([[responseDict objectForKey:@"status"] boolValue])
                          {
-                             NSDictionary *dictUser=[[responseDict objectForKey:@"response"] objectForKey:@"livingtag"];
-                             completionHandler(dictUser,NO,nil);
+                             if ([[responseDict objectForKey:@"response"] isKindOfClass:[NSDictionary class]])
+                             {
+                                 NSDictionary *dictUser=[[[responseDict objectForKey:@"response"] objectForKey:@"livingtag"] objectForKey:@"livingtag"];
+                                 completionHandler(dictUser,NO,nil);
+                             }
                          }
                          else
                          {

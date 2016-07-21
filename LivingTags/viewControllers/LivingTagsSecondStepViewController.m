@@ -49,8 +49,8 @@
     strName=@"";
     isAPICalling=NO;
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"dd-MMM-yyyy"];
-    self.minimumDate = [self.dateFormatter dateFromString:@"22-Nov-1950"];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    self.minimumDate = [self.dateFormatter dateFromString:@"1950-11-01"];
     
     calendar.onlyShowCurrentMonth = NO;
     calendar.adaptHeightToNumberOfWeeksInMonth = YES;
@@ -298,11 +298,7 @@
     NSLog(@"%ld",(long)textField.tag);
     if (textField.tag==0 && strName.length>0)
     {
-        if (![objTemplates.strName isEqualToString:strName])
-        {
-            [dictAPI setObject:strName forKey:@"name"];
-            [self updateDictionaryForServiceForKey:@"name"];
-        }
+        [self checkName];
     }
     [self updateTableView:textField.tag];
     [textField resignFirstResponder];
@@ -347,9 +343,8 @@
 -(void)btnMalePressed:(id)sender
 {
     [self.view endEditing:YES];
+    [self checkName];
     strGender=@"M";
-    [dictAPI setObject:strName forKey:@"name"];
-    [self updateDictionaryForServiceForKey:@"name"];
     CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
     [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn2"]];
     [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn1"]];
@@ -359,9 +354,8 @@
 
 -(void)btnFemalePressed:(id)sender
 {
-    [dictAPI setObject:strName forKey:@"name"];
-    [self updateDictionaryForServiceForKey:@"name"];
     [self.view endEditing:YES];
+    [self checkName];
     strGender=@"F";
     CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
     [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn1"]];
@@ -509,14 +503,12 @@
     if (textTag==3)
     {
         strDateFrom=[self.dateFormatter stringFromDate:date];
-        [dictAPI setObject:strDateFrom forKey:@"born"];
-        [self updateDictionaryForServiceForKey:@"born"];
+        [self checkDatesFrom];
     }
     else
     {
         strDateTo=[self.dateFormatter stringFromDate:date];
-        [dictAPI setObject:strDateTo forKey:@"died"];
-        [self updateDictionaryForServiceForKey:@"died"];
+        [self checkDatesTo];
         [self updateTableView:3];
     }
     [self.calendarCustom removeFromSuperview];
@@ -605,7 +597,78 @@
 #pragma mark UPDATE DICTIONARY FOR API SERVICE
 #pragma mark
 
--(void)updateDictionaryForServiceForKey:(NSString *)strkey
+-(void)checkName
+{
+    NSLog(@"%@",objTemplates);
+    if (objTemplates)
+    {
+        NSLog(@"%@",objTemplates.strName);
+        if ([objTemplates.strName isEqualToString:strName])
+        {
+            [dictAPI removeObjectForKey:@"name"];
+        }
+        else
+        {
+            [dictAPI setObject:strName forKey:@"name"];
+            [self updateDictionaryForServiceForKey:@"name"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strName forKey:@"name"];
+        [self updateDictionaryForServiceForKey:@"name"];
+    }
+}
+
+-(void)checkDatesFrom
+{
+    if (objTemplates)
+    {
+        NSLog(@"%@",objTemplates.strBorn);
+        if ([objTemplates.strBorn isEqualToString:strDateFrom])
+        {
+            [dictAPI removeObjectForKey:@"born"];
+        }
+        else
+        {
+            [dictAPI setObject:strDateFrom forKey:@"born"];
+            [self updateDictionaryForServiceForKey:@"born"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strDateFrom forKey:@"born"];
+        [self updateDictionaryForServiceForKey:@"born"];
+    }
+}
+
+-(void)checkDatesTo
+{
+    if (objTemplates)
+    {
+        if ([objTemplates.strDied isEqualToString:strDateTo])
+        {
+            [dictAPI removeObjectForKey:@"died"];
+        }
+        else
+        {
+            [dictAPI setObject:strDateTo forKey:@"died"];
+            [self updateDictionaryForServiceForKey:@"died"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strDateTo forKey:@"died"];
+        [self updateDictionaryForServiceForKey:@"died"];
+    }
+}
+
+-(void)checkMemorialQuotes
+{
+    
+}
+
+-(void)updateDictionaryForServiceForKey:(NSString *)strKey
 {
     NSLog(@"%@",dictAPI);
     [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI UserID:appDel.objUser.strUserID livingTagsID:self.strTemplateID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
@@ -616,10 +679,16 @@
         else
         {
             NSLog(@"%@",result);
-            NSMutableDictionary *dict=(id)result;
-            objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:dict];
-            [dictAPI removeObjectForKey:strkey];
-            NSLog(@"%@",dictAPI);
+            [dictAPI removeObjectForKey:strKey];
+            if ([result isKindOfClass:[NSDictionary class]])
+            {
+                NSMutableDictionary *dict=(id)result;
+                objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:dict];
+            }
+            else
+            {
+                objTemplates=nil;
+            }
         }
     }];
 }
