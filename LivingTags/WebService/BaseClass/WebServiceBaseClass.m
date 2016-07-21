@@ -27,7 +27,8 @@ NSString *const strAPI[]={
     [WEB_SERVICE_SOCIAL_LOGIN]                     =          @"auths/social_signup",
     [WEB_SERVICES_GET_ALL_TEMPLATES]     =          @"Livingtags/getAllTemplates",
     [WEB_SERVICES_READ_ALL_TAGS]               =          @"Livingtags/readtags",
-    [WEB_SERVICES_TEMPLATE_SELECTION]   =           @"Livingtags/createLivingTag"
+    [WEB_SERVICES_TEMPLATE_SELECTION]   =           @"Livingtags/createLivingTag",
+    [WEB_SERVICES_LIVING_TAGS_SECOND_STEP] =@"Livingtags/updateLivingTag"
 };
 
 

@@ -9,6 +9,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "CKCalendarView.h"
 #import "CreateTagsSecondStepCell.h"
+#import "LivingTagsSecondStepService.h"
+#import "ModelCreateTagsSecondStep.h"
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,CKCalendarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -23,6 +25,8 @@
     UIImageView *img;
     UIImage *imgChosen,*imgCoverPic;
     NSMutableDictionary *dictAPI;
+    BOOL isAPICalling;
+    ModelCreateTagsSecondStep *objTemplates;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -43,7 +47,7 @@
     calendar.delegate = self;
     strDateFrom=strDateTo=@"";
     strName=@"";
-    
+    isAPICalling=NO;
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"dd-MMM-yyyy"];
     self.minimumDate = [self.dateFormatter dateFromString:@"22-Nov-1950"];
@@ -165,6 +169,7 @@
             {
                 cellTags.txtName.text=strName;
             }
+            [cellTags.txtName addTarget:self action:@selector(textfieldEdited:) forControlEvents:UIControlEventEditingChanged];
             cellTags.txtName.tag=indexPath.row;
             break;
         case 1:
@@ -280,22 +285,26 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField.tag==0)
-    {
-        strName=textField.text;
-    }
+}
+
+-(void)textfieldEdited:(id)sender
+{
+    UITextField *text=(id)sender;
+    strName=text.text;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.tag ==3 || textField.tag==9999)
+    NSLog(@"%ld",(long)textField.tag);
+    if (textField.tag==0 && strName.length>0)
     {
-        [self updateTableView:3];
+        if (![objTemplates.strName isEqualToString:strName])
+        {
+            [dictAPI setObject:strName forKey:@"name"];
+            [self updateDictionaryForServiceForKey:@"name"];
+        }
     }
-    else
-    {
-        [self updateTableView:textField.tag];
-    }
+    [self updateTableView:textField.tag];
     [textField resignFirstResponder];
     return YES;
 }
@@ -329,22 +338,29 @@
     }
 }
 
+
 #pragma mark
 #pragma mark IBACTIONS
 #pragma mark
+
 
 -(void)btnMalePressed:(id)sender
 {
     [self.view endEditing:YES];
     strGender=@"M";
+    [dictAPI setObject:strName forKey:@"name"];
+    [self updateDictionaryForServiceForKey:@"name"];
     CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
     [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn2"]];
     [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn1"]];
     [self updateTableView:[sender tag]];
 }
 
+
 -(void)btnFemalePressed:(id)sender
 {
+    [dictAPI setObject:strName forKey:@"name"];
+    [self updateDictionaryForServiceForKey:@"name"];
     [self.view endEditing:YES];
     strGender=@"F";
     CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
@@ -352,6 +368,7 @@
     [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn2"]];
     [self updateTableView:[sender tag]];
 }
+
 
 -(void)btnUserPicSelected:(id)sender
 {
@@ -380,6 +397,7 @@
     popPresenter.sourceRect = img.bounds;
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
 
 -(void)btnGetLocationClicked:(id)sender
 {
@@ -420,9 +438,11 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+
 #pragma mark
 #pragma mark textview delegate
 #pragma mark
+
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
@@ -489,14 +509,18 @@
     if (textTag==3)
     {
         strDateFrom=[self.dateFormatter stringFromDate:date];
+        [dictAPI setObject:strDateFrom forKey:@"born"];
+        [self updateDictionaryForServiceForKey:@"born"];
     }
     else
     {
         strDateTo=[self.dateFormatter stringFromDate:date];
+        [dictAPI setObject:strDateTo forKey:@"died"];
+        [self updateDictionaryForServiceForKey:@"died"];
+        [self updateTableView:3];
     }
     [self.calendarCustom removeFromSuperview];
     [tblSecondSteps reloadData];
-    [self updateTableView:3];
 }
 
 - (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
@@ -581,10 +605,23 @@
 #pragma mark UPDATE DICTIONARY FOR API SERVICE
 #pragma mark
 
--(void)updateDictionaryForService
+-(void)updateDictionaryForServiceForKey:(NSString *)strkey
 {
-    [dictAPI setObject:strName forKey:@"name"];
-    
+    NSLog(@"%@",dictAPI);
+    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI UserID:appDel.objUser.strUserID livingTagsID:self.strTemplateID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            
+        }
+        else
+        {
+            NSLog(@"%@",result);
+            NSMutableDictionary *dict=(id)result;
+            objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:dict];
+            [dictAPI removeObjectForKey:strkey];
+            NSLog(@"%@",dictAPI);
+        }
+    }];
 }
 
 @end

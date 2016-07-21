@@ -136,6 +136,7 @@
 		0D922FFA1CF8707D00EC1945 /* top_header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D922FEE1CF8707D00EC1945 /* top_header_bg.png */; };
 		0D922FFB1CF8707D00EC1945 /* top_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D922FEF1CF8707D00EC1945 /* top_shadow.png */; };
 		0D922FFD1CF8739C00EC1945 /* menu_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D922FFC1CF8739C00EC1945 /* menu_icon2.png */; };
+		0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D924F4F1D3F8A2B00BC8193 /* LivingTagsSecondStepService.m */; };
 		0D933B571D07056A00072DE1 /* ImageHoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D933B551D07056A00072DE1 /* ImageHoverController.m */; };
 		0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D933B561D07056A00072DE1 /* ImageHoverController.xib */; };
 		0D9350A71CDB60AE00E403B2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350A61CDB60AE00E403B2 /* MediaPlayer.framework */; };
@@ -370,6 +371,8 @@
 		0D922FEE1CF8707D00EC1945 /* top_header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_header_bg.png; sourceTree = "<group>"; };
 		0D922FEF1CF8707D00EC1945 /* top_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_shadow.png; sourceTree = "<group>"; };
 		0D922FFC1CF8739C00EC1945 /* menu_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon2.png; sourceTree = "<group>"; };
+		0D924F4E1D3F8A2B00BC8193 /* LivingTagsSecondStepService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsSecondStepService.h; sourceTree = "<group>"; };
+		0D924F4F1D3F8A2B00BC8193 /* LivingTagsSecondStepService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsSecondStepService.m; sourceTree = "<group>"; };
 		0D933B541D07056A00072DE1 /* ImageHoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHoverController.h; sourceTree = "<group>"; };
 		0D933B551D07056A00072DE1 /* ImageHoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHoverController.m; sourceTree = "<group>"; };
 		0D933B561D07056A00072DE1 /* ImageHoverController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHoverController.xib; sourceTree = "<group>"; };
@@ -804,6 +807,8 @@
 				0D066ADE1D2AA5FF00C910E8 /* AllTagsReadService.m */,
 				0D901B981D3E57CD002B6735 /* TemplateSelectionService.h */,
 				0D901B991D3E57CD002B6735 /* TemplateSelectionService.m */,
+				0D924F4E1D3F8A2B00BC8193 /* LivingTagsSecondStepService.h */,
+				0D924F4F1D3F8A2B00BC8193 /* LivingTagsSecondStepService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1225,6 +1230,7 @@
 				0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */,
 				0D9350BD1CDB61F800E403B2 /* YTVimeoVideo.m in Sources */,
 				0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */,
+				0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */,
 				0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */,
 				0D37314A1CD8A10B00EDC547 /* UIImage+WebP.m in Sources */,
 				0D9350BB1CDB61F800E403B2 /* YTVimeoExtractorOperation.m in Sources */,
