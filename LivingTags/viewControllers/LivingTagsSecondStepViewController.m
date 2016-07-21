@@ -17,9 +17,10 @@
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
     IBOutlet UILabel *lbl3;
+    IBOutlet UILabel *lbl4;
     IBOutlet UITableView *tblSecondSteps;
     NSMutableArray *arrStatus;
-    NSString *strGender,*strDateFrom,*strDateTo,*strName;
+    NSString *strGender,*strDateFrom,*strDateTo,*strName,*strMemorialQuote;
     CKCalendarView *calendar;
     int textTag,btnUserPicTag;
     UIImageView *img;
@@ -27,6 +28,7 @@
     NSMutableDictionary *dictAPI;
     BOOL isAPICalling;
     ModelCreateTagsSecondStep *objTemplates;
+    IBOutlet UIButton *btnNext;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -60,6 +62,7 @@
     arrStatus=[[NSMutableArray alloc]initWithObjects:@"0", nil];
     strGender=@"";
     NSLog(@"%@",self.strTemplateID);
+    btnNext.hidden=YES;
 }
 
 - (void)localeDidChange
@@ -84,6 +87,10 @@
     
     lbl1.layer.cornerRadius=lbl3.frame.size.width/2;
     lbl1.clipsToBounds=YES;
+    
+    lbl4.layer.cornerRadius=lbl4.frame.size.width/2;
+    lbl4.clipsToBounds=YES;
+
     
     lbl2.layer.cornerRadius=lbl3.frame.size.width/2;
     lbl2.clipsToBounds=YES;
@@ -340,6 +347,11 @@
 #pragma mark
 
 
+-(IBAction)btnNextPressed:(id)sender
+{
+    
+}
+
 -(void)btnMalePressed:(id)sender
 {
     [self.view endEditing:YES];
@@ -454,6 +466,7 @@
     if([text isEqualToString:@"\n"])
     {
         [textView resignFirstResponder];
+        btnNext.hidden=NO;
         return NO;
     }
     return YES;

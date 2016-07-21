@@ -24,6 +24,8 @@
     IBOutlet UILabel *lbl3;
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
+    IBOutlet UILabel *lbl4;
+
 }
 @end
 
@@ -76,6 +78,9 @@
     
     lbl2.layer.cornerRadius=lbl3.frame.size.width/2;
     lbl2.clipsToBounds=YES;
+    
+    lbl4.layer.cornerRadius=lbl3.frame.size.width/2;
+    lbl4.clipsToBounds=YES;
 
 
 }
