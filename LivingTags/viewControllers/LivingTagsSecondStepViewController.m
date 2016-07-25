@@ -263,6 +263,10 @@
             }
             cellTags.txtVwMemorialQuote.delegate=self;
             cellTags.txtVwMemorialQuote.tag=indexPath.row;
+            if (strMemorialQuote.length>0)
+            {
+                cellTags.txtVwMemorialQuote.text=strMemorialQuote;
+            }
             break;
             
         default:
@@ -459,6 +463,8 @@
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     [tblSecondSteps setContentOffset:CGPointMake(0, 300) animated:YES];
+    strMemorialQuote=textView.text;
+    [self checkMemorialQuotes];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -466,7 +472,6 @@
     if([text isEqualToString:@"\n"])
     {
         [textView resignFirstResponder];
-        btnNext.hidden=NO;
         return NO;
     }
     return YES;
@@ -655,6 +660,28 @@
     }
 }
 
+-(void)checkMemorialQuotes
+{
+    if (objTemplates)
+    {
+        if ([objTemplates.strMemorialQuote isEqualToString:strMemorialQuote])
+        {
+            [dictAPI removeObjectForKey:@"memorial_quote"];
+        }
+        else
+        {
+            [dictAPI setObject:strMemorialQuote forKey:@"memorial_quote"];
+            [self updateDictionaryForServiceForKey:@"memorial_quote"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strMemorialQuote forKey:@"memorial_quote"];
+        [self updateDictionaryForServiceForKey:@"memorial_quote"];
+    }
+    btnNext.hidden=NO;
+}
+
 -(void)checkDatesTo
 {
     if (objTemplates)
@@ -674,11 +701,6 @@
         [dictAPI setObject:strDateTo forKey:@"died"];
         [self updateDictionaryForServiceForKey:@"died"];
     }
-}
-
--(void)checkMemorialQuotes
-{
-    
 }
 
 -(void)updateDictionaryForServiceForKey:(NSString *)strKey
