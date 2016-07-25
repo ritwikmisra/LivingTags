@@ -351,11 +351,6 @@
 #pragma mark
 
 
--(IBAction)btnNextPressed:(id)sender
-{
-    
-}
-
 -(void)btnMalePressed:(id)sender
 {
     [self.view endEditing:YES];
@@ -446,6 +441,11 @@
     popPresenter.sourceView = img;
     popPresenter.sourceRect = img.bounds;
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+-(IBAction)btnNextPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"segueThirdStep" sender:self];
 }
 
 
