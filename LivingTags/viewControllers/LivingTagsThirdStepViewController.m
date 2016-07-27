@@ -10,13 +10,15 @@
 #import "CreateTagsThirdStepCell.h"
 #import "CreateTagsCell.h"
 
-@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
     IBOutlet UILabel *lbl3;
     IBOutlet UILabel *lbl4;
     IBOutlet UITableView *tblAThirdStep;
+    UIImageView *img;
+
 }
 
 @end
@@ -28,6 +30,7 @@
     [super viewDidLoad];
     tblAThirdStep.separatorStyle=UITableViewCellSeparatorStyleNone;
     [tblAThirdStep setBounces:NO];
+    appDel.arrCreateTagsUploadImage=[[NSMutableArray alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,7 +64,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,27 +134,84 @@
 
 -(void)btnUserBrowsePicClicked:(id)sender
 {
-    NSLog(@"Pressed");
+    NSLog(@"preseed");
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self imageUploadFromCamera];
+    }];
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self imageUploadFromGallery];
+    }];
+    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    [alertController addAction:actionCamera];
+    [alertController addAction:actionGallery];
+    [alertController addAction:actionCancel];
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 
 -(void)btnCalenderPressed:(id)sender
 {
-    NSLog(@"Pressed");
 }
 
 -(void)btnRecordingPressed:(id)sender
 {
-    NSLog(@"Pressed");
+    [self performSegueWithIdentifier:@"segueAudio" sender:self];
 }
 
 -(void)btnNoPressed:(id)sender
 {
-    NSLog(@"Pressed");
 }
 
 -(void)btnYesPressed:(id)sender
 {
-    NSLog(@"Pressed");
 }
+
+#pragma mark
+#pragma mark IMAGE PICKER CONTROLLER METHODS
+#pragma mark
+
+-(void)imageUploadFromCamera
+{
+    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]|| [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear])
+    {
+        UIImagePickerController *picker=[[UIImagePickerController alloc]init] ;
+        picker.delegate=self ;
+        picker.sourceType=UIImagePickerControllerSourceTypeCamera ;
+        picker.allowsEditing=YES ;
+        [self presentViewController:picker animated:YES completion:nil] ;
+    }
+    else
+    {
+        [[[UIAlertView alloc]initWithTitle:@"ERROR" message:@"Camera not found." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
+    }
+}
+
+-(void)imageUploadFromGallery
+{
+    UIImagePickerController *picker=[[UIImagePickerController alloc] init];
+    picker.delegate=self;
+    picker.allowsEditing=YES;
+    picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:^{
+        
+    }];
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *imgChosen=info[UIImagePickerControllerEditedImage] ;
+    [appDel.arrCreateTagsUploadImage addObject:imgChosen];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [tblAThirdStep reloadData ];
+    }] ;
+}
+
 
 @end

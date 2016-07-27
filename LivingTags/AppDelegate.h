@@ -33,6 +33,8 @@
 @property(nonatomic,strong)ModelUser *objUser;
 @property(nonatomic,strong)ModelLivingTagsViewedAndCreated *objLivingTags;
 
+@property(nonatomic,strong)NSMutableArray *arrCreateTagsUploadImage;
+
  
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

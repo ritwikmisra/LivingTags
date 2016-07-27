@@ -19,6 +19,7 @@
     [self.collPics registerNib:cellNib forCellWithReuseIdentifier:@"CreateTagsCell"];
     self.collPics.dataSource=self;
     self.collPics.delegate=self;
+    self.appDel=(AppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -33,13 +34,21 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 3;
+    if (self.appDel.arrCreateTagsUploadImage.count>0)
+    {
+        return self.appDel.arrCreateTagsUploadImage.count;
+    }
+    return 1;
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString   *strIdentifier=@"CreateTagsCell";
     CreateTagsCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
+    if (self.appDel.arrCreateTagsUploadImage.count>0)
+    {
+        cell.img.image=[self.appDel.arrCreateTagsUploadImage objectAtIndex:indexPath.row];
+    }
     return cell;
 }
 

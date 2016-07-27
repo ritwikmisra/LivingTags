@@ -18,7 +18,6 @@
     IBOutlet UIButton *btnStop;
     AVAudioRecorder *recorder;
     AVAudioPlayer *player;
-    NSString *strBase64Conversion;
     IBOutlet UILabel *lblTimer;
     IBOutlet UIButton *btnSave;
     IBOutlet UIButton *btnDiscard;
@@ -27,7 +26,7 @@
     NSTimer *stopTimer;
     NSDate *startDate;
     BOOL running;
-
+    
 }
 
 @end
@@ -50,10 +49,10 @@
                             sizeof(audioRouteOverride), &audioRouteOverride);
     // Define the recorder setting
     /*NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
-    
-    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
-    [recordSetting setValue:[NSNumber numberWithFloat:AVAudioQualityMax] forKey:AVEncoderAudioQualityKey];
-    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];*/
+     
+     [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+     [recordSetting setValue:[NSNumber numberWithFloat:AVAudioQualityMax] forKey:AVEncoderAudioQualityKey];
+     [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];*/
     NSDictionary *recordSetting2 = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
                                     [NSNumber numberWithInt:AVAudioQualityMin], AVEncoderAudioQualityKey,
@@ -77,7 +76,7 @@
     else if (___isIphone6Plus)
     {
         lblTimer.font=[lblTimer.font fontWithSize:110];
- 
+        
     }
     
     btnSave.layer.cornerRadius=7.0f;
@@ -105,26 +104,40 @@
 
 -(IBAction)btnRecordPressed:(id)sender
 {
-    /*if (player.playing)
+    if (stopTimer == nil)
     {
-        [player stop];
-    }
-    if (!recorder.recording)
-    {
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        [session setActive:YES error:nil];
-        // Start recording
-        [recorder record];
-        [btnRecord setTitle:@"Pause" forState:UIControlStateNormal];
+        stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
+                                                     target:self
+                                                   selector:@selector(updateTimer)
+                                                   userInfo:nil
+                                                    repeats:YES];
     }
     else
     {
-        // Pause recording
-        [recorder pause];
-        [btnRecord setTitle:@"Record" forState:UIControlStateNormal];
+        running = FALSE;
+        [stopTimer invalidate];
+        stopTimer = nil;
     }
-    [btnStop setEnabled:YES];
-    [btnPlay setEnabled:NO];*/
+    if (player.playing)
+     {
+        [player stop];
+     }
+     if (!recorder.recording)
+     {
+         AVAudioSession *session = [AVAudioSession sharedInstance];
+         [session setActive:YES error:nil];
+     // Start recording
+         [recorder record];
+        // [btnRecord setTitle:@"Pause" forState:UIControlStateNormal];
+     }
+     /*else
+     {
+     // Pause recording
+     [recorder pause];
+     [btnRecord setTitle:@"Record" forState:UIControlStateNormal];
+     }
+     [btnStop setEnabled:YES];
+     [btnPlay setEnabled:NO];*/
     [btnRecord setEnabled:NO];
     [btnRecord setBackgroundImage:[UIImage imageNamed:@"recording"] forState:UIControlStateNormal];
     [btnStop setEnabled:YES];
@@ -135,40 +148,62 @@
 
 -(IBAction)btnPlayPressed:(id)sender
 {
-    /*if (!recorder.recording)
+    if (stopTimer == nil)
     {
-        player = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:nil];
-        [player setDelegate:self];
-        [player prepareToPlay];
-        player.volume=4.5;
-        [player play];
-    }*/
-    //[self resetTimer];
-}
-
--(IBAction)btnStopPressed:(id)sender
-{
-    /*[recorder stop];
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    [audioSession setActive:NO error:nil];*/
-    /*if(!running)
-    {
-        running = TRUE;
-        if (stopTimer == nil)
-        {
-            stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
-                                                         target:self
-                                                       selector:@selector(updateTimer)
-                                                       userInfo:nil
-                                                        repeats:YES];
-        }
+        stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
+                                                     target:self
+                                                   selector:@selector(updateTimer)
+                                                   userInfo:nil
+                                                    repeats:YES];
     }
     else
     {
         running = FALSE;
         [stopTimer invalidate];
         stopTimer = nil;
-    }*/
+    }
+    if (!recorder.recording)
+     {
+         player = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:nil];
+         [player setDelegate:self];
+         [player prepareToPlay];
+         player.volume=4.5;
+         [player play];
+     }
+    //[self resetTimer];
+    [btnRecord setEnabled:NO];
+    [btnRecord setBackgroundImage:[UIImage imageNamed:@"recording"] forState:UIControlStateNormal];
+    [btnStop setEnabled:YES];
+    [btnStop setBackgroundImage:[UIImage imageNamed:@"stop_enable"] forState:UIControlStateNormal];
+    [btnPlay setEnabled:NO];
+    [btnPlay setBackgroundImage:[UIImage imageNamed:@"play_disable"] forState:UIControlStateNormal];
+    
+}
+
+-(IBAction)btnStopPressed:(id)sender
+{
+    [recorder stop];
+     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+     [audioSession setActive:NO error:nil];
+    /*if(!running)
+     {
+     running = TRUE;
+     if (stopTimer == nil)
+     {
+     stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
+     target:self
+     selector:@selector(updateTimer)
+     userInfo:nil
+     repeats:YES];
+     }
+     }
+     else
+     {
+     running = FALSE;
+     [stopTimer invalidate];
+     stopTimer = nil;
+     }*/
+    [self resetTimer];
     [btnRecord setEnabled:YES];
     [btnRecord setBackgroundImage:[UIImage imageNamed:@"record"] forState:UIControlStateNormal];
     [btnStop setEnabled:NO];
@@ -181,14 +216,14 @@
 
 -(IBAction)btnSavePressed:(id)sender
 {
-   /* if (strBase64Conversion.length>0)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(getVoice:)])
-        {
-            [self.delegate getVoice:strBase64Conversion];
-        }
-    }*/
+    /* if (strBase64Conversion.length>0)
+     {
+     [self.navigationController popViewControllerAnimated:YES];
+     if (self.delegate && [self.delegate respondsToSelector:@selector(getVoice:)])
+     {
+     [self.delegate getVoice:strBase64Conversion];
+     }
+     }*/
 }
 
 -(IBAction)btnDiscardPressed:(id)sender
@@ -202,22 +237,25 @@
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag
 {
-    [btnRecord setTitle:@"Record" forState:UIControlStateNormal];
-    [btnStop setEnabled:NO];
-    [btnPlay setEnabled:YES];
+
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
+    [self resetTimer];
     NSData *data = [NSData dataWithContentsOfURL:recorder.url];
     //base 64 conversion
-    NSString *str=[data base64EncodedStringWithOptions:0];
-    NSLog(@"%@",str);
     NSError *playerError;
     AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:&playerError];
     NSLog(@"%f",audioPlayer.duration);
     //strBase64Conversion=[NSString stringWithFormat:@"data:audio/m4a;base64,%@",str];
-    strBase64Conversion=[NSString stringWithFormat:@"<textarea name=\"audio\" id=\"audio\" rows=\"6\" cols=\"100\">data:audio/m4a;base64,%@</textarea>",str];
+    [btnRecord setEnabled:YES];
+    [btnRecord setBackgroundImage:[UIImage imageNamed:@"record"] forState:UIControlStateNormal];
+    [btnStop setEnabled:NO];
+    [btnStop setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
+    [btnPlay setEnabled:YES];
+    [btnPlay setBackgroundImage:[UIImage imageNamed:@"play_enable"] forState:UIControlStateNormal];
+
 }
 
 #pragma mark

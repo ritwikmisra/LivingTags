@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface CreateTagsThirdStepCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -20,6 +21,8 @@
 
 @property(nonatomic,strong)IBOutlet UIButton *btnMorePicYes;
 @property(nonatomic,strong)IBOutlet UIButton *btnMorePicNo;
+
+@property(nonatomic,strong)AppDelegate *appDel;
 
 
 @end
