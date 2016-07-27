@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateTagsThirdStepCell : UITableViewCell
+@interface CreateTagsThirdStepCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
+
+@property (nonatomic,strong)IBOutlet UIButton *btnBrowse;
+@property(nonatomic,strong)IBOutlet UICollectionView *collPics;
+
+@property(nonatomic,strong)IBOutlet UIButton *btnCalender;
+@property(nonatomic,strong)IBOutlet UILabel *lblCalender;
+
+@property(nonatomic,strong) IBOutlet UIButton *btnRecording;
+
+@property(nonatomic,strong)IBOutlet UIButton *btnMorePicYes;
+@property(nonatomic,strong)IBOutlet UIButton *btnMorePicNo;
+
 
 @end
