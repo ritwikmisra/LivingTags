@@ -22,6 +22,8 @@
 @property(nonatomic,strong)IBOutlet UIButton *btnMorePicYes;
 @property(nonatomic,strong)IBOutlet UIButton *btnMorePicNo;
 
+@property(nonatomic,strong)IBOutlet UILabel *lblRecording;
+
 @property(nonatomic,strong)AppDelegate *appDel;
 
 

@@ -9,8 +9,11 @@
 #import "LivingTagsThirdStepViewController.h"
 #import "CreateTagsThirdStepCell.h"
 #import "CreateTagsCell.h"
+#import <CoreGraphics/CoreGraphics.h>
+#import "CKCalendarView.h"
+#import "CreateTagsThirdStepService.h"
 
-@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -18,8 +21,16 @@
     IBOutlet UILabel *lbl4;
     IBOutlet UITableView *tblAThirdStep;
     UIImageView *img;
+    CKCalendarView *calendar;
+    NSString *strDate;
 
 }
+
+@property(nonatomic, weak) CKCalendarView *calendarCustom;
+@property(nonatomic, strong) NSDateFormatter *dateFormatter;
+@property(nonatomic, strong) NSDate *minimumDate;
+@property(nonatomic, strong) NSArray *disabledDates;
+
 
 @end
 
@@ -31,7 +42,33 @@
     tblAThirdStep.separatorStyle=UITableViewCellSeparatorStyleNone;
     [tblAThirdStep setBounces:NO];
     appDel.arrCreateTagsUploadImage=[[NSMutableArray alloc]init];
+    calendar = [[CKCalendarView alloc] init];
+    self.calendarCustom = calendar;
+    calendar.delegate = self;
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    self.minimumDate = [self.dateFormatter dateFromString:@"1950-11-01"];
+    
+    calendar.onlyShowCurrentMonth = NO;
+    calendar.adaptHeightToNumberOfWeeksInMonth = YES;
+    
+    calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"%@",appDel.dataVoice);
+    [tblAThirdStep reloadData];
+}
+
+- (void)localeDidChange
+{
+    [self.calendarCustom setLocale:[NSLocale currentLocale]];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -64,7 +101,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return appDel.arrStatus.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,6 +128,7 @@
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:indexPath.row];
             }
+            cellTags.btnBrowse.tag=indexPath.row;
             [cellTags.btnBrowse addTarget:self action:@selector(btnUserBrowsePicClicked:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
@@ -99,6 +137,8 @@
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:indexPath.row];
             }
+            cellTags.btnCalender.tag=indexPath.row;
+            cellTags.lblCalender.text=strDate;
             [cellTags.btnCalender addTarget:self action:@selector(btnCalenderPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
@@ -106,6 +146,15 @@
             if (!cellTags)
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:indexPath.row];
+            }
+            cellTags.btnRecording.tag=indexPath.row;
+            if (appDel.dataVoice.length>0)
+            {
+                cellTags.lblRecording.text=@"MyRecording.m4a";
+            }
+            else
+            {
+                cellTags.lblRecording.text=@"No recording voice";
             }
             [cellTags.btnRecording addTarget:self action:@selector(btnRecordingPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -134,6 +183,7 @@
 
 -(void)btnUserBrowsePicClicked:(id)sender
 {
+    [self updateTableView:[sender tag]];
     NSLog(@"preseed");
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -157,6 +207,8 @@
 
 -(void)btnCalenderPressed:(id)sender
 {
+    [self updateTableView:[sender tag]];
+    [self.view addSubview:calendar];
 }
 
 -(void)btnRecordingPressed:(id)sender
@@ -210,7 +262,98 @@
     [appDel.arrCreateTagsUploadImage addObject:imgChosen];
     [picker dismissViewControllerAnimated:YES completion:^{
         [tblAThirdStep reloadData ];
+        [self uploadImage:imgChosen];
     }] ;
+}
+
+-(void)uploadImage:(UIImage *)img1
+{
+    [[CreateTagsThirdStepService service]callThirdStepServiceWithImage:img1 livingTagsID:self.strTempID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        NSLog(@"%@",result);
+    }];
+}
+#pragma mark
+#pragma mark update tableview
+#pragma mark
+
+-(void)updateTableView:(NSInteger)i
+{
+    NSLog(@"%ld",(long)i);
+    NSLog(@"%lu",(unsigned long)appDel.arrStatus.count);
+    if (appDel.arrStatus.count<3)
+    {
+        if (appDel.arrStatus.count==i+1)
+        {
+            [appDel.arrStatus addObject:@"1"];
+            [tblAThirdStep beginUpdates];
+            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[appDel.arrStatus count]-1 inSection:0]];
+            [tblAThirdStep insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+            [tblAThirdStep endUpdates];
+        }
+        else
+        {
+            NSLog(@"Wrong Position");
+        }
+    }
+    else
+    {
+        NSLog(@"PAGE LOADED FULL");
+    }
+}
+
+#pragma mark
+#pragma mark CKCALENDER METHODS
+#pragma mark
+
+- (void)calendar:(CKCalendarView *)calendar configureDateItem:(CKDateItem *)dateItem forDate:(NSDate *)date
+{
+    // TODO: play with the coloring if we want to...
+    if ([self dateIsDisabled:date])
+    {
+        dateItem.backgroundColor = [UIColor redColor];
+        dateItem.textColor = [UIColor whiteColor];
+    }
+}
+
+- (BOOL)calendar:(CKCalendarView *)calendar willSelectDate:(NSDate *)date {
+    return ![self dateIsDisabled:date];
+}
+
+- (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date
+{
+    strDate=[self.dateFormatter stringFromDate:date];
+    [self.calendarCustom removeFromSuperview];
+    [tblAThirdStep reloadData];
+}
+
+- (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
+    if ([date laterDate:self.minimumDate] == date)
+    {
+        self.calendarCustom.backgroundColor = [UIColor grayColor];
+        return YES;
+    }
+    else
+    {
+        self.calendarCustom.backgroundColor = [UIColor grayColor];
+        return NO;
+    }
+}
+
+- (void)calendar:(CKCalendarView *)calendar didLayoutInRect:(CGRect)frame
+{
+    NSLog(@"calendar layout: %@", NSStringFromCGRect(frame));
+}
+
+- (BOOL)dateIsDisabled:(NSDate *)date
+{
+    for (NSDate *disabledDate in self.disabledDates)
+    {
+        if ([disabledDate isEqualToDate:date])
+        {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 

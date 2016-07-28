@@ -27,10 +27,11 @@ typedef NS_ENUM(NSUInteger, WEB_SERVICES) {
     WEB_SERVICES_READ_ALL_TAGS,
     WEB_SERVICES_TEMPLATE_SELECTION,
     WEB_SERVICES_LIVING_TAGS,
-    WEB_SERVICES_LIVING_TAGS_SECOND_STEP
+    WEB_SERVICES_LIVING_TAGS_SECOND_STEP,
+    WEB_SERVICES_LIVING_TAGS_THIRD_STEP
 };
 
-@interface WebServiceBaseClass : NSObject
+@interface WebServiceBaseClass : NSObject<NSURLSessionDataDelegate>
 {
     @protected
     NSURL *urlForService;
@@ -44,5 +45,8 @@ typedef NS_ENUM(NSUInteger, WEB_SERVICES) {
 -(void)hideNetworkActivity;
 
 -(void)callWebServiceWithRequest:( NSMutableURLRequest* _Nullable)request Compeltion:(void(^ _Nullable )(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))handler;
+
+-(void)callWebServiceUploadWithRequest:( NSMutableURLRequest* _Nullable)request Compeltion:(void(^ _Nullable )(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))handler;
+
 
 @end

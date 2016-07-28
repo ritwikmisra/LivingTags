@@ -26,16 +26,18 @@
     NSTimer *stopTimer;
     NSDate *startDate;
     BOOL running;
-    
 }
 
 @end
+
 
 @implementation RecordViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    btnSave.hidden=YES;
+    btnDiscard.hidden=YES;
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
                                @"MyAudioMemo.m4a",
@@ -104,6 +106,8 @@
 
 -(IBAction)btnRecordPressed:(id)sender
 {
+    btnDiscard.hidden=YES;
+    btnSave.hidden=YES;
     if (stopTimer == nil)
     {
         stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
@@ -148,6 +152,8 @@
 
 -(IBAction)btnPlayPressed:(id)sender
 {
+    btnDiscard.hidden=YES;
+    btnSave.hidden=YES;
     if (stopTimer == nil)
     {
         stopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
@@ -177,7 +183,6 @@
     [btnStop setBackgroundImage:[UIImage imageNamed:@"stop_enable"] forState:UIControlStateNormal];
     [btnPlay setEnabled:NO];
     [btnPlay setBackgroundImage:[UIImage imageNamed:@"play_disable"] forState:UIControlStateNormal];
-    
 }
 
 -(IBAction)btnStopPressed:(id)sender
@@ -224,11 +229,13 @@
      [self.delegate getVoice:strBase64Conversion];
      }
      }*/
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)btnDiscardPressed:(id)sender
 {
-    
+    appDel.dataVoice=nil;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark
@@ -237,13 +244,17 @@
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag
 {
-
+    btnSave.hidden=NO;
+    btnDiscard.hidden=NO;
+    appDel.dataVoice = [NSData dataWithContentsOfURL:recorder.url];
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
+    btnDiscard.hidden=NO;
+    btnSave.hidden=NO;
     [self resetTimer];
-    NSData *data = [NSData dataWithContentsOfURL:recorder.url];
+    appDel.dataVoice= [NSData dataWithContentsOfURL:recorder.url];
     //base 64 conversion
     NSError *playerError;
     AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:&playerError];
@@ -255,7 +266,6 @@
     [btnStop setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
     [btnPlay setEnabled:YES];
     [btnPlay setBackgroundImage:[UIImage imageNamed:@"play_enable"] forState:UIControlStateNormal];
-
 }
 
 #pragma mark

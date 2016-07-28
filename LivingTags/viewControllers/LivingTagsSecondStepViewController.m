@@ -11,6 +11,7 @@
 #import "CreateTagsSecondStepCell.h"
 #import "LivingTagsSecondStepService.h"
 #import "ModelCreateTagsSecondStep.h"
+#import "LivingTagsThirdStepViewController.h"
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,CKCalendarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -726,6 +727,19 @@
             }
         }
     }];
+}
+
+#pragma mark
+#pragma mark PREPARE FOR SEGUE
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueThirdStep"])
+    {
+        LivingTagsThirdStepViewController *master=[segue destinationViewController];
+        master.strTempID=self.strTemplateID;
+    }
 }
 
 @end

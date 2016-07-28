@@ -28,7 +28,8 @@ NSString *const strAPI[]={
     [WEB_SERVICES_GET_ALL_TEMPLATES]     =          @"Livingtags/getAllTemplates",
     [WEB_SERVICES_READ_ALL_TAGS]               =          @"Livingtags/readtags",
     [WEB_SERVICES_TEMPLATE_SELECTION]   =           @"Livingtags/createLivingTag",
-    [WEB_SERVICES_LIVING_TAGS_SECOND_STEP] =@"Livingtags/updateLivingTag"
+    [WEB_SERVICES_LIVING_TAGS_SECOND_STEP] =@"Livingtags/updateLivingTag",
+    [WEB_SERVICES_LIVING_TAGS_THIRD_STEP]   =@"Livingtagassets/uploadPhoto"
 };
 
 
@@ -69,4 +70,33 @@ NSString *const strAPI[]={
     }];
     [dataTask resume];
 }
+
+-(void)callWebServiceUploadWithRequest:( NSMutableURLRequest* _Nullable)request Compeltion:(void(^ _Nullable )(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))handler
+{
+    NSURLSessionConfiguration *backgroundConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.com.livingTags"];
+    NSURLSession *defaultSession =[NSURLSession sessionWithConfiguration:backgroundConfiguration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionUploadTask *dataTask=[defaultSession uploadTaskWithStreamedRequest:request];
+    [dataTask resume];
+}
+
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+{
+    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSLog(@"%@",response);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+    if (error)
+    {
+        NSLog(@"%@ failed: %@", task.originalRequest.URL, error);
+    }
+}
+
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
+{
+    NSLog(@"Bytes sent%lld\n totalBytesSent %lld\nExpectedTosend %lld",bytesSent,totalBytesSent,totalBytesExpectedToSend);
+}
+
 @end

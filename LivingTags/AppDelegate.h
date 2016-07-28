@@ -33,7 +33,10 @@
 @property(nonatomic,strong)ModelUser *objUser;
 @property(nonatomic,strong)ModelLivingTagsViewedAndCreated *objLivingTags;
 
+@property(nonatomic,strong)NSMutableArray *arrStatus;
+
 @property(nonatomic,strong)NSMutableArray *arrCreateTagsUploadImage;
+@property(nonatomic,strong)NSData *dataVoice;
 
  
 - (void)saveContext;

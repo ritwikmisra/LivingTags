@@ -15,34 +15,23 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="116" height="115"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jak-nZ-bVz">
-                        <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jak-nZ-bVz">
+                        <rect key="frame" x="-1" y="0.0" width="117" height="115"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="rNz-Fr-9g8">
-                        <rect key="frame" x="12" y="6" width="92" height="92"/>
+                        <rect key="frame" x="12" y="12" width="92" height="92"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="rNz-Fr-9g8" secondAttribute="height" placeholder="YES" id="LVV-i2-3IK"/>
                         </constraints>
                     </imageView>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-iP-TE9">
-                        <rect key="frame" x="20" y="103" width="76" height="5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="5" id="brk-9S-5Mr"/>
-                        </constraints>
-                        <color key="progressTintColor" red="0.42352941179999998" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="trackTintColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                    </progressView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="Jak-nZ-bVz" firstAttribute="centerY" secondItem="rNz-Fr-9g8" secondAttribute="centerY" multiplier="1.1" id="4Gg-ac-wpg"/>
+                <constraint firstItem="Jak-nZ-bVz" firstAttribute="centerY" secondItem="rNz-Fr-9g8" secondAttribute="centerY" id="4Gg-ac-wpg"/>
                 <constraint firstItem="Jak-nZ-bVz" firstAttribute="height" secondItem="rNz-Fr-9g8" secondAttribute="height" multiplier="1.25" id="5wy-Db-HiV"/>
-                <constraint firstItem="rNz-Fr-9g8" firstAttribute="width" secondItem="dgO-iP-TE9" secondAttribute="width" multiplier="1.2" id="Hbu-mQ-TD5"/>
                 <constraint firstItem="Jak-nZ-bVz" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="KOr-nB-O5F"/>
-                <constraint firstItem="dgO-iP-TE9" firstAttribute="centerX" secondItem="rNz-Fr-9g8" secondAttribute="centerX" id="Mv3-8i-aBq"/>
                 <constraint firstItem="Jak-nZ-bVz" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="ZTr-bg-zoi"/>
-                <constraint firstItem="dgO-iP-TE9" firstAttribute="top" secondItem="rNz-Fr-9g8" secondAttribute="bottom" multiplier="1.05" id="dth-gG-M3d"/>
                 <constraint firstItem="Jak-nZ-bVz" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="rNv-E7-4t2"/>
                 <constraint firstItem="rNz-Fr-9g8" firstAttribute="centerX" secondItem="Jak-nZ-bVz" secondAttribute="centerX" id="rkv-US-Fr4"/>
                 <constraint firstItem="Jak-nZ-bVz" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="sVD-2g-Pcb"/>
@@ -50,7 +39,6 @@
             <size key="customSize" width="96" height="106"/>
             <connections>
                 <outlet property="img" destination="rNz-Fr-9g8" id="zdW-kf-fde"/>
-                <outlet property="progressImageUpload" destination="dgO-iP-TE9" id="pXM-pC-dWp"/>
             </connections>
             <point key="canvasLocation" x="447" y="183.5"/>
         </collectionViewCell>

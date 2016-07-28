@@ -172,8 +172,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnRecording" destination="13J-B0-FQY" id="8pp-aV-GXi"/>
+                <outlet property="lblRecording" destination="xY6-y7-1Lm" id="Rqb-h6-Rcl"/>
             </connections>
-            <point key="canvasLocation" x="596.5" y="234"/>
+            <point key="canvasLocation" x="215.5" y="102"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="tKF-mR-tAB" customClass="CreateTagsThirdStepCell">
             <rect key="frame" x="0.0" y="0.0" width="295" height="72"/>
