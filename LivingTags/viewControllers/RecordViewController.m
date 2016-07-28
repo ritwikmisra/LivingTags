@@ -262,7 +262,8 @@
 #pragma mark STOPWATCH methods
 #pragma mark
 
--(void)updateTimer{
+-(void)updateTimer
+{
     NSDate *currentDate = [NSDate date];
     NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:startDate];
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
