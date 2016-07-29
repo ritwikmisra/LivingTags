@@ -174,77 +174,119 @@
                 <outlet property="btnRecording" destination="13J-B0-FQY" id="8pp-aV-GXi"/>
                 <outlet property="lblRecording" destination="xY6-y7-1Lm" id="Rqb-h6-Rcl"/>
             </connections>
-            <point key="canvasLocation" x="215.5" y="102"/>
+            <point key="canvasLocation" x="286.5" y="29"/>
         </tableViewCell>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="tKF-mR-tAB" customClass="CreateTagsThirdStepCell">
-            <rect key="frame" x="0.0" y="0.0" width="295" height="72"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="36" id="tKF-mR-tAB" customClass="CreateTagsThirdStepCell">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tKF-mR-tAB" id="0ba-AD-dTU">
-                <rect key="frame" x="0.0" y="0.0" width="295" height="71"/>
+                <rect key="frame" x="0.0" y="0.0" width="295" height="35"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R2c-6b-a7v">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="35"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T42-VK-Kid">
+                        <rect key="frame" x="98" y="4" width="99" height="27"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="Add Photos">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="R2c-6b-a7v" firstAttribute="centerX" secondItem="0ba-AD-dTU" secondAttribute="centerX" id="9oh-qF-aVW"/>
+                    <constraint firstItem="R2c-6b-a7v" firstAttribute="centerY" secondItem="0ba-AD-dTU" secondAttribute="centerY" id="J4X-64-jpk"/>
+                    <constraint firstItem="R2c-6b-a7v" firstAttribute="height" secondItem="T42-VK-Kid" secondAttribute="height" multiplier="1.3" id="PlE-Q8-mP1"/>
+                    <constraint firstItem="R2c-6b-a7v" firstAttribute="width" secondItem="T42-VK-Kid" secondAttribute="width" multiplier="3" id="R9U-hi-dLV"/>
+                    <constraint firstItem="T42-VK-Kid" firstAttribute="centerY" secondItem="R2c-6b-a7v" secondAttribute="centerY" id="o1e-f2-Ej3"/>
+                    <constraint firstItem="T42-VK-Kid" firstAttribute="centerX" secondItem="R2c-6b-a7v" secondAttribute="centerX" id="plf-e3-1GA"/>
+                    <constraint firstItem="R2c-6b-a7v" firstAttribute="width" secondItem="0ba-AD-dTU" secondAttribute="width" id="uwB-lU-VnE"/>
+                    <constraint firstItem="R2c-6b-a7v" firstAttribute="height" secondItem="0ba-AD-dTU" secondAttribute="height" id="wqt-nW-1yL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnAddPhoto" destination="T42-VK-Kid" id="Rvi-gh-eNJ"/>
+            </connections>
+            <point key="canvasLocation" x="581.5" y="164"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="apy-hu-lnf" customClass="CreateTagsThirdStepCell">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="apy-hu-lnf" id="Htj-3x-k3Q">
+                <rect key="frame" x="0.0" y="0.0" width="295" height="71"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zpm-VI-QiK">
                         <rect key="frame" x="0.0" y="0.0" width="295" height="71"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you want to add another picture?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZf-VM-qjD">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any captions?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oF-XQ-9NH">
                         <rect key="frame" x="0.0" y="0.0" width="295" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnL-Fh-Cbd">
-                        <rect key="frame" x="0.0" y="28" width="211" height="28"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byg-SZ-GNf">
-                                <rect key="frame" x="0.0" y="0.0" width="98" height="28"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="YES">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAg-VG-ntD">
-                                <rect key="frame" x="113" y="0.0" width="98" height="28"/>
-                                <color key="backgroundColor" red="0.42352941179999998" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="NO">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="byg-SZ-GNf" firstAttribute="centerY" secondItem="hnL-Fh-Cbd" secondAttribute="centerY" id="2bh-Qz-cP2"/>
-                            <constraint firstItem="XAg-VG-ntD" firstAttribute="width" secondItem="byg-SZ-GNf" secondAttribute="width" id="Dh2-Gx-kdc"/>
-                            <constraint firstAttribute="width" secondItem="byg-SZ-GNf" secondAttribute="width" multiplier="2.15" id="I7R-4e-pe1"/>
-                            <constraint firstItem="XAg-VG-ntD" firstAttribute="centerY" secondItem="hnL-Fh-Cbd" secondAttribute="centerY" id="QRF-zR-7rb"/>
-                            <constraint firstItem="XAg-VG-ntD" firstAttribute="height" secondItem="byg-SZ-GNf" secondAttribute="height" id="esD-vQ-dcP"/>
-                            <constraint firstAttribute="trailing" secondItem="XAg-VG-ntD" secondAttribute="trailing" id="fbX-ed-GAm"/>
-                            <constraint firstItem="byg-SZ-GNf" firstAttribute="leading" secondItem="hnL-Fh-Cbd" secondAttribute="leading" id="lCX-gq-pxz"/>
-                            <constraint firstItem="byg-SZ-GNf" firstAttribute="height" secondItem="hnL-Fh-Cbd" secondAttribute="height" id="vOz-KU-B1e"/>
-                        </constraints>
-                    </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Captions" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5n-zZ-MvX">
+                        <rect key="frame" x="0.0" y="28" width="295" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="tZf-VM-qjD" firstAttribute="width" secondItem="hnL-Fh-Cbd" secondAttribute="width" multiplier="1.4" id="3s0-6X-KJW"/>
-                    <constraint firstItem="R2c-6b-a7v" firstAttribute="centerX" secondItem="0ba-AD-dTU" secondAttribute="centerX" id="9oh-qF-aVW"/>
-                    <constraint firstItem="hnL-Fh-Cbd" firstAttribute="top" secondItem="tZf-VM-qjD" secondAttribute="bottom" multiplier="1.2" id="DQE-RO-jLQ"/>
-                    <constraint firstItem="R2c-6b-a7v" firstAttribute="centerY" secondItem="0ba-AD-dTU" secondAttribute="centerY" id="J4X-64-jpk"/>
-                    <constraint firstItem="tZf-VM-qjD" firstAttribute="width" secondItem="R2c-6b-a7v" secondAttribute="width" id="OYe-6t-GTH"/>
-                    <constraint firstItem="R2c-6b-a7v" firstAttribute="height" secondItem="hnL-Fh-Cbd" secondAttribute="height" multiplier="2.5" id="XNt-Lg-oUM"/>
-                    <constraint firstItem="tZf-VM-qjD" firstAttribute="centerX" secondItem="R2c-6b-a7v" secondAttribute="centerX" id="dVB-fG-ULd"/>
-                    <constraint firstItem="R2c-6b-a7v" firstAttribute="height" secondItem="tZf-VM-qjD" secondAttribute="height" multiplier="3" id="ffp-AQ-GYP"/>
-                    <constraint firstItem="hnL-Fh-Cbd" firstAttribute="leading" secondItem="tZf-VM-qjD" secondAttribute="leading" id="qn0-jA-tnb"/>
-                    <constraint firstItem="R2c-6b-a7v" firstAttribute="width" secondItem="0ba-AD-dTU" secondAttribute="width" id="uwB-lU-VnE"/>
-                    <constraint firstItem="R2c-6b-a7v" firstAttribute="height" secondItem="0ba-AD-dTU" secondAttribute="height" id="wqt-nW-1yL"/>
-                    <constraint firstItem="tZf-VM-qjD" firstAttribute="top" secondItem="R2c-6b-a7v" secondAttribute="top" id="yBW-tz-mYN"/>
+                    <constraint firstItem="zpm-VI-QiK" firstAttribute="height" secondItem="5oF-XQ-9NH" secondAttribute="height" multiplier="3" id="12J-nh-PCx"/>
+                    <constraint firstItem="5oF-XQ-9NH" firstAttribute="width" secondItem="zpm-VI-QiK" secondAttribute="width" id="3G0-Xz-lL6"/>
+                    <constraint firstItem="zpm-VI-QiK" firstAttribute="width" secondItem="Htj-3x-k3Q" secondAttribute="width" id="53l-t5-ZEW"/>
+                    <constraint firstItem="zpm-VI-QiK" firstAttribute="centerX" secondItem="Htj-3x-k3Q" secondAttribute="centerX" id="Igl-ya-n0l"/>
+                    <constraint firstItem="zpm-VI-QiK" firstAttribute="height" secondItem="H5n-zZ-MvX" secondAttribute="height" multiplier="2.5" id="RO8-hJ-zcp"/>
+                    <constraint firstItem="zpm-VI-QiK" firstAttribute="centerY" secondItem="Htj-3x-k3Q" secondAttribute="centerY" id="S4g-Fx-lxT"/>
+                    <constraint firstItem="5oF-XQ-9NH" firstAttribute="top" secondItem="zpm-VI-QiK" secondAttribute="top" id="XwS-dp-oVB"/>
+                    <constraint firstItem="zpm-VI-QiK" firstAttribute="height" secondItem="Htj-3x-k3Q" secondAttribute="height" id="fvW-Ar-Xvh"/>
+                    <constraint firstItem="5oF-XQ-9NH" firstAttribute="centerX" secondItem="zpm-VI-QiK" secondAttribute="centerX" id="hqG-Oo-gk7"/>
+                    <constraint firstItem="H5n-zZ-MvX" firstAttribute="width" secondItem="5oF-XQ-9NH" secondAttribute="width" id="lKx-gX-DwL"/>
+                    <constraint firstItem="H5n-zZ-MvX" firstAttribute="top" secondItem="5oF-XQ-9NH" secondAttribute="bottom" multiplier="1.2" id="llV-Ob-TKZ"/>
+                    <constraint firstItem="H5n-zZ-MvX" firstAttribute="centerX" secondItem="5oF-XQ-9NH" secondAttribute="centerX" id="nio-Au-Vk5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnMorePicNo" destination="XAg-VG-ntD" id="zou-9c-1C0"/>
-                <outlet property="btnMorePicYes" destination="byg-SZ-GNf" id="p31-yg-zBn"/>
+                <outlet property="txtCaptions" destination="H5n-zZ-MvX" id="vCV-3l-fQY"/>
             </connections>
-            <point key="canvasLocation" x="531.5" y="214"/>
+            <point key="canvasLocation" x="438.5" y="128"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="36" id="qEE-a3-z35" customClass="CreateTagsThirdStepCell">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qEE-a3-z35" id="zGw-W8-uX3">
+                <rect key="frame" x="0.0" y="0.0" width="295" height="35"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="90J-I3-f65">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="35"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qv9-eq-9e0">
+                        <rect key="frame" x="98" y="4" width="99" height="27"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="Next">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="90J-I3-f65" firstAttribute="width" secondItem="qv9-eq-9e0" secondAttribute="width" multiplier="3" id="AYq-6W-Q3q"/>
+                    <constraint firstItem="qv9-eq-9e0" firstAttribute="centerY" secondItem="90J-I3-f65" secondAttribute="centerY" id="BQu-b7-aMI"/>
+                    <constraint firstItem="90J-I3-f65" firstAttribute="width" secondItem="zGw-W8-uX3" secondAttribute="width" id="HFt-1y-5bY"/>
+                    <constraint firstItem="90J-I3-f65" firstAttribute="centerY" secondItem="zGw-W8-uX3" secondAttribute="centerY" id="Mik-b1-y4g"/>
+                    <constraint firstItem="90J-I3-f65" firstAttribute="centerX" secondItem="zGw-W8-uX3" secondAttribute="centerX" id="SNN-yg-pF9"/>
+                    <constraint firstItem="qv9-eq-9e0" firstAttribute="centerX" secondItem="90J-I3-f65" secondAttribute="centerX" id="US2-ra-0xB"/>
+                    <constraint firstItem="90J-I3-f65" firstAttribute="height" secondItem="qv9-eq-9e0" secondAttribute="height" multiplier="1.3" id="e56-Tu-4JD"/>
+                    <constraint firstItem="90J-I3-f65" firstAttribute="height" secondItem="zGw-W8-uX3" secondAttribute="height" id="hBE-Bn-0Gx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnNext" destination="qv9-eq-9e0" id="nNh-7q-uNf"/>
+            </connections>
+            <point key="canvasLocation" x="539.5" y="181"/>
         </tableViewCell>
     </objects>
     <resources>

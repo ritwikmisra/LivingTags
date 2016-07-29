@@ -33,7 +33,7 @@ static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqo
 {
     // Override point for customization after application launch.
     self.arrStatus=[[NSMutableArray alloc]init];
-    self.arrStatus=[[NSMutableArray alloc]initWithObjects:@"1", nil];
+    self.arrStatus=[[NSMutableArray alloc]initWithObjects:@"1",@"1",@"1",@"1", nil];
     [Fabric with:@[[Crashlytics class]]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     //Change the host name here to change the server you want to monitor.

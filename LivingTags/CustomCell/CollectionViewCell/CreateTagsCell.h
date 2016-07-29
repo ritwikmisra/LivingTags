@@ -12,4 +12,5 @@
 
 @property(nonatomic,strong)IBOutlet UIImageView *img;
 @property(nonatomic,strong)IBOutlet UIProgressView *progressImageUpload;
+
 @end

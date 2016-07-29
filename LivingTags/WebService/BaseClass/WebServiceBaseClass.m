@@ -8,6 +8,7 @@
 
 #import "WebServiceBaseClass.h"
 #import "NetworkActivityViewController.h"
+#import "CreateTagsThirdStepCell.h"
 
 //http://carlifestyle.digiopia.in/user/registration
 
@@ -97,6 +98,11 @@ NSString *const strAPI[]={
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
 {
     NSLog(@"Bytes sent%lld\n totalBytesSent %lld\nExpectedTosend %lld",bytesSent,totalBytesSent,totalBytesExpectedToSend);
+    float progress=(float)totalBytesSent/(float)totalBytesExpectedToSend;
+    NSLog(@"%f",progress);
+    CreateTagsThirdStepCell *master=[[CreateTagsThirdStepCell alloc]init];
+    //uploadSliderWithNumber
+    [master performSelector:@selector(uploadSliderWithNumber:) withObject:[NSNumber numberWithFloat:progress]];
 }
 
 @end

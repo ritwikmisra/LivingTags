@@ -14,13 +14,15 @@
 @property (nonatomic,strong)IBOutlet UIButton *btnBrowse;
 @property(nonatomic,strong)IBOutlet UICollectionView *collPics;
 
+@property(nonatomic,strong)IBOutlet UITextField *txtCaptions;
+
 @property(nonatomic,strong)IBOutlet UIButton *btnCalender;
 @property(nonatomic,strong)IBOutlet UILabel *lblCalender;
 
 @property(nonatomic,strong) IBOutlet UIButton *btnRecording;
 
-@property(nonatomic,strong)IBOutlet UIButton *btnMorePicYes;
-@property(nonatomic,strong)IBOutlet UIButton *btnMorePicNo;
+@property(nonatomic,strong)IBOutlet UIButton *btnNext;
+@property(nonatomic,strong)IBOutlet UIButton *btnAddPhoto;
 
 @property(nonatomic,strong)IBOutlet UILabel *lblRecording;
 

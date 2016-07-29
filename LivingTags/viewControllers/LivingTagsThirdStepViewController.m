@@ -13,7 +13,7 @@
 #import "CKCalendarView.h"
 #import "CreateTagsThirdStepService.h"
 
-@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate>
+@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -23,14 +23,13 @@
     UIImageView *img;
     CKCalendarView *calendar;
     NSString *strDate;
-
+    NSMutableDictionary *dictPicDetails;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) NSDate *minimumDate;
 @property(nonatomic, strong) NSArray *disabledDates;
-
 
 @end
 
@@ -55,12 +54,17 @@
     
     calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
+    dictPicDetails=[[NSMutableDictionary alloc]init];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     NSLog(@"%@",appDel.dataVoice);
+    if (appDel.dataVoice.length>0)
+    {
+        [dictPicDetails setObject:appDel.dataVoice forKey:@"4"];
+    }
     [tblAThirdStep reloadData];
 }
 
@@ -109,11 +113,23 @@
     switch (indexPath.row)
     {
         case 0:
-            return 180.0f;
+            return 150.0f;
             break;
-        
+            
+        case 1:
+            return 50.0f;
+            break;
+            
+        case 4:
+            return 40.0f;
+            break;
+            
+        case 5:
+            return 40.0f;
+            break;
+
         default:
-            return 70.0f;
+            return 60.0f;
             break;
     }
 }
@@ -126,7 +142,7 @@
         case 0:
             if (!cellTags)
             {
-                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:indexPath.row];
+                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:0];
             }
             cellTags.btnBrowse.tag=indexPath.row;
             [cellTags.btnBrowse addTarget:self action:@selector(btnUserBrowsePicClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -135,17 +151,35 @@
         case 1:
             if (!cellTags)
             {
-                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:indexPath.row];
+                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:4];
             }
-            cellTags.btnCalender.tag=indexPath.row;
-            cellTags.lblCalender.text=strDate;
-            [cellTags.btnCalender addTarget:self action:@selector(btnCalenderPressed:) forControlEvents:UIControlEventTouchUpInside];
+            cellTags.txtCaptions.delegate=self;
+            if ([dictPicDetails objectForKey:@"2"])
+            {
+                cellTags.txtCaptions.text=[dictPicDetails objectForKey:@"2"];
+           }
+            [cellTags.txtCaptions addTarget:self action:@selector(textfieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
             break;
-            
+             
         case 2:
             if (!cellTags)
             {
-                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:indexPath.row];
+                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:1];
+            }
+            cellTags.btnCalender.tag=indexPath.row;
+            cellTags.lblCalender.text=strDate;
+            if ([dictPicDetails objectForKey:@"3"])
+            {
+                cellTags.lblCalender.text=[dictPicDetails objectForKey:@"3"];
+
+            }
+            [cellTags.btnCalender addTarget:self action:@selector(btnCalenderPressed:) forControlEvents:UIControlEventTouchUpInside];
+            break;
+            
+        case 3:
+            if (!cellTags)
+            {
+                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:2];
             }
             cellTags.btnRecording.tag=indexPath.row;
             if (appDel.dataVoice.length>0)
@@ -159,16 +193,24 @@
             [cellTags.btnRecording addTarget:self action:@selector(btnRecordingPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
-        case 3:
+        case 4:
             if (!cellTags)
             {
-                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:indexPath.row];
+                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:3];
             }
-            [cellTags.btnMorePicNo addTarget:self action:@selector(btnNoPressed:) forControlEvents:UIControlEventTouchUpInside];
-            [cellTags.btnMorePicYes addTarget:self action:@selector(btnYesPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [cellTags.btnAddPhoto addTarget:self action:@selector(btnAddPhoto:) forControlEvents:UIControlEventTouchUpInside];
 
             break;
 
+        case 5:
+            if (!cellTags)
+            {
+                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:5];
+            }
+            [cellTags.btnNext addTarget:self action:@selector(btnNext:) forControlEvents:UIControlEventTouchUpInside];
+            
+            break;
+            
         default:
             break;
     }
@@ -183,8 +225,36 @@
 
 -(void)btnUserBrowsePicClicked:(id)sender
 {
-    [self updateTableView:[sender tag]];
     NSLog(@"preseed");
+    [self imageUploadPopUp];
+}
+
+-(void)btnCalenderPressed:(id)sender
+{
+    [self.view addSubview:calendar];
+}
+
+-(void)btnRecordingPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"segueAudio" sender:self];
+}
+
+-(void)btnNext:(id)sender
+{
+
+}
+
+-(void)btnAddPhoto:(id)sender
+{
+    [self updateTableView:5];
+}
+
+#pragma mark
+#pragma mark IMAGE PICKER CONTROLLER METHODS
+#pragma mark
+
+-(void)imageUploadPopUp
+{
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self imageUploadFromCamera];
@@ -204,29 +274,6 @@
         
     }];
 }
-
--(void)btnCalenderPressed:(id)sender
-{
-    [self updateTableView:[sender tag]];
-    [self.view addSubview:calendar];
-}
-
--(void)btnRecordingPressed:(id)sender
-{
-    [self performSegueWithIdentifier:@"segueAudio" sender:self];
-}
-
--(void)btnNoPressed:(id)sender
-{
-}
-
--(void)btnYesPressed:(id)sender
-{
-}
-
-#pragma mark
-#pragma mark IMAGE PICKER CONTROLLER METHODS
-#pragma mark
 
 -(void)imageUploadFromCamera
 {
@@ -262,7 +309,7 @@
     [appDel.arrCreateTagsUploadImage addObject:imgChosen];
     [picker dismissViewControllerAnimated:YES completion:^{
         [tblAThirdStep reloadData ];
-        [self uploadImage:imgChosen];
+        [dictPicDetails setObject:imgChosen forKey:@"1"];
     }] ;
 }
 
@@ -278,26 +325,28 @@
 
 -(void)updateTableView:(NSInteger)i
 {
-    NSLog(@"%ld",(long)i);
-    NSLog(@"%lu",(unsigned long)appDel.arrStatus.count);
-    if (appDel.arrStatus.count<3)
+    if (i==4)
     {
-        if (appDel.arrStatus.count==i+1)
+        if (appDel.arrStatus.count<=5)
         {
             [appDel.arrStatus addObject:@"1"];
             [tblAThirdStep beginUpdates];
-            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[appDel.arrStatus count]-1 inSection:0]];
+            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
             [tblAThirdStep insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
             [tblAThirdStep endUpdates];
-        }
-        else
-        {
-            NSLog(@"Wrong Position");
+            
         }
     }
     else
     {
-        NSLog(@"PAGE LOADED FULL");
+        if (appDel.arrStatus.count<=6)
+        {
+            [appDel.arrStatus addObject:@"1"];
+            [tblAThirdStep beginUpdates];
+            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
+            [tblAThirdStep insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+            [tblAThirdStep endUpdates];
+        }
     }
 }
 
@@ -324,6 +373,7 @@
     strDate=[self.dateFormatter stringFromDate:date];
     [self.calendarCustom removeFromSuperview];
     [tblAThirdStep reloadData];
+    [self updateTableView:4];
 }
 
 - (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
@@ -356,5 +406,40 @@
     return NO;
 }
 
+#pragma mark
+#pragma mark textfield delegates
+#pragma mark
+
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+-(void)textfieldEditingChanged:(id)sender
+{
+    UITextField *text=(id)sender;
+    [dictPicDetails setObject:text.text forKey:@"2"];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark
+#pragma mark webservice called
+#pragma mark
+
+-(void)callWebService
+{
+    
+}
 
 @end

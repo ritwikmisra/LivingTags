@@ -10,8 +10,8 @@
 
 @implementation CreateTagsCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (void)awakeFromNib
+{
+    [self.progressImageUpload setProgress:0.0f];
 }
-
 @end
