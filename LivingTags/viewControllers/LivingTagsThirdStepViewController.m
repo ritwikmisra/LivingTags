@@ -334,7 +334,6 @@
             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
             [tblAThirdStep insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
             [tblAThirdStep endUpdates];
-            
         }
     }
     else
