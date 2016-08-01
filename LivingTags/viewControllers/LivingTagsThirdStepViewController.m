@@ -12,6 +12,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "CKCalendarView.h"
 #import "CreateTagsThirdStepService.h"
+#import "PreviewViewController.h"
 
 @interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate>
 {
@@ -25,6 +26,7 @@
     NSString *strDate;
     NSMutableDictionary *dictPicDetails;
     BOOL isFirstImage;
+    IBOutlet UIButton *btnPreview;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -36,10 +38,12 @@
 
 @implementation LivingTagsThirdStepViewController
 
+//seguePreview
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     isFirstImage=NO;
+    btnPreview.hidden=YES;
     tblAThirdStep.separatorStyle=UITableViewCellSeparatorStyleNone;
     [tblAThirdStep setBounces:NO];
     appDel.arrCreateTagsUploadImage=[[NSMutableArray alloc]init];
@@ -270,6 +274,12 @@
     NSLog(@"%@",dictPicDetails);
 }
 
+-(IBAction)btnPreviewPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"seguePreview" sender:self];
+
+}
+
 #pragma mark
 #pragma mark IMAGE PICKER CONTROLLER METHODS
 #pragma mark
@@ -322,7 +332,6 @@
         
     }];
 }
-
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -457,6 +466,7 @@
     NSLog(@"%@",dictPicDetails);
     if ([dictPicDetails objectForKey:@"3"] && [dictPicDetails objectForKey:@"1"])
     {
+        btnPreview.hidden=NO;
         [[CreateTagsThirdStepService service]callThirdStepServiceWithImage:dictPicDetails livingTagsID:self.strTempID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         }];
     }
@@ -465,4 +475,17 @@
     [tblAThirdStep reloadData];
 }
 
+
+#pragma mark
+#pragma mark PREPARE FOR SEGUE
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@""])
+    {
+        PreviewViewController *master=[segue destinationViewController];
+        master.strTemplateID=self.strTempID;
+    }
+}
 @end
