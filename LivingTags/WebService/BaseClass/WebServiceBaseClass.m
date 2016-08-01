@@ -30,7 +30,11 @@ NSString *const strAPI[]={
     [WEB_SERVICES_READ_ALL_TAGS]               =          @"Livingtags/readtags",
     [WEB_SERVICES_TEMPLATE_SELECTION]   =           @"Livingtags/createLivingTag",
     [WEB_SERVICES_LIVING_TAGS_SECOND_STEP] =@"Livingtags/updateLivingTag",
-    [WEB_SERVICES_LIVING_TAGS_THIRD_STEP]   =@"Livingtagassets/uploadPhoto"
+    [WEB_SERVICES_LIVING_TAGS_THIRD_STEP]   =@"Livingtagassets/uploadPhoto",
+    [WEB_SERVICES_CREATE_TEMPLATES_UPLOAD_PROFILE_PIC]=@"Livingtags/updatePhotoUri",
+    [WEB_SERVICES_CREATE_TEMPLATES_UPLOAD_COVER_PIC]=@"Livingtags/updateCoverUri",
+    [WEB_SERVICES_CREATE_TEMPLATES_PUBLISH]=@"Livingtags/publishTag",
+
 };
 
 
@@ -100,9 +104,6 @@ NSString *const strAPI[]={
     NSLog(@"Bytes sent%lld\n totalBytesSent %lld\nExpectedTosend %lld",bytesSent,totalBytesSent,totalBytesExpectedToSend);
     float progress=(float)totalBytesSent/(float)totalBytesExpectedToSend;
     NSLog(@"%f",progress);
-    CreateTagsThirdStepCell *master=[[CreateTagsThirdStepCell alloc]init];
-    //uploadSliderWithNumber
-    [master performSelector:@selector(uploadSliderWithNumber:) withObject:[NSNumber numberWithFloat:progress]];
 }
 
 @end

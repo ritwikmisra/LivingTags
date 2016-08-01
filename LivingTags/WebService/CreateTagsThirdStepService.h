@@ -12,7 +12,7 @@
 
 +(id)service;
 
--(void)callThirdStepServiceWithImage:(UIImage *)imgThirdStep livingTagsID:(NSString *)strLivingTagsID userID:(NSString *)strUserID withCompletionHandler:(WebServiceCompletion)completionHandler;
+-(void)callThirdStepServiceWithImage:(NSMutableDictionary *)dicDetails livingTagsID:(NSString *)strLivingTagsID userID:(NSString *)strUserID withCompletionHandler:(WebServiceCompletion)completionHandler;
 
 
 @end

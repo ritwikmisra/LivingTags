@@ -167,6 +167,7 @@
 
 -(IBAction)btnSidePanel:(id)sender
 {
+    [self.view endEditing:YES];
     NSLog(@"sidePanel Pressed");
     if (slideMenu.isSlideMenuVisible)
     {

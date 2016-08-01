@@ -24,6 +24,7 @@
     CKCalendarView *calendar;
     NSString *strDate;
     NSMutableDictionary *dictPicDetails;
+    BOOL isFirstImage;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -38,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isFirstImage=NO;
     tblAThirdStep.separatorStyle=UITableViewCellSeparatorStyleNone;
     [tblAThirdStep setBounces:NO];
     appDel.arrCreateTagsUploadImage=[[NSMutableArray alloc]init];
@@ -113,9 +115,12 @@
     switch (indexPath.row)
     {
         case 0:
-            return 150.0f;
+            if (isFirstImage==NO)
+            {
+                return 150.0f;
+            }
+            return 120.0f;
             break;
-            
         case 1:
             return 50.0f;
             break;
@@ -140,14 +145,24 @@
     switch (indexPath.row)
     {
         case 0:
-            if (!cellTags)
+            if (isFirstImage==NO)
             {
-                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:0];
+                if (!cellTags)
+                {
+                    cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:6];
+                }
+                cellTags.btnBrowse.tag=indexPath.row;
+                [cellTags.btnBrowse addTarget:self action:@selector(btnUserBrowsePicClicked:) forControlEvents:UIControlEventTouchUpInside];
+                break;
             }
-            cellTags.btnBrowse.tag=indexPath.row;
-            [cellTags.btnBrowse addTarget:self action:@selector(btnUserBrowsePicClicked:) forControlEvents:UIControlEventTouchUpInside];
-            break;
-            
+            else
+            {
+                if (!cellTags)
+                {
+                    cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:0];
+                }
+                break;
+            }
         case 1:
             if (!cellTags)
             {
@@ -247,6 +262,12 @@
 -(void)btnAddPhoto:(id)sender
 {
     [self updateTableView:5];
+    [self performSelector:@selector(imageUploadPopUp) withObject:nil afterDelay:1.0f];
+    // call webservice in a separate thread
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self callWebService];
+    });
+    NSLog(@"%@",dictPicDetails);
 }
 
 #pragma mark
@@ -308,17 +329,12 @@
     UIImage *imgChosen=info[UIImagePickerControllerEditedImage] ;
     [appDel.arrCreateTagsUploadImage addObject:imgChosen];
     [picker dismissViewControllerAnimated:YES completion:^{
+        isFirstImage=YES;
         [tblAThirdStep reloadData ];
         [dictPicDetails setObject:imgChosen forKey:@"1"];
     }] ;
 }
 
--(void)uploadImage:(UIImage *)img1
-{
-    [[CreateTagsThirdStepService service]callThirdStepServiceWithImage:img1 livingTagsID:self.strTempID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        NSLog(@"%@",result);
-    }];
-}
 #pragma mark
 #pragma mark update tableview
 #pragma mark
@@ -327,7 +343,7 @@
 {
     if (i==4)
     {
-        if (appDel.arrStatus.count<=5)
+        if (appDel.arrStatus.count==4)
         {
             [appDel.arrStatus addObject:@"1"];
             [tblAThirdStep beginUpdates];
@@ -338,7 +354,7 @@
     }
     else
     {
-        if (appDel.arrStatus.count<=6)
+        if (appDel.arrStatus.count==5)
         {
             [appDel.arrStatus addObject:@"1"];
             [tblAThirdStep beginUpdates];
@@ -370,9 +386,10 @@
 - (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date
 {
     strDate=[self.dateFormatter stringFromDate:date];
+    [dictPicDetails setObject:strDate forKey:@"3"];
     [self.calendarCustom removeFromSuperview];
-    [tblAThirdStep reloadData];
     [self updateTableView:4];
+    [tblAThirdStep reloadData];
 }
 
 - (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
@@ -409,7 +426,6 @@
 #pragma mark textfield delegates
 #pragma mark
 
-
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     
@@ -438,7 +454,15 @@
 
 -(void)callWebService
 {
-    
+    NSLog(@"%@",dictPicDetails);
+    if ([dictPicDetails objectForKey:@"3"] && [dictPicDetails objectForKey:@"1"])
+    {
+        [[CreateTagsThirdStepService service]callThirdStepServiceWithImage:dictPicDetails livingTagsID:self.strTempID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        }];
+    }
+    [dictPicDetails removeAllObjects];
+    NSLog(@"%@",dictPicDetails);
+    [tblAThirdStep reloadData];
 }
 
 @end

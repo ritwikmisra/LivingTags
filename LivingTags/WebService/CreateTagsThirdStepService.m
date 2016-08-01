@@ -20,12 +20,11 @@
     return master;
 }
 
--(void)callThirdStepServiceWithImage:(UIImage *)imgThirdStep livingTagsID:(NSString *)strLivingTagsID userID:(NSString *)strUserID withCompletionHandler:(WebServiceCompletion)completionHandler
+-(void)callThirdStepServiceWithImage:(NSMutableDictionary *)dicDetails livingTagsID:(NSString *)strLivingTagsID userID:(NSString *)strUserID withCompletionHandler:(WebServiceCompletion)completionHandler
 {
     if (appDel.isRechable)
     {
         NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:urlForService cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:180.0];
-        
         [request setHTTPMethod:@"POST"];
         NSMutableData *body = [NSMutableData data];
         NSString *boundary = nil;//@"---------------------------14737800031466499882746641949";
@@ -42,23 +41,126 @@
             [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
         }];
-        NSData *imgData;
-        //The file to upload
-        imgData=UIImageJPEGRepresentation(imgThirdStep, 1);
-        if (imgThirdStep)
+        NSLog(@"%lu",(unsigned long)[dicDetails count]);
+        if ([dicDetails count]==2)
         {
-            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"asset_uri\"; filename=\"image.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[@"Content-Type: image/jpg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[NSData dataWithData:imgData]];
-            [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            NSString *str=[dicDetails objectForKey:@"3"];
+            NSDictionary *params2 = @{@"date_taken": str};
+            NSLog(@"postprams=%@",params2);
+            [params2 enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
+            }];
+            //image upload
+            NSData *imgData;
             //The file to upload
-            [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            UIImage *imgThirdStep=[dicDetails objectForKey:@"1"];
+            imgData=UIImageJPEGRepresentation(imgThirdStep, 1);
+            if (imgThirdStep)
+            {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"asset_uri\"; filename=\"image.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[@"Content-Type: image/jpg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[NSData dataWithData:imgData]];
+                [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                //The file to upload
+                [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            }
+        }
+        else if ([dicDetails count]==3)
+        {
+            //title
+            NSString *strDate=[dicDetails objectForKey:@"2"];
+            NSDictionary *paramsDate = @{@"title": strDate};
+            NSLog(@"postprams=%@",paramsDate);
+            [paramsDate enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
+            }];
+
+            //date taken
+            NSString *str=[dicDetails objectForKey:@"3"];
+            NSDictionary *params2 = @{@"date_taken": str};
+            NSLog(@"postprams=%@",params2);
+            [params2 enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
+            }];
+            
+            //image upload
+            NSData *imgData;
+            //The file to upload
+            UIImage *imgThirdStep=[dicDetails objectForKey:@"1"];
+            imgData=UIImageJPEGRepresentation(imgThirdStep, 1);
+            if (imgThirdStep)
+            {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"asset_uri\"; filename=\"image.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[@"Content-Type: image/jpg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[NSData dataWithData:imgData]];
+                [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                //The file to upload
+                [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            }
+        }
+        else
+        {
+            //title
+            NSString *strDate=[dicDetails objectForKey:@"2"];
+            NSDictionary *paramsDate = @{@"title": strDate};
+            NSLog(@"postprams=%@",paramsDate);
+            [paramsDate enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
+            }];
+            
+            //date taken
+            NSString *str=[dicDetails objectForKey:@"3"];
+            NSDictionary *params2 = @{@"date_taken": str};
+            NSLog(@"postprams=%@",params2);
+            [params2 enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
+            }];
+            
+            //image upload
+            NSData *imgData;
+            //The file to upload
+            UIImage *imgThirdStep=[dicDetails objectForKey:@"1"];
+            imgData=UIImageJPEGRepresentation(imgThirdStep, 1);
+            if (imgThirdStep)
+            {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"asset_uri\"; filename=\"image.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[@"Content-Type: image/jpg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[NSData dataWithData:imgData]];
+                [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                //The file to upload
+                [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            }
+            //audio
+            NSData *dataAudio=[dicDetails objectForKey:@"4"];
+            //The file to upload
+            if (dataAudio)
+            {
+                [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"audio\"; filename=\"image.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[@"Content-Type: image/jpg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                [body appendData:[NSData dataWithData:dataAudio]];
+                [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+                //The file to upload
+                [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            }
         }
         [request setHTTPBody:body];
-       // [self displayNetworkActivity];
+        // [self displayNetworkActivity];
         [self callWebServiceUploadWithRequest:request  Compeltion:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-           // [self hideNetworkActivity];
+            // [self hideNetworkActivity];
             if (error)
             {
                 completionHandler(error,YES,SOMETHING_WRONG);
@@ -98,7 +200,6 @@
     {
         completionHandler(nil,YES,NO_NETWORK);
     }
-
 }
 
 @end

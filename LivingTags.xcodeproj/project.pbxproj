@@ -196,6 +196,9 @@
 		0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1DE1CDA32C50053AF1A /* ForgetPasswordService.m */; };
 		0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1E11CDA49460053AF1A /* ImportContactsViewController.m */; };
 		0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE967521D353D690088C508 /* LivingTagsSecondStepViewController.m */; };
+		0DF7CF9B1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CF9A1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m */; };
+		0DF7CF9E1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CF9D1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m */; };
+		0DF7CFA11D4F648300A28CA1 /* CreateTagsPublishService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -471,6 +474,12 @@
 		0DE7A1E11CDA49460053AF1A /* ImportContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportContactsViewController.m; sourceTree = "<group>"; };
 		0DE967511D353D680088C508 /* LivingTagsSecondStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsSecondStepViewController.h; sourceTree = "<group>"; };
 		0DE967521D353D690088C508 /* LivingTagsSecondStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsSecondStepViewController.m; sourceTree = "<group>"; };
+		0DF7CF991D4F645000A28CA1 /* CreateTagsUploadProfilePicService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsUploadProfilePicService.h; sourceTree = "<group>"; };
+		0DF7CF9A1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsUploadProfilePicService.m; sourceTree = "<group>"; };
+		0DF7CF9C1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsUploadCoverPicService.h; sourceTree = "<group>"; };
+		0DF7CF9D1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsUploadCoverPicService.m; sourceTree = "<group>"; };
+		0DF7CF9F1D4F648300A28CA1 /* CreateTagsPublishService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsPublishService.h; sourceTree = "<group>"; };
+		0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsPublishService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -848,6 +857,12 @@
 				0D924F4F1D3F8A2B00BC8193 /* LivingTagsSecondStepService.m */,
 				0D79E2171D4A4F7E007E4B35 /* CreateTagsThirdStepService.h */,
 				0D79E2181D4A4F7E007E4B35 /* CreateTagsThirdStepService.m */,
+				0DF7CF991D4F645000A28CA1 /* CreateTagsUploadProfilePicService.h */,
+				0DF7CF9A1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m */,
+				0DF7CF9C1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.h */,
+				0DF7CF9D1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m */,
+				0DF7CF9F1D4F648300A28CA1 /* CreateTagsPublishService.h */,
+				0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1286,7 +1301,9 @@
 				0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */,
 				0DA226641CD21E9500B3A5BC /* ProfileViewController.m in Sources */,
 				0D922FAE1CF8664300EC1945 /* CustomAnnotationSingle.m in Sources */,
+				0DF7CF9B1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m in Sources */,
 				0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */,
+				0DF7CFA11D4F648300A28CA1 /* CreateTagsPublishService.m in Sources */,
 				0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */,
 				0D9350BD1CDB61F800E403B2 /* YTVimeoVideo.m in Sources */,
 				0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */,
@@ -1332,6 +1349,7 @@
 				0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */,
 				0DA226611CD2020800B3A5BC /* ModelUser.m in Sources */,
 				0D698D0C1CC8CF2500F64745 /* LivingTags.xcdatamodeld in Sources */,
+				0DF7CF9E1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m in Sources */,
 				0D3731431CD8A10B00EDC547 /* SDWebImageDownloader.m in Sources */,
 				0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */,
 				0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */,

@@ -12,6 +12,8 @@
 #import "LivingTagsSecondStepService.h"
 #import "ModelCreateTagsSecondStep.h"
 #import "LivingTagsThirdStepViewController.h"
+#import "CreateTagsUploadProfilePicService.h"
+#import "CreateTagsUploadCoverPicService.h"
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,CKCalendarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -602,10 +604,34 @@
     if(btnUserPicTag==2)
     {
         imgChosen=info[UIImagePickerControllerEditedImage] ;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[CreateTagsUploadProfilePicService service]callCreateTagsUploadProfileServiceWithLivingTagsID:self.strTemplateID user_ID:appDel.objUser.strUserID image:imgChosen withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                if (isError)
+                {
+                    [self displayErrorWithMessage:strMsg];
+                }
+                else
+                {
+                    NSLog(@"success");
+                }
+            }];
+        });
     }
     else
     {
         imgCoverPic=info[UIImagePickerControllerEditedImage] ;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[CreateTagsUploadCoverPicService service]callCreateTagsCoverPicUploadServiceWithLivingTagsID:self.strTemplateID user_ID:appDel.objUser.strUserID coverImage:imgCoverPic withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                if (isError)
+                {
+                    [self displayErrorWithMessage:strMsg];
+                }
+                else
+                {
+                    NSLog(@"success");
+                }
+            }];
+        });
     }
     [picker dismissViewControllerAnimated:YES completion:^{
         [tblSecondSteps reloadData ];

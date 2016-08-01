@@ -19,6 +19,8 @@
 @property(nonatomic,strong)IBOutlet UIButton *btnCalender;
 @property(nonatomic,strong)IBOutlet UILabel *lblCalender;
 
+@property(nonatomic,strong)IBOutlet NSLayoutConstraint *constVerticalSpacing;
+
 @property(nonatomic,strong) IBOutlet UIButton *btnRecording;
 
 @property(nonatomic,strong)IBOutlet UIButton *btnNext;
