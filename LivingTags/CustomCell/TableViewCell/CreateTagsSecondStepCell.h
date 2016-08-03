@@ -31,6 +31,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *btnGetLocation;
 
 @property(nonatomic,strong)IBOutlet UIButton *btnRemoveLocation;
+@property(nonatomic,strong)IBOutlet UIButton *btnSkipPressed;
 
 
 @property(nonatomic,strong)IBOutlet UIImageView *imgCover;

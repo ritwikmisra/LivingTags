@@ -271,7 +271,9 @@
                     cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:8];
                 }
                 cellTags.btnGetLocation.tag=indexPath.row;
+                cellTags.btnSkipPressed.tag=indexPath.row;
                 [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [cellTags.btnSkipPressed addTarget:self action:@selector(btnSkipPressed:) forControlEvents:UIControlEventTouchUpInside ];
             }
             else
             {
@@ -294,7 +296,10 @@
                     cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:10];
                 }
                 cellTags.btnGetLocation.tag=indexPath.row;
+                cellTags.btnSkipPressed.tag=indexPath.row;
                 [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [cellTags.btnSkipPressed addTarget:self action:@selector(btnSkipPressed:) forControlEvents:UIControlEventTouchUpInside ];
+
             }
             else
             {
@@ -490,6 +495,11 @@
     }
 }
 
+-(void)btnSkipPressed:(id)sender
+{
+    [self updateTableView:[sender tag]];
+}
+
 -(void)btnGetLocationClicked:(id)sender
 {
     [self updateTableView:[sender tag]];
@@ -537,7 +547,10 @@
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
                          strPrimaryLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
                          isPrimaryLocationRemove=YES;
-                         [tblSecondSteps reloadData];
+                         [tblSecondSteps beginUpdates];
+                         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+                         [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                         [tblSecondSteps endUpdates];
                          break;
                      }
                  }];
@@ -589,7 +602,11 @@
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
                          strSecondLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
                          isSecondLocation=YES;
-                         [tblSecondSteps reloadData];
+                         //[tblSecondSteps reloadData];
+                         [tblSecondSteps beginUpdates];
+                         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+                         [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                         [tblSecondSteps endUpdates];
                          break;
                      }
                  }];
@@ -604,8 +621,7 @@
                 address2 = @"";
             }
         }];
-
-    }
+}
     else
     {
         CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
