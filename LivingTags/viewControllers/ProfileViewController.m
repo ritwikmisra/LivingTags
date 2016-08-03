@@ -544,59 +544,65 @@
 
 -(void)btnLocationPressed:(id)sender
 {
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblProfile];
-    NSIndexPath *indexPath = [tblProfile indexPathForRowAtPoint:buttonPosition];
-    EditProfilePicCellTableViewCell *editProfileCell = (EditProfilePicCellTableViewCell *)[tblProfile cellForRowAtIndexPath:indexPath];
-    
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
-    CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
-                                                                  center.longitude + 0.001);
-    CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
-                                                                  center.longitude - 0.001);
-    GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
-                                                                         coordinate:southWest];
-    GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
-    placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
-    
-    [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
-        if (error != nil) {
-            NSLog(@"Pick Place error %@", [error localizedDescription]);
-            return;
-        }
+    if (isEditing==YES)
+    {
+        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblProfile];
+        NSIndexPath *indexPath = [tblProfile indexPathForRowAtPoint:buttonPosition];
+        EditProfilePicCellTableViewCell *editProfileCell = (EditProfilePicCellTableViewCell *)[tblProfile cellForRowAtIndexPath:indexPath];
         
-        if (place != nil) {
-            name2 = place.name;
-            NSLog(@"place.name:%@",place.name);
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
+        CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
+                                                                      center.longitude + 0.001);
+        CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
+                                                                      center.longitude - 0.001);
+        GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
+                                                                             coordinate:southWest];
+        GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+        placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
+        
+        [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+            if (error != nil) {
+                NSLog(@"Pick Place error %@", [error localizedDescription]);
+                return;
+            }
             
-            [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
-             {
-                 NSLog(@"reverse geocoding results:");
-                 for(GMSAddress* addressObj in [response results])
+            if (place != nil) {
+                name2 = place.name;
+                NSLog(@"place.name:%@",place.name);
+                
+                [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
                  {
-                     NSLog(@"locality=%@", addressObj.locality);
-                     NSLog(@"subLocality=%@", addressObj.subLocality);
-                     NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
-                     NSLog(@"postalCode=%@", addressObj.postalCode);
-                     NSLog(@"country=%@", addressObj.country);
-                     // NSLog(@"lines=%@", addressObj.lines);
-                     // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                     editProfileCell.lblLocation.text = [NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.administrativeArea];
-                     break;
-                 }
-             }];
-            
-            address2 = place.formattedAddress;
-            NSLog(@"place.formattedAddress:%@",place.formattedAddress);
-            strCat = place.types[0];
-            NSLog(@"Category:%@",strCat);
-            pickedPlace = place;
-            
-        } else {
-            name2 = @"No place selected";
-            address2 = @"";
-        }
-    }];
- 
+                     NSLog(@"reverse geocoding results:");
+                     for(GMSAddress* addressObj in [response results])
+                     {
+                         NSLog(@"locality=%@", addressObj.locality);
+                         NSLog(@"subLocality=%@", addressObj.subLocality);
+                         NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+                         NSLog(@"postalCode=%@", addressObj.postalCode);
+                         NSLog(@"country=%@", addressObj.country);
+                         // NSLog(@"lines=%@", addressObj.lines);
+                         // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
+                         editProfileCell.lblLocation.text = [NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.administrativeArea];
+                         break;
+                     }
+                 }];
+                
+                address2 = place.formattedAddress;
+                NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+                strCat = place.types[0];
+                NSLog(@"Category:%@",strCat);
+                pickedPlace = place;
+                
+            } else {
+                name2 = @"No place selected";
+                address2 = @"";
+            }
+        }];
+    }
+    else
+    {
+        NSLog(@"NO EDIT");
+    }
 }
 
 -(void)btnImageUploadPressed:(id)sender

@@ -29,7 +29,6 @@
     UIImageView *img;
     UIImage *imgChosen,*imgCoverPic;
     NSMutableDictionary *dictAPI;
-    BOOL isAPICalling;
     ModelCreateTagsSecondStep *objTemplates;
     IBOutlet UIButton *btnNext;
     GMSPlacePicker *placePicker;
@@ -37,7 +36,8 @@
     GMSPlace *pickedPlace;
     NSString *name2;
     NSString *address2;
-    NSString *strCat;
+    NSString *strCat,*strPrimaryLocation,*strSecondLocation,*strThirdLocation;
+    BOOL isPrimaryLocationRemove,isSecondLocation,isThirdLocation;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -58,7 +58,6 @@
     calendar.delegate = self;
     strDateFrom=strDateTo=@"";
     strName=@"";
-    isAPICalling=NO;
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
     self.minimumDate = [self.dateFormatter dateFromString:@"1950-11-01"];
@@ -72,6 +71,9 @@
     strGender=@"";
     NSLog(@"%@",self.strTemplateID);
     btnNext.hidden=YES;
+    isPrimaryLocationRemove=NO;
+    isSecondLocation=NO;
+    isThirdLocation=NO;
 }
 
 - (void)localeDidChange
@@ -116,40 +118,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"%d",arrStatus.count);
     return arrStatus.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*if (___isIphone4_4s)
-     {
-     if (indexPath.row==2)
-     {
-     return 100.0f;
-     }
-     else if (indexPath.row==5)
-     {
-     return 110.0f;
-     }
-     else if (indexPath.row==6)
-     {
-     return 105.0f;
-     }
-     return 70.0f;
-     }
-     else if (___isIphone5_5s)
-     {
-     
-     }
-     else if(___isIphone6)
-     {
-     
-     }
-     else
-     {
-     
-     }
-     return 70.0f;*/
     if (indexPath.row==2)
     {
         return 160.0f;
@@ -158,17 +132,37 @@
     {
         return 60.0f;
     }
-    else if (indexPath.row==4)
-    {
-        return 95.0f;
-    }
-    else if (indexPath.row==5)
+    else if (indexPath.row==7)
     {
         return 150.0f;
     }
-    else if (indexPath.row==6)
+    else if (indexPath.row==8)
     {
         return 105.0f;
+    }
+    else if (indexPath.row==4)
+    {
+        if (isPrimaryLocationRemove==YES)
+        {
+            return 100.0f;
+        }
+        return 70.0f;
+    }
+    else if (indexPath.row==5)
+    {
+        if (isSecondLocation==YES)
+        {
+            return 100.0f;
+        }
+        return 70.0f;
+    }
+    else if (indexPath.row==6)
+    {
+        if (isThirdLocation==YES)
+        {
+            return 100.0f;
+        }
+        return 70.0f;
     }
     return 70.0f;
 }
@@ -247,17 +241,76 @@
             break;
             
         case 4:
-            if (!cellTags)
+            if (isPrimaryLocationRemove==NO)
             {
-                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:4];
+                if (!cellTags)
+                {
+                    cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:4];
+                }
+                cellTags.btnGetLocation.tag=indexPath.row;
+                [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
             }
-            cellTags.btnGetLocation.tag=indexPath.row;
-            cellTags.lblCreateTagsLocation.text = @"Location";
-            cellTags.lblCreateTagsLocation.textColor = [UIColor grayColor];
-            [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
+            else
+            {
+                if (!cellTags)
+                {
+                    cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:7];
+                }
+                cellTags.btnGetLocation.tag=indexPath.row;
+                cellTags.btnRemoveLocation.tag=indexPath.row;
+                cellTags.lblPrimaryLocation.text=strPrimaryLocation;
+                [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
+            }
             break;
             
         case 5:
+            if (isSecondLocation==NO)
+            {
+                if (!cellTags)
+                {
+                    cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:8];
+                }
+                cellTags.btnGetLocation.tag=indexPath.row;
+                [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            else
+            {
+                if (!cellTags)
+                {
+                    cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:9];
+                }
+                cellTags.btnGetLocation.tag=indexPath.row;
+                cellTags.btnRemoveLocation.tag=indexPath.row;
+                cellTags.lblSecondLocation.text=strSecondLocation;
+                [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [cellTags.btnRemoveLocation addTarget:self action:@selector(btnRemovePrimaryLocationPressed:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            break;
+        case 6:
+            if (isThirdLocation==NO)
+            {
+                if (!cellTags)
+                {
+                    cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:10];
+                }
+                cellTags.btnGetLocation.tag=indexPath.row;
+                [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            else
+            {
+                if (!cellTags)
+                {
+                    cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:11];
+                }
+                cellTags.btnGetLocation.tag=indexPath.row;
+                cellTags.lblThirdLocation.text=strThirdLocation;
+                cellTags.btnRemoveLocation.tag=indexPath.row;
+                [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [cellTags.btnRemoveLocation addTarget:self action:@selector(btnRemovePrimaryLocationPressed:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            break;
+            
+        case 7:
             if (!cellTags)
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:5];
@@ -271,7 +324,7 @@
             [cellTags.btnBrowseCover addTarget:self action:@selector(btnCoverPicPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
-        case 6:
+        case 8:
             if (!cellTags)
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:6];
@@ -339,7 +392,7 @@
 {
     NSLog(@"%ld",(long)i);
     NSLog(@"%lu",(unsigned long)arrStatus.count);
-    if (arrStatus.count<7)
+    if (arrStatus.count<9)
     {
         if (arrStatus.count==i+1)
         {
@@ -376,7 +429,6 @@
     [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn1"]];
     [self updateTableView:[sender tag]];
 }
-
 
 -(void)btnFemalePressed:(id)sender
 {
@@ -418,6 +470,25 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+-(void)btnRemovePrimaryLocationPressed:(id)sender
+{
+    if ([sender tag]==5)
+    {
+        isSecondLocation=NO;
+        [tblSecondSteps beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+        [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblSecondSteps endUpdates];
+    }
+    else
+    {
+        isThirdLocation=NO;
+        [tblSecondSteps beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+        [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblSecondSteps endUpdates];
+    }
+}
 
 -(void)btnGetLocationClicked:(id)sender
 {
@@ -426,60 +497,167 @@
         [self setTableviewContentOffsetWithView:@"coverPic"];
     });
     
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblSecondSteps];
-    NSIndexPath *indexPath = [tblSecondSteps indexPathForRowAtPoint:buttonPosition];
-    CreateTagsSecondStepCell *createTagsCell = (CreateTagsSecondStepCell *)[tblSecondSteps cellForRowAtIndexPath:indexPath];
-    
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
-    CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
-                                                                  center.longitude + 0.001);
-    CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
-                                                                  center.longitude - 0.001);
-    GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
-                                                                         coordinate:southWest];
-    GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
-    placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
-    
-    [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
-        if (error != nil) {
-            NSLog(@"Pick Place error %@", [error localizedDescription]);
-            return;
-        }
+//    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblSecondSteps];
+//    NSIndexPath *indexPath = [tblSecondSteps indexPathForRowAtPoint:buttonPosition];
+//    CreateTagsSecondStepCell *createTagsCell = (CreateTagsSecondStepCell *)[tblSecondSteps cellForRowAtIndexPath:indexPath];
+    NSLog(@"%d",[sender tag]);
+    if ([sender tag]==4)
+    {
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
+        CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
+                                                                      center.longitude + 0.001);
+        CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
+                                                                      center.longitude - 0.001);
+        GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
+                                                                             coordinate:southWest];
+        GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+        placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
         
-        if (place != nil) {
-            name2 = place.name;
-            NSLog(@"place.name:%@",place.name);
+        [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+            if (error != nil) {
+                NSLog(@"Pick Place error %@", [error localizedDescription]);
+                return;
+            }
             
-            [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
-             {
-                 NSLog(@"reverse geocoding results:");
-                 for(GMSAddress* addressObj in [response results])
+            if (place != nil) {
+                name2 = place.name;
+                NSLog(@"place.name:%@",place.name);
+                
+                [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
                  {
-                     NSLog(@"locality=%@", addressObj.locality);
-                     NSLog(@"subLocality=%@", addressObj.subLocality);
-                     NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
-                     NSLog(@"postalCode=%@", addressObj.postalCode);
-                     NSLog(@"country=%@", addressObj.country);
-                     // NSLog(@"lines=%@", addressObj.lines);
-                     // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                     createTagsCell.lblCreateTagsLocation.text = [NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
-                     createTagsCell.lblCreateTagsLocation.textColor = [UIColor blackColor];
-                     break;
-                 }
-             }];
+                     NSLog(@"reverse geocoding results:");
+                     for(GMSAddress* addressObj in [response results])
+                     {
+                         NSLog(@"locality=%@", addressObj.locality);
+                         NSLog(@"subLocality=%@", addressObj.subLocality);
+                         NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+                         NSLog(@"postalCode=%@", addressObj.postalCode);
+                         NSLog(@"country=%@", addressObj.country);
+                         // NSLog(@"lines=%@", addressObj.lines);
+                         // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
+                         strPrimaryLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
+                         isPrimaryLocationRemove=YES;
+                         [tblSecondSteps reloadData];
+                         break;
+                     }
+                 }];
+                address2 = place.formattedAddress;
+                NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+                strCat = place.types[0];
+                NSLog(@"Category:%@",strCat);
+                pickedPlace = place;
+                
+            } else {
+                name2 = @"No place selected";
+                address2 = @"";
+            }
+        }];
+    }
+    else if ([sender tag]==5)
+    {
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
+        CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
+                                                                      center.longitude + 0.001);
+        CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
+                                                                      center.longitude - 0.001);
+        GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
+                                                                             coordinate:southWest];
+        GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+        placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
+        
+        [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+            if (error != nil) {
+                NSLog(@"Pick Place error %@", [error localizedDescription]);
+                return;
+            }
             
-            address2 = place.formattedAddress;
-            NSLog(@"place.formattedAddress:%@",place.formattedAddress);
-            strCat = place.types[0];
-            NSLog(@"Category:%@",strCat);
-            pickedPlace = place;
+            if (place != nil) {
+                name2 = place.name;
+                NSLog(@"place.name:%@",place.name);
+                
+                [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
+                 {
+                     NSLog(@"reverse geocoding results:");
+                     for(GMSAddress* addressObj in [response results])
+                     {
+                         NSLog(@"locality=%@", addressObj.locality);
+                         NSLog(@"subLocality=%@", addressObj.subLocality);
+                         NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+                         NSLog(@"postalCode=%@", addressObj.postalCode);
+                         NSLog(@"country=%@", addressObj.country);
+                         // NSLog(@"lines=%@", addressObj.lines);
+                         // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
+                         strSecondLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
+                         isSecondLocation=YES;
+                         [tblSecondSteps reloadData];
+                         break;
+                     }
+                 }];
+                address2 = place.formattedAddress;
+                NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+                strCat = place.types[0];
+                NSLog(@"Category:%@",strCat);
+                pickedPlace = place;
+                
+            } else {
+                name2 = @"No place selected";
+                address2 = @"";
+            }
+        }];
+
+    }
+    else
+    {
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
+        CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
+                                                                      center.longitude + 0.001);
+        CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
+                                                                      center.longitude - 0.001);
+        GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
+                                                                             coordinate:southWest];
+        GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+        placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
+        
+        [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+            if (error != nil) {
+                NSLog(@"Pick Place error %@", [error localizedDescription]);
+                return;
+            }
             
-        } else {
-            name2 = @"No place selected";
-            address2 = @"";
-        }
-    }];
-    
+            if (place != nil) {
+                name2 = place.name;
+                NSLog(@"place.name:%@",place.name);
+                
+                [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
+                 {
+                     NSLog(@"reverse geocoding results:");
+                     for(GMSAddress* addressObj in [response results])
+                     {
+                         NSLog(@"locality=%@", addressObj.locality);
+                         NSLog(@"subLocality=%@", addressObj.subLocality);
+                         NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+                         NSLog(@"postalCode=%@", addressObj.postalCode);
+                         NSLog(@"country=%@", addressObj.country);
+                         // NSLog(@"lines=%@", addressObj.lines);
+                         // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
+                         strThirdLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
+                         isThirdLocation=YES;
+                         [tblSecondSteps reloadData];
+                         break;
+                     }
+                 }];
+                address2 = place.formattedAddress;
+                NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+                strCat = place.types[0];
+                NSLog(@"Category:%@",strCat);
+                pickedPlace = place;
+                
+            } else {
+                name2 = @"No place selected";
+                address2 = @"";
+            }
+        }];
+    }
 }
 
 -(void)btnCoverPicPressed:(id)sender

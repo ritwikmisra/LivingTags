@@ -14,7 +14,9 @@
 @property(nonatomic,strong)IBOutlet UIImageView *imgMale;
 @property(nonatomic,strong)IBOutlet UIImageView *imgFemale;
 
-@property (nonatomic, strong) IBOutlet UILabel *lblCreateTagsLocation;
+@property (nonatomic, strong) IBOutlet UILabel *lblPrimaryLocation;
+@property(nonatomic,strong)IBOutlet UILabel *lblSecondLocation;
+@property(nonatomic,strong)IBOutlet UILabel *lblThirdLocation;
 
 
 @property(nonatomic,strong)IBOutlet UIButton *btnMale;
@@ -27,6 +29,9 @@
 @property(nonatomic,strong)IBOutlet UITextField *txtDateTo;
 
 @property(nonatomic,strong)IBOutlet UIButton *btnGetLocation;
+
+@property(nonatomic,strong)IBOutlet UIButton *btnRemoveLocation;
+
 
 @property(nonatomic,strong)IBOutlet UIImageView *imgCover;
 @property(nonatomic,strong)IBOutlet UIButton *btnBrowseCover;
