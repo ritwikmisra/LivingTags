@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -87,6 +87,9 @@
                         <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zR5-xO-6nX">
+                        <rect key="frame" x="136" y="218" width="121" height="20"/>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEMORIES VIEWED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JR-ew-6QI">
                         <rect key="frame" x="267" y="198" width="121" height="20"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="8"/>
@@ -133,10 +136,12 @@
                     <constraint firstItem="k4r-jx-tdi" firstAttribute="width" secondItem="QYQ-Bs-B63" secondAttribute="width" id="8mC-Db-bji"/>
                     <constraint firstItem="3RW-17-ppT" firstAttribute="height" secondItem="OQG-B5-86z" secondAttribute="height" id="94f-VQ-yT7"/>
                     <constraint firstItem="XNT-u4-siy" firstAttribute="top" secondItem="3JR-ew-6QI" secondAttribute="bottom" constant="-1" id="9p4-DS-c9t"/>
+                    <constraint firstItem="zR5-xO-6nX" firstAttribute="height" secondItem="k4r-jx-tdi" secondAttribute="height" id="A4x-Mk-rqL"/>
                     <constraint firstItem="geH-QN-g77" firstAttribute="height" secondItem="Meb-Nu-vEm" secondAttribute="height" id="AX4-l8-tXX"/>
                     <constraint firstItem="C9V-Px-mZe" firstAttribute="top" secondItem="aIB-t7-Y2S" secondAttribute="top" id="BTP-VW-vFY"/>
                     <constraint firstItem="k4r-jx-tdi" firstAttribute="centerX" secondItem="QYQ-Bs-B63" secondAttribute="centerX" id="BkS-w8-GpC"/>
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="centerY" secondItem="geH-QN-g77" secondAttribute="centerY" multiplier="1.1" id="CFs-8E-KBX"/>
+                    <constraint firstItem="zR5-xO-6nX" firstAttribute="centerY" secondItem="k4r-jx-tdi" secondAttribute="centerY" id="Caj-o6-CAr"/>
                     <constraint firstItem="C9V-Px-mZe" firstAttribute="width" secondItem="aIB-t7-Y2S" secondAttribute="width" id="DIk-8D-ye8"/>
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="G0Z-CK-riT"/>
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="Gsw-02-Ty0"/>
@@ -156,6 +161,7 @@
                     <constraint firstItem="C9V-Px-mZe" firstAttribute="centerY" secondItem="LV5-2L-D5x" secondAttribute="centerY" multiplier="2" id="VNF-Gk-1gP"/>
                     <constraint firstItem="QYQ-Bs-B63" firstAttribute="centerX" secondItem="aIB-t7-Y2S" secondAttribute="centerX" id="WM4-3J-IVy"/>
                     <constraint firstItem="oNd-ET-3QL" firstAttribute="centerX" secondItem="geH-QN-g77" secondAttribute="centerX" id="Y5H-8z-OTu"/>
+                    <constraint firstItem="zR5-xO-6nX" firstAttribute="width" secondItem="k4r-jx-tdi" secondAttribute="width" id="ZBY-ou-n1w"/>
                     <constraint firstItem="XNT-u4-siy" firstAttribute="width" secondItem="3JR-ew-6QI" secondAttribute="width" id="ZsH-7l-4W1"/>
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aLY-LS-zjE"/>
                     <constraint firstItem="Meb-Nu-vEm" firstAttribute="centerX" secondItem="geH-QN-g77" secondAttribute="centerX" id="aOq-KA-uUv"/>
@@ -164,6 +170,7 @@
                     <constraint firstItem="oNd-ET-3QL" firstAttribute="height" secondItem="geH-QN-g77" secondAttribute="height" id="bFW-yb-g0t"/>
                     <constraint firstItem="oNd-ET-3QL" firstAttribute="centerY" secondItem="geH-QN-g77" secondAttribute="centerY" id="ces-fF-4AE"/>
                     <constraint firstItem="3RW-17-ppT" firstAttribute="centerY" secondItem="ddu-Ao-6Fz" secondAttribute="centerY" multiplier="1.1" id="dXD-O8-CSd"/>
+                    <constraint firstItem="zR5-xO-6nX" firstAttribute="centerX" secondItem="k4r-jx-tdi" secondAttribute="centerX" id="h2W-0O-OO1"/>
                     <constraint firstItem="geH-QN-g77" firstAttribute="centerX" secondItem="aIB-t7-Y2S" secondAttribute="centerX" id="h6v-9I-UcV"/>
                     <constraint firstItem="3JR-ew-6QI" firstAttribute="centerY" secondItem="QYQ-Bs-B63" secondAttribute="centerY" id="hun-gb-FC1"/>
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="height" secondItem="OQG-B5-86z" secondAttribute="height" multiplier="5" id="iOD-ra-Iks"/>
@@ -183,6 +190,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="actProfileIndicator" destination="xQf-pP-ZGQ" id="Bsq-WX-1ef"/>
+                <outlet property="btnLocation" destination="zR5-xO-6nX" id="OZR-db-cFh"/>
                 <outlet property="btnProfileEdit" destination="ygG-CO-QVw" id="vRI-ab-NXG"/>
                 <outlet property="btnProfilePicUpdate" destination="oNd-ET-3QL" id="nA9-xC-kk9"/>
                 <outlet property="constHeight" destination="eDd-M7-w0f" id="Hmb-vD-eEx"/>
@@ -457,7 +465,7 @@
                 <outlet property="txt" destination="kOU-ru-lsQ" id="Fg9-Xl-nvD"/>
                 <outlet property="vwVimeo" destination="lqq-YS-zeO" id="PEu-0E-GGS"/>
             </connections>
-            <point key="canvasLocation" x="520.5" y="313"/>
+            <point key="canvasLocation" x="329.5" y="506"/>
         </tableViewCell>
     </objects>
     <resources>

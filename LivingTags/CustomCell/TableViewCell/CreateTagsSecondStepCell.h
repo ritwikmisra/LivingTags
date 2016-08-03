@@ -14,6 +14,9 @@
 @property(nonatomic,strong)IBOutlet UIImageView *imgMale;
 @property(nonatomic,strong)IBOutlet UIImageView *imgFemale;
 
+@property (nonatomic, strong) IBOutlet UILabel *lblCreateTagsLocation;
+
+
 @property(nonatomic,strong)IBOutlet UIButton *btnMale;
 @property(nonatomic,strong)IBOutlet UIButton *btnFemale;
 

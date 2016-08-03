@@ -32,6 +32,12 @@
     BOOL isAPICalling;
     ModelCreateTagsSecondStep *objTemplates;
     IBOutlet UIButton *btnNext;
+    GMSPlacePicker *placePicker;
+    GMSMapView *mapView;
+    GMSPlace *pickedPlace;
+    NSString *name2;
+    NSString *address2;
+    NSString *strCat;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -152,6 +158,10 @@
     {
         return 60.0f;
     }
+    else if (indexPath.row==4)
+    {
+        return 95.0f;
+    }
     else if (indexPath.row==5)
     {
         return 150.0f;
@@ -242,6 +252,8 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:4];
             }
             cellTags.btnGetLocation.tag=indexPath.row;
+            cellTags.lblCreateTagsLocation.text = @"Location";
+            cellTags.lblCreateTagsLocation.textColor = [UIColor grayColor];
             [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
@@ -413,6 +425,61 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setTableviewContentOffsetWithView:@"coverPic"];
     });
+    
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblSecondSteps];
+    NSIndexPath *indexPath = [tblSecondSteps indexPathForRowAtPoint:buttonPosition];
+    CreateTagsSecondStepCell *createTagsCell = (CreateTagsSecondStepCell *)[tblSecondSteps cellForRowAtIndexPath:indexPath];
+    
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
+    CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
+                                                                  center.longitude + 0.001);
+    CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
+                                                                  center.longitude - 0.001);
+    GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
+                                                                         coordinate:southWest];
+    GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+    placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
+    
+    [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Pick Place error %@", [error localizedDescription]);
+            return;
+        }
+        
+        if (place != nil) {
+            name2 = place.name;
+            NSLog(@"place.name:%@",place.name);
+            
+            [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
+             {
+                 NSLog(@"reverse geocoding results:");
+                 for(GMSAddress* addressObj in [response results])
+                 {
+                     NSLog(@"locality=%@", addressObj.locality);
+                     NSLog(@"subLocality=%@", addressObj.subLocality);
+                     NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+                     NSLog(@"postalCode=%@", addressObj.postalCode);
+                     NSLog(@"country=%@", addressObj.country);
+                     // NSLog(@"lines=%@", addressObj.lines);
+                     // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
+                     createTagsCell.lblCreateTagsLocation.text = [NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
+                     createTagsCell.lblCreateTagsLocation.textColor = [UIColor blackColor];
+                     break;
+                 }
+             }];
+            
+            address2 = place.formattedAddress;
+            NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+            strCat = place.types[0];
+            NSLog(@"Category:%@",strCat);
+            pickedPlace = place;
+            
+        } else {
+            name2 = @"No place selected";
+            address2 = @"";
+        }
+    }];
+    
 }
 
 -(void)btnCoverPicPressed:(id)sender

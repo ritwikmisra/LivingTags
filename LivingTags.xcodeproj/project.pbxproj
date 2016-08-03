@@ -24,6 +24,7 @@
 		0D0DDD0F1D11AAC600C0E9DD /* profile_icon_.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDD051D11AAC600C0E9DD /* profile_icon_.png */; };
 		0D0DDD101D11AAC600C0E9DD /* read_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDD061D11AAC600C0E9DD /* read_tag.png */; };
 		0D0DDD121D11ACDE00C0E9DD /* logout_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDD111D11ACDE00C0E9DD /* logout_text.png */; };
+		0D0EA380B8B6AC9032F35B48 /* libPods-LivingTags.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24846D52E42744797AB50C9B /* libPods-LivingTags.a */; };
 		0D20AEB81D47B2FF00851994 /* CreateTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D20AEB61D47B2FF00851994 /* CreateTagsCell.m */; };
 		0D20AEB91D47B2FF00851994 /* CreateTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D20AEB71D47B2FF00851994 /* CreateTagsCell.xib */; };
 		0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */; };
@@ -148,7 +149,6 @@
 		0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D924F4F1D3F8A2B00BC8193 /* LivingTagsSecondStepService.m */; };
 		0D933B571D07056A00072DE1 /* ImageHoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D933B551D07056A00072DE1 /* ImageHoverController.m */; };
 		0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D933B561D07056A00072DE1 /* ImageHoverController.xib */; };
-		0D9350A71CDB60AE00E403B2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350A61CDB60AE00E403B2 /* MediaPlayer.framework */; };
 		0D9350A91CDB60B800E403B2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350A81CDB60B800E403B2 /* AVFoundation.framework */; };
 		0D9350AB1CDB60C200E403B2 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350AA1CDB60C200E403B2 /* AVKit.framework */; };
 		0D9350B91CDB61F800E403B2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D9350AE1CDB61F800E403B2 /* Info.plist */; };
@@ -176,7 +176,6 @@
 		0D9B88911D22B75D003B51F0 /* stop_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9B888A1D22B75D003B51F0 /* stop_enable.png */; };
 		0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2265D1CD1F87E00B3A5BC /* LoginService.m */; };
 		0DA226611CD2020800B3A5BC /* ModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA226601CD2020800B3A5BC /* ModelUser.m */; };
-		0DA226641CD21E9500B3A5BC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA226631CD21E9500B3A5BC /* ProfileViewController.m */; };
 		0DA2266F1CD22E4700B3A5BC /* bg_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA226661CD22E4700B3A5BC /* bg_img.png */; };
 		0DA226701CD22E4700B3A5BC /* camera_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA226671CD22E4700B3A5BC /* camera_icon.png */; };
 		0DA226711CD22E4700B3A5BC /* edit_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA226681CD22E4700B3A5BC /* edit_icon1.png */; };
@@ -200,6 +199,8 @@
 		0DF7CF9E1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CF9D1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m */; };
 		0DF7CFA11D4F648300A28CA1 /* CreateTagsPublishService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */; };
 		0DF7CFA41D4F9A5900A28CA1 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CFA31D4F9A5900A28CA1 /* PreviewViewController.m */; };
+		CD675A601D50A0E60035C5ED /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350A61CDB60AE00E403B2 /* MediaPlayer.framework */; };
+		CD757A8F1D50C5E60033CF5D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA226631CD21E9500B3A5BC /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -483,6 +484,9 @@
 		0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsPublishService.m; sourceTree = "<group>"; };
 		0DF7CFA21D4F9A5900A28CA1 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
 		0DF7CFA31D4F9A5900A28CA1 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		24846D52E42744797AB50C9B /* libPods-LivingTags.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LivingTags.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BAAF325124145B15E317F6D /* Pods-LivingTags.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivingTags.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LivingTags/Pods-LivingTags.debug.xcconfig"; sourceTree = "<group>"; };
+		EB3E586A24EEF2747F22B398 /* Pods-LivingTags.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivingTags.release.xcconfig"; path = "Pods/Target Support Files/Pods-LivingTags/Pods-LivingTags.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +494,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD675A601D50A0E60035C5ED /* MediaPlayer.framework in Frameworks */,
 				0D8BE0911D2E62E700527345 /* Contacts.framework in Frameworks */,
 				0D764E771D18094700298BBE /* AudioToolbox.framework in Frameworks */,
 				0D764E751D1808CE00298BBE /* Foundation.framework in Frameworks */,
@@ -511,9 +516,9 @@
 				0D90D9F51CE1E0780004B0B9 /* FBSDKLoginKit.framework in Frameworks */,
 				0D90D9F61CE1E0780004B0B9 /* FBSDKShareKit.framework in Frameworks */,
 				0D9350A91CDB60B800E403B2 /* AVFoundation.framework in Frameworks */,
-				0D9350A71CDB60AE00E403B2 /* MediaPlayer.framework in Frameworks */,
 				0D7165BC1CE32D5500C8B288 /* GoogleSignIn.framework in Frameworks */,
 				0D066AD11D2A815C00C910E8 /* Fabric.framework in Frameworks */,
+				0D0EA380B8B6AC9032F35B48 /* libPods-LivingTags.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +625,8 @@
 				0D898E951CCF51E300B35D04 /* Constants */,
 				0D698CFD1CC8CF2400F64745 /* LivingTags */,
 				0D698CFC1CC8CF2400F64745 /* Products */,
+				A120E6328E0172A1BF658FCB /* Pods */,
+				D33E8631A00B0F0FDC14A26D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1115,6 +1122,23 @@
 			path = Callout;
 			sourceTree = "<group>";
 		};
+		A120E6328E0172A1BF658FCB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8BAAF325124145B15E317F6D /* Pods-LivingTags.debug.xcconfig */,
+				EB3E586A24EEF2747F22B398 /* Pods-LivingTags.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D33E8631A00B0F0FDC14A26D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24846D52E42744797AB50C9B /* libPods-LivingTags.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1122,10 +1146,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D698D151CC8CF2500F64745 /* Build configuration list for PBXNativeTarget "LivingTags" */;
 			buildPhases = (
+				241AF3ACFCE3D56C14681E61 /* [CP] Check Pods Manifest.lock */,
 				0D698CF71CC8CF2400F64745 /* Sources */,
 				0D698CF81CC8CF2400F64745 /* Frameworks */,
 				0D698CF91CC8CF2400F64745 /* Resources */,
 				0D066ACE1D2A7D2200C910E8 /* ShellScript */,
+				5303057271F122B2AB480FBF /* [CP] Embed Pods Frameworks */,
+				B87A87C48A40265443FCCEDE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1147,7 +1174,6 @@
 				TargetAttributes = {
 					0D698CFA1CC8CF2400F64745 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = CH3P9TJQC8;
 					};
 				};
 			};
@@ -1279,6 +1305,51 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 9b5ec61ad47c65b1a374a64ffc400fa3f9828d80 1170fcd4da847e50378cb3a524d0b30afdc10be2a3a89329557fdfd3c2146b64";
 		};
+		241AF3ACFCE3D56C14681E61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5303057271F122B2AB480FBF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LivingTags/Pods-LivingTags-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B87A87C48A40265443FCCEDE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LivingTags/Pods-LivingTags-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1286,6 +1357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD757A8F1D50C5E60033CF5D /* ProfileViewController.m in Sources */,
 				0D37314B1CD8A10B00EDC547 /* UIImageView+HighlightedWebCache.m in Sources */,
 				0D5EA23F1CCB6A0B00CA0DAE /* WebServiceBaseClass.m in Sources */,
 				0D9350BA1CDB61F800E403B2 /* YTVimeoExtractor.m in Sources */,
@@ -1304,7 +1376,6 @@
 				0D066ADC1D2A8DA800C910E8 /* ReadAllTagsViewController.m in Sources */,
 				0D3731471CD8A10B00EDC547 /* UIButton+WebCache.m in Sources */,
 				0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */,
-				0DA226641CD21E9500B3A5BC /* ProfileViewController.m in Sources */,
 				0D922FAE1CF8664300EC1945 /* CustomAnnotationSingle.m in Sources */,
 				0DF7CF9B1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m in Sources */,
 				0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */,
@@ -1411,8 +1482,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1434,7 +1505,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "69b30278-e7e7-4e99-a71d-ac7791bb8393";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1456,8 +1527,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1472,7 +1543,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "69b30278-e7e7-4e99-a71d-ac7791bb8393";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1480,10 +1551,11 @@
 		};
 		0D698D161CC8CF2500F64745 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BAAF325124145B15E317F6D /* Pods-LivingTags.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1492,19 +1564,22 @@
 				INFOPLIST_FILE = LivingTags/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "69b30278-e7e7-4e99-a71d-ac7791bb8393";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
 		0D698D171CC8CF2500F64745 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB3E586A24EEF2747F22B398 /* Pods-LivingTags.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1513,10 +1588,12 @@
 				INFOPLIST_FILE = LivingTags/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "69b30278-e7e7-4e99-a71d-ac7791bb8393";
+				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

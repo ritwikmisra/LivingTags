@@ -15,6 +15,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *btnProfilePicUpdate;
 @property(nonatomic,strong)IBOutlet UILabel *lblMemoriesCreated;
 @property(nonatomic,strong)IBOutlet UILabel *lblLocation;
+@property(nonatomic,strong)IBOutlet UIButton *btnLocation;
 @property(nonatomic,strong)IBOutlet UILabel *lblMemoriesViewed;
 @property(nonatomic,strong)IBOutlet UIImageView *imgProfile;
 

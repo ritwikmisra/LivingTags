@@ -12,6 +12,8 @@
 #import <GoogleSignIn/GoogleSignIn.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <GooglePlaces/GooglePlaces.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqord.apps.googleusercontent.com";
 
@@ -32,6 +34,8 @@ static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqo
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [GMSServices provideAPIKey:@"AIzaSyBRwKQd7EJ5EUURgIo6EK2XdXsBHCwGw5s"];
+    [GMSPlacesClient provideAPIKey:@"AIzaSyBRwKQd7EJ5EUURgIo6EK2XdXsBHCwGw5s"];
     self.arrStatus=[[NSMutableArray alloc]init];
     self.arrStatus=[[NSMutableArray alloc]initWithObjects:@"1",@"1",@"1",@"1", nil];
     [Fabric with:@[[Crashlytics class]]];

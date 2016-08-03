@@ -7,7 +7,7 @@
 
 #import "ProfileViewController.h"
 #import "EditProfilePicCellTableViewCell.h"
-#import <MediaPlayer/MediaPlayer.h>
+//#import <MediaPlayer/MediaPlayer.h>
 #import "ProfileGetService.h"
 #import "UIImageView+WebCache.h"
 #import "UpdateProfileService.h"
@@ -27,6 +27,13 @@
     UIImage *imgChosen;
     BOOL isYoutube;
     AVPlayer *player ;
+    GMSPlacePicker *placePicker;
+    GMSMapView *mapView;
+    GMSPlace *pickedPlace;
+    NSString *name2;
+    NSString *address2;
+    NSString *strCat;
+    UITextField *activeTextField;
 }
 @end
 
@@ -64,6 +71,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    mapView.settings.myLocationButton = YES;
+    mapView.myLocationEnabled = YES;
+    mapView.hidden = YES;
+    NSLog(@"User's location: %@", mapView.myLocation);
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +83,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 #pragma mark
 #pragma mark tableview datasource and delegate methods
@@ -169,6 +183,7 @@
         [cellA.btnProfileEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
         NSLog(@"%@",appDel.objLivingTags.strCreated);
         [cellA.btnProfilePicUpdate addTarget:self action:@selector(btnImageUploadPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [cellA.btnLocation addTarget:self action:@selector(btnLocationPressed:) forControlEvents:UIControlEventTouchUpInside];
         [cellA.txtName addTarget:self action:@selector(txtfieldEditingForProfile:) forControlEvents:UIControlEventEditingChanged];
         if (imgChosen)
         {
@@ -345,7 +360,16 @@
         cellB.txt.delegate=self;
         if(indexPath.row==2)
         {
-            cellB.txt.keyboardType=UIKeyboardTypeNamePhonePad;
+            UIToolbar *keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
+            keyboardToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(toolBarCancelNumberPad:)],
+                                      [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                      [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(toolBardoneButtonNumberPad:)]];
+            
+            [cellB.txt setInputAccessoryView:keyboardToolbar];
+            
+            activeTextField = cellB.txt;
+            
+            cellB.txt.keyboardType=UIKeyboardTypeNumberPad;
         }
         if(isEditing==NO)
         {
@@ -364,6 +388,20 @@
     cell.backgroundColor=[UIColor clearColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+#pragma Number pad Toolbar Done and Cancel button
+
+-(void)toolBarCancelNumberPad :(id)sender
+{
+    [self.view endEditing:YES];
+    //activeTextField.text = @"";
+}
+
+-(void)toolBardoneButtonNumberPad:(id)sender
+{
+   NSString *numberFromTheKeyboard = activeTextField.text;
+    [self.view endEditing:YES];
 }
 
 #pragma mark
@@ -504,6 +542,63 @@
     }
 }
 
+-(void)btnLocationPressed:(id)sender
+{
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblProfile];
+    NSIndexPath *indexPath = [tblProfile indexPathForRowAtPoint:buttonPosition];
+    EditProfilePicCellTableViewCell *editProfileCell = (EditProfilePicCellTableViewCell *)[tblProfile cellForRowAtIndexPath:indexPath];
+    
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
+    CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
+                                                                  center.longitude + 0.001);
+    CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
+                                                                  center.longitude - 0.001);
+    GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
+                                                                         coordinate:southWest];
+    GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+    placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
+    
+    [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Pick Place error %@", [error localizedDescription]);
+            return;
+        }
+        
+        if (place != nil) {
+            name2 = place.name;
+            NSLog(@"place.name:%@",place.name);
+            
+            [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
+             {
+                 NSLog(@"reverse geocoding results:");
+                 for(GMSAddress* addressObj in [response results])
+                 {
+                     NSLog(@"locality=%@", addressObj.locality);
+                     NSLog(@"subLocality=%@", addressObj.subLocality);
+                     NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+                     NSLog(@"postalCode=%@", addressObj.postalCode);
+                     NSLog(@"country=%@", addressObj.country);
+                     // NSLog(@"lines=%@", addressObj.lines);
+                     // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
+                     editProfileCell.lblLocation.text = [NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.administrativeArea];
+                     break;
+                 }
+             }];
+            
+            address2 = place.formattedAddress;
+            NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+            strCat = place.types[0];
+            NSLog(@"Category:%@",strCat);
+            pickedPlace = place;
+            
+        } else {
+            name2 = @"No place selected";
+            address2 = @"";
+        }
+    }];
+ 
+}
+
 -(void)btnImageUploadPressed:(id)sender
 {
     NSLog(@"%d",isEditing);
@@ -615,7 +710,6 @@
             else
             {
                 strVideoID=@"";
-                
             }
         }
         else
