@@ -22,6 +22,7 @@
         {
             self.strID=@"";
         }
+        
         if ([dict objectForKey:@"account_id"] && ![[dict objectForKey:@"account_id"] isKindOfClass:[NSNull class]])
         {
             self.strAccountID=[dict objectForKey:@"account_id"];
@@ -134,6 +135,14 @@
         else
         {
             self.strMemorialQuote=@"";
+        }
+       if ([dict objectForKey:@"gender"] && ![[dict objectForKey:@"gender"] isKindOfClass:[NSNull class]])
+        {
+            self.strGender=[dict objectForKey:@"gender"];
+        }
+        else
+        {
+            self.strGender=@"";
         }
     }
     return self;

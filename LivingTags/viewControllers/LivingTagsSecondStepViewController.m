@@ -37,7 +37,7 @@
     NSString *name2;
     NSString *address2;
     NSString *strCat,*strPrimaryLocation,*strSecondLocation,*strThirdLocation;
-    BOOL isPrimaryLocationRemove,isSecondLocation,isThirdLocation;
+    BOOL isPrimaryLocationRemove,isSecondLocation,isThirdLocation,isProfileSuccess,isCoverSuccess;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -74,6 +74,7 @@
     isPrimaryLocationRemove=NO;
     isSecondLocation=NO;
     isThirdLocation=NO;
+    isProfileSuccess=isCoverSuccess=YES;
 }
 
 - (void)localeDidChange
@@ -221,10 +222,14 @@
             if (imgChosen)
             {
                 cellTags.imgUser.image=imgChosen;
+                
             }
             cellTags.btnBrowseUserPic.tag=indexPath.row;
+            if (isProfileSuccess==NO)
+            {
+                cellTags.lblImageUpload.text=@"Profile image Uploaded";
+            }
             [cellTags.btnBrowseUserPic addTarget:self action:@selector(btnUserPicSelected:) forControlEvents:UIControlEventTouchUpInside];
-            
             break;
             
         case 3:
@@ -324,6 +329,10 @@
             if (imgCoverPic)
             {
                 cellTags.imgCover.image=imgCoverPic;
+            }
+            if (isCoverSuccess==NO)
+            {
+                cellTags.lblImageUpload.text=@"Cover picture uploaded...";
             }
             cellTags.btnBrowseCover.tag=indexPath.row;
             [cellTags.btnBrowseCover addTarget:self action:@selector(btnCoverPicPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -429,6 +438,7 @@
     [self.view endEditing:YES];
     [self checkName];
     strGender=@"M";
+    [self checkGender];
     CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
     [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn2"]];
     [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn1"]];
@@ -440,12 +450,12 @@
     [self.view endEditing:YES];
     [self checkName];
     strGender=@"F";
+    [self checkGender];
     CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
     [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn1"]];
     [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn2"]];
     [self updateTableView:[sender tag]];
 }
-
 
 -(void)btnUserPicSelected:(id)sender
 {
@@ -524,17 +534,18 @@
         placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
         
         [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+            [self displayNetworkActivity];
             if (error != nil) {
                 NSLog(@"Pick Place error %@", [error localizedDescription]);
                 return;
             }
-            
             if (place != nil) {
                 name2 = place.name;
                 NSLog(@"place.name:%@",place.name);
                 
                 [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
                  {
+                     [self hideNetworkActivity];
                      NSLog(@"reverse geocoding results:");
                      for(GMSAddress* addressObj in [response results])
                      {
@@ -551,6 +562,7 @@
                          NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
                          [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
                          [tblSecondSteps endUpdates];
+                         [self checkLocationWithType:@"First"];
                          break;
                      }
                  }];
@@ -579,6 +591,7 @@
         placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
         
         [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+            [self displayNetworkActivity];
             if (error != nil) {
                 NSLog(@"Pick Place error %@", [error localizedDescription]);
                 return;
@@ -590,6 +603,7 @@
                 
                 [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
                  {
+                     [self hideNetworkActivity];
                      NSLog(@"reverse geocoding results:");
                      for(GMSAddress* addressObj in [response results])
                      {
@@ -607,6 +621,7 @@
                          NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
                          [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
                          [tblSecondSteps endUpdates];
+                         [self checkLocationWithType:@"Second"];
                          break;
                      }
                  }];
@@ -616,7 +631,9 @@
                 NSLog(@"Category:%@",strCat);
                 pickedPlace = place;
                 
-            } else {
+            }
+            else
+            {
                 name2 = @"No place selected";
                 address2 = @"";
             }
@@ -635,6 +652,7 @@
         placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
         
         [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+            [self displayNetworkActivity];
             if (error != nil) {
                 NSLog(@"Pick Place error %@", [error localizedDescription]);
                 return;
@@ -646,6 +664,7 @@
                 
                 [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
                  {
+                     [self hideNetworkActivity];
                      NSLog(@"reverse geocoding results:");
                      for(GMSAddress* addressObj in [response results])
                      {
@@ -658,7 +677,12 @@
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
                          strThirdLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
                          isThirdLocation=YES;
-                         [tblSecondSteps reloadData];
+                         //[tblSecondSteps reloadData];
+                         [tblSecondSteps beginUpdates];
+                         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+                         [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                         [tblSecondSteps endUpdates];
+                         [self checkLocationWithType:@"Third"];
                          break;
                      }
                  }];
@@ -867,9 +891,10 @@
         imgChosen=info[UIImagePickerControllerEditedImage] ;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[CreateTagsUploadProfilePicService service]callCreateTagsUploadProfileServiceWithLivingTagsID:self.strTemplateID user_ID:appDel.objUser.strUserID image:imgChosen withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                isProfileSuccess=isError;
                 if (isError)
                 {
-                    [self displayErrorWithMessage:strMsg];
+                    //[self displayErrorWithMessage:strMsg];
                 }
                 else
                 {
@@ -883,9 +908,10 @@
         imgCoverPic=info[UIImagePickerControllerEditedImage] ;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[CreateTagsUploadCoverPicService service]callCreateTagsCoverPicUploadServiceWithLivingTagsID:self.strTemplateID user_ID:appDel.objUser.strUserID coverImage:imgCoverPic withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                isCoverSuccess=isError;
                 if (isError)
                 {
-                    [self displayErrorWithMessage:strMsg];
+                   // [self displayErrorWithMessage:strMsg];
                 }
                 else
                 {
@@ -948,6 +974,27 @@
     }
 }
 
+-(void)checkGender
+{
+    if (objTemplates)
+    {
+        if ([objTemplates.strGender isEqualToString:strGender])
+        {
+            [dictAPI removeObjectForKey:@"gender"];
+        }
+        else
+        {
+            [dictAPI setObject:strGender forKey:@"gender"];
+            [self updateDictionaryForServiceForKey:@"gender"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strGender forKey:@"gender"];
+        [self updateDictionaryForServiceForKey:@"gender"];
+    }
+}
+
 -(void)checkMemorialQuotes
 {
     if (objTemplates)
@@ -969,6 +1016,44 @@
     }
     btnNext.hidden=NO;
 }
+
+-(void)checkLocationWithType:(NSString *)str
+{
+    if ([str isEqualToString:@"First"])
+    {
+        if (objTemplates)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
+    else if([str isEqualToString:@"Second"])
+    {
+        if (objTemplates)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
+    else
+    {
+        if (objTemplates)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
+}
+
 
 -(void)checkDatesTo
 {

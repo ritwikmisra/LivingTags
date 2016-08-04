@@ -203,8 +203,15 @@
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Image Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDd-G9-afn">
+                        <rect key="frame" x="103" y="138" width="183" height="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="mDd-G9-afn" firstAttribute="centerY" secondItem="7U5-zd-6Gj" secondAttribute="centerY" id="0XJ-kp-nDD"/>
                     <constraint firstItem="CSZ-I3-caG" firstAttribute="centerY" secondItem="jSO-ts-txE" secondAttribute="centerY" id="3s3-gZ-jkb"/>
                     <constraint firstItem="CSZ-I3-caG" firstAttribute="width" secondItem="jSO-ts-txE" secondAttribute="width" id="4Qw-bx-Ko9"/>
                     <constraint firstItem="B1z-cV-oJf" firstAttribute="height" secondItem="7U5-zd-6Gj" secondAttribute="height" multiplier="2.8" id="6ei-9R-ziC"/>
@@ -213,10 +220,13 @@
                     <constraint firstItem="zFV-9M-FqC" firstAttribute="centerX" secondItem="CSZ-I3-caG" secondAttribute="centerX" id="A4v-xd-2Md"/>
                     <constraint firstItem="zFV-9M-FqC" firstAttribute="top" secondItem="CSZ-I3-caG" secondAttribute="top" id="EuG-TF-RHU"/>
                     <constraint firstItem="7U5-zd-6Gj" firstAttribute="width" secondItem="B1z-cV-oJf" secondAttribute="width" id="JJF-hZ-Hjl"/>
+                    <constraint firstItem="CSZ-I3-caG" firstAttribute="width" secondItem="mDd-G9-afn" secondAttribute="width" multiplier="2" id="KOe-61-AZ0"/>
                     <constraint firstItem="7U5-zd-6Gj" firstAttribute="centerX" secondItem="B1z-cV-oJf" secondAttribute="centerX" id="OfU-om-MeG"/>
+                    <constraint firstItem="CSZ-I3-caG" firstAttribute="height" secondItem="mDd-G9-afn" secondAttribute="height" multiplier="8" id="VoT-zo-zLY"/>
                     <constraint firstItem="CSZ-I3-caG" firstAttribute="height" secondItem="jSO-ts-txE" secondAttribute="height" id="YJ6-3F-Va5"/>
                     <constraint firstItem="B1z-cV-oJf" firstAttribute="leading" secondItem="zFV-9M-FqC" secondAttribute="leading" id="bR1-6c-A14"/>
                     <constraint firstItem="B1z-cV-oJf" firstAttribute="top" secondItem="zFV-9M-FqC" secondAttribute="bottom" multiplier="1.1" id="d6N-2c-unQ"/>
+                    <constraint firstItem="mDd-G9-afn" firstAttribute="leading" secondItem="7U5-zd-6Gj" secondAttribute="trailing" multiplier="1.1" id="ieE-5A-y6A"/>
                     <constraint firstItem="zFV-9M-FqC" firstAttribute="width" secondItem="CSZ-I3-caG" secondAttribute="width" id="kjk-4G-stq"/>
                     <constraint firstItem="CSZ-I3-caG" firstAttribute="height" secondItem="B1z-cV-oJf" secondAttribute="height" multiplier="1.9" id="pGj-o9-Sc7"/>
                     <constraint firstItem="7U5-zd-6Gj" firstAttribute="top" secondItem="B1z-cV-oJf" secondAttribute="bottom" multiplier="1.05" id="yKU-rO-2AZ"/>
@@ -225,6 +235,7 @@
             <connections>
                 <outlet property="btnBrowseUserPic" destination="7U5-zd-6Gj" id="Jbh-ug-bEF"/>
                 <outlet property="imgUser" destination="B1z-cV-oJf" id="ChG-Hp-p3w"/>
+                <outlet property="lblImageUpload" destination="mDd-G9-afn" id="BHo-US-ziJ"/>
             </connections>
             <point key="canvasLocation" x="302.5" y="520.5"/>
         </tableViewCell>
@@ -406,6 +417,12 @@
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No image uploaded" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUL-dC-hxt">
+                        <rect key="frame" x="164" y="142" width="183" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="2m8-lT-WnR" secondAttribute="height" multiplier="7" id="78G-zQ-Qm8"/>
@@ -415,12 +432,16 @@
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="width" secondItem="tg6-ra-6Mr" secondAttribute="width" multiplier="2.5" id="NVY-Yr-y4w"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="NmY-V4-X9D" secondAttribute="height" id="NeV-gO-yNR"/>
                     <constraint firstItem="d5b-5J-5Oz" firstAttribute="top" secondItem="2m8-lT-WnR" secondAttribute="bottom" multiplier="1.1" id="Ss7-H8-PYh"/>
+                    <constraint firstItem="WUL-dC-hxt" firstAttribute="leading" secondItem="tg6-ra-6Mr" secondAttribute="trailing" multiplier="1.1" id="Ttw-id-8bH"/>
                     <constraint firstItem="tg6-ra-6Mr" firstAttribute="centerY" secondItem="S8k-FT-DFA" secondAttribute="centerY" multiplier="1.7" id="YX2-8R-fvz"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="centerY" secondItem="NmY-V4-X9D" secondAttribute="centerY" id="Zjx-lT-inb"/>
+                    <constraint firstItem="WUL-dC-hxt" firstAttribute="centerY" secondItem="tg6-ra-6Mr" secondAttribute="centerY" id="bLc-8Y-Pps"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="centerX" secondItem="tg6-ra-6Mr" secondAttribute="centerX" multiplier="2.4" id="c3L-ZD-Qdi"/>
                     <constraint firstItem="d5b-5J-5Oz" firstAttribute="width" secondItem="2m8-lT-WnR" secondAttribute="width" id="dnL-cr-A3V"/>
                     <constraint firstItem="2m8-lT-WnR" firstAttribute="centerX" secondItem="S8k-FT-DFA" secondAttribute="centerX" id="eAN-jj-knn"/>
+                    <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="WUL-dC-hxt" secondAttribute="height" multiplier="8" id="kjx-ZE-uVK"/>
                     <constraint firstItem="d5b-5J-5Oz" firstAttribute="centerX" secondItem="2m8-lT-WnR" secondAttribute="centerX" id="lEI-am-PYm"/>
+                    <constraint firstItem="S8k-FT-DFA" firstAttribute="width" secondItem="WUL-dC-hxt" secondAttribute="width" multiplier="2" id="mXu-Ig-yFB"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="centerX" secondItem="NmY-V4-X9D" secondAttribute="centerX" id="mjC-Ea-Hg9"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="width" secondItem="NmY-V4-X9D" secondAttribute="width" id="o0w-2L-IJV"/>
                     <constraint firstItem="2m8-lT-WnR" firstAttribute="top" secondItem="S8k-FT-DFA" secondAttribute="top" id="p1j-iB-J9W"/>
@@ -429,6 +450,7 @@
             <connections>
                 <outlet property="btnBrowseCover" destination="tg6-ra-6Mr" id="gtM-f8-kZf"/>
                 <outlet property="imgCover" destination="d5b-5J-5Oz" id="hib-hg-VFS"/>
+                <outlet property="lblImageUpload" destination="WUL-dC-hxt" id="BBN-kU-Jqn"/>
             </connections>
             <point key="canvasLocation" x="302.5" y="1117.5"/>
         </tableViewCell>

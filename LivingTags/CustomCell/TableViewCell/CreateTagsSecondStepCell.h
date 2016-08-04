@@ -19,6 +19,8 @@
 @property(nonatomic,strong)IBOutlet UILabel *lblThirdLocation;
 
 
+@property(nonatomic,strong)IBOutlet UILabel *lblImageUpload;
+
 @property(nonatomic,strong)IBOutlet UIButton *btnMale;
 @property(nonatomic,strong)IBOutlet UIButton *btnFemale;
 

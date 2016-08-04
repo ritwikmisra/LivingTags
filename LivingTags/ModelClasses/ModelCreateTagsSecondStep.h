@@ -25,6 +25,7 @@
 @property(nonatomic,strong)NSString *strLong2;
 @property(nonatomic,strong)NSString *strLong3;
 @property(nonatomic,strong)NSString *strMemorialQuote;
+@property(nonatomic,strong)NSString *strGender;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 

@@ -274,7 +274,6 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-
     [callOutView removeFromSuperview];
     [mapView deselectAnnotation:view.annotation animated:NO];
     if ([view.annotation isKindOfClass:[MKUserLocation class]])
@@ -310,6 +309,10 @@
     }
 }
 
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
+{
+    
+}
 
 #pragma mark
 #pragma mark showSelectedCallOutViewWithTag
