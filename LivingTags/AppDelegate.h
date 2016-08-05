@@ -29,6 +29,10 @@
 @property(nonatomic,strong)CLLocation *location;
 @property(nonatomic,strong)CLPlacemark *placemark ;
 
+@property(nonatomic,assign)BOOL isFirstTime;
+@property(nonatomic,assign)BOOL isLogoutBtnTapped;
+
+
 //location manage
 @property(nonatomic,strong)ModelUser *objUser;
 @property(nonatomic,strong)ModelLivingTagsViewedAndCreated *objLivingTags;

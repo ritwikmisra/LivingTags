@@ -58,6 +58,12 @@
             slideMenu.view.frame=CGRectMake(0,0, SLIDER_WIDTH, [[UIScreen mainScreen] bounds].size.height);
             slideMenu.delegate=self;
             slideMenu.isSlideMenuVisible=NO;
+            // [slideMenu.tblSidePanel reloadData];
+            if (appDel.isLogoutBtnTapped == YES)
+            {
+                appDel.isLogoutBtnTapped = NO;
+                [slideMenu.tblSidePanel reloadData];
+            }
         }
     }
     CALayer *layer = self.navigationController.view.layer;
@@ -66,7 +72,7 @@
     layer.shadowRadius = 2.0f;
     layer.shadowOpacity = 0.4f;
     layer.shadowPath = [[UIBezierPath bezierPathWithRect:layer.bounds] CGPath];
-
+    
     [[[UIApplication sharedApplication] keyWindow] addSubview:slideMenu.view];
     [[[UIApplication sharedApplication] keyWindow] sendSubviewToBack:slideMenu.view];
     ////////
@@ -208,47 +214,69 @@
 
 -(void)selectedRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self closeImageView];
+    // [self closeImageView];
     UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     [UIView animateWithDuration:0.2 animations:^{
-        navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
+        //navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
     } completion:^(BOOL finished) {
-        [slideMenu setIsSlideMenuVisible:NO];
+        
+        //[slideMenu setIsSlideMenuVisible:NO];
         UIViewController *controller;
         UIStoryboard *mainStoryboard=[UIStoryboard storyboardWithName:@"Main"bundle: nil];
         switch (indexPath.row)
         {
             case 1:
-                controller=(ProfileViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+                //                controller=(ProfileViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
                 break;
                 
             case 2:
-                controller=(LivingTagsTemplateListController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LivingTagsTemplateListController"];
+                controller=(ProfileViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
                 break;
                 
             case 3:
-                controller=(ReadAllTagsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ReadAllTagsViewController"];
+                controller=(LivingTagsTemplateListController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"LivingTagsTemplateListController"];
                 break;
-
-
+                
             case 4:
-                controller=(MyLivingTagesViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
+                controller=(ReadAllTagsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ReadAllTagsViewController"];
                 break;
                 
             case 5:
-                controller=(ImportContactsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ImportContactsViewController"];
+                controller=(MyLivingTagesViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
                 break;
-
+                
+            case 6:
+                //controller=(ImportContactsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ImportContactsViewController"];
+                break;
+                
+            case 7:
+                //controller=(ImportContactsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ImportContactsViewController"];
+                break;
+                
+            case 8:
+                //controller=(ImportContactsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ImportContactsViewController"];
+                break;
+                
+            case 9:
+                //controller=(ImportContactsViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ImportContactsViewController"];
+                break;
+                
             default:
                 break;
         }
+        
         NSLog(@"%@",self.navigationController.topViewController);
         if (![[self.navigationController topViewController] isKindOfClass:[controller class]] && indexPath.row!=7)
         {
+            navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
+            [self closeImageView];
+            [slideMenu setIsSlideMenuVisible:NO];
+            
             [self.navigationController pushViewController:controller animated:YES];
         }
     }];
 }
+
 
 #pragma mark
 #pragma mark Display AlertController for logout
@@ -256,7 +284,7 @@
 
 -(void)displayAlertControllerForLogout
 {
-    [self closeSlider];
+    //[self closeSlider];
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to logout from the application?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self logout];
@@ -268,9 +296,13 @@
     }];
     [alertController addAction:actionOK];
     [alertController addAction:actionCancel];
-    [self presentViewController:alertController animated:YES completion:^{
-        
-    }];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    });
+    
 }
 
 #pragma mark
@@ -279,9 +311,12 @@
 
 -(void)logout
 {
+    appDel.isFirstTime = YES;
+    appDel.isLogoutBtnTapped = YES;
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"user_id"];
     //Token
     [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"Token"];
+    [self closeSlider];
     LoggingViewController *master=[[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"LoggingViewController"];
     [self.navigationController pushViewController:master animated:YES];
 }

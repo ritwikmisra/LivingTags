@@ -27,6 +27,11 @@
 		0D0EA380B8B6AC9032F35B48 /* libPods-LivingTags.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24846D52E42744797AB50C9B /* libPods-LivingTags.a */; };
 		0D20AEB81D47B2FF00851994 /* CreateTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D20AEB61D47B2FF00851994 /* CreateTagsCell.m */; };
 		0D20AEB91D47B2FF00851994 /* CreateTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D20AEB71D47B2FF00851994 /* CreateTagsCell.xib */; };
+		0D23053D1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */; };
+		0D2305421D54C6FB00115A34 /* SlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2305401D54C6FB00115A34 /* SlideMenuController.m */; };
+		0D2305431D54C6FB00115A34 /* SlideMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2305411D54C6FB00115A34 /* SlideMenuController.xib */; };
+		0D2305471D54C76C00115A34 /* SidePanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2305451D54C76C00115A34 /* SidePanelCell.m */; };
+		0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2305461D54C76C00115A34 /* SidePanelCell.xib */; };
 		0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */; };
 		0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D37311E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m */; };
 		0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3731201CD8A10B00EDC547 /* NSData+ImageContentType.m */; };
@@ -89,11 +94,7 @@
 		0D764E731D1808BD00298BBE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D764E721D1808BD00298BBE /* CoreGraphics.framework */; };
 		0D764E751D1808CE00298BBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D764E741D1808CE00298BBE /* Foundation.framework */; };
 		0D764E771D18094700298BBE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D764E761D18094700298BBE /* AudioToolbox.framework */; };
-		0D77D4181CE4891C00CF2C24 /* SlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D77D4161CE4891C00CF2C24 /* SlideMenuController.m */; };
-		0D77D4191CE4891C00CF2C24 /* SlideMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D77D4171CE4891C00CF2C24 /* SlideMenuController.xib */; };
 		0D77D41C1CE4983900CF2C24 /* side_menu_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D77D41B1CE4983900CF2C24 /* side_menu_image.png */; };
-		0D77D4201CE4A37E00CF2C24 /* SidePanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D77D41E1CE4A37E00CF2C24 /* SidePanelCell.m */; };
-		0D77D4211CE4A37E00CF2C24 /* SidePanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D77D41F1CE4A37E00CF2C24 /* SidePanelCell.xib */; };
 		0D77F6B01CD736AE00671159 /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D77F6AD1CD736AD00671159 /* Assets.bundle */; };
 		0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D77F6AF1CD736AD00671159 /* YTPlayerView.m */; };
 		0D77F6B41CD7874C00671159 /* ProfileGetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D77F6B31CD7874C00671159 /* ProfileGetService.m */; };
@@ -226,6 +227,14 @@
 		0D20AEB51D47B2FF00851994 /* CreateTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsCell.h; sourceTree = "<group>"; };
 		0D20AEB61D47B2FF00851994 /* CreateTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsCell.m; sourceTree = "<group>"; };
 		0D20AEB71D47B2FF00851994 /* CreateTagsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTagsCell.xib; sourceTree = "<group>"; };
+		0D23053B1D54BEBC00115A34 /* LivingTagsFourthStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsFourthStepViewController.h; sourceTree = "<group>"; };
+		0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsFourthStepViewController.m; sourceTree = "<group>"; };
+		0D23053F1D54C6FB00115A34 /* SlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuController.h; sourceTree = "<group>"; };
+		0D2305401D54C6FB00115A34 /* SlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuController.m; sourceTree = "<group>"; };
+		0D2305411D54C6FB00115A34 /* SlideMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideMenuController.xib; sourceTree = "<group>"; };
+		0D2305441D54C76200115A34 /* SidePanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidePanelCell.h; sourceTree = "<group>"; };
+		0D2305451D54C76C00115A34 /* SidePanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidePanelCell.m; sourceTree = "<group>"; };
+		0D2305461D54C76C00115A34 /* SidePanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidePanelCell.xib; sourceTree = "<group>"; };
 		0D3730361CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLivingTagsViewedAndCreated.h; sourceTree = "<group>"; };
 		0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLivingTagsViewedAndCreated.m; sourceTree = "<group>"; };
 		0D37311D1CD8A10B00EDC547 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -323,13 +332,7 @@
 		0D764E721D1808BD00298BBE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0D764E741D1808CE00298BBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D764E761D18094700298BBE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		0D77D4151CE4891C00CF2C24 /* SlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuController.h; path = sidePanel/SlideMenuController.h; sourceTree = "<group>"; };
-		0D77D4161CE4891C00CF2C24 /* SlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlideMenuController.m; path = sidePanel/SlideMenuController.m; sourceTree = "<group>"; };
-		0D77D4171CE4891C00CF2C24 /* SlideMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SlideMenuController.xib; path = sidePanel/SlideMenuController.xib; sourceTree = "<group>"; };
 		0D77D41B1CE4983900CF2C24 /* side_menu_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = side_menu_image.png; sourceTree = "<group>"; };
-		0D77D41D1CE4A37E00CF2C24 /* SidePanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidePanelCell.h; sourceTree = "<group>"; };
-		0D77D41E1CE4A37E00CF2C24 /* SidePanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidePanelCell.m; sourceTree = "<group>"; };
-		0D77D41F1CE4A37E00CF2C24 /* SidePanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidePanelCell.xib; sourceTree = "<group>"; };
 		0D77F6AD1CD736AD00671159 /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
 		0D77F6AE1CD736AD00671159 /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		0D77F6AF1CD736AD00671159 /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
@@ -552,6 +555,16 @@
 			path = side_panel_images;
 			sourceTree = "<group>";
 		};
+		0D23053E1D54C6FB00115A34 /* sidePanel */ = {
+			isa = PBXGroup;
+			children = (
+				0D23053F1D54C6FB00115A34 /* SlideMenuController.h */,
+				0D2305401D54C6FB00115A34 /* SlideMenuController.m */,
+				0D2305411D54C6FB00115A34 /* SlideMenuController.xib */,
+			);
+			path = sidePanel;
+			sourceTree = "<group>";
+		};
 		0D37311C1CD8A10B00EDC547 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +714,8 @@
 				0DE967521D353D690088C508 /* LivingTagsSecondStepViewController.m */,
 				0DB9A4581D4629CE007671E9 /* LivingTagsThirdStepViewController.h */,
 				0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */,
+				0D23053B1D54BEBC00115A34 /* LivingTagsFourthStepViewController.h */,
+				0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */,
 				0DF7CFA21D4F9A5900A28CA1 /* PreviewViewController.h */,
 				0DF7CFA31D4F9A5900A28CA1 /* PreviewViewController.m */,
 			);
@@ -741,6 +756,9 @@
 		0D698D1C1CC8D79000F64745 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D2305441D54C76200115A34 /* SidePanelCell.h */,
+				0D2305451D54C76C00115A34 /* SidePanelCell.m */,
+				0D2305461D54C76C00115A34 /* SidePanelCell.xib */,
 				0D5EA2321CCB545500CA0DAE /* RegistrationCellTableViewCell.h */,
 				0D5EA2331CCB545500CA0DAE /* RegistrationCellTableViewCell.m */,
 				0D939D2F1CD34B5B002C954B /* EditProfilePicCellTableViewCell.h */,
@@ -749,9 +767,6 @@
 				0D8A6D4F1CE08EA2003A28C7 /* LivingTagsCell.h */,
 				0D8A6D501CE08EA2003A28C7 /* LivingTagsCell.m */,
 				0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */,
-				0D77D41D1CE4A37E00CF2C24 /* SidePanelCell.h */,
-				0D77D41E1CE4A37E00CF2C24 /* SidePanelCell.m */,
-				0D77D41F1CE4A37E00CF2C24 /* SidePanelCell.xib */,
 				0D80DAFC1CFDA7E100B79C6B /* GroupPopupCell.h */,
 				0D80DAFD1CFDA7E100B79C6B /* GroupPopupCell.m */,
 				0D80DAFE1CFDA7E100B79C6B /* GroupPopupCell.xib */,
@@ -768,13 +783,11 @@
 		0D698D1D1CC8D79000F64745 /* CustomDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				0D23053E1D54C6FB00115A34 /* sidePanel */,
 				0D94FF551D3CCCB400502FC8 /* CKCalenderView */,
 				0D5EA2371CCB6A0000CA0DAE /* NetworkActivityViewController.h */,
 				0D5EA2381CCB6A0000CA0DAE /* NetworkActivityViewController.m */,
 				0D5EA2391CCB6A0000CA0DAE /* NetworkActivityViewController.xib */,
-				0D77D4151CE4891C00CF2C24 /* SlideMenuController.h */,
-				0D77D4161CE4891C00CF2C24 /* SlideMenuController.m */,
-				0D77D4171CE4891C00CF2C24 /* SlideMenuController.xib */,
 				0D80DF841CEDA30B000FE698 /* MyLivingTagsMapViewController.h */,
 				0D80DF851CEDA30B000FE698 /* MyLivingTagsMapViewController.m */,
 				0D80DF861CEDA30B000FE698 /* MyLivingTagsMapViewController.xib */,
@@ -1211,7 +1224,6 @@
 				0D8F28F91CD09E03001AE322 /* logo_loader.png in Resources */,
 				0D698D111CC8CF2500F64745 /* LaunchScreen.storyboard in Resources */,
 				0D922FF41CF8707D00EC1945 /* menu_icon.png in Resources */,
-				0D77D4211CE4A37E00CF2C24 /* SidePanelCell.xib in Resources */,
 				0D698D381CC90AEC00F64745 /* facebook_icon.png in Resources */,
 				0D40A8441CE5BFA500D51A8E /* play_icon.png in Resources */,
 				0DA226741CD22E4700B3A5BC /* phone_icon.png in Resources */,
@@ -1240,10 +1252,10 @@
 				0D80DAF81CFD9B0E00B79C6B /* GroupPopupController.xib in Resources */,
 				0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */,
 				0D5EA23B1CCB6A0000CA0DAE /* NetworkActivityViewController.xib in Resources */,
+				0D2305431D54C6FB00115A34 /* SlideMenuController.xib in Resources */,
 				0D922FF51CF8707D00EC1945 /* pin.png in Resources */,
 				0D698D3C1CC90AEC00F64745 /* password_icon.png in Resources */,
 				0D922FF21CF8707D00EC1945 /* list_icon.png in Resources */,
-				0D77D4191CE4891C00CF2C24 /* SlideMenuController.xib in Resources */,
 				0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */,
 				0D9B88901D22B75D003B51F0 /* stop.png in Resources */,
 				0D8804651D475DDA009DA25F /* voice_icon.png in Resources */,
@@ -1254,6 +1266,7 @@
 				0D922FF81CF8707D00EC1945 /* pin_orange.png in Resources */,
 				0D922FF91CF8707D00EC1945 /* search_icon.png in Resources */,
 				0D9B888D1D22B75D003B51F0 /* play_enable.png in Resources */,
+				0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */,
 				0D8AC8CF1D364F47001EFEBA /* CreateTagsSecondStepCell.xib in Resources */,
 				0D77D41C1CE4983900CF2C24 /* side_menu_image.png in Resources */,
 				0D066AD81D2A86B200C910E8 /* Roboto-Light.ttf in Resources */,
@@ -1404,13 +1417,12 @@
 				0D80DF871CEDA30B000FE698 /* MyLivingTagsMapViewController.m in Sources */,
 				0D37314D1CD8A10B00EDC547 /* UIView+WebCacheOperation.m in Sources */,
 				0DB9A45E1D46638F007671E9 /* CreateTagsThirdStepCell.m in Sources */,
+				0D2305471D54C76C00115A34 /* SidePanelCell.m in Sources */,
 				0D764E711D1806AC00298BBE /* RecordViewController.m in Sources */,
 				0D698D321CC9026900F64745 /* LoggingViewController.m in Sources */,
 				0D698D261CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m in Sources */,
 				0D80DAFF1CFDA7E100B79C6B /* GroupPopupCell.m in Sources */,
 				0DF7CFA41D4F9A5900A28CA1 /* PreviewViewController.m in Sources */,
-				0D77D4201CE4A37E00CF2C24 /* SidePanelCell.m in Sources */,
-				0D77D4181CE4891C00CF2C24 /* SlideMenuController.m in Sources */,
 				0D3731491CD8A10B00EDC547 /* UIImage+MultiFormat.m in Sources */,
 				0D3731421CD8A10B00EDC547 /* SDWebImageDecoder.m in Sources */,
 				0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */,
@@ -1420,6 +1432,7 @@
 				0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */,
 				0DDFC9B31CE372B6004D5D46 /* socialLoginFirstService.m in Sources */,
 				0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */,
+				0D2305421D54C6FB00115A34 /* SlideMenuController.m in Sources */,
 				0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */,
 				0D698D001CC8CF2500F64745 /* main.m in Sources */,
 				0D9350BC1CDB61F800E403B2 /* YTVimeoURLParser.m in Sources */,
@@ -1431,6 +1444,7 @@
 				0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */,
 				0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */,
 				0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */,
+				0D23053D1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m in Sources */,
 				0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */,
 				0DB9A45A1D4629CF007671E9 /* LivingTagsThirdStepViewController.m in Sources */,
 				0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */,

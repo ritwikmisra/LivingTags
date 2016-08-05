@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LivingTags/viewControllers/LivingTagsSecondStepViewController.m"
-            timestampString = "492009760.180033"
+            timestampString = "492091647.848956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "908"
-            endingLineNumber = "908"
+            startingLineNumber = "910"
+            endingLineNumber = "910"
             landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LivingTags/viewControllers/LivingTagsSecondStepViewController.m"
-            timestampString = "492009760.180033"
+            timestampString = "492091647.848956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1056"
-            endingLineNumber = "1056"
-            landmarkName = "-updateDictionaryForServiceForKey:"
-            landmarkType = "5">
+            startingLineNumber = "1058"
+            endingLineNumber = "1058"
+            landmarkName = "@implementation LivingTagsSecondStepViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

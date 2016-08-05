@@ -228,6 +228,7 @@
             if (isProfileSuccess==NO)
             {
                 cellTags.lblImageUpload.text=@"Profile image Uploaded";
+                [cellTags.btnBrowseUserPic setTitle:@"Change"  forState:UIControlStateNormal];
             }
             [cellTags.btnBrowseUserPic addTarget:self action:@selector(btnUserPicSelected:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -332,7 +333,8 @@
             }
             if (isCoverSuccess==NO)
             {
-                cellTags.lblImageUpload.text=@"Cover picture uploaded...";
+                cellTags.lblImageUpload.text=@"Cover pic uploaded.";
+                [cellTags.btnBrowseCover setTitle:@"Change"  forState:UIControlStateNormal];
             }
             cellTags.btnBrowseCover.tag=indexPath.row;
             [cellTags.btnBrowseCover addTarget:self action:@selector(btnCoverPicPressed:) forControlEvents:UIControlEventTouchUpInside];

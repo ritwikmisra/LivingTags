@@ -260,7 +260,7 @@
 
 -(void)btnNext:(id)sender
 {
-
+    [self performSegueWithIdentifier:@"segueFourthStep" sender:self];
 }
 
 -(void)btnAddPhoto:(id)sender

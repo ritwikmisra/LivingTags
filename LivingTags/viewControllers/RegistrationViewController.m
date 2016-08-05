@@ -4,12 +4,10 @@
 //
 //  Created by appsbeetech on 23/04/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
-//
 
 #import "RegistrationViewController.h"
 #import "RegistrationCellTableViewCell.h"
 #import "RegistrationService.h"
-
 
 @interface RegistrationViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
