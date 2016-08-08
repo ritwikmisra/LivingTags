@@ -52,6 +52,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="collPics" destination="5ZV-mx-RmG" id="11B-23-bRL"/>
+                <outlet property="lbl" destination="NRU-PS-MgO" id="0Rl-8U-tB3"/>
             </connections>
             <point key="canvasLocation" x="489.5" y="-71.5"/>
         </tableViewCell>
@@ -105,6 +106,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnCalender" destination="14c-Un-u94" id="M70-u5-eZC"/>
+                <outlet property="lbl" destination="7BG-yB-uFM" id="2Ko-a5-nEQ"/>
                 <outlet property="lblCalender" destination="RtO-rL-nkN" id="jwW-zQ-K5G"/>
             </connections>
             <point key="canvasLocation" x="534.5" y="233"/>

@@ -11,7 +11,7 @@
 #import "SidePanelCell.h"
 #import "UIImageView+WebCache.h"
 
-@interface SlideMenuController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
+@interface SlideMenuController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *arrLabel,*arrImages;
     UIView *animateView;
@@ -73,11 +73,6 @@
     arrImages=[[NSMutableArray alloc]initWithObjects:@"",@"",@"profile_icon_",@"creat_tag",@"read_tag",@"my_tag",@"contact",@"payments",@"comments",@"", nil];
     [_tblSidePanel setBounces:NO];
     
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.0; //seconds
-    lpgr.delegate = self;
-    [self.tblSidePanel addGestureRecognizer:lpgr];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -344,55 +339,6 @@
         [self.delegate selectedRowAtIndexPath:selectedIndexPath];
     }
 }
-
-
-
-#pragma mark
-#pragma mark LONG PRESS GESTURE
-#pragma mark
-
--(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
-{
-    CGPoint p = [gestureRecognizer locationInView:self.tblSidePanel];
-    
-    NSIndexPath *indexPath = [self.tblSidePanel indexPathForRowAtPoint:p];
-    SidePanelCell *animateCell = (SidePanelCell *)[self.tblSidePanel cellForRowAtIndexPath:indexPath];
-    if (indexPath == nil) {
-        NSLog(@"long press on table view but not on a row");
-    }
-     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"long press on table view at row %ld", (long)indexPath.row);
-
-//         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(animateCell.frame.origin.y, animateCell.frame.origin.y, self.view.frame.size.width, animateCell.frame.size.height)];
-//         view.backgroundColor = [UIColor blueColor];
-//         view.layer.cornerRadius = 50;
-         
-         //[[[animateCell.contentView subviews]objectAtIndex:3]addSubview:view];
-         CATransition *animation = [CATransition animation];
-         [animation setDelegate:self];
-         [animation setDuration:2.0f];
-         [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
-         [animation setType:@"rippleEffect" ];
-         [[[animateCell.contentView subviews]objectAtIndex:3].layer addAnimation:animation forKey:NULL];
-         
-         //[[[animateCell.contentView subviews]objectAtIndex:3].layer addAnimation:scaleAnimation forKey:@"scale"];
-    }
-    
-    if (gestureRecognizer.state == UIGestureRecognizerStateRecognized)
-    {
-        //Do something to tell the user!
-        
-    }
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
-    {
-
-    }
-    
-    else {
-        NSLog(@"gestureRecognizer.state = %ld", (long)gestureRecognizer.state);
-    }
-}
-
 
 #pragma mark
 #pragma mark BUTTON LOGOUT ACTION

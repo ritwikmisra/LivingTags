@@ -13,6 +13,7 @@
 
 @property (nonatomic,strong)IBOutlet UIButton *btnBrowse;
 @property(nonatomic,strong)IBOutlet UICollectionView *collPics;
+@property(nonatomic,strong)IBOutlet UILabel *lbl;
 
 @property(nonatomic,strong)IBOutlet UITextField *txtCaptions;
 

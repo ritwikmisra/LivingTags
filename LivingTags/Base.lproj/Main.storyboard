@@ -1977,9 +1977,6 @@
                                 <state key="normal" title="PREVIEW">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="btnPreviewPressed:" destination="ftP-E3-z2h" eventType="touchUpInside" id="981-TC-Nfv"/>
-                                </connections>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="zcA-Lv-vyT">
                                 <rect key="frame" x="34" y="12" width="32" height="32"/>
@@ -2123,7 +2120,6 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="btnPreview" destination="GOm-sJ-QBk" id="SbD-CM-7a4"/>
                         <outlet property="lbl1" destination="GcM-9K-yUY" id="g0M-AV-8hc"/>
                         <outlet property="lbl2" destination="dPm-bT-MZD" id="pOc-vy-myp"/>
                         <outlet property="lbl3" destination="HSA-Pa-A7d" id="R2G-XM-Q6C"/>
@@ -2231,10 +2227,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LiL-OB-FuM">
-                                <rect key="frame" x="50" y="128" width="500" height="444"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeo-s0-ahf">
                                 <rect key="frame" x="511" y="70" width="39" height="39"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
@@ -2242,6 +2234,14 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LiL-OB-FuM">
+                                <rect key="frame" x="50" y="128" width="500" height="444"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qiJ-2z-BjB" id="E39-mn-1p6"/>
+                                    <outlet property="delegate" destination="qiJ-2z-BjB" id="0Oo-eq-AXw"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2308,6 +2308,7 @@
                         <outlet property="lbl2" destination="7Cj-Ds-GdG" id="sGs-B8-pUW"/>
                         <outlet property="lbl3" destination="iEY-H3-B6n" id="FAN-b8-Tmt"/>
                         <outlet property="lbl4" destination="Zeo-s0-ahf" id="q3J-zS-pcW"/>
+                        <outlet property="tblFourthStep" destination="LiL-OB-FuM" id="9fF-Sx-QPp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiP-eK-TPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
