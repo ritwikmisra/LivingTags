@@ -24,8 +24,6 @@
     BOOL isLazyLoading;
     ModelListing *objSegue;
     IBOutlet UITextField *txtSearch;
-
-
 }
 @end
 

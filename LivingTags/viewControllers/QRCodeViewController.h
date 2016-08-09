@@ -1,5 +1,5 @@
 //
-//  DashboardViewController.h
+//  QRCodeViewController.h
 //  LivingTags
 //
 //  Created by appsbeetech on 09/08/16.
@@ -8,8 +8,8 @@
 
 #import "ViewControllerBaseClassViewController.h"
 
-@interface DashboardViewController : ViewControllerBaseClassViewController
+@interface QRCodeViewController : ViewControllerBaseClassViewController
 
-
+@property(nonatomic,strong)NSString *strWebURI;
 
 @end

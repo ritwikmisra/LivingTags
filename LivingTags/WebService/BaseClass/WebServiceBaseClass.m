@@ -12,8 +12,8 @@
 
 //http://carlifestyle.digiopia.in/user/registration
 
-//#define BASE_URL @"http://livingtags.digiopia.in/api/"
-#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
+#define BASE_URL @"http://livingtags.digiopia.in/api/"
+//#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
 
 //readtags
 
@@ -82,11 +82,13 @@ NSString *const strAPI[]={
     NSURLSession *defaultSession =[NSURLSession sessionWithConfiguration:backgroundConfiguration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionUploadTask *dataTask=[defaultSession uploadTaskWithStreamedRequest:request];
     [dataTask resume];
+    [self displayNetworkActivity];
 }
 
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
 {
+    [self hideNetworkActivity];
     NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSLog(@"%@",response);
 }

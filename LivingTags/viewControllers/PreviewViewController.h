@@ -9,6 +9,6 @@
 #import "ViewControllerBaseClassViewController.h"
 
 @interface PreviewViewController : ViewControllerBaseClassViewController
-@property(nonatomic,strong)NSString *strTemplateID;
+@property(nonatomic,strong)NSString *str;
 
 @end

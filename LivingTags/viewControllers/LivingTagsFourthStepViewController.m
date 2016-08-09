@@ -18,6 +18,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "LivingTagsFourthStepService.h"
+#import "QRCodeViewController.h"
 
 @interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate>
 
@@ -33,6 +34,7 @@
     BOOL isFirstImage;
     IBOutlet UIButton *btnPreview;
     IBOutlet UITableView *tblFourthStep;
+    NSString *strWebURI;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -282,6 +284,18 @@
 -(void)btnNext:(id)sender
 {
     //[self performSegueWithIdentifier:@"segueFourthStep" sender:self];
+    [[LivingTagsFourthStepService service]callPublishDataWithPublish:@"P" livingTagsID:self.strTempVidID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            NSLog(@"%@",result);
+            strWebURI=[NSString stringWithFormat:@"%@",result];
+            [self performSegueWithIdentifier:@"segueQR" sender:self];
+        }
+    }];
 }
 
 -(void)btnAddPhoto:(id)sender
@@ -433,6 +447,7 @@
         [self displayErrorWithMessage:@"Please give atleast one photo and the date of the picture.."];
     }
     [dictPicDetails removeAllObjects];
+    appDel.dataVoice=nil;   
     NSLog(@"%@",dictPicDetails);
     [tblFourthStep reloadData];
 }
@@ -443,6 +458,12 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"segueQR"])
+    {
+        QRCodeViewController *master=[segue destinationViewController];
+        master.strWebURI=strWebURI;
+        NSLog(@"%@",master.strWebURI);
+    }
 }
 
 

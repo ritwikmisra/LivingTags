@@ -55,7 +55,7 @@
             if (strUserID.length>0)
             {
                 //segueProfile
-                [self performSegueWithIdentifier:@"segueProfile" sender:self];
+                [self performSegueWithIdentifier:@"segueFirstDashboard" sender:self];
             }
             else
             {

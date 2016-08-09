@@ -83,6 +83,8 @@
                                 appDel.objUser=[[ModelUser alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"account"]];
                                 NSLog(@"%@",appDel.objUser.strName);
                                 appDel.objLivingTags=[[ModelLivingTagsViewedAndCreated alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"livingtag"]];
+                                SlideMenuController *master=[SlideMenuController getSlideMenuInstance];
+                                [master .tblSidePanel reloadData];
                                 handler([responseDict objectForKey:@"response"],NO,nil);
                             }
                             else

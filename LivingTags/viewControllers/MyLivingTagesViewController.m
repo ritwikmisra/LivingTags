@@ -26,7 +26,6 @@
     BOOL isLazyLoading;
     ModelListing *objSegue;
 }
-
 @end
 
 @implementation MyLivingTagesViewController

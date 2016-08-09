@@ -48,9 +48,8 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     signIn.shouldFetchBasicProfile = YES;
     signIn.delegate = self;
     signIn.uiDelegate = self;
-
-    txtEmail.text=@"sourav.hazra@appsbee.com";
-    txtPassword.text=@"123456";
+//    txtEmail.text=@"sourav.hazra@appsbee.com";
+//    txtPassword.text=@"123456";
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -104,7 +103,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
             else
             {
                 //segueImportContacts
-                [self performSegueWithIdentifier:@"segueProfile" sender:self];
+                [self performSegueWithIdentifier:@"segueLoginToDashboard" sender:self];
             }
         }];
     }

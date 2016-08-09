@@ -62,14 +62,14 @@
     calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     dictPicDetails=[[NSMutableDictionary alloc]init];
-    if (appDel.dataVoice.length>0)
-    {
-        [dictPicDetails setObject:appDel.dataVoice forKey:@"4"];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    if (appDel.dataVoice.length>0)
+    {
+        [dictPicDetails setObject:appDel.dataVoice forKey:@"4"];
+    }
     [super viewWillAppear:animated];
     NSLog(@"%@",appDel.dataVoice);
     [tblAThirdStep reloadData];
@@ -483,6 +483,7 @@
         [self displayErrorWithMessage:@"Please give atleast one photo and the date of the picture.."];
     }
     [dictPicDetails removeAllObjects];
+    appDel.dataVoice=nil;
     NSLog(@"%@",dictPicDetails);
     [tblAThirdStep reloadData];
 }

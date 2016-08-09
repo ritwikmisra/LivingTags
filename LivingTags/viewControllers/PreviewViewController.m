@@ -27,18 +27,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CreateTagsPublishService service]callPublishServiceWithLivingTagsID:self.strTemplateID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            
-        }
-        else
-        {
-            NSLog(@"%@",result);
-            NSString *str=[NSString stringWithFormat:@"%@",result];
-            [webPreview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
-        }
-    }];
+    NSLog(@"%@",self.str);
+    [webPreview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.str]]];
 }
 
 -(void)viewDidAppear:(BOOL)animated

@@ -17,6 +17,7 @@
 #import "NetworkActivityViewController.h"
 #import "ReadAllTagsViewController.h"
 #import "ImportContactsViewController.h"
+#import "DashboardViewController.h"
 
 
 #define SLIDER_WIDTH [[UIScreen mainScreen] bounds].size.width/1.5f
@@ -48,11 +49,10 @@
 {
     [super viewDidAppear:animated];
     NSLog(@"%@",self.navigationController.topViewController);
-    
     ///slide menu initialisation
     if (!slideMenu)
     {
-        if ([[self.navigationController topViewController]isKindOfClass:[ProfileViewController class]])
+        if ([[self.navigationController topViewController]isKindOfClass:[DashboardViewController class]])
         {
             slideMenu=[SlideMenuController getSlideMenuInstance];
             slideMenu.view.frame=CGRectMake(0,0, SLIDER_WIDTH, [[UIScreen mainScreen] bounds].size.height);
@@ -226,7 +226,7 @@
         switch (indexPath.row)
         {
             case 1:
-                //                controller=(ProfileViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+                controller=( DashboardViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
                 break;
                 
             case 2:

@@ -64,7 +64,14 @@
 		0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2451CCB7F3000CA0DAE /* Reachability.m */; };
 		0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */; };
 		0D6030651D58B97000DB3333 /* LivingTagsFourthStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */; };
-		0D6030681D58C59D00DB3333 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6030671D58C59D00DB3333 /* DashboardViewController.m */; };
+		0D66C5741D59FEF100230261 /* DashboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D66C5721D59FEF100230261 /* DashboardCell.m */; };
+		0D66C5751D59FEF100230261 /* DashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D66C5731D59FEF100230261 /* DashboardCell.xib */; };
+		0D66C57A1D59FFED00230261 /* create_tag_dashbord.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D66C5771D59FFED00230261 /* create_tag_dashbord.png */; };
+		0D66C57B1D59FFED00230261 /* my_tag_dashbord.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D66C5781D59FFED00230261 /* my_tag_dashbord.png */; };
+		0D66C57C1D59FFED00230261 /* read_tag_dashbord.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D66C5791D59FFED00230261 /* read_tag_dashbord.png */; };
+		0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D66C57E1D5A01C800230261 /* DashboardViewController.m */; };
+		0D66C5821D5A320500230261 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D66C5811D5A320500230261 /* QRCodeViewController.m */; };
+		0D66C5841D5A336F00230261 /* qr_code.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D66C5831D5A336F00230261 /* qr_code.png */; };
 		0D698D001CC8CF2500F64745 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698CFF1CC8CF2500F64745 /* main.m */; };
 		0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D021CC8CF2500F64745 /* AppDelegate.m */; };
 		0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D698D071CC8CF2500F64745 /* Main.storyboard */; };
@@ -298,8 +305,17 @@
 		0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLivingTagsViewController.m; sourceTree = "<group>"; };
 		0D6030631D58B97000DB3333 /* LivingTagsFourthStepService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsFourthStepService.h; sourceTree = "<group>"; };
 		0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsFourthStepService.m; sourceTree = "<group>"; };
-		0D6030661D58C59D00DB3333 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
-		0D6030671D58C59D00DB3333 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		0D66C5711D59FEF100230261 /* DashboardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCell.h; sourceTree = "<group>"; };
+		0D66C5721D59FEF100230261 /* DashboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCell.m; sourceTree = "<group>"; };
+		0D66C5731D59FEF100230261 /* DashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCell.xib; sourceTree = "<group>"; };
+		0D66C5771D59FFED00230261 /* create_tag_dashbord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = create_tag_dashbord.png; sourceTree = "<group>"; };
+		0D66C5781D59FFED00230261 /* my_tag_dashbord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_tag_dashbord.png; sourceTree = "<group>"; };
+		0D66C5791D59FFED00230261 /* read_tag_dashbord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = read_tag_dashbord.png; sourceTree = "<group>"; };
+		0D66C57D1D5A01C800230261 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		0D66C57E1D5A01C800230261 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		0D66C5801D5A320500230261 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		0D66C5811D5A320500230261 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		0D66C5831D5A336F00230261 /* qr_code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_code.png; sourceTree = "<group>"; };
 		0D698CFB1CC8CF2400F64745 /* LivingTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivingTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D698CFF1CC8CF2500F64745 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D698D011CC8CF2500F64745 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -630,6 +646,16 @@
 			path = Rechability;
 			sourceTree = "<group>";
 		};
+		0D66C5761D59FFED00230261 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				0D66C5771D59FFED00230261 /* create_tag_dashbord.png */,
+				0D66C5781D59FFED00230261 /* my_tag_dashbord.png */,
+				0D66C5791D59FFED00230261 /* read_tag_dashbord.png */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		0D698CF21CC8CF2400F64745 = {
 			isa = PBXGroup;
 			children = (
@@ -724,8 +750,10 @@
 				0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */,
 				0DF7CFA21D4F9A5900A28CA1 /* PreviewViewController.h */,
 				0DF7CFA31D4F9A5900A28CA1 /* PreviewViewController.m */,
-				0D6030661D58C59D00DB3333 /* DashboardViewController.h */,
-				0D6030671D58C59D00DB3333 /* DashboardViewController.m */,
+				0D66C57D1D5A01C800230261 /* DashboardViewController.h */,
+				0D66C57E1D5A01C800230261 /* DashboardViewController.m */,
+				0D66C5801D5A320500230261 /* QRCodeViewController.h */,
+				0D66C5811D5A320500230261 /* QRCodeViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -784,6 +812,9 @@
 				0DB9A45B1D46638F007671E9 /* CreateTagsThirdStepCell.h */,
 				0DB9A45C1D46638F007671E9 /* CreateTagsThirdStepCell.m */,
 				0DB9A45D1D46638F007671E9 /* CreateTagsThirdStepCell.xib */,
+				0D66C5711D59FEF100230261 /* DashboardCell.h */,
+				0D66C5721D59FEF100230261 /* DashboardCell.m */,
+				0D66C5731D59FEF100230261 /* DashboardCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -812,6 +843,8 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D66C5831D5A336F00230261 /* qr_code.png */,
+				0D66C5761D59FFED00230261 /* Dashboard */,
 				0D8804591D475DDA009DA25F /* progress3 */,
 				0D94FF5A1D3CE18900502FC8 /* CKCalender */,
 				0D8AC8D01D365C5D001EFEBA /* CreateTagsStep1 */,
@@ -1240,6 +1273,7 @@
 				0DB9A45F1D46638F007671E9 /* CreateTagsThirdStepCell.xib in Resources */,
 				0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */,
 				0D0DDD0C1D11AAC600C0E9DD /* my_tag.png in Resources */,
+				0D66C5841D5A336F00230261 /* qr_code.png in Resources */,
 				0D0DDD091D11AAC600C0E9DD /* creat_tag.png in Resources */,
 				0D94FF5F1D3CE18900502FC8 /* left_arrow.png in Resources */,
 				0D922FF31CF8707D00EC1945 /* location_icon.png in Resources */,
@@ -1251,6 +1285,7 @@
 				0D066AD71D2A86B200C910E8 /* Cinzel-Regular_1.ttf in Resources */,
 				0DA226711CD22E4700B3A5BC /* edit_icon1.png in Resources */,
 				0D7165B71CE323FA00C8B288 /* GoogleService-Info.plist in Resources */,
+				0D66C57B1D59FFED00230261 /* my_tag_dashbord.png in Resources */,
 				0D922FFB1CF8707D00EC1945 /* top_shadow.png in Resources */,
 				0D94FF601D3CE18900502FC8 /* left_arrow@2x.png in Resources */,
 				0D0DDD071D11AAC600C0E9DD /* comments.png in Resources */,
@@ -1262,6 +1297,7 @@
 				0D80DAF81CFD9B0E00B79C6B /* GroupPopupController.xib in Resources */,
 				0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */,
 				0D5EA23B1CCB6A0000CA0DAE /* NetworkActivityViewController.xib in Resources */,
+				0D66C57A1D59FFED00230261 /* create_tag_dashbord.png in Resources */,
 				0D2305431D54C6FB00115A34 /* SlideMenuController.xib in Resources */,
 				0D922FF51CF8707D00EC1945 /* pin.png in Resources */,
 				0D698D3C1CC90AEC00F64745 /* password_icon.png in Resources */,
@@ -1278,6 +1314,7 @@
 				0D9B888D1D22B75D003B51F0 /* play_enable.png in Resources */,
 				0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */,
 				0D8AC8CF1D364F47001EFEBA /* CreateTagsSecondStepCell.xib in Resources */,
+				0D66C57C1D59FFED00230261 /* read_tag_dashbord.png in Resources */,
 				0D77D41C1CE4983900CF2C24 /* side_menu_image.png in Resources */,
 				0D066AD81D2A86B200C910E8 /* Roboto-Light.ttf in Resources */,
 				0D922FF71CF8707D00EC1945 /* pin_main.png in Resources */,
@@ -1287,6 +1324,7 @@
 				0D9B888C1D22B75D003B51F0 /* play_disable.png in Resources */,
 				0D80DB001CFDA7E100B79C6B /* GroupPopupCell.xib in Resources */,
 				0D939D331CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib in Resources */,
+				0D66C5751D59FEF100230261 /* DashboardCell.xib in Resources */,
 				0D0DDD081D11AAC600C0E9DD /* contact.png in Resources */,
 				0D922FFD1CF8739C00EC1945 /* menu_icon2.png in Resources */,
 				0D8804611D475DDA009DA25F /* calender_icon.png in Resources */,
@@ -1396,6 +1434,7 @@
 				0D3731401CD8A10B00EDC547 /* SDImageCache.m in Sources */,
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
+				0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */,
 				0D066ADC1D2A8DA800C910E8 /* ReadAllTagsViewController.m in Sources */,
 				0D3731471CD8A10B00EDC547 /* UIButton+WebCache.m in Sources */,
 				0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */,
@@ -1441,11 +1480,11 @@
 				0D3731441CD8A10B00EDC547 /* SDWebImageDownloaderOperation.m in Sources */,
 				0D3731521CD8A8C600EDC547 /* UpdateProfileService.m in Sources */,
 				0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */,
+				0D66C5821D5A320500230261 /* QRCodeViewController.m in Sources */,
 				0DDFC9B31CE372B6004D5D46 /* socialLoginFirstService.m in Sources */,
 				0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */,
 				0D2305421D54C6FB00115A34 /* SlideMenuController.m in Sources */,
 				0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */,
-				0D6030681D58C59D00DB3333 /* DashboardViewController.m in Sources */,
 				0D698D001CC8CF2500F64745 /* main.m in Sources */,
 				0D9350BC1CDB61F800E403B2 /* YTVimeoURLParser.m in Sources */,
 				0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */,
@@ -1465,6 +1504,7 @@
 				0D37314C1CD8A10B00EDC547 /* UIImageView+WebCache.m in Sources */,
 				0D8AC8CE1D364F47001EFEBA /* CreateTagsSecondStepCell.m in Sources */,
 				0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */,
+				0D66C5741D59FEF100230261 /* DashboardCell.m in Sources */,
 				0D5EA23A1CCB6A0000CA0DAE /* NetworkActivityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

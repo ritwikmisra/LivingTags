@@ -69,10 +69,9 @@
 {
     [super viewDidLoad];
     _tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
-    arrLabel=[[NSMutableArray alloc]initWithObjects:@"",@"Dashboard",@"Profile",@"Create Tags",@"Read Tags",@"My Tags",@"Contacts",@"Payments",@"Comments",@"Logout", nil];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"",@"Dashboard",@"Profile",@"CreateTags",@"ReadTags",@"MyTags",@"Contacts",@"Payments",@"Comments",@"Logout", nil];
     arrImages=[[NSMutableArray alloc]initWithObjects:@"",@"DASHBOARD",@"profile_icon_",@"creat_tag",@"read_tag",@"my_tag",@"contact",@"payments",@"comments",@"", nil];
     [_tblSidePanel setBounces:NO];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -151,6 +150,7 @@
        // [cell.btnLogout addTarget:self action:@selector(btnLogoutPressed:) forControlEvents:UIControlEventTouchUpInside];
         cell.lblName.text=appDel.objUser.strName;
         cell.lblEmail.text=appDel.objUser.strEmail;
+        NSLog(@"%@ %@",appDel.objUser.strName,appDel.objUser.strEmail);
         NSURL *url=[NSURL URLWithString:appDel.objUser.strPicURI160];
         dispatch_async(dispatch_get_main_queue(), ^{
             [cell.imgSidePanelProfile sd_setImageWithURL:url
