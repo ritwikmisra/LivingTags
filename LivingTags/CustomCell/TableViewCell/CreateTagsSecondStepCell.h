@@ -17,7 +17,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *lblPrimaryLocation;
 @property(nonatomic,strong)IBOutlet UILabel *lblSecondLocation;
 @property(nonatomic,strong)IBOutlet UILabel *lblThirdLocation;
-
+@property(nonatomic,strong)IBOutlet UILabel *lbl;
 
 @property(nonatomic,strong)IBOutlet UILabel *lblImageUpload;
 
@@ -40,5 +40,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *btnBrowseCover;
 
 @property(nonatomic,strong)IBOutlet UITextView *txtVwMemorialQuote;
+
+@property(nonatomic,strong)IBOutlet UIButton *btnNext;
 
 @end

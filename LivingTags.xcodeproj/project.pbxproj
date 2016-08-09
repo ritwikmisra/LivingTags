@@ -63,6 +63,8 @@
 		0D5EA2421CCB7CFA00CA0DAE /* RegistrationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2411CCB7CFA00CA0DAE /* RegistrationService.m */; };
 		0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2451CCB7F3000CA0DAE /* Reachability.m */; };
 		0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */; };
+		0D6030651D58B97000DB3333 /* LivingTagsFourthStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */; };
+		0D6030681D58C59D00DB3333 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6030671D58C59D00DB3333 /* DashboardViewController.m */; };
 		0D698D001CC8CF2500F64745 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698CFF1CC8CF2500F64745 /* main.m */; };
 		0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D021CC8CF2500F64745 /* AppDelegate.m */; };
 		0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D698D071CC8CF2500F64745 /* Main.storyboard */; };
@@ -294,6 +296,10 @@
 		0D5EA2451CCB7F3000CA0DAE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0D5FAEBA1D09C8E700A3384A /* CreateLivingTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLivingTagsViewController.h; sourceTree = "<group>"; };
 		0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLivingTagsViewController.m; sourceTree = "<group>"; };
+		0D6030631D58B97000DB3333 /* LivingTagsFourthStepService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsFourthStepService.h; sourceTree = "<group>"; };
+		0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsFourthStepService.m; sourceTree = "<group>"; };
+		0D6030661D58C59D00DB3333 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		0D6030671D58C59D00DB3333 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		0D698CFB1CC8CF2400F64745 /* LivingTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivingTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D698CFF1CC8CF2500F64745 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D698D011CC8CF2500F64745 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -718,6 +724,8 @@
 				0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */,
 				0DF7CFA21D4F9A5900A28CA1 /* PreviewViewController.h */,
 				0DF7CFA31D4F9A5900A28CA1 /* PreviewViewController.m */,
+				0D6030661D58C59D00DB3333 /* DashboardViewController.h */,
+				0D6030671D58C59D00DB3333 /* DashboardViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -888,6 +896,8 @@
 				0DF7CF9D1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m */,
 				0DF7CF9F1D4F648300A28CA1 /* CreateTagsPublishService.h */,
 				0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */,
+				0D6030631D58B97000DB3333 /* LivingTagsFourthStepService.h */,
+				0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1427,6 +1437,7 @@
 				0D3731421CD8A10B00EDC547 /* SDWebImageDecoder.m in Sources */,
 				0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */,
 				0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */,
+				0D6030651D58B97000DB3333 /* LivingTagsFourthStepService.m in Sources */,
 				0D3731441CD8A10B00EDC547 /* SDWebImageDownloaderOperation.m in Sources */,
 				0D3731521CD8A8C600EDC547 /* UpdateProfileService.m in Sources */,
 				0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */,
@@ -1434,6 +1445,7 @@
 				0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */,
 				0D2305421D54C6FB00115A34 /* SlideMenuController.m in Sources */,
 				0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */,
+				0D6030681D58C59D00DB3333 /* DashboardViewController.m in Sources */,
 				0D698D001CC8CF2500F64745 /* main.m in Sources */,
 				0D9350BC1CDB61F800E403B2 /* YTVimeoURLParser.m in Sources */,
 				0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */,

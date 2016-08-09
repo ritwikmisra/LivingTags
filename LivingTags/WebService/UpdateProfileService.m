@@ -35,7 +35,8 @@
         [request addValue:strUserID forHTTPHeaderField:@"id"];
         NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
         [request addValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"] forHTTPHeaderField:@"token"];
-        NSDictionary *params = @{@"data[name]":strName,@"data[phone]":strPhoneNumber,@"data[address]":strAddress,@"data[lat]":strLatitude,@"data[video_uri]":strvideoURI,@"data[long]":strLongitude};
+        //address
+        NSDictionary *params = @{@"data[name]":strName,@"data[phone]":strPhoneNumber,@"data[address]":strAddress,@"data[lat]":strLatitude,@"data[video_uri]":strvideoURI,@"data[long]":strLongitude,@"data[address]":strAddress};
         NSLog(@"postprams=%@",params);
         [params enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
             [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];

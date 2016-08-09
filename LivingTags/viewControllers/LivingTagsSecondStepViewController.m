@@ -165,6 +165,10 @@
         }
         return 70.0f;
     }
+    else if (indexPath.row==9)
+    {
+        return 50.0f;
+    }
     return 70.0f;
 }
 
@@ -178,6 +182,14 @@
             if (!cellTags)
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:0];
+            }
+            if ([strGender isEqualToString:@"M"])
+            {
+                cellTags.lbl.text=@"What is his name?";
+            }
+            else
+            {
+                cellTags.lbl.text=@"What is her name?";
             }
             cellTags.txtName.delegate=self;
             if (strName.length>0)
@@ -218,6 +230,14 @@
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:2];
             }
+            if ([strGender isEqualToString:@"M"])
+            {
+                cellTags.lbl.text=@"Add photos of him..";
+            }
+            else
+            {
+                cellTags.lbl.text=@"Add photos of her..";
+            }
             img=cellTags.imgUser;
             if (imgChosen)
             {
@@ -238,6 +258,14 @@
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:3];
             }
+            if ([strGender isEqualToString:@"M"])
+            {
+                cellTags.lbl.text=@"What is his age?";
+            }
+            else
+            {
+                cellTags.lbl.text=@"What is her age?";
+            }
             cellTags.txtDateFrom.tag=indexPath.row;
             cellTags.txtDateTo.tag=9999;
             cellTags.txtDateFrom.delegate=self;
@@ -253,6 +281,14 @@
                 {
                     cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:4];
                 }
+                if ([strGender isEqualToString:@"M"])
+                {
+                    cellTags.lbl.text=@"What is his location?";
+                }
+                else
+                {
+                    cellTags.lbl.text=@"What is her location?";
+                }
                 cellTags.btnGetLocation.tag=indexPath.row;
                 [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
             }
@@ -261,6 +297,14 @@
                 if (!cellTags)
                 {
                     cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:7];
+                }
+                if ([strGender isEqualToString:@"M"])
+                {
+                    cellTags.lbl.text=@"What is his location?";
+                }
+                else
+                {
+                    cellTags.lbl.text=@"What is her location?";
                 }
                 cellTags.btnGetLocation.tag=indexPath.row;
                 cellTags.btnRemoveLocation.tag=indexPath.row;
@@ -327,6 +371,14 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:5];
             }
             img=cellTags.imgCover;
+            if ([strGender isEqualToString:@"M"])
+            {
+                cellTags.lbl.text=@"Add a cover pic of him";
+            }
+            else
+            {
+                cellTags.lbl.text=@"Add a cover pic of her";
+            }
             if (imgCoverPic)
             {
                 cellTags.imgCover.image=imgCoverPic;
@@ -345,6 +397,14 @@
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:6];
             }
+            if ([strGender isEqualToString:@"M"])
+            {
+                cellTags.lbl.text=@"Any memorial quotes about him";
+            }
+            else
+            {
+                cellTags.lbl.text=@"Any memorial quotes about her";
+            }
             cellTags.txtVwMemorialQuote.delegate=self;
             cellTags.txtVwMemorialQuote.tag=indexPath.row;
             if (strMemorialQuote.length>0)
@@ -353,6 +413,15 @@
             }
             break;
             
+        case 9:
+            if (!cellTags)
+            {
+                cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:12];
+            }
+            [cellTags.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+
+            break;
+
         default:
             break;
     }
@@ -408,7 +477,7 @@
 {
     NSLog(@"%ld",(long)i);
     NSLog(@"%lu",(unsigned long)arrStatus.count);
-    if (arrStatus.count<9)
+    if (arrStatus.count<10)
     {
         if (arrStatus.count==i+1)
         {
@@ -441,10 +510,14 @@
     [self checkName];
     strGender=@"M";
     [self checkGender];
-    CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
-    [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn2"]];
-    [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn1"]];
-    [self updateTableView:[sender tag]];
+//    CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
+//    [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn2"]];
+//    [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn1"]];
+    [tblSecondSteps reloadData];
+    [tblSecondSteps reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self updateTableView:[sender tag]];
+    });
 }
 
 -(void)btnFemalePressed:(id)sender
@@ -453,10 +526,13 @@
     [self checkName];
     strGender=@"F";
     [self checkGender];
-    CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
-    [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn1"]];
-    [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn2"]];
-    [self updateTableView:[sender tag]];
+//    CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
+//    [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn1"]];
+//    [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn2"]];
+    [tblSecondSteps reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self updateTableView:[sender tag]];
+    });
 }
 
 -(void)btnUserPicSelected:(id)sender
@@ -509,22 +585,34 @@
 
 -(void)btnSkipPressed:(id)sender
 {
+    NSLog(@"%d",[sender tag]);
+    if ([sender tag]==5)
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setTableviewContentOffsetWithView:@"secondLocation"];
+        });
+    }
+    else
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setTableviewContentOffsetWithView:@"thirdLocation"];
+        });
+    }
     [self updateTableView:[sender tag]];
 }
 
 -(void)btnGetLocationClicked:(id)sender
 {
     [self updateTableView:[sender tag]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self setTableviewContentOffsetWithView:@"coverPic"];
-    });
-    
 //    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblSecondSteps];
 //    NSIndexPath *indexPath = [tblSecondSteps indexPathForRowAtPoint:buttonPosition];
 //    CreateTagsSecondStepCell *createTagsCell = (CreateTagsSecondStepCell *)[tblSecondSteps cellForRowAtIndexPath:indexPath];
     NSLog(@"%d",[sender tag]);
     if ([sender tag]==4)
     {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setTableviewContentOffsetWithView:@"1stLocation"];
+        });
         CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
         CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
                                                                       center.longitude + 0.001);
@@ -582,6 +670,12 @@
     }
     else if ([sender tag]==5)
     {
+        if ([sender tag]==5)
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self setTableviewContentOffsetWithView:@"secondLocation"];
+            });
+        }
         CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
         CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
                                                                       center.longitude + 0.001);
@@ -643,6 +737,9 @@
 }
     else
     {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setTableviewContentOffsetWithView:@"thirdLocation"];
+        });
         CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
         CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
                                                                       center.longitude + 0.001);
@@ -733,7 +830,7 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
--(IBAction)btnNextPressed:(id)sender
+-(void)btnNextPressed:(id)sender
 {
     [self performSegueWithIdentifier:@"segueThirdStep" sender:self];
 }
@@ -761,6 +858,7 @@
 {
     if([text isEqualToString:@"\n"])
     {
+        [self updateTableView:textView.tag];
         [textView resignFirstResponder];
         return NO;
     }
@@ -775,11 +873,25 @@
 {
     if ([strView isEqualToString:@"textView"])
     {
-        [tblSecondSteps setContentOffset:CGPointMake(0, 500) animated:YES];
+        [tblSecondSteps setContentOffset:CGPointMake(0, 600) animated:YES];
     }
     else if ([strView isEqualToString:@"coverPic"])
     {
+        [tblSecondSteps setContentOffset:CGPointMake(0, 400) animated:YES];
+    }
+    //thirdLocation
+    //secondLocation
+    else if ([strView isEqualToString:@"thirdLocation"])
+    {
         [tblSecondSteps setContentOffset:CGPointMake(0, 300) animated:YES];
+    }
+    else if ([strView isEqualToString:@"secondLocation"])
+    {
+        [tblSecondSteps setContentOffset:CGPointMake(0, 200) animated:YES];
+    }
+    else if ([strView isEqualToString:@"1stLocation"])
+    {
+        [tblSecondSteps setContentOffset:CGPointMake(0, 160) animated:YES];
     }
     else
     {

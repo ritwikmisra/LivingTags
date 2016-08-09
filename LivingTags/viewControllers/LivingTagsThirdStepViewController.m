@@ -13,6 +13,7 @@
 #import "CKCalendarView.h"
 #import "CreateTagsThirdStepService.h"
 #import "PreviewViewController.h"
+#import "LivingTagsFourthStepViewController.h"
 
 @interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate>
 {
@@ -61,16 +62,16 @@
     calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     dictPicDetails=[[NSMutableDictionary alloc]init];
+    if (appDel.dataVoice.length>0)
+    {
+        [dictPicDetails setObject:appDel.dataVoice forKey:@"4"];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     NSLog(@"%@",appDel.dataVoice);
-    if (appDel.dataVoice.length>0)
-    {
-        [dictPicDetails setObject:appDel.dataVoice forKey:@"4"];
-    }
     [tblAThirdStep reloadData];
 }
 
@@ -136,7 +137,7 @@
         case 5:
             return 40.0f;
             break;
-
+            
         default:
             return 60.0f;
             break;
@@ -177,6 +178,7 @@
             {
                 cellTags.txtCaptions.text=[dictPicDetails objectForKey:@"2"];
            }
+            
             [cellTags.txtCaptions addTarget:self action:@selector(textfieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
             break;
              
@@ -190,6 +192,10 @@
             if ([dictPicDetails objectForKey:@"3"])
             {
                 cellTags.lblCalender.text=[dictPicDetails objectForKey:@"3"];
+            }
+            else
+            {
+                cellTags.lblCalender.text=@"";
 
             }
             [cellTags.btnCalender addTarget:self action:@selector(btnCalenderPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -201,7 +207,7 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:2];
             }
             cellTags.btnRecording.tag=indexPath.row;
-            if (appDel.dataVoice.length>0)
+            if ([dictPicDetails objectForKey:@"4"])
             {
                 cellTags.lblRecording.text=@"MyRecording.m4a";
             }
@@ -229,7 +235,6 @@
             [cellTags.btnNext addTarget:self action:@selector(btnNext:) forControlEvents:UIControlEventTouchUpInside];
             
             break;
-            
         default:
             break;
     }
@@ -266,10 +271,13 @@
 -(void)btnAddPhoto:(id)sender
 {
     [self updateTableView:5];
-    [self performSelector:@selector(imageUploadPopUp) withObject:nil afterDelay:1.0f];
+    [self performSelector:@selector(imageUploadPopUp) withObject:nil afterDelay:0.8f];
     // call webservice in a separate thread
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self callWebService];
+        if (dictPicDetails.count>0)
+        {
+            [self callWebService];
+        }
     });
     NSLog(@"%@",dictPicDetails);
 }
@@ -470,6 +478,10 @@
         [[CreateTagsThirdStepService service]callThirdStepServiceWithImage:dictPicDetails livingTagsID:self.strTempID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         }];
     }
+    else
+    {
+        [self displayErrorWithMessage:@"Please give atleast one photo and the date of the picture.."];
+    }
     [dictPicDetails removeAllObjects];
     NSLog(@"%@",dictPicDetails);
     [tblAThirdStep reloadData];
@@ -482,10 +494,10 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@""])
+    if ([segue.identifier isEqualToString:@"segueFourthStep"])
     {
-        PreviewViewController *master=[segue destinationViewController];
-        master.strTemplateID=self.strTempID;
+        LivingTagsFourthStepViewController *master=[segue destinationViewController];
+        master.strTempVidID=self.strTempID;
     }
 }
 @end

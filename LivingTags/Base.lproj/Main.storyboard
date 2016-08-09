@@ -1025,17 +1025,6 @@
                                     <outlet property="delegate" destination="Pdb-TV-PZm" id="5iI-Zg-yxj"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE1-wB-OZh">
-                                <rect key="frame" x="450" y="1" width="150" height="54"/>
-                                <color key="backgroundColor" red="0.94117647058823528" green="0.52941176470588236" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="SAVE">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnSavePressed:" destination="Pdb-TV-PZm" eventType="touchUpInside" id="AC0-Vc-zzB"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="0BX-sM-vaz">
                                 <rect key="frame" x="34" y="12" width="32" height="32"/>
                                 <constraints>
@@ -1049,6 +1038,17 @@
                                 </constraints>
                                 <connections>
                                     <action selector="btnSidePanel:" destination="Pdb-TV-PZm" eventType="touchUpInside" id="IEe-6d-f2v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE1-wB-OZh">
+                                <rect key="frame" x="450" y="1" width="150" height="54"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.52941176470588236" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="SAVE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnSavePressed:" destination="Pdb-TV-PZm" eventType="touchUpInside" id="AC0-Vc-zzB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1786,7 +1786,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5t-Em-TSz">
                                 <rect key="frame" x="450" y="0.0" width="150" height="55"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="NEXT">
+                                <state key="normal" title="PREVIEW">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -2309,11 +2309,12 @@
                         <outlet property="lbl3" destination="iEY-H3-B6n" id="FAN-b8-Tmt"/>
                         <outlet property="lbl4" destination="Zeo-s0-ahf" id="q3J-zS-pcW"/>
                         <outlet property="tblFourthStep" destination="LiL-OB-FuM" id="9fF-Sx-QPp"/>
+                        <segue destination="jc9-Lh-bc1" kind="show" identifier="segueVideoToAudio" id="znD-KZ-TYx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiP-eK-TPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1695" y="2575"/>
+            <point key="canvasLocation" x="1803" y="2617"/>
         </scene>
     </scenes>
     <resources>
@@ -2334,6 +2335,7 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nEO-TC-sYU"/>
+        <segue reference="BAk-ag-BgH"/>
+        <segue reference="znD-KZ-TYx"/>
     </inferredMetricsTieBreakers>
 </document>

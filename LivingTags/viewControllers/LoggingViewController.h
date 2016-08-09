@@ -9,6 +9,7 @@
 #import "ViewControllerBaseClassViewController.h"
 #import <GoogleSignIn/GoogleSignIn.h>
 
+
 @interface LoggingViewController : ViewControllerBaseClassViewController
 
 @property(weak, nonatomic) IBOutlet GIDSignInButton *signInButton;

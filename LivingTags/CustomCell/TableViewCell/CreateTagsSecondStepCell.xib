@@ -6,6 +6,11 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -57,9 +62,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lbl" destination="hXf-cE-STA" id="3vb-GE-s68"/>
                 <outlet property="txtName" destination="02r-jW-edM" id="4ot-tr-Hju"/>
             </connections>
-            <point key="canvasLocation" x="309.5" y="45"/>
+            <point key="canvasLocation" x="97.5" y="-199"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Ifn-cV-p59" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="72"/>
@@ -206,7 +212,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Image Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDd-G9-afn">
                         <rect key="frame" x="103" y="138" width="183" height="23"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -235,9 +241,10 @@
             <connections>
                 <outlet property="btnBrowseUserPic" destination="7U5-zd-6Gj" id="Jbh-ug-bEF"/>
                 <outlet property="imgUser" destination="B1z-cV-oJf" id="ChG-Hp-p3w"/>
+                <outlet property="lbl" destination="zFV-9M-FqC" id="rfZ-4a-kXm"/>
                 <outlet property="lblImageUpload" destination="mDd-G9-afn" id="BHo-US-ziJ"/>
             </connections>
-            <point key="canvasLocation" x="302.5" y="520.5"/>
+            <point key="canvasLocation" x="201.5" y="419.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="mfH-xr-vHz" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="72"/>
@@ -340,10 +347,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lbl" destination="tlW-Cz-0hG" id="itu-iA-9RP"/>
                 <outlet property="txtDateFrom" destination="kA7-wh-EaM" id="aqi-gu-kMz"/>
                 <outlet property="txtDateTo" destination="kDO-UN-Lg5" id="P2O-jF-hm0"/>
             </connections>
-            <point key="canvasLocation" x="302.5" y="696"/>
+            <point key="canvasLocation" x="284.5" y="456"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="0z3-qe-tdI" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="66"/>
@@ -387,6 +395,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnGetLocation" destination="rl3-YO-XNV" id="GUe-PI-xJS"/>
+                <outlet property="lbl" destination="OCN-Ph-b6B" id="rE3-LR-t9P"/>
             </connections>
             <point key="canvasLocation" x="309.5" y="300"/>
         </tableViewCell>
@@ -420,7 +429,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No image uploaded" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUL-dC-hxt">
                         <rect key="frame" x="164" y="142" width="183" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -450,6 +459,7 @@
             <connections>
                 <outlet property="btnBrowseCover" destination="tg6-ra-6Mr" id="gtM-f8-kZf"/>
                 <outlet property="imgCover" destination="d5b-5J-5Oz" id="hib-hg-VFS"/>
+                <outlet property="lbl" destination="2m8-lT-WnR" id="YBA-Nq-def"/>
                 <outlet property="lblImageUpload" destination="WUL-dC-hxt" id="BBN-kU-Jqn"/>
             </connections>
             <point key="canvasLocation" x="302.5" y="1117.5"/>
@@ -494,6 +504,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lbl" destination="q8e-WC-wwi" id="stI-jK-Pb4"/>
                 <outlet property="txtVwMemorialQuote" destination="OS2-NP-SAO" id="1we-Lo-p2f"/>
             </connections>
             <point key="canvasLocation" x="302.5" y="870"/>
@@ -562,7 +573,7 @@
                 <outlet property="btnGetLocation" destination="l5W-lC-Aeu" id="RzG-xe-GQX"/>
                 <outlet property="lblPrimaryLocation" destination="Mfb-E2-jne" id="Zcg-0j-Ev8"/>
             </connections>
-            <point key="canvasLocation" x="312.5" y="290.5"/>
+            <point key="canvasLocation" x="313.5" y="183.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="6T0-nb-kmZ" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="66"/>
@@ -840,6 +851,41 @@
                 <outlet property="lblThirdLocation" destination="Iwg-uW-U8O" id="Mb6-pV-RPB"/>
             </connections>
             <point key="canvasLocation" x="312.5" y="290.5"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="53" id="OI4-De-uPa" customClass="CreateTagsSecondStepCell">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="43"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OI4-De-uPa" id="TIr-oh-LeT">
+                <rect key="frame" x="0.0" y="0.0" width="365" height="42"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Px-Dd-W4A">
+                        <rect key="frame" x="0.0" y="0.0" width="365" height="42"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-3Q-0Kj">
+                        <rect key="frame" x="110" y="5" width="146" height="32"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                        <state key="normal" title="Next">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="1Px-Dd-W4A" firstAttribute="centerY" secondItem="TIr-oh-LeT" secondAttribute="centerY" id="LKz-9R-bBZ"/>
+                    <constraint firstItem="1Px-Dd-W4A" firstAttribute="height" secondItem="TIr-oh-LeT" secondAttribute="height" id="NQd-b4-zUb"/>
+                    <constraint firstItem="GbD-3Q-0Kj" firstAttribute="centerX" secondItem="1Px-Dd-W4A" secondAttribute="centerX" id="c4P-yp-ZCt"/>
+                    <constraint firstItem="1Px-Dd-W4A" firstAttribute="width" secondItem="TIr-oh-LeT" secondAttribute="width" id="mwS-9D-yH0"/>
+                    <constraint firstItem="1Px-Dd-W4A" firstAttribute="width" secondItem="GbD-3Q-0Kj" secondAttribute="width" multiplier="2.5" id="qjl-Xd-iV7"/>
+                    <constraint firstItem="GbD-3Q-0Kj" firstAttribute="centerY" secondItem="1Px-Dd-W4A" secondAttribute="centerY" id="sLN-XC-hKx"/>
+                    <constraint firstItem="1Px-Dd-W4A" firstAttribute="height" secondItem="GbD-3Q-0Kj" secondAttribute="height" multiplier="1.3" id="sr8-J8-zs3"/>
+                    <constraint firstItem="1Px-Dd-W4A" firstAttribute="centerX" secondItem="TIr-oh-LeT" secondAttribute="centerX" id="vIa-wy-Vb2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnNext" destination="GbD-3Q-0Kj" id="A0w-4S-pFr"/>
+            </connections>
+            <point key="canvasLocation" x="166.5" y="148.5"/>
         </tableViewCell>
     </objects>
     <resources>

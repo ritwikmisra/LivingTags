@@ -10,4 +10,6 @@
 
 @interface LivingTagsFourthStepViewController : ViewControllerBaseClassViewController
 
+@property(nonatomic,strong)NSString *strTempVidID;
+
 @end

@@ -1,21 +1,21 @@
 //
-//  CreateTagsThirdStepService.m
+//  LivingTagsFourthStepService.m
 //  LivingTags
 //
-//  Created by appsbeetech on 28/07/16.
+//  Created by appsbeetech on 08/08/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
 //
 
-#import "CreateTagsThirdStepService.h"
+#import "LivingTagsFourthStepService.h"
 
-@implementation CreateTagsThirdStepService
+@implementation LivingTagsFourthStepService
 
 +(id)service
 {
-    static CreateTagsThirdStepService *master=nil;
+    static LivingTagsFourthStepService *master=nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        master=[[CreateTagsThirdStepService alloc]initWithService:WEB_SERVICES_LIVING_TAGS_THIRD_STEP];
+        master=[[LivingTagsFourthStepService alloc]initWithService:WEB_SERVICES_CREATE_TAGS_VIDEOS];
     });
     return master;
 }
@@ -53,11 +53,9 @@
                 [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
             }];
             //image upload
-            NSData *imgData;
             //The file to upload
-            UIImage *imgThirdStep=[dicDetails objectForKey:@"1"];
-            imgData=UIImageJPEGRepresentation(imgThirdStep, 1);
-            if (imgThirdStep)
+           NSData *imgData=[dicDetails objectForKey:@"1"];
+            if (imgData.length>0)
             {
                 [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"asset_uri\"; filename=\"image.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -79,7 +77,7 @@
                 [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
             }];
-
+            
             //date taken
             NSString *str=[dicDetails objectForKey:@"3"];
             NSDictionary *params2 = @{@"date_taken": str};
@@ -91,11 +89,10 @@
             }];
             
             //image upload
-            NSData *imgData;
+            
             //The file to upload
-            UIImage *imgThirdStep=[dicDetails objectForKey:@"1"];
-            imgData=UIImageJPEGRepresentation(imgThirdStep, 1);
-            if (imgThirdStep)
+            NSData *imgData=[dicDetails objectForKey:@"1"];
+            if (imgData.length>0)
             {
                 [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"asset_uri\"; filename=\"image.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -129,11 +126,9 @@
             }];
             
             //image upload
-            NSData *imgData;
             //The file to upload
-            UIImage *imgThirdStep=[dicDetails objectForKey:@"1"];
-            imgData=UIImageJPEGRepresentation(imgThirdStep, 1);
-            if (imgThirdStep)
+            NSData *imgData=[dicDetails objectForKey:@"1"];
+            if (imgData.length>0)
             {
                 [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
                 [body appendData:[[NSString stringWithFormat:@"Content-Disposition: attachment; name=\"asset_uri\"; filename=\"image.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];

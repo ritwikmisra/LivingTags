@@ -42,7 +42,6 @@
 @property(nonatomic,strong)NSMutableArray *arrCreateTagsUploadImage;
 @property(nonatomic,strong)NSData *dataVoice;
 
- 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

@@ -34,7 +34,7 @@ NSString *const strAPI[]={
     [WEB_SERVICES_CREATE_TEMPLATES_UPLOAD_PROFILE_PIC]=@"Livingtags/updatePhotoUri",
     [WEB_SERVICES_CREATE_TEMPLATES_UPLOAD_COVER_PIC]=@"Livingtags/updateCoverUri",
     [WEB_SERVICES_CREATE_TEMPLATES_PUBLISH]=@"Livingtags/publishTag",
-
+    [WEB_SERVICES_CREATE_TAGS_VIDEOS]=@"Livingtagassets/uploadVideo"
 };
 
 

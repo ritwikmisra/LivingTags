@@ -70,7 +70,7 @@
     [super viewDidLoad];
     _tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
     arrLabel=[[NSMutableArray alloc]initWithObjects:@"",@"Dashboard",@"Profile",@"Create Tags",@"Read Tags",@"My Tags",@"Contacts",@"Payments",@"Comments",@"Logout", nil];
-    arrImages=[[NSMutableArray alloc]initWithObjects:@"",@"",@"profile_icon_",@"creat_tag",@"read_tag",@"my_tag",@"contact",@"payments",@"comments",@"", nil];
+    arrImages=[[NSMutableArray alloc]initWithObjects:@"",@"DASHBOARD",@"profile_icon_",@"creat_tag",@"read_tag",@"my_tag",@"contact",@"payments",@"comments",@"", nil];
     [_tblSidePanel setBounces:NO];
     
 }

@@ -13,7 +13,11 @@
 #import "CKCalendarView.h"
 #import "CreateTagsThirdStepService.h"
 #import "PreviewViewController.h"
-
+#import <MediaPlayer/MPMoviePlayerController.h>
+#import <MobileCoreServices/UTCoreTypes.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "LivingTagsFourthStepService.h"
 
 @interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate>
 
@@ -44,6 +48,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    appDel.dataVoice=nil;
+    [appDel.arrCreateTagsUploadImage removeAllObjects];
+    [appDel.arrStatus removeAllObjects];
+    [appDel.arrStatus addObject:@"1"];
+    [appDel.arrStatus addObject:@"1"];
+    [appDel.arrStatus addObject:@"1"];
+    [appDel.arrStatus addObject:@"1"];
+
     isFirstImage=NO;
     btnPreview.hidden=YES;
     tblFourthStep.separatorStyle=UITableViewCellSeparatorStyleNone;
@@ -195,18 +207,21 @@
             if ([dictPicDetails objectForKey:@"3"])
             {
                 cellTags.lblCalender.text=[dictPicDetails objectForKey:@"3"];
-                
+            }
+            else
+            {
+                cellTags.lblCalender.text=@"";
             }
             [cellTags.btnCalender addTarget:self action:@selector(btnCalenderPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
-            
+
         case 3:
             if (!cellTags)
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:2];
             }
             cellTags.btnRecording.tag=indexPath.row;
-            if (appDel.dataVoice.length>0)
+            if ([dictPicDetails objectForKey:@"4"])
             {
                 cellTags.lblRecording.text=@"MyRecording.m4a";
             }
@@ -214,7 +229,7 @@
             {
                 cellTags.lblRecording.text=@"No recording voice";
             }
-            //[cellTags.btnRecording addTarget:self action:@selector(btnRecordingPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [cellTags.btnRecording addTarget:self action:@selector(btnRecordingPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         case 4:
@@ -222,7 +237,7 @@
             {
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:3];
             }
-            [cellTags.btnAddPhoto setTitle:@"Add more photos" forState:UIControlStateNormal];
+            [cellTags.btnAddPhoto setTitle:@"Add more videos" forState:UIControlStateNormal];
             [cellTags.btnAddPhoto addTarget:self action:@selector(btnAddPhoto:) forControlEvents:UIControlEventTouchUpInside];
             
             break;
@@ -234,7 +249,6 @@
             }
             [cellTags.btnNext setTitle:@"Publish" forState:UIControlStateNormal];
             [cellTags.btnNext addTarget:self action:@selector(btnNext:) forControlEvents:UIControlEventTouchUpInside];
-            
             break;
             
         default:
@@ -252,6 +266,7 @@
 -(void)btnUserBrowsePicClicked:(id)sender
 {
     NSLog(@"preseed");
+    [self videoUploadPopUp];
 }
 
 -(void)btnCalenderPressed:(id)sender
@@ -261,21 +276,25 @@
 
 -(void)btnRecordingPressed:(id)sender
 {
-    [self performSegueWithIdentifier:@"segueAudio" sender:self];
+    [self performSegueWithIdentifier:@"segueVideoToAudio" sender:self];
 }
 
 -(void)btnNext:(id)sender
 {
-    [self performSegueWithIdentifier:@"segueFourthStep" sender:self];
+    //[self performSegueWithIdentifier:@"segueFourthStep" sender:self];
 }
 
 -(void)btnAddPhoto:(id)sender
 {
     [self updateTableView:5];
+    [self performSelector:@selector(videoUploadPopUp) withObject:nil afterDelay:0.8f];
+    // call webservice in a separate thread
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self callWebService];
+        if (dictPicDetails.count>0)
+        {
+            [self callWebService];
+        }
     });
-    NSLog(@"%@",dictPicDetails);
 }
 
 -(IBAction)btnPreviewPressed:(id)sender
@@ -404,16 +423,19 @@
 
 -(void)callWebService
 {
-    NSLog(@"%@",dictPicDetails);
     if ([dictPicDetails objectForKey:@"3"] && [dictPicDetails objectForKey:@"1"])
     {
-        btnPreview.hidden=NO;
+        [[LivingTagsFourthStepService service]callThirdStepServiceWithImage:dictPicDetails livingTagsID:self.strTempVidID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        }];
+    }
+    else
+    {
+        [self displayErrorWithMessage:@"Please give atleast one photo and the date of the picture.."];
     }
     [dictPicDetails removeAllObjects];
     NSLog(@"%@",dictPicDetails);
     [tblFourthStep reloadData];
 }
-
 
 #pragma mark
 #pragma mark PREPARE FOR SEGUE
@@ -423,5 +445,125 @@
 {
 }
 
+
+#pragma mark
+#pragma mark IMAGE PICKER CONTROLLER METHODS
+#pragma mark
+
+-(void)videoUploadPopUp
+{
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self videoUploadFromCamera];
+    }];
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self videoUploadFromGallery];
+    }];
+    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    [alertController addAction:actionCamera];
+    [alertController addAction:actionGallery];
+    [alertController addAction:actionCancel];
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
+-(void)videoUploadFromCamera
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
+    else
+    {
+        [[[UIAlertView alloc]initWithTitle:@"No camera available" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK ", nil] show];
+    }
+}
+
+-(void)videoUploadFromGallery
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+    picker.videoMaximumDuration=300;
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //    NSURL *videoURL = info[UIImagePickerControllerMediaURL];
+    //    [picker dismissViewControllerAnimated:YES completion:NULL];
+    //    NSLog(@"%@",videoURL);
+    if (picker.sourceType==UIImagePickerControllerSourceTypeCamera)
+    {
+        NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+        if ([mediaType isEqualToString:@"public.movie"])
+        {
+            // Saving the video / // Get the new unique filename
+            //        NSString *sourcePath = [[info objectForKey:@"UIImagePickerControllerMediaURL"]relativePath];
+            //        UISaveVideoAtPathToSavedPhotosAlbum(sourcePath,nil,nil,nil);
+            NSURL *videoURL     = [info objectForKey:UIImagePickerControllerMediaURL];
+            NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+            [dictPicDetails setObject:videoData forKey:@"1"];
+            NSLog(@"%lu",(unsigned long)videoData.length);
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/vid1.mp4"];
+            BOOL success = [videoData writeToFile:tempPath atomically:NO];
+            if (success)
+            {
+                UISaveVideoAtPathToSavedPhotosAlbum(tempPath,nil,nil,nil);
+                NSLog(@"Success");
+                AVAsset *asset = [AVAsset assetWithURL:videoURL];
+                AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+                CMTime time = CMTimeMake(1,1);
+                CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+                UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+                [appDel.arrCreateTagsUploadImage addObject:thumbnail];
+                CGImageRelease(imageRef);
+            }
+            else
+            {
+                NSLog(@"Failure");
+            }
+        }
+    }
+    else
+    {
+        NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+        if ([mediaType isEqualToString:@"public.movie"])
+        {
+            // Saving the video / // Get the new unique filename
+            //NSString *sourcePath = [[info objectForKey:@"UIImagePickerControllerMediaURL"]relativePath];
+            //UISaveVideoAtPathToSavedPhotosAlbum(sourcePath,nil,nil,nil);
+            NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
+            NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+            [dictPicDetails setObject:videoData forKey:@"1"];
+            NSLog(@"%lu",(unsigned long)videoData.length);
+            AVAsset *asset = [AVAsset assetWithURL:videoURL];
+            AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+            CMTime time = CMTimeMake(1, 1);
+            CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+            UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+            [appDel.arrCreateTagsUploadImage addObject:thumbnail];
+            CGImageRelease(imageRef);
+        }
+    }
+    [picker dismissViewControllerAnimated:YES completion:^{
+        isFirstImage=YES;
+        [tblFourthStep reloadData];
+    }];
+}
 
 @end

@@ -34,6 +34,7 @@
     NSString *address2;
     NSString *strCat;
     UITextField *activeTextField;
+    NSString *strLocation,*strLat,*strLong;
 }
 @end
 
@@ -47,6 +48,9 @@
     arrPics=[[NSMutableArray alloc]initWithObjects:@"",@"mail_icon1",@"phone_icon",@"video_icon", nil];
     isEditing=NO;
     btnSave.hidden=YES;
+    strLocation=appDel.objUser.strAddress;
+    strLat=appDel.objUser.strLat;
+    strLong=appDel.objUser.strLong;
     [tblProfile setTag:1];
     //get profile web service
     [[ProfileGetService service]callProfileEditServiceWithUserID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
@@ -213,6 +217,7 @@
         cellA.imgProfile.layer.cornerRadius=self.view.frame.size.height/10;
         cellA.imgProfile.layer.masksToBounds=YES;
         [cellA.contentView updateConstraints];
+        cellA.lblLocation.text=strLocation;
         if(appDel.objLivingTags.strCreated.length>0)
         {
             cellA.lblMemoriesCreated.text=appDel.objLivingTags.strCreated;
@@ -400,7 +405,6 @@
 
 -(void)toolBardoneButtonNumberPad:(id)sender
 {
-   NSString *numberFromTheKeyboard = activeTextField.text;
     [self.view endEditing:YES];
 }
 
@@ -483,7 +487,7 @@
     [textField resignFirstResponder];
     if (textField.tag==3)
     {
-        [self checkYoutubeLINK:strVideoLink];
+       // [self checkYoutubeLINK:strVideoLink];
     }
     [tblProfile reloadData];
     [tblProfile setContentOffset:CGPointMake(0,0) animated:YES];
@@ -525,7 +529,7 @@
         isEditing=NO;
         btnSave.hidden=YES;
         [tblProfile reloadData];
-        [[UpdateProfileService service]callUpdateProfileRequestWIthUserID:appDel.objUser.strUserID Name:strName Address:@"Bangur Avenue,Kolkata" Latitude:@"22.51758" Longitude:@"88.352215" videoURI:strVideoLink phoneNumber:strPhoneNumber userFile:imgChosen withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        [[UpdateProfileService service]callUpdateProfileRequestWIthUserID:appDel.objUser.strUserID Name:strName Address:strLocation Latitude:strLat Longitude:strLong videoURI:strVideoLink phoneNumber:strPhoneNumber userFile:imgChosen withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
             if (isError)
             {
                 [self displayErrorWithMessage:strMsg];
@@ -572,6 +576,9 @@
                 
                 [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
                  {
+                     strLat=[NSString stringWithFormat:@"%f",place.coordinate.latitude];
+                     strLong=[NSString stringWithFormat:@"%f",place.coordinate.longitude];
+
                      NSLog(@"reverse geocoding results:");
                      for(GMSAddress* addressObj in [response results])
                      {
@@ -582,17 +589,16 @@
                          NSLog(@"country=%@", addressObj.country);
                          // NSLog(@"lines=%@", addressObj.lines);
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
+                         strLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.administrativeArea];
                          editProfileCell.lblLocation.text = [NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.administrativeArea];
                          break;
                      }
                  }];
-                
                 address2 = place.formattedAddress;
                 NSLog(@"place.formattedAddress:%@",place.formattedAddress);
                 strCat = place.types[0];
                 NSLog(@"Category:%@",strCat);
                 pickedPlace = place;
-                
             } else {
                 name2 = @"No place selected";
                 address2 = @"";
