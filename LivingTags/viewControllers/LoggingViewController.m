@@ -52,9 +52,14 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
 //    txtPassword.text=@"123456";
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidLayoutSubviews
 {
     [self.signInButton setStyle:kGIDSignInButtonStyleIconOnly];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 -(void)viewDidAppear:(BOOL)animated

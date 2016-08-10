@@ -34,6 +34,8 @@
 		0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2305461D54C76C00115A34 /* SidePanelCell.xib */; };
 		0D273EF81D5B23D1007F1EE5 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D273EF71D5B23D1007F1EE5 /* facebook_icon.png */; };
 		0D273EFA1D5B2951007F1EE5 /* save_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D273EF91D5B2951007F1EE5 /* save_icon1.png */; };
+		0D273EFE1D5B654A007F1EE5 /* logout_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D273EFD1D5B654A007F1EE5 /* logout_icon.png */; };
+		0D273F001D5B7CC0007F1EE5 /* logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D273EFF1D5B7CC0007F1EE5 /* logo_1.png */; };
 		0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */; };
 		0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D37311E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m */; };
 		0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3731201CD8A10B00EDC547 /* NSData+ImageContentType.m */; };
@@ -73,7 +75,6 @@
 		0D66C57C1D59FFED00230261 /* read_tag_dashbord.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D66C5791D59FFED00230261 /* read_tag_dashbord.png */; };
 		0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D66C57E1D5A01C800230261 /* DashboardViewController.m */; };
 		0D66C5821D5A320500230261 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D66C5811D5A320500230261 /* QRCodeViewController.m */; };
-		0D66C5841D5A336F00230261 /* qr_code.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D66C5831D5A336F00230261 /* qr_code.png */; };
 		0D698D001CC8CF2500F64745 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698CFF1CC8CF2500F64745 /* main.m */; };
 		0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D021CC8CF2500F64745 /* AppDelegate.m */; };
 		0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D698D071CC8CF2500F64745 /* Main.storyboard */; };
@@ -247,6 +248,8 @@
 		0D2305461D54C76C00115A34 /* SidePanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidePanelCell.xib; sourceTree = "<group>"; };
 		0D273EF71D5B23D1007F1EE5 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
 		0D273EF91D5B2951007F1EE5 /* save_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_icon1.png; sourceTree = "<group>"; };
+		0D273EFD1D5B654A007F1EE5 /* logout_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout_icon.png; sourceTree = "<group>"; };
+		0D273EFF1D5B7CC0007F1EE5 /* logo_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_1.png; sourceTree = "<group>"; };
 		0D3730361CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLivingTagsViewedAndCreated.h; sourceTree = "<group>"; };
 		0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLivingTagsViewedAndCreated.m; sourceTree = "<group>"; };
 		0D37311D1CD8A10B00EDC547 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -318,7 +321,6 @@
 		0D66C57E1D5A01C800230261 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		0D66C5801D5A320500230261 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
 		0D66C5811D5A320500230261 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
-		0D66C5831D5A336F00230261 /* qr_code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_code.png; sourceTree = "<group>"; };
 		0D698CFB1CC8CF2400F64745 /* LivingTags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivingTags.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D698CFF1CC8CF2500F64745 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D698D011CC8CF2500F64745 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 		0D0DDCFC1D11AAC600C0E9DD /* side_panel_images */ = {
 			isa = PBXGroup;
 			children = (
+				0D273EFD1D5B654A007F1EE5 /* logout_icon.png */,
 				0D0DDD111D11ACDE00C0E9DD /* logout_text.png */,
 				0D0DDCFD1D11AAC600C0E9DD /* comments.png */,
 				0D0DDCFE1D11AAC600C0E9DD /* contact.png */,
@@ -845,7 +848,6 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0D66C5831D5A336F00230261 /* qr_code.png */,
 				0D66C5761D59FFED00230261 /* Dashboard */,
 				0D8804591D475DDA009DA25F /* progress3 */,
 				0D94FF5A1D3CE18900502FC8 /* CKCalender */,
@@ -888,6 +890,7 @@
 		0D698D211CC8D79000F64745 /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0D273EFF1D5B7CC0007F1EE5 /* logo_1.png */,
 				0D8F28F81CD09E03001AE322 /* logo_loader.png */,
 			);
 			path = SplashScreen;
@@ -1277,7 +1280,6 @@
 				0DB9A45F1D46638F007671E9 /* CreateTagsThirdStepCell.xib in Resources */,
 				0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */,
 				0D0DDD0C1D11AAC600C0E9DD /* my_tag.png in Resources */,
-				0D66C5841D5A336F00230261 /* qr_code.png in Resources */,
 				0D0DDD091D11AAC600C0E9DD /* creat_tag.png in Resources */,
 				0D94FF5F1D3CE18900502FC8 /* left_arrow.png in Resources */,
 				0D922FF31CF8707D00EC1945 /* location_icon.png in Resources */,
@@ -1299,12 +1301,14 @@
 				0D9350B91CDB61F800E403B2 /* Info.plist in Resources */,
 				0D698D0E1CC8CF2500F64745 /* Assets.xcassets in Resources */,
 				0D80DAF81CFD9B0E00B79C6B /* GroupPopupController.xib in Resources */,
+				0D273F001D5B7CC0007F1EE5 /* logo_1.png in Resources */,
 				0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */,
 				0D5EA23B1CCB6A0000CA0DAE /* NetworkActivityViewController.xib in Resources */,
 				0D66C57A1D59FFED00230261 /* create_tag_dashbord.png in Resources */,
 				0D2305431D54C6FB00115A34 /* SlideMenuController.xib in Resources */,
 				0D922FF51CF8707D00EC1945 /* pin.png in Resources */,
 				0D698D3C1CC90AEC00F64745 /* password_icon.png in Resources */,
+				0D273EFE1D5B654A007F1EE5 /* logout_icon.png in Resources */,
 				0D922FF21CF8707D00EC1945 /* list_icon.png in Resources */,
 				0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */,
 				0D9B88901D22B75D003B51F0 /* stop.png in Resources */,
