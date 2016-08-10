@@ -20,6 +20,7 @@
 @property(nonatomic,strong)IBOutlet UIImageView *imgProfile;
 
 @property(nonatomic,strong)IBOutlet UIActivityIndicatorView *actProfileIndicator;
+@property(nonatomic,strong)IBOutlet UIButton *btnSave;
 
 @property(nonatomic,strong)IBOutlet UIImageView *img;
 @property(nonatomic,strong)IBOutlet UITextField *txt;

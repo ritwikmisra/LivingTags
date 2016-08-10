@@ -32,6 +32,8 @@
 		0D2305431D54C6FB00115A34 /* SlideMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2305411D54C6FB00115A34 /* SlideMenuController.xib */; };
 		0D2305471D54C76C00115A34 /* SidePanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2305451D54C76C00115A34 /* SidePanelCell.m */; };
 		0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2305461D54C76C00115A34 /* SidePanelCell.xib */; };
+		0D273EF81D5B23D1007F1EE5 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D273EF71D5B23D1007F1EE5 /* facebook_icon.png */; };
+		0D273EFA1D5B2951007F1EE5 /* save_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D273EF91D5B2951007F1EE5 /* save_icon1.png */; };
 		0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */; };
 		0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D37311E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m */; };
 		0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3731201CD8A10B00EDC547 /* NSData+ImageContentType.m */; };
@@ -81,7 +83,6 @@
 		0D698D261CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D251CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m */; };
 		0D698D2F1CC8D90500F64745 /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D2E1CC8D90500F64745 /* LandingViewController.m */; };
 		0D698D321CC9026900F64745 /* LoggingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D311CC9026900F64745 /* LoggingViewController.m */; };
-		0D698D381CC90AEC00F64745 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D698D331CC90AEC00F64745 /* facebook_icon.png */; };
 		0D698D391CC90AEC00F64745 /* google_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D698D341CC90AEC00F64745 /* google_icon.png */; };
 		0D698D3A1CC90AEC00F64745 /* login_screen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0D698D351CC90AEC00F64745 /* login_screen.jpg */; };
 		0D698D3B1CC90AEC00F64745 /* mail_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D698D361CC90AEC00F64745 /* mail_icon.png */; };
@@ -244,6 +245,8 @@
 		0D2305441D54C76200115A34 /* SidePanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidePanelCell.h; sourceTree = "<group>"; };
 		0D2305451D54C76C00115A34 /* SidePanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidePanelCell.m; sourceTree = "<group>"; };
 		0D2305461D54C76C00115A34 /* SidePanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidePanelCell.xib; sourceTree = "<group>"; };
+		0D273EF71D5B23D1007F1EE5 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
+		0D273EF91D5B2951007F1EE5 /* save_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_icon1.png; sourceTree = "<group>"; };
 		0D3730361CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLivingTagsViewedAndCreated.h; sourceTree = "<group>"; };
 		0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLivingTagsViewedAndCreated.m; sourceTree = "<group>"; };
 		0D37311D1CD8A10B00EDC547 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -331,7 +334,6 @@
 		0D698D2E1CC8D90500F64745 /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
 		0D698D301CC9026900F64745 /* LoggingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingViewController.h; sourceTree = "<group>"; };
 		0D698D311CC9026900F64745 /* LoggingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingViewController.m; sourceTree = "<group>"; };
-		0D698D331CC90AEC00F64745 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
 		0D698D341CC90AEC00F64745 /* google_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google_icon.png; sourceTree = "<group>"; };
 		0D698D351CC90AEC00F64745 /* login_screen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_screen.jpg; sourceTree = "<group>"; };
 		0D698D361CC90AEC00F64745 /* mail_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail_icon.png; sourceTree = "<group>"; };
@@ -865,8 +867,8 @@
 		0D698D1F1CC8D79000F64745 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0D273EF71D5B23D1007F1EE5 /* facebook_icon.png */,
 				0D5EA2351CCB624F00CA0DAE /* name_icon.png */,
-				0D698D331CC90AEC00F64745 /* facebook_icon.png */,
 				0D698D341CC90AEC00F64745 /* google_icon.png */,
 				0D698D351CC90AEC00F64745 /* login_screen.jpg */,
 				0D698D361CC90AEC00F64745 /* mail_icon.png */,
@@ -1158,6 +1160,7 @@
 		0DA226651CD22E4700B3A5BC /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				0D273EF91D5B2951007F1EE5 /* save_icon1.png */,
 				0D40A8421CE5BFA500D51A8E /* play_icon.png */,
 				0D939D341CD35106002C954B /* circle_with-camera_icon.png */,
 				0DA226661CD22E4700B3A5BC /* bg_img.png */,
@@ -1230,6 +1233,7 @@
 				TargetAttributes = {
 					0D698CFA1CC8CF2400F64745 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = CH3P9TJQC8;
 					};
 				};
 			};
@@ -1261,13 +1265,13 @@
 				0D9B888B1D22B75D003B51F0 /* pause.png in Resources */,
 				0D922FFA1CF8707D00EC1945 /* top_header_bg.png in Resources */,
 				0D8AC8D61D365C5D001EFEBA /* radio_btn1.png in Resources */,
+				0D273EFA1D5B2951007F1EE5 /* save_icon1.png in Resources */,
 				0D77F6B01CD736AE00671159 /* Assets.bundle in Resources */,
 				0DA226701CD22E4700B3A5BC /* camera_icon.png in Resources */,
 				0D9B88911D22B75D003B51F0 /* stop_enable.png in Resources */,
 				0D8F28F91CD09E03001AE322 /* logo_loader.png in Resources */,
 				0D698D111CC8CF2500F64745 /* LaunchScreen.storyboard in Resources */,
 				0D922FF41CF8707D00EC1945 /* menu_icon.png in Resources */,
-				0D698D381CC90AEC00F64745 /* facebook_icon.png in Resources */,
 				0D40A8441CE5BFA500D51A8E /* play_icon.png in Resources */,
 				0DA226741CD22E4700B3A5BC /* phone_icon.png in Resources */,
 				0DB9A45F1D46638F007671E9 /* CreateTagsThirdStepCell.xib in Resources */,
@@ -1328,6 +1332,7 @@
 				0D0DDD081D11AAC600C0E9DD /* contact.png in Resources */,
 				0D922FFD1CF8739C00EC1945 /* menu_icon2.png in Resources */,
 				0D8804611D475DDA009DA25F /* calender_icon.png in Resources */,
+				0D273EF81D5B23D1007F1EE5 /* facebook_icon.png in Resources */,
 				0D8AC8D71D365C5D001EFEBA /* radio_btn2.png in Resources */,
 				0D5EA2361CCB624F00CA0DAE /* name_icon.png in Resources */,
 				0D922FF11CF8707D00EC1945 /* circle_icon.png in Resources */,
@@ -1548,8 +1553,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1571,7 +1576,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "69b30278-e7e7-4e99-a71d-ac7791bb8393";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1593,8 +1598,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1609,7 +1614,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "69b30278-e7e7-4e99-a71d-ac7791bb8393";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1620,8 +1625,8 @@
 			baseConfigurationReference = 8BAAF325124145B15E317F6D /* Pods-LivingTags.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1634,7 +1639,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "69b30278-e7e7-4e99-a71d-ac7791bb8393";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -1644,8 +1649,8 @@
 			baseConfigurationReference = EB3E586A24EEF2747F22B398 /* Pods-LivingTags.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1658,7 +1663,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "69b30278-e7e7-4e99-a71d-ac7791bb8393";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

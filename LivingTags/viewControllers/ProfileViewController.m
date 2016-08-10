@@ -22,7 +22,6 @@
     NSMutableArray *arrProfile,*arrPics,*arrTexts;
     NSString *strVideoLink,*strPhoneNumber,*strName,*strVideoID;
     BOOL isEditing;
-    IBOutlet UIButton *btnSave;
     UIImageView *img;
     UIImage *imgChosen;
     BOOL isYoutube;
@@ -44,10 +43,9 @@
 {
     [super viewDidLoad];
     tblProfile.separatorStyle=UITableViewCellSeparatorStyleNone;
-    arrProfile=[[NSMutableArray alloc]initWithObjects:@"",@"Email",@"Phone",@"Video", nil];
+    arrProfile=[[NSMutableArray alloc]initWithObjects:@"",@"Email",@"Phone",@"Video URL", nil];
     arrPics=[[NSMutableArray alloc]initWithObjects:@"",@"mail_icon1",@"phone_icon",@"video_icon", nil];
     isEditing=NO;
-    btnSave.hidden=YES;
     strLocation=appDel.objUser.strAddress;
     strLat=appDel.objUser.strLat;
     strLong=appDel.objUser.strLong;
@@ -185,6 +183,9 @@
         cellA.txtName.text=[arrTexts objectAtIndex:indexPath.row];
         cellA.txtName.delegate=self;
         [cellA.btnProfileEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
+        //btnSavePressed
+        [cellA.btnSave addTarget:self action:@selector(btnSavePressed:) forControlEvents:UIControlEventTouchUpInside];
+
         NSLog(@"%@",appDel.objLivingTags.strCreated);
         [cellA.btnProfilePicUpdate addTarget:self action:@selector(btnImageUploadPressed:) forControlEvents:UIControlEventTouchUpInside];
         [cellA.btnLocation addTarget:self action:@selector(btnLocationPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -232,11 +233,13 @@
         {
             cellA.btnProfileEdit.hidden=NO;
             cellA.txtName.userInteractionEnabled=NO;
+            cellA.btnSave.hidden=YES;
         }
         else
         {
             cellA.btnProfileEdit.hidden=YES;
             cellA.txtName.userInteractionEnabled=YES;
+            cellA.btnSave.hidden=NO;
         }
         cell=cellA;
     }
@@ -420,7 +423,7 @@
         strVideoLink=textField.text;
         [arrTexts removeObjectAtIndex:textField.tag];
         [arrTexts insertObject:strVideoLink atIndex:textField.tag];
-        [self checkYoutubeLINK:strVideoLink];
+        //[self checkYoutubeLINK:strVideoLink];
     }
     else if (textField.tag==2)
     {
@@ -487,7 +490,7 @@
     [textField resignFirstResponder];
     if (textField.tag==3)
     {
-       // [self checkYoutubeLINK:strVideoLink];
+        [self checkYoutubeLINK:strVideoLink];
     }
     [tblProfile reloadData];
     [tblProfile setContentOffset:CGPointMake(0,0) animated:YES];
@@ -517,17 +520,15 @@
 
 -(void)btnEditPressed:(id)sender
 {
-    btnSave.hidden=NO;
     isEditing=YES;
     [tblProfile reloadData];
 }
 
--(IBAction)btnSavePressed:(id)sender
+-(void)btnSavePressed:(id)sender
 {
     if ([self alertChecking])
     {
         isEditing=NO;
-        btnSave.hidden=YES;
         [tblProfile reloadData];
         [[UpdateProfileService service]callUpdateProfileRequestWIthUserID:appDel.objUser.strUserID Name:strName Address:strLocation Latitude:strLat Longitude:strLong videoURI:strVideoLink phoneNumber:strPhoneNumber userFile:imgChosen withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
             if (isError)

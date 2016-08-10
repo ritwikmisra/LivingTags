@@ -250,6 +250,10 @@
                 cellTags.lblImageUpload.text=@"Profile image Uploaded";
                 [cellTags.btnBrowseUserPic setTitle:@"Change"  forState:UIControlStateNormal];
             }
+            else
+            {
+                cellTags.lblImageUpload.text=@"Add profile pic.";
+            }
             [cellTags.btnBrowseUserPic addTarget:self action:@selector(btnUserPicSelected:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
@@ -388,6 +392,10 @@
                 cellTags.lblImageUpload.text=@"Cover pic uploaded.";
                 [cellTags.btnBrowseCover setTitle:@"Change"  forState:UIControlStateNormal];
             }
+            else
+            {
+                cellTags.lblImageUpload.text=@"Add cover pic..";
+            }
             cellTags.btnBrowseCover.tag=indexPath.row;
             [cellTags.btnBrowseCover addTarget:self action:@selector(btnCoverPicPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -513,7 +521,6 @@
 //    CreateTagsSecondStepCell *cell=(CreateTagsSecondStepCell *)[self getSuperviewOfType:[UITableViewCell class] fromView:sender];
 //    [cell.imgMale setImage:[UIImage imageNamed:@"radio_btn2"]];
 //    [cell.imgFemale setImage:[UIImage imageNamed:@"radio_btn1"]];
-    [tblSecondSteps reloadData];
     [tblSecondSteps reloadData];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self updateTableView:[sender tag]];
@@ -1013,6 +1020,7 @@
                 else
                 {
                     NSLog(@"success");
+                    [tblSecondSteps reloadData ];
                 }
             }];
         });
@@ -1030,12 +1038,12 @@
                 else
                 {
                     NSLog(@"success");
+                    [tblSecondSteps reloadData ];
                 }
             }];
         });
     }
     [picker dismissViewControllerAnimated:YES completion:^{
-        [tblSecondSteps reloadData ];
     }] ;
 }
 
@@ -1196,7 +1204,7 @@
     [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI UserID:appDel.objUser.strUserID livingTagsID:self.strTemplateID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
-            
+            [self displayErrorWithMessage:strMsg];
         }
         else
         {
