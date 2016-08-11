@@ -144,6 +144,32 @@
         {
             self.strGender=@"";
         }
+        /////
+        if ([dict objectForKey:@"address1"] && ![[dict objectForKey:@"address1"] isKindOfClass:[NSNull class]])
+        {
+            self.strAddress1=[dict objectForKey:@"address1"];
+        }
+        else
+        {
+            self.strAddress1=@"";
+        }
+        if ([dict objectForKey:@"address2"] && ![[dict objectForKey:@"address2"] isKindOfClass:[NSNull class]])
+        {
+            self.strAddress2=[dict objectForKey:@"address2"];
+        }
+        else
+        {
+            self.strAddress2=@"";
+        }
+        if ([dict objectForKey:@"address3"] && ![[dict objectForKey:@"address3"] isKindOfClass:[NSNull class]])
+        {
+            self.strAddress3=[dict objectForKey:@"address3"];
+        }
+        else
+        {
+            self.strAddress3=@"";
+        }
+
     }
     return self;
 }

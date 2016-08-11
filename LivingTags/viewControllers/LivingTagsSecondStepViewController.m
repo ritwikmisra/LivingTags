@@ -36,7 +36,7 @@
     GMSPlace *pickedPlace;
     NSString *name2;
     NSString *address2;
-    NSString *strCat,*strPrimaryLocation,*strSecondLocation,*strThirdLocation;
+    NSString *strCat,*strPrimaryLocation,*strSecondLocation,*strThirdLocation,*strLatitude1,*strLongitude1,*strLatitude2,*strLongitude2,*strLatitude3,*strLongitude3;
     BOOL isPrimaryLocationRemove,isSecondLocation,isThirdLocation,isProfileSuccess,isCoverSuccess;
 }
 
@@ -646,6 +646,8 @@
                      NSLog(@"reverse geocoding results:");
                      for(GMSAddress* addressObj in [response results])
                      {
+                         strLatitude1=[NSString stringWithFormat:@"%f",place.coordinate.latitude];
+                         strLongitude1=[NSString stringWithFormat:@"%f",place.coordinate.longitude];
                          NSLog(@"locality=%@", addressObj.locality);
                          NSLog(@"subLocality=%@", addressObj.subLocality);
                          NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
@@ -710,6 +712,8 @@
                      NSLog(@"reverse geocoding results:");
                      for(GMSAddress* addressObj in [response results])
                      {
+                         strLatitude2=[NSString stringWithFormat:@"%f",place.coordinate.latitude];
+                         strLongitude2=[NSString stringWithFormat:@"%f",place.coordinate.longitude];
                          NSLog(@"locality=%@", addressObj.locality);
                          NSLog(@"subLocality=%@", addressObj.subLocality);
                          NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
@@ -774,6 +778,8 @@
                      NSLog(@"reverse geocoding results:");
                      for(GMSAddress* addressObj in [response results])
                      {
+                         strLatitude3=[NSString stringWithFormat:@"%f",place.coordinate.latitude];
+                         strLongitude3=[NSString stringWithFormat:@"%f",place.coordinate.longitude];
                          NSLog(@"locality=%@", addressObj.locality);
                          NSLog(@"subLocality=%@", addressObj.subLocality);
                          NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
@@ -981,7 +987,7 @@
 {
     UIImagePickerController *picker=[[UIImagePickerController alloc] init];
     picker.delegate=self;
-    picker.allowsEditing=YES;
+    picker.allowsEditing=NO;
     picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:picker animated:YES completion:^{
         
@@ -995,7 +1001,7 @@
         UIImagePickerController *picker=[[UIImagePickerController alloc]init] ;
         picker.delegate=self ;
         picker.sourceType=UIImagePickerControllerSourceTypeCamera ;
-        picker.allowsEditing=YES ;
+        picker.allowsEditing=NO ;
         [self presentViewController:picker animated:YES completion:nil] ;
     }
     else
@@ -1009,7 +1015,7 @@
     NSLog(@"%d",btnUserPicTag);
     if(btnUserPicTag==2)
     {
-        imgChosen=info[UIImagePickerControllerEditedImage] ;
+        imgChosen=info[UIImagePickerControllerOriginalImage] ;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[CreateTagsUploadProfilePicService service]callCreateTagsUploadProfileServiceWithLivingTagsID:self.strTemplateID user_ID:appDel.objUser.strUserID image:imgChosen withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                 isProfileSuccess=isError;
@@ -1027,7 +1033,7 @@
     }
     else
     {
-        imgCoverPic=info[UIImagePickerControllerEditedImage] ;
+        imgCoverPic=info[UIImagePickerControllerOriginalImage] ;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[CreateTagsUploadCoverPicService service]callCreateTagsCoverPicUploadServiceWithLivingTagsID:self.strTemplateID user_ID:appDel.objUser.strUserID coverImage:imgCoverPic withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                 isCoverSuccess=isError;
@@ -1145,33 +1151,101 @@
     {
         if (objTemplates)
         {
-            
+            if ([objTemplates.strAddress1 isEqualToString:strPrimaryLocation])
+            {
+                [dictAPI removeObjectForKey:@"address1"];
+                if ([objTemplates.strLat1 isEqualToString:strLatitude1])
+                {
+                    [dictAPI removeObjectForKey:@"lat1"];
+                }
+                if ([objTemplates.strLong1 isEqualToString:strLatitude1])
+                {
+                    //long1
+                    [dictAPI removeObjectForKey:@"long1"];
+                }
+            }
+            else
+            {
+                [dictAPI setObject:strPrimaryLocation forKey:@"address1"];
+                [dictAPI setObject:strLatitude1 forKey:@"lat1"];
+                [dictAPI setObject:strLongitude1 forKey:@"long1"];
+                [self updateDictionaryForServiceForKey:@"address1"];
+            }
         }
         else
         {
-            
+            [dictAPI setObject:strPrimaryLocation forKey:@"address1"];
+            [dictAPI setObject:strLatitude1 forKey:@"lat1"];
+            [dictAPI setObject:strLongitude1 forKey:@"long1"];
+            [self updateDictionaryForServiceForKey:@"address1"];
         }
     }
     else if([str isEqualToString:@"Second"])
     {
+        //address2 lat2 long2
         if (objTemplates)
         {
-            
+            if ([objTemplates.strAddress2 isEqualToString:strSecondLocation])
+            {
+                [dictAPI removeObjectForKey:@"address2"];
+                if ([objTemplates.strLat2 isEqualToString:strLatitude2])
+                {
+                    [dictAPI removeObjectForKey:@"lat2"];
+                }
+                if ([objTemplates.strLong2 isEqualToString:strLongitude2])
+                {
+                    //long1
+                    [dictAPI removeObjectForKey:@"long2"];
+                }
+            }
+            else
+            {
+                [dictAPI setObject:strSecondLocation forKey:@"address2"];
+                [dictAPI setObject:strLatitude2 forKey:@"lat2"];
+                [dictAPI setObject:strLongitude2 forKey:@"long2"];
+                [self updateDictionaryForServiceForKey:@"address2"];
+            }
         }
         else
         {
-            
+            [dictAPI setObject:strSecondLocation forKey:@"address2"];
+            [dictAPI setObject:strLatitude2 forKey:@"lat2"];
+            [dictAPI setObject:strLongitude2 forKey:@"long2"];
+            [self updateDictionaryForServiceForKey:@"address2"];
         }
     }
     else
     {
         if (objTemplates)
         {
-            
+            //address3 lat3 long3
+            if ([objTemplates.strAddress3 isEqualToString:strThirdLocation])
+            {
+                [dictAPI removeObjectForKey:@"address3"];
+                if ([objTemplates.strLat3 isEqualToString:strLatitude3])
+                {
+                    [dictAPI removeObjectForKey:@"lat3"];
+                }
+                if ([objTemplates.strLong3 isEqualToString:strLongitude3])
+                {
+                    //long1
+                    [dictAPI removeObjectForKey:@"long3"];
+                }
+            }
+            else
+            {
+                [dictAPI setObject:strThirdLocation forKey:@"address3"];
+                [dictAPI setObject:strLatitude3 forKey:@"lat3"];
+                [dictAPI setObject:strLongitude3 forKey:@"long3"];
+                [self updateDictionaryForServiceForKey:@"address3"];
+            }
         }
         else
         {
-            
+            [dictAPI setObject:strThirdLocation forKey:@"address3"];
+            [dictAPI setObject:strLatitude3 forKey:@"lat3"];
+            [dictAPI setObject:strLongitude3 forKey:@"long3"];
+            [self updateDictionaryForServiceForKey:@"address3"];
         }
     }
 }
@@ -1209,7 +1283,31 @@
         else
         {
             NSLog(@"%@",result);
-            [dictAPI removeObjectForKey:strKey];
+            if ([strKey isEqualToString:@"address1"])
+            {
+                //address1 lat1 long1
+                [dictAPI removeObjectForKey:@"address1"];
+                [dictAPI removeObjectForKey:@"lat1"];
+                [dictAPI removeObjectForKey:@"long1"];
+            }
+            else if ([strKey isEqualToString:@"address2"])
+            {
+                //address2 lat2 long2
+                [dictAPI removeObjectForKey:@"address2"];
+                [dictAPI removeObjectForKey:@"lat2"];
+                [dictAPI removeObjectForKey:@"long2"];
+            }
+            else if ([strKey isEqualToString:@"address3"])
+            {
+                //address3 lat3 long3
+                [dictAPI removeObjectForKey:@"address3"];
+                [dictAPI removeObjectForKey:@"lat3"];
+                [dictAPI removeObjectForKey:@"long3"];
+            }
+            else
+            {
+                [dictAPI removeObjectForKey:strKey];
+            }
             if ([result isKindOfClass:[NSDictionary class]])
             {
                 NSMutableDictionary *dict=(id)result;

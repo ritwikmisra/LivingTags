@@ -85,7 +85,6 @@ NSString *const strAPI[]={
     [self displayNetworkActivity];
 }
 
-
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
 {
     [self hideNetworkActivity];

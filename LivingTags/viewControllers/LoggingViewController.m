@@ -27,6 +27,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     IBOutlet UITextField *txtPassword;
     IBOutlet UIImageView *img;
     BOOL isViewUp;
+    IBOutlet NSLayoutConstraint *constVwHeight;
     NSString *strEmail,*strID,*strName,*strImageURL,*strSocialSite,*strEmailAvailable;
 }
 
@@ -48,13 +49,15 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     signIn.shouldFetchBasicProfile = YES;
     signIn.delegate = self;
     signIn.uiDelegate = self;
-//    txtEmail.text=@"sourav.hazra@appsbee.com";
-//    txtPassword.text=@"123456";
+    txtEmail.text=@"sourav.hazra@appsbee.com";
+    txtPassword.text=@"123456";
 }
 
 -(void)viewDidLayoutSubviews
 {
     [self.signInButton setStyle:kGIDSignInButtonStyleIconOnly];
+    [self.signInButton setColorScheme:kGIDSignInButtonColorSchemeDark];
+    constVwHeight.constant=3.0f;
 }
 
 -(void)viewWillAppear:(BOOL)animated

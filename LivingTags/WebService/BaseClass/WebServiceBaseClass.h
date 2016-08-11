@@ -13,6 +13,8 @@
 #define NO_NETWORK @"Please check the network connection"
 
 typedef  void(^ _Nullable WebServiceCompletion)(_Nullable id result,BOOL isError, NSString * _Nullable strMsg);
+typedef void(^ _Nullable UploadSessionBlock)( NSData * _Nullable data,BOOL isError, NSString * _Nullable strMsg);
+
 
 typedef NS_ENUM(NSUInteger, WEB_SERVICES) {
     WEB_SERVICES_REGISTRATION,
