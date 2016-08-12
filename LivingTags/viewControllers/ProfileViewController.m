@@ -77,13 +77,11 @@
     mapView.myLocationEnabled = YES;
     mapView.hidden = YES;
     NSLog(@"User's location: %@", mapView.myLocation);
-    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -108,39 +106,7 @@
     {
         if (indexPath.row==0)
         {
-            return 200.0f;
-        }
-        else if (indexPath.row==3)
-        {
-            if (strVideoID.length==0)
-            {
-                return 60.0f;
-            }
-            return 230.0f;
-        }
-        return 60.0f;
-    }
-   else if (___isIphone5_5s)
-    {
-        if (indexPath.row==0)
-        {
             return 220.0f;
-        }
-        else if (indexPath.row==3)
-        {
-            if (strVideoID.length==0)
-            {
-                return 60.0f;
-            }
-            return 250.0f;
-        }
-        return 60.0f;
-    }
-    else if (___isIphone6)
-    {
-        if (indexPath.row==0)
-        {
-            return 240.0f;
         }
         else if (indexPath.row==3)
         {
@@ -152,7 +118,23 @@
         }
         return 80.0f;
     }
-    else
+   else if (___isIphone5_5s)
+    {
+        if (indexPath.row==0)
+        {
+            return 250.0f;
+        }
+        else if (indexPath.row==3)
+        {
+            if (strVideoID.length==0)
+            {
+                return 80.0f;
+            }
+            return 280.0f;
+        }
+        return 70.0f;
+    }
+    else if (___isIphone6)
     {
         if (indexPath.row==0)
         {
@@ -167,6 +149,22 @@
             return 270.0f;
         }
         return 100.0f;
+    }
+    else
+    {
+        if (indexPath.row==0)
+        {
+            return 280.0f;
+        }
+        else if (indexPath.row==3)
+        {
+            if (strVideoID.length==0)
+            {
+                return 120.0f;
+            }
+            return 290.0f;
+        }
+        return 120.0f;
     }
 }
 
@@ -234,12 +232,17 @@
             cellA.btnProfileEdit.hidden=NO;
             cellA.txtName.userInteractionEnabled=NO;
             cellA.btnSave.hidden=YES;
+            cellA.vwEditName.hidden=YES;
+            cellA.vwEditLocation.hidden=YES;
         }
         else
         {
             cellA.btnProfileEdit.hidden=YES;
             cellA.txtName.userInteractionEnabled=YES;
             cellA.btnSave.hidden=NO;
+            cellA.vwEditName.hidden=NO;
+            cellA.vwEditLocation.hidden=NO;
+
         }
         cell=cellA;
     }
@@ -255,7 +258,6 @@
             cellc.img.image=[UIImage imageNamed:[arrPics objectAtIndex:indexPath.row]];
             cellc.lblPlaceHolders.text=[arrProfile objectAtIndex:indexPath.row];
             [cellc.txt setValue:[UIColor colorWithRed:98.0/255.0 green:105.0/255.0 blue:108.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
-            cellc.txt.placeholder=@"https://www.youtube.com/watch?v=j4s3JmLGLCA";
             cellc.txt.text=[arrTexts objectAtIndex:indexPath.row];
             cellc.txt.tag=indexPath.row;
             [cellc.txt addTarget:self action:@selector(txtfieldEditingForProfile:) forControlEvents:UIControlEventEditingChanged];
@@ -263,12 +265,15 @@
             if(isEditing==NO)
             {
                 cellc.txt.userInteractionEnabled=NO;
+                cellc.txt.placeholder=@"https://www.youtube.com/watch?v=j4s3JmLGLCA";
+                cellc.vwPhoneNumber.hidden=YES;
             }
             else
             {
                 cellc.txt.userInteractionEnabled=YES;
+                cellc.txt.placeholder=@"Enter a valid URL";
+                cellc.vwPhoneNumber.hidden=NO;
             }
-
             cell=cellc;
         }
         else if(isYoutube==YES)
@@ -286,14 +291,17 @@
             NSDictionary *playerVars = @{@"playsinline" : @1,};
             [cellc.vwPlayer loadWithVideoId:strVideoID playerVars:playerVars];
             cellc.txt.delegate=self;
-            cellc.txt.placeholder=@"https://www.youtube.com/watch?v=j4s3JmLGLCA";
             if(isEditing==NO)
             {
                 cellc.txt.userInteractionEnabled=NO;
+                cellc.txt.placeholder=@"https://www.youtube.com/watch?v=j4s3JmLGLCA";
+                cellc.vwPhoneNumber.hidden=YES;
             }
             else
             {
                 cellc.txt.userInteractionEnabled=YES;
+                cellc.txt.placeholder=@"Enter a valid URL";
+                cellc.vwPhoneNumber.hidden=NO;
             }
             cell=cellc;
         }
@@ -305,7 +313,6 @@
                 cellc=[[[NSBundle mainBundle]loadNibNamed:@"EditProfilePicCellTableViewCell" owner:self options:nil]objectAtIndex:3];
             }
             cellc.lblPlaceHolders.text=[arrProfile objectAtIndex:indexPath.row];
-            cellc.txt.placeholder=@"https://www.youtube.com/watch?v=j4s3JmLGLCA";
             [cellc.txt setValue:[UIColor colorWithRed:98.0/255.0 green:105.0/255.0 blue:108.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
             cellc.txt.tag=indexPath.row;
             cellc.txt.text=[arrTexts objectAtIndex:indexPath.row];
@@ -314,10 +321,14 @@
             if(isEditing==NO)
             {
                 cellc.txt.userInteractionEnabled=NO;
+                cellc.txt.placeholder=@"https://www.youtube.com/watch?v=j4s3JmLGLCA";
+                cellc.vwPhoneNumber.hidden=YES;
             }
             else
             {
                 cellc.txt.userInteractionEnabled=YES;
+                cellc.txt.placeholder=@"Enter a valid URL";
+                cellc.vwPhoneNumber.hidden=NO;
             }
             //vimeo functionality
             [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:strVideoLink withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
@@ -376,20 +387,22 @@
             [cellB.txt setInputAccessoryView:keyboardToolbar];
             
             activeTextField = cellB.txt;
-            
             cellB.txt.keyboardType=UIKeyboardTypeNumberPad;
-        }
-        if(isEditing==NO)
-        {
-            cellB.txt.userInteractionEnabled=NO;
-        }
-        else
-        {
-            cellB.txt.userInteractionEnabled=YES;
+            if(isEditing==NO)
+            {
+                cellB.txt.userInteractionEnabled=NO;
+                cellB.vwPhoneNumber.hidden=YES;
+            }
+            else
+            {
+                cellB.txt.userInteractionEnabled=YES;
+                cellB.vwPhoneNumber.hidden=NO;
+            }
         }
         if(cellB.txt.tag==1)
         {
             cellB.txt.userInteractionEnabled=NO;
+            cellB.vwPhoneNumber.hidden=YES;
         }
         cell=cellB;
     }
@@ -403,12 +416,14 @@
 -(void)toolBarCancelNumberPad :(id)sender
 {
     [self.view endEditing:YES];
+    [tblProfile setContentOffset:CGPointMake(0,0) animated:YES];
     //activeTextField.text = @"";
 }
 
 -(void)toolBardoneButtonNumberPad:(id)sender
 {
     [self.view endEditing:YES];
+    [tblProfile setContentOffset:CGPointMake(0,0) animated:YES];
 }
 
 #pragma mark

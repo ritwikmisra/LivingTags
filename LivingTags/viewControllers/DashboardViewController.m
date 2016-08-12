@@ -9,6 +9,7 @@
 #import "DashboardViewController.h"
 #import "ProfileGetService.h"
 #import "DashboardCell.h"
+#import "SlideMenuController.h"
 
 @interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -31,6 +32,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (appDel.isGoToDashBoardFromQRbtnTapped) {
+        appDel.isGoToDashBoardFromQRbtnTapped = NO;
+        appDel.isCreateTagTappedFromDashboard = NO;
+        appDel.isMyTagTappedFromDashboard = NO;
+        appDel.isReadTagTappedFromDashboard = NO;
+    }
+    
+    
     [[ProfileGetService service]callProfileEditServiceWithUserID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
@@ -96,14 +106,23 @@
 {
     if (indexPath.row==0)
     {
+        appDel.isCreateTagTappedFromDashboard = YES;
+        appDel.isMyTagTappedFromDashboard = NO;
+        appDel.isReadTagTappedFromDashboard = NO;
         [self performSegueWithIdentifier:@"segueDashboardToTemplate" sender:self];
     }
     if (indexPath.row==1)
     {
+        appDel.isMyTagTappedFromDashboard = YES;
+        appDel.isCreateTagTappedFromDashboard = NO;
+        appDel.isReadTagTappedFromDashboard = NO;
         [self performSegueWithIdentifier:@"segueDashboardToMyTags" sender:self];
     }
     if (indexPath.row==2)
     {
+        appDel.isReadTagTappedFromDashboard = YES;
+        appDel.isMyTagTappedFromDashboard = NO;
+        appDel.isCreateTagTappedFromDashboard = NO;
         [self performSegueWithIdentifier:@"segueDashBoardToReadTags" sender:self];
     }
 }

@@ -2040,6 +2040,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnPreview" destination="Q5t-Em-TSz" id="EuC-wr-zTh"/>
                         <outlet property="lbl1" destination="Eia-yX-jDy" id="Tac-JW-zRk"/>
                         <outlet property="lbl2" destination="F4y-8d-aH1" id="Sbk-i3-UZ2"/>
                         <outlet property="lbl3" destination="9f8-vO-5r7" id="ZnX-rj-cB0"/>
@@ -2050,7 +2051,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2FE-CA-LYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818" y="1185"/>
+            <point key="canvasLocation" x="2098" y="1185"/>
         </scene>
         <!--Living Tags Third Step View Controller-->
         <scene sceneID="628-YE-gn4">
@@ -2080,7 +2081,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD IMAGES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrL-Js-5jf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMAGES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrL-Js-5jf">
                                 <rect key="frame" x="150" y="0.0" width="300" height="55"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="17"/>
@@ -2374,7 +2375,7 @@
                                     <constraint firstAttribute="width" secondItem="JnR-IU-LXS" secondAttribute="height" id="Xb0-K8-4UC"/>
                                 </constraints>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD VIDEOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWn-q2-3rQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIDEOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWn-q2-3rQ">
                                 <rect key="frame" x="150" y="0.0" width="300" height="55"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="17"/>
@@ -2537,8 +2538,8 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7qO-jp-tDn"/>
         <segue reference="Oim-Gi-933"/>
         <segue reference="znD-KZ-TYx"/>
+        <segue reference="7qO-jp-tDn"/>
     </inferredMetricsTieBreakers>
 </document>

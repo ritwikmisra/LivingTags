@@ -31,7 +31,11 @@
 
 @property(nonatomic,assign)BOOL isFirstTime;
 @property(nonatomic,assign)BOOL isLogoutBtnTapped;
-
+@property(nonatomic,assign)BOOL isProfileValueUpdated;
+@property(nonatomic,assign)BOOL isCreateTagTappedFromDashboard;
+@property(nonatomic,assign)BOOL isMyTagTappedFromDashboard;
+@property(nonatomic,assign)BOOL isReadTagTappedFromDashboard;
+@property(nonatomic,assign)BOOL isGoToDashBoardFromQRbtnTapped;
 
 //location manage
 @property(nonatomic,strong)ModelUser *objUser;

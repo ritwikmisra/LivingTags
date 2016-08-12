@@ -30,7 +30,7 @@
     UIImage *imgChosen,*imgCoverPic;
     NSMutableDictionary *dictAPI;
     ModelCreateTagsSecondStep *objTemplates;
-    IBOutlet UIButton *btnNext;
+    IBOutlet UIButton *btnPreview;
     GMSPlacePicker *placePicker;
     GMSMapView *mapView;
     GMSPlace *pickedPlace;
@@ -70,7 +70,7 @@
     arrStatus=[[NSMutableArray alloc]initWithObjects:@"0", nil];
     strGender=@"";
     NSLog(@"%@",self.strTemplateID);
-    btnNext.hidden=YES;
+    btnPreview.hidden=YES;
     isPrimaryLocationRemove=NO;
     isSecondLocation=NO;
     isThirdLocation=NO;
@@ -1078,6 +1078,7 @@
         [dictAPI setObject:strName forKey:@"name"];
         [self updateDictionaryForServiceForKey:@"name"];
     }
+    btnPreview.hidden=NO;
 }
 
 -(void)checkDatesFrom
@@ -1142,7 +1143,6 @@
         [dictAPI setObject:strMemorialQuote forKey:@"memorial_quote"];
         [self updateDictionaryForServiceForKey:@"memorial_quote"];
     }
-    btnNext.hidden=NO;
 }
 
 -(void)checkLocationWithType:(NSString *)str

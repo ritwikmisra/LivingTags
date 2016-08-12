@@ -192,6 +192,39 @@
     [UIView animateWithDuration:0.2 animations:^{
         navController.view.frame=CGRectMake(SLIDER_WIDTH,0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
     } completion:^(BOOL finished) {
+        if (appDel.isProfileValueUpdated) {
+            slideMenu=[SlideMenuController getSlideMenuInstance];
+            appDel.isProfileValueUpdated = NO;
+            NSIndexPath *zeroethIndexpath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [slideMenu.tblSidePanel beginUpdates];
+            [slideMenu.tblSidePanel reloadRowsAtIndexPaths:@[zeroethIndexpath] withRowAnimation:UITableViewRowAnimationNone];
+            [slideMenu.tblSidePanel endUpdates];
+        }
+        if (appDel.isCreateTagTappedFromDashboard) {
+            slideMenu=[SlideMenuController getSlideMenuInstance];
+            //appDel.isCreateTagTappedFromDashboard = NO;
+            NSIndexPath *thirdIndexpath = [NSIndexPath indexPathForRow:3 inSection:0];
+            [slideMenu.tblSidePanel beginUpdates];
+            [slideMenu.tblSidePanel reloadRowsAtIndexPaths:@[thirdIndexpath] withRowAnimation:UITableViewRowAnimationNone];
+            //[slideMenu.tblSidePanel selectRowAtIndexPath:thirdIndexpath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [slideMenu.tblSidePanel endUpdates];
+        }
+        if (appDel.isMyTagTappedFromDashboard) {
+            slideMenu=[SlideMenuController getSlideMenuInstance];
+            // appDel.isMyTagTappedFromDashboard = NO;
+            NSIndexPath *fifthIndexpath = [NSIndexPath indexPathForRow:5 inSection:0];
+            [slideMenu.tblSidePanel beginUpdates];
+            [slideMenu.tblSidePanel reloadRowsAtIndexPaths:@[fifthIndexpath] withRowAnimation:UITableViewRowAnimationNone];
+            [slideMenu.tblSidePanel endUpdates];
+        }
+        if (appDel.isReadTagTappedFromDashboard) {
+            slideMenu=[SlideMenuController getSlideMenuInstance];
+            //appDel.isReadTagTappedFromDashboard = NO;
+            NSIndexPath *fourthIndexpath = [NSIndexPath indexPathForRow:4 inSection:0];
+            [slideMenu.tblSidePanel beginUpdates];
+            [slideMenu.tblSidePanel reloadRowsAtIndexPaths:@[fourthIndexpath] withRowAnimation:UITableViewRowAnimationNone];
+            [slideMenu.tblSidePanel endUpdates];
+        }
         slideMenu.isSlideMenuVisible=YES;
         [self addImageViewOnController:navController];
     }];
@@ -207,6 +240,7 @@
         slideMenu.isSlideMenuVisible=NO;
     }];
 }
+
 
 #pragma mark
 #pragma mark sidebar Delegate
@@ -266,7 +300,7 @@
         }
         
         NSLog(@"%@",self.navigationController.topViewController);
-        if (![[self.navigationController topViewController] isKindOfClass:[controller class]] && indexPath.row!=7)
+        if ((![[self.navigationController topViewController] isKindOfClass:[controller class]] && indexPath.row!=7) && (![[self.navigationController topViewController] isKindOfClass:[controller class]] && indexPath.row!=8) && (![[self.navigationController topViewController] isKindOfClass:[controller class]] && indexPath.row!=6))
         {
             navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
             [self closeImageView];

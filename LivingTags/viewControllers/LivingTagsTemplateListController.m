@@ -104,8 +104,10 @@
                             placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
                                      options:SDWebImageHighPriority
                                     progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                        [cell.actTemplateIndicator startAnimating];
                                     }
                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                       [cell.actTemplateIndicator stopAnimating];
                                    }];
     });
     return cell;

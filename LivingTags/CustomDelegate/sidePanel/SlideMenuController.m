@@ -17,7 +17,7 @@
     UIView *animateView;
     NSIndexPath *selectedIndexPath;
     NSIndexPath *deSelectedIndexPath;
-    NSIndexPath *previousSelectedIndexPath;
+    // NSIndexPath *SelectedIndexPathfromDashBoard;
     UIView *smallView;
 }
 
@@ -116,7 +116,7 @@
         {
             return 145.0f; //150.0f
         }
-        return 130.0; 
+        return 130.0;
     }
     else
     {
@@ -147,7 +147,9 @@
             cell=[[[NSBundle mainBundle]loadNibNamed:@"SidePanelCell" owner:self options:nil]objectAtIndex:1];
         }
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-       // [cell.btnLogout addTarget:self action:@selector(btnLogoutPressed:) forControlEvents:UIControlEventTouchUpInside];
+        // [cell.btnLogout addTarget:self action:@selector(btnLogoutPressed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //  if (appDel.isProfileValueUpdated) {
         cell.lblName.text=appDel.objUser.strName;
         cell.lblEmail.text=appDel.objUser.strEmail;
         NSLog(@"%@ %@",appDel.objUser.strName,appDel.objUser.strEmail);
@@ -168,6 +170,11 @@
         });
         
         cell.backgroundColor=[UIColor clearColor];
+        appDel.isProfileValueUpdated = NO;
+        //        }
+        
+        
+        
         return cell;
     }
     
@@ -199,7 +206,7 @@
                 smallView.tag = indexPath.row;
                 [animateView addSubview:smallView];
                 [cell.contentView addSubview:animateView];
-
+                
             }
             
         }
@@ -211,19 +218,125 @@
         
         else
         {
-            cell.lblSidePanel.textColor=[UIColor blackColor];
-            animateView = [[UIView alloc]initWithFrame:CGRectMake(-self.view.frame.size.width, cell.frame.origin.y, self.view.frame.size.width,cellHeight)];
-            smallView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, 8, cellHeight)];
-            smallView.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:1];
-            smallView.hidden = NO;
+            if (appDel.isCreateTagTappedFromDashboard) {
+                
+                if ([[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]].contentView subviews] objectAtIndex:3].hidden == NO)
+                {
+                    [[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]].contentView subviews] objectAtIndex:3].hidden = YES;
+                }
+                if ([[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]].contentView subviews] objectAtIndex:3].hidden == NO)
+                {
+                    [[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]].contentView subviews] objectAtIndex:3].hidden = YES;
+                }
+                
+                deSelectedIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+                
+                SidePanelCell *deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                
+                [[deSelectedcell.contentView subviews] objectAtIndex:3].hidden = YES;
+                //  appDel.isCreateTagTappedFromDashboard = NO;
+                deSelectedcell.lblSidePanel.textColor=[UIColor blackColor];
+                cell.lblSidePanel.textColor=[UIColor whiteColor];
+                animateView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.y, cell.frame.origin.y, self.view.frame.size.width, cellHeight)];
+                smallView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, 8, cellHeight)];
+                smallView.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:1];
+                smallView.hidden = NO;
+                deSelectedIndexPath = indexPath;
+                // appDel.isFirstTime = NO;
+                
+                animateView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3f];
+                
+                animateView.tag = indexPath.row;
+                smallView.tag = indexPath.row;
+                [animateView addSubview:smallView];
+                [cell.contentView addSubview:animateView];
+                
+                
+            }
+            else if (appDel.isMyTagTappedFromDashboard) {
+                
+                if ([[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]].contentView subviews] objectAtIndex:3].hidden == NO)
+                {
+                    [[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]].contentView subviews] objectAtIndex:3].hidden = YES;
+                }
+                if ([[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]].contentView subviews] objectAtIndex:3].hidden == NO)
+                {
+                    [[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]].contentView subviews] objectAtIndex:3].hidden = YES;
+                }
+                
+                deSelectedIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+                
+                
+                SidePanelCell *deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                [[deSelectedcell.contentView subviews] objectAtIndex:3].hidden = YES;
+                //  appDel.isMyTagTappedFromDashboard = NO;
+                deSelectedcell.lblSidePanel.textColor=[UIColor blackColor];
+                cell.lblSidePanel.textColor=[UIColor whiteColor];
+                animateView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.y, cell.frame.origin.y, self.view.frame.size.width, cellHeight)];
+                smallView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, 8, cellHeight)];
+                smallView.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:1];
+                smallView.hidden = NO;
+                deSelectedIndexPath = indexPath;
+                // appDel.isFirstTime = NO;
+                
+                animateView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3f];
+                
+                animateView.tag = indexPath.row;
+                smallView.tag = indexPath.row;
+                [animateView addSubview:smallView];
+                [cell.contentView addSubview:animateView];
+                
+                
+            }
+            else if (appDel.isReadTagTappedFromDashboard) {
+                
+                if ([[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]].contentView subviews] objectAtIndex:3].hidden == NO)
+                {
+                    [[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]].contentView subviews] objectAtIndex:3].hidden = YES;
+                }
+                if ([[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]].contentView subviews] objectAtIndex:3].hidden == NO)
+                {
+                    [[(SidePanelCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]].contentView subviews] objectAtIndex:3].hidden = YES;
+                }
+                
+                deSelectedIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+                
+                SidePanelCell *deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                [[deSelectedcell.contentView subviews] objectAtIndex:3].hidden = YES;
+                //  appDel.isReadTagTappedFromDashboard = NO;
+                deSelectedcell.lblSidePanel.textColor=[UIColor blackColor];
+                cell.lblSidePanel.textColor=[UIColor whiteColor];
+                animateView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.y, cell.frame.origin.y, self.view.frame.size.width, cellHeight)];
+                smallView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, 8, cellHeight)];
+                smallView.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:1];
+                smallView.hidden = NO;
+                deSelectedIndexPath = indexPath;
+                // appDel.isFirstTime = NO;
+                
+                animateView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3f];
+                
+                animateView.tag = indexPath.row;
+                smallView.tag = indexPath.row;
+                [animateView addSubview:smallView];
+                [cell.contentView addSubview:animateView];
+            }
+            else
+            {
+                cell.lblSidePanel.textColor=[UIColor blackColor];
+                animateView = [[UIView alloc]initWithFrame:CGRectMake(-self.view.frame.size.width, cell.frame.origin.y, self.view.frame.size.width,cellHeight)];
+                smallView = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, 8, cellHeight)];
+                smallView.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:127.0/255.0 blue:0.0/255.0 alpha:1];
+                smallView.hidden = NO;
+                
+                animateView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3f];
+                
+                animateView.tag = indexPath.row;
+                smallView.tag = indexPath.row;
+                [animateView addSubview:smallView];
+                [cell.contentView addSubview:animateView];
+            }
             
-            animateView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3f];
             
-            animateView.tag = indexPath.row;
-            smallView.tag = indexPath.row;
-            [animateView addSubview:smallView];
-            [cell.contentView addSubview:animateView];
-
         }
         
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
@@ -236,6 +349,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
+    
     SidePanelCell *deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
     SidePanelCell *previousSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:selectedIndexPath];
     
@@ -257,11 +371,49 @@
     {
         if (appDel.isFirstTime)
         {
-            deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:selectedIndexPath];
+            if (appDel.isCreateTagTappedFromDashboard) {
+                appDel.isCreateTagTappedFromDashboard = NO;
+                deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                deSelectedcell.lblSidePanel.textColor = [UIColor blackColor];
+            }
+            else if (appDel.isMyTagTappedFromDashboard) {
+                appDel.isMyTagTappedFromDashboard = NO;
+                deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                deSelectedcell.lblSidePanel.textColor = [UIColor blackColor];
+            }
+            else if (appDel.isReadTagTappedFromDashboard) {
+                appDel.isReadTagTappedFromDashboard = NO;
+                deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                deSelectedcell.lblSidePanel.textColor = [UIColor blackColor];
+            }
+            else
+            {
+                deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:selectedIndexPath];
+            }
             appDel.isFirstTime = NO;
         }
+        else
+        {
+            if (appDel.isCreateTagTappedFromDashboard) {
+                appDel.isCreateTagTappedFromDashboard = NO;
+                deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                deSelectedcell.lblSidePanel.textColor = [UIColor blackColor];
+            }
+            else if (appDel.isMyTagTappedFromDashboard) {
+                appDel.isMyTagTappedFromDashboard = NO;
+                deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                deSelectedcell.lblSidePanel.textColor = [UIColor blackColor];
+            }
+            else if (appDel.isReadTagTappedFromDashboard) {
+                appDel.isReadTagTappedFromDashboard = NO;
+                deSelectedcell = (SidePanelCell *)[tableView cellForRowAtIndexPath:deSelectedIndexPath];
+                deSelectedcell.lblSidePanel.textColor = [UIColor blackColor];
+            }
+        }
+        
         
         [[deSelectedcell.contentView subviews] objectAtIndex:3].hidden = YES;
+        deSelectedcell.lblSidePanel.textColor = [UIColor blackColor];
         SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
         [self performSelector:@selector(startAnimationforView:) withObject:cell afterDelay:0.2];
         previousSelectedcell.lblSidePanel.textColor = [UIColor blackColor];
@@ -273,14 +425,14 @@
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-   /* double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSLog(@"Do some work");
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
-        cell.lblSidePanel.textColor=[UIColor blackColor];
-    });*/
+    /* double delayInSeconds = 1.0;
+     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+     NSLog(@"Do some work");
+     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+     SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
+     cell.lblSidePanel.textColor=[UIColor blackColor];
+     });*/
     
     if (indexPath.row == 0) {
         
@@ -291,7 +443,17 @@
     }
     else
     {
-        deSelectedIndexPath = indexPath;
+        if (appDel.isCreateTagTappedFromDashboard) {
+            appDel.isCreateTagTappedFromDashboard = NO;
+        }
+        else if (appDel.isReadTagTappedFromDashboard) {
+            appDel.isReadTagTappedFromDashboard = NO;
+        }
+        else if (appDel.isMyTagTappedFromDashboard) {
+            appDel.isMyTagTappedFromDashboard = NO;
+        }
+        else
+            deSelectedIndexPath = indexPath;
     }
 }
 
@@ -350,6 +512,6 @@
     {
         [self.delegate displayAlertControllerForLogout];
     }
-
+    
 }
 @end

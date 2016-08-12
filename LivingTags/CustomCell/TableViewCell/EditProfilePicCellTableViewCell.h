@@ -28,6 +28,13 @@
 @property(nonatomic,strong)IBOutlet UILabel *lblPlaceHolders;
 @property(nonatomic,strong)IBOutlet YTPlayerView *vwPlayer;
 
+///// view edit 
+@property(nonatomic,strong)IBOutlet UIView *vwEditName;
+@property(nonatomic,strong)IBOutlet UIView *vwEditLocation;
+
+@property(nonatomic,strong)IBOutlet UIView *vwPhoneNumber;
+
+
 @property(nonatomic,strong)IBOutlet UIView *vwVimeo;
 
 @property(nonatomic,strong)IBOutlet NSLayoutConstraint *constHeight;

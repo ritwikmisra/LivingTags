@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib
 {
-
+    [self.actTemplateIndicator setHidesWhenStopped:YES];
 }
 
 @end
