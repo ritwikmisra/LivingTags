@@ -139,7 +139,7 @@
     }
     else if (indexPath.row==8)
     {
-        return 105.0f;
+        return 95.0f;
     }
     else if (indexPath.row==4)
     {
@@ -167,7 +167,7 @@
     }
     else if (indexPath.row==9)
     {
-        return 50.0f;
+        return 30.0f;
     }
     return 70.0f;
 }
