@@ -38,7 +38,7 @@
     NSString *name2;
     NSString *address2;
     NSString *strCat,*strPrimaryLocation,*strSecondLocation,*strThirdLocation,*strLatitude1,*strLongitude1,*strLatitude2,*strLongitude2,*strLatitude3,*strLongitude3;
-    BOOL isPrimaryLocationRemove,isSecondLocation,isThirdLocation,isProfileSuccess,isCoverSuccess;
+    BOOL isPrimaryLocationRemove,isSecondLocation,isThirdLocation,isProfileSuccess,isCoverSuccess,isSecondLocationSkip,isThirdLocationSkip;
     CustomPopUpViewController *customPopUP;
 }
 
@@ -77,6 +77,7 @@
     isSecondLocation=NO;
     isThirdLocation=NO;
     isProfileSuccess=isCoverSuccess=YES;
+    isSecondLocationSkip=isThirdLocationSkip=NO;
 }
 
 - (void)localeDidChange
@@ -137,11 +138,11 @@
     }
     else if (indexPath.row==7)
     {
-        return 150.0f;
+        return 200.0f;
     }
     else if (indexPath.row==8)
     {
-        return 95.0f;
+        return 100.0f;
     }
     else if (indexPath.row==4)
     {
@@ -320,6 +321,7 @@
             break;
             
         case 5:
+            //skip functionality
             if (isSecondLocation==NO)
             {
                 if (!cellTags)
@@ -328,6 +330,14 @@
                 }
                 cellTags.btnGetLocation.tag=indexPath.row;
                 cellTags.btnSkipPressed.tag=indexPath.row;
+                if (isSecondLocationSkip==NO)
+                {
+                    cellTags.btnSkipPressed.hidden=NO;
+                }
+                else
+                {
+                    cellTags.btnSkipPressed.hidden=YES;
+                }
                 [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [cellTags.btnSkipPressed addTarget:self action:@selector(btnSkipPressed:) forControlEvents:UIControlEventTouchUpInside ];
             }
@@ -345,6 +355,7 @@
             }
             break;
         case 6:
+            //skip functionality
             if (isThirdLocation==NO)
             {
                 if (!cellTags)
@@ -353,6 +364,14 @@
                 }
                 cellTags.btnGetLocation.tag=indexPath.row;
                 cellTags.btnSkipPressed.tag=indexPath.row;
+                if (isThirdLocationSkip==NO)
+                {
+                    cellTags.btnSkipPressed.hidden=NO;
+                }
+                else
+                {
+                    cellTags.btnSkipPressed.hidden=YES;
+                }
                 [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [cellTags.btnSkipPressed addTarget:self action:@selector(btnSkipPressed:) forControlEvents:UIControlEventTouchUpInside ];
 
@@ -576,13 +595,17 @@
     NSLog(@"%d",[sender tag]);
     if ([sender tag]==5)
     {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        isSecondLocationSkip=YES;
+        [tblSecondSteps reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self setTableviewContentOffsetWithView:@"secondLocation"];
         });
     }
     else
     {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        isThirdLocationSkip=YES;
+        [tblSecondSteps reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self setTableviewContentOffsetWithView:@"thirdLocation"];
         });
     }
@@ -636,7 +659,7 @@
                          NSLog(@"country=%@", addressObj.country);
                          // NSLog(@"lines=%@", addressObj.lines);
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                         strPrimaryLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
+                         strPrimaryLocation=[NSString stringWithFormat:@"%@,%@,%@",addressObj.subLocality,addressObj.administrativeArea,addressObj.country];
                          isPrimaryLocationRemove=YES;
                          [tblSecondSteps beginUpdates];
                          NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
@@ -702,7 +725,7 @@
                          NSLog(@"country=%@", addressObj.country);
                          // NSLog(@"lines=%@", addressObj.lines);
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                         strSecondLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
+                         strSecondLocation=[NSString stringWithFormat:@"%@,%@,%@",addressObj.subLocality,addressObj.administrativeArea,addressObj.country];
                          isSecondLocation=YES;
                          //[tblSecondSteps reloadData];
                          [tblSecondSteps beginUpdates];
@@ -768,7 +791,7 @@
                          NSLog(@"country=%@", addressObj.country);
                          // NSLog(@"lines=%@", addressObj.lines);
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                         strThirdLocation=[NSString stringWithFormat:@"%@, %@",addressObj.locality,addressObj.country];
+                         strThirdLocation=[NSString stringWithFormat:@"%@,%@,%@",addressObj.subLocality,addressObj.administrativeArea,addressObj.country];
                          isThirdLocation=YES;
                          //[tblSecondSteps reloadData];
                          [tblSecondSteps beginUpdates];
@@ -850,7 +873,7 @@
     }
     else if ([strView isEqualToString:@"coverPic"])
     {
-        [tblSecondSteps setContentOffset:CGPointMake(0, 400) animated:YES];
+        [tblSecondSteps setContentOffset:CGPointMake(0, 450) animated:YES];
     }
     //thirdLocation
     //secondLocation

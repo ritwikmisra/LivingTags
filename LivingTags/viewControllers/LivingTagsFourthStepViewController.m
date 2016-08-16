@@ -443,6 +443,10 @@
     if ([dictPicDetails objectForKey:@"3"] && [dictPicDetails objectForKey:@"1"])
     {
         [[LivingTagsFourthStepService service]callThirdStepServiceWithImage:dictPicDetails livingTagsID:self.strTempVidID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
         }];
     }
     else

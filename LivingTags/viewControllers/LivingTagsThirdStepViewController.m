@@ -466,6 +466,10 @@
     {
         btnPreview.hidden=NO;
         [[CreateTagsThirdStepService service]callThirdStepServiceWithImage:dictPicDetails livingTagsID:self.strTempID userID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
         }];
     }
     else

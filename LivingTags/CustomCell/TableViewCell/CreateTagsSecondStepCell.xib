@@ -407,27 +407,27 @@
             </connections>
             <point key="canvasLocation" x="309.5" y="300"/>
         </tableViewCell>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="181" id="YI1-wI-gGX" customClass="CreateTagsSecondStepCell">
-            <rect key="frame" x="0.0" y="0.0" width="365" height="181"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="196" id="YI1-wI-gGX" customClass="CreateTagsSecondStepCell">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="196"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YI1-wI-gGX" id="NmY-V4-X9D">
-                <rect key="frame" x="0.0" y="0.0" width="365" height="180"/>
+                <rect key="frame" x="0.0" y="0.0" width="365" height="195"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S8k-FT-DFA">
-                        <rect key="frame" x="0.0" y="0.0" width="365" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="365" height="195"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is his/her name ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2m8-lT-WnR">
-                        <rect key="frame" x="0.0" y="0.0" width="365" height="26"/>
+                        <rect key="frame" x="0.0" y="0.0" width="365" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_pic1.png" translatesAutoresizingMaskIntoConstraints="NO" id="d5b-5J-5Oz">
-                        <rect key="frame" x="0.0" y="28" width="365" height="100"/>
+                        <rect key="frame" x="30" y="30" width="305" height="123"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tg6-ra-6Mr">
-                        <rect key="frame" x="3" y="135" width="146" height="36"/>
+                        <rect key="frame" x="3" y="161" width="146" height="29"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="Browse Pic">
@@ -435,7 +435,7 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No image uploaded" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUL-dC-hxt">
-                        <rect key="frame" x="164" y="142" width="183" height="22"/>
+                        <rect key="frame" x="164" y="163" width="183" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -443,18 +443,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="2m8-lT-WnR" secondAttribute="height" multiplier="7" id="78G-zQ-Qm8"/>
-                    <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="d5b-5J-5Oz" secondAttribute="height" multiplier="1.8" id="8V8-LC-K6g"/>
+                    <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="d5b-5J-5Oz" secondAttribute="height" multiplier="1.58" id="8V8-LC-K6g"/>
                     <constraint firstItem="2m8-lT-WnR" firstAttribute="width" secondItem="S8k-FT-DFA" secondAttribute="width" id="Dhg-kZ-D3b"/>
-                    <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="tg6-ra-6Mr" secondAttribute="height" multiplier="5.1" id="FiC-7K-8iK"/>
+                    <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="tg6-ra-6Mr" secondAttribute="height" multiplier="6.6" id="FiC-7K-8iK"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="width" secondItem="tg6-ra-6Mr" secondAttribute="width" multiplier="2.5" id="NVY-Yr-y4w"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="NmY-V4-X9D" secondAttribute="height" id="NeV-gO-yNR"/>
                     <constraint firstItem="d5b-5J-5Oz" firstAttribute="top" secondItem="2m8-lT-WnR" secondAttribute="bottom" multiplier="1.1" id="Ss7-H8-PYh"/>
                     <constraint firstItem="WUL-dC-hxt" firstAttribute="leading" secondItem="tg6-ra-6Mr" secondAttribute="trailing" multiplier="1.1" id="Ttw-id-8bH"/>
-                    <constraint firstItem="tg6-ra-6Mr" firstAttribute="centerY" secondItem="S8k-FT-DFA" secondAttribute="centerY" multiplier="1.7" id="YX2-8R-fvz"/>
+                    <constraint firstItem="tg6-ra-6Mr" firstAttribute="centerY" secondItem="S8k-FT-DFA" secondAttribute="centerY" multiplier="1.8" id="YX2-8R-fvz"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="centerY" secondItem="NmY-V4-X9D" secondAttribute="centerY" id="Zjx-lT-inb"/>
                     <constraint firstItem="WUL-dC-hxt" firstAttribute="centerY" secondItem="tg6-ra-6Mr" secondAttribute="centerY" id="bLc-8Y-Pps"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="centerX" secondItem="tg6-ra-6Mr" secondAttribute="centerX" multiplier="2.4" id="c3L-ZD-Qdi"/>
-                    <constraint firstItem="d5b-5J-5Oz" firstAttribute="width" secondItem="2m8-lT-WnR" secondAttribute="width" id="dnL-cr-A3V"/>
+                    <constraint firstItem="2m8-lT-WnR" firstAttribute="width" secondItem="d5b-5J-5Oz" secondAttribute="width" multiplier="1.2" id="dnL-cr-A3V"/>
                     <constraint firstItem="2m8-lT-WnR" firstAttribute="centerX" secondItem="S8k-FT-DFA" secondAttribute="centerX" id="eAN-jj-knn"/>
                     <constraint firstItem="S8k-FT-DFA" firstAttribute="height" secondItem="WUL-dC-hxt" secondAttribute="height" multiplier="8" id="kjx-ZE-uVK"/>
                     <constraint firstItem="d5b-5J-5Oz" firstAttribute="centerX" secondItem="2m8-lT-WnR" secondAttribute="centerX" id="lEI-am-PYm"/>
@@ -470,26 +470,26 @@
                 <outlet property="lbl" destination="2m8-lT-WnR" id="YBA-Nq-def"/>
                 <outlet property="lblImageUpload" destination="WUL-dC-hxt" id="BBN-kU-Jqn"/>
             </connections>
-            <point key="canvasLocation" x="302.5" y="1117.5"/>
+            <point key="canvasLocation" x="174.5" y="976"/>
         </tableViewCell>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="SFW-mD-yRR" customClass="CreateTagsSecondStepCell">
-            <rect key="frame" x="0.0" y="0.0" width="365" height="164"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="SFW-mD-yRR" customClass="CreateTagsSecondStepCell">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SFW-mD-yRR" id="sAO-ia-pwl">
-                <rect key="frame" x="0.0" y="0.0" width="365" height="163"/>
+                <rect key="frame" x="0.0" y="0.0" width="365" height="119"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QP9-8E-CnR">
-                        <rect key="frame" x="0.0" y="0.0" width="365" height="163"/>
+                        <rect key="frame" x="0.0" y="0.0" width="365" height="119"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any memorial quote about him/her?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8e-WC-wwi">
-                        <rect key="frame" x="0.0" y="0.0" width="365" height="25"/>
+                        <rect key="frame" x="0.0" y="0.0" width="365" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur ." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OS2-NP-SAO">
-                        <rect key="frame" x="0.0" y="28" width="365" height="116"/>
+                        <rect key="frame" x="0.0" y="24" width="365" height="85"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -507,7 +507,7 @@
                     <constraint firstItem="OS2-NP-SAO" firstAttribute="top" secondItem="q8e-WC-wwi" secondAttribute="bottom" multiplier="1.1" id="bfi-XB-yBN"/>
                     <constraint firstItem="OS2-NP-SAO" firstAttribute="centerX" secondItem="q8e-WC-wwi" secondAttribute="centerX" id="l4o-6R-Ova"/>
                     <constraint firstItem="OS2-NP-SAO" firstAttribute="width" secondItem="QP9-8E-CnR" secondAttribute="width" id="p8d-Ya-czg"/>
-                    <constraint firstItem="QP9-8E-CnR" firstAttribute="height" secondItem="q8e-WC-wwi" secondAttribute="height" multiplier="6.5" id="vPc-Ea-en1"/>
+                    <constraint firstItem="QP9-8E-CnR" firstAttribute="height" secondItem="q8e-WC-wwi" secondAttribute="height" multiplier="5.5" id="vPc-Ea-en1"/>
                     <constraint firstItem="q8e-WC-wwi" firstAttribute="top" secondItem="QP9-8E-CnR" secondAttribute="top" id="yr5-ii-PXD"/>
                 </constraints>
             </tableViewCellContentView>
@@ -515,7 +515,7 @@
                 <outlet property="lbl" destination="q8e-WC-wwi" id="stI-jK-Pb4"/>
                 <outlet property="txtVwMemorialQuote" destination="OS2-NP-SAO" id="1we-Lo-p2f"/>
             </connections>
-            <point key="canvasLocation" x="302.5" y="870"/>
+            <point key="canvasLocation" x="104.5" y="678"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="5mj-gy-IYM" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="93"/>
@@ -537,7 +537,7 @@
                         <rect key="frame" x="0.0" y="50" width="130" height="29"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="GET LOCATION">
+                        <state key="normal" title="LOCATION">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>

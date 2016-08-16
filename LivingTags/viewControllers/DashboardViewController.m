@@ -23,7 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    arrPics=[[NSMutableArray alloc]initWithObjects:@"create_tag_dashbord",@"my_tag_dashbord",@"read_tag_dashbord",nil];
+    //arrPics=[[NSMutableArray alloc]initWithObjects:@"create_tag_dashbord",@"my_tag_dashbord",@"read_tag_dashbord",nil];
+    arrPics=[[NSMutableArray alloc]initWithObjects:@"read_tag_dashbord",@"create_tag_dashbord",@"my_tag_dashbord",nil];
     tblDashboard.backgroundColor=[UIColor clearColor];
     tblDashboard.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblDashboard.bounces=NO;
@@ -104,21 +105,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0)
+    if (indexPath.row==1)
     {
         appDel.isCreateTagTappedFromDashboard = YES;
         appDel.isMyTagTappedFromDashboard = NO;
         appDel.isReadTagTappedFromDashboard = NO;
         [self performSegueWithIdentifier:@"segueDashboardToTemplate" sender:self];
     }
-    if (indexPath.row==1)
+    if (indexPath.row==2)
     {
         appDel.isMyTagTappedFromDashboard = YES;
         appDel.isCreateTagTappedFromDashboard = NO;
         appDel.isReadTagTappedFromDashboard = NO;
         [self performSegueWithIdentifier:@"segueDashboardToMyTags" sender:self];
     }
-    if (indexPath.row==2)
+    if (indexPath.row==0)
     {
         appDel.isReadTagTappedFromDashboard = YES;
         appDel.isMyTagTappedFromDashboard = NO;
