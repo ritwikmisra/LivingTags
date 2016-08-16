@@ -12,7 +12,12 @@
 
 - (void)awakeFromNib
 {
-
+    self.btnBrowseUserPic.layer.cornerRadius=5.0f;
+    self.btnGetLocation.layer.cornerRadius=5.0f;
+    self.btnRemoveLocation.layer.cornerRadius=5.0f;
+    self.btnSkipPressed.layer.cornerRadius=5.0f;
+    self.btnBrowseCover.layer.cornerRadius=5.0f;
+    self.btnNext.layer.cornerRadius=5.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

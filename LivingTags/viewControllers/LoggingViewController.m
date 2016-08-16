@@ -49,8 +49,8 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     signIn.shouldFetchBasicProfile = YES;
     signIn.delegate = self;
     signIn.uiDelegate = self;
-    txtEmail.text=@"sourav.hazra@appsbee.com";
-    txtPassword.text=@"123456";
+//    txtEmail.text=@"sourav.hazra@appsbee.com";
+//    txtPassword.text=@"123456";
 }
 
 -(void)viewDidLayoutSubviews
@@ -205,10 +205,6 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     [self performSegueWithIdentifier:@"segueForgetPassword" sender:self];
 }
 
--(IBAction)btnGooglePressed:(id)sender
-{
-    
-}
 
 #pragma mark
 #pragma mark textfield methods
@@ -300,7 +296,7 @@ didSignInForUser:(GIDGoogleUser *)user
     appDel.isFacebook=NO;
     if (error)
     {
-        NSLog(@"Status: Authentication error: %@", error);
+        NSLog(@"Status:  Authentication error: %@", error);
         return;
     }
     [self reportAuthStatus];
@@ -410,7 +406,7 @@ didDisconnectWithUser:(GIDGoogleUser *)user
         }
         else
         {
-            [self performSegueWithIdentifier:@"segueProfile" sender:self];
+            [self performSegueWithIdentifier:@"segueLoginToDashboard" sender:self];
         }
     }];
 }

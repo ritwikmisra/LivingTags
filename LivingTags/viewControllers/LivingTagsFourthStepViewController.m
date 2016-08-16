@@ -19,8 +19,10 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "LivingTagsFourthStepService.h"
 #import "QRCodeViewController.h"
+#import "CustomPopUpViewController.h"
 
-@interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate>
+
+@interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate,CustomPopUPDelegate>
 
 {
     IBOutlet UILabel *lbl1;
@@ -35,6 +37,7 @@
     IBOutlet UIButton *btnPreview;
     IBOutlet UITableView *tblFourthStep;
     NSString *strWebURI;
+    CustomPopUpViewController *customPopUpController;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -473,24 +476,12 @@
 
 -(void)videoUploadPopUp
 {
-    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self videoUploadFromCamera];
-    }];
-    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self videoUploadFromGallery];
-    }];
-    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [alertController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }];
-    [alertController addAction:actionCamera];
-    [alertController addAction:actionGallery];
-    [alertController addAction:actionCancel];
-    [self presentViewController:alertController animated:YES completion:^{
-        
-    }];
+    customPopUpController=[CustomPopUpViewController sharedInstance];
+    customPopUpController.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:customPopUpController.view];
+    [self addChildViewController:customPopUpController];
+    customPopUpController.delegate=self;
+    [customPopUpController didMoveToParentViewController:self];
 }
 
 -(void)videoUploadFromCamera
@@ -586,5 +577,28 @@
         [tblFourthStep reloadData];
     }];
 }
+
+#pragma mark
+#pragma mark CUSTOM POP UP DELEGATES
+#pragma mark
+
+-(void)takePictureFromCamera
+{
+    [customPopUpController.view removeFromSuperview];
+    [self videoUploadFromCamera];
+}
+
+-(void)takePictureFromGallery
+{
+    [customPopUpController.view removeFromSuperview];
+    [self videoUploadFromGallery];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [customPopUpController removeFromParentViewController];
+}
+
 
 @end

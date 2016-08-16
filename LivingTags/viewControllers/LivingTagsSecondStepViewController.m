@@ -1324,4 +1324,10 @@
     [self imageUploadFromGallery];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [customPopUP removeFromParentViewController];
+}
+
 @end

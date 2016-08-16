@@ -11,7 +11,7 @@
 
 @interface CreateTagsThirdStepCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (nonatomic,strong)IBOutlet UIButton *btnBrowse;
+@property (nonatomic,strong)IBOutlet UIButton *btnBrowse;//
 @property(nonatomic,strong)IBOutlet UICollectionView *collPics;
 @property(nonatomic,strong)IBOutlet UILabel *lbl;
 
@@ -24,8 +24,8 @@
 
 @property(nonatomic,strong) IBOutlet UIButton *btnRecording;
 
-@property(nonatomic,strong)IBOutlet UIButton *btnNext;
-@property(nonatomic,strong)IBOutlet UIButton *btnAddPhoto;
+@property(nonatomic,strong)IBOutlet UIButton *btnNext;//
+@property(nonatomic,strong)IBOutlet UIButton *btnAddPhoto;//
 
 @property(nonatomic,strong)IBOutlet UILabel *lblRecording;
 

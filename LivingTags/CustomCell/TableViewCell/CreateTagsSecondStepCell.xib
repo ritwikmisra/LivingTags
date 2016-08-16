@@ -381,7 +381,7 @@
                         <rect key="frame" x="0.0" y="28" width="146" height="30"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="GET LOCATION">
+                        <state key="normal" title="LOCATION">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -603,7 +603,7 @@
                         <rect key="frame" x="0.0" y="28" width="146" height="30"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="GET LOCATION">
+                        <state key="normal" title="LOCATION">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -662,7 +662,7 @@
                         <rect key="frame" x="0.0" y="50" width="146" height="29"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="GET LOCATION">
+                        <state key="normal" title=" LOCATION">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -741,7 +741,7 @@
                         <rect key="frame" x="0.0" y="28" width="146" height="30"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="GET LOCATION">
+                        <state key="normal" title="LOCATION">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -800,7 +800,7 @@
                         <rect key="frame" x="0.0" y="50" width="146" height="29"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="GET LOCATION">
+                        <state key="normal" title=" LOCATION">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -893,7 +893,7 @@
             <connections>
                 <outlet property="btnNext" destination="GbD-3Q-0Kj" id="A0w-4S-pFr"/>
             </connections>
-            <point key="canvasLocation" x="166.5" y="148.5"/>
+            <point key="canvasLocation" x="386.5" y="144.5"/>
         </tableViewCell>
     </objects>
     <resources>

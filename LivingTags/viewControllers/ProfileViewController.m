@@ -770,6 +770,7 @@
 {
     [super viewWillDisappear:animated];
     [player pause];
+    master=nil;
 }
 
 #pragma mark
@@ -787,4 +788,5 @@
     [master.view removeFromSuperview];
     [self imageUploadFromGallery];
 }
+
 @end

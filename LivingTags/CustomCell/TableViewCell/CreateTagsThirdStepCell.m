@@ -20,6 +20,9 @@
     self.collPics.dataSource=self;
     self.collPics.delegate=self;
     self.appDel=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.btnAddPhoto.layer.cornerRadius=5.0f;
+    self.btnBrowse.layer.cornerRadius=5.0f;
+    self.btnNext.layer.cornerRadius=5.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

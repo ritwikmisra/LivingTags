@@ -14,8 +14,9 @@
 #import "CreateTagsThirdStepService.h"
 #import "PreviewViewController.h"
 #import "LivingTagsFourthStepViewController.h"
+#import "CustomPopUpViewController.h"
 
-@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate>
+@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate,CustomPopUPDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -28,6 +29,7 @@
     NSMutableDictionary *dictPicDetails;
     BOOL isFirstImage;
     IBOutlet UIButton *btnPreview;
+    CustomPopUpViewController *customPopUpController;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -294,24 +296,12 @@
 
 -(void)imageUploadPopUp
 {
-    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self imageUploadFromCamera];
-    }];
-    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self imageUploadFromGallery];
-    }];
-    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [alertController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }];
-    [alertController addAction:actionCamera];
-    [alertController addAction:actionGallery];
-    [alertController addAction:actionCancel];
-    [self presentViewController:alertController animated:YES completion:^{
-        
-    }];
+    customPopUpController=[CustomPopUpViewController sharedInstance];
+    customPopUpController.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:customPopUpController.view];
+    [self addChildViewController:customPopUpController];
+    customPopUpController.delegate=self;
+    [customPopUpController didMoveToParentViewController:self];
 }
 
 -(void)imageUploadFromCamera
@@ -501,4 +491,27 @@
         master.strTempVidID=self.strTempID;
     }
 }
+
+#pragma mark
+#pragma mark CUSTOM POP UP DELEGATES
+#pragma mark
+
+-(void)takePictureFromCamera
+{
+    [customPopUpController.view removeFromSuperview];
+    [self imageUploadFromCamera];
+}
+
+-(void)takePictureFromGallery
+{
+    [customPopUpController.view removeFromSuperview];
+    [self imageUploadFromGallery];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [customPopUpController removeFromParentViewController];
+}
+
 @end
