@@ -7,7 +7,7 @@
 
 #import "ProfileViewController.h"
 #import "EditProfilePicCellTableViewCell.h"
-//#import <MediaPlayer/MediaPlayer.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "ProfileGetService.h"
 #import "UIImageView+WebCache.h"
 #import "UpdateProfileService.h"
@@ -15,8 +15,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
 #import <UIKit/UIKit.h>
+#import "CustomPopUpViewController.h"
 
-@interface ProfileViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface ProfileViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomPopUPDelegate>
 {
     IBOutlet UITableView *tblProfile;
     NSMutableArray *arrProfile,*arrPics,*arrTexts;
@@ -34,6 +35,7 @@
     NSString *strCat;
     UITextField *activeTextField;
     NSString *strLocation,*strLat,*strLong;
+    CustomPopUpViewController *master;
 }
 @end
 
@@ -632,28 +634,12 @@
     NSLog(@"%d",isEditing);
     if (isEditing)
     {
-        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self imageUploadFromCamera];
-        }];
-        UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self imageUploadFromGallery];
-        }];
-        UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [alertController dismissViewControllerAnimated:YES completion:^{
-                
-            }];
-        }];
-        [alertController addAction:actionCamera];
-        [alertController addAction:actionGallery];
-        [alertController addAction:actionCancel];
-        [alertController setModalPresentationStyle:UIModalPresentationPopover];
-        
-        UIPopoverPresentationController *popPresenter = [alertController
-                                                         popoverPresentationController];
-        popPresenter.sourceView = img;
-        popPresenter.sourceRect = img.bounds;
-        [self presentViewController:alertController animated:YES completion:nil];
+        master=[CustomPopUpViewController sharedInstance];
+        master.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:master.view];
+        [self addChildViewController:master];
+        master.delegate=self;
+        [master didMoveToParentViewController:self];
     }
     else
     {
@@ -784,5 +770,21 @@
 {
     [super viewWillDisappear:animated];
     [player pause];
+}
+
+#pragma mark
+#pragma mark CUSTOM POP UP DELEGATES
+#pragma mark
+
+-(void)takePictureFromCamera
+{
+    [master.view removeFromSuperview];
+    [self imageUploadFromCamera];
+}
+
+-(void)takePictureFromGallery
+{
+    [master.view removeFromSuperview];
+    [self imageUploadFromGallery];
 }
 @end

@@ -120,6 +120,10 @@
 		0D80DF871CEDA30B000FE698 /* MyLivingTagsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D80DF851CEDA30B000FE698 /* MyLivingTagsMapViewController.m */; };
 		0D80DF881CEDA30B000FE698 /* MyLivingTagsMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D80DF861CEDA30B000FE698 /* MyLivingTagsMapViewController.xib */; };
 		0D80DF8A1CEDB0BA000FE698 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D80DF891CEDB0B9000FE698 /* MapKit.framework */; };
+		0D85A7E21D630799003F4427 /* CustomPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D85A7E01D630799003F4427 /* CustomPopUpViewController.m */; };
+		0D85A7E31D630799003F4427 /* CustomPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D85A7E11D630799003F4427 /* CustomPopUpViewController.xib */; };
+		0D85A7E71D630A04003F4427 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D85A7E51D630A04003F4427 /* camera.png */; };
+		0D85A7E81D630A04003F4427 /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D85A7E61D630A04003F4427 /* gallery.png */; };
 		0D8804601D475DDA009DA25F /* big_play_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D88045A1D475DDA009DA25F /* big_play_icon.png */; };
 		0D8804611D475DDA009DA25F /* calender_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D88045B1D475DDA009DA25F /* calender_icon.png */; };
 		0D8804621D475DDA009DA25F /* corss_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D88045C1D475DDA009DA25F /* corss_btn.png */; };
@@ -381,6 +385,11 @@
 		0D80DF851CEDA30B000FE698 /* MyLivingTagsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLivingTagsMapViewController.m; sourceTree = "<group>"; };
 		0D80DF861CEDA30B000FE698 /* MyLivingTagsMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyLivingTagsMapViewController.xib; sourceTree = "<group>"; };
 		0D80DF891CEDB0B9000FE698 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0D85A7DF1D630799003F4427 /* CustomPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopUpViewController.h; sourceTree = "<group>"; };
+		0D85A7E01D630799003F4427 /* CustomPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopUpViewController.m; sourceTree = "<group>"; };
+		0D85A7E11D630799003F4427 /* CustomPopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPopUpViewController.xib; sourceTree = "<group>"; };
+		0D85A7E51D630A04003F4427 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		0D85A7E61D630A04003F4427 /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
 		0D88045A1D475DDA009DA25F /* big_play_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = big_play_icon.png; sourceTree = "<group>"; };
 		0D88045B1D475DDA009DA25F /* calender_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calender_icon.png; sourceTree = "<group>"; };
 		0D88045C1D475DDA009DA25F /* corss_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = corss_btn.png; sourceTree = "<group>"; };
@@ -827,6 +836,7 @@
 		0D698D1D1CC8D79000F64745 /* CustomDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				0D85A7DE1D63071B003F4427 /* CustomPopUP */,
 				0D23053E1D54C6FB00115A34 /* sidePanel */,
 				0D94FF551D3CCCB400502FC8 /* CKCalenderView */,
 				0D5EA2371CCB6A0000CA0DAE /* NetworkActivityViewController.h */,
@@ -848,6 +858,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D85A7E41D630A04003F4427 /* CustomPopUp */,
 				0D66C5761D59FFED00230261 /* Dashboard */,
 				0D8804591D475DDA009DA25F /* progress3 */,
 				0D94FF5A1D3CE18900502FC8 /* CKCalender */,
@@ -977,6 +988,25 @@
 			);
 			name = CustomAnnotationView;
 			path = LivingTags/CustomAnnotationView;
+			sourceTree = "<group>";
+		};
+		0D85A7DE1D63071B003F4427 /* CustomPopUP */ = {
+			isa = PBXGroup;
+			children = (
+				0D85A7DF1D630799003F4427 /* CustomPopUpViewController.h */,
+				0D85A7E01D630799003F4427 /* CustomPopUpViewController.m */,
+				0D85A7E11D630799003F4427 /* CustomPopUpViewController.xib */,
+			);
+			path = CustomPopUP;
+			sourceTree = "<group>";
+		};
+		0D85A7E41D630A04003F4427 /* CustomPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				0D85A7E51D630A04003F4427 /* camera.png */,
+				0D85A7E61D630A04003F4427 /* gallery.png */,
+			);
+			path = CustomPopUp;
 			sourceTree = "<group>";
 		};
 		0D8804591D475DDA009DA25F /* progress3 */ = {
@@ -1273,6 +1303,7 @@
 				0DA226701CD22E4700B3A5BC /* camera_icon.png in Resources */,
 				0D9B88911D22B75D003B51F0 /* stop_enable.png in Resources */,
 				0D8F28F91CD09E03001AE322 /* logo_loader.png in Resources */,
+				0D85A7E31D630799003F4427 /* CustomPopUpViewController.xib in Resources */,
 				0D698D111CC8CF2500F64745 /* LaunchScreen.storyboard in Resources */,
 				0D922FF41CF8707D00EC1945 /* menu_icon.png in Resources */,
 				0D40A8441CE5BFA500D51A8E /* play_icon.png in Resources */,
@@ -1316,6 +1347,7 @@
 				0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */,
 				0D9B888E1D22B75D003B51F0 /* record.png in Resources */,
 				0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */,
+				0D85A7E71D630A04003F4427 /* camera.png in Resources */,
 				0D8804621D475DDA009DA25F /* corss_btn.png in Resources */,
 				0D922FF81CF8707D00EC1945 /* pin_orange.png in Resources */,
 				0D922FF91CF8707D00EC1945 /* search_icon.png in Resources */,
@@ -1339,6 +1371,7 @@
 				0D273EF81D5B23D1007F1EE5 /* facebook_icon.png in Resources */,
 				0D8AC8D71D365C5D001EFEBA /* radio_btn2.png in Resources */,
 				0D5EA2361CCB624F00CA0DAE /* name_icon.png in Resources */,
+				0D85A7E81D630A04003F4427 /* gallery.png in Resources */,
 				0D922FF11CF8707D00EC1945 /* circle_icon.png in Resources */,
 				0D8AC8D51D365C5D001EFEBA /* cover_pic1.png in Resources */,
 				0DDC798E1CFDC4D200AD8011 /* pop_map.png in Resources */,
@@ -1456,6 +1489,7 @@
 				0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */,
 				0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */,
 				0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */,
+				0D85A7E21D630799003F4427 /* CustomPopUpViewController.m in Sources */,
 				0D37314A1CD8A10B00EDC547 /* UIImage+WebP.m in Sources */,
 				0D9350BB1CDB61F800E403B2 /* YTVimeoExtractorOperation.m in Sources */,
 				0D20AEB81D47B2FF00851994 /* CreateTagsCell.m in Sources */,

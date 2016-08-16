@@ -14,8 +14,9 @@
 #import "LivingTagsThirdStepViewController.h"
 #import "CreateTagsUploadProfilePicService.h"
 #import "CreateTagsUploadCoverPicService.h"
+#import "CustomPopUpViewController.h"
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,CKCalendarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,CKCalendarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomPopUPDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -38,6 +39,7 @@
     NSString *address2;
     NSString *strCat,*strPrimaryLocation,*strSecondLocation,*strThirdLocation,*strLatitude1,*strLongitude1,*strLatitude2,*strLongitude2,*strLatitude3,*strLongitude3;
     BOOL isPrimaryLocationRemove,isSecondLocation,isThirdLocation,isProfileSuccess,isCoverSuccess;
+    CustomPopUpViewController *customPopUP;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -546,28 +548,7 @@
 {
     btnUserPicTag=(int)[sender tag];
     [self updateTableView:[sender tag]];
-    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self imageUploadFromCamera];
-    }];
-    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self imageUploadFromGallery];
-    }];
-    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [alertController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }];
-    [alertController addAction:actionCamera];
-    [alertController addAction:actionGallery];
-    [alertController addAction:actionCancel];
-    [alertController setModalPresentationStyle:UIModalPresentationPopover];
-    
-    UIPopoverPresentationController *popPresenter = [alertController
-                                                     popoverPresentationController];
-    popPresenter.sourceView = img;
-    popPresenter.sourceRect = img.bounds;
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self addCustomPOPUP];
 }
 
 -(void)btnRemovePrimaryLocationPressed:(id)sender
@@ -819,28 +800,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setTableviewContentOffsetWithView:@"coverPic"];
     });
-    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Please select the image from gallery or click it from your camera.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self imageUploadFromCamera];
-    }];
-    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self imageUploadFromGallery];
-    }];
-    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [alertController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }];
-    [alertController addAction:actionCamera];
-    [alertController addAction:actionGallery];
-    [alertController addAction:actionCancel];
-    [alertController setModalPresentationStyle:UIModalPresentationPopover];
-    
-    UIPopoverPresentationController *popPresenter = [alertController
-                                                     popoverPresentationController];
-    popPresenter.sourceView = img;
-    popPresenter.sourceRect = img.bounds;
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self addCustomPOPUP];
 }
 
 -(void)btnNextPressed:(id)sender
@@ -1332,6 +1292,36 @@
         LivingTagsThirdStepViewController *master=[segue destinationViewController];
         master.strTempID=self.strTemplateID;
     }
+}
+
+#pragma mark
+#pragma mark ADD CUSTOM POP UP
+#pragma mark
+
+-(void)addCustomPOPUP
+{
+    customPopUP=[CustomPopUpViewController sharedInstance];
+    customPopUP.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:customPopUP.view];
+    [self addChildViewController:customPopUP];
+    customPopUP.delegate=self;
+    [customPopUP didMoveToParentViewController:self];
+}
+
+#pragma mark
+#pragma mark CUSTOM POP UP DELEGATES
+#pragma mark
+
+-(void)takePictureFromCamera
+{
+    [customPopUP.view removeFromSuperview];
+    [self imageUploadFromCamera];
+}
+
+-(void)takePictureFromGallery
+{
+    [customPopUP.view removeFromSuperview];
+    [self imageUploadFromGallery];
 }
 
 @end
