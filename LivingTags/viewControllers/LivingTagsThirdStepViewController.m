@@ -131,24 +131,24 @@
         case 0:
             if (isFirstImage==NO)
             {
-                return 150.0f;
+                return 170.0f;
             }
-            return 120.0f;
+            return 140.0f;
             break;
         case 1:
-            return 50.0f;
+            return 70.0f;
             break;
             
         case 4:
-            return 40.0f;
+            return 70.0f;
             break;
             
         case 5:
-            return 40.0f;
+            return 60.0f;
             break;
             
         default:
-            return 60.0f;
+            return 80.0f;
             break;
     }
 }

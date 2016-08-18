@@ -14,5 +14,6 @@
 @property(nonatomic,strong)IBOutlet UIProgressView *progressImageUpload;
 @property(nonatomic,strong)IBOutlet UILabel *lblUploaded;
 @property(nonatomic,strong)IBOutlet UIImageView *imgBackground;
+@property(nonatomic,strong)IBOutlet UIButton *btnDelete;
 
 @end

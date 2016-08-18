@@ -12,6 +12,6 @@
 
 - (void)awakeFromNib
 {
-    [self.progressImageUpload setProgress:0.0f];
+
 }
 @end

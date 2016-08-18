@@ -53,6 +53,7 @@
         cell.img.image=[self.appDel.arrCreateTagsUploadImage objectAtIndex:indexPath.row];
     }
     cell.lblUploaded.hidden=YES;
+    cell.btnDelete.hidden=YES;
     NSLog(@"%@",_appDel.arrSuccessUpload);
     if (_appDel.arrSuccessUpload.count>0)
     {
@@ -61,16 +62,18 @@
             if ([[_appDel.arrSuccessUpload objectAtIndex:indexPath.row] isEqualToString:@"1"])
             {
                 cell.lblUploaded.hidden=NO;
+                cell.btnDelete.hidden=NO;
             }
         }
     }
+    [cell.btnDelete addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat width,height;
-    width = self.collPics.frame.size.height-13.0f;
+    width = self.collPics.frame.size.height;
     height = self.collPics.frame.size.height;
     return CGSizeMake(width,height);
 }
@@ -99,6 +102,10 @@
 {
     CreateTagsCell *cell=(CreateTagsCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.imgBackground.backgroundColor=[UIColor clearColor];
+}
+
+-(void)btnDeletePressed:(id)sender
+{
 
 }
 
