@@ -15,8 +15,9 @@
 #import "PreviewViewController.h"
 #import "LivingTagsFourthStepViewController.h"
 #import "CustomPopUpViewController.h"
+#import "ModelImageUpload.h"
 
-@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate,CustomPopUPDelegate>
+@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate,CustomPopUPDelegate,CollectionViewSelectionDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -30,6 +31,8 @@
     BOOL isFirstImage;
     IBOutlet UIButton *btnPreview;
     CustomPopUpViewController *customPopUpController;
+    int index;
+    ModelImageUpload *objForTableView;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -63,16 +66,20 @@
     
     calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
+    
     dictPicDetails=[[NSMutableDictionary alloc]init];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageUploadedToServer:) name:K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageGalleryUploadError) name:K_NOTIFICATION_CREATE_TAGS_ERROR object:nil];
+    index=0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     if (appDel.dataVoice.length>0)
     {
         [dictPicDetails setObject:appDel.dataVoice forKey:@"4"];
     }
-    [super viewWillAppear:animated];
     NSLog(@"%@",appDel.dataVoice);
     [tblAThirdStep reloadData];
 }
@@ -168,6 +175,7 @@
                 {
                     cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:0];
                 }
+                cellTags.delegate=self;
                 break;
             }
         case 1:
@@ -180,7 +188,10 @@
             {
                 cellTags.txtCaptions.text=[dictPicDetails objectForKey:@"2"];
            }
-            
+            if (objForTableView.strTitle.length>0)
+            {
+                cellTags.txtCaptions.text=objForTableView.strTitle;
+            }
             [cellTags.txtCaptions addTarget:self action:@selector(textfieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
             break;
              
@@ -190,7 +201,6 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:1];
             }
             cellTags.btnCalender.tag=indexPath.row;
-            cellTags.lblCalender.text=strDate;
             if ([dictPicDetails objectForKey:@"3"])
             {
                 cellTags.lblCalender.text=[dictPicDetails objectForKey:@"3"];
@@ -199,6 +209,10 @@
             {
                 cellTags.lblCalender.text=@"";
 
+            }
+            if (objForTableView.strDateTaken.length>0)
+            {
+                cellTags.lblCalender.text=objForTableView.strDateTaken;
             }
             [cellTags.btnCalender addTarget:self action:@selector(btnCalenderPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -216,6 +230,10 @@
             else
             {
                 cellTags.lblRecording.text=@"No recording voice";
+            }
+            if (objForTableView.strAudio.length>0)
+            {
+                cellTags.lblRecording.text=objForTableView.strAudio;
             }
             [cellTags.btnRecording addTarget:self action:@selector(btnRecordingPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -273,7 +291,6 @@
 -(void)btnAddPhoto:(id)sender
 {
     [self updateTableView:5];
-    [self performSelector:@selector(imageUploadPopUp) withObject:nil afterDelay:0.8f];
     // call webservice in a separate thread
     dispatch_async(dispatch_get_main_queue(), ^{
         if (dictPicDetails.count>0)
@@ -336,6 +353,9 @@
     UIImage *imgChosen=info[UIImagePickerControllerEditedImage] ;
     [appDel.arrCreateTagsUploadImage addObject:imgChosen];
     [picker dismissViewControllerAnimated:YES completion:^{
+        [appDel.arrSuccessUpload insertObject:@"0" atIndex:index];
+        NSLog(@"%d",index);
+        NSLog(@"%@",appDel.arrSuccessUpload);
         isFirstImage=YES;
         [tblAThirdStep reloadData ];
         [dictPicDetails setObject:imgChosen forKey:@"1"];
@@ -476,10 +496,6 @@
     {
         [self displayErrorWithMessage:@"Please give atleast one photo and the date of the picture.."];
     }
-    [dictPicDetails removeAllObjects];
-    appDel.dataVoice=nil;
-    NSLog(@"%@",dictPicDetails);
-    [tblAThirdStep reloadData];
 }
 
 
@@ -516,6 +532,52 @@
 {
     [super viewWillDisappear:animated];
     [customPopUpController removeFromParentViewController];
+}
+
+#pragma mark
+#pragma mark NOTIFICATION METHOD
+#pragma mark
+
+-(void)imageUploadedToServer:(NSNotification*)note
+{
+    NSDictionary *theData = [note userInfo];
+    NSLog(@"%@",theData);
+    ModelImageUpload *obj=[[ModelImageUpload alloc]initWithDictionary:theData];
+    [appDel.arrImageUpload addObject:obj];
+    [appDel.arrSuccessUpload replaceObjectAtIndex:index withObject:@"1"];
+    index++;
+    [dictPicDetails removeAllObjects];
+    appDel.dataVoice=nil;
+    NSLog(@"%@",dictPicDetails);
+    [tblAThirdStep reloadData];
+    [self imageUploadPopUp];
+}
+
+-(void)imageGalleryUploadError
+{
+    [self displayErrorWithMessage:@"Something is wrong,please try again later."];
+}
+
+#pragma mark
+#pragma mark CUSTOM DELEGATE METHODS
+#pragma mark
+
+-(void)didSelectCollectionViewWithRow:(NSInteger)rowNumber
+{
+    NSLog(@"ROW NUMBER=%d \n ARRAY COUNT=%d",rowNumber,appDel.arrImageUpload.count);
+    if (appDel.arrImageUpload.count>0)
+    {
+        if (rowNumber<appDel.arrImageUpload.count)
+        {
+            objForTableView=[appDel.arrImageUpload objectAtIndex:rowNumber];
+        }
+    }
+    //[tblAThirdStep reloadData];
+    [tblAThirdStep beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:rowNumber inSection:0]];
+    [tblAThirdStep reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+    [tblAThirdStep endUpdates];
+
 }
 
 @end

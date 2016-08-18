@@ -123,18 +123,18 @@
         stopTimer = nil;
     }
     if (player.playing)
-     {
+    {
         [player stop];
-     }
-     if (!recorder.recording)
-     {
-         AVAudioSession *session = [AVAudioSession sharedInstance];
-         [session setActive:YES error:nil];
-     // Start recording
-         [recorder record];
+    }
+    if (!recorder.recording)
+    {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        // Start recording
+        [recorder record];
         // [btnRecord setTitle:@"Pause" forState:UIControlStateNormal];
-     }
-     /*else
+    }
+    /*else
      {
      // Pause recording
      [recorder pause];
@@ -169,13 +169,13 @@
         stopTimer = nil;
     }
     if (!recorder.recording)
-     {
-         player = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:nil];
-         [player setDelegate:self];
-         [player prepareToPlay];
-         player.volume=4.5;
-         [player play];
-     }
+    {
+        player = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:nil];
+        [player setDelegate:self];
+        [player prepareToPlay];
+        player.volume=4.5;
+        [player play];
+    }
     //[self resetTimer];
     [btnRecord setEnabled:NO];
     [btnRecord setBackgroundImage:[UIImage imageNamed:@"recording"] forState:UIControlStateNormal];
@@ -188,8 +188,8 @@
 -(IBAction)btnStopPressed:(id)sender
 {
     [recorder stop];
-     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-     [audioSession setActive:NO error:nil];
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setActive:NO error:nil];
     /*if(!running)
      {
      running = TRUE;

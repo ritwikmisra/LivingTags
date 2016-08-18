@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
+@protocol CollectionViewSelectionDelegate <NSObject>
+
+@optional
+-(void)didSelectCollectionViewWithRow:(NSInteger)rowNumber;
+
+@end
+
 @interface CreateTagsThirdStepCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong)IBOutlet UIButton *btnBrowse;//
@@ -30,6 +37,6 @@
 @property(nonatomic,strong)IBOutlet UILabel *lblRecording;
 
 @property(nonatomic,strong)AppDelegate *appDel;
-
+@property(nonatomic,weak)id<CollectionViewSelectionDelegate>delegate;
 
 @end

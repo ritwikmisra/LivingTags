@@ -13,7 +13,6 @@
 - (void)awakeFromNib
 {
     [self.actIndicatorSidePanel setHidesWhenStopped:YES];
-
 }
 
 - (void)layoutSubviews
@@ -24,9 +23,9 @@
     self.imgSidePanelProfile.clipsToBounds=YES;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 

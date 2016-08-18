@@ -15,6 +15,10 @@
 #define BASE_URL @"http://livingtags.digiopia.in/api/"
 //#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
 
+#define K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD @"IMAGE_UPLOAD_CREATE_TAGS"
+#define K_NOTIFICATION_CREATE_TAGS_VIDEO_UPLOAD @"VIDEO_UPLOAD_CREATE_TAGS"
+#define K_NOTIFICATION_CREATE_TAGS_ERROR @"ERROR"
+
 //readtags
 
 NSString *const strAPI[]={
@@ -88,8 +92,31 @@ NSString *const strAPI[]={
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
 {
     [self hideNetworkActivity];
-    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    NSLog(@"%@",response);
+    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSError *errorJsonConversion=nil;
+    NSDictionary *response=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&errorJsonConversion];
+    if (errorJsonConversion)
+    {
+        [[NSNotificationCenter defaultCenter]postNotificationName:K_NOTIFICATION_CREATE_TAGS_ERROR object:self];
+    }
+    else
+    {
+        NSLog(@"%@",response);
+        if ([[response objectForKey:@"status"] boolValue])
+        {
+            NSDictionary *dictResponse=[response objectForKey:@"response"];
+            NSLog(@"%d",dictResponse.count);
+            if ([dictResponse isKindOfClass:[NSDictionary class] ] && dictResponse.count>0)
+            {
+                [[NSNotificationCenter defaultCenter]postNotificationName:K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD object:self userInfo:dictResponse];
+            }
+        }
+        else
+        {
+            [[NSNotificationCenter defaultCenter]postNotificationName:K_NOTIFICATION_CREATE_TAGS_ERROR object:self];
+        }
+    }
+    
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error

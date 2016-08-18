@@ -25,6 +25,7 @@
 		0D0DDD101D11AAC600C0E9DD /* read_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDD061D11AAC600C0E9DD /* read_tag.png */; };
 		0D0DDD121D11ACDE00C0E9DD /* logout_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0DDD111D11ACDE00C0E9DD /* logout_text.png */; };
 		0D0EA380B8B6AC9032F35B48 /* libPods-LivingTags.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24846D52E42744797AB50C9B /* libPods-LivingTags.a */; };
+		0D1FC5C41D644E940039B962 /* ModelImageUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1FC5C31D644E940039B962 /* ModelImageUpload.m */; };
 		0D20AEB81D47B2FF00851994 /* CreateTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D20AEB61D47B2FF00851994 /* CreateTagsCell.m */; };
 		0D20AEB91D47B2FF00851994 /* CreateTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D20AEB71D47B2FF00851994 /* CreateTagsCell.xib */; };
 		0D23053D1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */; };
@@ -239,6 +240,8 @@
 		0D0DDD051D11AAC600C0E9DD /* profile_icon_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_icon_.png; sourceTree = "<group>"; };
 		0D0DDD061D11AAC600C0E9DD /* read_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = read_tag.png; sourceTree = "<group>"; };
 		0D0DDD111D11ACDE00C0E9DD /* logout_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout_text.png; sourceTree = "<group>"; };
+		0D1FC5C21D644E940039B962 /* ModelImageUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelImageUpload.h; sourceTree = "<group>"; };
+		0D1FC5C31D644E940039B962 /* ModelImageUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelImageUpload.m; sourceTree = "<group>"; };
 		0D20AEB51D47B2FF00851994 /* CreateTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsCell.h; sourceTree = "<group>"; };
 		0D20AEB61D47B2FF00851994 /* CreateTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsCell.m; sourceTree = "<group>"; };
 		0D20AEB71D47B2FF00851994 /* CreateTagsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTagsCell.xib; sourceTree = "<group>"; };
@@ -1045,6 +1048,8 @@
 				0D9472AC1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m */,
 				0D901B9B1D3E7C04002B6735 /* ModelCreateTagsSecondStep.h */,
 				0D901B9C1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m */,
+				0D1FC5C21D644E940039B962 /* ModelImageUpload.h */,
+				0D1FC5C31D644E940039B962 /* ModelImageUpload.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -1488,6 +1493,7 @@
 				0D9350BD1CDB61F800E403B2 /* YTVimeoVideo.m in Sources */,
 				0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */,
 				0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */,
+				0D1FC5C41D644E940039B962 /* ModelImageUpload.m in Sources */,
 				0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */,
 				0D85A7E21D630799003F4427 /* CustomPopUpViewController.m in Sources */,
 				0D37314A1CD8A10B00EDC547 /* UIImage+WebP.m in Sources */,

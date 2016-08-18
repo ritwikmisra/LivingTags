@@ -44,6 +44,8 @@
 @property(nonatomic,strong)NSMutableArray *arrStatus;
 
 @property(nonatomic,strong)NSMutableArray *arrCreateTagsUploadImage;
+@property(nonatomic,strong)NSMutableArray *arrImageUpload;
+@property(nonatomic,strong)NSMutableArray *arrSuccessUpload;
 @property(nonatomic,strong)NSData *dataVoice;
 
 - (void)saveContext;

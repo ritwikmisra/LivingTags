@@ -10,6 +10,9 @@
 #import "AppConstant.h"
 #import "AppDelegate.h"
 
+#define K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD @"IMAGE_UPLOAD_CREATE_TAGS"
+#define K_NOTIFICATION_CREATE_TAGS_VIDEO_UPLOAD @"VIDEO_UPLOAD_CREATE_TAGS"
+#define K_NOTIFICATION_CREATE_TAGS_ERROR @"ERROR"
 
 @interface ViewControllerBaseClassViewController : UIViewController
 {

@@ -52,6 +52,18 @@
     {
         cell.img.image=[self.appDel.arrCreateTagsUploadImage objectAtIndex:indexPath.row];
     }
+    cell.lblUploaded.hidden=YES;
+    NSLog(@"%@",_appDel.arrSuccessUpload);
+    if (_appDel.arrSuccessUpload.count>0)
+    {
+        if (indexPath.row<_appDel.arrSuccessUpload.count)
+        {
+            if ([[_appDel.arrSuccessUpload objectAtIndex:indexPath.row] isEqualToString:@"1"])
+            {
+                cell.lblUploaded.hidden=NO;
+            }
+        }
+    }
     return cell;
 }
 
@@ -61,6 +73,32 @@
     width = self.collPics.frame.size.height-13.0f;
     height = self.collPics.frame.size.height;
     return CGSizeMake(width,height);
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CreateTagsCell *cell=(CreateTagsCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (_appDel.arrSuccessUpload.count>0)
+    {
+        if (indexPath.row<_appDel.arrSuccessUpload.count)
+        {
+            if ([[_appDel.arrSuccessUpload objectAtIndex:indexPath.row] isEqualToString:@"1"])
+            {
+                cell.imgBackground.backgroundColor=[UIColor purpleColor];
+            }
+        }
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectCollectionViewWithRow:)])
+    {
+        [self.delegate didSelectCollectionViewWithRow:indexPath.row];
+    }
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CreateTagsCell *cell=(CreateTagsCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.imgBackground.backgroundColor=[UIColor clearColor];
+
 }
 
 @end
