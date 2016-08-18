@@ -24,18 +24,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="136" height="135"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="rNz-Fr-9g8">
-                        <rect key="frame" x="0.0" y="5" width="136" height="102"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="rNz-Fr-9g8">
+                        <rect key="frame" x="5" y="5" width="126" height="102"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploaded" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGs-kM-fqC">
-                        <rect key="frame" x="0.0" y="107" width="136" height="20"/>
+                        <rect key="frame" x="5" y="107" width="126" height="20"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
                         <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJ0-J5-89H">
-                        <rect key="frame" x="102" y="73" width="34" height="34"/>
+                        <rect key="frame" x="97" y="73" width="34" height="34"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="cJ0-J5-89H" secondAttribute="height" multiplier="1:1" id="WUm-Jo-zC1"/>
@@ -59,7 +59,7 @@
                 <constraint firstItem="Jak-nZ-bVz" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="rNv-E7-4t2"/>
                 <constraint firstItem="rNz-Fr-9g8" firstAttribute="centerX" secondItem="Jak-nZ-bVz" secondAttribute="centerX" id="rkv-US-Fr4"/>
                 <constraint firstItem="Jak-nZ-bVz" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="sVD-2g-Pcb"/>
-                <constraint firstItem="rNz-Fr-9g8" firstAttribute="width" secondItem="Jak-nZ-bVz" secondAttribute="width" id="xAR-yh-sJS"/>
+                <constraint firstItem="Jak-nZ-bVz" firstAttribute="width" secondItem="rNz-Fr-9g8" secondAttribute="width" multiplier="1.08" id="xAR-yh-sJS"/>
                 <constraint firstItem="rGs-kM-fqC" firstAttribute="width" secondItem="rNz-Fr-9g8" secondAttribute="width" id="zew-Gy-Wn9"/>
             </constraints>
             <size key="customSize" width="116" height="126"/>

@@ -131,24 +131,24 @@
         case 0:
             if (isFirstImage==NO)
             {
-                return 170.0f;
+                return 150.0f;
             }
-            return 140.0f;
+            return 120.0f;
             break;
         case 1:
-            return 70.0f;
+            return 50.0f;
             break;
             
         case 4:
-            return 70.0f;
+            return 40.0f;
             break;
             
         case 5:
-            return 60.0f;
+            return 40.0f;
             break;
             
         default:
-            return 80.0f;
+            return 60.0f;
             break;
     }
 }
@@ -316,13 +316,14 @@
 -(void)btnAddPhoto:(id)sender
 {
     [self updateTableView:5];
-    // call webservice in a separate thread
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (dictPicDetails.count>0)
-        {
-            [self callWebService];
-        }
-    });
+    if (dictPicDetails.count>0)
+    {
+        [self callWebService];
+    }
+    else
+    {
+        [self imageUploadPopUp];
+    }
     NSLog(@"%@",dictPicDetails);
 }
 
@@ -353,7 +354,7 @@
         UIImagePickerController *picker=[[UIImagePickerController alloc]init] ;
         picker.delegate=self ;
         picker.sourceType=UIImagePickerControllerSourceTypeCamera ;
-        picker.allowsEditing=YES ;
+        picker.allowsEditing=NO ;
         [self presentViewController:picker animated:YES completion:nil] ;
     }
     else
@@ -366,7 +367,7 @@
 {
     UIImagePickerController *picker=[[UIImagePickerController alloc] init];
     picker.delegate=self;
-    picker.allowsEditing=YES;
+    picker.allowsEditing=NO;
     picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:picker animated:YES completion:^{
         
@@ -375,7 +376,7 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *imgChosen=info[UIImagePickerControllerEditedImage] ;
+    UIImage *imgChosen=info[UIImagePickerControllerOriginalImage] ;
     [appDel.arrCreateTagsUploadImage addObject:imgChosen];
     [picker dismissViewControllerAnimated:YES completion:^{
         [appDel.arrSuccessUpload insertObject:@"0" atIndex:index];
@@ -569,6 +570,7 @@
     NSLog(@"%@",theData);
     ModelImageUpload *obj=[[ModelImageUpload alloc]initWithDictionary:theData];
     [appDel.arrImageUpload addObject:obj];
+    NSLog(@"%@",appDel.arrSuccessUpload);
     [appDel.arrSuccessUpload replaceObjectAtIndex:index withObject:@"1"];
     index++;
     [dictPicDetails removeAllObjects];
@@ -614,6 +616,24 @@
     [tblAThirdStep beginUpdates];
     [tblAThirdStep reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     [tblAThirdStep endUpdates];
+}
+
+-(void)deleteImageWithButtonTag:(NSInteger)btnTag
+{
+    [appDel.arrCreateTagsUploadImage removeObjectAtIndex:btnTag];
+    [appDel.arrImageUpload removeObjectAtIndex:btnTag];
+    [appDel.arrSuccessUpload removeObjectAtIndex:btnTag];
+    index--;
+    if (btnTag>0)
+    {
+        NSLog(@"%d",btnTag-1);
+        objForTableView=[appDel.arrImageUpload objectAtIndex:btnTag-1];
+    }
+    else
+    {
+        objForTableView=nil;
+    }
+    [tblAThirdStep reloadData];
 }
 
 @end

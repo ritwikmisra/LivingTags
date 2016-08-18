@@ -8,6 +8,7 @@
 
 #import "CreateTagsThirdStepCell.h"
 #import "CreateTagsCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation CreateTagsThirdStepCell
 
@@ -53,6 +54,7 @@
         cell.img.image=[self.appDel.arrCreateTagsUploadImage objectAtIndex:indexPath.row];
     }
     cell.lblUploaded.hidden=YES;
+    cell.btnDelete.tag=indexPath.row;
     cell.btnDelete.hidden=YES;
     NSLog(@"%@",_appDel.arrSuccessUpload);
     if (_appDel.arrSuccessUpload.count>0)
@@ -88,9 +90,18 @@
         {
             if ([[_appDel.arrSuccessUpload objectAtIndex:indexPath.row] isEqualToString:@"1"])
             {
-                cell.imgBackground.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
+                //cell.imgBackground.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
+                cell.img.clipsToBounds = YES;
+                cell.img.layer.borderWidth=2.0f;
+                cell.img.layer.borderColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1].CGColor;
             }
         }
+    }
+    else
+    {
+        cell.img.clipsToBounds = YES;
+        cell.img.layer.borderWidth=2.0f;
+        cell.img.layer.borderColor=[UIColor lightGrayColor].CGColor;
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectCollectionViewWithRow:)])
     {
@@ -101,12 +112,16 @@
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CreateTagsCell *cell=(CreateTagsCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.imgBackground.backgroundColor=[UIColor clearColor];
+    cell.img.layer.borderWidth=2.0f;
+    cell.img.layer.borderColor=(__bridge CGColorRef _Nullable)([UIColor clearColor]);
 }
 
 -(void)btnDeletePressed:(id)sender
 {
-
+    if (self.delegate && [self.delegate respondsToSelector:@selector(deleteImageWithButtonTag:)])
+    {
+        [self.delegate deleteImageWithButtonTag:[sender tag]];
+    }
 }
 
 @end

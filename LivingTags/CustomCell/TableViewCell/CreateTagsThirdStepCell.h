@@ -13,7 +13,7 @@
 
 @optional
 -(void)didSelectCollectionViewWithRow:(NSInteger)rowNumber;
-
+-(void)deleteImageWithButtonTag:(NSInteger)btnTag;
 @end
 
 @interface CreateTagsThirdStepCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
