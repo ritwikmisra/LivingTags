@@ -28,7 +28,7 @@
     CKCalendarView *calendar;
     NSString *strDate;
     NSMutableDictionary *dictPicDetails;
-    BOOL isFirstImage;
+    BOOL isFirstImage,isSuccess;
     IBOutlet UIButton *btnPreview;
     CustomPopUpViewController *customPopUpController;
     int index;
@@ -155,6 +155,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"%@",appDel.arrSuccessUpload);
     CreateTagsThirdStepCell *cellTags=[tableView dequeueReusableCellWithIdentifier:@"identifier"];
     switch (indexPath.row)
     {
@@ -184,13 +185,21 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:4];
             }
             cellTags.txtCaptions.delegate=self;
-            if ([dictPicDetails objectForKey:@"2"])
+            if (isSuccess==YES)
             {
-                cellTags.txtCaptions.text=[dictPicDetails objectForKey:@"2"];
-           }
-            if (objForTableView.strTitle.length>0)
+                if (objForTableView.strTitle.length>0)
+                {
+                    cellTags.txtCaptions.text=objForTableView.strTitle;
+                }
+                cellTags.txtCaptions.userInteractionEnabled=NO;
+            }
+            else
             {
-                cellTags.txtCaptions.text=objForTableView.strTitle;
+                cellTags.txtCaptions.userInteractionEnabled=YES;
+                if ([dictPicDetails objectForKey:@"2"])
+                {
+                    cellTags.txtCaptions.text=[dictPicDetails objectForKey:@"2"];
+                }
             }
             [cellTags.txtCaptions addTarget:self action:@selector(textfieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
             break;
@@ -201,18 +210,26 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:1];
             }
             cellTags.btnCalender.tag=indexPath.row;
-            if ([dictPicDetails objectForKey:@"3"])
+            if (isSuccess==YES)
             {
-                cellTags.lblCalender.text=[dictPicDetails objectForKey:@"3"];
+                if (objForTableView.strDateTaken.length>0)
+                {
+                    cellTags.lblCalender.text=objForTableView.strDateTaken;
+                }
+                cellTags.btnCalender.userInteractionEnabled=NO;
             }
             else
             {
-                cellTags.lblCalender.text=@"";
-
-            }
-            if (objForTableView.strDateTaken.length>0)
-            {
-                cellTags.lblCalender.text=objForTableView.strDateTaken;
+                cellTags.btnCalender.userInteractionEnabled=YES;
+                if ([dictPicDetails objectForKey:@"3"])
+                {
+                    cellTags.lblCalender.text=[dictPicDetails objectForKey:@"3"];
+                }
+                else
+                {
+                    cellTags.lblCalender.text=@"";
+                    
+                }
             }
             [cellTags.btnCalender addTarget:self action:@selector(btnCalenderPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -223,17 +240,25 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:2];
             }
             cellTags.btnRecording.tag=indexPath.row;
-            if ([dictPicDetails objectForKey:@"4"])
+            if (isSuccess==YES)
             {
-                cellTags.lblRecording.text=@"MyRecording.m4a";
+                cellTags.btnRecording.userInteractionEnabled=NO;
+                if (objForTableView.strAudio.length>0)
+                {
+                    cellTags.lblRecording.text=objForTableView.strAudio;
+                }
             }
             else
             {
-                cellTags.lblRecording.text=@"No recording voice";
-            }
-            if (objForTableView.strAudio.length>0)
-            {
-                cellTags.lblRecording.text=objForTableView.strAudio;
+                cellTags.btnRecording.userInteractionEnabled=YES;
+                if ([dictPicDetails objectForKey:@"4"])
+                {
+                    cellTags.lblRecording.text=@"MyRecording.m4a";
+                }
+                else
+                {
+                    cellTags.lblRecording.text=@"No recording voice";
+                }
             }
             [cellTags.btnRecording addTarget:self action:@selector(btnRecordingPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -565,6 +590,14 @@
 -(void)didSelectCollectionViewWithRow:(NSInteger)rowNumber
 {
     NSLog(@"ROW NUMBER=%d \n ARRAY COUNT=%d",rowNumber,appDel.arrImageUpload.count);
+    if ([[appDel.arrSuccessUpload objectAtIndex:rowNumber]isEqualToString:@"1"])
+    {
+        isSuccess=YES;
+    }
+    else
+    {
+        isSuccess=NO;
+    }
     if (appDel.arrImageUpload.count>0)
     {
         if (rowNumber<appDel.arrImageUpload.count)
@@ -573,11 +606,14 @@
         }
     }
     //[tblAThirdStep reloadData];
+    // update tableview according to collection view index path selection
+    NSIndexPath *indexPath1 = [NSIndexPath indexPathForRow:1 inSection:0];
+    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSIndexPath *indexPath3 = [NSIndexPath indexPathForRow:3 inSection:0];
+    NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath1,indexPath2,indexPath3,nil];
     [tblAThirdStep beginUpdates];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:rowNumber inSection:0]];
-    [tblAThirdStep reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+    [tblAThirdStep reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     [tblAThirdStep endUpdates];
-
 }
 
 @end

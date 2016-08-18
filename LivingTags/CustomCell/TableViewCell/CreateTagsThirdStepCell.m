@@ -77,6 +77,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //246 132 31
     CreateTagsCell *cell=(CreateTagsCell *)[collectionView cellForItemAtIndexPath:indexPath];
     if (_appDel.arrSuccessUpload.count>0)
     {
@@ -84,7 +85,7 @@
         {
             if ([[_appDel.arrSuccessUpload objectAtIndex:indexPath.row] isEqualToString:@"1"])
             {
-                cell.imgBackground.backgroundColor=[UIColor purpleColor];
+                cell.imgBackground.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
             }
         }
     }

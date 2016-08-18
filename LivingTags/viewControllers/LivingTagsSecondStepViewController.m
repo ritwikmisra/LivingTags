@@ -869,7 +869,7 @@
 {
     if ([strView isEqualToString:@"textView"])
     {
-        [tblSecondSteps setContentOffset:CGPointMake(0, 600) animated:YES];
+        [tblSecondSteps setContentOffset:CGPointMake(0, 650) animated:YES];
     }
     else if ([strView isEqualToString:@"coverPic"])
     {

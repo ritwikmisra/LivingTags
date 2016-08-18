@@ -2538,8 +2538,8 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7qO-jp-tDn"/>
-        <segue reference="Oim-Gi-933"/>
+        <segue reference="OPL-Up-2EZ"/>
         <segue reference="0XI-gj-a9l"/>
+        <segue reference="7qO-jp-tDn"/>
     </inferredMetricsTieBreakers>
 </document>
