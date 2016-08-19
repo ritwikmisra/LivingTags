@@ -33,6 +33,7 @@
     CustomPopUpViewController *customPopUpController;
     int index;
     ModelImageUpload *objForTableView;
+    CreateTagsThirdStepCell *cellDelegate;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -126,30 +127,61 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row)
+    if (___isIphone6Plus || ___isIphone6)
     {
-        case 0:
-            if (isFirstImage==NO)
-            {
-                return 150.0f;
-            }
-            return 120.0f;
-            break;
-        case 1:
-            return 50.0f;
-            break;
-            
-        case 4:
-            return 40.0f;
-            break;
-            
-        case 5:
-            return 40.0f;
-            break;
-            
-        default:
-            return 60.0f;
-            break;
+        switch (indexPath.row)
+        {
+            case 0:
+                if (isFirstImage==NO)
+                {
+                    return 170.0f;
+                }
+                return 140.0f;
+                break;
+            case 1:
+                return 70.0f;
+                break;
+                
+            case 4:
+                return 60.0f;
+                break;
+                
+            case 5:
+                return 60.0f;
+                break;
+                
+            default:
+                return 80.0f;
+                break;
+        }
+    }
+    else
+    {
+        switch (indexPath.row)
+        {
+            case 0:
+                if (isFirstImage==NO)
+                {
+                    return 150.0f;
+                }
+                return 120.0f;
+                break;
+            case 1:
+                return 50.0f;
+                break;
+                
+            case 4:
+                return 40.0f;
+                break;
+                
+            case 5:
+                return 40.0f;
+                break;
+                
+            default:
+                return 60.0f;
+                break;
+        }
     }
 }
 
@@ -177,6 +209,7 @@
                     cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:0];
                 }
                 cellTags.delegate=self;
+                cellDelegate=cellTags;
                 break;
             }
         case 1:
@@ -554,11 +587,6 @@
     [self imageUploadFromGallery];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [customPopUpController removeFromParentViewController];
-}
 
 #pragma mark
 #pragma mark NOTIFICATION METHOD
@@ -592,13 +620,16 @@
 -(void)didSelectCollectionViewWithRow:(NSInteger)rowNumber
 {
     NSLog(@"ROW NUMBER=%d \n ARRAY COUNT=%d",rowNumber,appDel.arrImageUpload.count);
-    if ([[appDel.arrSuccessUpload objectAtIndex:rowNumber]isEqualToString:@"1"])
+    if (appDel.arrSuccessUpload.count>0)
     {
-        isSuccess=YES;
-    }
-    else
-    {
-        isSuccess=NO;
+        if ([[appDel.arrSuccessUpload objectAtIndex:rowNumber]isEqualToString:@"1"])
+        {
+            isSuccess=YES;
+        }
+        else
+        {
+            isSuccess=NO;
+        }
     }
     if (appDel.arrImageUpload.count>0)
     {
@@ -620,6 +651,7 @@
 
 -(void)deleteImageWithButtonTag:(NSInteger)btnTag
 {
+     
     [appDel.arrCreateTagsUploadImage removeObjectAtIndex:btnTag];
     [appDel.arrImageUpload removeObjectAtIndex:btnTag];
     [appDel.arrSuccessUpload removeObjectAtIndex:btnTag];
@@ -634,6 +666,14 @@
         objForTableView=nil;
     }
     [tblAThirdStep reloadData];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [customPopUpController removeFromParentViewController];
+    cellDelegate.delegate=nil;
 }
 
 @end

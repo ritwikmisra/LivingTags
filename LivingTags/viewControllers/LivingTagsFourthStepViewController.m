@@ -20,9 +20,9 @@
 #import "LivingTagsFourthStepService.h"
 #import "QRCodeViewController.h"
 #import "CustomPopUpViewController.h"
+#import "ModelImageUpload.h"
 
-
-@interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate,CustomPopUPDelegate>
+@interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate,CustomPopUPDelegate,CollectionViewSelectionDelegate>
 
 {
     IBOutlet UILabel *lbl1;
@@ -33,11 +33,14 @@
     CKCalendarView *calendar;
     NSString *strDate;
     NSMutableDictionary *dictPicDetails;
-    BOOL isFirstImage;
+    BOOL isFirstImage,isSuccess;
     IBOutlet UIButton *btnPreview;
     IBOutlet UITableView *tblFourthStep;
     NSString *strWebURI;
     CustomPopUpViewController *customPopUpController;
+    int index;
+    ModelImageUpload *objForTableView;
+    CreateTagsThirdStepCell *cellDelegate;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -80,6 +83,9 @@
     calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     dictPicDetails=[[NSMutableDictionary alloc]init];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageUploadedToServer:) name:K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageGalleryUploadError) name:K_NOTIFICATION_CREATE_TAGS_ERROR object:nil];
+    index=0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -135,30 +141,61 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row)
+    if (___isIphone6Plus || ___isIphone6)
     {
-        case 0:
-            if (isFirstImage==NO)
-            {
-                return 150.0f;
-            }
-            return 120.0f;
-            break;
-        case 1:
-            return 50.0f;
-            break;
-            
-        case 4:
-            return 40.0f;
-            break;
-            
-        case 5:
-            return 40.0f;
-            break;
-            
-        default:
-            return 60.0f;
-            break;
+        switch (indexPath.row)
+        {
+            case 0:
+                if (isFirstImage==NO)
+                {
+                    return 170.0f;
+                }
+                return 140.0f;
+                break;
+            case 1:
+                return 70.0f;
+                break;
+                
+            case 4:
+                return 60.0f;
+                break;
+                
+            case 5:
+                return 60.0f;
+                break;
+                
+            default:
+                return 80.0f;
+                break;
+        }
+    }
+    else
+    {
+        switch (indexPath.row)
+        {
+            case 0:
+                if (isFirstImage==NO)
+                {
+                    return 150.0f;
+                }
+                return 120.0f;
+                break;
+            case 1:
+                return 50.0f;
+                break;
+                
+            case 4:
+                return 40.0f;
+                break;
+                
+            case 5:
+                return 40.0f;
+                break;
+                
+            default:
+                return 60.0f;
+                break;
+        }
     }
 }
 
@@ -186,6 +223,8 @@
                     cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:0];
                 }
                 cellTags.lbl.text=@"Add Videos";
+                cellTags.delegate=self;
+                cellDelegate=cellTags;
                 break;
             }
         case 1:
@@ -194,9 +233,21 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:4];
             }
             cellTags.txtCaptions.delegate=self;
-            if ([dictPicDetails objectForKey:@"2"])
+            if (isSuccess==YES)
             {
-                cellTags.txtCaptions.text=[dictPicDetails objectForKey:@"2"];
+                if (objForTableView.strTitle.length>0)
+                {
+                    cellTags.txtCaptions.text=objForTableView.strTitle;
+                }
+                cellTags.txtCaptions.userInteractionEnabled=NO;
+            }
+            else
+            {
+                cellTags.txtCaptions.userInteractionEnabled=YES;
+                if ([dictPicDetails objectForKey:@"2"])
+                {
+                    cellTags.txtCaptions.text=[dictPicDetails objectForKey:@"2"];
+                }
             }
             [cellTags.txtCaptions addTarget:self action:@selector(textfieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
             break;
@@ -208,14 +259,27 @@
             }
             cellTags.btnCalender.tag=indexPath.row;
             cellTags.lbl.text=@"When was the video taken?";
-            cellTags.lblCalender.text=strDate;
-            if ([dictPicDetails objectForKey:@"3"])
+            //cellTags.lblCalender.text=strDate;
+            if (isSuccess==YES)
             {
-                cellTags.lblCalender.text=[dictPicDetails objectForKey:@"3"];
+                if (objForTableView.strDateTaken.length>0)
+                {
+                    cellTags.lblCalender.text=objForTableView.strDateTaken;
+                }
+                cellTags.btnCalender.userInteractionEnabled=NO;
             }
             else
             {
-                cellTags.lblCalender.text=@"";
+                cellTags.btnCalender.userInteractionEnabled=YES;
+                if ([dictPicDetails objectForKey:@"3"])
+                {
+                    cellTags.lblCalender.text=[dictPicDetails objectForKey:@"3"];
+                }
+                else
+                {
+                    cellTags.lblCalender.text=@"";
+                    
+                }
             }
             [cellTags.btnCalender addTarget:self action:@selector(btnCalenderPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -226,13 +290,25 @@
                 cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsThirdStepCell" owner:self options:nil] objectAtIndex:2];
             }
             cellTags.btnRecording.tag=indexPath.row;
-            if ([dictPicDetails objectForKey:@"4"])
+            if (isSuccess==YES)
             {
-                cellTags.lblRecording.text=@"MyRecording.m4a";
+                cellTags.btnRecording.userInteractionEnabled=NO;
+                if (objForTableView.strAudio.length>0)
+                {
+                    cellTags.lblRecording.text=objForTableView.strAudio;
+                }
             }
             else
             {
-                cellTags.lblRecording.text=@"No recording voice";
+                cellTags.btnRecording.userInteractionEnabled=YES;
+                if ([dictPicDetails objectForKey:@"4"])
+                {
+                    cellTags.lblRecording.text=@"MyRecording.m4a";
+                }
+                else
+                {
+                    cellTags.lblRecording.text=@"No recording voice";
+                }
             }
             [cellTags.btnRecording addTarget:self action:@selector(btnRecordingPressed:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -602,7 +678,89 @@
 {
     [super viewWillDisappear:animated];
     [customPopUpController removeFromParentViewController];
+    cellDelegate.delegate=nil;
 }
+
+#pragma mark
+#pragma mark NOTIFICATION METHOD
+#pragma mark
+
+-(void)imageUploadedToServer:(NSNotification*)note
+{
+    NSDictionary *theData = [note userInfo];
+    NSLog(@"%@",theData);
+    ModelImageUpload *obj=[[ModelImageUpload alloc]initWithDictionary:theData];
+    [appDel.arrImageUpload addObject:obj];
+    NSLog(@"%@",appDel.arrSuccessUpload);
+    [appDel.arrSuccessUpload replaceObjectAtIndex:index withObject:@"1"];
+    index++;
+    [dictPicDetails removeAllObjects];
+    appDel.dataVoice=nil;
+    NSLog(@"%@",dictPicDetails);
+    [tblFourthStep reloadData];
+    [self videoUploadPopUp];
+}
+
+-(void)imageGalleryUploadError
+{
+    [self displayErrorWithMessage:@"Something is wrong,please try again later."];
+}
+
+#pragma mark
+#pragma mark CUSTOM DELEGATE METHODS
+#pragma mark
+
+-(void)didSelectCollectionViewWithRow:(NSInteger)rowNumber
+{
+    NSLog(@"ROW NUMBER=%d \n ARRAY COUNT=%d",rowNumber,appDel.arrImageUpload.count);
+    if (appDel.arrSuccessUpload.count>0)
+    {
+        if ([[appDel.arrSuccessUpload objectAtIndex:rowNumber]isEqualToString:@"1"])
+        {
+            isSuccess=YES;
+        }
+        else
+        {
+            isSuccess=NO;
+        }
+    }
+    if (appDel.arrImageUpload.count>0)
+    {
+        if (rowNumber<appDel.arrImageUpload.count)
+        {
+            objForTableView=[appDel.arrImageUpload objectAtIndex:rowNumber];
+        }
+    }
+    //[tblAThirdStep reloadData];
+    // update tableview according to collection view index path selection
+    NSIndexPath *indexPath1 = [NSIndexPath indexPathForRow:1 inSection:0];
+    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSIndexPath *indexPath3 = [NSIndexPath indexPathForRow:3 inSection:0];
+    NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath1,indexPath2,indexPath3,nil];
+    [tblFourthStep beginUpdates];
+    [tblFourthStep reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+    [tblFourthStep endUpdates];
+}
+
+-(void)deleteImageWithButtonTag:(NSInteger)btnTag
+{
+    
+    [appDel.arrCreateTagsUploadImage removeObjectAtIndex:btnTag];
+    [appDel.arrImageUpload removeObjectAtIndex:btnTag];
+    [appDel.arrSuccessUpload removeObjectAtIndex:btnTag];
+    index--;
+    if (btnTag>0)
+    {
+        NSLog(@"%d",btnTag-1);
+        objForTableView=[appDel.arrImageUpload objectAtIndex:btnTag-1];
+    }
+    else
+    {
+        objForTableView=nil;
+    }
+    [tblFourthStep reloadData];
+}
+
 
 
 @end
