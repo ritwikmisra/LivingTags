@@ -16,15 +16,6 @@
 
 @implementation CustomPopUpViewController
 
-+(id)sharedInstance
-{
-    static CustomPopUpViewController *master=nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        master=[[CustomPopUpViewController alloc]init];
-    });
-    return master;
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

@@ -26,7 +26,7 @@
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="rNz-Fr-9g8">
                         <rect key="frame" x="5" y="5" width="126" height="102"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.81960784310000001" green="0.81568627449999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploaded" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGs-kM-fqC">
                         <rect key="frame" x="5" y="107" width="126" height="20"/>

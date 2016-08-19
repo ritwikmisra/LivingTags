@@ -69,14 +69,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     
     dictPicDetails=[[NSMutableDictionary alloc]init];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageUploadedToServer:) name:K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageGalleryUploadError) name:K_NOTIFICATION_CREATE_TAGS_ERROR object:nil];
     index=0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageUploadedToServer:) name:K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageGalleryUploadError) name:K_NOTIFICATION_CREATE_TAGS_ERROR object:nil];
     if (appDel.dataVoice.length>0)
     {
         [dictPicDetails setObject:appDel.dataVoice forKey:@"4"];
@@ -372,7 +372,7 @@
 
 -(void)imageUploadPopUp
 {
-    customPopUpController=[CustomPopUpViewController sharedInstance];
+    customPopUpController=[[CustomPopUpViewController alloc] initWithNibName:@"CustomPopUpViewController" bundle:nil];
     customPopUpController.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:customPopUpController.view];
     [self addChildViewController:customPopUpController];
@@ -651,7 +651,6 @@
 
 -(void)deleteImageWithButtonTag:(NSInteger)btnTag
 {
-     
     [appDel.arrCreateTagsUploadImage removeObjectAtIndex:btnTag];
     [appDel.arrImageUpload removeObjectAtIndex:btnTag];
     [appDel.arrSuccessUpload removeObjectAtIndex:btnTag];
@@ -673,7 +672,9 @@
 {
     [super viewWillDisappear:animated];
     [customPopUpController removeFromParentViewController];
+    customPopUpController=nil;
     cellDelegate.delegate=nil;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 @end

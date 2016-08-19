@@ -20,5 +20,4 @@
 
 @property(weak,nonatomic)id<CustomPopUPDelegate>delegate;
 
-+(id)sharedInstance;
 @end

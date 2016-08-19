@@ -634,7 +634,7 @@
     NSLog(@"%d",isEditing);
     if (isEditing)
     {
-        master=[CustomPopUpViewController sharedInstance];
+        master=[[CustomPopUpViewController alloc] initWithNibName:@"CustomPopUpViewController" bundle:nil];
         master.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:master.view];
         [self addChildViewController:master];

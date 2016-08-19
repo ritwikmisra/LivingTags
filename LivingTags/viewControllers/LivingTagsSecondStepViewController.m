@@ -1323,7 +1323,7 @@
 
 -(void)addCustomPOPUP
 {
-    customPopUP=[CustomPopUpViewController sharedInstance];
+    customPopUP=[[CustomPopUpViewController alloc] initWithNibName:@"CustomPopUpViewController" bundle:nil];
     customPopUP.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:customPopUP.view];
     [self addChildViewController:customPopUP];
@@ -1351,6 +1351,7 @@
 {
     [super viewWillDisappear:animated];
     [customPopUP removeFromParentViewController];
+    customPopUP=nil;
 }
 
 @end

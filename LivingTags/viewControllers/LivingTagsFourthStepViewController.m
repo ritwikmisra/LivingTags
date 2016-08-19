@@ -58,6 +58,8 @@
     // Do any additional setup after loading the view.
     appDel.dataVoice=nil;
     [appDel.arrCreateTagsUploadImage removeAllObjects];
+    [appDel.arrImageUpload removeAllObjects];
+    [appDel.arrSuccessUpload removeAllObjects];
     [appDel.arrStatus removeAllObjects];
     [appDel.arrStatus addObject:@"1"];
     [appDel.arrStatus addObject:@"1"];
@@ -83,14 +85,14 @@
     calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     dictPicDetails=[[NSMutableDictionary alloc]init];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageUploadedToServer:) name:K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageGalleryUploadError) name:K_NOTIFICATION_CREATE_TAGS_ERROR object:nil];
     index=0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"%@",appDel.dataVoice);
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageUploadedToServer:) name:K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageGalleryUploadError) name:K_NOTIFICATION_CREATE_TAGS_ERROR object:nil];
     if (appDel.dataVoice.length>0)
     {
         [dictPicDetails setObject:appDel.dataVoice forKey:@"4"];
@@ -379,7 +381,7 @@
 
 -(void)btnAddPhoto:(id)sender
 {
-    [self updateTableView:5];
+ /*   [self updateTableView:5];
     [self performSelector:@selector(videoUploadPopUp) withObject:nil afterDelay:0.8f];
     // call webservice in a separate thread
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -387,7 +389,17 @@
         {
             [self callWebService];
         }
-    });
+    });*/
+    [self updateTableView:5];
+    if (dictPicDetails.count>0)
+    {
+        [self callWebService];
+    }
+    else
+    {
+        [self videoUploadPopUp];
+    }
+    NSLog(@"%@",dictPicDetails);
 }
 
 -(IBAction)btnPreviewPressed:(id)sender
@@ -556,7 +568,7 @@
 
 -(void)videoUploadPopUp
 {
-    customPopUpController=[CustomPopUpViewController sharedInstance];
+    customPopUpController=[[CustomPopUpViewController alloc] initWithNibName:@"CustomPopUpViewController" bundle:nil];
     customPopUpController.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:customPopUpController.view];
     [self addChildViewController:customPopUpController];
@@ -607,6 +619,9 @@
             //        UISaveVideoAtPathToSavedPhotosAlbum(sourcePath,nil,nil,nil);
             NSURL *videoURL     = [info objectForKey:UIImagePickerControllerMediaURL];
             NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+            [appDel.arrSuccessUpload insertObject:@"0" atIndex:index];
+            NSLog(@"%d",index);
+            NSLog(@"%@",appDel.arrSuccessUpload);
             [dictPicDetails setObject:videoData forKey:@"1"];
             NSLog(@"%lu",(unsigned long)videoData.length);
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -641,6 +656,9 @@
             //UISaveVideoAtPathToSavedPhotosAlbum(sourcePath,nil,nil,nil);
             NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
             NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+            [appDel.arrSuccessUpload insertObject:@"0" atIndex:index];
+            NSLog(@"%d",index);
+            NSLog(@"%@",appDel.arrSuccessUpload);
             [dictPicDetails setObject:videoData forKey:@"1"];
             NSLog(@"%lu",(unsigned long)videoData.length);
             AVAsset *asset = [AVAsset assetWithURL:videoURL];
@@ -678,7 +696,9 @@
 {
     [super viewWillDisappear:animated];
     [customPopUpController removeFromParentViewController];
+    customPopUpController=nil;
     cellDelegate.delegate=nil;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 #pragma mark

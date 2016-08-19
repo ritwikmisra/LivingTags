@@ -101,7 +101,7 @@
     {
         cell.img.clipsToBounds = YES;
         cell.img.layer.borderWidth=2.0f;
-        cell.img.layer.borderColor=[UIColor lightGrayColor].CGColor;
+        cell.img.layer.borderColor=[UIColor blackColor].CGColor;
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectCollectionViewWithRow:)])
     {
