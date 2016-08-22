@@ -41,7 +41,7 @@
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Input Name Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02r-jW-edM">
                         <rect key="frame" x="0.0" y="24" width="365" height="31"/>
                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
                     </textField>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C8q-eD-Nwh">
                         <rect key="frame" x="0.0" y="55" width="365" height="1"/>
@@ -493,7 +493,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
                     </textView>
                 </subviews>
                 <constraints>
@@ -515,7 +515,7 @@
                 <outlet property="lbl" destination="q8e-WC-wwi" id="stI-jK-Pb4"/>
                 <outlet property="txtVwMemorialQuote" destination="OS2-NP-SAO" id="1we-Lo-p2f"/>
             </connections>
-            <point key="canvasLocation" x="300.5" y="639"/>
+            <point key="canvasLocation" x="411.5" y="612"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="5mj-gy-IYM" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="93"/>
@@ -581,7 +581,7 @@
                 <outlet property="btnGetLocation" destination="l5W-lC-Aeu" id="RzG-xe-GQX"/>
                 <outlet property="lblPrimaryLocation" destination="Mfb-E2-jne" id="Zcg-0j-Ev8"/>
             </connections>
-            <point key="canvasLocation" x="313.5" y="183.5"/>
+            <point key="canvasLocation" x="367.5" y="181.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="6T0-nb-kmZ" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="66"/>
@@ -719,7 +719,7 @@
                 <outlet property="btnRemoveLocation" destination="8FC-H3-yNc" id="wsk-so-gms"/>
                 <outlet property="lblSecondLocation" destination="yps-ys-U2Y" id="UlH-EX-k6d"/>
             </connections>
-            <point key="canvasLocation" x="312.5" y="290.5"/>
+            <point key="canvasLocation" x="415.5" y="271.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="r9c-GA-1kP" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="66"/>
@@ -778,7 +778,7 @@
                 <outlet property="btnSkipPressed" destination="fbs-BT-lBe" id="JMa-SZ-6Ds"/>
                 <outlet property="lblThirdLocation" destination="uSj-qa-J0Z" id="qAS-nF-bLQ"/>
             </connections>
-            <point key="canvasLocation" x="309.5" y="300"/>
+            <point key="canvasLocation" x="391.5" y="284"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="fhX-2X-bbm" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="93"/>
@@ -858,7 +858,7 @@
                 <outlet property="lblPrimaryLocation" destination="Iwg-uW-U8O" id="ZJ5-Ic-hHo"/>
                 <outlet property="lblThirdLocation" destination="Iwg-uW-U8O" id="Mb6-pV-RPB"/>
             </connections>
-            <point key="canvasLocation" x="312.5" y="290.5"/>
+            <point key="canvasLocation" x="395.5" y="287.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="53" id="OI4-De-uPa" customClass="CreateTagsSecondStepCell">
             <rect key="frame" x="0.0" y="0.0" width="365" height="43"/>
