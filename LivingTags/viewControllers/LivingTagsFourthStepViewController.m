@@ -391,7 +391,7 @@
         }
     });*/
     [self updateTableView:5];
-    if (dictPicDetails.count>0)
+    if (dictPicDetails.count>1)
     {
         [self callWebService];
     }
@@ -744,6 +744,10 @@
             isSuccess=NO;
         }
     }
+    else
+    {
+        isSuccess=NO;
+    }
     if (appDel.arrImageUpload.count>0)
     {
         if (rowNumber<appDel.arrImageUpload.count)
@@ -764,7 +768,6 @@
 
 -(void)deleteImageWithButtonTag:(NSInteger)btnTag
 {
-    
     [appDel.arrCreateTagsUploadImage removeObjectAtIndex:btnTag];
     [appDel.arrImageUpload removeObjectAtIndex:btnTag];
     [appDel.arrSuccessUpload removeObjectAtIndex:btnTag];

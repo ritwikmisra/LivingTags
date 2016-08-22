@@ -534,7 +534,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5W-lC-Aeu">
-                        <rect key="frame" x="0.0" y="59" width="130" height="29"/>
+                        <rect key="frame" x="0.0" y="59" width="130" height="27"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="LOCATION">
@@ -562,7 +562,7 @@
                     <constraint firstItem="Tl0-ic-HZf" firstAttribute="centerX" secondItem="GDX-5f-uiH" secondAttribute="centerX" id="MX3-9q-so6"/>
                     <constraint firstItem="GDX-5f-uiH" firstAttribute="centerY" secondItem="iH4-Hp-QEM" secondAttribute="centerY" id="PSh-cf-sQc"/>
                     <constraint firstItem="Ara-f3-6r9" firstAttribute="width" secondItem="Mfb-E2-jne" secondAttribute="width" id="RNE-qX-JxE"/>
-                    <constraint firstItem="GDX-5f-uiH" firstAttribute="height" secondItem="l5W-lC-Aeu" secondAttribute="height" multiplier="3.2" id="Upg-rL-WRj"/>
+                    <constraint firstItem="GDX-5f-uiH" firstAttribute="height" secondItem="l5W-lC-Aeu" secondAttribute="height" multiplier="3.4" id="Upg-rL-WRj"/>
                     <constraint firstItem="l5W-lC-Aeu" firstAttribute="leading" secondItem="Mfb-E2-jne" secondAttribute="leading" id="YUh-jH-kmi"/>
                     <constraint firstItem="Tl0-ic-HZf" firstAttribute="width" secondItem="GDX-5f-uiH" secondAttribute="width" id="bFz-0B-Fga"/>
                     <constraint firstItem="Mfb-E2-jne" firstAttribute="centerX" secondItem="Tl0-ic-HZf" secondAttribute="centerX" id="btv-g5-hmc"/>
@@ -659,7 +659,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxx-Mz-mBH">
-                        <rect key="frame" x="0.0" y="59" width="146" height="29"/>
+                        <rect key="frame" x="0.0" y="59" width="146" height="27"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title=" LOCATION">
@@ -680,7 +680,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8FC-H3-yNc">
-                        <rect key="frame" x="161" y="59" width="146" height="29"/>
+                        <rect key="frame" x="161" y="59" width="146" height="27"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="REMOVE">
@@ -710,7 +710,7 @@
                     <constraint firstItem="ZXh-Cm-6Pe" firstAttribute="height" secondItem="5PV-1c-B4U" secondAttribute="height" multiplier="4" id="hju-10-4qu"/>
                     <constraint firstItem="ZXh-Cm-6Pe" firstAttribute="height" secondItem="Aef-NB-3c7" secondAttribute="height" id="nFq-SG-aXL"/>
                     <constraint firstItem="ZXh-Cm-6Pe" firstAttribute="centerY" secondItem="Aef-NB-3c7" secondAttribute="centerY" id="sCE-kl-UKk"/>
-                    <constraint firstItem="ZXh-Cm-6Pe" firstAttribute="height" secondItem="hxx-Mz-mBH" secondAttribute="height" multiplier="3.2" id="w3I-YG-03b"/>
+                    <constraint firstItem="ZXh-Cm-6Pe" firstAttribute="height" secondItem="hxx-Mz-mBH" secondAttribute="height" multiplier="3.4" id="w3I-YG-03b"/>
                     <constraint firstItem="ZXh-Cm-6Pe" firstAttribute="height" secondItem="yps-ys-U2Y" secondAttribute="height" multiplier="3" id="yGs-Ts-Uxs"/>
                 </constraints>
             </tableViewCellContentView>
@@ -797,7 +797,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhH-KE-yFU">
-                        <rect key="frame" x="0.0" y="59" width="146" height="29"/>
+                        <rect key="frame" x="0.0" y="59" width="146" height="27"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title=" LOCATION">
@@ -818,7 +818,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0v-WY-jfq">
-                        <rect key="frame" x="161" y="59" width="146" height="29"/>
+                        <rect key="frame" x="161" y="59" width="146" height="27"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.52941176469999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="REMOVE">
@@ -841,7 +841,7 @@
                     <constraint firstItem="Iwg-uW-U8O" firstAttribute="centerX" secondItem="iAu-LT-DRf" secondAttribute="centerX" id="Xav-30-ILp"/>
                     <constraint firstItem="Iwg-uW-U8O" firstAttribute="top" secondItem="iAu-LT-DRf" secondAttribute="bottom" id="Zlq-bu-fWi"/>
                     <constraint firstItem="TAU-Gx-bmC" firstAttribute="centerX" secondItem="Iwg-uW-U8O" secondAttribute="centerX" id="blt-3P-Lph"/>
-                    <constraint firstItem="mlF-t2-b2l" firstAttribute="height" secondItem="zhH-KE-yFU" secondAttribute="height" multiplier="3.2" id="dDA-DI-dEF"/>
+                    <constraint firstItem="mlF-t2-b2l" firstAttribute="height" secondItem="zhH-KE-yFU" secondAttribute="height" multiplier="3.4" id="dDA-DI-dEF"/>
                     <constraint firstItem="mlF-t2-b2l" firstAttribute="centerX" secondItem="SzL-td-1oQ" secondAttribute="centerX" id="jW2-6D-I79"/>
                     <constraint firstItem="TAU-Gx-bmC" firstAttribute="top" secondItem="Iwg-uW-U8O" secondAttribute="bottom" id="jc5-R7-i0A"/>
                     <constraint firstItem="Iwg-uW-U8O" firstAttribute="width" secondItem="iAu-LT-DRf" secondAttribute="width" id="mOK-Lx-dEj"/>

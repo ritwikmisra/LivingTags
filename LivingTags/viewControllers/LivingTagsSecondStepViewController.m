@@ -148,7 +148,7 @@
     {
         if (isPrimaryLocationRemove==YES)
         {
-            return 100.0f;
+            return 120.0f;
         }
         return 70.0f;
     }
@@ -156,7 +156,7 @@
     {
         if (isSecondLocation==YES)
         {
-            return 100.0f;
+            return 120.0f;
         }
         return 70.0f;
     }
@@ -164,7 +164,7 @@
     {
         if (isThirdLocation==YES)
         {
-            return 100.0f;
+            return 120.0f;
         }
         return 70.0f;
     }
@@ -659,22 +659,22 @@
                          NSLog(@"country=%@", addressObj.country);
                          // NSLog(@"lines=%@", addressObj.lines);
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                         strPrimaryLocation=[NSString stringWithFormat:@"%@,%@,%@",addressObj.subLocality,addressObj.administrativeArea,addressObj.country];
-                         isPrimaryLocationRemove=YES;
-                         [tblSecondSteps beginUpdates];
-                         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
-                         [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                         [tblSecondSteps endUpdates];
                          [self checkLocationWithType:@"First"];
                          break;
                      }
                  }];
                 address2 = place.formattedAddress;
                 NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+                strPrimaryLocation=place.formattedAddress;
+                isPrimaryLocationRemove=YES;
+                [tblSecondSteps beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+                [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblSecondSteps endUpdates];
+
                 strCat = place.types[0];
                 NSLog(@"Category:%@",strCat);
                 pickedPlace = place;
-                
             } else {
                 name2 = @"No place selected";
                 address2 = @"";
@@ -725,18 +725,19 @@
                          NSLog(@"country=%@", addressObj.country);
                          // NSLog(@"lines=%@", addressObj.lines);
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                         strSecondLocation=[NSString stringWithFormat:@"%@,%@,%@",addressObj.subLocality,addressObj.administrativeArea,addressObj.country];
-                         isSecondLocation=YES;
-                         //[tblSecondSteps reloadData];
-                         [tblSecondSteps beginUpdates];
-                         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
-                         [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                         [tblSecondSteps endUpdates];
                          [self checkLocationWithType:@"Second"];
                          break;
                      }
                  }];
                 address2 = place.formattedAddress;
+                strSecondLocation=place.formattedAddress;
+                isSecondLocation=YES;
+                //[tblSecondSteps reloadData];
+                [tblSecondSteps beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+                [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblSecondSteps endUpdates];
+
                 NSLog(@"place.formattedAddress:%@",place.formattedAddress);
                 strCat = place.types[0];
                 NSLog(@"Category:%@",strCat);
@@ -791,18 +792,19 @@
                          NSLog(@"country=%@", addressObj.country);
                          // NSLog(@"lines=%@", addressObj.lines);
                          // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                         strThirdLocation=[NSString stringWithFormat:@"%@,%@,%@",addressObj.subLocality,addressObj.administrativeArea,addressObj.country];
-                         isThirdLocation=YES;
-                         //[tblSecondSteps reloadData];
-                         [tblSecondSteps beginUpdates];
-                         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
-                         [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                         [tblSecondSteps endUpdates];
                          [self checkLocationWithType:@"Third"];
                          break;
                      }
                  }];
                 address2 = place.formattedAddress;
+                strThirdLocation=place.formattedAddress;
+                isThirdLocation=YES;
+                //[tblSecondSteps reloadData];
+                [tblSecondSteps beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+                [tblSecondSteps reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblSecondSteps endUpdates];
+
                 NSLog(@"place.formattedAddress:%@",place.formattedAddress);
                 strCat = place.types[0];
                 NSLog(@"Category:%@",strCat);
