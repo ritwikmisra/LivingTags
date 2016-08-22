@@ -54,7 +54,7 @@
                 <outlet property="collPics" destination="5ZV-mx-RmG" id="11B-23-bRL"/>
                 <outlet property="lbl" destination="NRU-PS-MgO" id="0Rl-8U-tB3"/>
             </connections>
-            <point key="canvasLocation" x="156.5" y="-62.5"/>
+            <point key="canvasLocation" x="489.5" y="-66.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="wyk-bf-d7b" customClass="CreateTagsThirdStepCell">
             <rect key="frame" x="0.0" y="0.0" width="295" height="72"/>
@@ -79,7 +79,7 @@
                         </constraints>
                         <state key="normal" backgroundImage="calender_icon.png"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtO-rL-nkN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22/5/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtO-rL-nkN">
                         <rect key="frame" x="34" y="27" width="148" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -109,7 +109,7 @@
                 <outlet property="lbl" destination="7BG-yB-uFM" id="2Ko-a5-nEQ"/>
                 <outlet property="lblCalender" destination="RtO-rL-nkN" id="jwW-zQ-K5G"/>
             </connections>
-            <point key="canvasLocation" x="230.5" y="-3"/>
+            <point key="canvasLocation" x="534.5" y="233"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="YP0-dN-qeL" customClass="CreateTagsThirdStepCell">
             <rect key="frame" x="0.0" y="0.0" width="295" height="72"/>
@@ -128,11 +128,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13J-B0-FQY">
-                        <rect key="frame" x="0.0" y="28" width="21" height="26"/>
+                        <rect key="frame" x="0.0" y="28" width="28" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="13J-B0-FQY" secondAttribute="height" id="hpu-1Y-9pF"/>
+                        </constraints>
                         <state key="normal" backgroundImage="voice_icon.png"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xY6-y7-1Lm">
-                        <rect key="frame" x="25" y="28" width="259" height="26"/>
+                        <rect key="frame" x="34" y="27" width="246" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -143,14 +146,13 @@
                     <constraint firstItem="pUN-YG-iN9" firstAttribute="width" secondItem="pWB-Tb-PMz" secondAttribute="width" id="2g2-Cb-8gc"/>
                     <constraint firstItem="gF9-iv-hEB" firstAttribute="top" secondItem="pUN-YG-iN9" secondAttribute="top" id="BQW-Lu-aqj"/>
                     <constraint firstItem="pUN-YG-iN9" firstAttribute="centerX" secondItem="pWB-Tb-PMz" secondAttribute="centerX" id="GQC-rE-30L"/>
-                    <constraint firstItem="pUN-YG-iN9" firstAttribute="height" secondItem="13J-B0-FQY" secondAttribute="height" multiplier="2.7" id="J5L-bg-pvw"/>
+                    <constraint firstItem="pUN-YG-iN9" firstAttribute="height" secondItem="13J-B0-FQY" secondAttribute="height" multiplier="2.5" id="J5L-bg-pvw"/>
                     <constraint firstItem="13J-B0-FQY" firstAttribute="leading" secondItem="gF9-iv-hEB" secondAttribute="leading" id="JWD-Du-Uxt"/>
-                    <constraint firstItem="pUN-YG-iN9" firstAttribute="width" secondItem="13J-B0-FQY" secondAttribute="width" multiplier="14" id="LSG-0z-Jaq"/>
                     <constraint firstItem="xY6-y7-1Lm" firstAttribute="centerY" secondItem="13J-B0-FQY" secondAttribute="centerY" id="Ljn-D9-jV9"/>
                     <constraint firstItem="xY6-y7-1Lm" firstAttribute="leading" secondItem="13J-B0-FQY" secondAttribute="trailing" multiplier="1.2" id="Px1-KI-C9e"/>
                     <constraint firstItem="xY6-y7-1Lm" firstAttribute="height" secondItem="13J-B0-FQY" secondAttribute="height" id="Yu8-lC-UBX"/>
                     <constraint firstItem="pUN-YG-iN9" firstAttribute="height" secondItem="gF9-iv-hEB" secondAttribute="height" multiplier="3" id="gmy-dm-JTq"/>
-                    <constraint firstItem="pUN-YG-iN9" firstAttribute="width" secondItem="xY6-y7-1Lm" secondAttribute="width" multiplier="1.14" id="jMc-BH-HGs"/>
+                    <constraint firstItem="pUN-YG-iN9" firstAttribute="width" secondItem="xY6-y7-1Lm" secondAttribute="width" multiplier="1.2" id="jMc-BH-HGs"/>
                     <constraint firstItem="pUN-YG-iN9" firstAttribute="centerY" secondItem="pWB-Tb-PMz" secondAttribute="centerY" id="lNN-yO-aKH"/>
                     <constraint firstItem="13J-B0-FQY" firstAttribute="top" secondItem="gF9-iv-hEB" secondAttribute="bottom" multiplier="1.2" id="rYL-0k-iYp"/>
                     <constraint firstItem="gF9-iv-hEB" firstAttribute="centerX" secondItem="pUN-YG-iN9" secondAttribute="centerX" id="vuf-x4-EV1"/>
@@ -161,7 +163,7 @@
                 <outlet property="btnRecording" destination="13J-B0-FQY" id="8pp-aV-GXi"/>
                 <outlet property="lblRecording" destination="xY6-y7-1Lm" id="Rqb-h6-Rcl"/>
             </connections>
-            <point key="canvasLocation" x="230.5" y="-51"/>
+            <point key="canvasLocation" x="484.5" y="6"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="36" id="tKF-mR-tAB" customClass="CreateTagsThirdStepCell">
             <rect key="frame" x="0.0" y="0.0" width="295" height="36"/>
@@ -196,7 +198,7 @@
             <connections>
                 <outlet property="btnAddPhoto" destination="T42-VK-Kid" id="Rvi-gh-eNJ"/>
             </connections>
-            <point key="canvasLocation" x="472.5" y="19"/>
+            <point key="canvasLocation" x="649.5" y="162"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="apy-hu-lnf" customClass="CreateTagsThirdStepCell">
             <rect key="frame" x="0.0" y="0.0" width="295" height="72"/>
@@ -217,7 +219,7 @@
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H5n-zZ-MvX">
                         <rect key="frame" x="0.0" y="28" width="295" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                     </textField>
                 </subviews>
                 <constraints>
@@ -238,7 +240,7 @@
             <connections>
                 <outlet property="txtCaptions" destination="H5n-zZ-MvX" id="vCV-3l-fQY"/>
             </connections>
-            <point key="canvasLocation" x="338.5" y="-13"/>
+            <point key="canvasLocation" x="549.5" y="129"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="36" id="qEE-a3-z35" customClass="CreateTagsThirdStepCell">
             <rect key="frame" x="0.0" y="0.0" width="295" height="36"/>
@@ -274,6 +276,65 @@
                 <outlet property="btnNext" destination="qv9-eq-9e0" id="nNh-7q-uNf"/>
             </connections>
             <point key="canvasLocation" x="539.5" y="181"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="173" id="cod-OR-Qmf" customClass="CreateTagsThirdStepCell">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="173"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cod-OR-Qmf" id="0fB-8y-1ey">
+                <rect key="frame" x="0.0" y="0.0" width="295" height="172"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oeW-Bf-4PS">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="172"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How handsome was he?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ie-Sx-cH3">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-rg-pSe">
+                        <rect key="frame" x="0.0" y="30" width="105" height="26"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="Browse">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="N4R-Tw-k2r">
+                        <rect key="frame" x="0.0" y="68" width="295" height="86"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SmC-Aq-wrW">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9Ie-Sx-cH3" firstAttribute="top" secondItem="oeW-Bf-4PS" secondAttribute="top" id="0oE-uQ-Q9o"/>
+                    <constraint firstItem="oeW-Bf-4PS" firstAttribute="centerX" secondItem="0fB-8y-1ey" secondAttribute="centerX" id="2Sz-YU-TLo"/>
+                    <constraint firstItem="oeW-Bf-4PS" firstAttribute="width" secondItem="DW1-rg-pSe" secondAttribute="width" multiplier="2.8" id="JMd-yl-pg7"/>
+                    <constraint firstItem="9Ie-Sx-cH3" firstAttribute="width" secondItem="oeW-Bf-4PS" secondAttribute="width" id="Lxy-zc-vuA"/>
+                    <constraint firstItem="oeW-Bf-4PS" firstAttribute="width" secondItem="0fB-8y-1ey" secondAttribute="width" id="V63-3x-cMp"/>
+                    <constraint firstItem="N4R-Tw-k2r" firstAttribute="centerX" secondItem="oeW-Bf-4PS" secondAttribute="centerX" id="X9w-B4-f1v"/>
+                    <constraint firstItem="oeW-Bf-4PS" firstAttribute="centerY" secondItem="0fB-8y-1ey" secondAttribute="centerY" id="cOo-QZ-eBm"/>
+                    <constraint firstItem="oeW-Bf-4PS" firstAttribute="height" secondItem="N4R-Tw-k2r" secondAttribute="height" multiplier="2" id="chB-FM-b7D"/>
+                    <constraint firstItem="DW1-rg-pSe" firstAttribute="top" secondItem="9Ie-Sx-cH3" secondAttribute="bottom" multiplier="1.4" id="ffq-E9-j7C"/>
+                    <constraint firstItem="N4R-Tw-k2r" firstAttribute="width" secondItem="oeW-Bf-4PS" secondAttribute="width" id="iBF-zU-obb"/>
+                    <constraint firstItem="oeW-Bf-4PS" firstAttribute="height" secondItem="9Ie-Sx-cH3" secondAttribute="height" multiplier="8" id="n1e-mz-YSB"/>
+                    <constraint firstItem="9Ie-Sx-cH3" firstAttribute="centerX" secondItem="oeW-Bf-4PS" secondAttribute="centerX" id="qKR-0T-im8"/>
+                    <constraint firstItem="DW1-rg-pSe" firstAttribute="leading" secondItem="9Ie-Sx-cH3" secondAttribute="leading" id="qLf-mV-7vS"/>
+                    <constraint firstItem="oeW-Bf-4PS" firstAttribute="height" secondItem="0fB-8y-1ey" secondAttribute="height" id="r1q-hf-EqE"/>
+                    <constraint firstItem="N4R-Tw-k2r" firstAttribute="top" secondItem="DW1-rg-pSe" secondAttribute="bottom" multiplier="1.2" id="t7a-tE-sEU"/>
+                    <constraint firstItem="oeW-Bf-4PS" firstAttribute="height" secondItem="DW1-rg-pSe" secondAttribute="height" multiplier="6.5" id="wEr-gu-K2e"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnBrowse" destination="DW1-rg-pSe" id="d1u-Rn-R6o"/>
+                <outlet property="collPics" destination="N4R-Tw-k2r" id="d3A-DT-MGe"/>
+            </connections>
+            <point key="canvasLocation" x="538.5" y="119.5"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -99,7 +99,9 @@
     }
     else
     {
-
+        cell.img.clipsToBounds = YES;
+        cell.img.layer.borderWidth=2.0f;
+        cell.img.layer.borderColor=[UIColor lightGrayColor].CGColor;
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectCollectionViewWithRow:)])
     {

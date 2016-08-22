@@ -113,6 +113,8 @@
 		0D79E2191D4A4F7E007E4B35 /* CreateTagsThirdStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79E2181D4A4F7E007E4B35 /* CreateTagsThirdStepService.m */; };
 		0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */; };
 		0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */; };
+		0D7BA23D1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BA23B1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m */; };
+		0D7BA23E1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7BA23C1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib */; };
 		0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7DD3441CFEEB5000B6C4B9 /* myView.xib */; };
 		0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */; };
 		0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD34A1CFF0F1500B6C4B9 /* LivingTagsViewController.m */; };
@@ -204,8 +206,6 @@
 		0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */; };
 		0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */; };
 		0DB9A45A1D4629CF007671E9 /* LivingTagsThirdStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */; };
-		0DB9A45E1D46638F007671E9 /* CreateTagsThirdStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A45C1D46638F007671E9 /* CreateTagsThirdStepCell.m */; };
-		0DB9A45F1D46638F007671E9 /* CreateTagsThirdStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB9A45D1D46638F007671E9 /* CreateTagsThirdStepCell.xib */; };
 		0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937F91CEB43970049BEC2 /* ModelListing.m */; };
 		0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937FC1CEB5F8E0049BEC2 /* LivingTagsListingService.m */; };
 		0DDC798E1CFDC4D200AD8011 /* pop_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDC798D1CFDC4D200AD8011 /* pop_map.png */; };
@@ -378,6 +378,9 @@
 		0D7BA2351D6B062100F2AD49 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		0D7BA23A1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsThirdStepCell.h; sourceTree = "<group>"; };
+		0D7BA23B1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsThirdStepCell.m; sourceTree = "<group>"; };
+		0D7BA23C1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTagsThirdStepCell.xib; sourceTree = "<group>"; };
 		0D7DD3441CFEEB5000B6C4B9 /* myView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myView.xib; sourceTree = "<group>"; };
 		0D7DD3451CFEEB5000B6C4B9 /* TMAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAnnotationView.h; sourceTree = "<group>"; };
 		0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAnnotationView.m; sourceTree = "<group>"; };
@@ -504,9 +507,6 @@
 		0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateCell.xib; sourceTree = "<group>"; };
 		0DB9A4581D4629CE007671E9 /* LivingTagsThirdStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsThirdStepViewController.h; sourceTree = "<group>"; };
 		0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsThirdStepViewController.m; sourceTree = "<group>"; };
-		0DB9A45B1D46638F007671E9 /* CreateTagsThirdStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsThirdStepCell.h; sourceTree = "<group>"; };
-		0DB9A45C1D46638F007671E9 /* CreateTagsThirdStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsThirdStepCell.m; sourceTree = "<group>"; };
-		0DB9A45D1D46638F007671E9 /* CreateTagsThirdStepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTagsThirdStepCell.xib; sourceTree = "<group>"; };
 		0DC937F81CEB43970049BEC2 /* ModelListing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelListing.h; sourceTree = "<group>"; };
 		0DC937F91CEB43970049BEC2 /* ModelListing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelListing.m; sourceTree = "<group>"; };
 		0DC937FB1CEB5F8E0049BEC2 /* LivingTagsListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsListingService.h; sourceTree = "<group>"; };
@@ -814,6 +814,9 @@
 		0D698D1C1CC8D79000F64745 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D7BA23A1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.h */,
+				0D7BA23B1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m */,
+				0D7BA23C1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib */,
 				0D2305441D54C76200115A34 /* SidePanelCell.h */,
 				0D2305451D54C76C00115A34 /* SidePanelCell.m */,
 				0D2305461D54C76C00115A34 /* SidePanelCell.xib */,
@@ -831,9 +834,6 @@
 				0D8AC8CB1D364F47001EFEBA /* CreateTagsSecondStepCell.h */,
 				0D8AC8CC1D364F47001EFEBA /* CreateTagsSecondStepCell.m */,
 				0D8AC8CD1D364F47001EFEBA /* CreateTagsSecondStepCell.xib */,
-				0DB9A45B1D46638F007671E9 /* CreateTagsThirdStepCell.h */,
-				0DB9A45C1D46638F007671E9 /* CreateTagsThirdStepCell.m */,
-				0DB9A45D1D46638F007671E9 /* CreateTagsThirdStepCell.xib */,
 				0D66C5711D59FEF100230261 /* DashboardCell.h */,
 				0D66C5721D59FEF100230261 /* DashboardCell.m */,
 				0D66C5731D59FEF100230261 /* DashboardCell.xib */,
@@ -1321,7 +1321,6 @@
 				0D922FF41CF8707D00EC1945 /* menu_icon.png in Resources */,
 				0D40A8441CE5BFA500D51A8E /* play_icon.png in Resources */,
 				0DA226741CD22E4700B3A5BC /* phone_icon.png in Resources */,
-				0DB9A45F1D46638F007671E9 /* CreateTagsThirdStepCell.xib in Resources */,
 				0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */,
 				0D0DDD0C1D11AAC600C0E9DD /* my_tag.png in Resources */,
 				0D0DDD091D11AAC600C0E9DD /* creat_tag.png in Resources */,
@@ -1370,6 +1369,7 @@
 				0D66C57C1D59FFED00230261 /* read_tag_dashbord.png in Resources */,
 				0D77D41C1CE4983900CF2C24 /* side_menu_image.png in Resources */,
 				0D066AD81D2A86B200C910E8 /* Roboto-Light.ttf in Resources */,
+				0D7BA23E1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib in Resources */,
 				0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */,
 				0D922FF71CF8707D00EC1945 /* pin_main.png in Resources */,
 				0D20AEB91D47B2FF00851994 /* CreateTagsCell.xib in Resources */,
@@ -1524,13 +1524,13 @@
 				0D9472B01D0AF74F00A85677 /* LivingTagsTemplateListController.m in Sources */,
 				0D80DF871CEDA30B000FE698 /* MyLivingTagsMapViewController.m in Sources */,
 				0D37314D1CD8A10B00EDC547 /* UIView+WebCacheOperation.m in Sources */,
-				0DB9A45E1D46638F007671E9 /* CreateTagsThirdStepCell.m in Sources */,
 				0D2305471D54C76C00115A34 /* SidePanelCell.m in Sources */,
 				0D764E711D1806AC00298BBE /* RecordViewController.m in Sources */,
 				0D698D321CC9026900F64745 /* LoggingViewController.m in Sources */,
 				0D698D261CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m in Sources */,
 				0D80DAFF1CFDA7E100B79C6B /* GroupPopupCell.m in Sources */,
 				0DF7CFA41D4F9A5900A28CA1 /* PreviewViewController.m in Sources */,
+				0D7BA23D1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m in Sources */,
 				0D3731491CD8A10B00EDC547 /* UIImage+MultiFormat.m in Sources */,
 				0D3731421CD8A10B00EDC547 /* SDWebImageDecoder.m in Sources */,
 				0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */,

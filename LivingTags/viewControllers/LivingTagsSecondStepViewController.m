@@ -192,9 +192,13 @@
             {
                 cellTags.lbl.text=@"What is his name?";
             }
-            else
+            else if([strGender isEqualToString:@"F"])
             {
                 cellTags.lbl.text=@"What is her name?";
+            }
+            else
+            {
+                cellTags.lbl.text=@"What is his/her name?";
             }
             cellTags.txtName.delegate=self;
             cellTags.txtName.autocapitalizationType = UITextAutocapitalizationTypeWords;
