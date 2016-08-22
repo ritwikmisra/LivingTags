@@ -197,6 +197,7 @@
                 cellTags.lbl.text=@"What is her name?";
             }
             cellTags.txtName.delegate=self;
+            cellTags.txtName.autocapitalizationType = UITextAutocapitalizationTypeWords;
             if (strName.length>0)
             {
                 cellTags.txtName.text=strName;

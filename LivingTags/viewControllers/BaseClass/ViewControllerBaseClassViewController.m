@@ -407,4 +407,13 @@
     [netwokActivity changeAnimatingStatusTo:NO];
 }
 
+
+#pragma mark
+#pragma mark button dashboard pressed
+#pragma mark
+
+-(IBAction)btnDashboardPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"segueDashboardFromOtherPages" sender:self];
+}
 @end

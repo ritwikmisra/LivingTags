@@ -49,15 +49,14 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     signIn.shouldFetchBasicProfile = YES;
     signIn.delegate = self;
     signIn.uiDelegate = self;
-//    txtEmail.text=@"sourav.hazra@appsbee.com";
-//    txtPassword.text=@"123456";
+    txtEmail.text=@"sourav.hazra@appsbee.com";
+    txtPassword.text=@"123456";
 }
 
 -(void)viewDidLayoutSubviews
 {
     [self.signInButton setStyle:kGIDSignInButtonStyleIconOnly];
-    [self.signInButton setColorScheme:kGIDSignInButtonColorSchemeDark];
-    constVwHeight.constant=3.0f;
+    [self.signInButton setColorScheme:kGIDSignInButtonColorSchemeLight];
 }
 
 -(void)viewWillAppear:(BOOL)animated
