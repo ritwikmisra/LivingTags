@@ -784,7 +784,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTn-mP-z2y">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUI-Et-hJD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="READ TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUI-Et-hJD">
                                 <rect key="frame" x="150" y="0.0" width="300" height="55"/>
                                 <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="16"/>
                                 <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -957,7 +957,7 @@
                                     <constraint firstAttribute="width" secondItem="qDi-su-bzc" secondAttribute="height" id="fPr-i6-o34"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY LIVING TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4l-ck-gct">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY TAGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4l-ck-gct">
                                 <rect key="frame" x="150" y="0.0" width="300" height="55"/>
                                 <fontDescription key="fontDescription" name="Cinzel-Regular" family="Cinzel" pointSize="16"/>
                                 <color key="textColor" red="0.38431372549019605" green="0.41176470588235292" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>

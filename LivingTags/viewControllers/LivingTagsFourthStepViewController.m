@@ -10,7 +10,6 @@
 #import "CreateTagsThirdStepCell.h"
 #import "CreateTagsCell.h"
 #import <CoreGraphics/CoreGraphics.h>
-#import "CKCalendarView.h"
 #import "CreateTagsThirdStepService.h"
 #import "PreviewViewController.h"
 #import <MediaPlayer/MPMoviePlayerController.h>
@@ -21,17 +20,17 @@
 #import "QRCodeViewController.h"
 #import "CustomPopUpViewController.h"
 #import "ModelImageUpload.h"
+#import "DatePickerViewController.h"
 
-@interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CKCalendarDelegate,UITextFieldDelegate,CustomPopUPDelegate,CollectionViewSelectionDelegate>
 
+@interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CustomPopUPDelegate,CollectionViewSelectionDelegate,SelectedDateDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
     IBOutlet UILabel *lbl3;
     IBOutlet UILabel *lbl4;
     UIImageView *img;
-    CKCalendarView *calendar;
-    NSString *strDate;
+    NSString *strDate1;
     NSMutableDictionary *dictPicDetails;
     BOOL isFirstImage,isSuccess;
     IBOutlet UIButton *btnPreview;
@@ -41,12 +40,10 @@
     int index;
     ModelImageUpload *objForTableView;
     CreateTagsThirdStepCell *cellDelegate;
+    DatePickerViewController *datePicker;
+
 }
 
-@property(nonatomic, weak) CKCalendarView *calendarCustom;
-@property(nonatomic, strong) NSDateFormatter *dateFormatter;
-@property(nonatomic, strong) NSDate *minimumDate;
-@property(nonatomic, strong) NSArray *disabledDates;
 
 @end
 
@@ -71,19 +68,6 @@
     tblFourthStep.separatorStyle=UITableViewCellSeparatorStyleNone;
     [tblFourthStep setBounces:NO];
     appDel.arrCreateTagsUploadImage=[[NSMutableArray alloc]init];
-    calendar = [[CKCalendarView alloc] init];
-    self.calendarCustom = calendar;
-    calendar.delegate = self;
-    
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    self.minimumDate = [self.dateFormatter dateFromString:@"1950-11-01"];
-    
-    calendar.onlyShowCurrentMonth = NO;
-    calendar.adaptHeightToNumberOfWeeksInMonth = YES;
-    
-    calendar.frame = CGRectMake(0, 30, [[UIScreen mainScreen] bounds].size.width,[[UIScreen mainScreen] bounds].size.height);
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     dictPicDetails=[[NSMutableDictionary alloc]init];
     index=0;
 }
@@ -121,10 +105,6 @@
     lbl2.clipsToBounds=YES;
 }
 
-- (void)localeDidChange
-{
-    [self.calendarCustom setLocale:[NSLocale currentLocale]];
-}
 
 
 #pragma mark
@@ -354,7 +334,7 @@
 
 -(void)btnCalenderPressed:(id)sender
 {
-    [self.view addSubview:calendar];
+    [self showDatePickerWithTextFieldTag:[sender tag]];
 }
 
 -(void)btnRecordingPressed:(id)sender
@@ -439,62 +419,6 @@
     }
 }
 
-#pragma mark
-#pragma mark CKCALENDER METHODS
-#pragma mark
-
-- (void)calendar:(CKCalendarView *)calendar configureDateItem:(CKDateItem *)dateItem forDate:(NSDate *)date
-{
-    // TODO: play with the coloring if we want to...
-    if ([self dateIsDisabled:date])
-    {
-        dateItem.backgroundColor = [UIColor redColor];
-        dateItem.textColor = [UIColor whiteColor];
-    }
-}
-
-- (BOOL)calendar:(CKCalendarView *)calendar willSelectDate:(NSDate *)date {
-    return ![self dateIsDisabled:date];
-}
-
-- (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date
-{
-    strDate=[self.dateFormatter stringFromDate:date];
-    [dictPicDetails setObject:strDate forKey:@"3"];
-    [self.calendarCustom removeFromSuperview];
-    [self updateTableView:4];
-    [tblFourthStep reloadData];
-}
-
-- (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
-    if ([date laterDate:self.minimumDate] == date)
-    {
-        self.calendarCustom.backgroundColor = [UIColor grayColor];
-        return YES;
-    }
-    else
-    {
-        self.calendarCustom.backgroundColor = [UIColor grayColor];
-        return NO;
-    }
-}
-
-- (void)calendar:(CKCalendarView *)calendar didLayoutInRect:(CGRect)frame
-{
-    NSLog(@"calendar layout: %@", NSStringFromCGRect(frame));
-}
-
-- (BOOL)dateIsDisabled:(NSDate *)date
-{
-    for (NSDate *disabledDate in self.disabledDates)
-    {
-        if ([disabledDate isEqualToDate:date])
-        {
-            return YES;
-        }
-    }
-    return NO;
-}
 
 #pragma mark
 #pragma mark textfield delegates
@@ -699,6 +623,8 @@
     customPopUpController=nil;
     cellDelegate.delegate=nil;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [datePicker removeFromParentViewController];
+    datePicker=nil;
 }
 
 #pragma mark
@@ -784,6 +710,28 @@
     [tblFourthStep reloadData];
 }
 
+#pragma mark
+#pragma mark Date PIcker appear and delegate
+#pragma mark
 
+-(void)showDatePickerWithTextFieldTag:(NSInteger)i
+{
+    datePicker=[[DatePickerViewController alloc]initWithNibName:@"DatePickerViewController" bundle:nil];
+    datePicker.textfieldTag=i;
+    datePicker.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:datePicker.view];
+    [self addChildViewController:datePicker];
+    [datePicker didMoveToParentViewController:self];
+    datePicker.delegate=self;
+    
+}
+
+-(void)selectedDateWithValue:(NSString *)strDate withTag:(NSInteger)i
+{
+    strDate1=strDate;
+    [dictPicDetails setObject:strDate1 forKey:@"3"];
+    [self updateTableView:4];
+    [tblFourthStep reloadData];
+}
 
 @end

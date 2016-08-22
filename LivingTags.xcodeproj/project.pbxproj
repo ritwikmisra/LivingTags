@@ -111,6 +111,8 @@
 		0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D77F6AF1CD736AD00671159 /* YTPlayerView.m */; };
 		0D77F6B41CD7874C00671159 /* ProfileGetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D77F6B31CD7874C00671159 /* ProfileGetService.m */; };
 		0D79E2191D4A4F7E007E4B35 /* CreateTagsThirdStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79E2181D4A4F7E007E4B35 /* CreateTagsThirdStepService.m */; };
+		0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */; };
+		0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */; };
 		0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7DD3441CFEEB5000B6C4B9 /* myView.xib */; };
 		0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */; };
 		0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD34A1CFF0F1500B6C4B9 /* LivingTagsViewController.m */; };
@@ -373,6 +375,9 @@
 		0D77F6B31CD7874C00671159 /* ProfileGetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileGetService.m; sourceTree = "<group>"; };
 		0D79E2171D4A4F7E007E4B35 /* CreateTagsThirdStepService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsThirdStepService.h; sourceTree = "<group>"; };
 		0D79E2181D4A4F7E007E4B35 /* CreateTagsThirdStepService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsThirdStepService.m; sourceTree = "<group>"; };
+		0D7BA2351D6B062100F2AD49 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		0D7DD3441CFEEB5000B6C4B9 /* myView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myView.xib; sourceTree = "<group>"; };
 		0D7DD3451CFEEB5000B6C4B9 /* TMAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAnnotationView.h; sourceTree = "<group>"; };
 		0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAnnotationView.m; sourceTree = "<group>"; };
@@ -854,6 +859,9 @@
 				0D933B541D07056A00072DE1 /* ImageHoverController.h */,
 				0D933B551D07056A00072DE1 /* ImageHoverController.m */,
 				0D933B561D07056A00072DE1 /* ImageHoverController.xib */,
+				0D7BA2351D6B062100F2AD49 /* DatePickerViewController.h */,
+				0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */,
+				0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */,
 			);
 			path = CustomDelegate;
 			sourceTree = "<group>";
@@ -1362,6 +1370,7 @@
 				0D66C57C1D59FFED00230261 /* read_tag_dashbord.png in Resources */,
 				0D77D41C1CE4983900CF2C24 /* side_menu_image.png in Resources */,
 				0D066AD81D2A86B200C910E8 /* Roboto-Light.ttf in Resources */,
+				0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */,
 				0D922FF71CF8707D00EC1945 /* pin_main.png in Resources */,
 				0D20AEB91D47B2FF00851994 /* CreateTagsCell.xib in Resources */,
 				0DA226731CD22E4700B3A5BC /* mail_icon1.png in Resources */,
@@ -1501,6 +1510,7 @@
 				0D20AEB81D47B2FF00851994 /* CreateTagsCell.m in Sources */,
 				0D77F6B41CD7874C00671159 /* ProfileGetService.m in Sources */,
 				0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */,
+				0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */,
 				0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */,
 				0D901B9A1D3E57CD002B6735 /* TemplateSelectionService.m in Sources */,
 				0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */,

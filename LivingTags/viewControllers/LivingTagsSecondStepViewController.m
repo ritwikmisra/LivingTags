@@ -15,8 +15,9 @@
 #import "CreateTagsUploadProfilePicService.h"
 #import "CreateTagsUploadCoverPicService.h"
 #import "CustomPopUpViewController.h"
+#import "DatePickerViewController.h"
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,CKCalendarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomPopUPDelegate>
+@interface LivingTagsSecondStepViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate,CKCalendarDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomPopUPDelegate,SelectedDateDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -24,7 +25,7 @@
     IBOutlet UILabel *lbl4;
     IBOutlet UITableView *tblSecondSteps;
     NSMutableArray *arrStatus;
-    NSString *strGender,*strDateFrom,*strDateTo,*strName,*strMemorialQuote;
+    NSString *strGender,*strDateFrom,*strDateTo,*strName,*strMemorialQuote,*strDateFromServer,*strDateToServer;
     CKCalendarView *calendar;
     int textTag,btnUserPicTag;
     UIImageView *img;
@@ -40,6 +41,7 @@
     NSString *strCat,*strPrimaryLocation,*strSecondLocation,*strThirdLocation,*strLatitude1,*strLongitude1,*strLatitude2,*strLongitude2,*strLatitude3,*strLongitude3;
     BOOL isPrimaryLocationRemove,isSecondLocation,isThirdLocation,isProfileSuccess,isCoverSuccess,isSecondLocationSkip,isThirdLocationSkip;
     CustomPopUpViewController *customPopUP;
+    DatePickerViewController *datePicker;
 }
 
 @property(nonatomic, weak) CKCalendarView *calendarCustom;
@@ -472,7 +474,7 @@
     {
         //[self setTableviewContentOffsetWithView:@"textfield"];
         [textField resignFirstResponder];
-        [self.view addSubview:calendar];
+        [self showDatePickerWithTextFieldTag:textField.tag];
     }
 }
 
@@ -1354,6 +1356,59 @@
     [super viewWillDisappear:animated];
     [customPopUP removeFromParentViewController];
     customPopUP=nil;
+    [datePicker removeFromParentViewController];
+    datePicker=nil;
+}
+
+#pragma mark
+#pragma mark Date PIcker appear and delegate
+#pragma mark
+
+-(void)showDatePickerWithTextFieldTag:(NSInteger)i
+{
+    datePicker=[[DatePickerViewController alloc]initWithNibName:@"DatePickerViewController" bundle:nil];
+    datePicker.textfieldTag=i;
+    datePicker.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:datePicker.view];
+    [self addChildViewController:datePicker];
+    [datePicker didMoveToParentViewController:self];
+    datePicker.delegate=self;
+}
+
+-(void)selectedDateWithValue:(NSString *)strDate withTag:(NSInteger)i
+{
+    NSLog(@"%d",i);
+    if (i==3)
+    {
+         strDateFrom=strDate;
+         [self checkDatesFrom];
+    }
+    else
+    {
+        strDateTo=strDate;
+      //  [self checkDatesTo];
+        if (strDateFrom.length>0 && strDateTo.length>0)
+        {
+            NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init] ;
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"] ;
+            NSDate *date1 = [dateFormatter dateFromString:strDateFrom] ;
+            NSDate *date2 = [dateFormatter dateFromString:strDateTo] ;
+            NSLog(@"date1=%@ date2=%@",date1,date2) ;
+            NSTimeInterval interval1  = [date1 timeIntervalSince1970] ;
+            NSTimeInterval interval2  = [date2 timeIntervalSince1970] ;
+            float diff=interval2-interval1;
+            if (diff>=0)
+            {
+                [self checkDatesTo];
+                [self updateTableView:3];
+            }
+            else
+            {
+                [self displayErrorWithMessage:@"Date of death should be more than the death of birth.."];
+            }
+        }
+    }
+    [tblSecondSteps reloadData];
 }
 
 @end

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatePickerViewController">
+            <connections>
+                <outlet property="btnDone" destination="vcZ-Bf-Ebz" id="R1N-eF-RJW"/>
+                <outlet property="datePicker" destination="aAi-9P-TKo" id="0Fe-k3-gdY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W49-8j-I9H">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aAi-9P-TKo">
+                    <rect key="frame" x="27" y="180" width="546" height="240"/>
+                    <date key="date" timeIntervalSinceReferenceDate="493553304.72925001">
+                        <!--2016-08-22 10:08:24 +0000-->
+                    </date>
+                    <date key="minimumDate" timeIntervalSinceReferenceDate="-1922880200">
+                        <!--1940-01-26 10:36:40 +0000-->
+                    </date>
+                    <date key="maximumDate" timeIntervalSinceReferenceDate="493556400">
+                        <!--2016-08-22 11:00:00 +0000-->
+                    </date>
+                </datePicker>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcZ-Bf-Ebz">
+                    <rect key="frame" x="164" y="441" width="273" height="40"/>
+                    <color key="backgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
+                    <state key="normal" title="DONE">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnDoneSelected:" destination="-1" eventType="touchUpInside" id="GJq-0l-LrX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="W49-8j-I9H" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="2an-2C-fcm"/>
+                <constraint firstItem="vcZ-Bf-Ebz" firstAttribute="centerX" secondItem="aAi-9P-TKo" secondAttribute="centerX" id="6px-Au-YX0"/>
+                <constraint firstItem="W49-8j-I9H" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="B7S-FH-0Kd"/>
+                <constraint firstItem="W49-8j-I9H" firstAttribute="width" secondItem="aAi-9P-TKo" secondAttribute="width" multiplier="1.1" id="F21-jH-5Z5"/>
+                <constraint firstItem="vcZ-Bf-Ebz" firstAttribute="top" secondItem="aAi-9P-TKo" secondAttribute="bottom" multiplier="1.05" id="eCp-UM-3QS"/>
+                <constraint firstItem="W49-8j-I9H" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="hro-yc-IJR"/>
+                <constraint firstItem="W49-8j-I9H" firstAttribute="height" secondItem="aAi-9P-TKo" secondAttribute="height" multiplier="2.5" id="iM7-I0-lXI"/>
+                <constraint firstItem="aAi-9P-TKo" firstAttribute="height" secondItem="vcZ-Bf-Ebz" secondAttribute="height" multiplier="6" id="pbO-Kb-8zJ"/>
+                <constraint firstItem="aAi-9P-TKo" firstAttribute="centerX" secondItem="W49-8j-I9H" secondAttribute="centerX" id="t4A-72-jfJ"/>
+                <constraint firstItem="W49-8j-I9H" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="wx3-Qk-DiV"/>
+                <constraint firstItem="aAi-9P-TKo" firstAttribute="width" secondItem="vcZ-Bf-Ebz" secondAttribute="width" multiplier="2" id="xfZ-mO-UDu"/>
+                <constraint firstItem="aAi-9P-TKo" firstAttribute="centerY" secondItem="W49-8j-I9H" secondAttribute="centerY" id="yN8-9b-IoT"/>
+            </constraints>
+            <point key="canvasLocation" x="256" y="256"/>
+        </view>
+    </objects>
+</document>
