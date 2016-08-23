@@ -295,14 +295,15 @@
                 {
                     cellTags=[[[NSBundle mainBundle]loadNibNamed:@"CreateTagsSecondStepCell" owner:self options:nil]objectAtIndex:4];
                 }
-                if ([strGender isEqualToString:@"M"])
+                /*if ([strGender isEqualToString:@"M"])
                 {
                     cellTags.lbl.text=@"What is his location?";
                 }
                 else
                 {
                     cellTags.lbl.text=@"What is her location?";
-                }
+                }*/
+                cellTags.lbl.text=@"Cemetary location..";
                 cellTags.btnGetLocation.tag=indexPath.row;
                 [cellTags.btnGetLocation addTarget:self action:@selector(btnGetLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
             }
@@ -979,7 +980,16 @@
 {
     UIImagePickerController *picker=[[UIImagePickerController alloc] init];
     picker.delegate=self;
-    picker.allowsEditing=NO;
+    if (btnUserPicTag==2)
+    {
+        picker.allowsEditing=YES;
+
+    }
+    else
+    {
+        picker.allowsEditing=NO;
+
+    }
     picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:picker animated:YES completion:^{
         
@@ -993,7 +1003,16 @@
         UIImagePickerController *picker=[[UIImagePickerController alloc]init] ;
         picker.delegate=self ;
         picker.sourceType=UIImagePickerControllerSourceTypeCamera ;
-        picker.allowsEditing=NO ;
+        if (btnUserPicTag==2)
+        {
+            picker.allowsEditing=YES ;
+
+        }
+        else
+        {
+            picker.allowsEditing=NO ;
+
+        }
         [self presentViewController:picker animated:YES completion:nil] ;
     }
     else
@@ -1007,7 +1026,7 @@
     NSLog(@"%d",btnUserPicTag);
     if(btnUserPicTag==2)
     {
-        imgChosen=info[UIImagePickerControllerOriginalImage] ;
+        imgChosen=info[UIImagePickerControllerEditedImage] ;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[CreateTagsUploadProfilePicService service]callCreateTagsUploadProfileServiceWithLivingTagsID:self.strTemplateID user_ID:appDel.objUser.strUserID image:imgChosen withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                 isProfileSuccess=isError;

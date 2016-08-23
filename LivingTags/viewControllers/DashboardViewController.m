@@ -10,8 +10,9 @@
 #import "ProfileGetService.h"
 #import "DashboardCell.h"
 #import "SlideMenuController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>
 {
     IBOutlet UITableView *tblDashboard;
     NSMutableArray *arrPics;
@@ -28,6 +29,7 @@
     tblDashboard.backgroundColor=[UIColor clearColor];
     tblDashboard.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblDashboard.bounces=NO;
+    [self callLocationManager];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -127,4 +129,48 @@
         [self performSegueWithIdentifier:@"segueDashBoardToReadTags" sender:self];
     }
 }
+
+#pragma mark
+#pragma mark CLLOCATION METHODS
+#pragma mark
+
+-(void)callLocationManager
+{
+    appDel.locationManager=[[CLLocationManager alloc]init];
+    appDel.geoCoder=[[CLGeocoder alloc]init] ;
+    appDel.locationManager.delegate=self;
+    appDel.locationManager.desiredAccuracy=kCLLocationAccuracyBest ;
+    if ([appDel.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+    {
+        [appDel.locationManager requestWhenInUseAuthorization];
+    }
+    [appDel.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    [appDel.locationManager stopUpdatingLocation];
+    appDel.location=newLocation;
+    appDel.center=newLocation.coordinate;
+    NSLog(@"%f,%f",appDel.center.latitude,appDel.center.longitude);
+    NSLog(@"Resolving The Address");
+    [appDel.geoCoder reverseGeocodeLocation:appDel.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSLog(@"Found placemarks:%@ error :%@",appDel.placemark,error);
+        if(error==nil && [placemarks  count]>0)
+        {
+            appDel.placemark=[placemarks objectAtIndex:0] ;
+            //            NSString *strAddress=[NSString stringWithFormat:@"%@ \n%@ \n%@",placemark.postalCode,placemark.administrativeArea,placemark.country];
+            
+            //NSLog(@"%@:%@:%@:%@:%@",strAddress,placemark.country,placemark.administrativeArea,placemark.subAdministrativeArea,placemark.subLocality) ;
+            NSString *str1=[NSString stringWithFormat:@"%@,%@:%@",appDel.placemark.subAdministrativeArea,appDel.placemark.country,appDel.placemark.administrativeArea];
+            NSLog(@"%@",str1);
+        }
+        else
+        {
+            NSLog(@"%@", error.debugDescription);
+        }
+    }];
+}
+
+
 @end

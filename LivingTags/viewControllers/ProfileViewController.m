@@ -236,6 +236,7 @@
             cellA.btnSave.hidden=YES;
             cellA.vwEditName.hidden=YES;
             cellA.vwEditLocation.hidden=YES;
+            cellA.imgCamera.hidden=YES;
         }
         else
         {
@@ -244,7 +245,7 @@
             cellA.btnSave.hidden=NO;
             cellA.vwEditName.hidden=NO;
             cellA.vwEditLocation.hidden=NO;
-
+            cellA.imgCamera.hidden=NO;
         }
         cell=cellA;
     }
@@ -750,11 +751,11 @@
         [self displayErrorWithMessage:@"Please enter a name."];
         return NO;
     }
-    if (strPhoneNumber.length<10)
+    /*if (strPhoneNumber.length<10)
     {
         [self displayErrorWithMessage:@"Please enter a proper phone number."];
         return NO;
-    }
+    }*/
     if (strVideoLink.length>0)
     {
         if (strVideoID.length==0)

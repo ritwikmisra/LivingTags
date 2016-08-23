@@ -56,52 +56,9 @@ static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqo
     [self updateInterfaceWithReachability:wifiReachability];
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
-    [self callLocationManager];
     return YES;
 }
 
-#pragma mark
-#pragma mark CLLOCATION METHODS
-#pragma mark
-
--(void)callLocationManager
-{
-    _locationManager=[[CLLocationManager alloc]init];
-    _geoCoder=[[CLGeocoder alloc]init] ;
-    _locationManager.delegate=self;
-    _locationManager.desiredAccuracy=kCLLocationAccuracyBest ;
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
-    {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    [self.locationManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    [_locationManager stopUpdatingLocation];
-    _location=newLocation;
-    _center.latitude=_location.coordinate.latitude;
-    _center.longitude=_location.coordinate.longitude;
-    NSLog(@"%f,%f",_center.latitude,_center.longitude);
-    NSLog(@"Resolving The Address");
-    [_geoCoder reverseGeocodeLocation:_location completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog(@"Found placemarks:%@ error :%@",_placemark,error);
-        if(error==nil && [placemarks  count]>0)
-        {
-            _placemark=[placemarks objectAtIndex:0] ;
-            //            NSString *strAddress=[NSString stringWithFormat:@"%@ \n%@ \n%@",placemark.postalCode,placemark.administrativeArea,placemark.country];
-            
-            //NSLog(@"%@:%@:%@:%@:%@",strAddress,placemark.country,placemark.administrativeArea,placemark.subAdministrativeArea,placemark.subLocality) ;
-            NSString *str1=[NSString stringWithFormat:@"%@,%@:%@",_placemark.subAdministrativeArea,_placemark.country,_placemark.administrativeArea];
-            NSLog(@"%@",str1);
-        }
-        else
-        {
-            NSLog(@"%@", error.debugDescription);
-        }
-    }];
-}
 #pragma mark
 #pragma mark reachability helping methods
 #pragma mark

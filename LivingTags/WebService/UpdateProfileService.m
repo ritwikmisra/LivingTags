@@ -102,6 +102,7 @@
                              appDel.objLivingTags=[[ModelLivingTagsViewedAndCreated alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"livingtag"]];
 //                           SlideMenuController *slideMenu=[SlideMenuController getSlideMenuInstance];
 //                             [slideMenu.tblSidePanel reloadData];
+                             appDel.isProfileValueUpdated = YES;
                              completionHandler([responseDict objectForKey:@"response"],NO,nil);
                          }
                          else

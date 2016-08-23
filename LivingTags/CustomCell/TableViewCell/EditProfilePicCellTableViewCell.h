@@ -27,6 +27,7 @@
 @property(nonatomic,strong)IBOutlet UITextField *txtName;
 @property(nonatomic,strong)IBOutlet UILabel *lblPlaceHolders;
 @property(nonatomic,strong)IBOutlet YTPlayerView *vwPlayer;
+@property(nonatomic,strong)IBOutlet UIImageView *imgCamera;
 
 ///// view edit 
 @property(nonatomic,strong)IBOutlet UIView *vwEditName;

@@ -56,10 +56,16 @@
                             <constraint firstAttribute="height" constant="100" id="eDd-M7-w0f"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_with-camera_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="geH-QN-g77">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="border_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="geH-QN-g77">
                         <rect key="frame" x="147" y="69" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="geH-QN-g77" secondAttribute="height" multiplier="15:15" id="rYt-Px-MW4"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="avl-cl-SGT">
+                        <rect key="frame" x="217" y="69" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="avl-cl-SGT" secondAttribute="height" id="AAk-aF-CIt"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQG-B5-86z">
@@ -144,6 +150,7 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="geH-QN-g77" firstAttribute="height" secondItem="avl-cl-SGT" secondAttribute="height" multiplier="4" id="0rH-aT-r4v"/>
                     <constraint firstItem="QYQ-Bs-B63" firstAttribute="centerY" secondItem="ddu-Ao-6Fz" secondAttribute="centerY" id="2Gf-sn-tVl"/>
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="bottom" secondItem="3RW-17-ppT" secondAttribute="bottom" multiplier="1.02" id="3P5-8v-zWf"/>
                     <constraint firstItem="C9V-Px-mZe" firstAttribute="width" secondItem="LV5-2L-D5x" secondAttribute="width" multiplier="1.5" id="5op-Fj-psh"/>
@@ -169,6 +176,7 @@
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="Gsw-02-Ty0"/>
                     <constraint firstItem="Meb-Nu-vEm" firstAttribute="centerY" secondItem="geH-QN-g77" secondAttribute="centerY" id="HD4-cU-iMk"/>
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="height" secondItem="C9V-Px-mZe" secondAttribute="height" multiplier="2.1" id="HIU-xW-SaO"/>
+                    <constraint firstItem="avl-cl-SGT" firstAttribute="top" secondItem="geH-QN-g77" secondAttribute="top" id="Hvg-wH-PLZ"/>
                     <constraint firstItem="zzX-HC-A3t" firstAttribute="centerX" secondItem="ygG-CO-QVw" secondAttribute="centerX" id="K1Y-wD-lbq"/>
                     <constraint firstItem="LV5-2L-D5x" firstAttribute="centerX" secondItem="C9V-Px-mZe" secondAttribute="centerX" id="KPG-JS-1Gv"/>
                     <constraint firstItem="XNT-u4-siy" firstAttribute="height" secondItem="3JR-ew-6QI" secondAttribute="height" id="Mpj-kT-PKK"/>
@@ -214,6 +222,7 @@
                     <constraint firstItem="1bP-FZ-otZ" firstAttribute="centerX" secondItem="ddu-Ao-6Fz" secondAttribute="centerX" id="sdt-dv-lVx"/>
                     <constraint firstItem="zzX-HC-A3t" firstAttribute="height" secondItem="ygG-CO-QVw" secondAttribute="height" id="vtv-Ml-lcf"/>
                     <constraint firstItem="C9V-Px-mZe" firstAttribute="width" secondItem="ygG-CO-QVw" secondAttribute="width" multiplier="5" id="wKa-5w-8xn"/>
+                    <constraint firstItem="geH-QN-g77" firstAttribute="trailing" secondItem="avl-cl-SGT" secondAttribute="trailing" multiplier="1.02" id="wKz-dc-7Jb"/>
                     <constraint firstItem="TLk-pT-FJa" firstAttribute="width" secondItem="LV5-2L-D5x" secondAttribute="width" id="yLU-NR-gFL"/>
                     <constraint firstItem="aIB-t7-Y2S" firstAttribute="bottom" secondItem="OQG-B5-86z" secondAttribute="bottom" multiplier="1.02" id="z2Q-qP-8S5"/>
                 </constraints>
@@ -225,6 +234,7 @@
                 <outlet property="btnProfilePicUpdate" destination="oNd-ET-3QL" id="nA9-xC-kk9"/>
                 <outlet property="btnSave" destination="zzX-HC-A3t" id="B0X-YY-WWX"/>
                 <outlet property="constHeight" destination="eDd-M7-w0f" id="Hmb-vD-eEx"/>
+                <outlet property="imgCamera" destination="avl-cl-SGT" id="TDA-Di-rDJ"/>
                 <outlet property="imgProfile" destination="Meb-Nu-vEm" id="rnJ-DF-TAv"/>
                 <outlet property="lblLocation" destination="k4r-jx-tdi" id="FHa-je-Kja"/>
                 <outlet property="lblMemoriesCreated" destination="1bP-FZ-otZ" id="BFi-b0-8Xh"/>
@@ -537,7 +547,8 @@
     <resources>
         <image name="bg_image" width="1242" height="2208"/>
         <image name="bg_img.png" width="1242" height="483"/>
-        <image name="circle_with-camera_icon.png" width="436" height="436"/>
+        <image name="border_2.png" width="437" height="437"/>
+        <image name="camera.png" width="160" height="160"/>
         <image name="edit_icon1.png" width="187" height="63"/>
         <image name="mail_icon1.png" width="30" height="17"/>
         <image name="save_icon1.png" width="187" height="63"/>

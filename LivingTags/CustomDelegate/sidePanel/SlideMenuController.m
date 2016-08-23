@@ -173,8 +173,6 @@
         appDel.isProfileValueUpdated = NO;
         //        }
         
-        
-        
         return cell;
     }
     
