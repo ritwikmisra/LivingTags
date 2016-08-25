@@ -49,8 +49,10 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     signIn.shouldFetchBasicProfile = YES;
     signIn.delegate = self;
     signIn.uiDelegate = self;
-    txtEmail.text=@"sourav.hazra@appsbee.com";
-    txtPassword.text=@"123456";
+    txtEmail.returnKeyType=UIReturnKeyNext;
+    txtPassword.returnKeyType=UIReturnKeyDone;
+//    txtEmail.text=@"sourav.hazra@appsbee.com";
+//    txtPassword.text=@"123456";
 }
 
 -(void)viewDidLayoutSubviews
@@ -219,7 +221,6 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     {
         [self viewUp];
     }
-    
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -229,10 +230,19 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-   if (isViewUp)
+    if (textField==txtEmail)
     {
-        [self viewDown];
+        [txtEmail resignFirstResponder];
+        [txtPassword becomeFirstResponder];
+    }
+    if (textField==txtPassword)
+    {
         [textField resignFirstResponder];
+        if (isViewUp)
+        {
+            [self viewDown];
+            [textField resignFirstResponder];
+        }
     }
     return YES;
 }

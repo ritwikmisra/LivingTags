@@ -106,19 +106,34 @@
     {
         [self viewUp];
     }
+    if (textField.tag<arrNames.count-1)
+    {
+        textField.returnKeyType=UIReturnKeyNext;
+    }
+    else
+    {
+        textField.returnKeyType=UIReturnKeyDone;
+    }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-
+    ////successful QRCODE generation response
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (isViewUp)
+    if (textField.tag==arrNames.count-1)
     {
-        [textField resignFirstResponder];
-        [self viewDown];
+        if (isViewUp)
+        {
+            [textField resignFirstResponder];
+            [self viewDown];
+        }
+    }
+    else
+    {
+        
     }
     return YES;
 }
