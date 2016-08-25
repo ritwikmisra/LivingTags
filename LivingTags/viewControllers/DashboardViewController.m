@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //arrPics=[[NSMutableArray alloc]initWithObjects:@"create_tag_dashbord",@"my_tag_dashbord",@"read_tag_dashbord",nil];
-    arrPics=[[NSMutableArray alloc]initWithObjects:@"read_tag_dashbord",@"create_tag_dashbord",@"my_tag_dashbord",nil];
+    arrPics=[[NSMutableArray alloc]initWithObjects:@"tag_it_icon1",@"my_tag_icon1",@"mapped_tag_icon1",nil];
     tblDashboard.backgroundColor=[UIColor clearColor];
     tblDashboard.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblDashboard.bounces=NO;
@@ -74,17 +74,17 @@
 {
     if (___isIphone6Plus)
     {
-        return 180.0f;
+        return 170.0f;
     }
     if (___isIphone6)
     {
-        return 180.0f;
+        return 150.0f;
     }
     if (___isIphone5_5s)
     {
-        return 150.0f;
+        return 135.0f;
     }
-    return 130.0f;
+    return 110.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -107,14 +107,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==1)
+    if (indexPath.row==0)
     {
-        appDel.isCreateTagTappedFromDashboard = YES;
-        appDel.isMyTagTappedFromDashboard = NO;
-        appDel.isReadTagTappedFromDashboard = NO;
-        [self performSegueWithIdentifier:@"segueDashboardToTemplate" sender:self];
+//        appDel.isCreateTagTappedFromDashboard = YES;
+//        appDel.isMyTagTappedFromDashboard = NO;
+//        appDel.isReadTagTappedFromDashboard = NO;
+        [self performSegueWithIdentifier:@"segueDashboardToTagIT" sender:self];
     }
-    if (indexPath.row==2)
+    /*if (indexPath.row==2)
     {
         appDel.isMyTagTappedFromDashboard = YES;
         appDel.isCreateTagTappedFromDashboard = NO;
@@ -127,7 +127,7 @@
         appDel.isMyTagTappedFromDashboard = NO;
         appDel.isCreateTagTappedFromDashboard = NO;
         [self performSegueWithIdentifier:@"segueDashBoardToReadTags" sender:self];
-    }
+    }*/
 }
 
 #pragma mark
@@ -170,6 +170,20 @@
             NSLog(@"%@", error.debugDescription);
         }
     }];
+}
+
+#pragma mark
+#pragma mark IBACTIONS
+#pragma mark
+
+-(IBAction)btnQRCODEPressed:(id)sender
+{
+    
+}
+
+-(IBAction)btnShoppingCartPressed:(id)sender
+{
+    
 }
 
 
