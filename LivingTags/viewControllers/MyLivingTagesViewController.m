@@ -20,11 +20,15 @@
     IBOutlet UITableView *tblTags;
     IBOutlet UIView *vwList;
     NSMutableArray *arrNames,*arrList,*arrMaps;
-    BOOL isScrollDown;
+    BOOL isScrollDown,isCreated;
     int i;
     MyLivingTagsMapViewController *master;
     BOOL isLazyLoading;
     ModelListing *objSegue;
+    IBOutlet UIView *vwCreatedTags;
+    IBOutlet UIView *vwPendingTags;
+    IBOutlet UIButton *btnCreatedTags;
+    IBOutlet UIButton *btnPendingTags;
 }
 @end
 
@@ -40,6 +44,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    isCreated=YES;
+    vwCreatedTags.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
+    [btnCreatedTags setTitleColor:[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1] forState:UIControlStateNormal];
+    vwPendingTags.backgroundColor=[UIColor clearColor];
+    [btnPendingTags setTitleColor:[UIColor colorWithRed:142/255.0f green:142/255.0f blue:142/255.0f alpha:1] forState:UIControlStateNormal];
     tblTags.delegate=self;
     tblTags.dataSource=self;
     i=0;
@@ -47,7 +56,7 @@
     arrMaps=[[NSMutableArray alloc]init];
     NSLog(@"%@",arrList);
     isLazyLoading=YES;
-    [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i name:txtSearch.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+    /*[[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i name:txtSearch.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
             [self displayErrorWithMessage:strMsg];
@@ -76,7 +85,7 @@
             }
             [tblTags reloadData];
         }
-    }];
+    }];*/
 }
 - (void)didReceiveMemoryWarning
 {
@@ -102,7 +111,7 @@
     UITextField *textfield=(id)sender;
     if (textfield.text.length==0)
     {
-        [self callWebService];
+        //[self callWebService];
     }
 }
 
@@ -123,7 +132,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return arrNames.count;
+    //return arrNames.count;
+    if (isCreated==YES)
+    {
+        return 7;
+    }
+    return 4;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -137,34 +151,69 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LivingTagsCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
-    if (!cell)
+    if (isCreated==YES)
     {
-        cell=[[[NSBundle mainBundle]loadNibNamed:@"LivingTagsCell" owner:self options:nil]objectAtIndex:0];
+        LivingTagsCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
+        if (!cell)
+        {
+            cell=[[[NSBundle mainBundle]loadNibNamed:@"LivingTagsCell" owner:self options:nil]objectAtIndex:0];
+        }
+//        NSMutableDictionary *dic=[arrNames objectAtIndex:indexPath.row];
+//        ModelListing *obj=[[ModelListing alloc] initWithDictionary:dic];
+//        cell.lblName.text=obj.strName;
+//        cell.lblDate.text=[NSString stringWithFormat:@"Created on %@",obj.strCreated];
+//        cell.lblLocation.text=obj.strAddress1;
+        /*NSURL *url=[NSURL URLWithString:obj.strPicURI];
+         dispatch_async(dispatch_get_main_queue(), ^{
+         [cell.imgTag sd_setImageWithURL:url
+         placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+         options:SDWebImageHighPriority
+         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+         if (cell.actIndicatorTag)
+         {
+         [cell.actIndicatorTag startAnimating];
+         }
+         }
+         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+         [cell.actIndicatorTag stopAnimating];
+         }];
+         });*/
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.backgroundColor=[UIColor clearColor];
+        return cell;
     }
-    NSMutableDictionary *dic=[arrNames objectAtIndex:indexPath.row];
-    ModelListing *obj=[[ModelListing alloc] initWithDictionary:dic];
-    cell.lblName.text=obj.strName;
-    cell.lblDate.text=[NSString stringWithFormat:@"Created on %@",obj.strCreated];
-    cell.lblLocation.text=obj.strAddress1;
-    NSURL *url=[NSURL URLWithString:obj.strPicURI];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [cell.imgTag sd_setImageWithURL:url
-                            placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
-                                     options:SDWebImageHighPriority
-                                    progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                        if (cell.actIndicatorTag)
-                                        {
-                                            [cell.actIndicatorTag startAnimating];
-                                        }
-                                    }
-                                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                       [cell.actIndicatorTag stopAnimating];
-                                   }];
-    });
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    cell.backgroundColor=[UIColor clearColor];
-    return cell;
+    else
+    {
+        LivingTagsCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
+        if (!cell)
+        {
+            cell=[[[NSBundle mainBundle]loadNibNamed:@"LivingTagsCell" owner:self options:nil]objectAtIndex:1];
+        }
+        //NSMutableDictionary *dic=[arrNames objectAtIndex:indexPath.row];
+//        ModelListing *obj=[[ModelListing alloc] initWithDictionary:dic];
+//        cell.lblName.text=obj.strName;
+//        cell.lblDate.text=[NSString stringWithFormat:@"Created on %@",obj.strCreated];
+//        cell.lblLocation.text=obj.strAddress1;
+        /*NSURL *url=[NSURL URLWithString:obj.strPicURI];
+         dispatch_async(dispatch_get_main_queue(), ^{
+         [cell.imgTag sd_setImageWithURL:url
+         placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+         options:SDWebImageHighPriority
+         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+         if (cell.actIndicatorTag)
+         {
+         [cell.actIndicatorTag startAnimating];
+         }
+         }
+         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+         [cell.actIndicatorTag stopAnimating];
+         }];
+         });*/
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.backgroundColor=[UIColor clearColor];
+        return cell;
+
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -172,7 +221,7 @@
     objSegue=[arrList objectAtIndex:indexPath.row];
     if ([objSegue.strPublished isEqualToString:@"P"])
     {
-        [self performSegueWithIdentifier:@"segueLivingTagsDetails" sender:self];
+        //[self performSegueWithIdentifier:@"segueLivingTagsDetails" sender:self];
     }
 }
 #pragma mark
@@ -180,7 +229,7 @@
 #pragma mark
 
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
+/*-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if ([scrollView.panGestureRecognizer translationInView:scrollView].y > 0)
     {
@@ -208,7 +257,7 @@
     {
         
     }
-}
+}*/
 
 #pragma mark
 #pragma mark IBACTION
@@ -221,14 +270,34 @@
     [self addChildViewController:master];
     [master didMoveToParentViewController:self];
     NSLog(@"%@",arrMaps);
-    master.arrListFromMap=arrMaps;
+    //master.arrListFromMap=arrMaps;
     [vwList addSubview:master.view];
     master.delegate=self;
 }
 
+-(IBAction)btnPendingtagsPressed:(id)sender
+{
+    [btnCreatedTags setTitleColor:[UIColor colorWithRed:142/255.0f green:142/255.0f blue:142/255.0f alpha:1] forState:UIControlStateNormal];
+    [btnPendingTags setTitleColor:[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1] forState:UIControlStateNormal];
+    vwPendingTags.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
+    vwCreatedTags.backgroundColor=[UIColor clearColor];
+    isCreated=NO;
+    [tblTags reloadData];
+}
+
+-(IBAction)btnCreatedTagsPressed:(id)sender
+{
+    [btnCreatedTags setTitleColor:[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1] forState:UIControlStateNormal];
+    [btnPendingTags setTitleColor:[UIColor colorWithRed:142/255.0f green:142/255.0f blue:142/255.0f alpha:1] forState:UIControlStateNormal];
+    vwPendingTags.backgroundColor=[UIColor clearColor];
+    vwCreatedTags.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
+    isCreated=YES;
+    [tblTags reloadData];
+}
+
 -(IBAction)btnSearchPressed:(id)sender
 {
-    [self callWebService];
+    //[self callWebService];
 }
 
 #pragma mark

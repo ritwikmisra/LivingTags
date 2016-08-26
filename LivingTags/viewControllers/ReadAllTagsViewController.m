@@ -61,7 +61,7 @@
                 for (int k=0; k<arrNames.count; k++)
                 {
                     ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:k]];
-                    if ([obj.strPublished isEqualToString:@"Y"])
+                    if ([obj.strPublished isEqualToString:@"P"])
                     {
                         [arrMaps addObject:obj];
                     }
@@ -150,7 +150,7 @@
                 for (int m=0; m<arrNames.count; m++)
                 {
                     ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:m]];
-                    if ([obj.strPublished isEqualToString:@"Y"])
+                    if ([obj.strPublished isEqualToString:@"P"])
                     {
                         [arrMaps addObject:obj];
                     }

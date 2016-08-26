@@ -82,6 +82,11 @@
 		0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2451CCB7F3000CA0DAE /* Reachability.m */; };
 		0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */; };
 		0D6030651D58B97000DB3333 /* LivingTagsFourthStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */; };
+		0D648A041D7084B6000B6B5A /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D648A021D7084B6000B6B5A /* edit.png */; };
+		0D648A051D7084B6000B6B5A /* qr_code.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D648A031D7084B6000B6B5A /* qr_code.png */; };
+		0D648A071D7086F3000B6B5A /* pic4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D648A061D7086F3000B6B5A /* pic4.png */; };
+		0D648A0A1D709218000B6B5A /* draft.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D648A081D709218000B6B5A /* draft.png */; };
+		0D648A0B1D709218000B6B5A /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D648A091D709218000B6B5A /* share.png */; };
 		0D66C5741D59FEF100230261 /* DashboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D66C5721D59FEF100230261 /* DashboardCell.m */; };
 		0D66C5751D59FEF100230261 /* DashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D66C5731D59FEF100230261 /* DashboardCell.xib */; };
 		0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D66C57E1D5A01C800230261 /* DashboardViewController.m */; };
@@ -344,6 +349,11 @@
 		0D5FAEBB1D09C8E700A3384A /* CreateLivingTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLivingTagsViewController.m; sourceTree = "<group>"; };
 		0D6030631D58B97000DB3333 /* LivingTagsFourthStepService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsFourthStepService.h; sourceTree = "<group>"; };
 		0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsFourthStepService.m; sourceTree = "<group>"; };
+		0D648A021D7084B6000B6B5A /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		0D648A031D7084B6000B6B5A /* qr_code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_code.png; sourceTree = "<group>"; };
+		0D648A061D7086F3000B6B5A /* pic4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic4.png; sourceTree = "<group>"; };
+		0D648A081D709218000B6B5A /* draft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = draft.png; sourceTree = "<group>"; };
+		0D648A091D709218000B6B5A /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		0D66C5711D59FEF100230261 /* DashboardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCell.h; sourceTree = "<group>"; };
 		0D66C5721D59FEF100230261 /* DashboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCell.m; sourceTree = "<group>"; };
 		0D66C5731D59FEF100230261 /* DashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCell.xib; sourceTree = "<group>"; };
@@ -1134,6 +1144,11 @@
 		0D922FE21CF8707D00EC1945 /* My_Tag */ = {
 			isa = PBXGroup;
 			children = (
+				0D648A081D709218000B6B5A /* draft.png */,
+				0D648A091D709218000B6B5A /* share.png */,
+				0D648A061D7086F3000B6B5A /* pic4.png */,
+				0D648A021D7084B6000B6B5A /* edit.png */,
+				0D648A031D7084B6000B6B5A /* qr_code.png */,
 				0D922FFC1CF8739C00EC1945 /* menu_icon2.png */,
 				0D922FE31CF8707D00EC1945 /* back_arrow.png */,
 				0D922FE41CF8707D00EC1945 /* circle_icon.png */,
@@ -1350,6 +1365,7 @@
 				0D80DF881CEDA30B000FE698 /* MyLivingTagsMapViewController.xib in Resources */,
 				0D9B888B1D22B75D003B51F0 /* pause.png in Resources */,
 				0D1FBC8F1D6F01A000028727 /* my_tag_icon1.png in Resources */,
+				0D648A071D7086F3000B6B5A /* pic4.png in Resources */,
 				0D922FFA1CF8707D00EC1945 /* top_header_bg.png in Resources */,
 				0D8AC8D61D365C5D001EFEBA /* radio_btn1.png in Resources */,
 				0D273EFA1D5B2951007F1EE5 /* save_icon1.png in Resources */,
@@ -1389,6 +1405,7 @@
 				0D80DAF81CFD9B0E00B79C6B /* GroupPopupController.xib in Resources */,
 				0D273F001D5B7CC0007F1EE5 /* logo_1.png in Resources */,
 				0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */,
+				0D648A0B1D709218000B6B5A /* share.png in Resources */,
 				0D5EA23B1CCB6A0000CA0DAE /* NetworkActivityViewController.xib in Resources */,
 				0D2305431D54C6FB00115A34 /* SlideMenuController.xib in Resources */,
 				0D922FF51CF8707D00EC1945 /* pin.png in Resources */,
@@ -1401,6 +1418,7 @@
 				0D8804651D475DDA009DA25F /* voice_icon.png in Resources */,
 				0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */,
 				0D9B888E1D22B75D003B51F0 /* record.png in Resources */,
+				0D648A041D7084B6000B6B5A /* edit.png in Resources */,
 				0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */,
 				0D85A7E71D630A04003F4427 /* camera.png in Resources */,
 				0D8804621D475DDA009DA25F /* corss_btn.png in Resources */,
@@ -1440,7 +1458,9 @@
 				0D1FBC9F1D6F520500028727 /* camera_icon1.png in Resources */,
 				0D0DDD0E1D11AAC600C0E9DD /* profile.png in Resources */,
 				0D94FF611D3CE18900502FC8 /* right_arrow.png in Resources */,
+				0D648A0A1D709218000B6B5A /* draft.png in Resources */,
 				0D922FF01CF8707D00EC1945 /* back_arrow.png in Resources */,
+				0D648A051D7084B6000B6B5A /* qr_code.png in Resources */,
 				0D0DDD0A1D11AAC600C0E9DD /* DASHBOARD.png in Resources */,
 				0D1FBCA01D6F520500028727 /* text_icon.png in Resources */,
 				0D94FF621D3CE18900502FC8 /* right_arrow@2x.png in Resources */,

@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *string =@"Life...Celebrated";
+    NSString *string =@"Life Celebrated...";
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:string forKey:@"string"];
     [dict setObject:@0 forKey:@"currentCount"];
@@ -49,6 +49,7 @@
     [UIView animateWithDuration:1.0f delay:1.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
         UIFont* boldFont = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
         [lblLifeCelebrated setFont:boldFont];
+        [lblLifeCelebrated setFont:[UIFont systemFontOfSize:24.0f]];
     } completion:^(BOOL finished) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1* NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             NSString *strUserID=[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"];
