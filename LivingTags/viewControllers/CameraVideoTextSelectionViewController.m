@@ -15,6 +15,7 @@
 @interface CameraVideoTextSelectionViewController ()<MKMapViewDelegate>
 {
     IBOutlet MKMapView *mapCamera;
+    CAShapeLayer *shapeLayer;
 }
 
 @end
@@ -75,7 +76,30 @@
 
 -(IBAction)btnNextPressed:(id)sender
 {
-    
+    //draw a slanting line
+    if (!shapeLayer)
+    {
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(150.0,100.0)];
+        [path addLineToPoint:CGPointMake(50.0,60.0)];
+        
+        shapeLayer = [CAShapeLayer layer];
+        shapeLayer.path = [path CGPath];
+        shapeLayer.strokeColor = [[UIColor blueColor] CGColor];
+        shapeLayer.lineWidth = 3.0;
+        shapeLayer.fillColor = [[UIColor greenColor] CGColor];
+        
+        CABasicAnimation *flash = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        flash.fromValue = [NSNumber numberWithFloat:0.0];
+        flash.toValue = [NSNumber numberWithFloat:3.0];
+        flash.duration = 20.0;        // 1 second
+        flash.autoreverses = YES;    // Back
+        flash.repeatCount = HUGE;       // Or whatever
+        
+        [shapeLayer addAnimation:flash forKey:@"flashAnimation"];
+        [self.view.layer addSublayer:shapeLayer];
+   }
+    ////////
 }
 
 -(void)viewWillDisappear:(BOOL)animated

@@ -1698,7 +1698,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "e07423b6-c8a7-4b0b-a310-7d37df388473";
+				PROVISIONING_PROFILE = "f1775b4b-9a8f-481a-b458-6b37bcd3cb7a";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1736,7 +1736,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "e07423b6-c8a7-4b0b-a310-7d37df388473";
+				PROVISIONING_PROFILE = "f1775b4b-9a8f-481a-b458-6b37bcd3cb7a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1761,7 +1761,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e07423b6-c8a7-4b0b-a310-7d37df388473";
+				PROVISIONING_PROFILE = "f1775b4b-9a8f-481a-b458-6b37bcd3cb7a";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -1785,7 +1785,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e07423b6-c8a7-4b0b-a310-7d37df388473";
+				PROVISIONING_PROFILE = "f1775b4b-9a8f-481a-b458-6b37bcd3cb7a";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

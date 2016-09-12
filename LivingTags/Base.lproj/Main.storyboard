@@ -3011,6 +3011,9 @@
                                                 <state key="normal" title="SKIP">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnSkipPressed:" destination="IbP-cJ-sMc" eventType="touchUpInside" id="bQ1-am-mgj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMa-2x-zZp">
                                                 <rect key="frame" x="300" y="0.0" width="300" height="49"/>
@@ -3019,6 +3022,9 @@
                                                 <state key="normal" title="NEXT">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnNextPressed:" destination="IbP-cJ-sMc" eventType="touchUpInside" id="M7T-7r-xb0"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3166,7 +3172,7 @@
         <image name="video_icon1.png" width="181" height="181"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gak-pU-cIN"/>
+        <segue reference="JEo-hq-QYH"/>
         <segue reference="0XI-gj-a9l"/>
     </inferredMetricsTieBreakers>
 </document>

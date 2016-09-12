@@ -723,7 +723,6 @@
     [self addChildViewController:datePicker];
     [datePicker didMoveToParentViewController:self];
     datePicker.delegate=self;
-    
 }
 
 -(void)selectedDateWithValue:(NSString *)strDate withTag:(NSInteger)i
