@@ -864,12 +864,13 @@
 {
     if([text isEqualToString:@"\n"])
     {
-        [self updateTableView:textView.tag];
+        [self updateTableView:[textView tag]];
         [textView resignFirstResponder];
         return NO;
     }
     return YES;
 }
+
 
 #pragma mark
 #pragma mark Set tableview Content offset
