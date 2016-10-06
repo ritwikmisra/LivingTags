@@ -15,7 +15,7 @@
 @interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>
 {
     IBOutlet UITableView *tblDashboard;
-    NSMutableArray *arrPics;
+    NSMutableArray *arrPics,*arrLabel;
 }
 
 @end
@@ -24,8 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //arrPics=[[NSMutableArray alloc]initWithObjects:@"create_tag_dashbord",@"my_tag_dashbord",@"read_tag_dashbord",nil];
-    arrPics=[[NSMutableArray alloc]initWithObjects:@"tag_it_icon1",@"my_tag_icon1",@"mapped_tag_icon1",nil];
+    arrPics=[[NSMutableArray alloc]initWithObjects:@"scan_tag",@"create_tag",@"view_local_tags",@"add_icon",nil];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Scan a tag",@"Create a tag",@"View local tags",@"Add to an existing tags", nil];
     tblDashboard.backgroundColor=[UIColor clearColor];
     tblDashboard.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblDashboard.bounces=NO;
@@ -34,9 +34,11 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    //commented on 6th october 2016 by Ritwik
+    
     [super viewWillAppear:animated];
     
-    if (appDel.isGoToDashBoardFromQRbtnTapped) {
+   /* if (appDel.isGoToDashBoardFromQRbtnTapped) {
         appDel.isGoToDashBoardFromQRbtnTapped = NO;
         appDel.isCreateTagTappedFromDashboard = NO;
         appDel.isMyTagTappedFromDashboard = NO;
@@ -53,7 +55,7 @@
         {
             NSLog(@"%@",result);
         }
-    }];
+    }];*/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +76,7 @@
 {
     if (___isIphone6Plus)
     {
-        return 170.0f;
+        return 150.0f;
     }
     if (___isIphone6)
     {
@@ -84,7 +86,7 @@
     {
         return 135.0f;
     }
-    return 110.0f;
+    return 95.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -102,17 +104,18 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor clearColor];
     cell.imgDashboard.image=[UIImage imageNamed:[arrPics objectAtIndex:indexPath.row]];
+    cell.lblName.text=[arrLabel objectAtIndex:indexPath.row];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0)
+   if (indexPath.row==1)
     {
 //        appDel.isCreateTagTappedFromDashboard = YES;
 //        appDel.isMyTagTappedFromDashboard = NO;
 //        appDel.isReadTagTappedFromDashboard = NO;
-        [self performSegueWithIdentifier:@"segueDashboardToTagIT" sender:self];
+       [self performSegueWithIdentifier:@"segueDashboardToCreateTags" sender:self];
     }
     /*if (indexPath.row==2)
     {
@@ -171,20 +174,5 @@
         }
     }];
 }
-
-#pragma mark
-#pragma mark IBACTIONS
-#pragma mark
-
--(IBAction)btnQRCODEPressed:(id)sender
-{
-    
-}
-
--(IBAction)btnShoppingCartPressed:(id)sender
-{
-    
-}
-
 
 @end

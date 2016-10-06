@@ -92,7 +92,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
         [self viewDown];
         [self.view endEditing:YES];
     }
-    if ([self alertChecking])
+   /* if ([self alertChecking])
     {
         NSString *str=[self generateMD5:txtPassword.text];
         [[LoginService service]callLoginServiceWithEmailID:txtEmail.text Password:str withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
@@ -115,12 +115,14 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
                 [self performSegueWithIdentifier:@"segueLoginToDashboard" sender:self];
             }
         }];
-    }
+    }*/
+    [self performSegueWithIdentifier:@"segueLoginToDashboard" sender:self];
+
 }
 
 -(IBAction)btnFacebookPressed:(id)sender
 {
-    appDel.isFacebook=YES;
+   /* appDel.isFacebook=YES;
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"id,name,email" forKey:@"fields"];
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
@@ -198,7 +200,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     else
     {
         [self displayErrorWithMessage:@"Please check your internet connection!!"];
-    }
+    }*/
 }
 
 -(IBAction)btnForgetPasswordPressed:(id)sender
@@ -368,7 +370,7 @@ didDisconnectWithUser:(GIDGoogleUser *)user
     strName=[GIDSignIn sharedInstance].currentUser.profile.name;
     [[GIDSignIn sharedInstance] signOut];
     strSocialSite=@"GMAIL";
-    [self callSocialLoginWebservice];
+   // [self callSocialLoginWebservice];
     // Load avatar image asynchronously, in background
    /* dispatch_queue_t backgroundQueue =
     dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);

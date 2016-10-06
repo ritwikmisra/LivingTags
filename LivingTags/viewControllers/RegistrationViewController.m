@@ -106,14 +106,6 @@
     {
         [self viewUp];
     }
-    if (textField.tag<arrNames.count-1)
-    {
-        textField.returnKeyType=UIReturnKeyNext;
-    }
-    else
-    {
-        textField.returnKeyType=UIReturnKeyDone;
-    }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -123,17 +115,10 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField.tag==arrNames.count-1)
+    if (isViewUp)
     {
-        if (isViewUp)
-        {
-            [textField resignFirstResponder];
-            [self viewDown];
-        }
-    }
-    else
-    {
-        
+        [textField resignFirstResponder];
+        [self viewDown];
     }
     return YES;
 }
@@ -209,7 +194,7 @@
         [self viewDown];
     }
     [self.view endEditing:YES];
-    if ([self  alertChecking])
+    /*if ([self  alertChecking])
     {
         NSString *strPass=[self generateMD5:strPassword];
         NSLog(@"%@",strPassword);
@@ -242,7 +227,8 @@
                 }];
             }
         }];
-    }
+    }*/
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark

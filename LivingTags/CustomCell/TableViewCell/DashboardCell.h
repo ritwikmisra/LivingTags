@@ -12,5 +12,6 @@
 
 @property (nonatomic,strong)IBOutlet UIImageView *imgDashboard;
 @property (nonatomic,strong)IBOutlet UIButton *btnDashboard;
+@property(nonatomic,strong)IBOutlet UILabel *lblName;
 
 @end

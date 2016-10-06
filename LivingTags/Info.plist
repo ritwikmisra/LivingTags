@@ -4,9 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Roboto-Regular.tf</string>
-		<string>Roboto-Light.ttf</string>
-		<string>Cinzel-Regular_1.ttf</string>
+		<string>Signika-Bold.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -85,8 +83,8 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Show your location on the map</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Show your location on the map</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
