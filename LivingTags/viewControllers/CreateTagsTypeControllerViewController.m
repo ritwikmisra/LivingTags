@@ -24,8 +24,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Memorial tags",@"Other tags", nil];
-    arrPics=[[NSMutableArray alloc]initWithObjects:@"memorial_tag",@"other_tag", nil];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Persons",@"Place",@"Thing",@"Pet",@"Business", @"Others",nil];
+    arrPics=[[NSMutableArray alloc]initWithObjects:@"person_icon",@"place_icon",@"thing_icon",@"pet_icon",@"business_icon",@"other_icon", nil];
     tblTypes.backgroundColor=[UIColor clearColor];
     tblTypes.separatorStyle=UITableViewCellSeparatorStyleNone;
 }
@@ -50,22 +50,22 @@
 {
     if (___isIphone6Plus)
     {
-        return 150.0f;
+        return 200.0f;
     }
     if (___isIphone6)
     {
-        return 150.0f;
+        return 170.0f;
     }
     if (___isIphone5_5s)
     {
-        return 135.0f;
+        return 150.0f;
     }
-    return 95.0f;
+    return 135.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return arrPics.count;
+    return 3;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,12 +73,17 @@
     DashboardCell *cell=[tableView dequeueReusableCellWithIdentifier:@"identifiew"];
     if (!cell)
     {
-        cell=[[[NSBundle mainBundle]loadNibNamed:@"DashboardCell" owner:self options:nil] objectAtIndex:0];
+        cell=[[[NSBundle mainBundle]loadNibNamed:@"DashboardCell" owner:self options:nil] objectAtIndex:1];
     }
+    cell.btnLeft.tag=indexPath.row*2;
+    cell.btnRIght.tag=indexPath.row*2+1;
+    NSLog(@"Left button tag=%d.....right button tag=%d",cell.btnLeft.tag,cell.btnRIght.tag);
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    cell.lblLeft.text=[arrLabel objectAtIndex:cell.btnLeft.tag];
+    cell.lblRight.text=[arrLabel objectAtIndex:cell.btnRIght.tag];
+    cell.imgIconleft.image=[UIImage imageNamed:[arrPics objectAtIndex:cell.btnLeft.tag]];
+    cell.imgIconRight.image=[UIImage imageNamed:[arrPics objectAtIndex:cell.btnRIght.tag]];
     cell.backgroundColor=[UIColor clearColor];
-    cell.imgDashboard.image=[UIImage imageNamed:[arrPics objectAtIndex:indexPath.row]];
-    cell.lblName.text=[arrLabel objectAtIndex:indexPath.row];
     return cell;
 }
 

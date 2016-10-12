@@ -68,7 +68,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_header_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="mFi-3Z-uut">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="mFi-3Z-uut">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQt-5B-7EU">
@@ -143,13 +143,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tblDashboard" destination="qOk-Gs-bzF" id="2uC-G5-3Fp"/>
-                        <segue destination="l0v-Gx-uEx" kind="show" identifier="segueDashboardToTagIT" id="v1g-fh-r0c"/>
-                        <segue destination="KRc-Wn-CL4" kind="show" identifier="segueDashboardToCreateTags" id="V8G-3L-w8H"/>
+                        <segue destination="KRc-Wn-CL4" kind="show" identifier="segueDashboardToCreateTags" id="ybI-Iz-YvZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSN-Dn-gQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="-961"/>
+            <point key="canvasLocation" x="519" y="-329"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y2h-fL-Rj8">
@@ -168,7 +167,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAN-Xo-Knt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="171" y="433"/>
+            <point key="canvasLocation" x="-305" y="357"/>
         </scene>
         <!--Import Contacts View Controller-->
         <scene sceneID="WuN-w4-3JB">
@@ -238,9 +237,6 @@
                                     <action selector="btnSignUpPressed:" destination="4Sb-Zd-sf4" eventType="touchUpInside" id="imf-1U-ZVv"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="RQY-xm-xCV">
-                                <rect key="frame" x="100" y="96" width="400" height="80"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsT-BH-37a">
                                 <rect key="frame" x="553" y="10" width="30" height="30"/>
                                 <constraints>
@@ -327,6 +323,9 @@
                                     <outlet property="delegate" destination="oAA-ch-aDc" id="QuN-hr-NMk"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="RQY-xm-xCV">
+                                <rect key="frame" x="100" y="96" width="400" height="80"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -366,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYQ-pb-bGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2964" y="998"/>
+            <point key="canvasLocation" x="1256" y="357"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="Gfh-WT-mbL">
@@ -541,7 +540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5A-Gr-cjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="2088"/>
+            <point key="canvasLocation" x="3767" y="1808"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="ciH-XA-SWX">
@@ -629,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTn-Dk-Uvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3880" y="998"/>
+            <point key="canvasLocation" x="4432" y="1102"/>
         </scene>
         <!--Create Living Tags View Controller-->
         <scene sceneID="JHp-hK-Pat">
@@ -790,7 +789,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACz-LS-lta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2964" y="252"/>
+            <point key="canvasLocation" x="4424" y="-348"/>
         </scene>
         <!--Read All Tags View Controller-->
         <scene sceneID="5UG-gk-LBZ">
@@ -955,12 +954,11 @@
                         <outlet property="tblTags" destination="u6P-rP-ATZ" id="Bh2-ag-CSA"/>
                         <outlet property="txtSearch" destination="PoQ-du-dBD" id="gjM-gf-KMq"/>
                         <outlet property="vwList" destination="XdE-5g-qwI" id="sj1-Tw-6TX"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueDashboardFromOtherPages" id="OaI-Lp-Acf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8D-A5-rx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692" y="-1790"/>
+            <point key="canvasLocation" x="3740" y="-1810"/>
         </scene>
         <!--My Living Tages View Controller-->
         <scene sceneID="66P-iW-VjV">
@@ -1171,13 +1169,11 @@
                         <outlet property="vwCreatedTags" destination="9pK-bi-spZ" id="uph-LV-Krv"/>
                         <outlet property="vwList" destination="zCN-2h-Pw7" id="dRv-EV-OCC"/>
                         <outlet property="vwPendingTags" destination="kKq-3S-KH8" id="aUB-aC-hlE"/>
-                        <segue destination="wn0-cH-JOt" kind="show" identifier="segueLivingTagsDetails" id="6MI-eV-uvM"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueDashboardFromOtherPages" id="ZPH-8C-cjY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXr-pU-JYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2590" y="-2243"/>
+            <point key="canvasLocation" x="3730" y="-2487"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="4ln-oN-PR0">
@@ -1268,13 +1264,11 @@
                     <connections>
                         <outlet property="imgHeader" destination="Abu-dv-cuU" id="d3L-Ui-a6Y"/>
                         <outlet property="tblProfile" destination="iWm-Or-ABm" id="tzW-B9-msI"/>
-                        <segue destination="Bt0-ux-L1C" kind="show" identifier="segueMyTags" id="7qO-jp-tDn"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueDashboardFromOtherPages" id="xYW-ex-NNZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKj-gE-U59" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-44" y="-2181"/>
+            <point key="canvasLocation" x="4482" y="2623"/>
         </scene>
         <!--Landing View Controller-->
         <scene sceneID="9iv-rA-dqW">
@@ -1350,7 +1344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djo-0a-vhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-657" y="-459"/>
+            <point key="canvasLocation" x="3730" y="-3223"/>
         </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="h7f-Tl-GIl">
@@ -1368,7 +1362,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="KRt-i7-RXN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="KRt-i7-RXN">
                                 <rect key="frame" x="100" y="96" width="400" height="80"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxD-kY-oeQ">
@@ -1492,7 +1486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kkf-tT-Sei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="-250"/>
+            <point key="canvasLocation" x="525" y="1068"/>
         </scene>
         <!--Logging View Controller-->
         <scene sceneID="dI6-LV-JFy">
@@ -1510,7 +1504,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ajJ-Bw-QXt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="ajJ-Bw-QXt">
                                 <rect key="frame" x="100" y="57" width="400" height="80"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpr-y7-g6N">
@@ -1797,14 +1791,14 @@
                         <outlet property="signInButton" destination="nlV-zh-dNW" id="RVt-Ak-S1t"/>
                         <outlet property="txtEmail" destination="PHa-bx-Gmd" id="PKl-iG-qiA"/>
                         <outlet property="txtPassword" destination="RhE-ov-5BK" id="S4y-y8-7VU"/>
-                        <segue destination="oAA-ch-aDc" kind="show" identifier="segueRegistration" id="K3H-qr-72l"/>
-                        <segue destination="EpU-QC-hhg" kind="show" identifier="segueForgetPassword" id="jzX-dl-YRF"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueLoginToDashboard" id="OPL-Up-2EZ"/>
+                        <segue destination="oAA-ch-aDc" kind="show" identifier="segueRegistration" id="kNX-j1-DsE"/>
+                        <segue destination="EpU-QC-hhg" kind="show" identifier="segueForgetPassword" id="Shh-tb-phA"/>
+                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueLoginToDashboard" id="VpI-oa-ddS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXa-Ue-e3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="438"/>
+            <point key="canvasLocation" x="519" y="357"/>
         </scene>
         <!--Living Tags Template List Controller-->
         <scene sceneID="65g-SG-4bI">
@@ -1976,12 +1970,11 @@
                         <outlet property="lbl3" destination="6Og-Kd-L6N" id="AQz-SX-g9g"/>
                         <outlet property="lbl4" destination="ECb-8z-W4Q" id="fUk-uE-j65"/>
                         <outlet property="lblTemplate" destination="c0y-cy-uqd" id="K5V-KV-BDA"/>
-                        <segue destination="5fP-4K-Kaz" kind="show" identifier="segueTemplateSecondStep" id="fIA-4o-Odw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaZ-0I-crg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="1185"/>
+            <point key="canvasLocation" x="3773" y="1129"/>
         </scene>
         <!--Living Tags Second Step View Controller-->
         <scene sceneID="e2f-LO-sHA">
@@ -2173,13 +2166,11 @@
                         <outlet property="lbl3" destination="9f8-vO-5r7" id="ZnX-rj-cB0"/>
                         <outlet property="lbl4" destination="UDb-n8-O7W" id="03I-pg-tnQ"/>
                         <outlet property="tblSecondSteps" destination="Qpx-xz-gpw" id="RrC-Ld-bD8"/>
-                        <segue destination="ftP-E3-z2h" kind="show" identifier="segueThirdStep" id="kKJ-UQ-Mt1"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueDashboardFromOtherPages" id="gPF-KX-VPF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2FE-CA-LYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2671" y="-961"/>
+            <point key="canvasLocation" x="4432" y="-2487"/>
         </scene>
         <!--Living Tags Third Step View Controller-->
         <scene sceneID="628-YE-gn4">
@@ -2371,14 +2362,11 @@
                         <outlet property="lbl3" destination="HSA-Pa-A7d" id="R2G-XM-Q6C"/>
                         <outlet property="lbl4" destination="Hcy-Kp-19H" id="v1n-3a-5ES"/>
                         <outlet property="tblAThirdStep" destination="nfw-Ou-kUA" id="rrO-Hb-n01"/>
-                        <segue destination="jc9-Lh-bc1" kind="show" identifier="segueAudio" id="0XI-gj-a9l"/>
-                        <segue destination="qiJ-2z-BjB" kind="show" identifier="segueFourthStep" id="45w-Ox-Rpt"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueDashboardFromOtherPages" id="jYa-bo-D1I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yv-pJ-0TY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="418" y="2088"/>
+            <point key="canvasLocation" x="3767" y="2632"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="sq8-4I-rMB">
@@ -2489,13 +2477,11 @@
                         <outlet property="actIndicator" destination="Xz6-4d-aAw" id="r5s-Qb-033"/>
                         <outlet property="imgQRCode" destination="HFN-4M-AdP" id="Gtb-By-NaO"/>
                         <outlet property="lblWebsite" destination="bSH-ti-Hco" id="cIg-sc-tpy"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueQRcodeToDashboard" id="Oim-Gi-933"/>
-                        <segue destination="7W3-Am-qL3" kind="show" identifier="segueWebPage" id="wNI-yg-Grc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXz-Eg-jRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3880" y="247"/>
+            <point key="canvasLocation" x="4432" y="367"/>
         </scene>
         <!--Living Tags Fourth Step View Controller-->
         <scene sceneID="rE2-u1-qaX">
@@ -2687,14 +2673,11 @@
                         <outlet property="lbl3" destination="iEY-H3-B6n" id="FAN-b8-Tmt"/>
                         <outlet property="lbl4" destination="Zeo-s0-ahf" id="q3J-zS-pcW"/>
                         <outlet property="tblFourthStep" destination="LiL-OB-FuM" id="9fF-Sx-QPp"/>
-                        <segue destination="jc9-Lh-bc1" kind="show" identifier="segueVideoToAudio" id="znD-KZ-TYx"/>
-                        <segue destination="L1E-Md-vJ8" kind="show" identifier="segueQR" id="wW3-e5-G3w"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueDashboardFromOtherPages" id="4ao-01-z26"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiP-eK-TPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="-1790"/>
+            <point key="canvasLocation" x="3767" y="391"/>
         </scene>
         <!--Tag It View Controller-->
         <scene sceneID="vvB-Hq-egA">
@@ -2900,13 +2883,11 @@
                     <connections>
                         <outlet property="mapTagIT" destination="L4I-2E-U67" id="GuB-oG-0zx"/>
                         <outlet property="txtSearch" destination="tzu-sa-PGO" id="IEO-iv-Zqu"/>
-                        <segue destination="IbP-cJ-sMc" kind="show" identifier="segueCameraVideoSelection" id="NHF-Y5-TV7"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueDashboardFromOtherPages" id="06q-su-FSV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdT-q2-nJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-161" y="-993"/>
+            <point key="canvasLocation" x="3767" y="-1086"/>
         </scene>
         <!--Camera Video Text Selection View Controller-->
         <scene sceneID="Ykn-zc-xK1">
@@ -3094,12 +3075,11 @@
                     </view>
                     <connections>
                         <outlet property="mapCamera" destination="jNt-3i-ENc" id="5G0-tW-7qT"/>
-                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueDashboardFromOtherPages" id="JEo-hq-QYH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SIr-vR-8LI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1142" y="438"/>
+            <point key="canvasLocation" x="3767" y="-342"/>
         </scene>
         <!--Create Tags Type Controller View Controller-->
         <scene sceneID="CON-G1-lwk">
@@ -3117,7 +3097,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_header_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="amU-tB-Hhk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="amU-tB-Hhk">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kf-Tw-bXW">
@@ -3146,7 +3126,7 @@
                                 </constraints>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nuo-uE-Agu">
-                                <rect key="frame" x="133" y="83" width="334" height="500"/>
+                                <rect key="frame" x="50" y="80" width="500" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -3163,7 +3143,7 @@
                             <constraint firstItem="BfL-Vk-qqb" firstAttribute="width" secondItem="amU-tB-Hhk" secondAttribute="width" id="2Od-w6-CU4"/>
                             <constraint firstItem="Kzz-rS-xfE" firstAttribute="centerX" secondItem="NRl-zO-8AI" secondAttribute="centerX" id="BLy-BT-Wn7"/>
                             <constraint firstItem="amU-tB-Hhk" firstAttribute="top" secondItem="S2m-Dy-KWY" secondAttribute="top" id="E2T-et-zZo"/>
-                            <constraint firstItem="Nuo-uE-Agu" firstAttribute="centerY" secondItem="S2m-Dy-KWY" secondAttribute="centerY" multiplier="1.11" id="FMd-jJ-hGo"/>
+                            <constraint firstItem="Nuo-uE-Agu" firstAttribute="centerY" secondItem="S2m-Dy-KWY" secondAttribute="centerY" multiplier="1.1" id="FMd-jJ-hGo"/>
                             <constraint firstItem="1Kf-Tw-bXW" firstAttribute="width" secondItem="LD6-aI-I6w" secondAttribute="width" multiplier="1.1" id="G84-Oo-4SY"/>
                             <constraint firstItem="BfL-Vk-qqb" firstAttribute="centerX" secondItem="amU-tB-Hhk" secondAttribute="centerX" id="GBC-t8-iNp"/>
                             <constraint firstItem="S2m-Dy-KWY" firstAttribute="centerX" secondItem="wDe-mT-Gx2" secondAttribute="centerX" id="Hgh-e9-e2r"/>
@@ -3176,7 +3156,7 @@
                             <constraint firstItem="BfL-Vk-qqb" firstAttribute="top" secondItem="amU-tB-Hhk" secondAttribute="bottom" id="RQf-x0-BDC"/>
                             <constraint firstItem="S2m-Dy-KWY" firstAttribute="height" secondItem="Nuo-uE-Agu" secondAttribute="height" multiplier="1.2" id="TFN-Rg-SQp"/>
                             <constraint firstItem="S2m-Dy-KWY" firstAttribute="centerY" secondItem="wDe-mT-Gx2" secondAttribute="centerY" id="TNB-TK-hHD"/>
-                            <constraint firstItem="S2m-Dy-KWY" firstAttribute="width" secondItem="Nuo-uE-Agu" secondAttribute="width" multiplier="1.8" id="UH0-95-a11"/>
+                            <constraint firstItem="S2m-Dy-KWY" firstAttribute="width" secondItem="Nuo-uE-Agu" secondAttribute="width" multiplier="1.2" id="UH0-95-a11"/>
                             <constraint firstItem="1Kf-Tw-bXW" firstAttribute="centerY" secondItem="amU-tB-Hhk" secondAttribute="centerY" id="ZS5-qq-Eu5"/>
                             <constraint firstItem="amU-tB-Hhk" firstAttribute="height" secondItem="BfL-Vk-qqb" secondAttribute="height" multiplier="7" id="crO-Mj-XRV"/>
                             <constraint firstItem="S2m-Dy-KWY" firstAttribute="height" secondItem="amU-tB-Hhk" secondAttribute="height" multiplier="10" id="jFq-XS-JBL"/>
@@ -3196,7 +3176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xh0-jE-ayy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381" y="-986"/>
+            <point key="canvasLocation" x="1210" y="-329"/>
         </scene>
     </scenes>
     <resources>
@@ -3206,7 +3186,7 @@
         <image name="camera_icon1.png" width="181" height="181"/>
         <image name="circle_icon.png" width="234" height="234"/>
         <image name="facebook_icon.png" width="138" height="138"/>
-        <image name="logo" width="951" height="207"/>
+        <image name="logo1.png" width="964" height="208"/>
         <image name="logo_1.png" width="2286" height="595"/>
         <image name="mail_icon.png" width="86" height="58"/>
         <image name="menu_icon2.png" width="95" height="60"/>
@@ -3216,13 +3196,8 @@
         <image name="search_icon.png" width="61" height="63"/>
         <image name="stop.png" width="169" height="172"/>
         <image name="text_icon.png" width="181" height="181"/>
-        <image name="top_header_bg.png" width="1242" height="197"/>
         <image name="top_header_logo.png" width="457" height="99"/>
         <image name="top_shadow.png" width="1242" height="20"/>
         <image name="video_icon1.png" width="181" height="181"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="OPL-Up-2EZ"/>
-        <segue reference="0XI-gj-a9l"/>
-    </inferredMetricsTieBreakers>
 </document>

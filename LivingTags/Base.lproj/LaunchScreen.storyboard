@@ -5,11 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Signika-Bold.otf">
-            <string>Signika-Bold</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -27,8 +22,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-Xb-U6L">
-                                <rect key="frame" x="69" y="191" width="462" height="80"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-Xb-U6L">
+                                <rect key="frame" x="69" y="181" width="462" height="100"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIq-Qd-fue">
                                 <rect key="frame" x="0.0" y="590" width="300" height="10"/>
@@ -44,18 +39,10 @@
                                 <color key="textColor" red="0.42352941176470588" green="0.45098039215686275" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building and sharing memories" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oze-ky-zTv">
-                                <rect key="frame" x="176" y="271" width="355" height="27"/>
-                                <fontDescription key="fontDescription" name="Signika-Bold" family="Signika" pointSize="12"/>
-                                <color key="textColor" red="0.56470588235294117" green="0.5725490196078431" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7Ly-ns-Pdb" firstAttribute="centerY" secondItem="5sK-7I-Zdo" secondAttribute="centerY" multiplier="1.85" id="0HE-Fe-80e"/>
-                            <constraint firstItem="YK9-Xb-U6L" firstAttribute="width" secondItem="Oze-ky-zTv" secondAttribute="width" multiplier="1.3" id="26n-nc-oom"/>
-                            <constraint firstItem="Oze-ky-zTv" firstAttribute="trailing" secondItem="YK9-Xb-U6L" secondAttribute="trailing" id="2Vn-p1-fFd"/>
                             <constraint firstItem="5sK-7I-Zdo" firstAttribute="width" secondItem="7Ly-ns-Pdb" secondAttribute="width" multiplier="1.3" id="6ls-0M-dO4"/>
                             <constraint firstItem="7Ly-ns-Pdb" firstAttribute="centerX" secondItem="5sK-7I-Zdo" secondAttribute="centerX" id="7lB-j2-PYv"/>
                             <constraint firstItem="5sK-7I-Zdo" firstAttribute="width" secondItem="YK9-Xb-U6L" secondAttribute="width" multiplier="1.3" id="CCF-Dj-NIE"/>
@@ -64,11 +51,9 @@
                             <constraint firstItem="5sK-7I-Zdo" firstAttribute="centerY" secondItem="YK9-Xb-U6L" secondAttribute="centerY" multiplier="1.3" id="JeU-lT-pe2"/>
                             <constraint firstItem="X7B-H9-0HF" firstAttribute="leading" secondItem="ZIq-Qd-fue" secondAttribute="trailing" id="MTs-SN-HGJ"/>
                             <constraint firstItem="X7B-H9-0HF" firstAttribute="width" secondItem="ZIq-Qd-fue" secondAttribute="width" id="Oqa-Eu-ZAR"/>
-                            <constraint firstItem="Oze-ky-zTv" firstAttribute="top" secondItem="YK9-Xb-U6L" secondAttribute="bottom" id="OtC-Uu-y1d"/>
                             <constraint firstItem="YK9-Xb-U6L" firstAttribute="centerX" secondItem="5sK-7I-Zdo" secondAttribute="centerX" id="Qrq-CS-cxL"/>
-                            <constraint firstItem="YK9-Xb-U6L" firstAttribute="height" secondItem="Oze-ky-zTv" secondAttribute="height" multiplier="3" id="WSM-dr-lwM"/>
                             <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="YCi-m3-YKW"/>
-                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="YK9-Xb-U6L" secondAttribute="height" multiplier="7.5" id="ZlM-sf-gTx"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="YK9-Xb-U6L" secondAttribute="height" multiplier="6" id="ZlM-sf-gTx"/>
                             <constraint firstItem="5sK-7I-Zdo" firstAttribute="width" secondItem="ZIq-Qd-fue" secondAttribute="width" multiplier="2" id="dY4-OA-gAd"/>
                             <constraint firstItem="X7B-H9-0HF" firstAttribute="height" secondItem="ZIq-Qd-fue" secondAttribute="height" id="jAY-3M-prR"/>
                             <constraint firstItem="ZIq-Qd-fue" firstAttribute="bottom" secondItem="5sK-7I-Zdo" secondAttribute="bottom" id="qX5-VN-h9a"/>
@@ -87,6 +72,6 @@
     </scenes>
     <resources>
         <image name="bg_image" width="1242" height="2208"/>
-        <image name="logo" width="951" height="207"/>
+        <image name="logo.png" width="964" height="280"/>
     </resources>
 </document>
