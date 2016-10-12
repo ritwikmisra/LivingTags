@@ -209,6 +209,13 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
 }
 
 
+-(IBAction)btnGooglePressed:(id)sender
+{
+    [[GIDSignIn sharedInstance]signOut];
+    [[GIDSignIn sharedInstance]signIn];
+}
+
+
 #pragma mark
 #pragma mark textfield methods
 #pragma mark

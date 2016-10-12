@@ -164,6 +164,7 @@
 		0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937FC1CEB5F8E0049BEC2 /* LivingTagsListingService.m */; };
 		0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */; };
 		0DDFC9B31CE372B6004D5D46 /* socialLoginFirstService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9B21CE372B6004D5D46 /* socialLoginFirstService.m */; };
+		0DE5FE2D1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE2C1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png */; };
 		0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1DE1CDA32C50053AF1A /* ForgetPasswordService.m */; };
 		0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1E11CDA49460053AF1A /* ImportContactsViewController.m */; };
 		0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE967521D353D690088C508 /* LivingTagsSecondStepViewController.m */; };
@@ -425,6 +426,7 @@
 		0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialLoginService.m; sourceTree = "<group>"; };
 		0DDFC9B11CE372B6004D5D46 /* socialLoginFirstService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialLoginFirstService.h; sourceTree = "<group>"; };
 		0DDFC9B21CE372B6004D5D46 /* socialLoginFirstService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialLoginFirstService.m; sourceTree = "<group>"; };
+		0DE5FE2C1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_google_dark_normal_ios@3x.png"; sourceTree = "<group>"; };
 		0DE7A1DD1CDA32C50053AF1A /* ForgetPasswordService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordService.h; sourceTree = "<group>"; };
 		0DE7A1DE1CDA32C50053AF1A /* ForgetPasswordService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordService.m; sourceTree = "<group>"; };
 		0DE7A1E01CDA49460053AF1A /* ImportContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportContactsViewController.h; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 		0D6659201DA666E400566879 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				0DE5FE2C1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png */,
 				0D6659211DA666E400566879 /* facebook_icon.png */,
 				0D6659221DA666E400566879 /* mail_icon.png */,
 				0D6659231DA666E400566879 /* name_icon.png */,
@@ -1105,6 +1108,7 @@
 				0D80DAF81CFD9B0E00B79C6B /* GroupPopupController.xib in Resources */,
 				0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */,
 				0D6659251DA666E400566879 /* facebook_icon.png in Resources */,
+				0DE5FE2D1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png in Resources */,
 				0D1DDF7E1DA7BB5B0063F2F9 /* person_icon.png in Resources */,
 				0D5EA23B1CCB6A0000CA0DAE /* NetworkActivityViewController.xib in Resources */,
 				0D1DDF841DA7DFDB0063F2F9 /* logo.png in Resources */,

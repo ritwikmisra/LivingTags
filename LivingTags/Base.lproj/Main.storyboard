@@ -1486,7 +1486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kkf-tT-Sei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525" y="1068"/>
+            <point key="canvasLocation" x="519" y="1084"/>
         </scene>
         <!--Logging View Controller-->
         <scene sceneID="dI6-LV-JFy">
@@ -1590,7 +1590,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8x-PZ-om0">
                                         <rect key="frame" x="0.0" y="117" width="428" height="38"/>
-                                        <color key="backgroundColor" red="0.14117647058823529" green="0.36470588235294116" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.3411764706" green="0.77647058820000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                                         <state key="normal" title="SIGN IN">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1675,7 +1675,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUR-Ol-Q1G">
                                         <rect key="frame" x="0.0" y="99" width="428" height="38"/>
-                                        <color key="backgroundColor" red="0.3411764705882353" green="0.77647058823529413" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                         <state key="normal" title="SIGN UP">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1685,10 +1685,10 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RgC-Dc-z6b">
-                                        <rect key="frame" x="112" y="31" width="204" height="43"/>
+                                        <rect key="frame" x="128" y="36" width="172" height="43"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S17-Go-iJq">
-                                                <rect key="frame" x="0.0" y="1" width="41" height="41"/>
+                                                <rect key="frame" x="0.0" y="2" width="39" height="39"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="S17-Go-iJq" secondAttribute="height" id="mBe-MV-bUd"/>
                                                 </constraints>
@@ -1697,19 +1697,24 @@
                                                     <action selector="btnFacebookPressed:" destination="4Sb-Zd-sf4" eventType="touchUpInside" id="0i6-Lq-Xqm"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlV-zh-dNW" customClass="GIDSignInButton">
-                                                <rect key="frame" x="163" y="-2" width="41" height="46"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utS-BC-y7Q">
+                                                <rect key="frame" x="129" y="0.0" width="43" height="43"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="utS-BC-y7Q" secondAttribute="height" multiplier="1:1" id="owL-Ny-0si"/>
+                                                </constraints>
+                                                <state key="normal" image="btn_google_dark_normal_ios.png"/>
+                                                <connections>
+                                                    <action selector="btnGooglePressed:" destination="4Sb-Zd-sf4" eventType="touchUpInside" id="fZk-Yx-3TH"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="S17-Go-iJq" firstAttribute="leading" secondItem="RgC-Dc-z6b" secondAttribute="leading" id="08l-LK-LSg"/>
-                                            <constraint firstItem="nlV-zh-dNW" firstAttribute="centerY" secondItem="S17-Go-iJq" secondAttribute="centerY" id="3F5-Ak-dHs"/>
-                                            <constraint firstItem="nlV-zh-dNW" firstAttribute="height" secondItem="S17-Go-iJq" secondAttribute="height" multiplier="1.1" id="6yF-n8-KHl"/>
-                                            <constraint firstAttribute="trailing" secondItem="nlV-zh-dNW" secondAttribute="trailing" id="Ue9-WV-vGg"/>
-                                            <constraint firstItem="nlV-zh-dNW" firstAttribute="width" secondItem="S17-Go-iJq" secondAttribute="width" id="gtg-sZ-duD"/>
-                                            <constraint firstAttribute="height" secondItem="S17-Go-iJq" secondAttribute="height" multiplier="1.05" id="k5d-og-IdE"/>
+                                            <constraint firstAttribute="trailing" secondItem="utS-BC-y7Q" secondAttribute="trailing" id="CkS-ip-wTg"/>
+                                            <constraint firstItem="utS-BC-y7Q" firstAttribute="centerY" secondItem="RgC-Dc-z6b" secondAttribute="centerY" id="OsC-4Z-r2h"/>
+                                            <constraint firstItem="utS-BC-y7Q" firstAttribute="height" secondItem="RgC-Dc-z6b" secondAttribute="height" id="Yqh-kc-wOc"/>
+                                            <constraint firstAttribute="height" secondItem="S17-Go-iJq" secondAttribute="height" multiplier="1.1" id="k5d-og-IdE"/>
                                             <constraint firstItem="S17-Go-iJq" firstAttribute="centerY" secondItem="RgC-Dc-z6b" secondAttribute="centerY" id="vGb-5g-gcX"/>
                                         </constraints>
                                     </view>
@@ -1724,12 +1729,12 @@
                                     <constraint firstItem="RgC-Dc-z6b" firstAttribute="centerX" secondItem="jeI-Ne-pau" secondAttribute="centerX" id="Luk-kB-rzG"/>
                                     <constraint firstAttribute="height" secondItem="rus-jv-zOT" secondAttribute="height" multiplier="4" id="Oak-ar-GQs"/>
                                     <constraint firstAttribute="height" secondItem="RgC-Dc-z6b" secondAttribute="height" multiplier="3.2" id="T2x-El-AQN"/>
-                                    <constraint firstAttribute="width" secondItem="RgC-Dc-z6b" secondAttribute="width" multiplier="2.1" id="UdU-8k-17y"/>
+                                    <constraint firstAttribute="width" secondItem="RgC-Dc-z6b" secondAttribute="width" multiplier="2.5" id="UdU-8k-17y"/>
                                     <constraint firstItem="XUR-Ol-Q1G" firstAttribute="centerX" secondItem="jeI-Ne-pau" secondAttribute="centerX" id="XqI-YC-vi0"/>
                                     <constraint firstItem="rus-jv-zOT" firstAttribute="centerX" secondItem="hqf-r3-zsK" secondAttribute="centerX" id="lfQ-In-I4g"/>
                                     <constraint firstItem="XUR-Ol-Q1G" firstAttribute="width" secondItem="jeI-Ne-pau" secondAttribute="width" id="q4X-Zy-avf"/>
                                     <constraint firstAttribute="bottom" secondItem="XUR-Ol-Q1G" secondAttribute="bottom" id="xg7-qW-9hS"/>
-                                    <constraint firstAttribute="centerY" secondItem="RgC-Dc-z6b" secondAttribute="centerY" multiplier="1.3" id="zBQ-fL-rf7"/>
+                                    <constraint firstAttribute="centerY" secondItem="RgC-Dc-z6b" secondAttribute="centerY" multiplier="1.2" id="zBQ-fL-rf7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbx-b1-Fdp">
@@ -1788,7 +1793,6 @@
                         <outlet property="constVwHeight" destination="T2x-El-AQN" id="UCy-xI-sWv"/>
                         <outlet property="img" destination="xBI-46-dVP" id="kar-aF-JeM"/>
                         <outlet property="lblOR" destination="rus-jv-zOT" id="HCM-cV-kv3"/>
-                        <outlet property="signInButton" destination="nlV-zh-dNW" id="RVt-Ak-S1t"/>
                         <outlet property="txtEmail" destination="PHa-bx-Gmd" id="PKl-iG-qiA"/>
                         <outlet property="txtPassword" destination="RhE-ov-5BK" id="S4y-y8-7VU"/>
                         <segue destination="oAA-ch-aDc" kind="show" identifier="segueRegistration" id="kNX-j1-DsE"/>
@@ -3183,6 +3187,7 @@
         <image name="back_arrow.png" width="75" height="75"/>
         <image name="back_icon.png" width="120" height="120"/>
         <image name="bg_image" width="1242" height="2208"/>
+        <image name="btn_google_dark_normal_ios.png" width="48" height="48"/>
         <image name="camera_icon1.png" width="181" height="181"/>
         <image name="circle_icon.png" width="234" height="234"/>
         <image name="facebook_icon.png" width="138" height="138"/>
