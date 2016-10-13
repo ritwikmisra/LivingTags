@@ -165,6 +165,8 @@
 		0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */; };
 		0DDFC9B31CE372B6004D5D46 /* socialLoginFirstService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9B21CE372B6004D5D46 /* socialLoginFirstService.m */; };
 		0DE5FE2D1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE2C1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png */; };
+		0DE5FE2F1DAE5471004B06E5 /* Signika-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE2E1DAE5471004B06E5 /* Signika-Semibold.otf */; };
+		0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE301DAE5DA0004B06E5 /* bg_btn_hover.png */; };
 		0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1DE1CDA32C50053AF1A /* ForgetPasswordService.m */; };
 		0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1E11CDA49460053AF1A /* ImportContactsViewController.m */; };
 		0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE967521D353D690088C508 /* LivingTagsSecondStepViewController.m */; };
@@ -427,6 +429,8 @@
 		0DDFC9B11CE372B6004D5D46 /* socialLoginFirstService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialLoginFirstService.h; sourceTree = "<group>"; };
 		0DDFC9B21CE372B6004D5D46 /* socialLoginFirstService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialLoginFirstService.m; sourceTree = "<group>"; };
 		0DE5FE2C1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_google_dark_normal_ios@3x.png"; sourceTree = "<group>"; };
+		0DE5FE2E1DAE5471004B06E5 /* Signika-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Semibold.otf"; sourceTree = "<group>"; };
+		0DE5FE301DAE5DA0004B06E5 /* bg_btn_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_hover.png; sourceTree = "<group>"; };
 		0DE7A1DD1CDA32C50053AF1A /* ForgetPasswordService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordService.h; sourceTree = "<group>"; };
 		0DE7A1DE1CDA32C50053AF1A /* ForgetPasswordService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordService.m; sourceTree = "<group>"; };
 		0DE7A1E01CDA49460053AF1A /* ImportContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportContactsViewController.h; sourceTree = "<group>"; };
@@ -485,6 +489,7 @@
 		0D1DDF731DA7BB5B0063F2F9 /* CreateTagsCategory */ = {
 			isa = PBXGroup;
 			children = (
+				0DE5FE301DAE5DA0004B06E5 /* bg_btn_hover.png */,
 				0D1DDF741DA7BB5B0063F2F9 /* bg_btn.png */,
 				0D1DDF751DA7BB5B0063F2F9 /* business_icon.png */,
 				0D1DDF761DA7BB5B0063F2F9 /* other_icon.png */,
@@ -605,6 +610,7 @@
 		0D6659401DA6A14700566879 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				0DE5FE2E1DAE5471004B06E5 /* Signika-Semibold.otf */,
 				0D6659411DA6A14800566879 /* Signika-Bold.otf */,
 			);
 			path = fonts;
@@ -1088,6 +1094,7 @@
 			files = (
 				0D1DDF7C1DA7BB5B0063F2F9 /* business_icon.png in Resources */,
 				0D80DF881CEDA30B000FE698 /* MyLivingTagsMapViewController.xib in Resources */,
+				0DE5FE2F1DAE5471004B06E5 /* Signika-Semibold.otf in Resources */,
 				0D77F6B01CD736AE00671159 /* Assets.bundle in Resources */,
 				0D85A7E31D630799003F4427 /* CustomPopUpViewController.xib in Resources */,
 				0D6659421DA6A14800566879 /* Signika-Bold.otf in Resources */,
@@ -1119,6 +1126,7 @@
 				0D66593C1DA67CAF00566879 /* top_shadow.png in Resources */,
 				0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */,
 				0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */,
+				0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */,
 				0D1DDF7F1DA7BB5B0063F2F9 /* pet_icon.png in Resources */,
 				0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */,
 				0D6659261DA666E400566879 /* mail_icon.png in Resources */,

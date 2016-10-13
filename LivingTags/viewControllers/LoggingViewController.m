@@ -57,8 +57,6 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
 
 -(void)viewDidLayoutSubviews
 {
-    [self.signInButton setStyle:kGIDSignInButtonStyleIconOnly];
-    [self.signInButton setColorScheme:kGIDSignInButtonColorSchemeLight];
 }
 
 -(void)viewWillAppear:(BOOL)animated

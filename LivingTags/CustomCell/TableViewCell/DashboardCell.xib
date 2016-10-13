@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Signika-Bold.otf">
-            <string>Signika-Bold</string>
-            <string>Signika-Bold</string>
-            <string>Signika-Bold</string>
+        <mutableArray key="Signika-Semibold.otf">
+            <string>Signika-Semibold</string>
+            <string>Signika-Semibold</string>
+            <string>Signika-Semibold</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -32,7 +32,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APT-yh-HbQ">
                         <rect key="frame" x="0.0" y="120" width="199" height="27"/>
-                        <fontDescription key="fontDescription" name="Signika-Bold" family="Signika" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="Signika-Semibold" family="Signika" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -80,20 +80,21 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Persons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wo6-am-LTO">
-                                <rect key="frame" x="0.0" y="104" width="296" height="20"/>
-                                <fontDescription key="fontDescription" name="Signika-Bold" family="Signika" pointSize="15"/>
+                                <rect key="frame" x="0.0" y="104" width="296" height="25"/>
+                                <fontDescription key="fontDescription" name="Signika-Semibold" family="Signika" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlM-RE-qVw">
                                 <rect key="frame" x="110" y="23" width="76" height="76"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wo6-am-LTO" firstAttribute="width" secondItem="AGc-Wt-V98" secondAttribute="width" id="7eV-he-2Q3"/>
                             <constraint firstItem="Wo6-am-LTO" firstAttribute="top" secondItem="tp3-6W-C5T" secondAttribute="bottom" multiplier="1.05" id="SXX-mb-u7i"/>
-                            <constraint firstItem="tp3-6W-C5T" firstAttribute="height" secondItem="Wo6-am-LTO" secondAttribute="height" multiplier="3.8" id="Tcf-5K-nO3"/>
+                            <constraint firstItem="tp3-6W-C5T" firstAttribute="height" secondItem="Wo6-am-LTO" secondAttribute="height" multiplier="3" id="Tcf-5K-nO3"/>
                             <constraint firstItem="tp3-6W-C5T" firstAttribute="centerX" secondItem="AGc-Wt-V98" secondAttribute="centerX" id="UGL-DL-gy1"/>
                             <constraint firstItem="mlM-RE-qVw" firstAttribute="height" secondItem="tp3-6W-C5T" secondAttribute="height" id="YXD-tP-oZR"/>
                             <constraint firstItem="mlM-RE-qVw" firstAttribute="centerX" secondItem="tp3-6W-C5T" secondAttribute="centerX" id="cSc-zX-jEv"/>
@@ -124,12 +125,13 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSg-7W-S4f">
                                 <rect key="frame" x="0.0" y="103" width="295" height="28"/>
-                                <fontDescription key="fontDescription" name="Signika-Bold" family="Signika" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Signika-Semibold" family="Signika" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAN-k6-Ff2">
                                 <rect key="frame" x="109" y="23" width="76" height="76"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -177,7 +179,7 @@
                 <outlet property="lblLeft" destination="Wo6-am-LTO" id="fwX-bG-Bvr"/>
                 <outlet property="lblRight" destination="fSg-7W-S4f" id="Ztu-LH-VRl"/>
             </connections>
-            <point key="canvasLocation" x="491.5" y="233.5"/>
+            <point key="canvasLocation" x="545.5" y="229.5"/>
         </tableViewCell>
     </objects>
     <resources>

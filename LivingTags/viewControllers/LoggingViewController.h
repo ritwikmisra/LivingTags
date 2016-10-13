@@ -12,7 +12,5 @@
 
 @interface LoggingViewController : ViewControllerBaseClassViewController
 
-@property(weak, nonatomic) IBOutlet GIDSignInButton *signInButton;
-
 
 @end

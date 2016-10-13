@@ -13,8 +13,7 @@
 @interface CreateTagsTypeControllerViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     IBOutlet UITableView *tblTypes;
-    NSMutableArray *arrPics,*arrLabel;
-
+    NSMutableArray *arrPics,*arrLabel,*arrSelected;
 }
 
 @end
@@ -26,6 +25,7 @@
     [super viewDidLoad];
     arrLabel=[[NSMutableArray alloc]initWithObjects:@"Persons",@"Place",@"Thing",@"Pet",@"Business", @"Others",nil];
     arrPics=[[NSMutableArray alloc]initWithObjects:@"person_icon",@"place_icon",@"thing_icon",@"pet_icon",@"business_icon",@"other_icon", nil];
+    arrSelected=[[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0",@"0", nil];
     tblTypes.backgroundColor=[UIColor clearColor];
     tblTypes.separatorStyle=UITableViewCellSeparatorStyleNone;
 }
@@ -77,13 +77,23 @@
     }
     cell.btnLeft.tag=indexPath.row*2;
     cell.btnRIght.tag=indexPath.row*2+1;
-    NSLog(@"Left button tag=%d.....right button tag=%d",cell.btnLeft.tag,cell.btnRIght.tag);
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.lblLeft.text=[arrLabel objectAtIndex:cell.btnLeft.tag];
     cell.lblRight.text=[arrLabel objectAtIndex:cell.btnRIght.tag];
     cell.imgIconleft.image=[UIImage imageNamed:[arrPics objectAtIndex:cell.btnLeft.tag]];
     cell.imgIconRight.image=[UIImage imageNamed:[arrPics objectAtIndex:cell.btnRIght.tag]];
     cell.backgroundColor=[UIColor clearColor];
+    [cell.btnRIght addTarget:self action:@selector(btnRightPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnLeft addTarget:self action:@selector(btnLeftPressed:) forControlEvents:UIControlEventTouchUpInside];
+    if ([[arrSelected objectAtIndex:cell.btnLeft.tag]isEqualToString:@"1"])
+    {
+        cell.imgBackgroundLeft.image=[UIImage imageNamed:@"bg_btn_hover"];
+    }
+    else if ([[arrSelected objectAtIndex:cell.btnRIght.tag]isEqualToString:@"1"])
+    {
+        cell.imgBackgroundRight.image=[UIImage imageNamed:@"bg_btn_hover"];
+
+    }
     return cell;
 }
 
@@ -111,6 +121,29 @@
      }*/
 }
 
+#pragma mark
+#pragma mark IBACTIONS
+#pragma mark
 
+-(void)btnLeftPressed:(id)sender
+{
+    if ([arrSelected containsObject:@"1"])
+    {
+        int index=[arrSelected indexOfObject:@"1"];
+        [arrSelected replaceObjectAtIndex:index withObject:@"0"];
+    }
+    [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
+    [tblTypes reloadData];
+}
 
+-(void)btnRightPressed:(id)sender
+{
+    if ([arrSelected containsObject:@"1"])
+    {
+        int index=[arrSelected indexOfObject:@"1"];
+        [arrSelected replaceObjectAtIndex:index withObject:@"0"];
+    }
+    [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
+    [tblTypes reloadData];
+}
 @end

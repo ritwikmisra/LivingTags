@@ -227,7 +227,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyS-T8-wCW">
                                 <rect key="frame" x="69" y="461" width="462" height="40"/>
-                                <color key="backgroundColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.3411764706" green="0.77647058820000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                 <state key="normal" title="SIGN UP">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1618,7 +1618,7 @@
                                     <constraint firstItem="RhE-ov-5BK" firstAttribute="width" secondItem="PHa-bx-Gmd" secondAttribute="width" id="s30-ML-dyd"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eN-2i-Mlq">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eN-2i-Mlq">
                                 <rect key="frame" x="86" y="355" width="214" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Activate Account">
@@ -3134,8 +3134,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="KRc-Wn-CL4" id="93x-3H-yPf"/>
-                                    <outlet property="delegate" destination="KRc-Wn-CL4" id="fSS-U3-Cxa"/>
+                                    <outlet property="dataSource" destination="KRc-Wn-CL4" id="egB-p1-mq1"/>
+                                    <outlet property="delegate" destination="KRc-Wn-CL4" id="SDD-fK-byF"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -3175,7 +3175,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="tblTypes" destination="Nuo-uE-Agu" id="NEn-j7-skV"/>
+                        <outlet property="tblTypes" destination="Nuo-uE-Agu" id="PUM-Ac-VgS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xh0-jE-ayy" userLabel="First Responder" sceneMemberID="firstResponder"/>
