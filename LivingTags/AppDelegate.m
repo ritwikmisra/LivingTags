@@ -33,7 +33,6 @@ static NSString * const kClientID =@"254895372497-din6fimqr9gh31n616a6lmn2sf2uqo
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     _isFirstTime = YES;
-    sleep(5);
     // Override point for customization after application launch.
     [GMSServices provideAPIKey:@"AIzaSyBRwKQd7EJ5EUURgIo6EK2XdXsBHCwGw5s"];
     [GMSPlacesClient provideAPIKey:@"AIzaSyBRwKQd7EJ5EUURgIo6EK2XdXsBHCwGw5s"];

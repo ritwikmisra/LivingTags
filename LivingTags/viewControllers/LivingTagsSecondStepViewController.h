@@ -14,6 +14,6 @@
 
 @interface LivingTagsSecondStepViewController : ViewControllerBaseClassViewController
 
-@property(nonatomic,strong)NSString *strTemplateID;
+@property(nonatomic,strong)NSString *strTagName;
 
 @end

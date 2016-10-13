@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="AddImageCell">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WlX-Vu-o2R">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="91"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sca-g2-GhK">
+                        <rect key="frame" x="64" y="0.0" width="299" height="91"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-7w-vCo">
+                                <rect key="frame" x="0.0" y="0.0" width="299" height="91"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bdR-E8-waf">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tnw-7w-vCo" firstAttribute="height" secondItem="Sca-g2-GhK" secondAttribute="height" id="U0l-wd-jvR"/>
+                            <constraint firstItem="tnw-7w-vCo" firstAttribute="centerX" secondItem="Sca-g2-GhK" secondAttribute="centerX" id="Y9O-G9-mcL"/>
+                            <constraint firstItem="tnw-7w-vCo" firstAttribute="centerY" secondItem="Sca-g2-GhK" secondAttribute="centerY" id="cz2-87-NVT"/>
+                            <constraint firstItem="tnw-7w-vCo" firstAttribute="width" secondItem="Sca-g2-GhK" secondAttribute="width" id="eP6-x3-xG6"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-16-RbC">
+                        <rect key="frame" x="13" y="0.0" width="41" height="41"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="H1D-ap-XBe">
+                                <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="82n-YJ-mYB">
+                                <rect key="frame" x="10" y="10" width="21" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="82n-YJ-mYB" secondAttribute="height" id="USS-f1-TPK"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="HcM-16-RbC" secondAttribute="height" id="01H-SQ-KGx"/>
+                            <constraint firstItem="H1D-ap-XBe" firstAttribute="centerX" secondItem="HcM-16-RbC" secondAttribute="centerX" id="2sR-GF-VLL"/>
+                            <constraint firstItem="H1D-ap-XBe" firstAttribute="width" secondItem="HcM-16-RbC" secondAttribute="width" id="8Vi-se-xeU"/>
+                            <constraint firstItem="82n-YJ-mYB" firstAttribute="centerX" secondItem="H1D-ap-XBe" secondAttribute="centerX" id="Ccc-Tf-3Fu"/>
+                            <constraint firstItem="H1D-ap-XBe" firstAttribute="centerY" secondItem="HcM-16-RbC" secondAttribute="centerY" id="NQd-JU-yot"/>
+                            <constraint firstItem="H1D-ap-XBe" firstAttribute="width" secondItem="82n-YJ-mYB" secondAttribute="width" multiplier="2" id="kuo-Ni-1xP"/>
+                            <constraint firstItem="H1D-ap-XBe" firstAttribute="height" secondItem="HcM-16-RbC" secondAttribute="height" id="pqs-7t-kdP"/>
+                            <constraint firstItem="82n-YJ-mYB" firstAttribute="centerY" secondItem="H1D-ap-XBe" secondAttribute="centerY" id="wKX-lb-m0F"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="WlX-Vu-o2R" firstAttribute="trailing" secondItem="Sca-g2-GhK" secondAttribute="trailing" multiplier="1.03" id="2tr-ZG-rQz"/>
+                    <constraint firstAttribute="height" secondItem="WlX-Vu-o2R" secondAttribute="height" multiplier="1.2" id="5QS-xi-8f4"/>
+                    <constraint firstItem="tnw-7w-vCo" firstAttribute="leading" secondItem="HcM-16-RbC" secondAttribute="trailing" multiplier="1.2" id="ClV-2e-w2y"/>
+                    <constraint firstItem="WlX-Vu-o2R" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Odh-lI-laG"/>
+                    <constraint firstItem="HcM-16-RbC" firstAttribute="top" secondItem="WlX-Vu-o2R" secondAttribute="top" id="Oog-Da-alQ"/>
+                    <constraint firstItem="Sca-g2-GhK" firstAttribute="height" secondItem="WlX-Vu-o2R" secondAttribute="height" id="YVC-u7-uy7"/>
+                    <constraint firstItem="WlX-Vu-o2R" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="cCx-Q7-KMf"/>
+                    <constraint firstItem="WlX-Vu-o2R" firstAttribute="height" secondItem="HcM-16-RbC" secondAttribute="height" multiplier="2.2" id="soX-cK-Io6"/>
+                    <constraint firstItem="WlX-Vu-o2R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uEf-uy-A5v"/>
+                    <constraint firstItem="Sca-g2-GhK" firstAttribute="centerY" secondItem="WlX-Vu-o2R" secondAttribute="centerY" id="vL4-D2-bYd"/>
+                    <constraint firstItem="WlX-Vu-o2R" firstAttribute="width" secondItem="Sca-g2-GhK" secondAttribute="width" multiplier="1.25" id="wvH-WL-MSZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="176" y="103"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add_pic.png" width="82" height="77"/>
+        <image name="circle.png" width="181" height="181"/>
+    </resources>
+</document>

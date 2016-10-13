@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AddLocationCell">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A1I-mw-s5F">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="91"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="PHf-wt-X3g">
+                        <rect key="frame" x="12" y="0.0" width="41" height="41"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="PHf-wt-X3g" secondAttribute="height" multiplier="1:1" id="Wbh-LA-ZDD"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_location.png" translatesAutoresizingMaskIntoConstraints="NO" id="Iym-JC-owD">
+                        <rect key="frame" x="23" y="10" width="20" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Iym-JC-owD" secondAttribute="height" id="cs1-ea-zfE"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="txt_map.png" translatesAutoresizingMaskIntoConstraints="NO" id="Piq-Xr-KTU">
+                        <rect key="frame" x="64" y="0.0" width="299" height="91"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4a-IH-Tmz">
+                        <rect key="frame" x="192" y="16" width="43" height="43"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="t4a-IH-Tmz" secondAttribute="height" id="6LS-Cb-k4d"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="location.png"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xky-Po-bTv">
+                        <rect key="frame" x="73" y="73" width="290" height="18"/>
+                        <color key="backgroundColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <state key="normal" title="ADD LOCATION">
+                            <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="A1I-mw-s5F" firstAttribute="width" secondItem="Piq-Xr-KTU" secondAttribute="width" multiplier="1.25" id="5Ht-g1-K5J"/>
+                    <constraint firstItem="A1I-mw-s5F" firstAttribute="trailing" secondItem="Piq-Xr-KTU" secondAttribute="trailing" multiplier="1.03" id="66M-BE-StC"/>
+                    <constraint firstItem="Xky-Po-bTv" firstAttribute="bottom" secondItem="Piq-Xr-KTU" secondAttribute="bottom" id="A8r-Ml-Uz8"/>
+                    <constraint firstItem="Iym-JC-owD" firstAttribute="centerY" secondItem="PHf-wt-X3g" secondAttribute="centerY" id="AXP-L3-y9n"/>
+                    <constraint firstItem="PHf-wt-X3g" firstAttribute="top" secondItem="A1I-mw-s5F" secondAttribute="top" id="HpF-Jg-zde"/>
+                    <constraint firstItem="A1I-mw-s5F" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="firstBaseline" id="HqM-jY-nKo"/>
+                    <constraint firstItem="Iym-JC-owD" firstAttribute="centerX" secondItem="PHf-wt-X3g" secondAttribute="centerX" id="Jcd-oj-p77"/>
+                    <constraint firstAttribute="width" secondItem="A1I-mw-s5F" secondAttribute="width" id="LPC-AN-ftn"/>
+                    <constraint firstItem="Piq-Xr-KTU" firstAttribute="width" secondItem="Xky-Po-bTv" secondAttribute="width" multiplier="1.03" id="Lh2-aA-KiR"/>
+                    <constraint firstItem="Piq-Xr-KTU" firstAttribute="leading" secondItem="PHf-wt-X3g" secondAttribute="trailing" multiplier="1.2" id="Mo2-0D-AMt"/>
+                    <constraint firstItem="Piq-Xr-KTU" firstAttribute="centerY" secondItem="t4a-IH-Tmz" secondAttribute="centerY" multiplier="1.23" id="QTx-Ab-L8I"/>
+                    <constraint firstItem="t4a-IH-Tmz" firstAttribute="centerX" secondItem="Piq-Xr-KTU" secondAttribute="centerX" id="Qxc-hZ-gno"/>
+                    <constraint firstItem="A1I-mw-s5F" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="TrW-EP-H6n"/>
+                    <constraint firstItem="Piq-Xr-KTU" firstAttribute="height" secondItem="Xky-Po-bTv" secondAttribute="height" multiplier="5" id="YMM-Dn-KMz"/>
+                    <constraint firstItem="PHf-wt-X3g" firstAttribute="width" secondItem="Iym-JC-owD" secondAttribute="width" multiplier="2" id="lPu-My-QoA"/>
+                    <constraint firstItem="Piq-Xr-KTU" firstAttribute="height" secondItem="A1I-mw-s5F" secondAttribute="height" id="n3f-1U-7DC"/>
+                    <constraint firstItem="Piq-Xr-KTU" firstAttribute="width" secondItem="t4a-IH-Tmz" secondAttribute="width" multiplier="7" id="no0-Wd-kSA"/>
+                    <constraint firstAttribute="height" secondItem="A1I-mw-s5F" secondAttribute="height" multiplier="1.2" id="rJ6-No-a7Z"/>
+                    <constraint firstItem="Piq-Xr-KTU" firstAttribute="centerY" secondItem="A1I-mw-s5F" secondAttribute="centerY" id="wQt-BJ-eNd"/>
+                    <constraint firstItem="Xky-Po-bTv" firstAttribute="trailing" secondItem="Piq-Xr-KTU" secondAttribute="trailing" id="zC6-Xy-jXK"/>
+                    <constraint firstItem="A1I-mw-s5F" firstAttribute="height" secondItem="PHf-wt-X3g" secondAttribute="height" multiplier="2.2" id="zhI-Kp-cHi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="251" y="178"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add_location.png" width="75" height="101"/>
+        <image name="circle.png" width="181" height="181"/>
+        <image name="location.png" width="163" height="154"/>
+        <image name="txt_map.png" width="889" height="312"/>
+    </resources>
+</document>

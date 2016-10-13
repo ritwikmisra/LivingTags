@@ -154,8 +154,7 @@
 {
     if ([segue.identifier isEqualToString:@"segueTemplateSecondStep"])
     {
-        LivingTagsSecondStepViewController *master=[segue destinationViewController];
-        master.strTemplateID=strSegueTemplateID;
+
     }
 }
 

@@ -8,12 +8,13 @@
 
 #import "CreateTagsTypeControllerViewController.h"
 #import "DashboardCell.h"
-
+#import "LivingTagsSecondStepViewController.h"
 
 @interface CreateTagsTypeControllerViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     IBOutlet UITableView *tblTypes;
     NSMutableArray *arrPics,*arrLabel,*arrSelected;
+    NSString *strTags;
 }
 
 @end
@@ -99,6 +100,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.row==1)
     {
         //        appDel.isCreateTagTappedFromDashboard = YES;
@@ -127,6 +129,7 @@
 
 -(void)btnLeftPressed:(id)sender
 {
+    strTags=[arrLabel objectAtIndex:[sender tag]];
     if ([arrSelected containsObject:@"1"])
     {
         int index=[arrSelected indexOfObject:@"1"];
@@ -134,10 +137,12 @@
     }
     [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
     [tblTypes reloadData];
+    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.7];
 }
 
 -(void)btnRightPressed:(id)sender
 {
+    strTags=[arrLabel objectAtIndex:[sender tag]];
     if ([arrSelected containsObject:@"1"])
     {
         int index=[arrSelected indexOfObject:@"1"];
@@ -145,5 +150,24 @@
     }
     [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
     [tblTypes reloadData];
+    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.5];
+}
+
+#pragma mark
+#pragma mark SEGUE
+#pragma mark
+
+-(void)moveToTagCreation
+{
+    [self performSegueWithIdentifier:@"segueTagCreation" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueTagCreation"])
+    {
+        LivingTagsSecondStepViewController *master=[segue destinationViewController];
+        master.strTagName=strTags;
+    }
 }
 @end
