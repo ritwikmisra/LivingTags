@@ -148,7 +148,6 @@
             }
             cell=cellImage;
         }
-
             break;
             
         case 4 :
@@ -160,7 +159,6 @@
             }
             cell=cellVideo;
         }
-
             break;
             
         case 5 :
