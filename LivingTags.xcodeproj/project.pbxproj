@@ -125,6 +125,8 @@
 		0D80DF8A1CEDB0BA000FE698 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D80DF891CEDB0B9000FE698 /* MapKit.framework */; };
 		0D85A7E21D630799003F4427 /* CustomPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D85A7E01D630799003F4427 /* CustomPopUpViewController.m */; };
 		0D85A7E31D630799003F4427 /* CustomPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D85A7E11D630799003F4427 /* CustomPopUpViewController.xib */; };
+		0D8934D51DB0CEA700A48562 /* PersonImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8934D31DB0CEA700A48562 /* PersonImageCell.m */; };
+		0D8934D61DB0CEA700A48562 /* PersonImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934D41DB0CEA700A48562 /* PersonImageCell.xib */; };
 		0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */; };
 		0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6D501CE08EA2003A28C7 /* LivingTagsCell.m */; };
 		0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */; };
@@ -400,6 +402,9 @@
 		0D85A7DF1D630799003F4427 /* CustomPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopUpViewController.h; sourceTree = "<group>"; };
 		0D85A7E01D630799003F4427 /* CustomPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopUpViewController.m; sourceTree = "<group>"; };
 		0D85A7E11D630799003F4427 /* CustomPopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPopUpViewController.xib; sourceTree = "<group>"; };
+		0D8934D21DB0CEA700A48562 /* PersonImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageCell.h; sourceTree = "<group>"; };
+		0D8934D31DB0CEA700A48562 /* PersonImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonImageCell.m; sourceTree = "<group>"; };
+		0D8934D41DB0CEA700A48562 /* PersonImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonImageCell.xib; sourceTree = "<group>"; };
 		0D898E961CCF51E300B35D04 /* AppConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstant.h; sourceTree = "<group>"; };
 		0D898E991CCF58E400B35D04 /* ModelBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBaseClass.h; sourceTree = "<group>"; };
 		0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBaseClass.m; sourceTree = "<group>"; };
@@ -841,6 +846,7 @@
 		0D698D1B1CC8D79000F64745 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D8934D11DB0CE8800A48562 /* PersonTagCell */,
 				0DAD38F31D0EA9F90044B7A7 /* TemplateCell.h */,
 				0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */,
 				0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */,
@@ -1003,6 +1009,16 @@
 				0D85A7E11D630799003F4427 /* CustomPopUpViewController.xib */,
 			);
 			path = CustomPopUP;
+			sourceTree = "<group>";
+		};
+		0D8934D11DB0CE8800A48562 /* PersonTagCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D8934D21DB0CEA700A48562 /* PersonImageCell.h */,
+				0D8934D31DB0CEA700A48562 /* PersonImageCell.m */,
+				0D8934D41DB0CEA700A48562 /* PersonImageCell.xib */,
+			);
+			path = PersonTagCell;
 			sourceTree = "<group>";
 		};
 		0D898E951CCF51E300B35D04 /* Constants */ = {
@@ -1282,6 +1298,7 @@
 				0DF008A91DAFB76500BD39C3 /* txt.png in Resources */,
 				0DF008701DAFA53200BD39C3 /* VoiceTagCell.xib in Resources */,
 				0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */,
+				0D8934D61DB0CEA700A48562 /* PersonImageCell.xib in Resources */,
 				0DF0089F1DAFB76500BD39C3 /* cross.png in Resources */,
 				0D7165B71CE323FA00C8B288 /* GoogleService-Info.plist in Resources */,
 				0D6659271DA666E400566879 /* name_icon.png in Resources */,
@@ -1462,6 +1479,7 @@
 				0D79E2191D4A4F7E007E4B35 /* CreateTagsThirdStepService.m in Sources */,
 				0D698D2F1CC8D90500F64745 /* LandingViewController.m in Sources */,
 				0DF008741DAFA6B100BD39C3 /* AddLocationCell.m in Sources */,
+				0D8934D51DB0CEA700A48562 /* PersonImageCell.m in Sources */,
 				0D922FB11CF86D3E00EC1945 /* customAnnotationGroups.m in Sources */,
 				0D3731481CD8A10B00EDC547 /* UIImage+GIF.m in Sources */,
 				0D9472B01D0AF74F00A85677 /* LivingTagsTemplateListController.m in Sources */,

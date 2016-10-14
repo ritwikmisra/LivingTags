@@ -11,5 +11,6 @@
 @interface BirthDeathDateCell : UITableViewCell
 
 @property(nonatomic,strong)IBOutlet UIButton *btnLiving;
+@property(nonatomic,strong)IBOutlet UIImageView *imgLiving;
 
 @end

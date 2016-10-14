@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddImageCell : UITableViewCell
+@interface AddImageCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
+
+@property(nonatomic,strong)IBOutlet UICollectionView *cllvwImages;
 
 @end

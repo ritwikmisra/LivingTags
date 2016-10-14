@@ -48,14 +48,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkH-G8-L7Z">
                                 <rect key="frame" x="64" y="0.0" width="299" height="91"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="E5f-ub-3ku">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="E5f-ub-3ku">
                                         <rect key="frame" x="0.0" y="0.0" width="299" height="91"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u0L-PV-RNb">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u0L-PV-RNb">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
+                                        <connections>
+                                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="x67-p5-Qmy"/>
+                                            <outlet property="delegate" destination="KGk-i7-Jjw" id="4K9-Xx-1g6"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,7 +90,10 @@
                     <constraint firstAttribute="height" secondItem="BPd-Xx-Hya" secondAttribute="height" multiplier="1.2" id="zbB-Uv-Ecu"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="226" y="194"/>
+            <connections>
+                <outlet property="cllvwImages" destination="E5f-ub-3ku" id="HWS-yx-R35"/>
+            </connections>
+            <point key="canvasLocation" x="90" y="92"/>
         </tableViewCell>
     </objects>
     <resources>

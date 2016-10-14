@@ -38,10 +38,10 @@
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGZ-Z5-fIa">
                         <rect key="frame" x="72" y="73" width="291" height="18"/>
-                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.56470588239999997" green="0.57254901960000004" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <state key="normal" title="ADD TEXT">
-                            <color key="titleColor" red="0.56470588239999997" green="0.57254901960000004" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eat-Zp-4UT">

@@ -104,6 +104,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnFemale" destination="sbh-sf-ddV" id="IU6-by-xhT"/>
                 <outlet property="btnMale" destination="XyA-wu-2Gl" id="FvO-ix-hZ5"/>
                 <outlet property="imgFemale" destination="6Pe-Vb-sZS" id="GAb-6k-Rfa"/>
                 <outlet property="imgMale" destination="L9E-MV-to9" id="9FH-gb-AHY"/>

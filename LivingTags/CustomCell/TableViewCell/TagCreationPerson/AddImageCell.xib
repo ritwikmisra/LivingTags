@@ -22,14 +22,18 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sca-g2-GhK">
                         <rect key="frame" x="64" y="0.0" width="299" height="91"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-7w-vCo">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-7w-vCo">
                                 <rect key="frame" x="0.0" y="0.0" width="299" height="91"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bdR-E8-waf">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bdR-E8-waf">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="KGk-i7-Jjw" id="Z31-zu-DvD"/>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="A9g-Hq-k1X"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,6 +84,9 @@
                     <constraint firstItem="WlX-Vu-o2R" firstAttribute="width" secondItem="Sca-g2-GhK" secondAttribute="width" multiplier="1.25" id="wvH-WL-MSZ"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="cllvwImages" destination="tnw-7w-vCo" id="eQj-cW-9Kz"/>
+            </connections>
             <point key="canvasLocation" x="176" y="103"/>
         </tableViewCell>
     </objects>
