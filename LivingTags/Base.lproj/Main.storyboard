@@ -93,10 +93,10 @@
                                     <constraint firstAttribute="width" secondItem="Mma-NH-x8u" secondAttribute="height" id="ATa-iO-Cv2"/>
                                 </constraints>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qOk-Gs-bzF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qOk-Gs-bzF">
                                 <rect key="frame" x="133" y="83" width="334" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="0.96470588239999999" green="0.51764705879999995" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="aIn-rF-jKc" id="4Gu-Eb-t9w"/>
                                     <outlet property="delegate" destination="aIn-rF-jKc" id="6fN-EK-YJ3"/>
@@ -2009,6 +2009,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QeP-E4-CWV" secondAttribute="height" id="Cqj-J5-dz3"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="btnBackPressed:" destination="5fP-4K-Kaz" eventType="touchUpInside" id="IdC-j1-aeX"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ofR-6h-Qpn">
                                 <rect key="frame" x="20" y="70" width="560" height="526"/>

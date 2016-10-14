@@ -26,11 +26,17 @@
     [super viewDidLoad];
     arrLabel=[[NSMutableArray alloc]initWithObjects:@"Persons",@"Place",@"Thing",@"Pet",@"Business", @"Others",nil];
     arrPics=[[NSMutableArray alloc]initWithObjects:@"person_icon",@"place_icon",@"thing_icon",@"pet_icon",@"business_icon",@"other_icon", nil];
-    arrSelected=[[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0",@"0", nil];
     tblTypes.backgroundColor=[UIColor clearColor];
     tblTypes.separatorStyle=UITableViewCellSeparatorStyleNone;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    arrSelected=[[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0",@"0", nil];
+    tblTypes.delegate=self;
+    tblTypes.dataSource=self;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -169,5 +175,14 @@
         LivingTagsSecondStepViewController *master=[segue destinationViewController];
         master.strTagName=strTags;
     }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [arrSelected removeAllObjects];
+    arrSelected=nil;
+    tblTypes.delegate=nil;
+    tblTypes.dataSource=nil;
 }
 @end

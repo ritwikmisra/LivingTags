@@ -84,7 +84,7 @@
     }
     if (___isIphone5_5s)
     {
-        return 135.0f;
+        return 110.0f;
     }
     return 95.0f;
 }

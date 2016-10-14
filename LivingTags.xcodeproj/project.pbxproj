@@ -127,6 +127,11 @@
 		0D85A7E31D630799003F4427 /* CustomPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D85A7E11D630799003F4427 /* CustomPopUpViewController.xib */; };
 		0D8934D51DB0CEA700A48562 /* PersonImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8934D31DB0CEA700A48562 /* PersonImageCell.m */; };
 		0D8934D61DB0CEA700A48562 /* PersonImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934D41DB0CEA700A48562 /* PersonImageCell.xib */; };
+		0D8934DB1DB1013300A48562 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8934D91DB1013300A48562 /* CategoryCell.m */; };
+		0D8934DC1DB1013300A48562 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934DA1DB1013300A48562 /* CategoryCell.xib */; };
+		0D8934E11DB11A0200A48562 /* AddLogoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8934DF1DB11A0200A48562 /* AddLogoCell.m */; };
+		0D8934E21DB11A0200A48562 /* AddLogoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934E01DB11A0200A48562 /* AddLogoCell.xib */; };
+		0D8934E41DB11C7900A48562 /* add_logo_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934E31DB11C7900A48562 /* add_logo_button.png */; };
 		0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */; };
 		0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6D501CE08EA2003A28C7 /* LivingTagsCell.m */; };
 		0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */; };
@@ -405,6 +410,13 @@
 		0D8934D21DB0CEA700A48562 /* PersonImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageCell.h; sourceTree = "<group>"; };
 		0D8934D31DB0CEA700A48562 /* PersonImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonImageCell.m; sourceTree = "<group>"; };
 		0D8934D41DB0CEA700A48562 /* PersonImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonImageCell.xib; sourceTree = "<group>"; };
+		0D8934D81DB1013300A48562 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		0D8934D91DB1013300A48562 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		0D8934DA1DB1013300A48562 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		0D8934DE1DB11A0200A48562 /* AddLogoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLogoCell.h; sourceTree = "<group>"; };
+		0D8934DF1DB11A0200A48562 /* AddLogoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLogoCell.m; sourceTree = "<group>"; };
+		0D8934E01DB11A0200A48562 /* AddLogoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddLogoCell.xib; sourceTree = "<group>"; };
+		0D8934E31DB11C7900A48562 /* add_logo_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_logo_button.png; sourceTree = "<group>"; };
 		0D898E961CCF51E300B35D04 /* AppConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstant.h; sourceTree = "<group>"; };
 		0D898E991CCF58E400B35D04 /* ModelBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBaseClass.h; sourceTree = "<group>"; };
 		0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBaseClass.m; sourceTree = "<group>"; };
@@ -860,6 +872,8 @@
 		0D698D1C1CC8D79000F64745 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D8934DD1DB119C200A48562 /* BusinessCell */,
+				0D8934D71DB100DD00A48562 /* TagPlaceCreation */,
 				0DF0084D1DAF925B00BD39C3 /* TagCreationPerson */,
 				0D7BA23A1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.h */,
 				0D7BA23B1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m */,
@@ -1021,6 +1035,26 @@
 			path = PersonTagCell;
 			sourceTree = "<group>";
 		};
+		0D8934D71DB100DD00A48562 /* TagPlaceCreation */ = {
+			isa = PBXGroup;
+			children = (
+				0D8934D81DB1013300A48562 /* CategoryCell.h */,
+				0D8934D91DB1013300A48562 /* CategoryCell.m */,
+				0D8934DA1DB1013300A48562 /* CategoryCell.xib */,
+			);
+			path = TagPlaceCreation;
+			sourceTree = "<group>";
+		};
+		0D8934DD1DB119C200A48562 /* BusinessCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D8934DE1DB11A0200A48562 /* AddLogoCell.h */,
+				0D8934DF1DB11A0200A48562 /* AddLogoCell.m */,
+				0D8934E01DB11A0200A48562 /* AddLogoCell.xib */,
+			);
+			path = BusinessCell;
+			sourceTree = "<group>";
+		};
 		0D898E951CCF51E300B35D04 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -1161,6 +1195,7 @@
 		0DF008761DAFB76400BD39C3 /* TagsCreate */ = {
 			isa = PBXGroup;
 			children = (
+				0D8934E31DB11C7900A48562 /* add_logo_button.png */,
 				0DF008B51DAFE6F200BD39C3 /* find_button.png */,
 				0DF008B31DAFD80100BD39C3 /* box_bg.png */,
 				0DF008AF1DAFD7B000BD39C3 /* add_location.png */,
@@ -1328,6 +1363,7 @@
 				0D5EA23B1CCB6A0000CA0DAE /* NetworkActivityViewController.xib in Resources */,
 				0DF008AA1DAFB76500BD39C3 /* txt_audio.png in Resources */,
 				0DF0089D1DAFB76500BD39C3 /* circle.png in Resources */,
+				0D8934E41DB11C7900A48562 /* add_logo_button.png in Resources */,
 				0D1DDF841DA7DFDB0063F2F9 /* logo.png in Resources */,
 				0DF008981DAFB76500BD39C3 /* add_txt.png in Resources */,
 				0DF0086B1DAFA2D600BD39C3 /* AddVideoTagCell.xib in Resources */,
@@ -1335,12 +1371,14 @@
 				0D6659371DA67CAF00566879 /* menu_icon2.png in Resources */,
 				0D2305431D54C6FB00115A34 /* SlideMenuController.xib in Resources */,
 				0D6659381DA67CAF00566879 /* other_tag.png in Resources */,
+				0D8934DC1DB1013300A48562 /* CategoryCell.xib in Resources */,
 				0DF008A21DAFB76500BD39C3 /* living_button_off.png in Resources */,
 				0D66593C1DA67CAF00566879 /* top_shadow.png in Resources */,
 				0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */,
 				0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */,
 				0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */,
 				0D1DDF7F1DA7BB5B0063F2F9 /* pet_icon.png in Resources */,
+				0D8934E21DB11A0200A48562 /* AddLogoCell.xib in Resources */,
 				0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */,
 				0D6659261DA666E400566879 /* mail_icon.png in Resources */,
 				0D6659391DA67CAF00566879 /* scan_tag.png in Resources */,
@@ -1440,6 +1478,7 @@
 				0D94FF581D3CCCB400502FC8 /* CKCalendarView.m in Sources */,
 				0D3731551CD8B71F00EDC547 /* ForgetPasswordViewController.m in Sources */,
 				0D1FBC9A1D6F41B500028727 /* CameraVideoTextSelectionViewController.m in Sources */,
+				0D8934E11DB11A0200A48562 /* AddLogoCell.m in Sources */,
 				0D3731461CD8A10B00EDC547 /* SDWebImagePrefetcher.m in Sources */,
 				0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */,
 				0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */,
@@ -1461,6 +1500,7 @@
 				0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */,
 				0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */,
 				0D1FC5C41D644E940039B962 /* ModelImageUpload.m in Sources */,
+				0D8934DB1DB1013300A48562 /* CategoryCell.m in Sources */,
 				0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */,
 				0D85A7E21D630799003F4427 /* CustomPopUpViewController.m in Sources */,
 				0D37314A1CD8A10B00EDC547 /* UIImage+WebP.m in Sources */,

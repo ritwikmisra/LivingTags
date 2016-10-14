@@ -51,8 +51,8 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     signIn.uiDelegate = self;
     txtEmail.returnKeyType=UIReturnKeyNext;
     txtPassword.returnKeyType=UIReturnKeyDone;
-    txtEmail.text=@"sourav.hazra@appsbee.com";
-    txtPassword.text=@"123456";
+//    txtEmail.text=@"sourav.hazra@appsbee.com";
+//    txtPassword.text=@"123456";
 }
 
 -(void)viewDidLayoutSubviews

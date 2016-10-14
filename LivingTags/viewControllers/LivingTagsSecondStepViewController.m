@@ -14,12 +14,15 @@
 #import "AddVideoTagCell.h"
 #import "VoiceTagCell.h"
 #import "AddLocationCell.h"
+#import "CategoryCell.h"
+#import "AddLogoCell.h"
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     IBOutlet UITableView *tblTagsCreation;
     NSString *strGender;
     BOOL isLiving;
+    NSMutableArray *arrPlaceHolders;
 }
 
 @end
@@ -33,6 +36,7 @@
     tblTagsCreation.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblTagsCreation.delegate=self;
     tblTagsCreation.dataSource=self;
+    arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Business Name",@"Contact Name",@"Title",@"Business Address",@"Business Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -71,6 +75,9 @@
             case 2:
                 return 95.0f;
                 break;
+            case 8:
+                return 40.0f;
+
             default:
                 return 110.0f;
                 break;
@@ -90,6 +97,8 @@
             case 2:
                 return 40.0f;
                 break;
+            case 8:
+                return 40.0f;
             default:
                 return 110.0f;
                 break;
@@ -103,9 +112,11 @@
                 return 40.0f;
                 break;
             case 1:
-                return 40.0f;
+                return 30.0f;
                 break;
             case 2:
+                return 50.0f;
+                case 8:
                 return 40.0f;
                 break;
             default:
@@ -113,12 +124,32 @@
                 break;
         }
     }
+    else
+    {
+        if (indexPath.row==9)
+        {
+            return 30.0f;
+        }
+        else if (indexPath.row==10)
+        {
+            return 60.0f;
+        }
+        else if (indexPath.row==11 || indexPath.row==12 || indexPath.row==13 || indexPath.row==14 || indexPath.row==15)
+        {
+            return 110.0f;
+        }
+        return 40.0f;
+    }
     return 0.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    if ([self.strTagName isEqualToString:@"Business"])
+    {
+        return 17;
+    }
+    return 9;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -248,6 +279,16 @@
                 cell=cellLocation;
             }
                 break;
+                case 8:
+            {
+                AddLogoCell *cellButton=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellButton)
+                {
+                    cellButton=[[[NSBundle mainBundle]loadNibNamed:@"AddLogoCell" owner:self options:nil]objectAtIndex:1];
+                }
+                [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+                cell=cellButton;
+            }
             default:
                 break;
         }
@@ -373,6 +414,17 @@
                     cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:0];
                 }
                 cell=cellLocation;
+                break;
+            }
+            case 8:
+            {
+                AddLogoCell *cellButton=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellButton)
+                {
+                    cellButton=[[[NSBundle mainBundle]loadNibNamed:@"AddLogoCell" owner:self options:nil]objectAtIndex:1];
+                }
+                [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+                cell=cellButton;
             }
                 break;
             default:
@@ -381,7 +433,204 @@
     }
     else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Others"])
     {
-        
+        switch (indexPath.row)
+        {
+            case 0 :
+            {
+                PersonNameCell *cellPerson=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellPerson)
+                {
+                    cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
+                }
+                cellPerson.txtPersonName.placeholder=@"Title/Name";
+                cell=cellPerson;
+            }
+                break;
+                
+            case 1 :
+            {
+                CategoryCell *cellCategory=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellCategory)
+                {
+                    cellCategory=[[[NSBundle mainBundle]loadNibNamed:@"CategoryCell" owner:self options:nil]objectAtIndex:0];
+                }
+                cell=cellCategory;
+            }
+                break;
+                
+            case 2 :
+            {
+                PersonNameCell *cellPerson=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellPerson)
+                {
+                    cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
+                }
+                cellPerson.txtPersonName.placeholder=@"Contact Info";
+                cell=cellPerson;
+            }
+                break;
+                
+            case 3 :
+                
+            {
+                AddImageCell *cellImage=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellImage)
+                {
+                    cellImage=[[[NSBundle mainBundle]loadNibNamed:@"AddImageCell" owner:self options:nil]objectAtIndex:0];
+                }
+                cell=cellImage;
+            }
+                break;
+                
+            case 4 :
+            {
+                AddVideoCell *cellVideo=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellVideo)
+                {
+                    cellVideo=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoCell" owner:self options:nil]objectAtIndex:0];
+                }
+                cell=cellVideo;
+            }
+                break;
+                
+            case 5 :
+            {
+                AddVideoTagCell *cellText=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellText)
+                {
+                    cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:0];
+                }
+                cell=cellText;
+            }
+                break;
+                
+            case 6 :
+            {
+                VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellVoice)
+                {
+                    cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:0];
+                }
+                cell=cellVoice;
+            }
+                break;
+                
+            case 7 :
+            {
+                AddLocationCell *cellLocation=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellLocation)
+                {
+                    cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:0];
+                }
+                cell=cellLocation;
+                break;
+            }
+                case 8:
+            {
+                AddLogoCell *cellButton=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                if (!cellButton)
+                {
+                    cellButton=[[[NSBundle mainBundle]loadNibNamed:@"AddLogoCell" owner:self options:nil]objectAtIndex:1];
+                }
+                [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+                cell=cellButton;
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    else
+    {
+        if (indexPath.row<=8)
+        {
+            PersonNameCell *cellPerson=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellPerson)
+            {
+                cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
+            }
+            cellPerson.txtPersonName.placeholder=[arrPlaceHolders objectAtIndex:indexPath.row];
+            cell=cellPerson;
+        }
+        else if (indexPath.row==9)
+        {
+            CategoryCell *cellCategory=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellCategory)
+            {
+                cellCategory=[[[NSBundle mainBundle]loadNibNamed:@"CategoryCell" owner:self options:nil]objectAtIndex:0];
+            }
+            cell=cellCategory;
+        }
+        else if (indexPath.row==10)
+        {
+            AddLogoCell *cellButton=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellButton)
+            {
+                cellButton=[[[NSBundle mainBundle]loadNibNamed:@"AddLogoCell" owner:self options:nil]objectAtIndex:0];
+            }
+            [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+            cell=cellButton;
+
+        }
+        else if (indexPath.row==11)
+        {
+            AddImageCell *cellImage=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellImage)
+            {
+                cellImage=[[[NSBundle mainBundle]loadNibNamed:@"AddImageCell" owner:self options:nil]objectAtIndex:0];
+            }
+            cell=cellImage;
+        }
+        else if (indexPath.row==12)
+        {
+            AddVideoCell *cellVideo=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellVideo)
+            {
+                cellVideo=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoCell" owner:self options:nil]objectAtIndex:0];
+            }
+            cell=cellVideo;
+
+        }
+        else if (indexPath.row==13)
+        {
+            AddVideoTagCell *cellText=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellText)
+            {
+                cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:0];
+            }
+            cell=cellText;
+
+        }
+        else if (indexPath.row==14)
+        {
+            VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellVoice)
+            {
+                cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:0];
+            }
+            cell=cellVoice;
+
+        }
+        else if (indexPath.row==15)
+        {
+            AddLocationCell *cellLocation=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellLocation)
+            {
+                cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:0];
+            }
+            cell=cellLocation;
+
+        }
+        else if (indexPath.row==16)
+        {
+            AddLogoCell *cellButton=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+            if (!cellButton)
+            {
+                cellButton=[[[NSBundle mainBundle]loadNibNamed:@"AddLogoCell" owner:self options:nil]objectAtIndex:1];
+            }
+            [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+            cell=cellButton;
+        }
     }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor clearColor];
@@ -425,5 +674,10 @@
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [tblTagsCreation endUpdates];
+}
+
+-(void)btnNextPressed:(id)sender
+{
+    
 }
 @end
