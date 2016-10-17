@@ -84,6 +84,6 @@
         <image name="add_location.png" width="75" height="101"/>
         <image name="circle.png" width="181" height="181"/>
         <image name="location.png" width="163" height="154"/>
-        <image name="txt_map.png" width="889" height="312"/>
+        <image name="txt_map.png" width="889" height="308"/>
     </resources>
 </document>

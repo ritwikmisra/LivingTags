@@ -76,7 +76,7 @@
                 return 95.0f;
                 break;
             case 8:
-                return 40.0f;
+                return 50.0f;
 
             default:
                 return 110.0f;
@@ -98,7 +98,7 @@
                 return 40.0f;
                 break;
             case 8:
-                return 40.0f;
+                return 50.0f;
             default:
                 return 110.0f;
                 break;
@@ -117,7 +117,7 @@
             case 2:
                 return 50.0f;
                 case 8:
-                return 40.0f;
+                return 50.0f;
                 break;
             default:
                 return 110.0f;
@@ -137,6 +137,10 @@
         else if (indexPath.row==11 || indexPath.row==12 || indexPath.row==13 || indexPath.row==14 || indexPath.row==15)
         {
             return 110.0f;
+        }
+        if (indexPath.row==16)
+        {
+            return 50.0f;
         }
         return 40.0f;
     }
