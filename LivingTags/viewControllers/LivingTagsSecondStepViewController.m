@@ -446,7 +446,9 @@
                 {
                     cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
                 }
-                cellPerson.txtPersonName.placeholder=@"Title/Name";
+                UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
+                cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Title/Name" attributes:@{NSForegroundColorAttributeName: color}];
+
                 cell=cellPerson;
             }
                 break;
@@ -469,7 +471,9 @@
                 {
                     cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
                 }
-                cellPerson.txtPersonName.placeholder=@"Contact Info";
+                UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
+                cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Contact Info" attributes:@{NSForegroundColorAttributeName: color}];
+
                 cell=cellPerson;
             }
                 break;
@@ -554,6 +558,8 @@
                 cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
             }
             cellPerson.txtPersonName.placeholder=[arrPlaceHolders objectAtIndex:indexPath.row];
+            UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
+            cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[arrPlaceHolders objectAtIndex:indexPath.row] attributes:@{NSForegroundColorAttributeName: color}];
             cell=cellPerson;
         }
         else if (indexPath.row==9)

@@ -48,8 +48,8 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat width,height;
-    width = self.cllvwImages.frame.size.height;
-    height = self.cllvwImages.frame.size.height;
+    width = self.cllvwImages.frame.size.height-10.0f;
+    height = self.cllvwImages.frame.size.height-10.0f;
     return CGSizeMake(width,height);
 }
 

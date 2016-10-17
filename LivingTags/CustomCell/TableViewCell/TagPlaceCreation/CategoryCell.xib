@@ -17,16 +17,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pQg-7U-DSK">
-                        <rect key="frame" x="10" y="0.0" width="324" height="43"/>
+                        <rect key="frame" x="8" y="0.0" width="328" height="43"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYo-nN-8lS">
-                        <rect key="frame" x="18" y="7" width="250" height="29"/>
+                        <rect key="frame" x="17" y="7" width="252" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scroll_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="eNe-wo-ccT">
-                        <rect key="frame" x="298" y="7" width="29" height="29"/>
+                        <rect key="frame" x="308" y="11" width="21" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="eNe-wo-ccT" secondAttribute="height" id="7Cg-1v-XNF"/>
                         </constraints>
@@ -36,8 +36,8 @@
                     <constraint firstItem="pQg-7U-DSK" firstAttribute="width" secondItem="fYo-nN-8lS" secondAttribute="width" multiplier="1.3" id="0VR-kt-PC4"/>
                     <constraint firstItem="pQg-7U-DSK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="36U-Or-GDv"/>
                     <constraint firstItem="pQg-7U-DSK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4x2-Ke-koa"/>
-                    <constraint firstAttribute="width" secondItem="pQg-7U-DSK" secondAttribute="width" multiplier="1.06" id="5ok-i9-hPg"/>
-                    <constraint firstItem="pQg-7U-DSK" firstAttribute="height" secondItem="eNe-wo-ccT" secondAttribute="height" multiplier="1.5" id="FhL-t0-wkS"/>
+                    <constraint firstAttribute="width" secondItem="pQg-7U-DSK" secondAttribute="width" multiplier="1.05" id="5ok-i9-hPg"/>
+                    <constraint firstItem="pQg-7U-DSK" firstAttribute="height" secondItem="eNe-wo-ccT" secondAttribute="height" multiplier="2" id="FhL-t0-wkS"/>
                     <constraint firstItem="pQg-7U-DSK" firstAttribute="height" secondItem="fYo-nN-8lS" secondAttribute="height" multiplier="1.5" id="Rpk-5G-QtP"/>
                     <constraint firstItem="fYo-nN-8lS" firstAttribute="centerY" secondItem="pQg-7U-DSK" secondAttribute="centerY" id="Vqx-hH-gFK"/>
                     <constraint firstItem="pQg-7U-DSK" firstAttribute="centerX" secondItem="fYo-nN-8lS" secondAttribute="centerX" multiplier="1.2" id="dRg-ZJ-tMj"/>

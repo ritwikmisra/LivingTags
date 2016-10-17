@@ -22,7 +22,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h0-FR-Snl">
-                        <rect key="frame" x="6" y="113" width="128" height="21"/>
+                        <rect key="frame" x="6" y="108" width="128" height="26"/>
                         <color key="backgroundColor" red="0.56470588235294117" green="0.5725490196078431" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <state key="normal">
@@ -43,7 +43,7 @@
                 <constraint firstItem="fns-bd-6kT" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Op5-W7-tJg"/>
                 <constraint firstItem="Bzp-sa-Yrm" firstAttribute="centerX" secondItem="fns-bd-6kT" secondAttribute="centerX" id="Syt-Qu-dbB"/>
                 <constraint firstItem="fns-bd-6kT" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VPd-e8-8i5"/>
-                <constraint firstItem="fns-bd-6kT" firstAttribute="height" secondItem="3h0-FR-Snl" secondAttribute="height" multiplier="6" id="W6d-wE-kPX"/>
+                <constraint firstItem="fns-bd-6kT" firstAttribute="height" secondItem="3h0-FR-Snl" secondAttribute="height" multiplier="5" id="W6d-wE-kPX"/>
                 <constraint firstItem="3h0-FR-Snl" firstAttribute="bottom" secondItem="fns-bd-6kT" secondAttribute="bottom" id="bz2-H1-AaH"/>
                 <constraint firstAttribute="height" secondItem="fns-bd-6kT" secondAttribute="height" multiplier="1.1" id="eou-5u-urX"/>
                 <constraint firstItem="3h0-FR-Snl" firstAttribute="centerX" secondItem="fns-bd-6kT" secondAttribute="centerX" id="kI2-ol-Ds7"/>

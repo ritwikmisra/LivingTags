@@ -46,10 +46,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkH-G8-L7Z">
-                                <rect key="frame" x="64" y="0.0" width="299" height="91"/>
+                                <rect key="frame" x="68" y="0.0" width="299" height="91"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="E5f-ub-3ku">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="aFV-Yp-NOv">
                                         <rect key="frame" x="0.0" y="0.0" width="299" height="91"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="E5f-ub-3ku">
+                                        <rect key="frame" x="17" y="0.0" width="271" height="91"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u0L-PV-RNb">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -62,23 +66,27 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="E5f-ub-3ku" firstAttribute="height" secondItem="YkH-G8-L7Z" secondAttribute="height" id="AWQ-ox-pOK"/>
+                                    <constraint firstItem="aFV-Yp-NOv" firstAttribute="centerY" secondItem="YkH-G8-L7Z" secondAttribute="centerY" id="EXg-me-RtZ"/>
+                                    <constraint firstItem="aFV-Yp-NOv" firstAttribute="width" secondItem="YkH-G8-L7Z" secondAttribute="width" id="K3Z-Z2-voj"/>
                                     <constraint firstItem="E5f-ub-3ku" firstAttribute="centerY" secondItem="YkH-G8-L7Z" secondAttribute="centerY" id="LEe-XO-mye"/>
-                                    <constraint firstAttribute="width" secondItem="E5f-ub-3ku" secondAttribute="width" id="Xbg-rm-MWu"/>
-                                    <constraint firstItem="E5f-ub-3ku" firstAttribute="centerX" secondItem="YkH-G8-L7Z" secondAttribute="centerX" id="leO-TD-Pzf"/>
+                                    <constraint firstItem="aFV-Yp-NOv" firstAttribute="centerX" secondItem="YkH-G8-L7Z" secondAttribute="centerX" id="Vlx-Zm-Qzd"/>
+                                    <constraint firstAttribute="width" secondItem="E5f-ub-3ku" secondAttribute="width" multiplier="1.1" id="Xbg-rm-MWu"/>
+                                    <constraint firstItem="aFV-Yp-NOv" firstAttribute="height" secondItem="YkH-G8-L7Z" secondAttribute="height" id="g07-Kz-gJA"/>
+                                    <constraint firstItem="E5f-ub-3ku" firstAttribute="centerX" secondItem="YkH-G8-L7Z" secondAttribute="centerX" multiplier="1.02" id="leO-TD-Pzf"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="E5f-ub-3ku" firstAttribute="leading" secondItem="7b4-kA-kwj" secondAttribute="trailing" multiplier="1.2" id="02k-tg-t6Q"/>
                             <constraint firstAttribute="height" secondItem="YMY-zX-BRK" secondAttribute="height" multiplier="2.2" id="6Iy-4B-4AB"/>
                             <constraint firstAttribute="width" secondItem="YkH-G8-L7Z" secondAttribute="width" multiplier="1.25" id="Ckh-ba-k7E"/>
                             <constraint firstItem="YkH-G8-L7Z" firstAttribute="centerY" secondItem="BPd-Xx-Hya" secondAttribute="centerY" id="JUI-wZ-gPm"/>
-                            <constraint firstAttribute="trailing" secondItem="YkH-G8-L7Z" secondAttribute="trailing" multiplier="1.03" id="W5G-Kg-TOR"/>
+                            <constraint firstAttribute="trailing" secondItem="YkH-G8-L7Z" secondAttribute="trailing" multiplier="1.02" id="W5G-Kg-TOR"/>
                             <constraint firstItem="YMY-zX-BRK" firstAttribute="top" secondItem="BPd-Xx-Hya" secondAttribute="top" id="s8o-EL-yV8"/>
+                            <constraint firstItem="YkH-G8-L7Z" firstAttribute="leading" secondItem="YMY-zX-BRK" secondAttribute="trailing" multiplier="1.25" id="svZ-eF-2zw"/>
                             <constraint firstItem="YkH-G8-L7Z" firstAttribute="height" secondItem="BPd-Xx-Hya" secondAttribute="height" id="z3r-N3-kbk"/>
                         </constraints>
                     </view>
@@ -98,6 +106,7 @@
     </objects>
     <resources>
         <image name="add_vid.png" width="84" height="58"/>
+        <image name="box_bg.png" width="891" height="310"/>
         <image name="circle.png" width="181" height="181"/>
     </resources>
 </document>

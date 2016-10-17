@@ -122,7 +122,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hml-dm-BmW">
-                        <rect key="frame" x="254" y="56" width="111" height="23"/>
+                        <rect key="frame" x="231" y="53" width="134" height="26"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <state key="normal" backgroundImage="find_button.png"/>
                     </button>
@@ -132,7 +132,7 @@
                     <constraint firstItem="Jv8-Ze-FwG" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="15g-TP-UbR"/>
                     <constraint firstItem="bnb-6S-2Dm" firstAttribute="top" secondItem="Jv8-Ze-FwG" secondAttribute="top" id="2ab-c2-Ahf"/>
                     <constraint firstItem="bnb-6S-2Dm" firstAttribute="leading" secondItem="Jv8-Ze-FwG" secondAttribute="leading" id="4Ka-nO-BiL"/>
-                    <constraint firstItem="Jv8-Ze-FwG" firstAttribute="width" secondItem="hml-dm-BmW" secondAttribute="width" multiplier="3.4" id="ADb-3N-OZw"/>
+                    <constraint firstItem="Jv8-Ze-FwG" firstAttribute="width" secondItem="hml-dm-BmW" secondAttribute="width" multiplier="2.8" id="ADb-3N-OZw"/>
                     <constraint firstItem="Jv8-Ze-FwG" firstAttribute="trailing" secondItem="hml-dm-BmW" secondAttribute="trailing" multiplier="1.03" id="Aqh-Gz-JLo"/>
                     <constraint firstItem="Jv8-Ze-FwG" firstAttribute="bottom" secondItem="hml-dm-BmW" secondAttribute="bottom" constant="13" id="JeE-pf-ZJf"/>
                     <constraint firstItem="Jv8-Ze-FwG" firstAttribute="width" secondItem="bnb-6S-2Dm" secondAttribute="width" multiplier="2.8" id="KXW-RC-k6F"/>
@@ -145,7 +145,7 @@
                     <constraint firstItem="Vdm-VA-Lt4" firstAttribute="height" secondItem="bnb-6S-2Dm" secondAttribute="height" id="TCe-Oq-qRz"/>
                     <constraint firstItem="9oi-1Z-ila" firstAttribute="leading" secondItem="bnb-6S-2Dm" secondAttribute="trailing" multiplier="1.1" id="Udt-fV-GMN"/>
                     <constraint firstItem="Vdm-VA-Lt4" firstAttribute="width" secondItem="bnb-6S-2Dm" secondAttribute="width" id="V1T-bi-Kw9"/>
-                    <constraint firstItem="Jv8-Ze-FwG" firstAttribute="height" secondItem="hml-dm-BmW" secondAttribute="height" multiplier="4" id="VzV-jp-5v2"/>
+                    <constraint firstItem="Jv8-Ze-FwG" firstAttribute="height" secondItem="hml-dm-BmW" secondAttribute="height" multiplier="3.5" id="VzV-jp-5v2"/>
                     <constraint firstItem="ZYR-9B-YKV" firstAttribute="width" secondItem="B8r-6H-Pm7" secondAttribute="width" id="duq-us-OMc"/>
                     <constraint firstItem="Jv8-Ze-FwG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="feV-xa-QNz"/>
                     <constraint firstItem="Jv8-Ze-FwG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ijb-xr-iRq"/>
@@ -157,6 +157,8 @@
             <connections>
                 <outlet property="btnLiving" destination="qeh-dh-1T3" id="RAr-Ve-kSX"/>
                 <outlet property="imgLiving" destination="Ab1-y9-V4e" id="Jox-7U-H5W"/>
+                <outlet property="txtBirth" destination="dQU-Q5-EbE" id="Qjd-Tw-aZq"/>
+                <outlet property="txtDeath" destination="NEi-vC-3kJ" id="Ki4-AG-nYM"/>
             </connections>
             <point key="canvasLocation" x="239.5" y="145.5"/>
         </tableViewCell>
@@ -299,6 +301,8 @@
             <connections>
                 <outlet property="btnLiving" destination="bm7-qL-Tah" id="zdb-Af-yIn"/>
                 <outlet property="imgLiving" destination="xzQ-8w-vgN" id="vPh-nv-eOn"/>
+                <outlet property="txtBirth" destination="oGQ-Er-8BG" id="5eP-1v-VIv"/>
+                <outlet property="txtDeath" destination="hh6-wt-AKT" id="RVi-RF-Dzq"/>
             </connections>
             <point key="canvasLocation" x="231" y="348.5"/>
         </tableViewCell>

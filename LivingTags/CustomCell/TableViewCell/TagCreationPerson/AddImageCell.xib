@@ -20,10 +20,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="374" height="91"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sca-g2-GhK">
-                        <rect key="frame" x="64" y="0.0" width="299" height="91"/>
+                        <rect key="frame" x="68" y="0.0" width="299" height="91"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-7w-vCo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="SPI-kI-R1V">
                                 <rect key="frame" x="0.0" y="0.0" width="299" height="91"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-7w-vCo">
+                                <rect key="frame" x="17" y="0.0" width="271" height="91"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bdR-E8-waf">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,12 +39,16 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SPI-kI-R1V" firstAttribute="width" secondItem="Sca-g2-GhK" secondAttribute="width" id="Kv5-fs-cbh"/>
+                            <constraint firstItem="SPI-kI-R1V" firstAttribute="centerY" secondItem="Sca-g2-GhK" secondAttribute="centerY" id="NC9-lE-vI6"/>
                             <constraint firstItem="tnw-7w-vCo" firstAttribute="height" secondItem="Sca-g2-GhK" secondAttribute="height" id="U0l-wd-jvR"/>
-                            <constraint firstItem="tnw-7w-vCo" firstAttribute="centerX" secondItem="Sca-g2-GhK" secondAttribute="centerX" id="Y9O-G9-mcL"/>
+                            <constraint firstItem="SPI-kI-R1V" firstAttribute="centerX" secondItem="Sca-g2-GhK" secondAttribute="centerX" id="X3m-uU-FMC"/>
+                            <constraint firstItem="SPI-kI-R1V" firstAttribute="height" secondItem="Sca-g2-GhK" secondAttribute="height" id="XF9-UO-3TN"/>
+                            <constraint firstItem="tnw-7w-vCo" firstAttribute="centerX" secondItem="Sca-g2-GhK" secondAttribute="centerX" multiplier="1.02" id="Y9O-G9-mcL"/>
                             <constraint firstItem="tnw-7w-vCo" firstAttribute="centerY" secondItem="Sca-g2-GhK" secondAttribute="centerY" id="cz2-87-NVT"/>
-                            <constraint firstItem="tnw-7w-vCo" firstAttribute="width" secondItem="Sca-g2-GhK" secondAttribute="width" id="eP6-x3-xG6"/>
+                            <constraint firstAttribute="width" secondItem="tnw-7w-vCo" secondAttribute="width" multiplier="1.1" id="eP6-x3-xG6"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-16-RbC">
@@ -51,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="82n-YJ-mYB">
-                                <rect key="frame" x="10" y="10" width="21" height="21"/>
+                                <rect key="frame" x="11" y="10" width="20" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="82n-YJ-mYB" secondAttribute="height" id="USS-f1-TPK"/>
                                 </constraints>
@@ -71,9 +78,9 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="WlX-Vu-o2R" firstAttribute="trailing" secondItem="Sca-g2-GhK" secondAttribute="trailing" multiplier="1.03" id="2tr-ZG-rQz"/>
+                    <constraint firstItem="WlX-Vu-o2R" firstAttribute="trailing" secondItem="Sca-g2-GhK" secondAttribute="trailing" multiplier="1.02" id="2tr-ZG-rQz"/>
                     <constraint firstAttribute="height" secondItem="WlX-Vu-o2R" secondAttribute="height" multiplier="1.2" id="5QS-xi-8f4"/>
-                    <constraint firstItem="tnw-7w-vCo" firstAttribute="leading" secondItem="HcM-16-RbC" secondAttribute="trailing" multiplier="1.2" id="ClV-2e-w2y"/>
+                    <constraint firstItem="Sca-g2-GhK" firstAttribute="leading" secondItem="HcM-16-RbC" secondAttribute="trailing" multiplier="1.25" id="Iqj-HD-jXh"/>
                     <constraint firstItem="WlX-Vu-o2R" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Odh-lI-laG"/>
                     <constraint firstItem="HcM-16-RbC" firstAttribute="top" secondItem="WlX-Vu-o2R" secondAttribute="top" id="Oog-Da-alQ"/>
                     <constraint firstItem="Sca-g2-GhK" firstAttribute="height" secondItem="WlX-Vu-o2R" secondAttribute="height" id="YVC-u7-uy7"/>
@@ -92,6 +99,7 @@
     </objects>
     <resources>
         <image name="add_pic.png" width="82" height="77"/>
+        <image name="box_bg.png" width="891" height="310"/>
         <image name="circle.png" width="181" height="181"/>
     </resources>
 </document>

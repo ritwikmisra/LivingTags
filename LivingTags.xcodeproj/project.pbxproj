@@ -51,6 +51,9 @@
 		0D3731521CD8A8C600EDC547 /* UpdateProfileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3731511CD8A8C600EDC547 /* UpdateProfileService.m */; };
 		0D3731551CD8B71F00EDC547 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3731541CD8B71F00EDC547 /* ForgetPasswordViewController.m */; };
 		0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D389B991CDC8CA100841691 /* MyLivingTagesViewController.m */; };
+		0D3A400E1DB4E3110040D6D4 /* txt_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A400D1DB4E3110040D6D4 /* txt_box.png */; };
+		0D3A40121DB50EF40040D6D4 /* g_plus-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A40111DB50EF40040D6D4 /* g_plus-1.png */; };
+		0D3A40141DB5159F0040D6D4 /* back_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A40131DB5159F0040D6D4 /* back_icon.png */; };
 		0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2301CCB416200CA0DAE /* RegistrationViewController.m */; };
 		0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2331CCB545500CA0DAE /* RegistrationCellTableViewCell.m */; };
 		0D5EA23A1CCB6A0000CA0DAE /* NetworkActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2381CCB6A0000CA0DAE /* NetworkActivityViewController.m */; };
@@ -172,7 +175,6 @@
 		0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937FC1CEB5F8E0049BEC2 /* LivingTagsListingService.m */; };
 		0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */; };
 		0DDFC9B31CE372B6004D5D46 /* socialLoginFirstService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9B21CE372B6004D5D46 /* socialLoginFirstService.m */; };
-		0DE5FE2D1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE2C1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png */; };
 		0DE5FE2F1DAE5471004B06E5 /* Signika-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE2E1DAE5471004B06E5 /* Signika-Semibold.otf */; };
 		0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE301DAE5DA0004B06E5 /* bg_btn_hover.png */; };
 		0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1DE1CDA32C50053AF1A /* ForgetPasswordService.m */; };
@@ -303,6 +305,9 @@
 		0D3731541CD8B71F00EDC547 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		0D389B981CDC8CA100841691 /* MyLivingTagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLivingTagesViewController.h; sourceTree = "<group>"; };
 		0D389B991CDC8CA100841691 /* MyLivingTagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLivingTagesViewController.m; sourceTree = "<group>"; };
+		0D3A400D1DB4E3110040D6D4 /* txt_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = txt_box.png; sourceTree = "<group>"; };
+		0D3A40111DB50EF40040D6D4 /* g_plus-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g_plus-1.png"; sourceTree = "<group>"; };
+		0D3A40131DB5159F0040D6D4 /* back_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_icon.png; sourceTree = "<group>"; };
 		0D5EA22F1CCB416200CA0DAE /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		0D5EA2301CCB416200CA0DAE /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		0D5EA2321CCB545500CA0DAE /* RegistrationCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationCellTableViewCell.h; sourceTree = "<group>"; };
@@ -490,7 +495,6 @@
 		0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialLoginService.m; sourceTree = "<group>"; };
 		0DDFC9B11CE372B6004D5D46 /* socialLoginFirstService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socialLoginFirstService.h; sourceTree = "<group>"; };
 		0DDFC9B21CE372B6004D5D46 /* socialLoginFirstService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = socialLoginFirstService.m; sourceTree = "<group>"; };
-		0DE5FE2C1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_google_dark_normal_ios@3x.png"; sourceTree = "<group>"; };
 		0DE5FE2E1DAE5471004B06E5 /* Signika-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Semibold.otf"; sourceTree = "<group>"; };
 		0DE5FE301DAE5DA0004B06E5 /* bg_btn_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_hover.png; sourceTree = "<group>"; };
 		0DE7A1DD1CDA32C50053AF1A /* ForgetPasswordService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordService.h; sourceTree = "<group>"; };
@@ -695,7 +699,8 @@
 		0D6659201DA666E400566879 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				0DE5FE2C1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png */,
+				0D3A40131DB5159F0040D6D4 /* back_icon.png */,
+				0D3A40111DB50EF40040D6D4 /* g_plus-1.png */,
 				0D6659211DA666E400566879 /* facebook_icon.png */,
 				0D6659221DA666E400566879 /* mail_icon.png */,
 				0D6659231DA666E400566879 /* name_icon.png */,
@@ -1195,6 +1200,7 @@
 		0DF008761DAFB76400BD39C3 /* TagsCreate */ = {
 			isa = PBXGroup;
 			children = (
+				0D3A400D1DB4E3110040D6D4 /* txt_box.png */,
 				0D8934E51DB13FFD00A48562 /* txt_map.png */,
 				0D8934E31DB11C7900A48562 /* add_logo_button.png */,
 				0DF008B51DAFE6F200BD39C3 /* find_button.png */,
@@ -1340,6 +1346,7 @@
 				0D7165BB1CE32D5500C8B288 /* GoogleSignIn.bundle in Resources */,
 				0D9350B91CDB61F800E403B2 /* Info.plist in Resources */,
 				0DF0089E1DAFB76500BD39C3 /* content.png in Resources */,
+				0D3A400E1DB4E3110040D6D4 /* txt_box.png in Resources */,
 				0D66593B1DA67CAF00566879 /* top_header_logo.png in Resources */,
 				0D698D0E1CC8CF2500F64745 /* Assets.xcassets in Resources */,
 				0D66593D1DA67CAF00566879 /* view_local_tags.png in Resources */,
@@ -1348,6 +1355,7 @@
 				0DF0089A1DAFB76500BD39C3 /* audio.png in Resources */,
 				0DF008A41DAFB76500BD39C3 /* memorial.png in Resources */,
 				0D1DDF7B1DA7BB5B0063F2F9 /* bg_btn.png in Resources */,
+				0D3A40121DB50EF40040D6D4 /* g_plus-1.png in Resources */,
 				0D1DDF811DA7BB5B0063F2F9 /* thing_icon.png in Resources */,
 				0D80DAF81CFD9B0E00B79C6B /* GroupPopupController.xib in Resources */,
 				0DF008B11DAFD7B000BD39C3 /* add_location.png in Resources */,
@@ -1355,7 +1363,6 @@
 				0D933B581D07056A00072DE1 /* ImageHoverController.xib in Resources */,
 				0DF008751DAFA6B100BD39C3 /* AddLocationCell.xib in Resources */,
 				0D6659251DA666E400566879 /* facebook_icon.png in Resources */,
-				0DE5FE2D1DAE3288004B06E5 /* btn_google_dark_normal_ios@3x.png in Resources */,
 				0DF008A81DAFB76500BD39C3 /* scroll_arrow.png in Resources */,
 				0D1DDF7E1DA7BB5B0063F2F9 /* person_icon.png in Resources */,
 				0DF008991DAFB76500BD39C3 /* add_vid.png in Resources */,
@@ -1375,6 +1382,7 @@
 				0D66593C1DA67CAF00566879 /* top_shadow.png in Resources */,
 				0D698D091CC8CF2500F64745 /* Main.storyboard in Resources */,
 				0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */,
+				0D3A40141DB5159F0040D6D4 /* back_icon.png in Resources */,
 				0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */,
 				0D1DDF7F1DA7BB5B0063F2F9 /* pet_icon.png in Resources */,
 				0D8934E21DB11A0200A48562 /* AddLogoCell.xib in Resources */,

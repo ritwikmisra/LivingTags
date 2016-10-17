@@ -19,14 +19,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="376" height="48"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oo-Tc-uPI">
-                        <rect key="frame" x="12" y="32" width="352" height="1"/>
+                        <rect key="frame" x="9" y="32" width="358" height="1"/>
                         <color key="backgroundColor" red="0.56470588235294117" green="0.5725490196078431" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="ttj-NW-aJJ"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Person Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vTU-2l-SrC">
-                        <rect key="frame" x="12" y="5" width="352" height="27"/>
+                        <rect key="frame" x="9" y="5" width="358" height="27"/>
                         <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <textInputTraits key="textInputTraits"/>
@@ -37,7 +37,7 @@
                     <constraint firstItem="0oo-Tc-uPI" firstAttribute="top" secondItem="vTU-2l-SrC" secondAttribute="bottom" id="5ti-pT-Nl6"/>
                     <constraint firstItem="A6L-M2-kXT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7Qh-yJ-1hs"/>
                     <constraint firstItem="A6L-M2-kXT" firstAttribute="centerY" secondItem="vTU-2l-SrC" secondAttribute="centerY" multiplier="1.3" id="Jjt-ic-oLP"/>
-                    <constraint firstItem="A6L-M2-kXT" firstAttribute="width" secondItem="vTU-2l-SrC" secondAttribute="width" multiplier="1.07" id="Wa8-S2-YZE"/>
+                    <constraint firstItem="A6L-M2-kXT" firstAttribute="width" secondItem="vTU-2l-SrC" secondAttribute="width" multiplier="1.05" id="Wa8-S2-YZE"/>
                     <constraint firstItem="vTU-2l-SrC" firstAttribute="centerX" secondItem="A6L-M2-kXT" secondAttribute="centerX" id="eDh-gh-mJx"/>
                     <constraint firstItem="A6L-M2-kXT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="hg2-SL-T0U"/>
                     <constraint firstItem="0oo-Tc-uPI" firstAttribute="centerX" secondItem="A6L-M2-kXT" secondAttribute="centerX" id="lPR-bd-1tk"/>

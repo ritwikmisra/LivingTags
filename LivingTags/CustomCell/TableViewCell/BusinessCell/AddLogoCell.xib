@@ -19,40 +19,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="342" height="57"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvL-U8-3B2">
-                        <rect key="frame" x="236" y="16" width="100" height="24"/>
+                        <rect key="frame" x="232" y="14" width="107" height="28"/>
                         <state key="normal" backgroundImage="add_logo_button.png"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zPb-ZN-rgD">
-                        <rect key="frame" x="13" y="42" width="202" height="1"/>
+                        <rect key="frame" x="7" y="42" width="214" height="1"/>
                         <color key="backgroundColor" red="0.56470588239999997" green="0.57254901960000004" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="tIn-ou-6Uk"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ADD LOGO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-Q5-Q73">
-                        <rect key="frame" x="13" y="14" width="202" height="28"/>
+                        <rect key="frame" x="7" y="14" width="214" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="zPb-ZN-rgD" firstAttribute="width" secondItem="B8n-Q5-Q73" secondAttribute="width" id="Cgd-Ns-pHe"/>
-                    <constraint firstItem="CMA-Mn-fte" firstAttribute="width" secondItem="B8n-Q5-Q73" secondAttribute="width" multiplier="1.7" id="Mz5-Xm-DZm"/>
+                    <constraint firstItem="CMA-Mn-fte" firstAttribute="width" secondItem="B8n-Q5-Q73" secondAttribute="width" multiplier="1.6" id="Mz5-Xm-DZm"/>
                     <constraint firstItem="B8n-Q5-Q73" firstAttribute="width" secondItem="kvL-U8-3B2" secondAttribute="width" multiplier="2" id="PbR-R1-64l"/>
                     <constraint firstItem="CMA-Mn-fte" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="Qgo-DK-5GF"/>
                     <constraint firstItem="zPb-ZN-rgD" firstAttribute="top" secondItem="B8n-Q5-Q73" secondAttribute="bottom" id="Qsd-MH-YuC"/>
                     <constraint firstItem="CMA-Mn-fte" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Y4K-qa-G7h"/>
                     <constraint firstItem="CMA-Mn-fte" firstAttribute="height" secondItem="B8n-Q5-Q73" secondAttribute="height" multiplier="2" id="bJ3-Y4-DxP"/>
-                    <constraint firstItem="B8n-Q5-Q73" firstAttribute="height" secondItem="kvL-U8-3B2" secondAttribute="height" multiplier="1.2" id="iaJ-uX-dfL"/>
+                    <constraint firstItem="B8n-Q5-Q73" firstAttribute="height" secondItem="kvL-U8-3B2" secondAttribute="height" id="iaJ-uX-dfL"/>
                     <constraint firstItem="CMA-Mn-fte" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="irR-c4-fnQ"/>
                     <constraint firstItem="B8n-Q5-Q73" firstAttribute="centerY" secondItem="CMA-Mn-fte" secondAttribute="centerY" id="jNL-nu-IYF"/>
                     <constraint firstItem="zPb-ZN-rgD" firstAttribute="centerX" secondItem="B8n-Q5-Q73" secondAttribute="centerX" id="jbT-oW-4wM"/>
-                    <constraint firstItem="kvL-U8-3B2" firstAttribute="leading" secondItem="B8n-Q5-Q73" secondAttribute="trailing" multiplier="1.1" id="kWe-Ni-qge"/>
+                    <constraint firstItem="kvL-U8-3B2" firstAttribute="leading" secondItem="B8n-Q5-Q73" secondAttribute="trailing" multiplier="1.05" id="kWe-Ni-qge"/>
                     <constraint firstItem="CMA-Mn-fte" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lHo-Z3-faF"/>
                     <constraint firstItem="kvL-U8-3B2" firstAttribute="centerY" secondItem="B8n-Q5-Q73" secondAttribute="centerY" id="m6X-Ms-ygq"/>
                     <constraint firstItem="CMA-Mn-fte" firstAttribute="centerX" secondItem="B8n-Q5-Q73" secondAttribute="centerX" multiplier="1.5" id="tZc-dd-TwM"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="txtAddLogo" destination="B8n-Q5-Q73" id="5WE-el-Yez"/>
+            </connections>
             <point key="canvasLocation" x="248" y="150"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="RAd-Bb-td4" customClass="AddLogoCell">
@@ -66,8 +69,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="342" height="57"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIS-Fi-oN5">
-                        <rect key="frame" x="0.0" y="9" width="342" height="40"/>
+                        <rect key="frame" x="10" y="9" width="323" height="40"/>
                         <color key="backgroundColor" red="0.3411764706" green="0.77647058820000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                         <state key="normal" title="NEXT">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -75,7 +79,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="zNY-cY-Ifr" firstAttribute="centerX" secondItem="7aj-yd-h4M" secondAttribute="centerX" id="2UN-cP-kP4"/>
-                    <constraint firstItem="RIS-Fi-oN5" firstAttribute="width" secondItem="zNY-cY-Ifr" secondAttribute="width" id="3gJ-TR-Xss"/>
+                    <constraint firstItem="zNY-cY-Ifr" firstAttribute="width" secondItem="RIS-Fi-oN5" secondAttribute="width" multiplier="1.06" id="3gJ-TR-Xss"/>
                     <constraint firstItem="zNY-cY-Ifr" firstAttribute="centerY" secondItem="7aj-yd-h4M" secondAttribute="centerY" id="RoA-gC-lVu"/>
                     <constraint firstItem="zNY-cY-Ifr" firstAttribute="width" secondItem="7aj-yd-h4M" secondAttribute="width" id="YeX-UW-HED"/>
                     <constraint firstItem="RIS-Fi-oN5" firstAttribute="centerY" secondItem="zNY-cY-Ifr" secondAttribute="centerY" id="ZWD-c0-DFb"/>

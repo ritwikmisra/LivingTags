@@ -12,5 +12,7 @@
 
 @property(nonatomic,strong)IBOutlet UIButton *btnLiving;
 @property(nonatomic,strong)IBOutlet UIImageView *imgLiving;
+@property(nonatomic,strong)IBOutlet UITextField *txtBirth;
+@property(nonatomic,strong)IBOutlet UITextField *txtDeath;
 
 @end

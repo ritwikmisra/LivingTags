@@ -26,11 +26,11 @@
                                 <rect key="frame" x="69" y="181" width="462" height="100"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIq-Qd-fue">
-                                <rect key="frame" x="0.0" y="590" width="300" height="10"/>
+                                <rect key="frame" x="0.0" y="592" width="300" height="8"/>
                                 <color key="backgroundColor" red="0.14117647058823529" green="0.36470588235294116" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7B-H9-0HF">
-                                <rect key="frame" x="300" y="590" width="300" height="10"/>
+                                <rect key="frame" x="300" y="592" width="300" height="8"/>
                                 <color key="backgroundColor" red="0.3411764705882353" green="0.77647058823529413" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Copyright@livingtags.com, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ly-ns-Pdb">
@@ -60,7 +60,7 @@
                             <constraint firstItem="X7B-H9-0HF" firstAttribute="centerY" secondItem="ZIq-Qd-fue" secondAttribute="centerY" id="sO3-oP-iYK"/>
                             <constraint firstItem="5sK-7I-Zdo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uss-Cb-g4C"/>
                             <constraint firstItem="5sK-7I-Zdo" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="vOy-e6-Nlc"/>
-                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="ZIq-Qd-fue" secondAttribute="height" multiplier="60" id="wrC-cs-5hq"/>
+                            <constraint firstItem="5sK-7I-Zdo" firstAttribute="height" secondItem="ZIq-Qd-fue" secondAttribute="height" multiplier="75" id="wrC-cs-5hq"/>
                             <constraint firstItem="ZIq-Qd-fue" firstAttribute="leading" secondItem="5sK-7I-Zdo" secondAttribute="leading" id="yys-UF-eFc"/>
                         </constraints>
                     </view>
