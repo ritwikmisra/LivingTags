@@ -18,12 +18,11 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "LivingTagsFourthStepService.h"
 #import "QRCodeViewController.h"
-#import "CustomPopUpViewController.h"
 #import "ModelImageUpload.h"
 #import "DatePickerViewController.h"
 
 
-@interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CustomPopUPDelegate,CollectionViewSelectionDelegate,SelectedDateDelegate>
+@interface LivingTagsFourthStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CollectionViewSelectionDelegate,SelectedDateDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -36,7 +35,6 @@
     IBOutlet UIButton *btnPreview;
     IBOutlet UITableView *tblFourthStep;
     NSString *strWebURI;
-    CustomPopUpViewController *customPopUpController;
     int index;
     ModelImageUpload *objForTableView;
     CreateTagsThirdStepCell *cellDelegate;
@@ -492,12 +490,6 @@
 
 -(void)videoUploadPopUp
 {
-    customPopUpController=[[CustomPopUpViewController alloc] initWithNibName:@"CustomPopUpViewController" bundle:nil];
-    customPopUpController.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:customPopUpController.view];
-    [self addChildViewController:customPopUpController];
-    customPopUpController.delegate=self;
-    [customPopUpController didMoveToParentViewController:self];
 }
 
 -(void)videoUploadFromCamera
@@ -606,21 +598,17 @@
 
 -(void)takePictureFromCamera
 {
-    [customPopUpController.view removeFromSuperview];
     [self videoUploadFromCamera];
 }
 
 -(void)takePictureFromGallery
 {
-    [customPopUpController.view removeFromSuperview];
     [self videoUploadFromGallery];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [customPopUpController removeFromParentViewController];
-    customPopUpController=nil;
     cellDelegate.delegate=nil;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     [datePicker removeFromParentViewController];

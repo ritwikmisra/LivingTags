@@ -15,9 +15,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
 #import <UIKit/UIKit.h>
-#import "CustomPopUpViewController.h"
 
-@interface ProfileViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CustomPopUPDelegate>
+@interface ProfileViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     IBOutlet UITableView *tblProfile;
     NSMutableArray *arrProfile,*arrPics,*arrTexts;
@@ -35,7 +34,6 @@
     NSString *strCat;
     UITextField *activeTextField;
     NSString *strLocation,*strLat,*strLong;
-    CustomPopUpViewController *master;
 }
 @end
 
@@ -635,12 +633,6 @@
     NSLog(@"%d",isEditing);
     if (isEditing)
     {
-        master=[[CustomPopUpViewController alloc] initWithNibName:@"CustomPopUpViewController" bundle:nil];
-        master.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:master.view];
-        [self addChildViewController:master];
-        master.delegate=self;
-        [master didMoveToParentViewController:self];
     }
     else
     {
@@ -771,7 +763,6 @@
 {
     [super viewWillDisappear:animated];
     [player pause];
-    master=nil;
 }
 
 #pragma mark
@@ -780,13 +771,11 @@
 
 -(void)takePictureFromCamera
 {
-    [master.view removeFromSuperview];
     [self imageUploadFromCamera];
 }
 
 -(void)takePictureFromGallery
 {
-    [master.view removeFromSuperview];
     [self imageUploadFromGallery];
 }
 

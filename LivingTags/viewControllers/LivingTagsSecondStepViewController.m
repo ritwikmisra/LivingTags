@@ -688,6 +688,6 @@
 
 -(void)btnNextPressed:(id)sender
 {
-    
+    [self performSegueWithIdentifier:@"segueQRCode" sender:self];
 }
 @end

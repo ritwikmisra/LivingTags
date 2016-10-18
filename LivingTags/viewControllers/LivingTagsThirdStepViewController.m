@@ -12,11 +12,10 @@
 #import "CreateTagsThirdStepService.h"
 #import "PreviewViewController.h"
 #import "LivingTagsFourthStepViewController.h"
-#import "CustomPopUpViewController.h"
 #import "ModelImageUpload.h"
 #import "DatePickerViewController.h"
 
-@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CustomPopUPDelegate,CollectionViewSelectionDelegate,SelectedDateDelegate>
+@interface LivingTagsThirdStepViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,CollectionViewSelectionDelegate,SelectedDateDelegate>
 {
     IBOutlet UILabel *lbl1;
     IBOutlet UILabel *lbl2;
@@ -28,7 +27,6 @@
     NSMutableDictionary *dictPicDetails;
     BOOL isFirstImage,isSuccess;
     IBOutlet UIButton *btnPreview;
-    CustomPopUpViewController *customPopUpController;
     int index;
     ModelImageUpload *objForTableView;
     CreateTagsThirdStepCell *cellDelegate;
@@ -304,7 +302,6 @@
 -(void)btnUserBrowsePicClicked:(id)sender
 {
     NSLog(@"preseed");
-    [self imageUploadPopUp];
 }
 
 -(void)btnCalenderPressed:(id)sender
@@ -331,7 +328,6 @@
     }
     else
     {
-        [self imageUploadPopUp];
     }
     NSLog(@"%@",dictPicDetails);
 }
@@ -346,15 +342,6 @@
 #pragma mark IMAGE PICKER CONTROLLER METHODS
 #pragma mark
 
--(void)imageUploadPopUp
-{
-    customPopUpController=[[CustomPopUpViewController alloc] initWithNibName:@"CustomPopUpViewController" bundle:nil];
-    customPopUpController.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:customPopUpController.view];
-    [self addChildViewController:customPopUpController];
-    customPopUpController.delegate=self;
-    [customPopUpController didMoveToParentViewController:self];
-}
 
 -(void)imageUploadFromCamera
 {
@@ -496,13 +483,11 @@
 
 -(void)takePictureFromCamera
 {
-    [customPopUpController.view removeFromSuperview];
     [self imageUploadFromCamera];
 }
 
 -(void)takePictureFromGallery
 {
-    [customPopUpController.view removeFromSuperview];
     [self imageUploadFromGallery];
 }
 
@@ -524,7 +509,6 @@
     appDel.dataVoice=nil;
     NSLog(@"%@",dictPicDetails);
     [tblAThirdStep reloadData];
-    [self imageUploadPopUp];
 }
 
 -(void)imageGalleryUploadError
@@ -595,8 +579,6 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [customPopUpController removeFromParentViewController];
-    customPopUpController=nil;
     cellDelegate.delegate=nil;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     [datePicker removeFromParentViewController];
