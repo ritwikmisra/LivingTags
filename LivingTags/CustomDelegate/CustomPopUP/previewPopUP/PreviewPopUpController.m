@@ -7,8 +7,12 @@
 //
 
 #import "PreviewPopUpController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface PreviewPopUpController ()
+{
+    IBOutlet UIView *vwPopUP;
+}
 
 @end
 
@@ -16,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    vwPopUP.layer.cornerRadius=5.0f;
 }
 
 - (void)didReceiveMemoryWarning {
