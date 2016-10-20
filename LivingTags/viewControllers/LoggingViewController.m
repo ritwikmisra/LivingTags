@@ -11,6 +11,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "socialLoginFirstService.h"
+#import "PreviewPopUpController.h"
 
 static NSString *const kPlaceholderUserName = @"<Name>";
 static NSString *const kPlaceholderEmailAddress = @"<Email>";

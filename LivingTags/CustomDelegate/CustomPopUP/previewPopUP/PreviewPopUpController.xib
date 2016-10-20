@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -17,10 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="125-xt-wFJ">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.69949350152905199" colorSpace="calibratedWhite"/>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D75-f3-nq9">
                     <rect key="frame" x="100" y="189" width="400" height="222"/>
                     <subviews>
@@ -44,23 +41,37 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYK-VB-X1a">
+                            <rect key="frame" x="353" y="3" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="OYK-VB-X1a" secondAttribute="height" id="qsn-fV-cC3"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="cross.png"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="FyH-JX-mt2" secondAttribute="width" multiplier="2.01" id="6WV-al-qdZ"/>
+                        <constraint firstItem="OYK-VB-X1a" firstAttribute="top" secondItem="D75-f3-nq9" secondAttribute="top" constant="3" id="Bjf-UV-NJ8"/>
                         <constraint firstAttribute="bottom" secondItem="FyH-JX-mt2" secondAttribute="bottom" id="DZd-km-wA6"/>
                         <constraint firstAttribute="height" secondItem="FyH-JX-mt2" secondAttribute="height" multiplier="5" id="Hc7-bb-08n"/>
                         <constraint firstItem="9QG-sL-sN2" firstAttribute="leading" secondItem="FyH-JX-mt2" secondAttribute="trailing" id="Iam-Os-fXR"/>
+                        <constraint firstAttribute="trailing" secondItem="OYK-VB-X1a" secondAttribute="trailing" constant="3" id="LyV-bV-GXA"/>
                         <constraint firstItem="9QG-sL-sN2" firstAttribute="height" secondItem="FyH-JX-mt2" secondAttribute="height" id="QdD-Fy-w7g"/>
                         <constraint firstItem="FyH-JX-mt2" firstAttribute="leading" secondItem="D75-f3-nq9" secondAttribute="leading" id="TKh-jn-yYe"/>
                         <constraint firstItem="I2B-YO-oaw" firstAttribute="centerY" secondItem="FyH-JX-mt2" secondAttribute="centerY" id="Xyr-VM-f3W"/>
                         <constraint firstAttribute="trailing" secondItem="I2B-YO-oaw" secondAttribute="trailing" id="aW9-lB-sQo"/>
                         <constraint firstItem="I2B-YO-oaw" firstAttribute="width" secondItem="FyH-JX-mt2" secondAttribute="width" id="fKJ-Ug-dcO"/>
+                        <constraint firstAttribute="height" secondItem="OYK-VB-X1a" secondAttribute="height" multiplier="5" id="jEh-MI-EYg"/>
                         <constraint firstItem="9QG-sL-sN2" firstAttribute="centerY" secondItem="FyH-JX-mt2" secondAttribute="centerY" id="lad-ee-A9V"/>
                         <constraint firstItem="I2B-YO-oaw" firstAttribute="leading" secondItem="9QG-sL-sN2" secondAttribute="trailing" id="rtk-FV-iFZ"/>
                         <constraint firstItem="I2B-YO-oaw" firstAttribute="height" secondItem="FyH-JX-mt2" secondAttribute="height" id="zBD-9M-4hu"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="125-xt-wFJ">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.69949350152905199" colorSpace="calibratedWhite"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -76,4 +87,7 @@
             <point key="canvasLocation" x="396" y="278"/>
         </view>
     </objects>
+    <resources>
+        <image name="cross.png" width="50" height="50"/>
+    </resources>
 </document>
