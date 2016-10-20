@@ -12,6 +12,9 @@
 @interface PreviewPopUpController ()
 {
     IBOutlet UIView *vwPopUP;
+    IBOutlet UIButton *btnPreview;
+    IBOutlet UIButton *btnPublic;
+
 }
 
 @end
@@ -20,12 +23,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    vwPopUP.layer.cornerRadius=5.0f;
+    vwPopUP.layer.cornerRadius=10.0f;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    ////round corner for preview button/////
+    
+    UIBezierPath *maskPath = [UIBezierPath
+                              bezierPathWithRoundedRect:btnPreview.bounds
+                              byRoundingCorners:(UIRectCornerBottomLeft )
+                              cornerRadii:CGSizeMake(8.0f, 0.0f)
+                              ];
+    
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = btnPreview.bounds;
+    maskLayer.path = maskPath.CGPath;
+    btnPreview.layer.mask = maskLayer;
+    
+    /////round corner for public button //////
+    
+    UIBezierPath *maskPath1= [UIBezierPath
+                              bezierPathWithRoundedRect:btnPublic.bounds
+                              byRoundingCorners:( UIRectCornerBottomRight)
+                              cornerRadii:CGSizeMake(8.0f, 0.0f)
+                              ];
+    
+    CAShapeLayer *maskLayer1 = [CAShapeLayer layer];
+    maskLayer1.frame = btnPublic.bounds;
+    maskLayer1.path = maskPath1.CGPath;
+    btnPublic.layer.mask = maskLayer1;
 }
 
 /*

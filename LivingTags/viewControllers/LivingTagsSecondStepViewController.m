@@ -16,6 +16,7 @@
 #import "AddLocationCell.h"
 #import "CategoryCell.h"
 #import "AddLogoCell.h"
+#import "PreviewPopUpController.h"
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -688,6 +689,9 @@
 
 -(void)btnNextPressed:(id)sender
 {
-    [self performSegueWithIdentifier:@"segueQRCode" sender:self];
+    //[self performSegueWithIdentifier:@"segueQRCode" sender:self];
+    PreviewPopUpController *master=[[PreviewPopUpController alloc]initWithNibName:@"PreviewPopUpController" bundle:nil];
+    master.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:master.view];
 }
 @end
