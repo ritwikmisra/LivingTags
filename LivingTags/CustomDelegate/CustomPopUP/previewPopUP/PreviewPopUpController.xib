@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="btnPreview" destination="FyH-JX-mt2" id="45t-3N-ZCR"/>
                 <outlet property="btnPublic" destination="I2B-YO-oaw" id="5AX-DP-GhO"/>
+                <outlet property="lblPopUP" destination="Qgn-qX-Mtl" id="xMU-TX-n6F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="vwPopUP" destination="D75-f3-nq9" id="1Z8-0e-wf8"/>
             </connections>
@@ -27,6 +28,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D75-f3-nq9">
                     <rect key="frame" x="69" y="200" width="462" height="200"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgn-qX-Mtl">
+                            <rect key="frame" x="21" y="51" width="420" height="80"/>
+                            <string key="text">We are almost done with the tag creation. In case you want to preview before publishing please click on the PREVIEW button below, otherwise you can proceed with PUBLISH option.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyH-JX-mt2">
                             <rect key="frame" x="0.0" y="160" width="230" height="40"/>
                             <color key="backgroundColor" red="0.3411764706" green="0.77647058820000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,6 +42,9 @@
                             <state key="normal" title="PREVIEW">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="btnPreviewPressed:" destination="-1" eventType="touchUpInside" id="ERR-ST-kYT"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QG-sL-sN2" userLabel="vwDivider">
                             <rect key="frame" x="230" y="160" width="2" height="40"/>
@@ -46,6 +57,9 @@
                             <state key="normal" title="PUBLISH">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="btnPublishPressed:" destination="-1" eventType="touchUpInside" id="uCm-2M-JgE"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYK-VB-X1a">
                             <rect key="frame" x="430" y="3" width="29" height="29"/>
@@ -53,15 +67,21 @@
                                 <constraint firstAttribute="width" secondItem="OYK-VB-X1a" secondAttribute="height" id="qsn-fV-cC3"/>
                             </constraints>
                             <state key="normal" backgroundImage="cross.png"/>
+                            <connections>
+                                <action selector="btnClosePressed:" destination="-1" eventType="touchUpInside" id="3ej-rd-Ia2"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="centerY" secondItem="Qgn-qX-Mtl" secondAttribute="centerY" multiplier="1.1" id="4mX-Yh-jBM"/>
                         <constraint firstAttribute="width" secondItem="FyH-JX-mt2" secondAttribute="width" multiplier="2.01" id="6WV-al-qdZ"/>
+                        <constraint firstAttribute="width" secondItem="Qgn-qX-Mtl" secondAttribute="width" multiplier="1.1" id="BEz-du-HCo"/>
                         <constraint firstItem="OYK-VB-X1a" firstAttribute="top" secondItem="D75-f3-nq9" secondAttribute="top" constant="3" id="Bjf-UV-NJ8"/>
                         <constraint firstAttribute="bottom" secondItem="FyH-JX-mt2" secondAttribute="bottom" id="DZd-km-wA6"/>
                         <constraint firstAttribute="height" secondItem="FyH-JX-mt2" secondAttribute="height" multiplier="5" id="Hc7-bb-08n"/>
                         <constraint firstItem="9QG-sL-sN2" firstAttribute="leading" secondItem="FyH-JX-mt2" secondAttribute="trailing" id="Iam-Os-fXR"/>
+                        <constraint firstAttribute="height" secondItem="Qgn-qX-Mtl" secondAttribute="height" multiplier="2.5" id="Kjv-pN-5rR"/>
                         <constraint firstAttribute="trailing" secondItem="OYK-VB-X1a" secondAttribute="trailing" constant="3" id="LyV-bV-GXA"/>
                         <constraint firstItem="9QG-sL-sN2" firstAttribute="height" secondItem="FyH-JX-mt2" secondAttribute="height" id="QdD-Fy-w7g"/>
                         <constraint firstItem="FyH-JX-mt2" firstAttribute="leading" secondItem="D75-f3-nq9" secondAttribute="leading" multiplier="1.1" id="TKh-jn-yYe"/>
@@ -71,6 +91,7 @@
                         <constraint firstAttribute="height" secondItem="OYK-VB-X1a" secondAttribute="height" multiplier="7" id="jEh-MI-EYg"/>
                         <constraint firstItem="9QG-sL-sN2" firstAttribute="centerY" secondItem="FyH-JX-mt2" secondAttribute="centerY" id="lad-ee-A9V"/>
                         <constraint firstItem="I2B-YO-oaw" firstAttribute="leading" secondItem="9QG-sL-sN2" secondAttribute="trailing" id="rtk-FV-iFZ"/>
+                        <constraint firstItem="Qgn-qX-Mtl" firstAttribute="centerX" secondItem="D75-f3-nq9" secondAttribute="centerX" id="ubv-I4-vWJ"/>
                         <constraint firstItem="I2B-YO-oaw" firstAttribute="height" secondItem="FyH-JX-mt2" secondAttribute="height" id="zBD-9M-4hu"/>
                     </constraints>
                 </view>

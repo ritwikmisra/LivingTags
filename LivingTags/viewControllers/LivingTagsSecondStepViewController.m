@@ -18,7 +18,7 @@
 #import "AddLogoCell.h"
 #import "PreviewPopUpController.h"
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate>
 {
     IBOutlet UITableView *tblTagsCreation;
     NSString *strGender;
@@ -693,5 +693,23 @@
     PreviewPopUpController *master=[[PreviewPopUpController alloc]initWithNibName:@"PreviewPopUpController" bundle:nil];
     master.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:master.view];
+    [self addChildViewController:master];
+    master.myDelegate=self;
+    [master didMoveToParentViewController:self];
+}
+
+#pragma mark
+#pragma mark Custom delegate preview popup
+#pragma mark
+
+-(void)previewButtonPressed
+{
+    
+}
+
+-(void)publishButtonPressed
+{
+    [self performSegueWithIdentifier:@"segueQRCode" sender:self];
+
 }
 @end

@@ -14,6 +14,7 @@
     IBOutlet UIView *vwPopUP;
     IBOutlet UIButton *btnPreview;
     IBOutlet UIButton *btnPublic;
+    IBOutlet UILabel *lblPopUP;
 
 }
 
@@ -21,9 +22,19 @@
 
 @implementation PreviewPopUpController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     vwPopUP.layer.cornerRadius=10.0f;
+    if (___isIphone5_5s)
+    {
+        [lblPopUP setFont:[UIFont systemFontOfSize:12]];
+    }
+    else if (___isIphone4_4s)
+    {
+        [lblPopUP setFont:[UIFont systemFontOfSize:10]];
+
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,14 +73,29 @@
     btnPublic.layer.mask = maskLayer1;
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark
+#pragma mark IBACTIONS
+#pragma mark
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(IBAction)btnClosePressed:(id)sender
+{
+    [self.view removeFromSuperview];
 }
-*/
 
+-(IBAction)btnPreviewPressed:(id)sender
+{
+    if (self.myDelegate && [self.myDelegate respondsToSelector:@selector(previewButtonPressed)])
+    {
+        [self.myDelegate previewButtonPressed];
+    }
+}
+
+-(IBAction)btnPublishPressed:(id)sender
+{
+    [self.view removeFromSuperview];
+    if (self.myDelegate && [self.myDelegate respondsToSelector:@selector(publishButtonPressed)])
+    {
+        [self.myDelegate publishButtonPressed];
+    }
+}
 @end

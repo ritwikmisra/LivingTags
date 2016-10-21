@@ -50,6 +50,9 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     signIn.shouldFetchBasicProfile = YES;
     signIn.delegate = self;
     signIn.uiDelegate = self;
+    txtEmail.text=@"ritwik.misra@appsbee.com";
+    txtPassword.text=@"123456";
+    
 }
 
 -(void)viewDidLayoutSubviews
@@ -87,10 +90,9 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
         [self viewDown];
         [self.view endEditing:YES];
     }
-   /* if ([self alertChecking])
+    if ([self alertChecking])
     {
-        NSString *str=[self generateMD5:txtPassword.text];
-        [[LoginService service]callLoginServiceWithEmailID:txtEmail.text Password:str withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        [[LoginService service]callLoginServiceWithEmailID:txtEmail.text Password:txtPassword.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
             if (isError)
             {
                 UIAlertController *alertController=[UIAlertController alertControllerWithTitle:nil message:strMsg preferredStyle:UIAlertControllerStyleAlert];
@@ -110,9 +112,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
                 [self performSegueWithIdentifier:@"segueLoginToDashboard" sender:self];
             }
         }];
-    }*/
-    [self performSegueWithIdentifier:@"segueLoginToDashboard" sender:self];
-
+    }
 }
 
 -(IBAction)btnFacebookPressed:(id)sender

@@ -44,7 +44,7 @@
 
 -(void)changeAnimatingStatusTo:(BOOL)animate
 {
-    /*if (animate)
+    if (animate)
     {
         [activityIndicator startAnimating];
         
@@ -52,8 +52,8 @@
     else
     {
         [activityIndicator stopAnimating];
-    }*/
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    }
+   /* [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         [img setTransform:CGAffineTransformRotate(img.transform, M_PI_2)];
     }completion:^(BOOL finished){
         if (finished)
@@ -67,7 +67,7 @@
                 NSLog(@"Stop");
             }
         }
-    }];
+    }];*/
     _animating=animate;
 }
 @end

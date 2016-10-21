@@ -8,6 +8,15 @@
 
 #import "ViewControllerBaseClassViewController.h"
 
+@protocol PreviewPopupDelegate <NSObject>
+
+@optional
+-(void)previewButtonPressed;
+-(void)publishButtonPressed;
+
+@end
+
 @interface PreviewPopUpController : ViewControllerBaseClassViewController
 
+@property(nonatomic,weak) id<PreviewPopupDelegate>myDelegate;
 @end

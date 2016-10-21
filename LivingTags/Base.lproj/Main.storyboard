@@ -229,6 +229,9 @@
                                 <state key="normal" title="SIGN UP">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnSignUpPressed:" destination="oAA-ch-aDc" eventType="touchUpInside" id="bIU-a2-bBP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsT-BH-37a">
                                 <rect key="frame" x="553" y="10" width="30" height="30"/>
@@ -352,7 +355,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnSignUp" destination="HyS-T8-wCW" id="LiQ-jc-td3"/>
+                        <outlet property="btnSignUp" destination="HyS-T8-wCW" id="46m-fc-Y2J"/>
                         <outlet property="tblSignUp" destination="NMq-kz-fjG" id="lBG-7I-3GS"/>
                     </connections>
                 </viewController>

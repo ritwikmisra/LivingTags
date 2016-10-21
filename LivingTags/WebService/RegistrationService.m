@@ -25,7 +25,7 @@
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"rgistration_source=%@",strSource]];
+        [arr addObject:[NSString stringWithFormat:@"signup_source=%@",strSource]];
         [arr addObject:[NSString stringWithFormat:@"email=%@",stremail]];
         [arr addObject:[NSString stringWithFormat:@"name=%@",strName]];
         [arr addObject:[NSString stringWithFormat:@"password=%@",strPassword]];
@@ -48,7 +48,10 @@
             [request setHTTPMethod:@"POST"];
             [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setValue:@"Basic YWRtaW46MTIzNDU2" forHTTPHeaderField:@"Authorization"];
             [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+            //Basic YWRtaW46MTIzNDU2
+            
             [request setTimeoutInterval:60.0];
             [request setHTTPBody:postData];
             [self displayNetworkActivity];
@@ -71,13 +74,25 @@
                         }
                         else
                         {
-                            if ([[responseDict objectForKey:@"status"]boolValue])
+                            @try
                             {
-                                handler([responseDict objectForKey:@"response"],NO,[[responseDict objectForKey:@"response"] objectForKey:@"message"]);
+                                if ([[responseDict objectForKey:@"status"]boolValue])
+                                {
+                                    handler([responseDict objectForKey:@"response"],NO,[responseDict objectForKey:@"response"] );
+                                }
+                                else
+                                {
+                                    handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                }
+
                             }
-                            else
+                            @catch (NSException *exception)
                             {
-                                handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                [[[UIAlertView alloc]initWithTitle:exception.reason message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+                            }
+                            @finally
+                            {
+                                
                             }
                         }
                     }

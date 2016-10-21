@@ -73,7 +73,10 @@
 {
     RegistrationCellTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    cell.txtSignUp.autocapitalizationType=UITextAutocapitalizationTypeWords;
+    if (indexPath.row==0)
+    {
+        cell.txtSignUp.autocapitalizationType=UITextAutocapitalizationTypeWords;
+    }
     cell.txtSignUp.placeholder=[arrNames objectAtIndex: indexPath.row];
     cell.txtSignUp.delegate=self;
     cell.imgSignUp.image=[UIImage imageNamed:[arrImages objectAtIndex:indexPath.row]];
@@ -170,6 +173,12 @@
         [self displayErrorWithMessage:@"Please enter password!"];
         return NO;
     }
+    if (strPassword.length<6)
+    {
+        [self displayErrorWithMessage:@"Password has to be minimum 6 characters long.."];
+        return NO;
+
+    }
     if (strConfirmPassword.length==0)
     {
         [self displayErrorWithMessage:@"Please enter confirm password!"];
@@ -194,11 +203,10 @@
         [self viewDown];
     }
     [self.view endEditing:YES];
-    /*if ([self  alertChecking])
+    if ([self  alertChecking])
     {
-        NSString *strPass=[self generateMD5:strPassword];
         NSLog(@"%@",strPassword);
-        [[RegistrationService service]callRegistrationServiceWithSource:device Name:strName emailAddress:strEmail password:strPass withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        [[RegistrationService service]callRegistrationServiceWithSource:device Name:strName emailAddress:strEmail password:strPassword withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
             if (isError)
             {
                 UIAlertController *alertController=[UIAlertController alertControllerWithTitle:nil message:strMsg preferredStyle:UIAlertControllerStyleAlert];
@@ -227,8 +235,7 @@
                 }];
             }
         }];
-    }*/
-    [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark
