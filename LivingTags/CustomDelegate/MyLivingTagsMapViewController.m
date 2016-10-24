@@ -72,7 +72,6 @@
     MKCoordinateRegion adjustedRegion = [mapTags regionThatFits:viewRegion];
     [mapTags setRegion:adjustedRegion animated:YES];
     mapTags.showsUserLocation = YES;
-    mapTags.userLocation.title=appDel.objUser.strName;
     NSLog(@"%@",self.arrListFromMap);
     for (int j=0; j<self.arrListFromMap.count; j++)
     {

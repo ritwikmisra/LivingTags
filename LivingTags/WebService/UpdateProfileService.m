@@ -7,7 +7,6 @@
 //
 
 #import "UpdateProfileService.h"
-#import "SlideMenuController.h"
 
 @implementation UpdateProfileService
 
@@ -80,36 +79,7 @@
                      NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                      NSError *errorJsonConversion=nil;
                      NSDictionary *responseDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&errorJsonConversion];
-                     NSDictionary *dictUser=[responseDict objectForKey:@"response"];
-                     if (![dictUser isKindOfClass:[NSNull class]])
-                     {
-                         appDel.objUser=[[ModelUser alloc]initWithDictionary:dictUser];
-                     }
-                     else
-                     {
-                         NSLog(@"null response");
-                     }
-                     if (errorJsonConversion)
-                     {
-                         completionHandler(errorJsonConversion,YES,SOMETHING_WRONG);
-                     }
-                     else
-                     {
-                         if ([[responseDict objectForKey:@"status"] boolValue])
-                         {
-                             appDel.objUser=[[ModelUser alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"account"]];
-                             NSLog(@"%@",appDel.objUser.strName);
-                             appDel.objLivingTags=[[ModelLivingTagsViewedAndCreated alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"livingtag"]];
-//                           SlideMenuController *slideMenu=[SlideMenuController getSlideMenuInstance];
-//                             [slideMenu.tblSidePanel reloadData];
-                             appDel.isProfileValueUpdated = YES;
-                             completionHandler([responseDict objectForKey:@"response"],NO,nil);
-                         }
-                         else
-                         {
-                             completionHandler(nil,YES,[responseDict objectForKey:@"error"] );
-                         }
-                     }
+                     completionHandler([responseDict objectForKey:@"response"],NO,nil);
                  }
                  else
                  {

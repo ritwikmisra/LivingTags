@@ -78,14 +78,6 @@
                         {
                             if ([[responseDict objectForKey:@"status"]boolValue])
                             {
-                                
-                                NSString *strToken=[[responseDict objectForKey:@"response"] objectForKey:@"token"];
-                                [[NSUserDefaults standardUserDefaults]setObject:strToken forKey:@"Token"];
-                                [[NSUserDefaults standardUserDefaults] synchronize];
-                                NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
-                                appDel.objUser=[[ModelUser alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"account"]];
-                                
-                                NSLog(@"%@",appDel.objUser.strName);
                                 handler([responseDict objectForKey:@"response"],NO,[[responseDict objectForKey:@"response"] objectForKey:@"message"]);
                             }
                             else

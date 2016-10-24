@@ -297,57 +297,9 @@
 
 -(IBAction)btnSearchPressed:(id)sender
 {
-    //[self callWebService];
+
 }
 
-#pragma mark
-#pragma mark call webservice
-#pragma mark
-
--(void)callWebService
-{
-    NSLog(@"%d",i);
-    NSLog(@"%@",arrList);
-    [[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i name:txtSearch.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            if ([result isKindOfClass:[NSMutableArray class]])
-            {
-                NSMutableArray *arr=(id)result;
-                [arrList removeAllObjects];
-                [arrMaps removeAllObjects];
-                if (i==0)
-                {
-                    [arrNames removeAllObjects];
-                }
-                for (NSDictionary *dict in arr)
-                {
-                    [arrNames addObject:dict];
-                }
-                for (int m=0; m<arrNames.count; m++)
-                {
-                    ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:m]];
-                    if ([obj.strPublished isEqualToString:@"P"])
-                    {
-                        [arrMaps addObject:obj];
-                    }
-                    [arrList addObject: obj];
-                }
-            }
-            else
-            {
-                isLazyLoading=NO;
-            }
-            NSLog(@"%lu",(unsigned long)arrNames.count);
-            NSLog(@"%@",arrList);
-            [tblTags reloadData];
-        }
-    }];
-}
 
 #pragma mark
 #pragma mark Custom Mapview Delegate

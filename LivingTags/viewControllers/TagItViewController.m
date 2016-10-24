@@ -42,7 +42,6 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(appDel.center,900000, 90000);
     MKCoordinateRegion adjustedRegion = [mapTagIT regionThatFits:viewRegion];
     [mapTagIT setRegion:adjustedRegion animated:YES];
-    mapTagIT.userLocation.title=appDel.objUser.strName;
     mapTagIT.delegate=self;
 }
 

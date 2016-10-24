@@ -46,27 +46,8 @@
     arrProfile=[[NSMutableArray alloc]initWithObjects:@"",@"Email",@"Phone",@"Video URL", nil];
     arrPics=[[NSMutableArray alloc]initWithObjects:@"",@"mail_icon1",@"phone_icon",@"video_icon", nil];
     isEditing=NO;
-    strLocation=appDel.objUser.strAddress;
-    strLat=appDel.objUser.strLat;
-    strLong=appDel.objUser.strLong;
     [tblProfile setTag:1];
     //get profile web service
-    [[ProfileGetService service]callProfileEditServiceWithUserID:appDel.objUser.strUserID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            NSLog(@"%@",result);
-            arrTexts=[[NSMutableArray alloc]initWithObjects:appDel.objUser.strName,appDel.objUser.strEmail,appDel.objUser.strPhone,appDel.objUser.strVideoURI, nil];
-            strName=[arrTexts objectAtIndex:0];
-            strPhoneNumber=[arrTexts objectAtIndex:2];
-            strVideoLink=[arrTexts objectAtIndex:3];
-            [self checkYoutubeLINK:strVideoLink];
-            [tblProfile reloadData];
-        }
-    }];
     //
 }
 
@@ -184,7 +165,6 @@
         //btnSavePressed
         [cellA.btnSave addTarget:self action:@selector(btnSavePressed:) forControlEvents:UIControlEventTouchUpInside];
 
-        NSLog(@"%@",appDel.objLivingTags.strCreated);
         [cellA.btnProfilePicUpdate addTarget:self action:@selector(btnImageUploadPressed:) forControlEvents:UIControlEventTouchUpInside];
         [cellA.btnLocation addTarget:self action:@selector(btnLocationPressed:) forControlEvents:UIControlEventTouchUpInside];
         [cellA.txtName addTarget:self action:@selector(txtfieldEditingForProfile:) forControlEvents:UIControlEventEditingChanged];
@@ -194,22 +174,7 @@
         }
         else
         {
-            NSLog(@"%@",appDel.objUser.strPicURI160);
-            NSURL *url=[NSURL URLWithString:appDel.objUser.strPicURI160];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [cellA.imgProfile sd_setImageWithURL:url
-                                            placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
-                                                     options:SDWebImageHighPriority
-                                                    progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                                        if (cellA.actProfileIndicator)
-                                                        {
-                                                            [cellA.actProfileIndicator startAnimating];
-                                                        }
-                                                    }
-                                                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                                       [cellA.actProfileIndicator stopAnimating];
-                                                   }];
-            });
+
         }
         img=cellA.imgProfile;
         cellA.constHeight.constant=self.view.frame.size.height/5;
@@ -217,34 +182,6 @@
         cellA.imgProfile.layer.masksToBounds=YES;
         [cellA.contentView updateConstraints];
         cellA.lblLocation.text=strLocation;
-        if(appDel.objLivingTags.strCreated.length>0)
-        {
-            cellA.lblMemoriesCreated.text=appDel.objLivingTags.strCreated;
-            cellA.lblMemoriesViewed.text=appDel.objLivingTags.strViewd;
-        }
-        else
-        {
-            cellA.lblMemoriesCreated.text=@"";
-            cellA.lblMemoriesViewed.text=@"";
-        }
-        if(isEditing==NO)
-        {
-            cellA.btnProfileEdit.hidden=NO;
-            cellA.txtName.userInteractionEnabled=NO;
-            cellA.btnSave.hidden=YES;
-            cellA.vwEditName.hidden=YES;
-            cellA.vwEditLocation.hidden=YES;
-            cellA.imgCamera.hidden=YES;
-        }
-        else
-        {
-            cellA.btnProfileEdit.hidden=YES;
-            cellA.txtName.userInteractionEnabled=YES;
-            cellA.btnSave.hidden=NO;
-            cellA.vwEditName.hidden=NO;
-            cellA.vwEditLocation.hidden=NO;
-            cellA.imgCamera.hidden=NO;
-        }
         cell=cellA;
     }
     else if (indexPath.row==3)
@@ -546,16 +483,6 @@
     {
         isEditing=NO;
         [tblProfile reloadData];
-        [[UpdateProfileService service]callUpdateProfileRequestWIthUserID:appDel.objUser.strUserID Name:strName Address:strLocation Latitude:strLat Longitude:strLong videoURI:strVideoLink phoneNumber:strPhoneNumber userFile:imgChosen withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-            if (isError)
-            {
-                [self displayErrorWithMessage:strMsg];
-            }
-            else
-            {
-                NSLog(@"%@",result);
-            }
-        }];
     }
     else
     {

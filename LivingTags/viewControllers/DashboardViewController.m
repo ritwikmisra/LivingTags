@@ -9,7 +9,6 @@
 #import "DashboardViewController.h"
 #import "ProfileGetService.h"
 #import "DashboardCell.h"
-#import "SlideMenuController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>

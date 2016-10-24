@@ -28,25 +28,9 @@
 @property (nonatomic,assign) CLLocationCoordinate2D center;
 @property(nonatomic,strong)CLLocation *location;
 @property(nonatomic,strong)CLPlacemark *placemark ;
-
-@property(nonatomic,assign)BOOL isFirstTime;
-@property(nonatomic,assign)BOOL isLogoutBtnTapped;
-@property(nonatomic,assign)BOOL isProfileValueUpdated;
-@property(nonatomic,assign)BOOL isCreateTagTappedFromDashboard;
-@property(nonatomic,assign)BOOL isMyTagTappedFromDashboard;
-@property(nonatomic,assign)BOOL isReadTagTappedFromDashboard;
-@property(nonatomic,assign)BOOL isGoToDashBoardFromQRbtnTapped;
-
 //location manage
-@property(nonatomic,strong)ModelUser *objUser;
-@property(nonatomic,strong)ModelLivingTagsViewedAndCreated *objLivingTags;
 
-@property(nonatomic,strong)NSMutableArray *arrStatus;
 
-@property(nonatomic,strong)NSMutableArray *arrCreateTagsUploadImage;
-@property(nonatomic,strong)NSMutableArray *arrImageUpload;
-@property(nonatomic,strong)NSMutableArray *arrSuccessUpload;
-@property(nonatomic,strong)NSData *dataVoice;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

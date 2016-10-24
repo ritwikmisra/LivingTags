@@ -38,7 +38,6 @@
     MKCoordinateRegion adjustedRegion = [mapCamera regionThatFits:viewRegion];
     [mapCamera setRegion:adjustedRegion animated:YES];
     mapCamera.showsUserLocation = YES;
-    mapCamera.userLocation.title=appDel.objUser.strName;
     mapCamera.delegate=self;
 }
 

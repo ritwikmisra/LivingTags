@@ -64,7 +64,6 @@
 
 -(IBAction)btnDashBoardPressed:(id)sender
 {
-    appDel.isGoToDashBoardFromQRbtnTapped = YES;
     [self performSegueWithIdentifier:@"segueQRcodeToDashboard" sender:self];
 }
 

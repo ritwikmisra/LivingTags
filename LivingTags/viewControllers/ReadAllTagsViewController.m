@@ -48,36 +48,6 @@
     NSLog(@"%@",arrList);
     isLazyLoading=YES;
 
-    [[AllTagsReadService service]callListingServiceWithUserID:appDel.objUser.strUserID paging:i name:txtSearch.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            if ([result isKindOfClass:[NSMutableArray class]])
-            {
-                arrNames=(id)result;
-                for (int k=0; k<arrNames.count; k++)
-                {
-                    ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:k]];
-                    if ([obj.strPublished isEqualToString:@"P"])
-                    {
-                        [arrMaps addObject:obj];
-                    }
-                    [arrList addObject:obj];
-                }
-                NSLog(@"%@",arrList);
-                NSLog(@"%lu",(unsigned long)arrNames.count);
-            }
-            else
-            {
-                [arrNames removeAllObjects];
-                [self displayErrorWithMessage:strMsg];
-            }
-            [tblTags reloadData];
-        }
-    }];
     
 }
 - (void)didReceiveMemoryWarning
@@ -127,45 +97,6 @@
 {
     NSLog(@"%d",i);
     NSLog(@"%@",arrList);
-    [[AllTagsReadService service]callListingServiceWithUserID:appDel.objUser.strUserID paging:i name:txtSearch.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            if ([result isKindOfClass:[NSMutableArray class]])
-            {
-                NSMutableArray *arr=(id)result;
-                [arrList removeAllObjects];
-                [arrMaps removeAllObjects];
-                if (i==0)
-                {
-                    [arrNames removeAllObjects];
-                }
-                for (NSDictionary *dict in arr)
-                {
-                    [arrNames addObject:dict];
-                }
-                for (int m=0; m<arrNames.count; m++)
-                {
-                    ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:m]];
-                    if ([obj.strPublished isEqualToString:@"P"])
-                    {
-                        [arrMaps addObject:obj];
-                    }
-                    [arrList addObject: obj];
-                }
-            }
-            else
-            {
-                isLazyLoading=NO;
-            }
-            NSLog(@"%lu",(unsigned long)arrNames.count);
-            NSLog(@"%@",arrList);
-            [tblTags reloadData];
-        }
-    }];
 }
 
 #pragma mark

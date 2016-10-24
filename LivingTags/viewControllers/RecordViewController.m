@@ -234,8 +234,6 @@
 
 -(IBAction)btnDiscardPressed:(id)sender
 {
-    appDel.dataVoice=nil;
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark
@@ -244,9 +242,6 @@
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag
 {
-    btnSave.hidden=NO;
-    btnDiscard.hidden=NO;
-    appDel.dataVoice = [NSData dataWithContentsOfURL:recorder.url];
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -254,7 +249,6 @@
     btnDiscard.hidden=NO;
     btnSave.hidden=NO;
     [self resetTimer];
-    appDel.dataVoice= [NSData dataWithContentsOfURL:recorder.url];
     //base 64 conversion
     NSError *playerError;
     AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:&playerError];

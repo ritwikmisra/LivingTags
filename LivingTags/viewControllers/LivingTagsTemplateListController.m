@@ -122,18 +122,6 @@
 {
     //segueTemplateSecondStep
     ModelLivingTagsTemplateList *obj=[arrTemplates objectAtIndex:indexPath.row];
-    [[TemplateSelectionService service]callTemplateServiceWithUserID:appDel.objUser.strUserID templateID:obj.strTemplateID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            NSLog(@"%@",result);
-            strSegueTemplateID=[NSString stringWithFormat:@"%@",result];
-            [self performSegueWithIdentifier:@"segueTemplateSecondStep" sender:self];
-        }
-    }];
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section

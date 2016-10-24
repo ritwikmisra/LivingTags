@@ -71,36 +71,7 @@
                             if ([[responseDict objectForKey:@"status"]boolValue])
                             {
                                 [self hideNetworkActivity];
-                                NSString *strToken=[[responseDict objectForKey:@"response"] objectForKey:@"token"];
-                                [[NSUserDefaults standardUserDefaults]setObject:strToken forKey:@"Token"];
-                                [[NSUserDefaults standardUserDefaults] synchronize];
-                                NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
-                                appDel.objUser=[[ModelUser alloc]initWithDictionary:[[responseDict objectForKey:@"response"] objectForKey:@"account"]];
-                                
-                                NSLog(@"%@",appDel.objUser.strName);
                                 Completionhandler([responseDict objectForKey:@"response"],NO,[[responseDict objectForKey:@"response"] objectForKey:@"message"]);
-                            }
-                            else
-                            {
-                                if ([[responseDict objectForKey:@"error_code"]integerValue]==1011)
-                                {
-                                    [[SocialLoginService service]callSocialServiceWithEmailID:strEmail id:strSocialAccountID name:strName pic:strPicURL social:strSocialSite socialEmail:strEmailAvailable deviceType:@"IPHONE" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-                                        [self hideNetworkActivity];
-                                        if (isError)
-                                        {
-                                            Completionhandler(nil,YES,strMsg);
-                                        }
-                                        else
-                                        {
-                                            Completionhandler(result,NO,nil);
-                                        }
-                                    }];
-                                }
-                                else
-                                {
-                                    [self hideNetworkActivity];
-                                    Completionhandler(nil,YES,[responseDict objectForKey:@"error"] );
-                                }
                             }
                         }
                     }
