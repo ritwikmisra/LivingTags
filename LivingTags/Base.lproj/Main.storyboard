@@ -1998,20 +1998,11 @@
                                 <rect key="frame" x="0.0" y="60" width="600" height="8"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_icon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Or9-xa-Wzb">
-                                <rect key="frame" x="17" y="12" width="35" height="35"/>
+                                <rect key="frame" x="18" y="12" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Or9-xa-Wzb" secondAttribute="height" id="Wn1-M2-KwT"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeP-E4-CWV">
-                                <rect key="frame" x="5" y="0.0" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="QeP-E4-CWV" secondAttribute="height" id="Cqj-J5-dz3"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="btnBackPressed:" destination="5fP-4K-Kaz" eventType="touchUpInside" id="IdC-j1-aeX"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ofR-6h-Qpn">
                                 <rect key="frame" x="20" y="85" width="560" height="508"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2027,6 +2018,12 @@
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mg9-Py-yWs">
                                 <rect key="frame" x="517" y="13" width="46" height="34"/>
                                 <state key="normal" backgroundImage="map_pin.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeP-E4-CWV">
+                                <rect key="frame" x="5" y="0.0" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QeP-E4-CWV" secondAttribute="height" id="Cqj-J5-dz3"/>
+                                </constraints>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
