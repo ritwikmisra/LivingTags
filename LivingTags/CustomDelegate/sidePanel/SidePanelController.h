@@ -26,6 +26,7 @@
 
 @property(nonatomic,strong) IBOutlet UIImageView*imgBackGround;
 @property(nonatomic,weak)id<SidePanelSwipeDelegate>delegate;
+@property(nonatomic,strong) IBOutlet UITableView *tblSidePanel;
 
 
 @end

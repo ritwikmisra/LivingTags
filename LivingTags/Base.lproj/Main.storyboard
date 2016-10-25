@@ -2024,6 +2024,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QeP-E4-CWV" secondAttribute="height" id="Cqj-J5-dz3"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="btnSlidePanelPressed:" destination="5fP-4K-Kaz" eventType="touchUpInside" id="MPS-m4-j3n"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3179,6 +3182,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NRl-zO-8AI" secondAttribute="height" id="QXz-k0-ltu"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="btnSlidePanelPressed:" destination="KRc-Wn-CL4" eventType="touchUpInside" id="yez-rs-vcZ"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nuo-uE-Agu">
                                 <rect key="frame" x="50" y="80" width="500" height="500"/>

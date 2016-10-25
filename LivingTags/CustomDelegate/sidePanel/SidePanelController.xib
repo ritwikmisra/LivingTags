@@ -14,7 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SidePanelController">
             <connections>
                 <outlet property="imgBackGround" destination="lE5-XY-Cun" id="2yg-rN-0cx"/>
-                <outlet property="tblSidePanel" destination="F0U-Wa-qap" id="Udi-WB-Pi7"/>
+                <outlet property="tblSidePanel" destination="F0U-Wa-qap" id="g3l-f3-7mI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

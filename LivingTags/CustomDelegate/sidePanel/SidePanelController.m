@@ -11,7 +11,6 @@
 
 @interface SidePanelController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    IBOutlet UITableView *tblSidePanel;
     NSMutableArray *arrLabel,*arrImages;
     UIView *vw;
 }
@@ -76,10 +75,10 @@
     
     // Adding the swipe gesture on image view
     [_imgBackGround addGestureRecognizer:swipeLeft];
-    tblSidePanel.delegate=self;
-    tblSidePanel.dataSource=self;
-    tblSidePanel.backgroundColor=[UIColor clearColor];
-    tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
+    _tblSidePanel.delegate=self;
+    _tblSidePanel.dataSource=self;
+    _tblSidePanel.backgroundColor=[UIColor clearColor];
+    _tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
     arrLabel=[[NSMutableArray alloc]initWithObjects:@"Dashboard",@"My Tags",@"Comments",@"Products",@"Analytics",@"My Profile",@"Settings",@"Help",@"About Us",@"Contact Us", nil];
     arrImages=[[NSMutableArray alloc]initWithObjects:@"dashborad",@"tags",@"comment",@"product",@"analytics",@"my_profile",@"setting",@"help",@"about",@"contact", nil];
 
@@ -172,11 +171,11 @@
 }
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SidePanelCell *cell = (SidePanelCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     [vw removeFromSuperview];
     vw=nil;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
