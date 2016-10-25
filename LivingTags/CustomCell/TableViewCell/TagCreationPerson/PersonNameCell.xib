@@ -29,7 +29,7 @@
                         <rect key="frame" x="9" y="5" width="358" height="27"/>
                         <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done"/>
                     </textField>
                 </subviews>
                 <constraints>

@@ -140,6 +140,7 @@
 
 -(IBAction)btnSlidePanelPressed:(id)sender
 {
+    [self.view endEditing:YES];
     if (!slideMenu.isSlideMenuVisible)
     {
         [self openSlider];

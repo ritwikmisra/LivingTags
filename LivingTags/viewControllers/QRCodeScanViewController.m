@@ -49,7 +49,6 @@
     {
         [lblTagHeading setFont:[UIFont systemFontOfSize:17]];
         [lblTagBody setFont:[UIFont systemFontOfSize:13]];
-
     }
 }
 - (void)didReceiveMemoryWarning
