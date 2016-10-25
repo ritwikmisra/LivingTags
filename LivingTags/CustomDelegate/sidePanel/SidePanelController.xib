@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Signika-Semibold.otf">
+            <string>Signika-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SidePanelController">
+            <connections>
+                <outlet property="imgBackGround" destination="lE5-XY-Cun" id="2yg-rN-0cx"/>
+                <outlet property="tblSidePanel" destination="F0U-Wa-qap" id="Udi-WB-Pi7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lE5-XY-Cun">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTt-Dt-XaN">
+                    <rect key="frame" x="0.0" y="0.0" width="462" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fu4-od-ydv">
+                            <rect key="frame" x="0.0" y="0.0" width="462" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MENU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnc-tG-ssa">
+                                    <rect key="frame" x="47" y="0.0" width="369" height="50"/>
+                                    <fontDescription key="fontDescription" name="Signika-Semibold" family="Signika" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.21568627450980393" green="0.3529411764705882" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="nnc-tG-ssa" secondAttribute="width" multiplier="1.25" id="6V2-Q2-DLV"/>
+                                <constraint firstItem="nnc-tG-ssa" firstAttribute="centerX" secondItem="fu4-od-ydv" secondAttribute="centerX" id="Dfw-lg-RSY"/>
+                                <constraint firstItem="nnc-tG-ssa" firstAttribute="centerY" secondItem="fu4-od-ydv" secondAttribute="centerY" id="Dit-gX-21s"/>
+                                <constraint firstItem="nnc-tG-ssa" firstAttribute="height" secondItem="fu4-od-ydv" secondAttribute="height" id="kof-dR-ThP"/>
+                            </constraints>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F0U-Wa-qap">
+                            <rect key="frame" x="0.0" y="65" width="462" height="522"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="pv3-H0-W6F"/>
+                                <outlet property="delegate" destination="-1" id="x6j-7m-abl"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.30196078431372547" green="0.3411764705882353" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="F0U-Wa-qap" secondAttribute="width" id="2y4-1D-NAY"/>
+                        <constraint firstItem="fu4-od-ydv" firstAttribute="top" secondItem="KTt-Dt-XaN" secondAttribute="top" id="EMf-4T-aQc"/>
+                        <constraint firstItem="fu4-od-ydv" firstAttribute="width" secondItem="KTt-Dt-XaN" secondAttribute="width" id="IYP-Of-8Qb"/>
+                        <constraint firstItem="F0U-Wa-qap" firstAttribute="leading" secondItem="KTt-Dt-XaN" secondAttribute="leading" id="Oou-fo-LrL"/>
+                        <constraint firstAttribute="height" secondItem="fu4-od-ydv" secondAttribute="height" multiplier="12" id="beD-B5-zea"/>
+                        <constraint firstItem="fu4-od-ydv" firstAttribute="centerX" secondItem="KTt-Dt-XaN" secondAttribute="centerX" id="udL-2m-dNb"/>
+                        <constraint firstItem="F0U-Wa-qap" firstAttribute="top" secondItem="fu4-od-ydv" secondAttribute="bottom" multiplier="1.3" id="v6h-Cy-Cwp"/>
+                        <constraint firstAttribute="height" secondItem="F0U-Wa-qap" secondAttribute="height" multiplier="1.15" id="yxu-sQ-mVD"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Side_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="85G-7h-64Y">
+                    <rect key="frame" x="462" y="0.0" width="24" height="600"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="KTt-Dt-XaN" firstAttribute="height" secondItem="lE5-XY-Cun" secondAttribute="height" id="1Si-rW-JpP"/>
+                <constraint firstItem="lE5-XY-Cun" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="4gN-u9-RX2"/>
+                <constraint firstItem="lE5-XY-Cun" firstAttribute="width" secondItem="KTt-Dt-XaN" secondAttribute="width" multiplier="1.3" id="5MP-PE-cBF"/>
+                <constraint firstItem="lE5-XY-Cun" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="Ese-VD-ZfP"/>
+                <constraint firstItem="lE5-XY-Cun" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Ipr-ev-Ctv"/>
+                <constraint firstItem="85G-7h-64Y" firstAttribute="centerY" secondItem="KTt-Dt-XaN" secondAttribute="centerY" id="MfZ-c2-mIX"/>
+                <constraint firstItem="KTt-Dt-XaN" firstAttribute="leading" secondItem="lE5-XY-Cun" secondAttribute="leading" id="XSn-m5-TB8"/>
+                <constraint firstItem="KTt-Dt-XaN" firstAttribute="centerY" secondItem="lE5-XY-Cun" secondAttribute="centerY" id="bh5-B5-uEZ"/>
+                <constraint firstItem="lE5-XY-Cun" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ek6-3W-kSD"/>
+                <constraint firstItem="85G-7h-64Y" firstAttribute="height" secondItem="KTt-Dt-XaN" secondAttribute="height" id="mGd-eb-WxG"/>
+                <constraint firstItem="85G-7h-64Y" firstAttribute="leading" secondItem="KTt-Dt-XaN" secondAttribute="trailing" id="oAF-I7-ENi"/>
+                <constraint firstItem="lE5-XY-Cun" firstAttribute="width" secondItem="85G-7h-64Y" secondAttribute="width" multiplier="25" id="wqh-63-5Ol"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Side_shadow.png" width="133" height="2208"/>
+    </resources>
+</document>

@@ -93,7 +93,7 @@
                                     <constraint firstAttribute="width" secondItem="Mma-NH-x8u" secondAttribute="height" id="ATa-iO-Cv2"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="btnSidePanel:" destination="aIn-rF-jKc" eventType="touchUpInside" id="IhZ-4r-e1F"/>
+                                    <action selector="btnSlidePanelPressed:" destination="aIn-rF-jKc" eventType="touchUpInside" id="vWR-5p-zNo"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qOk-Gs-bzF">

@@ -10,14 +10,6 @@
 
 @interface SidePanelCell : UITableViewCell
 
-@property(nonatomic,strong)IBOutlet UILabel *lbl;
-
-/////first cell
-@property(nonatomic,strong)IBOutlet UIButton *btnLogout;
-@property(nonatomic,strong)IBOutlet UILabel *lblName;
-@property(nonatomic,strong)IBOutlet UILabel *lblEmail;
-@property(nonatomic,strong)IBOutlet UIActivityIndicatorView *actIndicatorSidePanel;
-@property(nonatomic,strong)IBOutlet UIImageView *imgSidePanelProfile;
 
 //////other cells
 

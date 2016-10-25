@@ -16,12 +16,12 @@
 #import "ReadAllTagsViewController.h"
 #import "ImportContactsViewController.h"
 #import "DashboardViewController.h"
+#import "SidePanelController.h"
 
 
-@interface ViewControllerBaseClassViewController ()
+@interface ViewControllerBaseClassViewController ()<SidePanelSwipeDelegate>
 {
-    
-    
+    SidePanelController *slideMenu;
 }
 @end
 
@@ -41,6 +41,11 @@
     [super viewDidAppear:animated];
     NSLog(@"%@",self.navigationController.topViewController);
     ///slide menu initialisation
+    slideMenu=[SidePanelController getInstance];
+    slideMenu.view.frame=CGRectMake(-slideMenu.view.frame.size.width,0,slideMenu.view.frame.size.width,slideMenu.view.frame.size.height);
+    UIWindow *myWindow=[[UIApplication sharedApplication] keyWindow];
+    slideMenu.delegate=self;
+    [myWindow addSubview:slideMenu.view];
     ////////
 }
 - (void)didReceiveMemoryWarning
@@ -133,7 +138,40 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(IBAction)btnSlidePanelPressed:(id)sender
+{
+    if (!slideMenu.isSlideMenuVisible)
+    {
+        [self openSlider];
+    }
+    else
+    {
+        [self closeSlider];
+    }
+}
 
+#pragma mark
+#pragma mark open slider and close slider
+#pragma mark
+
+-(void)openSlider
+{
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        slideMenu.view.frame=CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
+    } completion:^(BOOL finished) {
+        slideMenu.isSlideMenuVisible=YES;
+    }];
+
+}
+
+-(void)closeSlider
+{
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        slideMenu.view.frame=CGRectMake(-slideMenu.view.frame.size.width,0,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
+    } completion:^(BOOL finished) {
+        slideMenu.isSlideMenuVisible=NO;
+    }];
+}
 
 #pragma mark
 #pragma mark activity indicator methods
@@ -164,4 +202,15 @@
 {
     [self performSegueWithIdentifier:@"segueDashboardFromOtherPages" sender:self];
 }
+
+#pragma mark
+#pragma mark side panel delegate
+#pragma mark
+
+-(void)swipeToCloseSidePanel
+{
+    [self closeSlider];
+    
+}
+
 @end

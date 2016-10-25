@@ -20,7 +20,6 @@
     AppDelegate *appDel;
 }
 
-@property(nonatomic,strong)    IBOutlet UIImageView *imgBackground;
 
 
 -(void)displayErrorWithMessage:(NSString*)strMsg;
