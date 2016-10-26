@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface AddLocationCell : UITableViewCell
 
+@property(nonatomic,strong)IBOutlet UIButton *btnMap;
+@property(nonatomic,strong)IBOutlet MKMapView *mapTagLocation;
+
+@property(nonatomic,strong)IBOutlet UIButton *btnCross;
 @end

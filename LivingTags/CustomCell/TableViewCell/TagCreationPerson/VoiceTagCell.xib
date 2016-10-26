@@ -62,11 +62,17 @@
                             <constraint firstItem="LQW-b5-OUX" firstAttribute="centerY" secondItem="tJj-qV-imn" secondAttribute="centerY" id="zjS-LP-Cvg"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACU-wU-LjZ">
+                        <rect key="frame" x="68" y="0.0" width="299" height="91"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="RNb-v8-Czx" firstAttribute="height" secondItem="lg5-Cu-d14" secondAttribute="height" multiplier="5" id="44U-zR-u6h"/>
                     <constraint firstItem="RNb-v8-Czx" firstAttribute="height" secondItem="YQU-8I-Bzd" secondAttribute="height" id="4QD-3D-AA8"/>
                     <constraint firstItem="RNb-v8-Czx" firstAttribute="leading" secondItem="kNL-vH-X6O" secondAttribute="trailing" multiplier="1.25" id="7xa-nz-aWk"/>
+                    <constraint firstItem="ACU-wU-LjZ" firstAttribute="height" secondItem="RNb-v8-Czx" secondAttribute="height" id="9He-jt-6aJ"/>
+                    <constraint firstItem="ACU-wU-LjZ" firstAttribute="width" secondItem="RNb-v8-Czx" secondAttribute="width" id="F2H-6i-rTD"/>
+                    <constraint firstItem="ACU-wU-LjZ" firstAttribute="centerX" secondItem="RNb-v8-Czx" secondAttribute="centerX" id="FIf-I9-WJs"/>
                     <constraint firstItem="YQU-8I-Bzd" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="L3L-tR-Y42"/>
                     <constraint firstItem="lg5-Cu-d14" firstAttribute="bottom" secondItem="RNb-v8-Czx" secondAttribute="bottom" id="NU8-UL-v2W"/>
                     <constraint firstItem="YQU-8I-Bzd" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="UE0-61-vXA"/>
@@ -81,9 +87,13 @@
                     <constraint firstItem="YQU-8I-Bzd" firstAttribute="trailing" secondItem="RNb-v8-Czx" secondAttribute="trailing" multiplier="1.02" id="pPe-fj-Tyg"/>
                     <constraint firstItem="tfX-gp-CBY" firstAttribute="centerX" secondItem="RNb-v8-Czx" secondAttribute="centerX" id="pZX-xT-EDD"/>
                     <constraint firstItem="RNb-v8-Czx" firstAttribute="width" secondItem="tfX-gp-CBY" secondAttribute="width" multiplier="7" id="wFT-ki-6ra"/>
+                    <constraint firstItem="ACU-wU-LjZ" firstAttribute="centerY" secondItem="RNb-v8-Czx" secondAttribute="centerY" id="wWr-eg-x7f"/>
                     <constraint firstAttribute="height" secondItem="YQU-8I-Bzd" secondAttribute="height" multiplier="1.2" id="yKg-Jb-gcR"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="btnVoice" destination="ACU-wU-LjZ" id="fDB-ON-w4s"/>
+            </connections>
             <point key="canvasLocation" x="247" y="138"/>
         </tableViewCell>
     </objects>

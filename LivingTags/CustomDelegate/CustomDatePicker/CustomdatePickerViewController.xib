@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomdatePickerViewController">
+            <connections>
+                <outlet property="datePicker" destination="ORQ-CT-OfN" id="Ge1-Dg-0bT"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dyg-2X-odi">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afn-6j-lbS">
+                    <rect key="frame" x="0.0" y="238" width="320" height="242"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ORQ-CT-OfN">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="180" id="pni-lR-rOg"/>
+                            </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="448370295.82108903">
+                                <!--2015-03-18 11:18:15 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6a7-PY-Tu6">
+                            <rect key="frame" x="72" y="193" width="90" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="6a7-PY-Tu6" secondAttribute="height" multiplier="9:4" id="i9g-5f-gA0"/>
+                            </constraints>
+                            <state key="normal" title="SET">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btnSetPressed:" destination="-1" eventType="touchUpInside" id="yox-DT-MzO"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRv-Te-MZe">
+                            <rect key="frame" x="170" y="193" width="90" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="CANCEL">
+                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="btnCancelPressed:" destination="-1" eventType="touchUpInside" id="CZH-u4-0FJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="6a7-PY-Tu6" secondAttribute="bottom" constant="9" id="1fl-Fl-xPE"/>
+                        <constraint firstAttribute="trailing" secondItem="ORQ-CT-OfN" secondAttribute="trailing" id="GaZ-r4-Hly"/>
+                        <constraint firstItem="CRv-Te-MZe" firstAttribute="width" secondItem="6a7-PY-Tu6" secondAttribute="width" id="Hqb-hT-S4K"/>
+                        <constraint firstItem="CRv-Te-MZe" firstAttribute="centerY" secondItem="6a7-PY-Tu6" secondAttribute="centerY" id="SiO-4c-12j"/>
+                        <constraint firstAttribute="width" secondItem="6a7-PY-Tu6" secondAttribute="height" multiplier="8:1" id="Utz-FD-uGz"/>
+                        <constraint firstItem="CRv-Te-MZe" firstAttribute="leading" secondItem="6a7-PY-Tu6" secondAttribute="trailing" constant="8" id="aX5-9J-VZq"/>
+                        <constraint firstItem="6a7-PY-Tu6" firstAttribute="leading" secondItem="afn-6j-lbS" secondAttribute="leading" constant="72" id="bcJ-Jb-cLC"/>
+                        <constraint firstItem="ORQ-CT-OfN" firstAttribute="leading" secondItem="afn-6j-lbS" secondAttribute="leading" id="cRQ-2R-pOa"/>
+                        <constraint firstAttribute="height" constant="242" id="hvS-JI-5M6"/>
+                        <constraint firstItem="CRv-Te-MZe" firstAttribute="height" secondItem="6a7-PY-Tu6" secondAttribute="height" id="myk-uG-NhD"/>
+                        <constraint firstItem="ORQ-CT-OfN" firstAttribute="top" secondItem="afn-6j-lbS" secondAttribute="top" id="orf-2c-Oyt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="afn-6j-lbS" secondAttribute="trailing" id="179-Xr-INJ"/>
+                <constraint firstItem="dyg-2X-odi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="29K-vt-icN"/>
+                <constraint firstItem="dyg-2X-odi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BnO-LZ-KLU"/>
+                <constraint firstAttribute="bottom" secondItem="dyg-2X-odi" secondAttribute="bottom" id="SLZ-xS-3Cb"/>
+                <constraint firstAttribute="trailing" secondItem="dyg-2X-odi" secondAttribute="trailing" id="exL-Z0-3ZH"/>
+                <constraint firstItem="afn-6j-lbS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nKN-W0-Orq"/>
+                <constraint firstAttribute="bottom" secondItem="afn-6j-lbS" secondAttribute="bottom" id="vN0-Av-YqP"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="444" y="388"/>
+        </view>
+    </objects>
+</document>

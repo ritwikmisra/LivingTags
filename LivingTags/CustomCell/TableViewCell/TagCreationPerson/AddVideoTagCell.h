@@ -10,4 +10,9 @@
 
 @interface AddVideoTagCell : UITableViewCell
 
+@property(nonatomic,strong)IBOutlet UIButton *btnTxt;
+@property(nonatomic,strong)IBOutlet UITextView *txtTags;
+
+@property(nonatomic,strong)IBOutlet UIButton *btnTextVwCross;
+
 @end

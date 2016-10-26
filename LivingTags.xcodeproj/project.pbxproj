@@ -177,6 +177,8 @@
 		0DA226611CD2020800B3A5BC /* ModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA226601CD2020800B3A5BC /* ModelUser.m */; };
 		0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */; };
 		0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */; };
+		0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB867891DC09F4E00D428F2 /* CustomdatePickerViewController.m */; };
+		0DB8678C1DC09F4E00D428F2 /* CustomdatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB8678A1DC09F4E00D428F2 /* CustomdatePickerViewController.xib */; };
 		0DB9A45A1D4629CF007671E9 /* LivingTagsThirdStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */; };
 		0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937F91CEB43970049BEC2 /* ModelListing.m */; };
 		0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937FC1CEB5F8E0049BEC2 /* LivingTagsListingService.m */; };
@@ -502,6 +504,9 @@
 		0DAD38F31D0EA9F90044B7A7 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCell.h; sourceTree = "<group>"; };
 		0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCell.m; sourceTree = "<group>"; };
 		0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateCell.xib; sourceTree = "<group>"; };
+		0DB867881DC09F4E00D428F2 /* CustomdatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomdatePickerViewController.h; sourceTree = "<group>"; };
+		0DB867891DC09F4E00D428F2 /* CustomdatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomdatePickerViewController.m; sourceTree = "<group>"; };
+		0DB8678A1DC09F4E00D428F2 /* CustomdatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomdatePickerViewController.xib; sourceTree = "<group>"; };
 		0DB9A4581D4629CE007671E9 /* LivingTagsThirdStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsThirdStepViewController.h; sourceTree = "<group>"; };
 		0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsThirdStepViewController.m; sourceTree = "<group>"; };
 		0DC937F81CEB43970049BEC2 /* ModelListing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelListing.h; sourceTree = "<group>"; };
@@ -954,6 +959,7 @@
 		0D698D1D1CC8D79000F64745 /* CustomDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				0DB867871DC09F4E00D428F2 /* CustomDatePicker */,
 				0D1916541DBF69F6004D02DA /* sidePanel */,
 				0D85A7DE1D63071B003F4427 /* CustomPopUP */,
 				0D94FF551D3CCCB400502FC8 /* CKCalenderView */,
@@ -1205,6 +1211,16 @@
 				0D94FF571D3CCCB400502FC8 /* CKCalendarView.m */,
 			);
 			path = CKCalenderView;
+			sourceTree = "<group>";
+		};
+		0DB867871DC09F4E00D428F2 /* CustomDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				0DB867881DC09F4E00D428F2 /* CustomdatePickerViewController.h */,
+				0DB867891DC09F4E00D428F2 /* CustomdatePickerViewController.m */,
+				0DB8678A1DC09F4E00D428F2 /* CustomdatePickerViewController.xib */,
+			);
+			path = CustomDatePicker;
 			sourceTree = "<group>";
 		};
 		0DD1981D1DB62554003BB828 /* previewPopUP */ = {
@@ -1464,6 +1480,7 @@
 				0D1916661DBF8F72004D02DA /* about.png in Resources */,
 				0DF008A11DAFB76500BD39C3 /* living_button.png in Resources */,
 				0DF0089C1DAFB76500BD39C3 /* calender.png in Resources */,
+				0DB8678C1DC09F4E00D428F2 /* CustomdatePickerViewController.xib in Resources */,
 				0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */,
 				0D6659281DA666E400566879 /* password_icon.png in Resources */,
 				0DF008941DAFB76500BD39C3 /* add_content.png in Resources */,
@@ -1618,6 +1635,7 @@
 				0DF0085B1DAF984000BD39C3 /* BirthDeathDateCell.m in Sources */,
 				0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */,
 				0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */,
+				0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */,
 				0D6030651D58B97000DB3333 /* LivingTagsFourthStepService.m in Sources */,
 				0D3731441CD8A10B00EDC547 /* SDWebImageDownloaderOperation.m in Sources */,
 				0D3731521CD8A8C600EDC547 /* UpdateProfileService.m in Sources */,

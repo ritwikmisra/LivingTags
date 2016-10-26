@@ -28,6 +28,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lij-sL-mJq">
+                                <rect key="frame" x="33" y="11" width="99" height="20"/>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calender.png" translatesAutoresizingMaskIntoConstraints="NO" id="B8r-6H-Pm7">
                                 <rect key="frame" x="12" y="13" width="16" height="16"/>
                                 <constraints>
@@ -44,14 +47,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Lij-sL-mJq" firstAttribute="centerX" secondItem="dQU-Q5-EbE" secondAttribute="centerX" id="0fC-kf-vd5"/>
                             <constraint firstItem="Awj-OM-9cT" firstAttribute="leading" secondItem="B8r-6H-Pm7" secondAttribute="leading" id="4zN-fA-hgd"/>
                             <constraint firstAttribute="centerY" secondItem="dQU-Q5-EbE" secondAttribute="centerY" multiplier="1.1" id="5jP-GV-cco"/>
                             <constraint firstItem="Awj-OM-9cT" firstAttribute="trailing" secondItem="dQU-Q5-EbE" secondAttribute="trailing" id="Dy3-sU-dF2"/>
+                            <constraint firstItem="Lij-sL-mJq" firstAttribute="centerY" secondItem="dQU-Q5-EbE" secondAttribute="centerY" id="GYZ-SX-7bG"/>
                             <constraint firstItem="dQU-Q5-EbE" firstAttribute="leading" secondItem="B8r-6H-Pm7" secondAttribute="trailing" multiplier="1.16" id="PLN-BR-lf2"/>
+                            <constraint firstItem="Lij-sL-mJq" firstAttribute="height" secondItem="dQU-Q5-EbE" secondAttribute="height" id="Qnk-S5-ClO"/>
                             <constraint firstItem="B8r-6H-Pm7" firstAttribute="centerY" secondItem="dQU-Q5-EbE" secondAttribute="centerY" id="Rfl-Ii-tZs"/>
                             <constraint firstItem="dQU-Q5-EbE" firstAttribute="height" secondItem="B8r-6H-Pm7" secondAttribute="height" multiplier="1.2" id="aYU-ug-wuu"/>
                             <constraint firstAttribute="width" secondItem="dQU-Q5-EbE" secondAttribute="width" multiplier="1.35" id="iSm-AO-hX4"/>
                             <constraint firstItem="dQU-Q5-EbE" firstAttribute="centerX" secondItem="bnb-6S-2Dm" secondAttribute="centerX" multiplier="1.23" id="oNk-Y2-rJM"/>
+                            <constraint firstItem="Lij-sL-mJq" firstAttribute="width" secondItem="dQU-Q5-EbE" secondAttribute="width" id="pPT-rM-XBj"/>
                             <constraint firstItem="Awj-OM-9cT" firstAttribute="bottom" secondItem="dQU-Q5-EbE" secondAttribute="bottom" multiplier="1.07" id="s1M-AY-5hl"/>
                             <constraint firstAttribute="height" secondItem="dQU-Q5-EbE" secondAttribute="height" multiplier="2.3" id="tGs-iq-6f5"/>
                         </constraints>
@@ -65,6 +72,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqu-Vx-p6b">
+                                <rect key="frame" x="18" y="11" width="99" height="20"/>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calender.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZYR-9B-YKV">
                                 <rect key="frame" x="-1" y="13" width="16" height="16"/>
                             </imageView>
@@ -82,8 +92,12 @@
                             <constraint firstItem="Hjx-k6-xD8" firstAttribute="trailing" secondItem="NEi-vC-3kJ" secondAttribute="trailing" id="8gN-NL-g8c"/>
                             <constraint firstItem="Hjx-k6-xD8" firstAttribute="leading" secondItem="ZYR-9B-YKV" secondAttribute="leading" id="B7J-ho-1Mx"/>
                             <constraint firstItem="NEi-vC-3kJ" firstAttribute="leading" secondItem="ZYR-9B-YKV" secondAttribute="trailing" multiplier="1.2" id="CMm-mr-lcs"/>
+                            <constraint firstItem="Dqu-Vx-p6b" firstAttribute="width" secondItem="NEi-vC-3kJ" secondAttribute="width" id="DEj-5z-Orx"/>
                             <constraint firstAttribute="centerY" secondItem="NEi-vC-3kJ" secondAttribute="centerY" multiplier="1.1" id="FV3-iI-cYe"/>
                             <constraint firstItem="ZYR-9B-YKV" firstAttribute="centerY" secondItem="NEi-vC-3kJ" secondAttribute="centerY" id="GCC-i1-ugM"/>
+                            <constraint firstItem="Dqu-Vx-p6b" firstAttribute="centerY" secondItem="NEi-vC-3kJ" secondAttribute="centerY" id="PSI-3A-2n8"/>
+                            <constraint firstItem="Dqu-Vx-p6b" firstAttribute="centerX" secondItem="NEi-vC-3kJ" secondAttribute="centerX" id="ZO4-B9-4hf"/>
+                            <constraint firstItem="Dqu-Vx-p6b" firstAttribute="height" secondItem="NEi-vC-3kJ" secondAttribute="height" id="vvI-fR-rfK"/>
                             <constraint firstItem="NEi-vC-3kJ" firstAttribute="centerX" secondItem="Vdm-VA-Lt4" secondAttribute="centerX" id="zjY-dr-cwT"/>
                         </constraints>
                     </view>
@@ -155,6 +169,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnBirthDate" destination="Lij-sL-mJq" id="KFU-aK-3wN"/>
+                <outlet property="btnDeathDate" destination="Dqu-Vx-p6b" id="05L-Ct-eOP"/>
                 <outlet property="btnLiving" destination="qeh-dh-1T3" id="RAr-Ve-kSX"/>
                 <outlet property="imgLiving" destination="Ab1-y9-V4e" id="Jox-7U-H5W"/>
                 <outlet property="txtBirth" destination="dQU-Q5-EbE" id="Qjd-Tw-aZq"/>
@@ -181,6 +197,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aB-pa-f4e">
+                                <rect key="frame" x="33" y="12" width="99" height="20"/>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calender.png" translatesAutoresizingMaskIntoConstraints="NO" id="JcH-Mz-RQI">
                                 <rect key="frame" x="12" y="14" width="16" height="16"/>
                                 <constraints>
@@ -199,12 +218,16 @@
                         <constraints>
                             <constraint firstItem="oGQ-Er-8BG" firstAttribute="centerX" secondItem="SKg-h9-15x" secondAttribute="centerX" multiplier="1.23" id="0Df-YY-egh"/>
                             <constraint firstAttribute="height" secondItem="oGQ-Er-8BG" secondAttribute="height" multiplier="2.3" id="3bQ-2q-oO7"/>
+                            <constraint firstItem="4aB-pa-f4e" firstAttribute="width" secondItem="oGQ-Er-8BG" secondAttribute="width" id="BlD-OW-nJ8"/>
                             <constraint firstItem="oGQ-Er-8BG" firstAttribute="leading" secondItem="JcH-Mz-RQI" secondAttribute="trailing" multiplier="1.16" id="HR9-3f-dtV"/>
+                            <constraint firstItem="4aB-pa-f4e" firstAttribute="centerY" secondItem="oGQ-Er-8BG" secondAttribute="centerY" id="MK3-cX-MYm"/>
                             <constraint firstItem="MB4-qt-lS5" firstAttribute="bottom" secondItem="oGQ-Er-8BG" secondAttribute="bottom" multiplier="1.07" id="Q0h-WG-rvH"/>
                             <constraint firstAttribute="centerY" secondItem="oGQ-Er-8BG" secondAttribute="centerY" multiplier="1.1" id="YBE-Cs-nV7"/>
                             <constraint firstAttribute="width" secondItem="oGQ-Er-8BG" secondAttribute="width" multiplier="1.35" id="gKK-iD-es3"/>
                             <constraint firstItem="MB4-qt-lS5" firstAttribute="leading" secondItem="JcH-Mz-RQI" secondAttribute="leading" id="krW-od-OOk"/>
+                            <constraint firstItem="4aB-pa-f4e" firstAttribute="centerX" secondItem="oGQ-Er-8BG" secondAttribute="centerX" id="nI9-Cp-KBc"/>
                             <constraint firstItem="oGQ-Er-8BG" firstAttribute="height" secondItem="JcH-Mz-RQI" secondAttribute="height" multiplier="1.2" id="qOX-xo-pG9"/>
+                            <constraint firstItem="4aB-pa-f4e" firstAttribute="height" secondItem="oGQ-Er-8BG" secondAttribute="height" id="sKe-Nt-g4G"/>
                             <constraint firstItem="JcH-Mz-RQI" firstAttribute="centerY" secondItem="oGQ-Er-8BG" secondAttribute="centerY" id="tvn-rM-H0X"/>
                             <constraint firstItem="MB4-qt-lS5" firstAttribute="trailing" secondItem="oGQ-Er-8BG" secondAttribute="trailing" id="vF5-2r-Hqw"/>
                         </constraints>
@@ -218,6 +241,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYp-xk-Z2i">
+                                <rect key="frame" x="18" y="12" width="99" height="20"/>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calender.png" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-cJ-OAy">
                                 <rect key="frame" x="-1" y="14" width="16" height="16"/>
                             </imageView>
@@ -232,12 +258,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VfX-Qy-NXU" firstAttribute="bottom" secondItem="hh6-wt-AKT" secondAttribute="bottom" multiplier="1.07" id="0X3-Xy-Iar"/>
+                            <constraint firstItem="rYp-xk-Z2i" firstAttribute="width" secondItem="hh6-wt-AKT" secondAttribute="width" id="5f7-1d-zf1"/>
+                            <constraint firstItem="rYp-xk-Z2i" firstAttribute="centerY" secondItem="hh6-wt-AKT" secondAttribute="centerY" id="Ele-1Q-J6Q"/>
                             <constraint firstAttribute="centerY" secondItem="hh6-wt-AKT" secondAttribute="centerY" multiplier="1.1" id="GE7-lO-aON"/>
                             <constraint firstItem="VfX-Qy-NXU" firstAttribute="trailing" secondItem="hh6-wt-AKT" secondAttribute="trailing" id="HCq-Aq-32W"/>
                             <constraint firstItem="hh6-wt-AKT" firstAttribute="leading" secondItem="iAi-cJ-OAy" secondAttribute="trailing" multiplier="1.2" id="KpY-j0-SwS"/>
+                            <constraint firstItem="rYp-xk-Z2i" firstAttribute="height" secondItem="hh6-wt-AKT" secondAttribute="height" id="MTP-et-ddI"/>
                             <constraint firstItem="VfX-Qy-NXU" firstAttribute="leading" secondItem="iAi-cJ-OAy" secondAttribute="leading" id="Sev-Hj-w3A"/>
                             <constraint firstItem="hh6-wt-AKT" firstAttribute="centerX" secondItem="LH8-q8-jye" secondAttribute="centerX" id="V7z-k4-0uZ"/>
                             <constraint firstItem="iAi-cJ-OAy" firstAttribute="centerY" secondItem="hh6-wt-AKT" secondAttribute="centerY" id="WfE-bs-4PY"/>
+                            <constraint firstItem="rYp-xk-Z2i" firstAttribute="centerX" secondItem="hh6-wt-AKT" secondAttribute="centerX" id="y6q-Gl-OzN"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnU-C2-pcH">
@@ -299,6 +329,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnBirthDate" destination="4aB-pa-f4e" id="vgd-2o-y3g"/>
+                <outlet property="btnDeathDate" destination="rYp-xk-Z2i" id="aC9-4D-FIS"/>
                 <outlet property="btnLiving" destination="bm7-qL-Tah" id="zdb-Af-yIn"/>
                 <outlet property="imgLiving" destination="xzQ-8w-vgN" id="vPh-nv-eOn"/>
                 <outlet property="txtBirth" destination="oGQ-Er-8BG" id="5eP-1v-VIv"/>

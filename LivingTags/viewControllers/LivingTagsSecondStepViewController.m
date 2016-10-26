@@ -17,13 +17,26 @@
 #import "CategoryCell.h"
 #import "AddLogoCell.h"
 #import "PreviewPopUpController.h"
+#import "CustomdatePickerViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate>
+
+@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate>
 {
     IBOutlet UITableView *tblTagsCreation;
-    NSString *strGender;
-    BOOL isLiving;
+    NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags;////////// variables to be sent to the server
+    BOOL isLiving,isLocation,isTextViewClicked;
     NSMutableArray *arrPlaceHolders;
+    CustomdatePickerViewController *datePickerController ;
+    NSString *strDate;//// to see if the birth date button is clicked or death date button is clicked
+    
+    ////// google place picker
+    GMSPlacePicker *placePicker;
+    GMSMapView *mapViewGoogle;
+    GMSPlace *pickedPlace;
+    CLLocationCoordinate2D locationUser;
+    /////////
+
 }
 
 @end
@@ -38,6 +51,7 @@
     tblTagsCreation.delegate=self;
     tblTagsCreation.dataSource=self;
     arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Business Name",@"Contact Name",@"Title",@"Business Address",@"Business Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
+    strDate=@"";
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -45,6 +59,8 @@
     [super viewWillAppear:animated];
     strGender=@"";
     isLiving=NO;
+    isLocation=NO;
+    isTextViewClicked=NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -172,6 +188,12 @@
                 {
                     cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
                 }
+                cellPerson.txtPersonName.delegate=self;
+                [cellPerson.txtPersonName addTarget:self action:@selector(textFieldEdited:) forControlEvents:UIControlEventEditingChanged];
+                if (strPersonName.length>0)
+                {
+                    cellPerson.txtPersonName.text=strPersonName;
+                }
                 cell=cellPerson;
             }
                 break;
@@ -204,7 +226,6 @@
                 [cellGender.btnFemale addTarget:self action:@selector(btnFemalePressed:) forControlEvents:UIControlEventTouchUpInside];
                 
             }
-                
                 break;
                 
             case 2 :
@@ -214,6 +235,7 @@
                 {
                     cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:0];
                 }
+                
                 if (isLiving==NO)
                 {
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
@@ -221,9 +243,17 @@
                 else
                 {
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
-                    
+                    cellBirth.btnDeathDate.userInteractionEnabled=NO;
+                    cellBirth.txtDeath.text=@"Death Date";
+                    strDeathDate=@"";
                 }
+                cellBirth.txtBirth.userInteractionEnabled=NO;
+                cellBirth.txtDeath.userInteractionEnabled=NO;
+                cellBirth.txtBirth.text=strBirthDate;
+                cellBirth.txtDeath.text=strDeathDate;
                 [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnBirthDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnDeathDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellBirth;
             }
                 
@@ -254,12 +284,28 @@
                 
             case 5 :
             {
-                AddVideoTagCell *cellText=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
-                if (!cellText)
+                if (isTextViewClicked==NO)
                 {
-                    cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:0];
+                    AddVideoTagCell *cellText=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellText)
+                    {
+                        cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:0];
+                    }
+                    [cellText.btnTxt addTarget:self action:@selector(btnTextViewClicked:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellText;
                 }
-                cell=cellText;
+                else
+                {
+                    AddVideoTagCell *cellText=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellText)
+                    {
+                        cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:1];
+                    }
+                    cellText.txtTags.text=strTextVwTags;
+                    cellText.txtTags.delegate=self;
+                    [cellText.btnTextVwCross addTarget:self action:@selector(btnTextVwCrossPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellText;
+                }
             }
                 break;
                 
@@ -276,12 +322,33 @@
                 
             case 7 :
             {
-                AddLocationCell *cellLocation=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
-                if (!cellLocation)
+                if (isLocation==0)
                 {
-                    cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:0];
+                    AddLocationCell *cellLocation=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellLocation)
+                    {
+                        cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:0];
+                    }
+                    [cellLocation.btnMap addTarget:self action:@selector(btnMapPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellLocation;
                 }
-                cell=cellLocation;
+                else
+                {
+                    AddLocationCell *cellLocation=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellLocation)
+                    {
+                        cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:1];
+                    }
+                    [cellLocation.btnCross addTarget:self action:@selector(btnMapCrossPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cellLocation.mapTagLocation.delegate=self;
+                    MKPointAnnotation*    annotation = [[MKPointAnnotation alloc] init];
+                    annotation.coordinate = locationUser;
+                    [cellLocation.mapTagLocation addAnnotation:annotation];
+                    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(locationUser,9000, 900);
+                    MKCoordinateRegion adjustedRegion = [cellLocation.mapTagLocation regionThatFits:viewRegion];
+                    [cellLocation.mapTagLocation setRegion:adjustedRegion animated:YES];
+                    cell=cellLocation;
+                }
             }
                 break;
                 case 8:
@@ -654,6 +721,7 @@
 
 -(void)btnMalePressed:(id)sender
 {
+    [self.view endEditing:YES];
     strGender=@"M";
     [tblTagsCreation beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
@@ -664,6 +732,7 @@
 
 -(void)btnFemalePressed:(id)sender
 {
+    [self.view endEditing:YES];
     strGender=@"F";
     [tblTagsCreation beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
@@ -697,6 +766,103 @@
     [master didMoveToParentViewController:self];
 }
 
+
+-(void)btnDeathDatePressed:(id)sender
+{
+    strDate=@"birth";
+    [self datePickerOpen];
+}
+
+-(void)btnBirthDatePressed:(id)sender
+{
+    strDate=@"death";
+    [self datePickerOpen];
+}
+
+//////************ map button***********///////////////
+
+-(void)btnMapPressed:(id)sender
+{
+
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
+    CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
+                                                                  center.longitude + 0.001);
+    CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake(center.latitude - 0.001,
+                                                                  center.longitude - 0.001);
+    GMSCoordinateBounds *viewport = [[GMSCoordinateBounds alloc] initWithCoordinate:northEast
+                                                                         coordinate:southWest];
+    GMSPlacePickerConfig *config = [[GMSPlacePickerConfig alloc] initWithViewport:viewport];
+    placePicker = [[GMSPlacePicker alloc] initWithConfig:config];
+    
+    [placePicker pickPlaceWithCallback:^(GMSPlace *place, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Pick Place error %@", [error localizedDescription]);
+            [self displayErrorWithMessage:[error localizedDescription]];
+            return;
+        }
+        
+        if (place != nil) {
+            NSLog(@"place.name:%@",place.name);
+            
+            [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse* response, NSError* error)
+             {
+                 locationUser=CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude);
+                 isLocation=YES;
+                 [tblTagsCreation beginUpdates];
+                 NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
+                 [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                 [tblTagsCreation endUpdates];
+
+                 NSLog(@"reverse geocoding results:");
+                 for(GMSAddress* addressObj in [response results])
+                 {
+                     NSLog(@"locality=%@", addressObj.locality);
+                     NSLog(@"subLocality=%@", addressObj.subLocality);
+                     NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+                     NSLog(@"postalCode=%@", addressObj.postalCode);
+                     NSLog(@"country=%@", addressObj.country);
+                     // NSLog(@"lines=%@", addressObj.lines);
+                     // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
+                     break;
+                 }
+             }];
+            NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+            NSString *strCat = place.types[0];
+            NSLog(@"Category:%@",strCat);
+            pickedPlace = place;
+        } else {
+        }
+    }];
+}
+
+-(void)btnMapCrossPressed:(id)sender
+{
+    isLocation=NO;
+    [tblTagsCreation beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
+    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblTagsCreation endUpdates];
+}
+
+-(void)btnTextViewClicked:(id)sender
+{
+    isTextViewClicked=YES;
+    [tblTagsCreation beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
+    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblTagsCreation endUpdates];
+}
+
+-(void)btnTextVwCrossPressed:(id)sender
+{
+    strTextVwTags=@"";
+    [self.view endEditing:YES];
+    isTextViewClicked=NO;
+    [tblTagsCreation beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
+    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblTagsCreation endUpdates];
+}
 #pragma mark
 #pragma mark Custom delegate preview popup
 #pragma mark
@@ -709,6 +875,138 @@
 -(void)publishButtonPressed
 {
     [self performSegueWithIdentifier:@"segueQRCode" sender:self];
+}
+
+#pragma mark
+#pragma mark textfield delegate methods
+#pragma mark
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+-(void)textFieldEdited:(id)sender
+{
+    UITextField *textField=(id)sender;
+    if ([self.strTagName isEqualToString:@"Persons"])
+    {
+        strPersonName=textField.text;
+    }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
+}
+
+#pragma mark 
+#pragma mark Custom Date Picker
+#pragma mark
+
+-(void)datePickerOpen
+{
+    [self.view endEditing:YES];
+    datePickerController=[[CustomdatePickerViewController alloc] initWithNibName:@"CustomdatePickerViewController" bundle:nil Delegate:self];
+    datePickerController.view.frame=[[UIScreen mainScreen] bounds];
+    [self.view addSubview:datePickerController.view];
+    [self addChildViewController:datePickerController];
+    [datePickerController didMoveToParentViewController:self];
+}
+
+-(void)didSelectedDate:(NSDate *)selectedDate
+{
+    if ([strDate isEqualToString:@"birth"])
+    {
+        strBirthDate=[dateFormatter stringFromDate:selectedDate];
+        [datePickerController.view removeFromSuperview];
+        NSLog(@"%@",strBirthDate);
+    }
+    else
+    {
+        strDeathDate=[dateFormatter stringFromDate:selectedDate];
+        [datePickerController.view removeFromSuperview];
+        NSDate *birthDate=[dateFormatter dateFromString:strBirthDate];
+        if ([birthDate compare:selectedDate]==NSOrderedDescending)
+        {
+            [self displayErrorWithMessage:@"Death date should be higher than birth date"];
+            strDeathDate=@"";
+        }
+    }
+    [tblTagsCreation beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
+    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblTagsCreation endUpdates];
 
 }
+
+-(void)didCancel
+{
+    [datePickerController.view removeFromSuperview];
+}
+
+#pragma mark
+#pragma mark mapview delegates and datasource
+#pragma mark
+
+/*- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
+{
+    if (fullyRendered)
+    {
+        [self hideNetworkActivity];
+    }
+}*/
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKAnnotationView *pinView = nil;
+    if([annotation isKindOfClass:[MKPointAnnotation class]])
+    {
+        static NSString *defaultPinID = @"com.invasivecode.pin";
+        pinView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+        if ( pinView == nil )
+            pinView = [[MKAnnotationView alloc]
+                       initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        pinView.canShowCallout = YES;
+        pinView.image = [UIImage imageNamed:@"memorial"];    //add custom image to annotation
+    }
+    else
+    {
+        [mapView.userLocation setTitle:@"I am here"];
+    }
+    return pinView;
+}
+
+
+#pragma mark
+#pragma mark textview delegate
+#pragma mark
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [tblTagsCreation setContentOffset:CGPointMake(0, 300) animated:YES];
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    strTextVwTags=textView.text;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if([text isEqualToString:@"\n"])
+    {
+        [textView resignFirstResponder];
+        [tblTagsCreation setContentOffset:CGPointMake(0, 0) animated:YES];
+        return NO;
+    }
+    return YES;
+}
+
 @end

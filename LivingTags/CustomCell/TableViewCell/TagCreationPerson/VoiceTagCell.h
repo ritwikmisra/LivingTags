@@ -10,4 +10,6 @@
 
 @interface VoiceTagCell : UITableViewCell
 
+@property(nonatomic,strong)IBOutlet UIButton *btnVoice;
+
 @end

@@ -4,7 +4,7 @@
 //
 //  Created by appsbeetech on 18/10/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
-//
+
 
 #import "QRCodeScanViewController.h"
 #import <QuartzCore/QuartzCore.h>

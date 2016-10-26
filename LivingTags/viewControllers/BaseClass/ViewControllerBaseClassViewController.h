@@ -18,9 +18,9 @@
 {
     @protected
     AppDelegate *appDel;
+    NSDateFormatter *dateFormatter;
+    NSString *strDateFormat;
 }
-
-
 
 -(void)displayErrorWithMessage:(NSString*)strMsg;
 -(BOOL)isValidEmail:(NSString*)strEmailID;

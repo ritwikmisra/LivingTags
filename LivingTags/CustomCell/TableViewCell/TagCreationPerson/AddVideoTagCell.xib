@@ -76,12 +76,89 @@
                     <constraint firstItem="CC9-Gx-Mck" firstAttribute="leading" secondItem="3JS-Pw-BtY" secondAttribute="trailing" multiplier="1.25" id="yZs-he-iJw"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="231" y="54"/>
+            <connections>
+                <outlet property="btnTxt" destination="Eat-Zp-4UT" id="uFi-mr-nNe"/>
+            </connections>
+            <point key="canvasLocation" x="133" y="19"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="99" id="sRt-m1-iDh" customClass="AddVideoTagCell">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRt-m1-iDh" id="lKc-ER-PgY">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kZY-Ao-Esv">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="91"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="bVg-Im-PwL">
+                        <rect key="frame" x="13" y="0.0" width="41" height="41"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="bVg-Im-PwL" secondAttribute="height" id="cRm-4s-Yys"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_txt.png" translatesAutoresizingMaskIntoConstraints="NO" id="uxW-mq-5cX">
+                        <rect key="frame" x="24" y="10" width="20" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="uxW-mq-5cX" secondAttribute="height" id="icP-kG-AZ8"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="0zU-dV-6PN">
+                        <rect key="frame" x="68" y="0.0" width="299" height="91"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q2H-zK-VOK">
+                        <rect key="frame" x="82" y="4" width="255" height="83"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done"/>
+                    </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGo-LP-tEK">
+                        <rect key="frame" x="342" y="2" width="23" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="MGo-LP-tEK" secondAttribute="height" id="4dK-JW-GkR"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="cross.png"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uxW-mq-5cX" firstAttribute="centerY" secondItem="bVg-Im-PwL" secondAttribute="centerY" id="0In-YI-1fF"/>
+                    <constraint firstItem="kZY-Ao-Esv" firstAttribute="height" secondItem="bVg-Im-PwL" secondAttribute="height" multiplier="2.2" id="0c4-Xr-No9"/>
+                    <constraint firstAttribute="height" secondItem="kZY-Ao-Esv" secondAttribute="height" multiplier="1.2" id="0nj-2N-XvJ"/>
+                    <constraint firstItem="q2H-zK-VOK" firstAttribute="centerY" secondItem="0zU-dV-6PN" secondAttribute="centerY" id="3Np-PA-o89"/>
+                    <constraint firstItem="bVg-Im-PwL" firstAttribute="height" secondItem="uxW-mq-5cX" secondAttribute="height" multiplier="2" id="3Td-ep-rff"/>
+                    <constraint firstItem="0zU-dV-6PN" firstAttribute="width" secondItem="q2H-zK-VOK" secondAttribute="width" multiplier="1.17" id="3Xi-bV-nAs"/>
+                    <constraint firstItem="kZY-Ao-Esv" firstAttribute="centerX" secondItem="lKc-ER-PgY" secondAttribute="centerX" id="65O-wf-zsb"/>
+                    <constraint firstItem="kZY-Ao-Esv" firstAttribute="top" secondItem="lKc-ER-PgY" secondAttribute="top" id="7iu-3Z-tCn"/>
+                    <constraint firstItem="0zU-dV-6PN" firstAttribute="leading" secondItem="bVg-Im-PwL" secondAttribute="trailing" multiplier="1.25" id="8iY-sX-9Pg"/>
+                    <constraint firstItem="bVg-Im-PwL" firstAttribute="top" secondItem="kZY-Ao-Esv" secondAttribute="top" id="989-cc-SE2"/>
+                    <constraint firstItem="0zU-dV-6PN" firstAttribute="height" secondItem="q2H-zK-VOK" secondAttribute="height" multiplier="1.1" id="FYK-uk-bO9"/>
+                    <constraint firstItem="0zU-dV-6PN" firstAttribute="trailing" secondItem="MGo-LP-tEK" secondAttribute="trailing" constant="2" id="Ge1-fL-sTk"/>
+                    <constraint firstItem="0zU-dV-6PN" firstAttribute="height" secondItem="MGo-LP-tEK" secondAttribute="height" multiplier="4" id="J8p-Wy-msO"/>
+                    <constraint firstItem="MGo-LP-tEK" firstAttribute="top" secondItem="0zU-dV-6PN" secondAttribute="top" constant="2" id="JHC-Ha-lPs"/>
+                    <constraint firstItem="0zU-dV-6PN" firstAttribute="centerX" secondItem="q2H-zK-VOK" secondAttribute="centerX" multiplier="1.04" id="KVJ-eu-7VE"/>
+                    <constraint firstItem="kZY-Ao-Esv" firstAttribute="trailing" secondItem="0zU-dV-6PN" secondAttribute="trailing" multiplier="1.02" id="Xj5-5V-BxO"/>
+                    <constraint firstItem="0zU-dV-6PN" firstAttribute="centerY" secondItem="kZY-Ao-Esv" secondAttribute="centerY" id="Y3s-Y3-qhD"/>
+                    <constraint firstAttribute="width" secondItem="kZY-Ao-Esv" secondAttribute="width" id="ZSB-Ec-zRZ"/>
+                    <constraint firstItem="kZY-Ao-Esv" firstAttribute="width" secondItem="0zU-dV-6PN" secondAttribute="width" multiplier="1.25" id="fn9-8e-ZFz"/>
+                    <constraint firstItem="0zU-dV-6PN" firstAttribute="height" secondItem="kZY-Ao-Esv" secondAttribute="height" id="qLf-HI-G29"/>
+                    <constraint firstItem="uxW-mq-5cX" firstAttribute="centerX" secondItem="bVg-Im-PwL" secondAttribute="centerX" id="tAs-Lf-CxI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnTextVwCross" destination="MGo-LP-tEK" id="CVl-y6-yE7"/>
+                <outlet property="txtTags" destination="q2H-zK-VOK" id="jye-yE-8Vl"/>
+            </connections>
+            <point key="canvasLocation" x="105" y="-6"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="add_txt.png" width="76" height="70"/>
+        <image name="box_bg.png" width="891" height="310"/>
         <image name="circle.png" width="181" height="181"/>
+        <image name="cross.png" width="50" height="50"/>
         <image name="txt.png" width="161" height="151"/>
         <image name="txt_box.png" width="889" height="312"/>
     </resources>
