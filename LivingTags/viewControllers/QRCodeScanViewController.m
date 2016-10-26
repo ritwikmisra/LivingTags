@@ -25,7 +25,6 @@
     [super viewDidLoad];
     vwQRCode.layer.borderWidth=1.0f;
     vwQRCode.layer.borderColor=[UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0].CGColor;
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
