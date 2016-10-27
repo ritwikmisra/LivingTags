@@ -13,5 +13,5 @@
 @property (nonatomic,strong)IBOutlet UIImageView *img;
 @property(nonatomic,strong)IBOutlet UIButton *btn;
 @property(nonatomic,strong)IBOutlet UIImageView *imgBackground;
-
+@property(nonatomic,strong)IBOutlet UIButton *btnFooter;
 @end

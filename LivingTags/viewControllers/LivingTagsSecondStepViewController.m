@@ -19,9 +19,15 @@
 #import "PreviewPopUpController.h"
 #import "CustomdatePickerViewController.h"
 #import <MapKit/MapKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MPMoviePlayerController.h>
+#import <MobileCoreServices/UTCoreTypes.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate>
+@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect>
 {
     IBOutlet UITableView *tblTagsCreation;
     NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags;////////// variables to be sent to the server
@@ -36,7 +42,6 @@
     GMSPlace *pickedPlace;
     CLLocationCoordinate2D locationUser;
     /////////
-
 }
 
 @end
@@ -46,12 +51,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    appDel.arrImageSet=[[NSMutableArray alloc]init];
+    appDel.arrVideoSet=[[NSMutableArray alloc]init];
     NSLog(@"%@",self.strTagName);
     tblTagsCreation.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblTagsCreation.delegate=self;
     tblTagsCreation.dataSource=self;
     arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Business Name",@"Contact Name",@"Title",@"Business Address",@"Business Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
     strDate=@"";
+    NSLog(@"%@",self.strToken);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -267,6 +275,7 @@
                 {
                     cellImage=[[[NSBundle mainBundle]loadNibNamed:@"AddImageCell" owner:self options:nil]objectAtIndex:0];
                 }
+                cellImage.delegate=self;
                 cell=cellImage;
             }
                 break;
@@ -278,6 +287,7 @@
                 {
                     cellVideo=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoCell" owner:self options:nil]objectAtIndex:0];
                 }
+                cellVideo.delegate=self;
                 cell=cellVideo;
             }
                 break;
@@ -1009,4 +1019,264 @@
     return YES;
 }
 
+
+#pragma mark
+#pragma mark Add Images delegate
+#pragma mark
+
+-(void)selectImages
+{
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to take a picture or select it from gallery??" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePictureFromCamera];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePictureFromGallery];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+
+    }];
+
+    [alertController addAction:actionCamera];
+    [alertController addAction:actionGallery];
+
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
+-(void)takePictureFromCamera
+{
+    [self imageUploadFromCamera];
+}
+
+-(void)takePictureFromGallery
+{
+    [self imageUploadFromGallery];
+}
+
+-(void)imageUploadFromCamera
+{
+    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]|| [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear])
+    {
+        UIImagePickerController *picker=[[UIImagePickerController alloc]init] ;
+        picker.delegate=self ;
+        picker.sourceType=UIImagePickerControllerSourceTypeCamera ;
+        picker.allowsEditing=NO ;
+        [self presentViewController:picker animated:YES completion:nil] ;
+    }
+    else
+    {
+        [[[UIAlertView alloc]initWithTitle:@"ERROR" message:@"Camera not found." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
+    }
+}
+
+-(void)imageUploadFromGallery
+{
+    UIImagePickerController *picker=[[UIImagePickerController alloc] init];
+    picker.delegate=self;
+    picker.allowsEditing=NO;
+    picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:^{
+        
+    }];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+    BOOL isImage = UTTypeConformsTo((__bridge CFStringRef)mediaType,
+                                    kUTTypeImage) != 0;
+    if (isImage==YES)
+    {
+        UIImage *imgChosen=info[UIImagePickerControllerOriginalImage] ;
+        if ([appDel.arrImageSet containsObject:@"1"])
+        {
+            [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgChosen];
+        }
+        else
+        {
+            [appDel.arrImageSet addObject:imgChosen];
+        }
+        [appDel.arrImageSet addObject:@"1"];
+        [picker dismissViewControllerAnimated:YES completion:^{
+            [tblTagsCreation beginUpdates];
+            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
+            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+            [tblTagsCreation endUpdates];
+            
+        }] ;
+    }
+    else
+    {
+        if (picker.sourceType==UIImagePickerControllerSourceTypeCamera)
+        {
+            NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+            if ([mediaType isEqualToString:@"public.movie"])
+            {
+                // Saving the video / // Get the new unique filename
+                //        NSString *sourcePath = [[info objectForKey:@"UIImagePickerControllerMediaURL"]relativePath];
+                //        UISaveVideoAtPathToSavedPhotosAlbum(sourcePath,nil,nil,nil);
+                NSURL *videoURL     = [info objectForKey:UIImagePickerControllerMediaURL];
+                NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                NSString *documentsDirectory = [paths objectAtIndex:0];
+                NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/vid1.mp4"];
+                BOOL success = [videoData writeToFile:tempPath atomically:NO];
+                if (success)
+                {
+                    UISaveVideoAtPathToSavedPhotosAlbum(tempPath,nil,nil,nil);
+                    NSLog(@"Success");
+                    AVAsset *asset = [AVAsset assetWithURL:videoURL];
+                    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+                    CMTime time = CMTimeMake(1,1);
+                    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+                    UIImage *imgThumbnail = [UIImage imageWithCGImage:imageRef];
+                    if ([appDel.arrVideoSet containsObject:@"1"])
+                    {
+                        [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgThumbnail];
+                    }
+                    else
+                    {
+                        [appDel.arrVideoSet addObject:imgThumbnail];
+                    }
+                    [appDel.arrVideoSet addObject:@"1"];
+                    CGImageRelease(imageRef);
+                }
+                else
+                {
+                    NSLog(@"Failure");
+                }
+            }
+        }
+        else
+        {
+            NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+            if ([mediaType isEqualToString:@"public.movie"])
+            {
+                // Saving the video / // Get the new unique filename
+                //NSString *sourcePath = [[info objectForKey:@"UIImagePickerControllerMediaURL"]relativePath];
+                //UISaveVideoAtPathToSavedPhotosAlbum(sourcePath,nil,nil,nil);
+                NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
+                NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+                NSLog(@"%lu",(unsigned long)videoData.length);
+                AVAsset *asset = [AVAsset assetWithURL:videoURL];
+                AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+                CMTime time = CMTimeMake(1, 1);
+                CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+                UIImage *imgThumbnail = [UIImage imageWithCGImage:imageRef];
+                if ([appDel.arrVideoSet containsObject:@"1"])
+                {
+                    [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgThumbnail];
+                }
+                else
+                {
+                    [appDel.arrVideoSet addObject:imgThumbnail];
+                }
+                [appDel.arrVideoSet addObject:@"1"];
+                CGImageRelease(imageRef);
+            }
+        }
+        [picker dismissViewControllerAnimated:YES completion:^{
+            [tblTagsCreation beginUpdates];
+            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
+            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+            [tblTagsCreation endUpdates];
+
+        }];
+
+    }
+}
+
+-(void)deleteImagesFromIndex:(NSInteger)i
+{
+    [appDel.arrImageSet removeObjectAtIndex:i];
+    [tblTagsCreation beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
+    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblTagsCreation endUpdates];
+}
+
+#pragma mark
+#pragma mark Image Picker Videos Delegate
+#pragma mark
+
+-(void)selectVideos
+{
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to shoot a video or select it from gallery??" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self imageUploadFromCamera];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takeVideoFromGallery];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+    }];
+    
+    [alertController addAction:actionCamera];
+    [alertController addAction:actionGallery];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
+-(void)takeVideoFromCamera
+{
+    [self videoUploadFromCamera];
+}
+
+-(void)takeVideoFromGallery
+{
+    [self videoUploadFromGallery];
+}
+
+-(void)videoUploadFromCamera
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
+    else
+    {
+        [[[UIAlertView alloc]initWithTitle:@"No camera available" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK ", nil] show];
+    }
+}
+
+-(void)videoUploadFromGallery
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+    picker.videoMaximumDuration=300;
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+
+-(void)deleteVideosFromIndex:(NSInteger)i
+{
+    [appDel.arrVideoSet removeObjectAtIndex:i];
+    [tblTagsCreation beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
+    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblTagsCreation endUpdates];
+}
 @end

@@ -15,17 +15,19 @@
     static CreateTagsPublishService *master=nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        master=[[CreateTagsPublishService alloc]initWithService:WEB_SERVICES_CREATE_TEMPLATES_PUBLISH];
+        master=[[CreateTagsPublishService alloc]initWithService:WEB_SERVICES_CREATE_TAGS];
     });
     return master;
 }
 
--(void)callPublishServiceWithLivingTagsID:(NSString *)strLivingTagsID withCompletionHandler:(WebServiceCompletion)handler
+-(void)callPublishServiceWithLivingTagsID:(NSString *)strUserID tcKey:(NSString *)strTCKey withCompletionHandler:(WebServiceCompletion)handler;
 {
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"livingtag_id=%@",strLivingTagsID]];
+        [arr addObject:[NSString stringWithFormat:@"akey=%@",strUserID]];
+        [arr addObject:[NSString stringWithFormat:@"tckey=%@",strTCKey]];
+
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         //postParams=[postParams stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         NSLog(@"postParams = %@",postParams);
@@ -45,6 +47,10 @@
             [request setHTTPMethod:@"POST"];
             [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setValue:@"Basic YWRtaW46MTIzNDU2" forHTTPHeaderField:@"Authorization"];
+            NSLog(@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"token"]);
+            [request setValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"token"] forHTTPHeaderField:@"token"];
+
             [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
             [request setTimeoutInterval:60.0];
             [request setHTTPBody:postData];
@@ -68,14 +74,24 @@
                         }
                         else
                         {
-                            if ([[responseDict objectForKey:@"status"]boolValue])
+                            @try
                             {
-                                NSString *strWebURI=[[responseDict objectForKey:@"response"] objectForKey:@"web_uri"];
-                                handler(strWebURI,NO,[[responseDict objectForKey:@"response"] objectForKey:@"message"]);
+                                if ([[responseDict objectForKey:@"status"]boolValue])
+                                {
+                                    handler([[responseDict objectForKey:@"response"] objectForKey:@"tkey"],NO,[responseDict objectForKey:@"error"] );
+                                }
+                                else
+                                {
+                                    handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                }
                             }
-                            else
+                            @catch (NSException *exception)
                             {
-                                handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                [[[UIAlertView alloc]initWithTitle:exception.reason message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+                            }
+                            @finally
+                            {
+                                
                             }
                         }
                     }

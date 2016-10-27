@@ -9,12 +9,13 @@
 #import "CreateTagsTypeControllerViewController.h"
 #import "DashboardCell.h"
 #import "LivingTagsSecondStepViewController.h"
+#import "CreateTagsPublishService.h"
 
 @interface CreateTagsTypeControllerViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     IBOutlet UITableView *tblTypes;
     NSMutableArray *arrPics,*arrLabel,*arrSelected;
-    NSString *strTags;
+    NSString *strTags,*strToken;
 }
 
 @end
@@ -28,6 +29,7 @@
     arrPics=[[NSMutableArray alloc]initWithObjects:@"person_icon",@"place_icon",@"thing_icon",@"pet_icon",@"business_icon",@"other_icon", nil];
     tblTypes.backgroundColor=[UIColor clearColor];
     tblTypes.separatorStyle=UITableViewCellSeparatorStyleNone;
+    NSLog(@"%@",appDel.objUser.strKey);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -156,7 +158,8 @@
     }
     [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
     [tblTypes reloadData];
-    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.5];
+    //[self performSegueWithIdentifier:@"segueTagCreation" sender:self];
+   // [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.5];
 }
 
 #pragma mark
@@ -165,7 +168,22 @@
 
 -(void)moveToTagCreation
 {
-    [self performSegueWithIdentifier:@"segueTagCreation" sender:self];
+    if ([strTags isEqualToString:@"Persons"])
+    {
+        [[CreateTagsPublishService service]callPublishServiceWithLivingTagsID:appDel.objUser.strKey tcKey:@"1" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+                strToken=(id)result;
+                [self performSegueWithIdentifier:@"segueTagCreation" sender:self];
+        }];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"segueTagCreation" sender:self];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -174,6 +192,7 @@
     {
         LivingTagsSecondStepViewController *master=[segue destinationViewController];
         master.strTagName=strTags;
+        master.strToken=strToken;
     }
 }
 

@@ -35,10 +35,15 @@
                             <constraint firstAttribute="width" secondItem="Bzp-sa-Yrm" secondAttribute="height" id="iRc-vP-yoT"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTb-bB-FXT">
+                        <rect key="frame" x="6" y="6" width="128" height="128"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="vTb-bB-FXT" firstAttribute="centerY" secondItem="fns-bd-6kT" secondAttribute="centerY" id="0CG-dx-dLB"/>
+                <constraint firstItem="vTb-bB-FXT" firstAttribute="centerX" secondItem="fns-bd-6kT" secondAttribute="centerX" id="9Ac-d2-K0y"/>
                 <constraint firstItem="fns-bd-6kT" firstAttribute="centerY" secondItem="Bzp-sa-Yrm" secondAttribute="centerY" multiplier="1.15" id="9Yp-g7-G71"/>
                 <constraint firstItem="fns-bd-6kT" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Op5-W7-tJg"/>
                 <constraint firstItem="Bzp-sa-Yrm" firstAttribute="centerX" secondItem="fns-bd-6kT" secondAttribute="centerX" id="Syt-Qu-dbB"/>
@@ -46,17 +51,20 @@
                 <constraint firstItem="fns-bd-6kT" firstAttribute="height" secondItem="3h0-FR-Snl" secondAttribute="height" multiplier="5" id="W6d-wE-kPX"/>
                 <constraint firstItem="3h0-FR-Snl" firstAttribute="bottom" secondItem="fns-bd-6kT" secondAttribute="bottom" id="bz2-H1-AaH"/>
                 <constraint firstAttribute="height" secondItem="fns-bd-6kT" secondAttribute="height" multiplier="1.1" id="eou-5u-urX"/>
+                <constraint firstItem="vTb-bB-FXT" firstAttribute="width" secondItem="fns-bd-6kT" secondAttribute="width" id="jKd-gx-Rf0"/>
                 <constraint firstItem="3h0-FR-Snl" firstAttribute="centerX" secondItem="fns-bd-6kT" secondAttribute="centerX" id="kI2-ol-Ds7"/>
                 <constraint firstItem="3h0-FR-Snl" firstAttribute="width" secondItem="fns-bd-6kT" secondAttribute="width" id="lrI-9C-u1s"/>
+                <constraint firstItem="vTb-bB-FXT" firstAttribute="height" secondItem="fns-bd-6kT" secondAttribute="height" id="ntZ-t1-6D0"/>
                 <constraint firstItem="fns-bd-6kT" firstAttribute="width" secondItem="Bzp-sa-Yrm" secondAttribute="width" multiplier="1.6" id="srW-oL-zvb"/>
             </constraints>
             <size key="customSize" width="140" height="129"/>
             <connections>
-                <outlet property="btn" destination="3h0-FR-Snl" id="c3z-BZ-Grd"/>
+                <outlet property="btn" destination="vTb-bB-FXT" id="OFJ-vQ-nVP"/>
+                <outlet property="btnFooter" destination="3h0-FR-Snl" id="8A7-lA-CwS"/>
                 <outlet property="img" destination="Bzp-sa-Yrm" id="Tdj-p1-yoc"/>
                 <outlet property="imgBackground" destination="fns-bd-6kT" id="hHT-si-8JE"/>
             </connections>
-            <point key="canvasLocation" x="185" y="194"/>
+            <point key="canvasLocation" x="271" y="132"/>
         </collectionViewCell>
     </objects>
 </document>

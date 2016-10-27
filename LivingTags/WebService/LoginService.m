@@ -71,13 +71,30 @@
                         }
                         else
                         {
-                            if ([[responseDict objectForKey:@"status"]boolValue])
+                            @try
                             {
-                                handler([responseDict objectForKey:@"response"],NO,nil);
+                                if ([[responseDict objectForKey:@"status"]boolValue])
+                                {
+                                    NSString *strToken=[[responseDict objectForKey:@"response"] objectForKey:@"token"];
+                                    [[NSUserDefaults standardUserDefaults]setObject:strToken forKey:@"token"];
+                                    [[NSUserDefaults standardUserDefaults]synchronize];
+                                    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"token"]);
+                                    NSMutableDictionary *dict=[[responseDict objectForKey:@"response"] objectForKey:@"account"];
+                                    appDel.objUser=[[ModelUser alloc]initWithDictionary:dict];
+                                    handler([responseDict objectForKey:@"response"],NO,nil);
+                                }
+                                else
+                                {
+                                    handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                }
                             }
-                            else
+                            @catch (NSException *exception)
                             {
-                                handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                [[[UIAlertView alloc]initWithTitle:exception.reason message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+                            }
+                            @finally
+                            {
+                                
                             }
                         }
                     }

@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
+@protocol TagsCreateImageSelect <NSObject>
+
+@optional
+-(void)selectImages;
+-(void)deleteImagesFromIndex:(NSInteger)i;
+
+@end
 @interface AddImageCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property(nonatomic,strong)IBOutlet UICollectionView *cllvwImages;
+@property(nonatomic,weak)id<TagsCreateImageSelect>delegate;
+@property(nonatomic,strong)AppDelegate *appDel;
 
 @end

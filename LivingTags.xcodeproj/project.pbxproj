@@ -65,6 +65,8 @@
 		0D3A400E1DB4E3110040D6D4 /* txt_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A400D1DB4E3110040D6D4 /* txt_box.png */; };
 		0D3A40121DB50EF40040D6D4 /* g_plus-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A40111DB50EF40040D6D4 /* g_plus-1.png */; };
 		0D3A40141DB5159F0040D6D4 /* back_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A40131DB5159F0040D6D4 /* back_icon.png */; };
+		0D56FA531DC2156000972DF0 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D56FA511DC2156000972DF0 /* PersonCell.m */; };
+		0D56FA541DC2156000972DF0 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D56FA521DC2156000972DF0 /* PersonCell.xib */; };
 		0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2301CCB416200CA0DAE /* RegistrationViewController.m */; };
 		0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2331CCB545500CA0DAE /* RegistrationCellTableViewCell.m */; };
 		0D5EA23A1CCB6A0000CA0DAE /* NetworkActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2381CCB6A0000CA0DAE /* NetworkActivityViewController.m */; };
@@ -333,6 +335,9 @@
 		0D3A400D1DB4E3110040D6D4 /* txt_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = txt_box.png; sourceTree = "<group>"; };
 		0D3A40111DB50EF40040D6D4 /* g_plus-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g_plus-1.png"; sourceTree = "<group>"; };
 		0D3A40131DB5159F0040D6D4 /* back_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_icon.png; sourceTree = "<group>"; };
+		0D56FA501DC2156000972DF0 /* PersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
+		0D56FA511DC2156000972DF0 /* PersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
+		0D56FA521DC2156000972DF0 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
 		0D5EA22F1CCB416200CA0DAE /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		0D5EA2301CCB416200CA0DAE /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		0D5EA2321CCB545500CA0DAE /* RegistrationCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationCellTableViewCell.h; sourceTree = "<group>"; };
@@ -725,6 +730,16 @@
 			path = LivingTags/SDWebImage;
 			sourceTree = "<group>";
 		};
+		0D56FA471DC2148900972DF0 /* PersonImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D56FA501DC2156000972DF0 /* PersonCell.h */,
+				0D56FA511DC2156000972DF0 /* PersonCell.m */,
+				0D56FA521DC2156000972DF0 /* PersonCell.xib */,
+			);
+			path = PersonImageCell;
+			sourceTree = "<group>";
+		};
 		0D5EA23C1CCB6A0B00CA0DAE /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -912,6 +927,7 @@
 		0D698D1B1CC8D79000F64745 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D56FA471DC2148900972DF0 /* PersonImageCell */,
 				0D8934D11DB0CE8800A48562 /* PersonTagCell */,
 				0DAD38F31D0EA9F90044B7A7 /* TemplateCell.h */,
 				0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */,
@@ -1475,6 +1491,7 @@
 				0D6659261DA666E400566879 /* mail_icon.png in Resources */,
 				0D6659391DA67CAF00566879 /* scan_tag.png in Resources */,
 				0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */,
+				0D56FA541DC2156000972DF0 /* PersonCell.xib in Resources */,
 				0D8AC8CF1D364F47001EFEBA /* CreateTagsSecondStepCell.xib in Resources */,
 				0D7BA23E1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib in Resources */,
 				0D1916661DBF8F72004D02DA /* about.png in Resources */,
@@ -1661,6 +1678,7 @@
 				0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */,
 				0DB9A45A1D4629CF007671E9 /* LivingTagsThirdStepViewController.m in Sources */,
 				0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */,
+				0D56FA531DC2156000972DF0 /* PersonCell.m in Sources */,
 				0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */,
 				0D5EA2421CCB7CFA00CA0DAE /* RegistrationService.m in Sources */,
 				0D1916581DBF6A15004D02DA /* SidePanelController.m in Sources */,

@@ -30,11 +30,15 @@
 @property(nonatomic,strong)CLPlacemark *placemark ;
 //location manage
 
+///////***** image array and video array
 
+@property(nonatomic,strong)    NSMutableArray *arrImageSet;
+@property(nonatomic,strong)    NSMutableArray *arrVideoSet;
 
+///// Model user
+@property(nonatomic,strong)ModelUser *objUser;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-
 
 @end
 

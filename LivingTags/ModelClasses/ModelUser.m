@@ -14,95 +14,69 @@
 {
     if (self=[super init])
     {
-        if ([dict objectForKey:@"id"] && ![[dict objectForKey:@"id"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"akey"] && ![[dict objectForKey:@"akey"] isKindOfClass:[NSNull class]])
         {
-            self.strUserID=[dict objectForKey:@"id"];
-            [[NSUserDefaults standardUserDefaults]setValue:self.strUserID forKey:@"user_id"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            self.strKey=[dict objectForKey:@"akey"];
         }
         else
         {
-            self.strUserID=@"";
+            self.strKey=@"";
         }
-        if ([dict objectForKey:@"email"] && ![[dict objectForKey:@"email"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"aemail"] && ![[dict objectForKey:@"aemail"] isKindOfClass:[NSNull class]])
         {
-            self.strEmail=[dict objectForKey:@"email"];
+            self.strEmail=[dict objectForKey:@"aemail"];
         }
         else
         {
             self.strEmail=@"";
         }
-        if ([dict objectForKey:@"name"] && ![[dict objectForKey:@"name"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tname"] && ![[dict objectForKey:@"tname"] isKindOfClass:[NSNull class]])
         {
-            self.strName=[dict objectForKey:@"name"];
+            self.strName=[dict objectForKey:@"tname"];
         }
         else
         {
             self.strName=@"";
         }
-        if ([dict objectForKey:@"phone"] && ![[dict objectForKey:@"phone"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tphone"] && ![[dict objectForKey:@"tphone"] isKindOfClass:[NSNull class]])
         {
-            self.strPhone=[dict objectForKey:@"phone"];
+            self.strPhone=[dict objectForKey:@"tphone"];
         }
         else
         {
             self.strPhone=@"";
         }
-        if ([dict objectForKey:@"pic_uri"] && ![[dict objectForKey:@"pic_uri"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tphoto"] && ![[dict objectForKey:@"tphoto"] isKindOfClass:[NSNull class]])
         {
-            self.strPicURI=[dict objectForKey:@"pic_uri"];
+            self.strPicURI=[dict objectForKey:@"tphoto"];
         }
         else
         {
             self.strPicURI=@"";
         }
-        if ([dict objectForKey:@"video_uri"] && ![[dict objectForKey:@"video_uri"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"taddress1"] && ![[dict objectForKey:@"taddress1"] isKindOfClass:[NSNull class]])
         {
-            self.strVideoURI=[dict objectForKey:@"video_uri"];
-        }
-        else
-        {
-            self.strVideoURI=@"";
-        }
-        if ([dict objectForKey:@"address"] && ![[dict objectForKey:@"address"] isKindOfClass:[NSNull class]])
-        {
-            self.strAddress=[dict objectForKey:@"address"];
+            self.strAddress=[dict objectForKey:@"taddress1"];
         }
         else
         {
             self.strAddress=@"";
         }
-        if ([dict objectForKey:@"lat"] && ![[dict objectForKey:@"lat"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tlat1"] && ![[dict objectForKey:@"tlat1"] isKindOfClass:[NSNull class]])
         {
-            self.strLat=[dict objectForKey:@"lat"];
+            self.strLat=[dict objectForKey:@"tlat1"];
         }
         else
         {
             self.strLat=@"";
         }
-        if ([dict objectForKey:@"long"] && ![[dict objectForKey:@"long"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tlong1"] && ![[dict objectForKey:@"tlong1"] isKindOfClass:[NSNull class]])
         {
-            self.strLong=[dict objectForKey:@"long"];
+            self.strLong=[dict objectForKey:@"tlong1"];
         }
         else
         {
             self.strLong=@"";
-        }
-        if ([dict objectForKey:@"pic_uri_40x40"] && ![[dict objectForKey:@"pic_uri_40x40"] isKindOfClass:[NSNull class]])
-        {
-            self.strPicURI40=[dict objectForKey:@"pic_uri_40x40"];
-        }
-        else
-        {
-            self.strPicURI40=@"";
-        }
-        if ([dict objectForKey:@"pic_uri"] && ![[dict objectForKey:@"pic_uri"] isKindOfClass:[NSNull class]])
-        {
-            self.strPicURI160=[dict objectForKey:@"pic_uri"];
-        }
-        else
-        {
-            self.strPicURI160=@"";
         }
     }
     return self;

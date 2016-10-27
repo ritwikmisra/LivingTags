@@ -8,6 +8,7 @@
 
 #import "AddImageCell.h"
 #import "PersonImageCell.h"
+#import "PersonCell.h"
 
 @implementation AddImageCell
 
@@ -16,9 +17,14 @@
     self.cllvwImages.backgroundColor=[UIColor clearColor];
     UINib *cellNib = [UINib nibWithNibName:@"PersonImageCell" bundle:nil];
     [self.cllvwImages registerNib:cellNib forCellWithReuseIdentifier:@"PersonImageCell"];
+    
+    UINib *cellNib1 = [UINib nibWithNibName:@"PersonCell" bundle:nil];
+    [self.cllvwImages registerNib:cellNib1 forCellWithReuseIdentifier:@"PersonCell"];
+
+    
     self.cllvwImages.dataSource=self;
     self.cllvwImages.delegate=self;
-
+    self.appDel=(AppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -33,16 +39,44 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 3;
+    if (self.appDel.arrImageSet.count>0)
+    {
+        return self.appDel.arrImageSet.count;
+    }
+    return 1;
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString   *strIdentifier=@"PersonImageCell";
-    PersonImageCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
-    [cell.btn setTitle:@"ADD IMAGES" forState:UIControlStateNormal];
-    cell.img.image=[UIImage imageNamed:@"pic"];
-    return cell;
+    static NSString   *strIdentifier2=@"PersonCell";
+    if (self.appDel.arrImageSet.count>0)
+    {
+        if ([[self.appDel.arrImageSet objectAtIndex:indexPath.row]isKindOfClass:[NSString class]])
+        {
+            PersonImageCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
+            [cell.btnFooter setTitle:@"ADD IMAGES" forState:UIControlStateNormal];
+            cell.img.image=[UIImage imageNamed:@"pic"];
+            [cell.btn addTarget:self action:@selector(btnImagesClicked:) forControlEvents:UIControlEventTouchUpInside];
+            return cell;
+        }
+        else
+        {
+            PersonCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier2 forIndexPath:indexPath];
+            cell.imgPicl.image=[self.appDel.arrImageSet objectAtIndex:indexPath.row];
+            cell.btnDelete.tag=indexPath.row;
+            [cell.btnDelete addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
+            return cell;
+        }
+    }
+    else
+    {
+        PersonImageCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
+        [cell.btnFooter setTitle:@"ADD IMAGES" forState:UIControlStateNormal];
+        cell.img.image=[UIImage imageNamed:@"pic"];
+        [cell.btn addTarget:self action:@selector(btnImagesClicked:) forControlEvents:UIControlEventTouchUpInside];
+        return cell;
+    }
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -69,4 +103,24 @@
     return UIEdgeInsetsMake(0,0,0,0);  // top, left, bottom, right
 }
 
+#pragma mark
+#pragma mark IBACTIONS
+#pragma mark
+
+-(void)btnImagesClicked:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectImages)])
+    {
+        [self.delegate selectImages];
+    }
+}
+
+-(void)btnDeletePressed:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(deleteImagesFromIndex:)])
+    {
+        [self.delegate deleteImagesFromIndex:[sender tag]];
+    }
+
+}
 @end
