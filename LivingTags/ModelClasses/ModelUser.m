@@ -78,6 +78,15 @@
         {
             self.strLong=@"";
         }
+        if ([dict objectForKey:@"afolder"] && ![[dict objectForKey:@"afolder"] isKindOfClass:[NSNull class]])
+        {
+            self.strAfolder=[dict objectForKey:@"afolder"];
+        }
+        else
+        {
+            self.strAfolder=@"";
+        }
+
     }
     return self;
 }

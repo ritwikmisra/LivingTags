@@ -10,12 +10,14 @@
 #import "DashboardCell.h"
 #import "LivingTagsSecondStepViewController.h"
 #import "CreateTagsPublishService.h"
+#import "ModelFolders.h"
 
 @interface CreateTagsTypeControllerViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     IBOutlet UITableView *tblTypes;
     NSMutableArray *arrPics,*arrLabel,*arrSelected;
-    NSString *strTags,*strToken;
+    NSString *strTags,*strTkey;
+    ModelFolders *objSegueFolders;
 }
 
 @end
@@ -163,20 +165,20 @@
 }
 
 #pragma mark
-#pragma mark SEGUE
+#pragma mark WEB SERVICE CALLED
 #pragma mark
 
 -(void)moveToTagCreation
 {
     if ([strTags isEqualToString:@"Persons"])
     {
-        [[CreateTagsPublishService service]callPublishServiceWithLivingTagsID:appDel.objUser.strKey tcKey:@"1" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        [[CreateTagsPublishService service]callPublishServiceWithLivingTagsID:appDel.objUser.strAfolder tcKey:@"1" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
             if (isError)
             {
                 [self displayErrorWithMessage:strMsg];
             }
             else
-                strToken=(id)result;
+                objSegueFolders=(id)result;
                 [self performSegueWithIdentifier:@"segueTagCreation" sender:self];
         }];
     }
@@ -192,7 +194,7 @@
     {
         LivingTagsSecondStepViewController *master=[segue destinationViewController];
         master.strTagName=strTags;
-        master.strToken=strToken;
+        master.objFolders=objSegueFolders;
     }
 }
 

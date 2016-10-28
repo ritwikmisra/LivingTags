@@ -42,6 +42,9 @@
 		0D23053D1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */; };
 		0D2305471D54C76C00115A34 /* SidePanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2305451D54C76C00115A34 /* SidePanelCell.m */; };
 		0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2305461D54C76C00115A34 /* SidePanelCell.xib */; };
+		0D3121231DC357AC00F00B8F /* ModelFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3121221DC357AC00F00B8F /* ModelFolders.m */; };
+		0D31212E1DC35BED00F00B8F /* libCloudinary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D31212D1DC35BED00F00B8F /* libCloudinary.a */; };
+		0D3121311DC3646700F00B8F /* CloudinaryImageUploadService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3121301DC3646700F00B8F /* CloudinaryImageUploadService.m */; };
 		0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */; };
 		0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D37311E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m */; };
 		0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3731201CD8A10B00EDC547 /* NSData+ImageContentType.m */; };
@@ -291,6 +294,17 @@
 		0D2305441D54C76200115A34 /* SidePanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidePanelCell.h; sourceTree = "<group>"; };
 		0D2305451D54C76C00115A34 /* SidePanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidePanelCell.m; sourceTree = "<group>"; };
 		0D2305461D54C76C00115A34 /* SidePanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidePanelCell.xib; sourceTree = "<group>"; };
+		0D3121211DC357AC00F00B8F /* ModelFolders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFolders.h; sourceTree = "<group>"; };
+		0D3121221DC357AC00F00B8F /* ModelFolders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFolders.m; sourceTree = "<group>"; };
+		0D3121271DC35BED00F00B8F /* CLCloudinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCloudinary.h; sourceTree = "<group>"; };
+		0D3121281DC35BED00F00B8F /* CLEagerTransformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEagerTransformation.h; sourceTree = "<group>"; };
+		0D3121291DC35BED00F00B8F /* CLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLayer.h; sourceTree = "<group>"; };
+		0D31212A1DC35BED00F00B8F /* Cloudinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloudinary.h; sourceTree = "<group>"; };
+		0D31212B1DC35BED00F00B8F /* CLTransformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTransformation.h; sourceTree = "<group>"; };
+		0D31212C1DC35BED00F00B8F /* CLUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUploader.h; sourceTree = "<group>"; };
+		0D31212D1DC35BED00F00B8F /* libCloudinary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCloudinary.a; sourceTree = "<group>"; };
+		0D31212F1DC3646700F00B8F /* CloudinaryImageUploadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudinaryImageUploadService.h; sourceTree = "<group>"; };
+		0D3121301DC3646700F00B8F /* CloudinaryImageUploadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudinaryImageUploadService.m; sourceTree = "<group>"; };
 		0D3730361CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLivingTagsViewedAndCreated.h; sourceTree = "<group>"; };
 		0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLivingTagsViewedAndCreated.m; sourceTree = "<group>"; };
 		0D37311D1CD8A10B00EDC547 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -611,6 +625,7 @@
 				0D764E771D18094700298BBE /* AudioToolbox.framework in Frameworks */,
 				0D764E751D1808CE00298BBE /* Foundation.framework in Frameworks */,
 				0D764E731D1808BD00298BBE /* CoreGraphics.framework in Frameworks */,
+				0D31212E1DC35BED00F00B8F /* libCloudinary.a in Frameworks */,
 				0D7165C21CE32DED00C8B288 /* CoreLocation.framework in Frameworks */,
 				0D066AD21D2A815C00C910E8 /* Crashlytics.framework in Frameworks */,
 				0D80DF8A1CEDB0BA000FE698 /* MapKit.framework in Frameworks */,
@@ -687,6 +702,37 @@
 				0D1DDF831DA7DFDB0063F2F9 /* logo1.png */,
 			);
 			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		0D3121241DC35BED00F00B8F /* cloudinary */ = {
+			isa = PBXGroup;
+			children = (
+				0D3121251DC35BED00F00B8F /* include */,
+				0D31212D1DC35BED00F00B8F /* libCloudinary.a */,
+			);
+			name = cloudinary;
+			path = LivingTags/cloudinary;
+			sourceTree = "<group>";
+		};
+		0D3121251DC35BED00F00B8F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0D3121261DC35BED00F00B8F /* Cloudinary */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0D3121261DC35BED00F00B8F /* Cloudinary */ = {
+			isa = PBXGroup;
+			children = (
+				0D3121271DC35BED00F00B8F /* CLCloudinary.h */,
+				0D3121281DC35BED00F00B8F /* CLEagerTransformation.h */,
+				0D3121291DC35BED00F00B8F /* CLLayer.h */,
+				0D31212A1DC35BED00F00B8F /* Cloudinary.h */,
+				0D31212B1DC35BED00F00B8F /* CLTransformation.h */,
+				0D31212C1DC35BED00F00B8F /* CLUploader.h */,
+			);
+			path = Cloudinary;
 			sourceTree = "<group>";
 		};
 		0D37311C1CD8A10B00EDC547 /* SDWebImage */ = {
@@ -799,6 +845,7 @@
 		0D698CF21CC8CF2400F64745 = {
 			isa = PBXGroup;
 			children = (
+				0D3121241DC35BED00F00B8F /* cloudinary */,
 				0D8BE0901D2E62E700527345 /* Contacts.framework */,
 				0D7DD3431CFEEB5000B6C4B9 /* CustomAnnotationView */,
 				0D7165D71CE3318F00C8B288 /* libz.tbd */,
@@ -1050,6 +1097,8 @@
 				0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */,
 				0D6030631D58B97000DB3333 /* LivingTagsFourthStepService.h */,
 				0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */,
+				0D31212F1DC3646700F00B8F /* CloudinaryImageUploadService.h */,
+				0D3121301DC3646700F00B8F /* CloudinaryImageUploadService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1148,6 +1197,8 @@
 				0D901B9C1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m */,
 				0D1FC5C21D644E940039B962 /* ModelImageUpload.h */,
 				0D1FC5C31D644E940039B962 /* ModelImageUpload.m */,
+				0D3121211DC357AC00F00B8F /* ModelFolders.h */,
+				0D3121221DC357AC00F00B8F /* ModelFolders.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -1598,6 +1649,7 @@
 				0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */,
 				0D066ADF1D2AA5FF00C910E8 /* AllTagsReadService.m in Sources */,
 				0D3731401CD8A10B00EDC547 /* SDImageCache.m in Sources */,
+				0D3121311DC3646700F00B8F /* CloudinaryImageUploadService.m in Sources */,
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
 				0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */,
@@ -1659,6 +1711,7 @@
 				0D1FBC951D6F18DB00028727 /* TagItViewController.m in Sources */,
 				0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */,
 				0DF008651DAF9F6F00BD39C3 /* AddVideoCell.m in Sources */,
+				0D3121231DC357AC00F00B8F /* ModelFolders.m in Sources */,
 				0D66C5821D5A320500230261 /* QRCodeViewController.m in Sources */,
 				0DDFC9B31CE372B6004D5D46 /* socialLoginFirstService.m in Sources */,
 				0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1813,6 +1866,10 @@
 				INFOPLIST_FILE = LivingTags/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LivingTags/cloudinary",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
@@ -1837,6 +1894,10 @@
 				INFOPLIST_FILE = LivingTags/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LivingTags/cloudinary",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;

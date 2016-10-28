@@ -1,36 +1,34 @@
 //
-//  LivingTagsSecondStepService.m
+//  CloudinaryImageUploadService.m
 //  LivingTags
 //
-//  Created by appsbeetech on 20/07/16.
+//  Created by appsbeetech on 28/10/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
 //
 
-#import "LivingTagsSecondStepService.h"
+#import "CloudinaryImageUploadService.h"
 
-@implementation LivingTagsSecondStepService
+@implementation CloudinaryImageUploadService
 
 +(id)service
 {
-    static LivingTagsSecondStepService *master=nil;
+    static CloudinaryImageUploadService *master=nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        master=[[LivingTagsSecondStepService alloc] initWithService:WEB_SERVICE_UPDATE_TAGS];
+        master=[[CloudinaryImageUploadService alloc] initWithService:CLOUDINARY_UPLOAD_IMAGE];
     });
     return master;
 }
 
--(void)callSecondStepServiceWithDIctionary:(NSMutableDictionary *)dict tKey:(NSString *)strtKey withCompletionHandler:(WebServiceCompletion)completionHandler
-{
-    NSLog(@"%@",dict);
-    NSMutableDictionary *dictParams=[[NSMutableDictionary alloc]init];
-    for (NSString *key in dict)
-    {
-        NSLog(@"%@",key);
-        // {@"data[name]":strName,@"data[phone]":strPhoneNumber,@"data[address]":strAddress,@"data[lat]":strLatitude,@"data[video_uri]":strvideoURI,@"data[long]":strLongitude};
 
-        [dictParams setObject:[dict objectForKey:key] forKey:[NSString stringWithFormat:@"tdata[%@]",key]];
-    }
+-(void)callCloudinaryImageUploadServiceWithBytes:(NSString *)strBytes created_date:(NSString *)strCreatedDate fileName:(NSString *)strFileName k_key:(NSString *)strt_key type:(NSString *)strType withCompletionHandler:(WebServiceCompletion)completionHandler
+{
+    NSMutableDictionary *dictParams=[[NSMutableDictionary alloc]init];
+    [dictParams setObject:strType forKey:@"tdata[tatype]"];
+    [dictParams setObject:strBytes forKey:@"tdata[tasize]"];
+    [dictParams setObject:strCreatedDate forKey:@"tdata[tadate]"];
+    [dictParams setObject:strFileName forKey:@"tdata[tauri]"];
+
     NSLog(@"%@",dictParams);
     if (appDel.isRechable)
     {
@@ -50,7 +48,7 @@
             [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
         }];
         //@"account_id":strUserID
-        NSDictionary *params1 = @{@"tkey": strtKey};
+        NSDictionary *params1 = @{@"tkey": strt_key};
         NSLog(@"postprams=%@",params1);
         [params1 enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
             [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -58,10 +56,10 @@
             [body appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
         }];
         [request setHTTPBody:body];
-       // [self displayNetworkActivity];
+        // [self displayNetworkActivity];
         [self callWebServiceWithRequest:request Compeltion:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
          {
-            // [self hideNetworkActivity];
+             [self hideNetworkActivity];
              if (error)
              {
                  completionHandler(error,YES,SOMETHING_WRONG);
@@ -79,17 +77,29 @@
                      }
                      else
                      {
-                         if ([[responseDict objectForKey:@"status"] boolValue])
-                         {
-                             if ([[responseDict objectForKey:@"response"] isKindOfClass:[NSDictionary class]])
-                             {
-                                 NSDictionary *dictUser=[responseDict objectForKey:@"response"];
-                                 completionHandler(dictUser,NO,nil);
-                             }
+                         @try
+                        {
+                            if ([[responseDict objectForKey:@"status"] boolValue])
+                            {
+                                if ([[responseDict objectForKey:@"response"] isKindOfClass:[NSDictionary class]])
+                                {
+                                    NSDictionary *dictUser=[responseDict objectForKey:@"response"];
+                                    completionHandler(dictUser,NO,nil);
+                                }
+                            }
+                            else
+                            {
+                                completionHandler(nil,YES,[responseDict objectForKey:@"error"] );
+                            }
+
                          }
-                         else
+                         @catch (NSException *exception)
                          {
-                             completionHandler(nil,YES,[responseDict objectForKey:@"error"] );
+                             [[[UIAlertView alloc]initWithTitle:exception.reason message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+                         }
+                         @finally
+                         {
+                             
                          }
                      }
                  }
@@ -104,6 +114,6 @@
     {
         completionHandler(nil,YES,NO_NETWORK);
     }
-}
 
+}
 @end

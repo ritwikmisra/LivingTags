@@ -18,6 +18,7 @@
 @property(nonatomic,strong)NSString *strAddress;
 @property(nonatomic,strong)NSString *strLat;
 @property(nonatomic,strong)NSString *strLong;
+@property(nonatomic,strong)NSString *strAfolder;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 

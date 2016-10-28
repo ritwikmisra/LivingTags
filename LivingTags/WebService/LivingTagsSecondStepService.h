@@ -12,6 +12,6 @@
 
 +(id)service;
 
--(void)callSecondStepServiceWithDIctionary:(NSMutableDictionary *)dict UserID:(NSString *)strUserID livingTagsID:(NSString *)strLivingTagID withCompletionHandler:(WebServiceCompletion)completionHandler;
+-(void)callSecondStepServiceWithDIctionary:(NSMutableDictionary *)dict tKey:(NSString *)strtKey withCompletionHandler:(WebServiceCompletion)completionHandler;
 
 @end

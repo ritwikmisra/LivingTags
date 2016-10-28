@@ -14,7 +14,7 @@
 {
     if (self=[super init])
     {
-        if ([dict objectForKey:@"id"] && ![[dict objectForKey:@"id"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"id"] && ![[dict objectForKey:@"id"] isKindOfClass:[NSNull class]])//
         {
             self.strID=[dict objectForKey:@"id"];
         }
@@ -23,7 +23,16 @@
             self.strID=@"";
         }
         
-        if ([dict objectForKey:@"account_id"] && ![[dict objectForKey:@"account_id"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tkey"] && ![[dict objectForKey:@"tkey"] isKindOfClass:[NSNull class]])//
+        {
+            self.strtKey=[dict objectForKey:@"tkey"];
+        }
+        else
+        {
+            self.strtKey=@"";
+        }
+
+        if ([dict objectForKey:@"account_id"] && ![[dict objectForKey:@"account_id"] isKindOfClass:[NSNull class]])//
         {
             self.strAccountID=[dict objectForKey:@"account_id"];
         }
@@ -31,7 +40,7 @@
         {
             self.strAccountID=@"";
         }
-        if ([dict objectForKey:@"template_id"] && ![[dict objectForKey:@"template_id"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"template_id"] && ![[dict objectForKey:@"template_id"] isKindOfClass:[NSNull class]])//
         {
             self.strTemplateID=[dict objectForKey:@"template_id"];
         }
@@ -39,137 +48,88 @@
         {
             self.strTemplateID=@"";
         }
-        if ([dict objectForKey:@"cover_uri"] && ![[dict objectForKey:@"cover_uri"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tcover"] && ![[dict objectForKey:@"tcover"] isKindOfClass:[NSNull class]])//
         {
-            self.strCoverURI=[dict objectForKey:@"cover_uri"] ;
+            self.strCoverURI=[dict objectForKey:@"tcover"] ;
         }
         else
         {
             self.strCoverURI=@"";
         }
-        if ([dict objectForKey:@"photo_uri"] && ![[dict objectForKey:@"photo_uri"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tphoto"] && ![[dict objectForKey:@"tphoto"] isKindOfClass:[NSNull class]])//
         {
-            self.strUserPicURI=[dict objectForKey:@"photo_uri"];
+            self.strUserPicURI=[dict objectForKey:@"tphoto"];
         }
         else
         {
             self.strUserPicURI=@"";
         }
         NSLog(@"%@",dict);
-        if ([dict objectForKey:@"name"] && ![[dict objectForKey:@"name"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tname"] && ![[dict objectForKey:@"tname"] isKindOfClass:[NSNull class]])//
         {
-            self.strName=[dict objectForKey:@"name"];
+            self.strtname=[dict objectForKey:@"tname"];
         }
         else
         {
-            self.strName=@"";
+            self.strtname=@"";
         }
-        if ([dict objectForKey:@"born"] && ![[dict objectForKey:@"born"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tborn"] && ![[dict objectForKey:@"tborn"] isKindOfClass:[NSNull class]])//
         {
-            self.strBorn=[dict objectForKey:@"born"];
-        }
-        else
-        {
-            self.strBorn=@"";
-        }
-        if ([dict objectForKey:@"died"] && ![[dict objectForKey:@"died"] isKindOfClass:[NSNull class]])
-        {
-            self.strDied=[dict objectForKey:@"died"];
+            self.strtborn=[dict objectForKey:@"tborn"];
         }
         else
         {
-            self.strDied=@"";
+            self.strtborn=@"";
         }
-        if ([dict objectForKey:@"lat1"] && ![[dict objectForKey:@"lat1"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tdied"] && ![[dict objectForKey:@"tdied"] isKindOfClass:[NSNull class]])//
         {
-            self.strLat1=[dict objectForKey:@"lat1"] ;
-        }
-        else
-        {
-            self.strLat1=@"";
-        }
-        if ([dict objectForKey:@"long1"] && ![[dict objectForKey:@"long1"] isKindOfClass:[NSNull class]])
-        {
-            self.strLong1=[dict objectForKey:@"long1"];
+            self.strtdied=[dict objectForKey:@"tdied"];
         }
         else
         {
-            self.strLong1=@"";
+            self.strtdied=@"";
         }
-        if ([dict objectForKey:@"lat2"] && ![[dict objectForKey:@"lat2"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tlat1"] && ![[dict objectForKey:@"tlat1"] isKindOfClass:[NSNull class]])//
         {
-            self.strLat2=[dict objectForKey:@"lat2"];
-        }
-        else
-        {
-            self.strLat2=@"";
-        }
-        if ([dict objectForKey:@"long2"] && ![[dict objectForKey:@"long2"] isKindOfClass:[NSNull class]])
-        {
-            self.strLong2=[dict objectForKey:@"long2"];
+            self.strtlat1=[dict objectForKey:@"tlat1"] ;
         }
         else
         {
-            self.strLong2=@"";
+            self.strtlat1=@"";
         }
-        if ([dict objectForKey:@"lat3"] && ![[dict objectForKey:@"lat3"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tlong1"] && ![[dict objectForKey:@"tlong1"] isKindOfClass:[NSNull class]])//
         {
-            self.strLat3=[dict objectForKey:@"lat3"];
-        }
-        else
-        {
-            self.strLat3=@"";
-        }
-        if ([dict objectForKey:@"long3"] && ![[dict objectForKey:@"long3"] isKindOfClass:[NSNull class]])
-        {
-            self.strLong3=[dict objectForKey:@"long3"];
+            self.strtlong1=[dict objectForKey:@"tlong1"];
         }
         else
         {
-            self.strLong3=@"";
+            self.strtlong1=@"";
         }
-        if ([dict objectForKey:@"memorial_quote"] && ![[dict objectForKey:@"memorial_quote"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"tdetail"] && ![[dict objectForKey:@"tdetail"] isKindOfClass:[NSNull class]])//
         {
-            self.strMemorialQuote=[dict objectForKey:@"memorial_quote"] ;
+            self.strMemorialQuote=[dict objectForKey:@"tdetail"] ;
         }
         else
         {
             self.strMemorialQuote=@"";
         }
-       if ([dict objectForKey:@"gender"] && ![[dict objectForKey:@"gender"] isKindOfClass:[NSNull class]])
+       if ([dict objectForKey:@"tgender"] && ![[dict objectForKey:@"tgender"] isKindOfClass:[NSNull class]])//
         {
-            self.strGender=[dict objectForKey:@"gender"];
+            self.strtgender=[dict objectForKey:@"tgender"];
         }
         else
         {
-            self.strGender=@"";
+            self.strtgender=@"";
         }
         /////
-        if ([dict objectForKey:@"address1"] && ![[dict objectForKey:@"address1"] isKindOfClass:[NSNull class]])
+        if ([dict objectForKey:@"taddress1"] && ![[dict objectForKey:@"taddress1"] isKindOfClass:[NSNull class]])//
         {
-            self.strAddress1=[dict objectForKey:@"address1"];
+            self.strtaddress1=[dict objectForKey:@"taddress1"];
         }
         else
         {
-            self.strAddress1=@"";
+            self.strtaddress1=@"";
         }
-        if ([dict objectForKey:@"address2"] && ![[dict objectForKey:@"address2"] isKindOfClass:[NSNull class]])
-        {
-            self.strAddress2=[dict objectForKey:@"address2"];
-        }
-        else
-        {
-            self.strAddress2=@"";
-        }
-        if ([dict objectForKey:@"address3"] && ![[dict objectForKey:@"address3"] isKindOfClass:[NSNull class]])
-        {
-            self.strAddress3=[dict objectForKey:@"address3"];
-        }
-        else
-        {
-            self.strAddress3=@"";
-        }
-
     }
     return self;
 }

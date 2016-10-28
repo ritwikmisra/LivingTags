@@ -7,6 +7,7 @@
 //
 
 #import "CreateTagsPublishService.h"
+#import "ModelFolders.h"
 
 @implementation CreateTagsPublishService
 
@@ -25,7 +26,7 @@
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"akey=%@",strUserID]];
+        [arr addObject:[NSString stringWithFormat:@"afolder=%@",strUserID]];
         [arr addObject:[NSString stringWithFormat:@"tckey=%@",strTCKey]];
 
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -78,7 +79,9 @@
                             {
                                 if ([[responseDict objectForKey:@"status"]boolValue])
                                 {
-                                    handler([[responseDict objectForKey:@"response"] objectForKey:@"tkey"],NO,[responseDict objectForKey:@"error"] );
+                                    NSDictionary *dict=[responseDict objectForKey:@"response"] ;
+                                    ModelFolders *obj=[[ModelFolders alloc]initWithDictionary:dict];
+                                    handler(obj,NO,[responseDict objectForKey:@"error"] );
                                 }
                                 else
                                 {

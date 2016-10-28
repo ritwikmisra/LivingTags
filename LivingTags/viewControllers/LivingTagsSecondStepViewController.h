@@ -11,10 +11,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import <GooglePlaces/GooglePlaces.h>
 #import <GooglePlacePicker/GooglePlacePicker.h>
+#import "ModelFolders.h"
+
 
 @interface LivingTagsSecondStepViewController : ViewControllerBaseClassViewController
 
 @property(nonatomic,strong)NSString *strTagName;
-@property(nonatomic,strong)NSString *strToken;
+@property(nonatomic,strong)ModelFolders *objFolders;
 
 @end

@@ -25,9 +25,14 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import "ModelCreateTagsSecondStep.h"
+#import "LivingTagsSecondStepService.h"
+#import "CLCloudinary.h"
+#import "CLUploader.h"
+#import "CloudinaryImageUploadService.h"
 
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect>
+@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate>
 {
     IBOutlet UITableView *tblTagsCreation;
     NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags;////////// variables to be sent to the server
@@ -42,6 +47,13 @@
     GMSPlace *pickedPlace;
     CLLocationCoordinate2D locationUser;
     /////////
+    
+    //// model tag creation
+    ModelCreateTagsSecondStep *objTemplates;
+    
+    ////dictionary for update to server
+    NSMutableDictionary *dictAPI;
+    CLCloudinary *cloudinary;
 }
 
 @end
@@ -53,22 +65,27 @@
     [super viewDidLoad];
     appDel.arrImageSet=[[NSMutableArray alloc]init];
     appDel.arrVideoSet=[[NSMutableArray alloc]init];
+    dictAPI=[[NSMutableDictionary alloc]init];
     NSLog(@"%@",self.strTagName);
     tblTagsCreation.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblTagsCreation.delegate=self;
     tblTagsCreation.dataSource=self;
     arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Business Name",@"Contact Name",@"Title",@"Business Address",@"Business Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
     strDate=@"";
-    NSLog(@"%@",self.strToken);
+    
+    cloudinary = [[CLCloudinary alloc] init];
+    [cloudinary.config setValue:@"skh2" forKey:@"cloud_name"];
+    [cloudinary.config setValue:@"648345983144481" forKey:@"api_key"];
+    [cloudinary.config setValue:@"4Ff7lJphCWF-JZd2V9lFBZ4dJ28" forKey:@"api_secret"];
+    strGender=@"";
+    isLiving=NO;
+    isLocation=NO;
+    isTextViewClicked=NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    strGender=@"";
-    isLiving=NO;
-    isLocation=NO;
-    isTextViewClicked=NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,12 +119,12 @@
                 break;
             case 8:
                 return 50.0f;
-
+                
             default:
                 return 110.0f;
                 break;
         }
-
+        
     }
     else if ([self.strTagName isEqualToString:@"Pet"])
     {
@@ -141,7 +158,7 @@
                 break;
             case 2:
                 return 50.0f;
-                case 8:
+            case 8:
                 return 50.0f;
                 break;
             default:
@@ -361,7 +378,7 @@
                 }
             }
                 break;
-                case 8:
+            case 8:
             {
                 AddLogoCell *cellButton=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
                 if (!cellButton)
@@ -526,7 +543,7 @@
                 }
                 UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
                 cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Title/Name" attributes:@{NSForegroundColorAttributeName: color}];
-
+                
                 cell=cellPerson;
             }
                 break;
@@ -551,7 +568,7 @@
                 }
                 UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
                 cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Contact Info" attributes:@{NSForegroundColorAttributeName: color}];
-
+                
                 cell=cellPerson;
             }
                 break;
@@ -611,7 +628,7 @@
                 cell=cellLocation;
                 break;
             }
-                case 8:
+            case 8:
             {
                 AddLogoCell *cellButton=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
                 if (!cellButton)
@@ -658,7 +675,7 @@
             }
             [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
             cell=cellButton;
-
+            
         }
         else if (indexPath.row==11)
         {
@@ -677,7 +694,7 @@
                 cellVideo=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoCell" owner:self options:nil]objectAtIndex:0];
             }
             cell=cellVideo;
-
+            
         }
         else if (indexPath.row==13)
         {
@@ -687,7 +704,7 @@
                 cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:0];
             }
             cell=cellText;
-
+            
         }
         else if (indexPath.row==14)
         {
@@ -697,7 +714,7 @@
                 cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:0];
             }
             cell=cellVoice;
-
+            
         }
         else if (indexPath.row==15)
         {
@@ -707,7 +724,7 @@
                 cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:0];
             }
             cell=cellLocation;
-
+            
         }
         else if (indexPath.row==16)
         {
@@ -737,7 +754,7 @@
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [tblTagsCreation endUpdates];
-
+    [self checkGender];
 }
 
 -(void)btnFemalePressed:(id)sender
@@ -748,6 +765,7 @@
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [tblTagsCreation endUpdates];
+    [self checkGender];
 }
 
 -(void)btnLivingPressed:(id)sender
@@ -793,7 +811,7 @@
 
 -(void)btnMapPressed:(id)sender
 {
-
+    
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(appDel.center.latitude, appDel.center.longitude);
     CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake(center.latitude + 0.001,
                                                                   center.longitude + 0.001);
@@ -822,7 +840,7 @@
                  NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
                  [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
                  [tblTagsCreation endUpdates];
-
+                 
                  NSLog(@"reverse geocoding results:");
                  for(GMSAddress* addressObj in [response results])
                  {
@@ -837,6 +855,7 @@
                  }
              }];
             NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+            [self checkLocationWithAddress:place.formattedAddress];
             NSString *strCat = place.types[0];
             NSLog(@"Category:%@",strCat);
             pickedPlace = place;
@@ -898,7 +917,7 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
+
 }
 
 -(void)textFieldEdited:(id)sender
@@ -912,11 +931,15 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if (textField.text.length>0)
+    {
+        [self checkName];
+    }
     [textField resignFirstResponder];
     return NO;
 }
 
-#pragma mark 
+#pragma mark
 #pragma mark Custom Date Picker
 #pragma mark
 
@@ -937,6 +960,7 @@
         strBirthDate=[dateFormatter stringFromDate:selectedDate];
         [datePickerController.view removeFromSuperview];
         NSLog(@"%@",strBirthDate);
+        [self checkDatesFrom];
     }
     else
     {
@@ -948,12 +972,16 @@
             [self displayErrorWithMessage:@"Death date should be higher than birth date"];
             strDeathDate=@"";
         }
+        else
+        {
+            [self checkDatesTo];
+        }
     }
     [tblTagsCreation beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [tblTagsCreation endUpdates];
-
+    
 }
 
 -(void)didCancel
@@ -966,12 +994,12 @@
 #pragma mark
 
 /*- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered
-{
-    if (fullyRendered)
-    {
-        [self hideNetworkActivity];
-    }
-}*/
+ {
+ if (fullyRendered)
+ {
+ [self hideNetworkActivity];
+ }
+ }*/
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
@@ -1012,6 +1040,10 @@
 {
     if([text isEqualToString:@"\n"])
     {
+        if (textView.text.length>0)
+        {
+            [self checkMemorialQuotes];
+        }
         [textView resignFirstResponder];
         [tblTagsCreation setContentOffset:CGPointMake(0, 0) animated:YES];
         return NO;
@@ -1039,12 +1071,12 @@
         [alertController dismissViewControllerAnimated:YES completion:^{
             
         }];
-
+        
     }];
-
+    
     [alertController addAction:actionCamera];
     [alertController addAction:actionGallery];
-
+    
     [self presentViewController:alertController animated:YES completion:^{
         
     }];
@@ -1095,25 +1127,15 @@
     if (isImage==YES)
     {
         UIImage *imgChosen=info[UIImagePickerControllerOriginalImage] ;
-        if ([appDel.arrImageSet containsObject:@"1"])
-        {
-            [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgChosen];
-        }
-        else
-        {
-            [appDel.arrImageSet addObject:imgChosen];
-        }
-        [appDel.arrImageSet addObject:@"1"];
         [picker dismissViewControllerAnimated:YES completion:^{
-            [tblTagsCreation beginUpdates];
-            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
-            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            [tblTagsCreation endUpdates];
+            [self uploadImageToCloudinary:imgChosen];
             
         }] ;
     }
     else
     {
+        NSData *videoData;
+        UIImage *imgThumbnail;
         if (picker.sourceType==UIImagePickerControllerSourceTypeCamera)
         {
             NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
@@ -1123,7 +1145,7 @@
                 //        NSString *sourcePath = [[info objectForKey:@"UIImagePickerControllerMediaURL"]relativePath];
                 //        UISaveVideoAtPathToSavedPhotosAlbum(sourcePath,nil,nil,nil);
                 NSURL *videoURL     = [info objectForKey:UIImagePickerControllerMediaURL];
-                NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+                videoData = [NSData dataWithContentsOfURL:videoURL];
                 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
                 NSString *documentsDirectory = [paths objectAtIndex:0];
                 NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/vid1.mp4"];
@@ -1136,16 +1158,7 @@
                     AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
                     CMTime time = CMTimeMake(1,1);
                     CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
-                    UIImage *imgThumbnail = [UIImage imageWithCGImage:imageRef];
-                    if ([appDel.arrVideoSet containsObject:@"1"])
-                    {
-                        [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgThumbnail];
-                    }
-                    else
-                    {
-                        [appDel.arrVideoSet addObject:imgThumbnail];
-                    }
-                    [appDel.arrVideoSet addObject:@"1"];
+                    imgThumbnail = [UIImage imageWithCGImage:imageRef];
                     CGImageRelease(imageRef);
                 }
                 else
@@ -1163,33 +1176,19 @@
                 //NSString *sourcePath = [[info objectForKey:@"UIImagePickerControllerMediaURL"]relativePath];
                 //UISaveVideoAtPathToSavedPhotosAlbum(sourcePath,nil,nil,nil);
                 NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
-                NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+                videoData = [NSData dataWithContentsOfURL:videoURL];
                 NSLog(@"%lu",(unsigned long)videoData.length);
                 AVAsset *asset = [AVAsset assetWithURL:videoURL];
                 AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
                 CMTime time = CMTimeMake(1, 1);
                 CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
-                UIImage *imgThumbnail = [UIImage imageWithCGImage:imageRef];
-                if ([appDel.arrVideoSet containsObject:@"1"])
-                {
-                    [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgThumbnail];
-                }
-                else
-                {
-                    [appDel.arrVideoSet addObject:imgThumbnail];
-                }
-                [appDel.arrVideoSet addObject:@"1"];
+                imgThumbnail = [UIImage imageWithCGImage:imageRef];
                 CGImageRelease(imageRef);
             }
         }
         [picker dismissViewControllerAnimated:YES completion:^{
-            [tblTagsCreation beginUpdates];
-            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
-            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            [tblTagsCreation endUpdates];
-
+            [self uploadVideoToCloudinary:videoData image:imgThumbnail];
         }];
-
     }
 }
 
@@ -1278,5 +1277,314 @@
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [tblTagsCreation endUpdates];
+}
+
+#pragma mark
+#pragma mark UPDATE DICTIONARY FOR API SERVICE
+#pragma mark
+
+-(void)checkName
+{
+    NSLog(@"%@",objTemplates);
+    if (objTemplates)
+    {
+        NSLog(@"%@",objTemplates.strtname);
+        if ([objTemplates.strtname isEqualToString:strPersonName])
+        {
+            [dictAPI removeObjectForKey:@"tname"];
+        }
+        else
+        {
+            [dictAPI setObject:strPersonName forKey:@"tname"];
+            [self updateDictionaryForServiceForKey:@"tname"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strPersonName forKey:@"tname"];
+        [self updateDictionaryForServiceForKey:@"tname"];
+    }
+}
+
+-(void)checkDatesFrom
+{       if (objTemplates)
+    {
+        NSLog(@"%@",objTemplates.strtborn);
+        if ([objTemplates.strtborn isEqualToString:strBirthDate])
+        {
+            [dictAPI removeObjectForKey:@"tborn"];
+        }
+        else
+        {
+            [dictAPI setObject:strBirthDate forKey:@"tborn"];
+            [self updateDictionaryForServiceForKey:@"tborn"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strBirthDate forKey:@"tborn"];
+        [self updateDictionaryForServiceForKey:@"tborn"];
+    }
+}
+
+-(void)checkGender
+{
+    if (objTemplates)
+    {
+        if ([objTemplates.strtgender isEqualToString:strGender])
+        {
+            [dictAPI removeObjectForKey:@"tgender"];
+        }
+        else
+        {
+            [dictAPI setObject:strGender forKey:@"tgender"];
+            [self updateDictionaryForServiceForKey:@"tgender"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strGender forKey:@"tgender"];
+        [self updateDictionaryForServiceForKey:@"tgender"];
+    }
+}
+
+-(void)checkMemorialQuotes
+{
+    if (objTemplates)
+    {
+        if ([objTemplates.strMemorialQuote isEqualToString:strTextVwTags])
+        {
+            [dictAPI removeObjectForKey:@"tdetail"];
+        }
+        else
+        {
+            [dictAPI setObject:strTextVwTags forKey:@"tdetail"];
+            [self updateDictionaryForServiceForKey:@"tdetail"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strTextVwTags forKey:@"tdetail"];
+        [self updateDictionaryForServiceForKey:@"tdetail"];
+    }
+}
+
+-(void)checkLocationWithAddress:(NSString *)strAddress
+{
+    /*tdata[taddress1],
+    tdata[tlat1],
+    tdata[tlong1]*/
+
+    NSString *strLat=[NSString stringWithFormat:@"%f",locationUser.latitude];
+    NSString *strLong=[NSString stringWithFormat:@"%f",locationUser.longitude];
+
+    NSLog(@"%@",strAddress);
+    if (objTemplates)
+    {
+        if ([objTemplates.strtaddress1 isEqualToString:strAddress])
+        {
+            [dictAPI removeObjectForKey:@"taddress1"];
+            if ([objTemplates.strtlat1 isEqualToString:strLat])
+            {
+                [dictAPI removeObjectForKey:@"tlat1"];
+            }
+            if ([objTemplates.strtlong1 isEqualToString:strLong])
+            {
+                //long1
+                [dictAPI removeObjectForKey:@"tlong1"];
+            }
+        }
+        else
+        {
+            [dictAPI setObject:strAddress forKey:@"taddress1"];
+            [dictAPI setObject:strLat forKey:@"tlat1"];
+            [dictAPI setObject:strLong forKey:@"tlong1"];
+            [self updateDictionaryForServiceForKey:@"taddress1"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strAddress forKey:@"taddress1"];
+        [dictAPI setObject:strLat forKey:@"tlat1"];
+        [dictAPI setObject:strLong forKey:@"tlong1"];
+        [self updateDictionaryForServiceForKey:@"taddress1"];
+    }
+
+}
+
+-(void)checkDatesTo
+{
+    if (objTemplates)
+    {
+        if ([objTemplates.strtKey isEqualToString:strDeathDate])
+        {
+            [dictAPI removeObjectForKey:@"tdied"];
+        }
+        else
+        {
+            [dictAPI setObject:strDeathDate forKey:@"tdied"];
+            [self updateDictionaryForServiceForKey:@"tdied"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strDeathDate forKey:@"tdied"];
+         [self updateDictionaryForServiceForKey:@"tdied"];
+    }
+}
+
+
+#pragma mark
+#pragma mark CALL WEBSERVICE
+#pragma mark
+
+-(void)updateDictionaryForServiceForKey:(NSString *)strKey
+{
+    NSLog(@"%@",dictAPI);
+    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            objTemplates=nil;
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            NSLog(@"%@",result);
+            if ([strKey isEqualToString:@"taddress1"])
+            {
+                [dictAPI removeObjectForKey:@"tlat1"];
+                [dictAPI removeObjectForKey:@"tlong1"];
+                [dictAPI removeObjectForKey:strKey];
+            }
+            else
+            {
+                [dictAPI removeObjectForKey:strKey];
+            }
+
+            NSDictionary *dict=(id)result;
+            objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:dict];
+        }
+    }];
+}
+
+#pragma mark
+#pragma mark cloudinary uploads
+#pragma mark
+
+-(void)uploadImageToCloudinary:(UIImage *)img
+{
+    NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
+    CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+    NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strImageFolder,strTimestamp];
+    // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
+    [self displayNetworkActivity];
+    [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+        NSLog(@"%@",successResult);
+        if (successResult.count>0)
+        {
+            @try
+            {
+                NSString *strBytes=[successResult objectForKey:@"bytes"];
+                NSString *strCreated=[successResult objectForKey:@"created_at"];
+                NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
+                NSLog(@"%@",strFileName);
+                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I"  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                    if (isError)
+                    {
+                        [self displayErrorWithMessage:strMsg];
+                    }
+                    else
+                    {
+                        if ([appDel.arrImageSet containsObject:@"1"])
+                        {
+                            [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
+                        }
+                        else
+                        {
+                            [appDel.arrImageSet addObject:img];
+                        }
+                        [appDel.arrImageSet addObject:@"1"];
+                        [tblTagsCreation beginUpdates];
+                        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
+                        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                        [tblTagsCreation endUpdates];
+                    }
+                }];
+            }
+            @catch (NSException *exception)
+            {
+                [self displayErrorWithMessage:exception.reason];
+            }
+            @finally
+            {
+                
+            }
+        }
+    } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+        
+    }];
+
+}
+
+-(void)uploadVideoToCloudinary:(NSData *)dataVideo image:(UIImage *)imgaThumb
+{
+    CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+    NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strVideoFolder,strTimestamp];
+    // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
+    [self displayNetworkActivity];
+    //@{@"public_id":strPublicKey,@"resource_type":@"video"}
+    NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+    [dict setObject:strPublicKey forKey:@"public_id"];
+    [dict setObject:@"video" forKey:@"resource_type"];
+
+    [uploader upload:dataVideo options:dict withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+        NSLog(@"%@",errorResult);
+        NSLog(@"%@",successResult);
+        if (successResult.count>0)
+        {
+            @try
+            {
+                NSString *strBytes=[successResult objectForKey:@"bytes"];
+                NSString *strCreated=[successResult objectForKey:@"created_at"];
+                NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
+                NSLog(@"%@",strFileName);
+                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"V"  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                    if (isError)
+                    {
+                        [self displayErrorWithMessage:strMsg];
+                    }
+                    else
+                    {
+                        if ([appDel.arrVideoSet containsObject:@"1"])
+                        {
+                            [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgaThumb];
+                        }
+                        else
+                        {
+                            [appDel.arrVideoSet addObject:imgaThumb];
+                        }
+                        [appDel.arrVideoSet addObject:@"1"];
+                        [tblTagsCreation beginUpdates];
+                        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
+                        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                        [tblTagsCreation endUpdates];
+                        
+                    }
+                }];
+            }
+            @catch (NSException *exception)
+            {
+                [self displayErrorWithMessage:exception.reason];
+            }
+            @finally
+            {
+                
+            }
+        }
+    } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+        
+    }];
 }
 @end
