@@ -41,7 +41,8 @@ NSString *const strAPI[]={
     [WEB_SERVICES_CREATE_TAGS]=@"Tags/createTag",
     [WEB_SERVICE_UPDATE_TAGS]   =@"Tags/updateTag",
     [WEB_SERVICES_CREATE_TAGS_VIDEOS]=@"",
-    [CLOUDINARY_UPLOAD_IMAGE]=@"Tags/updateTagAsset"
+    [CLOUDINARY_UPLOAD_IMAGE]=@"Tags/updateTagAsset",
+    [CLOUDINARY_DELETE_IMAGE]=@"Tags/removeTagAsset"
 };
 
 

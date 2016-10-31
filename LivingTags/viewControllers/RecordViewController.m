@@ -8,10 +8,13 @@
 
 #import "RecordViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "CLCloudinary.h"
+#import "CLUploader.h"
 #import <AVFoundation/AVFoundation.h>
+#import "LivingTagsSecondStepService.h"
 
 
-@interface RecordViewController ()<AVAudioRecorderDelegate,AVAudioPlayerDelegate>
+@interface RecordViewController ()<AVAudioRecorderDelegate,AVAudioPlayerDelegate,CLUploaderDelegate>
 {
     IBOutlet UIButton *btnPlay;
     IBOutlet UIButton *btnRecord;
@@ -26,7 +29,12 @@
     NSTimer *stopTimer;
     NSDate *startDate;
     BOOL running;
-}
+    
+    NSData *dataVoice;
+    
+    // cloudinary instance
+    CLCloudinary *cloudinary;
+    }
 
 @end
 
@@ -66,6 +74,13 @@
     recorder.delegate = self;
     recorder.meteringEnabled = YES;
     [recorder prepareToRecord];
+    
+    //cloudinary initialisation
+    cloudinary = [[CLCloudinary alloc] init];
+    [cloudinary.config setValue:@"dw2w2nb2e" forKey:@"cloud_name"];
+    [cloudinary.config setValue:@"963284535365757" forKey:@"api_key"];
+    [cloudinary.config setValue:@"m7Op_O9CtqVTUOVkdbDdfA4u_6o" forKey:@"api_secret"];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -152,6 +167,7 @@
 
 -(IBAction)btnPlayPressed:(id)sender
 {
+    lblTimer.text = @"00:00";
     btnDiscard.hidden=YES;
     btnSave.hidden=YES;
     if (stopTimer == nil)
@@ -176,7 +192,6 @@
         player.volume=4.5;
         [player play];
     }
-    //[self resetTimer];
     [btnRecord setEnabled:NO];
     [btnRecord setBackgroundImage:[UIImage imageNamed:@"recording"] forState:UIControlStateNormal];
     [btnStop setEnabled:YES];
@@ -209,6 +224,7 @@
      stopTimer = nil;
      }*/
     [self resetTimer];
+    lblTimer.text = @"00:00";
     [btnRecord setEnabled:YES];
     [btnRecord setBackgroundImage:[UIImage imageNamed:@"record"] forState:UIControlStateNormal];
     [btnStop setEnabled:NO];
@@ -229,11 +245,71 @@
      [self.delegate getVoice:strBase64Conversion];
      }
      }*/
-    [self.navigationController popViewControllerAnimated:YES];
+    if (dataVoice.length>0)
+    {
+        NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+        NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strAudioFolder,strTimestamp];
+        
+        CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+        NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+        [dict setObject:strPublicKey forKey:@"public_id"];
+        [dict setObject:@"auto" forKey:@"resource_type"];
+        [self displayNetworkActivity];
+        [uploader upload:dataVoice options:dict withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+            NSLog(@"%@",errorResult);
+            NSLog(@"%@",successResult);
+            if (successResult.count>0)
+            {
+                @try
+                {
+                    NSString *strBytes=[successResult objectForKey:@"bytes"];
+                    NSString *strPublicID=[successResult objectForKey:@"public_id"];
+                    NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
+                    appDel.strAudioURL=[successResult objectForKey:@"secure_url"];
+                    appDel.audioLength=[[successResult objectForKey:@"duration"] floatValue];
+                    NSLog(@"%f",appDel.audioLength);
+                    NSLog(@"%@",strFileName);
+                    NSMutableDictionary *dict=[[NSMutableDictionary alloc] init];
+                    [dict setObject:strFileName forKey:@"tdata[tvoice]"];
+                    [dict setObject:strBytes forKey:@"tdata[tvoicesize]"];
+                    [dict setObject:strPublicID forKey:@"public_id"];
+                    
+                    //web service called
+                    [[LivingTagsSecondStepService service]callCloudinaryAudioServiceWithDIctionary:dict tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                        if (isError)
+                        {
+                            [self displayErrorWithMessage:strMsg];
+                        }
+                        else
+                        {
+                            [self.navigationController popViewControllerAnimated:YES];
+                            
+                        }
+                    }];
+                }
+                @catch (NSException *exception)
+                {
+                    [self displayErrorWithMessage:exception.reason];
+                }
+                @finally
+                {
+                    
+                }
+            }
+        } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+            
+        }];
+    }
+    else
+    {
+        [self displayErrorWithMessage:@"Please record a voice"];
+    }
 }
 
 -(IBAction)btnDiscardPressed:(id)sender
 {
+    dataVoice=nil;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark
@@ -242,6 +318,11 @@
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag
 {
+    btnSave.hidden=NO;
+    btnDiscard.hidden=NO;
+    dataVoice = [NSData dataWithContentsOfURL:recorder.url];
+    [self resetTimer];
+    lblTimer.text = @"00:00";
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -249,6 +330,8 @@
     btnDiscard.hidden=NO;
     btnSave.hidden=NO;
     [self resetTimer];
+    lblTimer.text = @"00:00";
+    dataVoice= [NSData dataWithContentsOfURL:recorder.url];
     //base 64 conversion
     NSError *playerError;
     AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:&playerError];
@@ -262,6 +345,8 @@
     [btnPlay setBackgroundImage:[UIImage imageNamed:@"play_enable"] forState:UIControlStateNormal];
 }
 
+
+
 #pragma mark
 #pragma mark STOPWATCH methods
 #pragma mark
@@ -271,10 +356,10 @@
     NSDate *currentDate = [NSDate date];
     NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:startDate];
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"mm:ss"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-    NSString *timeString=[dateFormatter stringFromDate:timerDate];
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"mm:ss"];
+    [dateFormatter1 setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+    NSString *timeString=[dateFormatter1 stringFromDate:timerDate];
     lblTimer.text = timeString;
 }
 
@@ -287,8 +372,13 @@
     [stopTimer invalidate];
     stopTimer = nil;
     startDate = [NSDate date];
-    lblTimer.text = @"00:00";
     running = FALSE;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear: animated];
+    [self resetTimer];
 }
 
 @end

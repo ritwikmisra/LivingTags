@@ -12,5 +12,5 @@
 
 +(id)service;
 
--(void)callCloudinaryImageUploadServiceWithBytes:(NSString *)strBytes created_date:(NSString *)strCreatedDate fileName:(NSString *)strFileName k_key:(NSString *)strt_key type:(NSString *)strType withCompletionHandler:(WebServiceCompletion)completionHandler;
+-(void)callCloudinaryImageUploadServiceWithBytes:(NSString *)strBytes created_date:(NSString *)strCreatedDate fileName:(NSString *)strFileName k_key:(NSString *)strt_key type:(NSString *)strType public_id:(NSString *)strPublicID withCompletionHandler:(WebServiceCompletion)completionHandler;
 @end

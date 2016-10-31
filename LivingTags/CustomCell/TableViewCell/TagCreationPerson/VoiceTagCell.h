@@ -12,4 +12,8 @@
 
 @property(nonatomic,strong)IBOutlet UIButton *btnVoice;
 
+@property(nonatomic,strong)IBOutlet UIButton *btnRecordPlay;
+@property(nonatomic,strong)IBOutlet UISlider *sliderRecorder;
+
+
 @end

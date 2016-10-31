@@ -185,6 +185,15 @@
 		0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB867891DC09F4E00D428F2 /* CustomdatePickerViewController.m */; };
 		0DB8678C1DC09F4E00D428F2 /* CustomdatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB8678A1DC09F4E00D428F2 /* CustomdatePickerViewController.xib */; };
 		0DB9A45A1D4629CF007671E9 /* LivingTagsThirdStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */; };
+		0DC2F5981DC72BBD00AB1795 /* DeleteAssetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2F5971DC72BBD00AB1795 /* DeleteAssetService.m */; };
+		0DC2F5A11DC74A2700AB1795 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59A1DC74A2700AB1795 /* pause.png */; };
+		0DC2F5A21DC74A2700AB1795 /* play_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59B1DC74A2700AB1795 /* play_disable.png */; };
+		0DC2F5A31DC74A2700AB1795 /* play_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59C1DC74A2700AB1795 /* play_enable.png */; };
+		0DC2F5A41DC74A2700AB1795 /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59D1DC74A2700AB1795 /* record.png */; };
+		0DC2F5A51DC74A2700AB1795 /* recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59E1DC74A2700AB1795 /* recording.png */; };
+		0DC2F5A61DC74A2700AB1795 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59F1DC74A2700AB1795 /* stop.png */; };
+		0DC2F5A71DC74A2700AB1795 /* stop_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F5A01DC74A2700AB1795 /* stop_enable.png */; };
+		0DC2F5A91DC76A5200AB1795 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F5A81DC76A5200AB1795 /* play_button.png */; };
 		0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937F91CEB43970049BEC2 /* ModelListing.m */; };
 		0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937FC1CEB5F8E0049BEC2 /* LivingTagsListingService.m */; };
 		0DD198211DB62615003BB828 /* PreviewPopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1981F1DB62615003BB828 /* PreviewPopUpController.m */; };
@@ -528,6 +537,16 @@
 		0DB8678A1DC09F4E00D428F2 /* CustomdatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomdatePickerViewController.xib; sourceTree = "<group>"; };
 		0DB9A4581D4629CE007671E9 /* LivingTagsThirdStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsThirdStepViewController.h; sourceTree = "<group>"; };
 		0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsThirdStepViewController.m; sourceTree = "<group>"; };
+		0DC2F5961DC72BBD00AB1795 /* DeleteAssetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteAssetService.h; sourceTree = "<group>"; };
+		0DC2F5971DC72BBD00AB1795 /* DeleteAssetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteAssetService.m; sourceTree = "<group>"; };
+		0DC2F59A1DC74A2700AB1795 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		0DC2F59B1DC74A2700AB1795 /* play_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_disable.png; sourceTree = "<group>"; };
+		0DC2F59C1DC74A2700AB1795 /* play_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_enable.png; sourceTree = "<group>"; };
+		0DC2F59D1DC74A2700AB1795 /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
+		0DC2F59E1DC74A2700AB1795 /* recording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recording.png; sourceTree = "<group>"; };
+		0DC2F59F1DC74A2700AB1795 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		0DC2F5A01DC74A2700AB1795 /* stop_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_enable.png; sourceTree = "<group>"; };
+		0DC2F5A81DC76A5200AB1795 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
 		0DC937F81CEB43970049BEC2 /* ModelListing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelListing.h; sourceTree = "<group>"; };
 		0DC937F91CEB43970049BEC2 /* ModelListing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelListing.m; sourceTree = "<group>"; };
 		0DC937FB1CEB5F8E0049BEC2 /* LivingTagsListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsListingService.h; sourceTree = "<group>"; };
@@ -1045,6 +1064,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DC2F5991DC74A2700AB1795 /* Recording */,
 				0D19165A1DBF8F72004D02DA /* side */,
 				0DD198261DB66476003BB828 /* QRCode */,
 				0DF008761DAFB76400BD39C3 /* TagsCreate */,
@@ -1099,6 +1119,8 @@
 				0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */,
 				0D31212F1DC3646700F00B8F /* CloudinaryImageUploadService.h */,
 				0D3121301DC3646700F00B8F /* CloudinaryImageUploadService.m */,
+				0DC2F5961DC72BBD00AB1795 /* DeleteAssetService.h */,
+				0DC2F5971DC72BBD00AB1795 /* DeleteAssetService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1290,6 +1312,20 @@
 			path = CustomDatePicker;
 			sourceTree = "<group>";
 		};
+		0DC2F5991DC74A2700AB1795 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				0DC2F59A1DC74A2700AB1795 /* pause.png */,
+				0DC2F59B1DC74A2700AB1795 /* play_disable.png */,
+				0DC2F59C1DC74A2700AB1795 /* play_enable.png */,
+				0DC2F59D1DC74A2700AB1795 /* record.png */,
+				0DC2F59E1DC74A2700AB1795 /* recording.png */,
+				0DC2F59F1DC74A2700AB1795 /* stop.png */,
+				0DC2F5A01DC74A2700AB1795 /* stop_enable.png */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
 		0DD1981D1DB62554003BB828 /* previewPopUP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1343,6 +1379,7 @@
 		0DF008761DAFB76400BD39C3 /* TagsCreate */ = {
 			isa = PBXGroup;
 			children = (
+				0DC2F5A81DC76A5200AB1795 /* play_button.png */,
 				0D3A400D1DB4E3110040D6D4 /* txt_box.png */,
 				0D8934E51DB13FFD00A48562 /* txt_map.png */,
 				0D8934E31DB11C7900A48562 /* add_logo_button.png */,
@@ -1471,14 +1508,18 @@
 				0DD1982A1DB66477003BB828 /* logo_pin_logo.png in Resources */,
 				0DF008A51DAFB76500BD39C3 /* pic.png in Resources */,
 				0DF008571DAF952500BD39C3 /* PersonGenderCell.xib in Resources */,
+				0DC2F5A11DC74A2700AB1795 /* pause.png in Resources */,
 				0D19166C1DBF8F72004D02DA /* my_profile.png in Resources */,
+				0DC2F5A61DC74A2700AB1795 /* stop.png in Resources */,
 				0DF008961DAFB76500BD39C3 /* add_memorial.png in Resources */,
+				0DC2F5A31DC74A2700AB1795 /* play_enable.png in Resources */,
 				0D19166D1DBF8F72004D02DA /* product.png in Resources */,
 				0DF008971DAFB76500BD39C3 /* add_pic.png in Resources */,
 				0D6659421DA6A14800566879 /* Signika-Bold.otf in Resources */,
 				0DF008611DAF9BFC00BD39C3 /* AddImageCell.xib in Resources */,
 				0D698D111CC8CF2500F64745 /* LaunchScreen.storyboard in Resources */,
 				0D19166B1DBF8F72004D02DA /* help.png in Resources */,
+				0DC2F5A51DC74A2700AB1795 /* recording.png in Resources */,
 				0DF008931DAFB76500BD39C3 /* add_audio.png in Resources */,
 				0DF008AD1DAFB76500BD39C3 /* vid.png in Resources */,
 				0D1DDF7D1DA7BB5B0063F2F9 /* other_icon.png in Resources */,
@@ -1488,6 +1529,7 @@
 				0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */,
 				0D8934D61DB0CEA700A48562 /* PersonImageCell.xib in Resources */,
 				0DF0089F1DAFB76500BD39C3 /* cross.png in Resources */,
+				0DC2F5A71DC74A2700AB1795 /* stop_enable.png in Resources */,
 				0D7165B71CE323FA00C8B288 /* GoogleService-Info.plist in Resources */,
 				0D6659271DA666E400566879 /* name_icon.png in Resources */,
 				0DF008661DAF9F6F00BD39C3 /* AddVideoCell.xib in Resources */,
@@ -1519,10 +1561,12 @@
 				0DF0089D1DAFB76500BD39C3 /* circle.png in Resources */,
 				0D8934E41DB11C7900A48562 /* add_logo_button.png in Resources */,
 				0D1916671DBF8F72004D02DA /* analytics.png in Resources */,
+				0DC2F5A21DC74A2700AB1795 /* play_disable.png in Resources */,
 				0D1DDF841DA7DFDB0063F2F9 /* logo.png in Resources */,
 				0DD198221DB62615003BB828 /* PreviewPopUpController.xib in Resources */,
 				0DF008981DAFB76500BD39C3 /* add_txt.png in Resources */,
 				0DF0086B1DAFA2D600BD39C3 /* AddVideoTagCell.xib in Resources */,
+				0DC2F5A91DC76A5200AB1795 /* play_button.png in Resources */,
 				0D1DDF851DA7DFDB0063F2F9 /* logo1.png in Resources */,
 				0D6659371DA67CAF00566879 /* menu_icon2.png in Resources */,
 				0D6659381DA67CAF00566879 /* other_tag.png in Resources */,
@@ -1543,6 +1587,7 @@
 				0D6659391DA67CAF00566879 /* scan_tag.png in Resources */,
 				0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */,
 				0D56FA541DC2156000972DF0 /* PersonCell.xib in Resources */,
+				0DC2F5A41DC74A2700AB1795 /* record.png in Resources */,
 				0D8AC8CF1D364F47001EFEBA /* CreateTagsSecondStepCell.xib in Resources */,
 				0D7BA23E1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib in Resources */,
 				0D1916661DBF8F72004D02DA /* about.png in Resources */,
@@ -1678,6 +1723,7 @@
 				0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */,
 				0D901B9A1D3E57CD002B6735 /* TemplateSelectionService.m in Sources */,
 				0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */,
+				0DC2F5981DC72BBD00AB1795 /* DeleteAssetService.m in Sources */,
 				0DF008511DAF93E600BD39C3 /* PersonNameCell.m in Sources */,
 				0D80DAF71CFD9B0E00B79C6B /* GroupPopupController.m in Sources */,
 				0D939D321CD34B5B002C954B /* EditProfilePicCellTableViewCell.m in Sources */,

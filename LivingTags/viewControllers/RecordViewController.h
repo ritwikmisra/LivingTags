@@ -7,6 +7,7 @@
 //
 
 #import "ViewControllerBaseClassViewController.h"
+#import "ModelFolders.h"
 
 @protocol RecordVoiceDelegate <NSObject>
 
@@ -17,4 +18,6 @@
 @interface RecordViewController : ViewControllerBaseClassViewController
 
 @property(weak,nonatomic)id<RecordVoiceDelegate>delegate;
+@property(nonatomic,strong)ModelFolders *objFolders;
+
 @end

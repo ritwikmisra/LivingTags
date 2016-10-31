@@ -94,13 +94,111 @@
             <connections>
                 <outlet property="btnVoice" destination="ACU-wU-LjZ" id="fDB-ON-w4s"/>
             </connections>
-            <point key="canvasLocation" x="247" y="138"/>
+            <point key="canvasLocation" x="252" y="141"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Lgd-dA-1S8" customClass="VoiceTagCell">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lgd-dA-1S8" id="LV9-e3-3tj">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pod-vP-mfx">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="91"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="fgO-v2-D6i">
+                        <rect key="frame" x="68" y="0.0" width="299" height="91"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrc-07-jYL">
+                        <rect key="frame" x="76" y="61" width="291" height="30"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_button.png" translatesAutoresizingMaskIntoConstraints="NO" id="PT2-n7-FWb">
+                                <rect key="frame" x="5" y="6" width="19" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PT2-n7-FWb" secondAttribute="height" id="LTg-Dn-gYe"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cs3-dR-FVz">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Cs3-dR-FVz" secondAttribute="height" id="Ur0-0V-4O2"/>
+                                </constraints>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-Mb-Q4c">
+                                <rect key="frame" x="40" y="0.0" width="205" height="31"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cs3-dR-FVz" firstAttribute="centerY" secondItem="lrc-07-jYL" secondAttribute="centerY" id="1rC-PK-2uc"/>
+                            <constraint firstItem="Cs3-dR-FVz" firstAttribute="height" secondItem="lrc-07-jYL" secondAttribute="height" id="6yp-FI-HwA"/>
+                            <constraint firstAttribute="trailing" secondItem="9Ka-Mb-Q4c" secondAttribute="trailing" multiplier="1.2" id="8sg-vq-983"/>
+                            <constraint firstItem="9Ka-Mb-Q4c" firstAttribute="centerY" secondItem="Cs3-dR-FVz" secondAttribute="centerY" id="9GC-md-VEe"/>
+                            <constraint firstItem="9Ka-Mb-Q4c" firstAttribute="leading" secondItem="Cs3-dR-FVz" secondAttribute="trailing" multiplier="1.4" id="DtA-Op-6hI"/>
+                            <constraint firstItem="PT2-n7-FWb" firstAttribute="centerX" secondItem="Cs3-dR-FVz" secondAttribute="centerX" id="Dtg-Ch-TvB"/>
+                            <constraint firstAttribute="height" secondItem="9Ka-Mb-Q4c" secondAttribute="height" id="ILb-qF-XGE"/>
+                            <constraint firstItem="PT2-n7-FWb" firstAttribute="centerY" secondItem="Cs3-dR-FVz" secondAttribute="centerY" id="bcV-qA-Tww"/>
+                            <constraint firstItem="Cs3-dR-FVz" firstAttribute="leading" secondItem="lrc-07-jYL" secondAttribute="leading" id="s1N-tN-Alk"/>
+                            <constraint firstItem="Cs3-dR-FVz" firstAttribute="height" secondItem="PT2-n7-FWb" secondAttribute="height" multiplier="1.6" id="vi3-94-5ZA"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ag-zV-2zG">
+                        <rect key="frame" x="13" y="0.0" width="41" height="41"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="LAO-gn-eoQ">
+                                <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_audio.png" translatesAutoresizingMaskIntoConstraints="NO" id="cGw-Vg-Nc8">
+                                <rect key="frame" x="11" y="10" width="20" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cGw-Vg-Nc8" secondAttribute="height" id="cVL-b6-iMM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="1ag-zV-2zG" secondAttribute="height" id="Djt-RN-LDO"/>
+                            <constraint firstItem="cGw-Vg-Nc8" firstAttribute="centerY" secondItem="LAO-gn-eoQ" secondAttribute="centerY" id="Pqk-9C-e69"/>
+                            <constraint firstItem="LAO-gn-eoQ" firstAttribute="height" secondItem="1ag-zV-2zG" secondAttribute="height" id="UCT-FF-pkF"/>
+                            <constraint firstItem="LAO-gn-eoQ" firstAttribute="centerY" secondItem="1ag-zV-2zG" secondAttribute="centerY" id="Yo5-Pz-FP7"/>
+                            <constraint firstItem="LAO-gn-eoQ" firstAttribute="width" secondItem="cGw-Vg-Nc8" secondAttribute="width" multiplier="2" id="i6c-5M-6gd"/>
+                            <constraint firstItem="LAO-gn-eoQ" firstAttribute="width" secondItem="1ag-zV-2zG" secondAttribute="width" id="lVx-xJ-mJu"/>
+                            <constraint firstItem="cGw-Vg-Nc8" firstAttribute="centerX" secondItem="LAO-gn-eoQ" secondAttribute="centerX" id="pF0-N1-uak"/>
+                            <constraint firstItem="LAO-gn-eoQ" firstAttribute="centerX" secondItem="1ag-zV-2zG" secondAttribute="centerX" id="vy7-zp-nV0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fgO-v2-D6i" firstAttribute="leading" secondItem="1ag-zV-2zG" secondAttribute="trailing" multiplier="1.25" id="1AY-GA-yEe"/>
+                    <constraint firstItem="Pod-vP-mfx" firstAttribute="height" secondItem="1ag-zV-2zG" secondAttribute="height" multiplier="2.2" id="1cP-ZC-Iut"/>
+                    <constraint firstItem="Pod-vP-mfx" firstAttribute="top" secondItem="LV9-e3-3tj" secondAttribute="top" id="2F7-mn-SBd"/>
+                    <constraint firstItem="Pod-vP-mfx" firstAttribute="width" secondItem="LV9-e3-3tj" secondAttribute="width" id="5Ti-rz-7Zr"/>
+                    <constraint firstItem="Pod-vP-mfx" firstAttribute="width" secondItem="fgO-v2-D6i" secondAttribute="width" multiplier="1.25" id="FQE-YH-cJk"/>
+                    <constraint firstItem="fgO-v2-D6i" firstAttribute="height" secondItem="Pod-vP-mfx" secondAttribute="height" id="HUV-uE-xHY"/>
+                    <constraint firstItem="fgO-v2-D6i" firstAttribute="centerY" secondItem="Pod-vP-mfx" secondAttribute="centerY" id="N1W-u0-JAA"/>
+                    <constraint firstItem="lrc-07-jYL" firstAttribute="trailing" secondItem="fgO-v2-D6i" secondAttribute="trailing" id="OwE-YS-faU"/>
+                    <constraint firstAttribute="height" secondItem="Pod-vP-mfx" secondAttribute="height" multiplier="1.2" id="RP9-ve-4PV"/>
+                    <constraint firstItem="fgO-v2-D6i" firstAttribute="width" secondItem="lrc-07-jYL" secondAttribute="width" multiplier="1.03" id="Wzm-Np-kSS"/>
+                    <constraint firstItem="1ag-zV-2zG" firstAttribute="top" secondItem="Pod-vP-mfx" secondAttribute="top" id="XOr-gO-fZL"/>
+                    <constraint firstItem="Pod-vP-mfx" firstAttribute="centerX" secondItem="LV9-e3-3tj" secondAttribute="centerX" id="iyZ-Hl-62O"/>
+                    <constraint firstItem="lrc-07-jYL" firstAttribute="bottom" secondItem="fgO-v2-D6i" secondAttribute="bottom" id="kI5-1Z-scv"/>
+                    <constraint firstItem="fgO-v2-D6i" firstAttribute="height" secondItem="lrc-07-jYL" secondAttribute="height" multiplier="3" id="wdY-3b-PmC"/>
+                    <constraint firstItem="Pod-vP-mfx" firstAttribute="trailing" secondItem="fgO-v2-D6i" secondAttribute="trailing" multiplier="1.02" id="zwy-cy-i0w"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnRecordPlay" destination="Cs3-dR-FVz" id="tzr-VD-Hzw"/>
+                <outlet property="sliderRecorder" destination="9Ka-Mb-Q4c" id="r5q-7D-HNl"/>
+            </connections>
+            <point key="canvasLocation" x="292" y="94"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="add_audio.png" width="90" height="90"/>
         <image name="audio.png" width="163" height="150"/>
+        <image name="box_bg.png" width="891" height="310"/>
         <image name="circle.png" width="181" height="181"/>
+        <image name="play_button.png" width="24" height="24"/>
         <image name="txt_audio.png" width="891" height="310"/>
     </resources>
 </document>

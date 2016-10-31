@@ -30,9 +30,12 @@
 #import "CLCloudinary.h"
 #import "CLUploader.h"
 #import "CloudinaryImageUploadService.h"
+#import "DeleteAssetService.h"
+#import "RecordViewController.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
-
-@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate>
+@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate>
 {
     IBOutlet UITableView *tblTagsCreation;
     NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags;////////// variables to be sent to the server
@@ -53,7 +56,17 @@
     
     ////dictionary for update to server
     NSMutableDictionary *dictAPI;
+    
+    // cloudinary instance
     CLCloudinary *cloudinary;
+    
+    ///////////****** key for deletion of assets**********///////////
+    NSString *strTAKey;
+    
+    AVAudioPlayer *player;
+    VoiceTagCell *cellVoiceRecord;
+    NSTimer *timer;
+
 }
 
 @end
@@ -74,18 +87,33 @@
     strDate=@"";
     
     cloudinary = [[CLCloudinary alloc] init];
-    [cloudinary.config setValue:@"skh2" forKey:@"cloud_name"];
-    [cloudinary.config setValue:@"648345983144481" forKey:@"api_key"];
-    [cloudinary.config setValue:@"4Ff7lJphCWF-JZd2V9lFBZ4dJ28" forKey:@"api_secret"];
+    [cloudinary.config setValue:@"dw2w2nb2e" forKey:@"cloud_name"];
+    [cloudinary.config setValue:@"963284535365757" forKey:@"api_key"];
+    [cloudinary.config setValue:@"m7Op_O9CtqVTUOVkdbDdfA4u_6o" forKey:@"api_secret"];
     strGender=@"";
     isLiving=NO;
     isLocation=NO;
     isTextViewClicked=NO;
+    
+    [[AVAudioSession sharedInstance] setCategory:
+     AVAudioSessionCategoryPlayAndRecord error:NULL];
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+    AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute,
+                            sizeof(audioRouteOverride), &audioRouteOverride);
+
+    NSDictionary *recordSetting2 = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
+                                    [NSNumber numberWithInt:AVAudioQualityMin], AVEncoderAudioQualityKey,
+                                    [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
+                                    [NSNumber numberWithFloat:8000.0], AVSampleRateKey,
+                                    nil];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [tblTagsCreation reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -338,12 +366,30 @@
                 
             case 6 :
             {
-                VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
-                if (!cellVoice)
+                if (appDel.strAudioURL.length>0)
                 {
-                    cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:0];
+                    VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellVoice)
+                    {
+                        cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:1];
+                    }
+                    cellVoice.sliderRecorder.minimumValue=0.0f;
+                    cellVoice.sliderRecorder.maximumValue=appDel.audioLength;
+                    [cellVoice.sliderRecorder setMinimumValue:0.0f];
+                    [cellVoice.btnRecordPlay addTarget:self action:@selector(btnPlayPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellVoice.sliderRecorder addTarget:self action:@selector(updateSlider) forControlEvents:UIControlEventValueChanged];
+                    cell=cellVoice;
                 }
-                cell=cellVoice;
+                else
+                {
+                    VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellVoice)
+                    {
+                        cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:0];
+                    }
+                    [cellVoice.btnVoice addTarget:self action:@selector(btnVoicePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellVoice;
+                }
             }
                 break;
                 
@@ -892,6 +938,42 @@
     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [tblTagsCreation endUpdates];
 }
+
+-(void)btnVoicePressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"segueAudio" sender:self];
+}
+
+-(void)btnPlayPressed:(id)sender
+{
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblTagsCreation];
+    NSIndexPath *indexPath = [tblTagsCreation indexPathForRowAtPoint:buttonPosition];
+    cellVoiceRecord=[tblTagsCreation cellForRowAtIndexPath:indexPath];
+    [cellVoiceRecord.sliderRecorder setValue:0.0f];
+    if (!player.playing)
+    {
+        NSData *objectData = [NSData dataWithContentsOfURL:[NSURL URLWithString:appDel.strAudioURL]];
+        NSError *error;
+
+        player = [[AVAudioPlayer alloc] initWithData:objectData error:&error];
+        NSLog(@"%@",[error description]);
+        [player setDelegate:self];
+        [player prepareToPlay];
+        player.volume=3.0;
+        [player play];
+        timer= [NSTimer scheduledTimerWithTimeInterval:0.0
+                                                target:self
+                                              selector:@selector(updateSlider)
+                                              userInfo:nil
+                                               repeats:YES];
+    }
+}
+
+-(void)updateSlider
+{
+    [cellVoiceRecord.sliderRecorder setValue:[player currentTime]];
+}
+
 #pragma mark
 #pragma mark Custom delegate preview popup
 #pragma mark
@@ -1194,6 +1276,9 @@
 
 -(void)deleteImagesFromIndex:(NSInteger)i
 {
+    [[DeleteAssetService service]deleteAssetWithkey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        
+    }];
     [appDel.arrImageSet removeObjectAtIndex:i];
     [tblTagsCreation beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
@@ -1272,11 +1357,21 @@
 
 -(void)deleteVideosFromIndex:(NSInteger)i
 {
-    [appDel.arrVideoSet removeObjectAtIndex:i];
-    [tblTagsCreation beginUpdates];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    [[DeleteAssetService service]deleteAssetWithkey:strTAKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            [appDel.arrVideoSet removeObjectAtIndex:i];
+            [tblTagsCreation beginUpdates];
+            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
+            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+            [tblTagsCreation endUpdates];
+
+        }
+    }];
 }
 
 #pragma mark
@@ -1486,16 +1581,19 @@
             @try
             {
                 NSString *strBytes=[successResult objectForKey:@"bytes"];
+                NSString *strPublicID=[successResult objectForKey:@"public_id"];
                 NSString *strCreated=[successResult objectForKey:@"created_at"];
                 NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
                 NSLog(@"%@",strFileName);
-                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I"  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                     if (isError)
                     {
                         [self displayErrorWithMessage:strMsg];
                     }
                     else
                     {
+                        strTAKey=result;
+                        NSLog(@"Result...%@\n TAKEY...%@",result,strTAKey);
                         if ([appDel.arrImageSet containsObject:@"1"])
                         {
                             [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
@@ -1547,16 +1645,19 @@
             @try
             {
                 NSString *strBytes=[successResult objectForKey:@"bytes"];
+                NSString *strPublicID=[successResult objectForKey:@"public_id"];
                 NSString *strCreated=[successResult objectForKey:@"created_at"];
                 NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
                 NSLog(@"%@",strFileName);
-                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"V"  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"V" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                     if (isError)
                     {
                         [self displayErrorWithMessage:strMsg];
                     }
                     else
                     {
+                        strTAKey=result;
+                        NSLog(@"Result...%@\n TAKEY...%@",result,strTAKey);
                         if ([appDel.arrVideoSet containsObject:@"1"])
                         {
                             [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgaThumb];
@@ -1587,4 +1688,42 @@
         
     }];
 }
+
+#pragma mark 
+#pragma mark PREPARE FOR SEGUE
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueAudio"])
+    {
+        RecordViewController *master=[segue destinationViewController];
+        master.objFolders=self.objFolders;
+    }
+}
+
+#pragma mark
+#pragma mark avplayer delegate
+#pragma mark
+
+- (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    [timer invalidate];
+    [cellVoiceRecord.sliderRecorder setValue:appDel.audioLength];
+
+}
+
+#pragma mark
+#pragma mark scrollview delegate
+#pragma mark
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (player.playing)
+    {
+        [player stop];
+        [timer invalidate];
+    }
+}
+
 @end
