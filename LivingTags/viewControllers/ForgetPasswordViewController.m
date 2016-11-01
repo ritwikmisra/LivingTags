@@ -107,7 +107,7 @@
     {
         [self viewDown];
     }
-   /* if ([self alertChecking])
+    if ([self alertChecking])
     {
         [[ForgetPasswordService service]callForgetPasswordServiceWithEmailID:strEmail withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
             if (isError)
@@ -130,8 +130,7 @@
                 }];
             }
         }];
-    }*/
-    [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark

@@ -12,6 +12,6 @@
 
 +(id)service;
 
--(void)callSocialServiceWithEmailID:(NSString *)strEmail id:(NSString *)strID name:(NSString *)strName pic:(NSString *)strPic social:(NSString *)strSocial socialEmail:(NSString *)strSocialEmailAvailable deviceType:(NSString *)strDeviceType withCompletionHandler:(WebServiceCompletion)handler;
+-(void)callSocialServiceWithEmailID:(NSString *)strEmail id:(NSString *)strID name:(NSString *)strName pic:(NSString *)strPic social:(NSString *)strSocial deviceType:(NSString *)strDeviceType withCompletionHandler:(WebServiceCompletion)handler;
 
 @end

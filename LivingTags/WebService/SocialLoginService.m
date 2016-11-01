@@ -21,18 +21,17 @@
     return master;
 }
 
--(void)callSocialServiceWithEmailID:(NSString *)strEmail id:(NSString *)strID name:(NSString *)strName pic:(NSString *)strPic social:(NSString *)strSocial socialEmail:(NSString *)strSocialEmailAvailable deviceType:(NSString *)strDeviceType withCompletionHandler:(WebServiceCompletion)handler
+-(void)callSocialServiceWithEmailID:(NSString *)strEmail id:(NSString *)strID name:(NSString *)strName pic:(NSString *)strPic social:(NSString *)strSocial deviceType:(NSString *)strDeviceType withCompletionHandler:(WebServiceCompletion)handler
 {
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"pic_uri=%@",strPic]];
+        [arr addObject:[NSString stringWithFormat:@"pic_url=%@",strPic]];
         [arr addObject:[NSString stringWithFormat:@"social=%@",strSocial]];
         [arr addObject:[NSString stringWithFormat:@"name=%@",strName]];
         [arr addObject:[NSString stringWithFormat:@"email=%@",strEmail]];
         [arr addObject:[NSString stringWithFormat:@"social_id=%@",strID]];
-        [arr addObject:[NSString stringWithFormat:@"social_email=%@",strSocialEmailAvailable]];
-        [arr addObject:[NSString stringWithFormat:@"rgistration_source=%@",strDeviceType]];
+        [arr addObject:[NSString stringWithFormat:@"signup_source=%@",strDeviceType]];
 
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         //postParams=[postParams stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
@@ -53,6 +52,7 @@
             [request setHTTPMethod:@"POST"];
             [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setValue:@"Basic YWRtaW46MTIzNDU2" forHTTPHeaderField:@"Authorization"];
             [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
             [request setTimeoutInterval:60.0];
             [request setHTTPBody:postData];
@@ -76,13 +76,32 @@
                         }
                         else
                         {
-                            if ([[responseDict objectForKey:@"status"]boolValue])
+                            @try
                             {
-                                handler([responseDict objectForKey:@"response"],NO,[[responseDict objectForKey:@"response"] objectForKey:@"message"]);
+                                if ([[responseDict objectForKey:@"status"]boolValue])
+                                {
+                                    NSString *strToken=[[responseDict objectForKey:@"response"] objectForKey:@"token"];
+                                    [[NSUserDefaults standardUserDefaults]setObject:strToken forKey:@"token"];
+                                    [[NSUserDefaults standardUserDefaults]synchronize];
+                                    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"token"]);
+                                    NSMutableDictionary *dict=[[responseDict objectForKey:@"response"] objectForKey:@"account"];
+                                    appDel.objUser=[[ModelUser alloc]initWithDictionary:dict];
+                                    handler([responseDict objectForKey:@"response"],NO,nil);
+                                }
+                                else
+                                {
+                                    handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                }
+
                             }
-                            else
+                            @catch (NSException *exception)
                             {
-                                handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                [[[UIAlertView alloc]initWithTitle:exception.reason message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+
+                            }
+                            @finally
+                            {
+                                
                             }
                         }
                     }

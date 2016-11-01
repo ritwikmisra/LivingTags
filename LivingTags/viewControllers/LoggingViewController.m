@@ -10,7 +10,7 @@
 #import "LoginService.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "socialLoginFirstService.h"
+#import "SocialLoginService.h"
 #import "PreviewPopUpController.h"
 
 static NSString *const kPlaceholderUserName = @"<Name>";
@@ -117,7 +117,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
 
 -(IBAction)btnFacebookPressed:(id)sender
 {
-   /* appDel.isFacebook=YES;
+   appDel.isFacebook=YES;
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"id,name,email" forKey:@"fields"];
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
@@ -195,7 +195,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     else
     {
         [self displayErrorWithMessage:@"Please check your internet connection!!"];
-    }*/
+    }
 }
 
 -(IBAction)btnForgetPasswordPressed:(id)sender
@@ -372,7 +372,7 @@ didDisconnectWithUser:(GIDGoogleUser *)user
     strName=[GIDSignIn sharedInstance].currentUser.profile.name;
     [[GIDSignIn sharedInstance] signOut];
     strSocialSite=@"GMAIL";
-   // [self callSocialLoginWebservice];
+    [self callSocialLoginWebservice];
     // Load avatar image asynchronously, in background
    /* dispatch_queue_t backgroundQueue =
     dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -405,23 +405,21 @@ didDisconnectWithUser:(GIDGoogleUser *)user
 {
     if (strEmail.length==0)
     {
-        strEmail=@"";
-        strEmailAvailable=@"N";
+        [self displayErrorWithMessage:@"Email ID not available"];
     }
     else
     {
-        strEmailAvailable=@"Y";
+        [[SocialLoginService service]callSocialServiceWithEmailID:strEmail id:strID name:strName pic:strImageURL social:strSocialSite  deviceType:@"IPHONE" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+            {
+                [self performSegueWithIdentifier:@"segueLoginToDashboard" sender:self];
+            }
+        }];
     }
-    [[socialLoginFirstService service]callSocialServiceFirstTymWithSocialAccountID:strID email:strEmail picture:strImageURL name:strName socialSite:strSocialSite socialEmailAvailable:strEmailAvailable withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            [self performSegueWithIdentifier:@"segueLoginToDashboard" sender:self];
-        }
-    }];
 }
 
 @end
