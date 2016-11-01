@@ -147,7 +147,7 @@
     }
     [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
     [tblTypes reloadData];
-    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.7];
+    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.3];
 }
 
 -(void)btnRightPressed:(id)sender
@@ -161,7 +161,7 @@
     [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
     [tblTypes reloadData];
     //[self performSegueWithIdentifier:@"segueTagCreation" sender:self];
-   // [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.3];
 }
 
 #pragma mark

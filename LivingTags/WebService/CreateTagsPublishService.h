@@ -12,6 +12,6 @@
 
 +(id)service;
 
--(void)callPublishServiceWithLivingTagsID:(NSString *)strUserID tcKey:(NSString *)strTCKey withCompletionHandler:(WebServiceCompletion)handler;
+-(void)callPublishServiceWithLivingTagsID:(NSString *)strFolder tcKey:(NSString *)strTCKey withCompletionHandler:(WebServiceCompletion)handler;
 
 @end

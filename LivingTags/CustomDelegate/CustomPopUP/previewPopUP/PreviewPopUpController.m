@@ -84,6 +84,7 @@
 
 -(IBAction)btnPreviewPressed:(id)sender
 {
+    [self.view removeFromSuperview];
     if (self.myDelegate && [self.myDelegate respondsToSelector:@selector(previewButtonPressed)])
     {
         [self.myDelegate previewButtonPressed];

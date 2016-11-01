@@ -8,12 +8,18 @@
 
 #import "QRCodeScanViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImageView+WebCache.h"
+
 
 @interface QRCodeScanViewController ()
 {
     IBOutlet UILabel *lblTagHeading;
     IBOutlet UILabel *lblTagBody;
     IBOutlet UIView *vwQRCode;
+    IBOutlet UIImageView *imgQR;
+    IBOutlet UILabel *lblPublishLink;
+    IBOutlet UIActivityIndicatorView *actIndicatorQRCodes;
+
 }
 
 @end
@@ -49,10 +55,36 @@
         [lblTagHeading setFont:[UIFont systemFontOfSize:17]];
         [lblTagBody setFont:[UIFont systemFontOfSize:13]];
     }
+    NSLog(@"%@",self.dictQR);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [imgQR sd_setImageWithURL:[NSURL URLWithString:[self.dictQR objectForKey:@"qrCodeUrl"]]
+                 placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                          options:SDWebImageHighPriority
+                         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                             [actIndicatorQRCodes startAnimating];
+                         }
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                            [actIndicatorQRCodes stopAnimating];
+                        }];
+    });
+    NSString *strLabel=[self.dictQR objectForKey:@"tagUrl"];
+    lblPublishLink.text=strLabel;
+
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark
+#pragma mark IBACTIONS
+#pragma mark
+
+-(IBAction)btnViewYourLivingTagPressed:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.dictQR objectForKey:@"tagUrl"]]];
+    exit(0);
 }
 
 @end

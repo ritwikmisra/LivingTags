@@ -34,11 +34,14 @@
 #import "RecordViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "PublishTagService.h"
+#import "QRCodeScanViewController.h"
+#import "PreviewAdService.h"
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate>
 {
     IBOutlet UITableView *tblTagsCreation;
-    NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags;////////// variables to be sent to the server
+    NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags,*strPlace;////////// variables to be sent to the server
     BOOL isLiving,isLocation,isTextViewClicked;
     NSMutableArray *arrPlaceHolders;
     CustomdatePickerViewController *datePickerController ;
@@ -66,6 +69,9 @@
     AVAudioPlayer *player;
     VoiceTagCell *cellVoiceRecord;
     NSTimer *timer;
+    
+    /////dictionary segue for QR codes
+    NSMutableDictionary *dictQRCode;
 
 }
 
@@ -94,6 +100,7 @@
     isLiving=NO;
     isLocation=NO;
     isTextViewClicked=NO;
+    strPlace=@"";
     
     [[AVAudioSession sharedInstance] setCategory:
      AVAudioSessionCategoryPlayAndRecord error:NULL];
@@ -832,12 +839,15 @@
 
 -(void)btnNextPressed:(id)sender
 {
-    PreviewPopUpController *master=[[PreviewPopUpController alloc]initWithNibName:@"PreviewPopUpController" bundle:nil];
-    master.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:master.view];
-    [self addChildViewController:master];
-    master.myDelegate=self;
-    [master didMoveToParentViewController:self];
+    if ([self alertChecking])
+    {
+        PreviewPopUpController *master=[[PreviewPopUpController alloc]initWithNibName:@"PreviewPopUpController" bundle:nil];
+        master.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:master.view];
+        [self addChildViewController:master];
+        master.myDelegate=self;
+        [master didMoveToParentViewController:self];
+    }
 }
 
 
@@ -901,6 +911,7 @@
                  }
              }];
             NSLog(@"place.formattedAddress:%@",place.formattedAddress);
+            strPlace=place.formattedAddress;
             [self checkLocationWithAddress:place.formattedAddress];
             NSString *strCat = place.types[0];
             NSLog(@"Category:%@",strCat);
@@ -980,12 +991,38 @@
 
 -(void)previewButtonPressed
 {
-    
+    if ([self alertChecking])
+    {
+        [[PreviewAdService service]previewAdServiceWithKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+            {
+                NSLog(@"%@",[result objectForKey:@"previewUrl"]);
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[result objectForKey:@"previewUrl"]]];
+                exit(0);
+
+            }
+        }];
+    }
 }
 
 -(void)publishButtonPressed
 {
-    [self performSegueWithIdentifier:@"segueQRCode" sender:self];
+    [[PublishTagService service]publishTagServiceWithKey:self.objFolders.strTkey tName:objTemplates.strtname aFolder:appDel.objUser.strAfolder tFolder:self.objFolders.strTFolder withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            NSLog(@"%@",result);
+            dictQRCode=(NSMutableDictionary *)result;
+            [self performSegueWithIdentifier:@"segueQRCode" sender:self];
+        }
+    }];
 }
 
 #pragma mark
@@ -1116,16 +1153,17 @@
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     strTextVwTags=textView.text;
+    if (textView.text.length>0)
+    {
+        [self checkMemorialQuotes];
+    }
+
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     if([text isEqualToString:@"\n"])
     {
-        if (textView.text.length>0)
-        {
-            [self checkMemorialQuotes];
-        }
         [textView resignFirstResponder];
         [tblTagsCreation setContentOffset:CGPointMake(0, 0) animated:YES];
         return NO;
@@ -1700,6 +1738,12 @@
         RecordViewController *master=[segue destinationViewController];
         master.objFolders=self.objFolders;
     }
+    if ([segue.identifier isEqualToString:@"segueQRCode"])
+    {
+        QRCodeScanViewController *master=[segue destinationViewController];
+        master.dictQR=dictQRCode;
+    }
+
 }
 
 #pragma mark
@@ -1724,6 +1768,51 @@
         [player stop];
         [timer invalidate];
     }
+}
+
+#pragma mark
+#pragma mark ALERT CHECKING
+#pragma mark
+
+-(BOOL)alertChecking
+{
+    if (strPersonName.length==0)
+    {
+        [self displayErrorWithMessage:@"Please enter person name."];
+        return NO;
+    }
+    if (strGender.length==0)
+    {
+        [self displayErrorWithMessage:@"Please enter gender."];
+        return NO;
+
+    }
+    if (isLiving==NO)
+    {
+        if (strDeathDate.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter death date."];
+            return NO;
+
+        }
+    }
+    if (strBirthDate.length==0)
+    {
+        [self displayErrorWithMessage:@"Please enter birth date."];
+        return NO;
+
+    }
+    if (strPlace.length==0)
+    {
+        [self displayErrorWithMessage:@"Please enter birth date."];
+        return NO;
+    }
+    if (strTextVwTags.length==0)
+    {
+        [self displayErrorWithMessage:@"Please enter a memorial quote."];
+        return NO;
+    }
+    return YES;
 }
 
 @end

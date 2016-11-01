@@ -1,34 +1,32 @@
 //
-//  CreateTagsPublishService.m
+//  PreviewAdService.m
 //  LivingTags
 //
-//  Created by appsbeetech on 01/08/16.
+//  Created by appsbeetech on 01/11/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
 //
 
-#import "CreateTagsPublishService.h"
-#import "ModelFolders.h"
+#import "PreviewAdService.h"
 
-@implementation CreateTagsPublishService
+@implementation PreviewAdService
 
 +(id)service
 {
-    static CreateTagsPublishService *master=nil;
+    static PreviewAdService *master=nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        master=[[CreateTagsPublishService alloc]initWithService:WEB_SERVICES_CREATE_TAGS];
+        master=[[PreviewAdService alloc]initWithService:WEB_SERVICE_PREVIEW_TAG];
     });
     return master;
 }
 
--(void)callPublishServiceWithLivingTagsID:(NSString *)strFolder tcKey:(NSString *)strTCKey withCompletionHandler:(WebServiceCompletion)handler;
+-(void)previewAdServiceWithKey:(NSString *)strtkey withCompletionHandler:(WebServiceCompletion)handler
 {
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"afolder=%@",strFolder]];
-        [arr addObject:[NSString stringWithFormat:@"tckey=%@",strTCKey]];
-
+        [arr addObject:[NSString stringWithFormat:@"tkey=%@",strtkey]];
+        
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         //postParams=[postParams stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         NSLog(@"postParams = %@",postParams);
@@ -51,7 +49,7 @@
             [request setValue:@"Basic YWRtaW46MTIzNDU2" forHTTPHeaderField:@"Authorization"];
             NSLog(@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"token"]);
             [request setValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"token"] forHTTPHeaderField:@"token"];
-
+            
             [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
             [request setTimeoutInterval:60.0];
             [request setHTTPBody:postData];
@@ -79,9 +77,7 @@
                             {
                                 if ([[responseDict objectForKey:@"status"]boolValue])
                                 {
-                                    NSDictionary *dict=[responseDict objectForKey:@"response"] ;
-                                    ModelFolders *obj=[[ModelFolders alloc]initWithDictionary:dict];
-                                    handler(obj,NO,[responseDict objectForKey:@"error"] );
+                                    handler([responseDict objectForKey:@"response"],NO,nil );
                                 }
                                 else
                                 {
@@ -110,5 +106,7 @@
     {
         handler(nil,YES,NO_NETWORK);
     }
+
 }
+
 @end

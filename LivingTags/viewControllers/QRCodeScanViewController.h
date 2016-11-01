@@ -10,4 +10,6 @@
 
 @interface QRCodeScanViewController : ViewControllerBaseClassViewController
 
+@property(nonatomic,strong)NSMutableDictionary *dictQR;
+
 @end

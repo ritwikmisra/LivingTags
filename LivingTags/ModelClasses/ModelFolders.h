@@ -15,6 +15,7 @@
 @property(nonatomic,strong)NSString *strAudioFolder;
 @property(nonatomic,strong)NSString *strVideoFolder;
 @property(nonatomic,strong)NSString *strImageFolder;
+@property(nonatomic,strong)NSString *strTFolder;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 @end

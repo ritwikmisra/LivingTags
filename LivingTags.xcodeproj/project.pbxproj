@@ -42,6 +42,8 @@
 		0D23053D1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */; };
 		0D2305471D54C76C00115A34 /* SidePanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2305451D54C76C00115A34 /* SidePanelCell.m */; };
 		0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2305461D54C76C00115A34 /* SidePanelCell.xib */; };
+		0D28FE961DC8B8910079FFDF /* PublishTagService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D28FE951DC8B8910079FFDF /* PublishTagService.m */; };
+		0D28FE991DC8E3CC0079FFDF /* PreviewAdService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D28FE981DC8E3CC0079FFDF /* PreviewAdService.m */; };
 		0D3121231DC357AC00F00B8F /* ModelFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3121221DC357AC00F00B8F /* ModelFolders.m */; };
 		0D31212E1DC35BED00F00B8F /* libCloudinary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D31212D1DC35BED00F00B8F /* libCloudinary.a */; };
 		0D3121311DC3646700F00B8F /* CloudinaryImageUploadService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3121301DC3646700F00B8F /* CloudinaryImageUploadService.m */; };
@@ -250,8 +252,6 @@
 		0DF008B21DAFD7B000BD39C3 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF008B01DAFD7B000BD39C3 /* location.png */; };
 		0DF008B41DAFD80100BD39C3 /* box_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF008B31DAFD80100BD39C3 /* box_bg.png */; };
 		0DF008B61DAFE6F200BD39C3 /* find_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF008B51DAFE6F200BD39C3 /* find_button.png */; };
-		0DF7CF9B1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CF9A1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m */; };
-		0DF7CF9E1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CF9D1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m */; };
 		0DF7CFA11D4F648300A28CA1 /* CreateTagsPublishService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */; };
 		0DF7CFA41D4F9A5900A28CA1 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7CFA31D4F9A5900A28CA1 /* PreviewViewController.m */; };
 		CD675A601D50A0E60035C5ED /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D9350A61CDB60AE00E403B2 /* MediaPlayer.framework */; };
@@ -302,6 +302,10 @@
 		0D2305441D54C76200115A34 /* SidePanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidePanelCell.h; sourceTree = "<group>"; };
 		0D2305451D54C76C00115A34 /* SidePanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidePanelCell.m; sourceTree = "<group>"; };
 		0D2305461D54C76C00115A34 /* SidePanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidePanelCell.xib; sourceTree = "<group>"; };
+		0D28FE941DC8B8900079FFDF /* PublishTagService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishTagService.h; sourceTree = "<group>"; };
+		0D28FE951DC8B8910079FFDF /* PublishTagService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishTagService.m; sourceTree = "<group>"; };
+		0D28FE971DC8E3CC0079FFDF /* PreviewAdService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewAdService.h; sourceTree = "<group>"; };
+		0D28FE981DC8E3CC0079FFDF /* PreviewAdService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewAdService.m; sourceTree = "<group>"; };
 		0D3121211DC357AC00F00B8F /* ModelFolders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFolders.h; sourceTree = "<group>"; };
 		0D3121221DC357AC00F00B8F /* ModelFolders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFolders.m; sourceTree = "<group>"; };
 		0D3121271DC35BED00F00B8F /* CLCloudinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCloudinary.h; sourceTree = "<group>"; };
@@ -618,10 +622,6 @@
 		0DF008B01DAFD7B000BD39C3 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		0DF008B31DAFD80100BD39C3 /* box_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box_bg.png; sourceTree = "<group>"; };
 		0DF008B51DAFE6F200BD39C3 /* find_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = find_button.png; sourceTree = "<group>"; };
-		0DF7CF991D4F645000A28CA1 /* CreateTagsUploadProfilePicService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsUploadProfilePicService.h; sourceTree = "<group>"; };
-		0DF7CF9A1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsUploadProfilePicService.m; sourceTree = "<group>"; };
-		0DF7CF9C1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsUploadCoverPicService.h; sourceTree = "<group>"; };
-		0DF7CF9D1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsUploadCoverPicService.m; sourceTree = "<group>"; };
 		0DF7CF9F1D4F648300A28CA1 /* CreateTagsPublishService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsPublishService.h; sourceTree = "<group>"; };
 		0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsPublishService.m; sourceTree = "<group>"; };
 		0DF7CFA21D4F9A5900A28CA1 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
@@ -1104,10 +1104,6 @@
 				0D924F4F1D3F8A2B00BC8193 /* LivingTagsSecondStepService.m */,
 				0D79E2171D4A4F7E007E4B35 /* CreateTagsThirdStepService.h */,
 				0D79E2181D4A4F7E007E4B35 /* CreateTagsThirdStepService.m */,
-				0DF7CF991D4F645000A28CA1 /* CreateTagsUploadProfilePicService.h */,
-				0DF7CF9A1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m */,
-				0DF7CF9C1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.h */,
-				0DF7CF9D1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m */,
 				0DF7CF9F1D4F648300A28CA1 /* CreateTagsPublishService.h */,
 				0DF7CFA01D4F648300A28CA1 /* CreateTagsPublishService.m */,
 				0D6030631D58B97000DB3333 /* LivingTagsFourthStepService.h */,
@@ -1116,6 +1112,10 @@
 				0D3121301DC3646700F00B8F /* CloudinaryImageUploadService.m */,
 				0DC2F5961DC72BBD00AB1795 /* DeleteAssetService.h */,
 				0DC2F5971DC72BBD00AB1795 /* DeleteAssetService.m */,
+				0D28FE941DC8B8900079FFDF /* PublishTagService.h */,
+				0D28FE951DC8B8910079FFDF /* PublishTagService.m */,
+				0D28FE971DC8E3CC0079FFDF /* PreviewAdService.h */,
+				0D28FE981DC8E3CC0079FFDF /* PreviewAdService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1693,12 +1693,12 @@
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
 				0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */,
+				0D28FE991DC8E3CC0079FFDF /* PreviewAdService.m in Sources */,
 				0D066ADC1D2A8DA800C910E8 /* ReadAllTagsViewController.m in Sources */,
 				0DD198211DB62615003BB828 /* PreviewPopUpController.m in Sources */,
 				0D3731471CD8A10B00EDC547 /* UIButton+WebCache.m in Sources */,
 				0D5FAEBC1D09C8E700A3384A /* CreateLivingTagsViewController.m in Sources */,
 				0D922FAE1CF8664300EC1945 /* CustomAnnotationSingle.m in Sources */,
-				0DF7CF9B1D4F645000A28CA1 /* CreateTagsUploadProfilePicService.m in Sources */,
 				0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */,
 				0DF7CFA11D4F648300A28CA1 /* CreateTagsPublishService.m in Sources */,
 				0DF008561DAF952500BD39C3 /* PersonGenderCell.m in Sources */,
@@ -1741,6 +1741,7 @@
 				0DF7CFA41D4F9A5900A28CA1 /* PreviewViewController.m in Sources */,
 				0D7BA23D1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m in Sources */,
 				0D3731491CD8A10B00EDC547 /* UIImage+MultiFormat.m in Sources */,
+				0D28FE961DC8B8910079FFDF /* PublishTagService.m in Sources */,
 				0D3731421CD8A10B00EDC547 /* SDWebImageDecoder.m in Sources */,
 				0DF0085B1DAF984000BD39C3 /* BirthDeathDateCell.m in Sources */,
 				0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */,
@@ -1761,7 +1762,6 @@
 				0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */,
 				0DA226611CD2020800B3A5BC /* ModelUser.m in Sources */,
 				0D698D0C1CC8CF2500F64745 /* LivingTags.xcdatamodeld in Sources */,
-				0DF7CF9E1D4F646C00A28CA1 /* CreateTagsUploadCoverPicService.m in Sources */,
 				0D3731431CD8A10B00EDC547 /* SDWebImageDownloader.m in Sources */,
 				0D6659451DA6A89300566879 /* CreateTagsTypeControllerViewController.m in Sources */,
 				0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */,

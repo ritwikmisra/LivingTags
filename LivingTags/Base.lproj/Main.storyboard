@@ -2131,19 +2131,28 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yla-xP-hyT">
                                         <rect key="frame" x="10" y="10" width="138" height="138"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_pin_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="zx4-o8-2Rg">
-                                                <rect key="frame" x="36" y="26" width="66" height="86"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zx4-o8-2Rg">
+                                                <rect key="frame" x="32" y="20" width="74" height="98"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="zx4-o8-2Rg" secondAttribute="height" multiplier="347:457" id="E4N-Ln-lQO"/>
                                                 </constraints>
                                             </imageView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1rE-Ys-cfm">
+                                                <rect key="frame" x="59" y="59" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="LQt-nH-P4l"/>
+                                                    <constraint firstAttribute="height" constant="20" id="cAq-Hg-DJr"/>
+                                                </constraints>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="1rE-Ys-cfm" firstAttribute="centerX" secondItem="zx4-o8-2Rg" secondAttribute="centerX" id="PIX-XU-Mz6"/>
                                             <constraint firstItem="zx4-o8-2Rg" firstAttribute="centerY" secondItem="yla-xP-hyT" secondAttribute="centerY" id="SHA-Cm-dPR"/>
                                             <constraint firstItem="zx4-o8-2Rg" firstAttribute="centerX" secondItem="yla-xP-hyT" secondAttribute="centerX" id="Yao-ot-xe9"/>
                                             <constraint firstAttribute="width" secondItem="yla-xP-hyT" secondAttribute="height" id="a11-M6-DQ5"/>
-                                            <constraint firstAttribute="height" secondItem="zx4-o8-2Rg" secondAttribute="height" multiplier="1.6" id="dZF-Zr-cx6"/>
+                                            <constraint firstItem="1rE-Ys-cfm" firstAttribute="centerY" secondItem="zx4-o8-2Rg" secondAttribute="centerY" id="aYf-jm-p4F"/>
+                                            <constraint firstAttribute="height" secondItem="zx4-o8-2Rg" secondAttribute="height" multiplier="1.4" id="dZF-Zr-cx6"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2155,18 +2164,10 @@
                                     <constraint firstItem="yla-xP-hyT" firstAttribute="centerX" secondItem="gVt-G0-Ge5" secondAttribute="centerX" id="iXD-ez-eTu"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHv-Ed-vy5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHv-Ed-vy5">
                                 <rect key="frame" x="50" y="438" width="500" height="24"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="http://livingtags.digiopia.in/tags/ritwikMisra234">
-                                        <attributes>
-                                            <color key="NSColor" red="0.14117647058823529" green="0.36470588235294116" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            <integer key="NSUnderline" value="1"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXC-Ui-g5m">
@@ -2174,12 +2175,15 @@
                                 <state key="normal" backgroundImage="get_LT.png"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kt-of-DsY">
-                                <rect key="frame" x="86" y="531" width="428" height="38"/>
+                                <rect key="frame" x="86" y="529" width="428" height="37"/>
                                 <color key="backgroundColor" red="0.3411764706" green="0.77647058820000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="VIEW YOUR LIVING TAGS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnViewYourLivingTagPressed:" destination="muh-lL-wub" eventType="touchUpInside" id="nun-4e-IQE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2232,6 +2236,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actIndicatorQRCodes" destination="1rE-Ys-cfm" id="Gsa-Nu-y5k"/>
+                        <outlet property="imgQR" destination="zx4-o8-2Rg" id="PCj-0A-W4n"/>
+                        <outlet property="lblPublishLink" destination="DHv-Ed-vy5" id="6fb-Pt-yrC"/>
                         <outlet property="lblTagBody" destination="hje-lg-HJH" id="gh2-wo-ANN"/>
                         <outlet property="lblTagHeading" destination="Pjs-kh-IVw" id="QNW-qA-hhx"/>
                         <outlet property="vwQRCode" destination="gVt-G0-Ge5" id="7ji-iW-wT0"/>
@@ -3253,7 +3260,6 @@
         <image name="get_LT.png" width="1023" height="156"/>
         <image name="logo1.png" width="964" height="208"/>
         <image name="logo_1.png" width="2286" height="595"/>
-        <image name="logo_pin_logo.png" width="347" height="457"/>
         <image name="mail_icon.png" width="86" height="58"/>
         <image name="map_pin.png" width="84" height="105"/>
         <image name="menu_icon2.png" width="95" height="60"/>

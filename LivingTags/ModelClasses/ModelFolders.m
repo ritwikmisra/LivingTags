@@ -46,6 +46,15 @@
         {
             self.strVideoFolder=@"";
         }
+        //tfolder
+        if ([dict objectForKey:@"tfolder"]&& ![[dict objectForKey:@"tfolder"] isKindOfClass:[NSNull class]])
+        {
+            self.strTFolder=[dict objectForKey:@"tfolder"];
+        }
+        else
+        {
+            self.strTFolder=@"";
+        }
     }
     return self;
 }
