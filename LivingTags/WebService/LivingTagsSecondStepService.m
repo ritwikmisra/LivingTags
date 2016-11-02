@@ -22,7 +22,7 @@
 
 -(void)callSecondStepServiceWithDIctionary:(NSMutableDictionary *)dict tKey:(NSString *)strtKey withCompletionHandler:(WebServiceCompletion)completionHandler
 {
-    NSLog(@"%@",dict);
+    NSLog(@"%@,,,,%@",dict,strtKey);
     NSMutableDictionary *dictParams=[[NSMutableDictionary alloc]init];
     for (NSString *key in dict)
     {

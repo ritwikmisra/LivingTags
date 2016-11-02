@@ -130,6 +130,103 @@
         {
             self.strtaddress1=@"";
         }
+        /////******tslogan
+        if ([dict objectForKey:@"tslogan"] && ![[dict objectForKey:@"tslogan"] isKindOfClass:[NSNull class]])//
+        {
+            self.strSlogan=[dict objectForKey:@"tslogan"];
+        }
+        else
+        {
+            self.strSlogan=@"";
+        }
+        /////
+        if ([dict objectForKey:@"tcname"] && ![[dict objectForKey:@"tcname"] isKindOfClass:[NSNull class]])//
+        {
+            self.strTcname=[dict objectForKey:@"tcname"];
+        }
+        else
+        {
+            self.strTcname=@"";
+        }
+        /////tphone
+        if ([dict objectForKey:@"tphone"] && ![[dict objectForKey:@"tphone"] isKindOfClass:[NSNull class]])//
+        {
+            self.strTphone=[dict objectForKey:@"tphone"];
+        }
+        else
+        {
+            self.strTphone=@"";
+        }
+        
+        /////tfax
+        if ([dict objectForKey:@"tfax"] && ![[dict objectForKey:@"tfax"] isKindOfClass:[NSNull class]])//
+        {
+            self.strTfax=[dict objectForKey:@"tfax"];
+        }
+        else
+        {
+            self.strTfax=@"";
+        }
+        /////tcategories
+        if ([dict objectForKey:@"tcategories"] && ![[dict objectForKey:@"tcategories"] isKindOfClass:[NSNull class]])//
+        {
+            self.strTcategories=[dict objectForKey:@"tcategories"];
+        }
+        else
+        {
+            self.strTcategories=@"";
+        }
+        
+        //// taddress2
+        if ([dict objectForKey:@"taddress2"] && ![[dict objectForKey:@"taddress2"] isKindOfClass:[NSNull class]])//
+        {
+            self.strAddress2=[dict objectForKey:@"taddress2"];
+        }
+        else
+        {
+            self.strAddress2=@"";
+        }
+
+        ////tlat2
+        if ([dict objectForKey:@"tlat2"] && ![[dict objectForKey:@"tlat2"] isKindOfClass:[NSNull class]])//
+        {
+            self.strLat2=[dict objectForKey:@"tlat2"];
+        }
+        else
+        {
+            self.strLat2=@"";
+        }
+
+        ///tlong2
+        if ([dict objectForKey:@"tlong2"] && ![[dict objectForKey:@"tlong2"] isKindOfClass:[NSNull class]])//
+        {
+            self.strlong2=[dict objectForKey:@"tlong2"];
+        }
+        else
+        {
+            self.strlong2=@"";
+        }
+
+        ////tmobile
+        if ([dict objectForKey:@"tmobile"] && ![[dict objectForKey:@"tmobile"] isKindOfClass:[NSNull class]])//
+        {
+            self.strMobile=[dict objectForKey:@"tmobile"];
+        }
+        else
+        {
+            self.strMobile=@"";
+        }
+
+        ///twebsite
+        if ([dict objectForKey:@"twebsite"] && ![[dict objectForKey:@"twebsite"] isKindOfClass:[NSNull class]])//
+        {
+            self.strWebsite=[dict objectForKey:@"twebsite"];
+        }
+        else
+        {
+            self.strWebsite=@"";
+        }
+        
     }
     return self;
 }

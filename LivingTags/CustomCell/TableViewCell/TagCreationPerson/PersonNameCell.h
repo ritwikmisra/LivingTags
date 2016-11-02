@@ -11,5 +11,6 @@
 @interface PersonNameCell : UITableViewCell
 
 @property(nonatomic,strong)IBOutlet UITextField *txtPersonName;
+@property(nonatomic,strong)IBOutlet UIButton *btnContact;
 
 @end

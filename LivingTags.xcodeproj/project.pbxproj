@@ -209,6 +209,8 @@
 		0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1DE1CDA32C50053AF1A /* ForgetPasswordService.m */; };
 		0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1E11CDA49460053AF1A /* ImportContactsViewController.m */; };
 		0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE967521D353D690088C508 /* LivingTagsSecondStepViewController.m */; };
+		0DE96D731DC9F958000981B1 /* ContactsPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE96D711DC9F958000981B1 /* ContactsPopupController.m */; };
+		0DE96D741DC9F958000981B1 /* ContactsPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE96D721DC9F958000981B1 /* ContactsPopupController.xib */; };
 		0DF008511DAF93E600BD39C3 /* PersonNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF0084F1DAF93E600BD39C3 /* PersonNameCell.m */; };
 		0DF008521DAF93E600BD39C3 /* PersonNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF008501DAF93E600BD39C3 /* PersonNameCell.xib */; };
 		0DF008561DAF952500BD39C3 /* PersonGenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF008541DAF952500BD39C3 /* PersonGenderCell.m */; };
@@ -571,6 +573,9 @@
 		0DE7A1E11CDA49460053AF1A /* ImportContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportContactsViewController.m; sourceTree = "<group>"; };
 		0DE967511D353D680088C508 /* LivingTagsSecondStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsSecondStepViewController.h; sourceTree = "<group>"; };
 		0DE967521D353D690088C508 /* LivingTagsSecondStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsSecondStepViewController.m; sourceTree = "<group>"; };
+		0DE96D701DC9F958000981B1 /* ContactsPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsPopupController.h; sourceTree = "<group>"; };
+		0DE96D711DC9F958000981B1 /* ContactsPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsPopupController.m; sourceTree = "<group>"; };
+		0DE96D721DC9F958000981B1 /* ContactsPopupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsPopupController.xib; sourceTree = "<group>"; };
 		0DF0084E1DAF93E600BD39C3 /* PersonNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonNameCell.h; sourceTree = "<group>"; };
 		0DF0084F1DAF93E600BD39C3 /* PersonNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonNameCell.m; sourceTree = "<group>"; };
 		0DF008501DAF93E600BD39C3 /* PersonNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonNameCell.xib; sourceTree = "<group>"; };
@@ -1154,6 +1159,7 @@
 		0D85A7DE1D63071B003F4427 /* CustomPopUP */ = {
 			isa = PBXGroup;
 			children = (
+				0DE96D6F1DC9F8E7000981B1 /* ContactsPopUP */,
 				0DD1981D1DB62554003BB828 /* previewPopUP */,
 			);
 			path = CustomPopUP;
@@ -1338,6 +1344,16 @@
 				0DD198281DB66476003BB828 /* logo_pin_logo.png */,
 			);
 			path = QRCode;
+			sourceTree = "<group>";
+		};
+		0DE96D6F1DC9F8E7000981B1 /* ContactsPopUP */ = {
+			isa = PBXGroup;
+			children = (
+				0DE96D701DC9F958000981B1 /* ContactsPopupController.h */,
+				0DE96D711DC9F958000981B1 /* ContactsPopupController.m */,
+				0DE96D721DC9F958000981B1 /* ContactsPopupController.xib */,
+			);
+			path = ContactsPopUP;
 			sourceTree = "<group>";
 		};
 		0DF0084D1DAF925B00BD39C3 /* TagCreationPerson */ = {
@@ -1574,6 +1590,7 @@
 				0D3A40141DB5159F0040D6D4 /* back_icon.png in Resources */,
 				0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */,
 				0D1DDF7F1DA7BB5B0063F2F9 /* pet_icon.png in Resources */,
+				0DE96D741DC9F958000981B1 /* ContactsPopupController.xib in Resources */,
 				0D8934E21DB11A0200A48562 /* AddLogoCell.xib in Resources */,
 				0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */,
 				0D19166E1DBF8F72004D02DA /* setting.png in Resources */,
@@ -1742,6 +1759,7 @@
 				0D7BA23D1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m in Sources */,
 				0D3731491CD8A10B00EDC547 /* UIImage+MultiFormat.m in Sources */,
 				0D28FE961DC8B8910079FFDF /* PublishTagService.m in Sources */,
+				0DE96D731DC9F958000981B1 /* ContactsPopupController.m in Sources */,
 				0D3731421CD8A10B00EDC547 /* SDWebImageDecoder.m in Sources */,
 				0DF0085B1DAF984000BD39C3 /* BirthDeathDateCell.m in Sources */,
 				0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */,

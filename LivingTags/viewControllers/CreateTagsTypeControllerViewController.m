@@ -170,22 +170,15 @@
 
 -(void)moveToTagCreation
 {
-    if ([strTags isEqualToString:@"Persons"])
-    {
-        [[CreateTagsPublishService service]callPublishServiceWithLivingTagsID:appDel.objUser.strAfolder tcKey:@"1" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-            if (isError)
-            {
-                [self displayErrorWithMessage:strMsg];
-            }
-            else
-                objSegueFolders=(id)result;
-                [self performSegueWithIdentifier:@"segueTagCreation" sender:self];
-        }];
-    }
-    else
-    {
+    [[CreateTagsPublishService service]callPublishServiceWithLivingTagsID:appDel.objUser.strAfolder tcKey:@"1" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+            objSegueFolders=(id)result;
         [self performSegueWithIdentifier:@"segueTagCreation" sender:self];
-    }
+    }];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

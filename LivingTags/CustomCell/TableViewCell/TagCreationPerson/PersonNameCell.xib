@@ -51,5 +51,56 @@
             </connections>
             <point key="canvasLocation" x="393" y="195.5"/>
         </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="49" id="aqz-dR-r3F" customClass="PersonNameCell">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="49"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aqz-dR-r3F" id="zGq-xJ-F7g">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="48"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7eC-Qf-WIA">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="48"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lu0-EY-h1m">
+                        <rect key="frame" x="9" y="32" width="358" height="1"/>
+                        <color key="backgroundColor" red="0.56470588239999997" green="0.57254901960000004" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="7Q6-6B-pEc"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Person Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gci-5Q-9ie">
+                        <rect key="frame" x="9" y="5" width="358" height="27"/>
+                        <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRd-sJ-8bN">
+                        <rect key="frame" x="9" y="5" width="358" height="27"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Gci-5Q-9ie" firstAttribute="centerX" secondItem="7eC-Qf-WIA" secondAttribute="centerX" id="3jI-Dl-NtL"/>
+                    <constraint firstItem="7eC-Qf-WIA" firstAttribute="height" secondItem="Gci-5Q-9ie" secondAttribute="height" multiplier="1.8" id="4cq-bl-Zzy"/>
+                    <constraint firstItem="Lu0-EY-h1m" firstAttribute="top" secondItem="Gci-5Q-9ie" secondAttribute="bottom" id="KQW-BN-Is2"/>
+                    <constraint firstItem="7eC-Qf-WIA" firstAttribute="centerY" secondItem="zGq-xJ-F7g" secondAttribute="centerY" id="Nbx-ER-O86"/>
+                    <constraint firstItem="7eC-Qf-WIA" firstAttribute="width" secondItem="Gci-5Q-9ie" secondAttribute="width" multiplier="1.05" id="QF4-GR-cLq"/>
+                    <constraint firstItem="dRd-sJ-8bN" firstAttribute="width" secondItem="Gci-5Q-9ie" secondAttribute="width" id="QXP-yq-JPI"/>
+                    <constraint firstItem="7eC-Qf-WIA" firstAttribute="centerX" secondItem="zGq-xJ-F7g" secondAttribute="centerX" id="SCg-jb-4WE"/>
+                    <constraint firstItem="Lu0-EY-h1m" firstAttribute="centerX" secondItem="7eC-Qf-WIA" secondAttribute="centerX" id="VWJ-0a-QMw"/>
+                    <constraint firstItem="dRd-sJ-8bN" firstAttribute="centerX" secondItem="Gci-5Q-9ie" secondAttribute="centerX" id="ZhP-kd-6Bs"/>
+                    <constraint firstItem="dRd-sJ-8bN" firstAttribute="centerY" secondItem="Gci-5Q-9ie" secondAttribute="centerY" id="b1k-aR-Cat"/>
+                    <constraint firstItem="7eC-Qf-WIA" firstAttribute="centerY" secondItem="Gci-5Q-9ie" secondAttribute="centerY" multiplier="1.3" id="khs-Vf-usD"/>
+                    <constraint firstItem="Lu0-EY-h1m" firstAttribute="width" secondItem="Gci-5Q-9ie" secondAttribute="width" id="uJE-aP-7KD"/>
+                    <constraint firstItem="7eC-Qf-WIA" firstAttribute="width" secondItem="zGq-xJ-F7g" secondAttribute="width" id="yOQ-gK-MYB"/>
+                    <constraint firstItem="dRd-sJ-8bN" firstAttribute="height" secondItem="Gci-5Q-9ie" secondAttribute="height" id="yfK-vm-Hzt"/>
+                    <constraint firstItem="7eC-Qf-WIA" firstAttribute="height" secondItem="zGq-xJ-F7g" secondAttribute="height" id="zL6-DG-gf5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnContact" destination="dRd-sJ-8bN" id="0om-Or-oYS"/>
+                <outlet property="txtPersonName" destination="Gci-5Q-9ie" id="zua-R3-hHY"/>
+            </connections>
+            <point key="canvasLocation" x="393" y="195.5"/>
+        </tableViewCell>
     </objects>
 </document>

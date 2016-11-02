@@ -216,7 +216,29 @@
 -(void)swipeToCloseSidePanel
 {
     [self closeSlider];
-    
 }
+
+#pragma mark
+#pragma mark Keyboard helping Methods
+#pragma mark
+
+-(void)viewUp
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view.frame=CGRectMake(self.view.frame.origin.x,-150, self.view.frame.size.width, self.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        isViewUp=YES;
+    }];
+}
+
+-(void)viewDown
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        isViewUp=NO;
+    }];
+}
+
 
 @end

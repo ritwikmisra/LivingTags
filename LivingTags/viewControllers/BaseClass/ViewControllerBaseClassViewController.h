@@ -20,6 +20,8 @@
     AppDelegate *appDel;
     NSDateFormatter *dateFormatter;
     NSString *strDateFormat;
+    BOOL isViewUp;
+
 }
 
 -(void)displayErrorWithMessage:(NSString*)strMsg;
@@ -28,4 +30,6 @@
 -(NSString *)generateMD5:(NSString *)string;
 -(void)displayNetworkActivity;
 -(void)hideNetworkActivity;
+-(void)viewUp;
+-(void)viewDown;
 @end
