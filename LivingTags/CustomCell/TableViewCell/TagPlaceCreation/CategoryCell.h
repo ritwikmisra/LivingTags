@@ -11,4 +11,6 @@
 @interface CategoryCell : UITableViewCell
 
 @property(nonatomic,strong)IBOutlet UIImageView *imgBackground;
+@property(nonatomic,strong)IBOutlet UIButton *btnCategory;
+@property(nonatomic,strong)IBOutlet UILabel *lblCategory;
 @end

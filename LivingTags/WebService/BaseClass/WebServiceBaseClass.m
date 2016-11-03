@@ -43,7 +43,8 @@ NSString *const strAPI[]={
     [CLOUDINARY_UPLOAD_IMAGE]=@"Tags/updateTagAsset",
     [CLOUDINARY_DELETE_IMAGE]=@"Tags/removeTagAsset",
     [WEB_SERVICE_PUBLISH_TAG]=@"Tags/publishTag",
-    [WEB_SERVICE_PREVIEW_TAG]=@"Tags/previewTag"
+    [WEB_SERVICE_PREVIEW_TAG]=@"Tags/previewTag",
+    [WEBSERVICE_CATEGORY]   =@"Tags/getCategories"
 };
 
 

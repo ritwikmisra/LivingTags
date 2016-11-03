@@ -42,8 +42,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 -(IBAction)btnSetPressed:(id)sender
 {
+    NSLog(@"selected date%@",[datePicker date]);
     if (delegate && [delegate respondsToSelector:@selector(didSelectedDate:)])
     {
         [delegate didSelectedDate:[datePicker date]];

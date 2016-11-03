@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     arrPics=[[NSMutableArray alloc]initWithObjects:@"scan_tag",@"create_tag",@"view_local_tags",@"add_icon",nil];
-    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Scan a Tag",@"Create a Tag",@"View Local Tags",@"Add to an Existing Tags", nil];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Scan a Tag",@"Create a Tag",@"View Local Tags",@"Add to an Existing Tag", nil];
     tblDashboard.backgroundColor=[UIColor clearColor];
     tblDashboard.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblDashboard.bounces=NO;

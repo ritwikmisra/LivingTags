@@ -204,6 +204,11 @@
 		0DD1982A1DB66477003BB828 /* logo_pin_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD198281DB66476003BB828 /* logo_pin_logo.png */; };
 		0DD1982C1DB66C6F003BB828 /* get_LT.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD1982B1DB66C6F003BB828 /* get_LT.png */; };
 		0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */; };
+		0DE4CF381DCB5CF000798B1F /* CategoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4CF371DCB5CEF00798B1F /* CategoryService.m */; };
+		0DE4CF3D1DCB5EF900798B1F /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4CF3B1DCB5EF900798B1F /* CategoryController.m */; };
+		0DE4CF3E1DCB5EF900798B1F /* CategoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE4CF3C1DCB5EF900798B1F /* CategoryController.xib */; };
+		0DE4CF4A1DCB655000798B1F /* BusinessCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4CF481DCB655000798B1F /* BusinessCategoryCell.m */; };
+		0DE4CF4B1DCB655000798B1F /* BusinessCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE4CF491DCB655000798B1F /* BusinessCategoryCell.xib */; };
 		0DE5FE2F1DAE5471004B06E5 /* Signika-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE2E1DAE5471004B06E5 /* Signika-Semibold.otf */; };
 		0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE5FE301DAE5DA0004B06E5 /* bg_btn_hover.png */; };
 		0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7A1DE1CDA32C50053AF1A /* ForgetPasswordService.m */; };
@@ -565,6 +570,14 @@
 		0DD1982B1DB66C6F003BB828 /* get_LT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_LT.png; sourceTree = "<group>"; };
 		0DDFC9AE1CE37288004D5D46 /* SocialLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialLoginService.h; sourceTree = "<group>"; };
 		0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialLoginService.m; sourceTree = "<group>"; };
+		0DE4CF361DCB5CEF00798B1F /* CategoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryService.h; sourceTree = "<group>"; };
+		0DE4CF371DCB5CEF00798B1F /* CategoryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryService.m; sourceTree = "<group>"; };
+		0DE4CF3A1DCB5EF900798B1F /* CategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryController.h; sourceTree = "<group>"; };
+		0DE4CF3B1DCB5EF900798B1F /* CategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryController.m; sourceTree = "<group>"; };
+		0DE4CF3C1DCB5EF900798B1F /* CategoryController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryController.xib; sourceTree = "<group>"; };
+		0DE4CF471DCB655000798B1F /* BusinessCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCategoryCell.h; sourceTree = "<group>"; };
+		0DE4CF481DCB655000798B1F /* BusinessCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCategoryCell.m; sourceTree = "<group>"; };
+		0DE4CF491DCB655000798B1F /* BusinessCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessCategoryCell.xib; sourceTree = "<group>"; };
 		0DE5FE2E1DAE5471004B06E5 /* Signika-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Semibold.otf"; sourceTree = "<group>"; };
 		0DE5FE301DAE5DA0004B06E5 /* bg_btn_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_hover.png; sourceTree = "<group>"; };
 		0DE7A1DD1CDA32C50053AF1A /* ForgetPasswordService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordService.h; sourceTree = "<group>"; };
@@ -1036,6 +1049,9 @@
 				0D66C5711D59FEF100230261 /* DashboardCell.h */,
 				0D66C5721D59FEF100230261 /* DashboardCell.m */,
 				0D66C5731D59FEF100230261 /* DashboardCell.xib */,
+				0DE4CF471DCB655000798B1F /* BusinessCategoryCell.h */,
+				0DE4CF481DCB655000798B1F /* BusinessCategoryCell.m */,
+				0DE4CF491DCB655000798B1F /* BusinessCategoryCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -1121,6 +1137,8 @@
 				0D28FE951DC8B8910079FFDF /* PublishTagService.m */,
 				0D28FE971DC8E3CC0079FFDF /* PreviewAdService.h */,
 				0D28FE981DC8E3CC0079FFDF /* PreviewAdService.m */,
+				0DE4CF361DCB5CEF00798B1F /* CategoryService.h */,
+				0DE4CF371DCB5CEF00798B1F /* CategoryService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1159,6 +1177,7 @@
 		0D85A7DE1D63071B003F4427 /* CustomPopUP */ = {
 			isa = PBXGroup;
 			children = (
+				0DE4CF391DCB5EE000798B1F /* Category */,
 				0DE96D6F1DC9F8E7000981B1 /* ContactsPopUP */,
 				0DD1981D1DB62554003BB828 /* previewPopUP */,
 			);
@@ -1346,6 +1365,16 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
+		0DE4CF391DCB5EE000798B1F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0DE4CF3A1DCB5EF900798B1F /* CategoryController.h */,
+				0DE4CF3B1DCB5EF900798B1F /* CategoryController.m */,
+				0DE4CF3C1DCB5EF900798B1F /* CategoryController.xib */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		0DE96D6F1DC9F8E7000981B1 /* ContactsPopUP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1505,6 +1534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DF0085C1DAF984000BD39C3 /* BirthDeathDateCell.xib in Resources */,
+				0DE4CF4B1DCB655000798B1F /* BusinessCategoryCell.xib in Resources */,
 				0DF008A61DAFB76500BD39C3 /* radio_off.png in Resources */,
 				0D1DDF7C1DA7BB5B0063F2F9 /* business_icon.png in Resources */,
 				0D1916691DBF8F72004D02DA /* contact.png in Resources */,
@@ -1605,6 +1635,7 @@
 				0D1916661DBF8F72004D02DA /* about.png in Resources */,
 				0DF008A11DAFB76500BD39C3 /* living_button.png in Resources */,
 				0DF0089C1DAFB76500BD39C3 /* calender.png in Resources */,
+				0DE4CF3E1DCB5EF900798B1F /* CategoryController.xib in Resources */,
 				0DB8678C1DC09F4E00D428F2 /* CustomdatePickerViewController.xib in Resources */,
 				0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */,
 				0D6659281DA666E400566879 /* password_icon.png in Resources */,
@@ -1723,6 +1754,7 @@
 				0D9350BD1CDB61F800E403B2 /* YTVimeoVideo.m in Sources */,
 				0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */,
 				0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */,
+				0DE4CF3D1DCB5EF900798B1F /* CategoryController.m in Sources */,
 				0D1FC5C41D644E940039B962 /* ModelImageUpload.m in Sources */,
 				0D8934DB1DB1013300A48562 /* CategoryCell.m in Sources */,
 				0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */,
@@ -1733,6 +1765,7 @@
 				0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */,
 				0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */,
 				0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */,
+				0DE4CF4A1DCB655000798B1F /* BusinessCategoryCell.m in Sources */,
 				0D901B9A1D3E57CD002B6735 /* TemplateSelectionService.m in Sources */,
 				0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */,
 				0DC2F5981DC72BBD00AB1795 /* DeleteAssetService.m in Sources */,
@@ -1795,6 +1828,7 @@
 				0D1916581DBF6A15004D02DA /* SidePanelController.m in Sources */,
 				0D37314C1CD8A10B00EDC547 /* UIImageView+WebCache.m in Sources */,
 				0D8AC8CE1D364F47001EFEBA /* CreateTagsSecondStepCell.m in Sources */,
+				0DE4CF381DCB5CF000798B1F /* CategoryService.m in Sources */,
 				0DD198251DB63A4E003BB828 /* QRCodeScanViewController.m in Sources */,
 				0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */,
 				0D66C5741D59FEF100230261 /* DashboardCell.m in Sources */,

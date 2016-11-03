@@ -34,8 +34,7 @@
     strDateFormat=@"yyyy-MM-dd";
     dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:strDateFormat];
-    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-
+   // [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
 }
 -(void)viewWillAppear:(BOOL)animated
 {

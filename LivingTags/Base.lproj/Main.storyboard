@@ -1435,6 +1435,9 @@
                                 <state key="normal" title="RESET">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnSubmitPressed:" destination="EpU-QC-hhg" eventType="touchUpInside" id="Vic-7d-CSf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1475,7 +1478,6 @@
                     </view>
                     <connections>
                         <outlet property="btnCancel" destination="YY3-5O-gJK" id="5LX-Sp-ZDs"/>
-                        <outlet property="btnReset" destination="ckp-Z0-lRW" id="Ef8-Qh-fLl"/>
                         <outlet property="lblPassword" destination="Ia4-JA-N2a" id="rWp-9v-3LB"/>
                         <outlet property="txtEmail" destination="eAE-fs-DHI" id="Fg0-3g-xLs"/>
                     </connections>
@@ -2014,6 +2016,9 @@
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8XO-7q-UzN">
                                 <rect key="frame" x="185" y="15" width="230" height="30"/>
                                 <state key="normal" backgroundImage="top_header_logo.png"/>
+                                <connections>
+                                    <action selector="btnBackPressed:" destination="5fP-4K-Kaz" eventType="touchUpInside" id="4qL-3R-pjn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mg9-Py-yWs">
                                 <rect key="frame" x="517" y="13" width="46" height="34"/>

@@ -38,11 +38,13 @@
 #import "QRCodeScanViewController.h"
 #import "PreviewAdService.h"
 #import "ContactsPopupController.h"
+#import "CategoryService.h"
+#import "CategoryController.h"
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,UITextViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate>
+@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
 {
     IBOutlet UITableView *tblTagsCreation;
-    NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags,*strPlace,*strContact,*strBusinessName,*strBusinessContactName,*strBusinessTitle,*strBusinessAddress,*strBusinessPhone,*strBusinessCellPhone,*strBusinessFax,*strBusinessEmail,*strBusinessWebsite;////////// variables to be sent to the server
+    NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags,*strPlace,*strContact,*strBusinessName,*strBusinessContactName,*strBusinessTitle,*strBusinessAddress,*strBusinessPhone,*strBusinessCellPhone,*strBusinessFax,*strBusinessEmail,*strBusinessWebsite,*strCategory;////////// variables to be sent to the server
     BOOL isLiving,isLocation,isTextViewClicked;
     NSMutableArray *arrPlaceHolders;
     CustomdatePickerViewController *datePickerController ;
@@ -257,6 +259,7 @@
                     cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
                 }
                 cellPerson.txtPersonName.delegate=self;
+                cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
                 [cellPerson.txtPersonName addTarget:self action:@selector(textFieldEdited:) forControlEvents:UIControlEventEditingChanged];
                 if (strPersonName.length>0)
                 {
@@ -464,6 +467,13 @@
                 {
                     cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
                 }
+                cellPerson.txtPersonName.delegate=self;
+                cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
+                [cellPerson.txtPersonName addTarget:self action:@selector(textFieldEdited:) forControlEvents:UIControlEventEditingChanged];
+                if (strPersonName.length>0)
+                {
+                    cellPerson.txtPersonName.text=strPersonName;
+                }
                 cell=cellPerson;
             }
                 break;
@@ -506,6 +516,7 @@
                 {
                     cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:1];
                 }
+                
                 if (isLiving==NO)
                 {
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
@@ -513,9 +524,17 @@
                 else
                 {
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
-                    
+                    cellBirth.btnDeathDate.userInteractionEnabled=NO;
+                    cellBirth.txtDeath.text=@"Death Date";
+                    strDeathDate=@"";
                 }
+                cellBirth.txtBirth.userInteractionEnabled=NO;
+                cellBirth.txtDeath.userInteractionEnabled=NO;
+                cellBirth.txtBirth.text=strBirthDate;
+                cellBirth.txtDeath.text=strDeathDate;
                 [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnBirthDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnDeathDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellBirth;
             }
                 
@@ -529,6 +548,7 @@
                 {
                     cellImage=[[[NSBundle mainBundle]loadNibNamed:@"AddImageCell" owner:self options:nil]objectAtIndex:0];
                 }
+                cellImage.delegate=self;
                 cell=cellImage;
             }
                 break;
@@ -540,40 +560,96 @@
                 {
                     cellVideo=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoCell" owner:self options:nil]objectAtIndex:0];
                 }
+                cellVideo.delegate=self;
                 cell=cellVideo;
             }
                 break;
                 
             case 5 :
             {
-                AddVideoTagCell *cellText=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
-                if (!cellText)
+                if (isTextViewClicked==NO)
                 {
-                    cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:0];
+                    AddVideoTagCell *cellText=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellText)
+                    {
+                        cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:0];
+                    }
+                    [cellText.btnTxt addTarget:self action:@selector(btnTextViewClicked:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellText;
                 }
-                cell=cellText;
+                else
+                {
+                    AddVideoTagCell *cellText=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellText)
+                    {
+                        cellText=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoTagCell" owner:self options:nil]objectAtIndex:1];
+                    }
+                    cellText.txtTags.text=strTextVwTags;
+                    cellText.txtTags.delegate=self;
+                    [cellText.btnTextVwCross addTarget:self action:@selector(btnTextVwCrossPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellText;
+                }
             }
                 break;
                 
             case 6 :
             {
-                VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
-                if (!cellVoice)
+                if (appDel.strAudioURL.length>0)
                 {
-                    cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:0];
+                    VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellVoice)
+                    {
+                        cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:1];
+                    }
+                    cellVoice.sliderRecorder.minimumValue=0.0f;
+                    cellVoice.sliderRecorder.maximumValue=appDel.audioLength;
+                    [cellVoice.sliderRecorder setMinimumValue:0.0f];
+                    [cellVoice.btnRecordPlay addTarget:self action:@selector(btnPlayPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellVoice.sliderRecorder addTarget:self action:@selector(updateSlider) forControlEvents:UIControlEventValueChanged];
+                    cell=cellVoice;
                 }
-                cell=cellVoice;
+                else
+                {
+                    VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellVoice)
+                    {
+                        cellVoice=[[[NSBundle mainBundle]loadNibNamed:@"VoiceTagCell" owner:self options:nil]objectAtIndex:0];
+                    }
+                    [cellVoice.btnVoice addTarget:self action:@selector(btnVoicePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellVoice;
+                }
             }
                 break;
                 
             case 7 :
             {
-                AddLocationCell *cellLocation=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
-                if (!cellLocation)
+                if (isLocation==0)
                 {
-                    cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:0];
+                    AddLocationCell *cellLocation=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellLocation)
+                    {
+                        cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:0];
+                    }
+                    [cellLocation.btnMap addTarget:self action:@selector(btnMapPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellLocation;
                 }
-                cell=cellLocation;
+                else
+                {
+                    AddLocationCell *cellLocation=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellLocation)
+                    {
+                        cellLocation=[[[NSBundle mainBundle]loadNibNamed:@"AddLocationCell" owner:self options:nil]objectAtIndex:1];
+                    }
+                    [cellLocation.btnCross addTarget:self action:@selector(btnMapCrossPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cellLocation.mapTagLocation.delegate=self;
+                    MKPointAnnotation*    annotation = [[MKPointAnnotation alloc] init];
+                    annotation.coordinate = locationUser;
+                    [cellLocation.mapTagLocation addAnnotation:annotation];
+                    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(locationUser,9000, 900);
+                    MKCoordinateRegion adjustedRegion = [cellLocation.mapTagLocation regionThatFits:viewRegion];
+                    [cellLocation.mapTagLocation setRegion:adjustedRegion animated:YES];
+                    cell=cellLocation;
+                }
                 break;
             }
             case 8:
@@ -605,6 +681,7 @@
                 UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
                 cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Title/Name" attributes:@{NSForegroundColorAttributeName: color}];
                 cellPerson.txtPersonName.delegate=self;
+                cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
                 [cellPerson.txtPersonName addTarget:self action:@selector(textFieldEdited:) forControlEvents:UIControlEventEditingChanged];
                 if (strPersonName.length>0)
                 {
@@ -621,6 +698,7 @@
                 {
                     cellCategory=[[[NSBundle mainBundle]loadNibNamed:@"CategoryCell" owner:self options:nil]objectAtIndex:0];
                 }
+                
                 cell=cellCategory;
                 
             }
@@ -782,6 +860,7 @@
                 cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
             }
             cellPerson.txtPersonName.delegate=self;
+            cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
             cellPerson.txtPersonName.placeholder=[arrPlaceHolders objectAtIndex:indexPath.row];
             cellPerson.txtPersonName.tag=indexPath.row;
             UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
@@ -790,7 +869,7 @@
             switch (indexPath.row)
             {
                 case 0:
-                    cellPerson.txtPersonName.text=strBusinessName;
+                    cellPerson.txtPersonName.text=strPersonName;
                     break;
                 case 1:
                     cellPerson.txtPersonName.text=strBusinessContactName;
@@ -811,13 +890,24 @@
                     
                 case 5:
                     cellPerson.txtPersonName.keyboardType=UIKeyboardTypePhonePad;
-                    cellPerson.txtPersonName.text=strBusinessEmail;
+                    cellPerson.txtPersonName.text=strBusinessCellPhone;
                     break;
                     
                 case 6:
+                    cellPerson.txtPersonName.keyboardType=UIKeyboardTypePhonePad;
+                    cellPerson.txtPersonName.text=strBusinessFax;
+                    break;
+                    
+                case 7:
+                    cellPerson.txtPersonName.keyboardType=UIKeyboardTypeEmailAddress;
+                    cellPerson.txtPersonName.text=strBusinessEmail;
+                    break;
+                    
+                case 8:
                     cellPerson.txtPersonName.keyboardType=UIKeyboardTypeURL;
                     cellPerson.txtPersonName.text=strBusinessWebsite;
                     break;
+
                     
                 default:
                     break;
@@ -831,6 +921,8 @@
             {
                 cellCategory=[[[NSBundle mainBundle]loadNibNamed:@"CategoryCell" owner:self options:nil]objectAtIndex:0];
             }
+            cellCategory.lblCategory.text=strCategory;
+            [cellCategory.btnCategory addTarget:self action:@selector(btnCategoryClicked:) forControlEvents:UIControlEventTouchUpInside];
             cell=cellCategory;
         }
         else if (indexPath.row==10)
@@ -851,6 +943,7 @@
             {
                 cellImage=[[[NSBundle mainBundle]loadNibNamed:@"AddImageCell" owner:self options:nil]objectAtIndex:0];
             }
+            cellImage.delegate=self;
             cell=cellImage;
         }
         else if (indexPath.row==12)
@@ -860,6 +953,7 @@
             {
                 cellVideo=[[[NSBundle mainBundle]loadNibNamed:@"AddVideoCell" owner:self options:nil]objectAtIndex:0];
             }
+            cellVideo.delegate=self;
             cell=cellVideo;
             
         }
@@ -888,7 +982,6 @@
                 cell=cellText;
             }
         }
-        
         else if (indexPath.row==14)
         {
             if (appDel.strAudioURL.length>0)
@@ -967,6 +1060,31 @@
 #pragma mark
 #pragma mark IBACTIONS
 #pragma mark
+
+-(void)btnCategoryClicked:(id)sender
+{
+    [[CategoryService service] callCategoryServiceWithCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            NSLog(@"%@",result);
+            if ([result isKindOfClass:[NSMutableArray class]])
+            {
+                CategoryController *master1=[[CategoryController alloc]initWithNibName:@"CategoryController" bundle:nil];
+                master1.arrCategoryList=result;
+                master1.objFolders=self.objFolders;
+                master1.view.frame=[[UIScreen mainScreen]bounds];
+                [self.view addSubview:master1.view];
+                [self addChildViewController:master1];
+                [master1 didMoveToParentViewController:self];
+                master1.delegate=self;
+            }
+        }
+    }];
+}
 
 -(void)btnContactPressed:(id)sender
 {
@@ -1071,11 +1189,23 @@
              {
                  locationUser=CLLocationCoordinate2DMake(place.coordinate.latitude, place.coordinate.longitude);
                  isLocation=YES;
-                 [tblTagsCreation beginUpdates];
-                 NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
-                 [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                 [tblTagsCreation endUpdates];
                  
+                 if ([self.strTagName isEqualToString:@"Business"])
+                 {
+                     [tblTagsCreation beginUpdates];
+                     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:15  inSection:0]];
+                     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                     [tblTagsCreation endUpdates];
+                     
+                 }
+                 else
+                 {
+                     [tblTagsCreation beginUpdates];
+                     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
+                     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                     [tblTagsCreation endUpdates];
+                     
+                 }
                  NSLog(@"reverse geocoding results:");
                  for(GMSAddress* addressObj in [response results])
                  {
@@ -1086,7 +1216,15 @@
                      NSLog(@"country=%@", addressObj.country);
                      // NSLog(@"lines=%@", addressObj.lines);
                      // [self performSegueWithIdentifier:@"placeDetailsSegue" sender:self];
-                     [self checkLocationWithAddress:place.formattedAddress];
+                     if (place.formattedAddress.length>0)
+                     {
+                         [self checkLocationWithAddress:place.formattedAddress];
+                     }
+                     else
+                     {
+                         NSString *strLocation=[NSString stringWithFormat:@"%@,%@",addressObj.locality,addressObj.country];
+                         [self checkLocationWithAddress:strLocation];
+                     }
                      break;
                  }
              }];
@@ -1102,20 +1240,47 @@
 
 -(void)btnMapCrossPressed:(id)sender
 {
-    isLocation=NO;
-    [tblTagsCreation beginUpdates];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    if ([self.strTagName isEqualToString:@"Business"])
+    {
+        isLocation=NO;
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:15 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+    }
+    else
+    {
+        isLocation=NO;
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+    }
 }
 
 -(void)btnTextViewClicked:(id)sender
 {
-    isTextViewClicked=YES;
-    [tblTagsCreation beginUpdates];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    if ([self.strTagName isEqualToString:@"Business"])
+    {
+        isTextViewClicked=YES;
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:13 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+
+    }
+    else
+    {
+        isTextViewClicked=YES;
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+    }
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblTagsCreation];
+    NSIndexPath *indexPath = [tblTagsCreation indexPathForRowAtPoint:buttonPosition];
+    AddVideoTagCell *cell=[tblTagsCreation cellForRowAtIndexPath:indexPath];
+    [cell.txtTags becomeFirstResponder];
 }
 
 -(void)btnTextVwCrossPressed:(id)sender
@@ -1123,10 +1288,22 @@
     strTextVwTags=@"";
     [self.view endEditing:YES];
     isTextViewClicked=NO;
-    [tblTagsCreation beginUpdates];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    if ([self.strTagName isEqualToString:@"Business"])
+    {
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:13 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+
+    }
+    else
+    {
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+
+    }
 }
 
 -(void)btnVoicePressed:(id)sender
@@ -1217,16 +1394,25 @@
 {
     switch (textField.tag)
     {
-        case 2:
-            [self checkBusinessPhone];
-            break;
-            
-        case 3:
-            [self checkBusinessCell];
-            break;
-            
         case 4:
-            [self checkBusinessFaxNumber];
+            if (textField.text.length>0)
+            {
+                [self checkBusinessPhone];
+            }
+            break;
+            
+        case 5:
+            if (textField.text.length>0)
+            {
+                [self checkBusinessCell];
+            }
+            break;
+            
+        case 6:
+            if (textField.text.length>0)
+            {
+                [self checkBusinessFaxNumber];
+            }
             break;
             
         default:
@@ -1242,30 +1428,34 @@
         switch (textField.tag)
         {
             case 0:
-                strBusinessTitle=textField.text;
+                strPersonName=textField.text;
                 break;
             case 1:
+                strBusinessContactName=textField.text;
                 break;
                 
             case 2:
-                strBusinessPhone=textField.text;
-                break;
-                
-            case 3:
-                strBusinessCellPhone=textField.text;
+                strBusinessTitle=textField.text;
                 break;
                 
             case 4:
-                strBusinessFax=textField.text;
+                strBusinessPhone=textField.text;
                 break;
                 
             case 5:
+                strBusinessCellPhone=textField.text;
+                break;
+                //fax email website
+            case 6:
+                strBusinessFax=textField.text;
+                break;
+            case 7:
                 strBusinessEmail=textField.text;
                 break;
-                
-            case 6:
-               strBusinessWebsite=textField.text;
+            case 8:
+                strBusinessWebsite=textField.text;
                 break;
+
                 
             default:
                 break;
@@ -1286,20 +1476,41 @@
         switch (textField.tag)
         {
             case 0:
-                [self checkBusinessTitle];
+                if (textField.text.length>0)
+                {
+                    [self checkName];
+                }
+                break;
+            case 1:
+                if (textField.text.length>0)
+                {
+                    [self checkContactName];
+                }
                 break;
                 
-            case 5:
+            case 2:
+                if (textField.text.length>0)
+                {
+                    [self checkBusinessTitle];
+                }
                 break;
                 
-            case 6:
-                [self checkBusinessWebsite];
+            case 7:
+                if (textField.text.length>0)
+                {
+                    [self checkBusinessEmail];
+                }
                 break;
-                
+            case 8:
+                if (textField.text.length>0)
+                {
+                    [self checkBusinessWebsite];
+                }
+                break;
+               
             default:
                 break;
         }
-        
     }
     else
     {
@@ -1333,7 +1544,19 @@
         strBirthDate=[dateFormatter stringFromDate:selectedDate];
         [datePickerController.view removeFromSuperview];
         NSLog(@"%@",strBirthDate);
-        [self checkDatesFrom];
+        if (strDeathDate.length>0)
+        {
+            NSDate *deathDate=[dateFormatter dateFromString:strDeathDate];
+            if ([deathDate compare:selectedDate]==NSOrderedAscending)
+            {
+                [self displayErrorWithMessage:@"Death date should be higher than birth date"];
+                strBirthDate=@"";
+            }
+        }
+        else
+        {
+            [self checkDatesFrom];
+        }
     }
     else
     {
@@ -1680,6 +1903,32 @@
 #pragma mark UPDATE DICTIONARY FOR API SERVICE
 #pragma mark
 
+//tcname
+
+-(void)checkContactName
+{
+    NSLog(@"%@",objTemplates);
+    if (objTemplates)
+    {
+        NSLog(@"%@",objTemplates.strTcname);
+        if ([objTemplates.strTcname isEqualToString:strBusinessContactName])
+        {
+            [dictAPI removeObjectForKey:@"tcname"];
+        }
+        else
+        {
+            [dictAPI setObject:strBusinessContactName forKey:@"tcname"];
+            [self updateDictionaryForServiceForKey:@"tcname"];
+        }
+    }
+    else
+    {
+        [dictAPI setObject:strBusinessContactName forKey:@"tcname"];
+        [self updateDictionaryForServiceForKey:@"tcname"];
+    }
+
+}
+
 -(void)checkBusinessTitle
 {
     NSLog(@"%@",objTemplates);
@@ -1973,7 +2222,7 @@
 {
     if (objTemplates)
     {
-        if ([objTemplates.strtKey isEqualToString:strDeathDate])
+        if ([objTemplates.strtdied isEqualToString:strDeathDate])
         {
             [dictAPI removeObjectForKey:@"tdied"];
         }
@@ -2067,10 +2316,21 @@
                             [appDel.arrImageSet addObject:img];
                         }
                         [appDel.arrImageSet addObject:@"1"];
-                        [tblTagsCreation beginUpdates];
-                        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
-                        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                        [tblTagsCreation endUpdates];
+                        if ([self.strTagName isEqualToString:@"Business"])
+                        {
+                            [tblTagsCreation beginUpdates];
+                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
+                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            [tblTagsCreation endUpdates];
+
+                        }
+                        else
+                        {
+                            [tblTagsCreation beginUpdates];
+                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
+                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            [tblTagsCreation endUpdates];
+                        }
                     }
                 }];
             }
@@ -2086,7 +2346,7 @@
     } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
         
     }];
-
+    
 }
 
 -(void)uploadVideoToCloudinary:(NSData *)dataVideo image:(UIImage *)imgaThumb
@@ -2130,10 +2390,22 @@
                             [appDel.arrVideoSet addObject:imgaThumb];
                         }
                         [appDel.arrVideoSet addObject:@"1"];
-                        [tblTagsCreation beginUpdates];
-                        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
-                        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                        [tblTagsCreation endUpdates];
+                        if ([self.strTagName isEqualToString:@"Business"])
+                        {
+                            [tblTagsCreation beginUpdates];
+                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:12 inSection:0]];
+                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            [tblTagsCreation endUpdates];
+                            
+                        }
+                        else
+                        {
+                            [tblTagsCreation beginUpdates];
+                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
+                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            [tblTagsCreation endUpdates];
+                        }
+
                         
                     }
                 }];
@@ -2150,9 +2422,10 @@
     } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
         
     }];
+    
 }
 
-#pragma mark 
+#pragma mark
 #pragma mark PREPARE FOR SEGUE
 #pragma mark
 
@@ -2201,41 +2474,144 @@
 
 -(BOOL)alertChecking
 {
-    if (strPersonName.length==0)
+    if ([self.strTagName isEqualToString:@"Pet"])
     {
-        [self displayErrorWithMessage:@"Please enter person name."];
-        return NO;
-    }
-    if (strGender.length==0)
-    {
-        [self displayErrorWithMessage:@"Please enter gender."];
-        return NO;
-
-    }
-    if (isLiving==NO)
-    {
-        if (strDeathDate.length==0)
+        if (strPersonName.length==0)
         {
-            [self displayErrorWithMessage:@"Please enter death date."];
+            [self displayErrorWithMessage:@"Please enter  name."];
             return NO;
-
+        }
+        if (strGender.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter gender."];
+            return NO;
+            
+        }
+        if (isLiving==NO)
+        {
+            if (strDeathDate.length==0)
+            {
+                [self displayErrorWithMessage:@"Please enter death date."];
+                return NO;
+                
+            }
+        }
+        if (strBirthDate.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter birth date."];
+            return NO;
+            
+        }
+        if (strTextVwTags.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter a memorial quote."];
+            return NO;
+        }
+        if (isLocation==NO)
+        {
+            [self displayErrorWithMessage:@"Please enter a location."];
+            return NO;
         }
     }
-    if (strBirthDate.length==0)
+    else if([self.strTagName isEqualToString:@"Persons"])
     {
-        [self displayErrorWithMessage:@"Please enter birth date."];
-        return NO;
-
+        if (strPersonName.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter  name."];
+            return NO;
+        }
+        if (strGender.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter gender."];
+            return NO;
+            
+        }
+        if (isLiving==NO)
+        {
+            if (strDeathDate.length==0)
+            {
+                [self displayErrorWithMessage:@"Please enter death date."];
+                return NO;
+                
+            }
+        }
+        if (strBirthDate.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter birth date."];
+            return NO;
+            
+        }
+        if (strTextVwTags.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter a memorial quote."];
+            return NO;
+        }
+        if (isLocation==NO)
+        {
+            [self displayErrorWithMessage:@"Please enter a location."];
+            return NO;
+        }
     }
-    if (strPlace.length==0)
+    else if([self.strTagName isEqualToString:@"Business"])
     {
-        [self displayErrorWithMessage:@"Please enter birth date."];
-        return NO;
+        if (strPersonName.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter Business name"];
+            return NO;
+        }
+        if (strBusinessContactName.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter business contact name."];
+            return NO;
+        }
+        if (strBusinessTitle.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter business title."];
+            return NO;
+        }
+        if (strBusinessPhone.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter business phone number."];
+            return NO;
+        }
+        if (strBusinessEmail.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter business email"];
+            return NO;
+        }
+        if (strTextVwTags.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter Memorial quote."];
+            return NO;
+        }
+        if (isLocation==NO)
+        {
+            [self displayErrorWithMessage:@"Please enter location."];
+            return NO;
+        }
     }
-    if (strTextVwTags.length==0)
+    else
     {
-        [self displayErrorWithMessage:@"Please enter a memorial quote."];
-        return NO;
+        if (strPersonName.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter the title"];
+            return NO;
+        }
+        if (strCategory.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter the category name"];
+            return NO;
+        }
+        if (strTextVwTags.length==0)
+        {
+            [self displayErrorWithMessage:@"Please enter the memorial quote"];
+            return NO;
+        }
+        if (isLocation==NO)
+        {
+            [self displayErrorWithMessage:@"Please enter the location"];
+            return NO;
+        }
     }
     return YES;
 }
@@ -2264,6 +2640,19 @@
 
         }
     }];
+}
+
+#pragma mark
+#pragma mark CATEGORY SELECTION DELEGATE
+#pragma mark
+
+-(void)selectedCategoryWithName:(NSString *)strName
+{
+    strCategory=strName;
+    [tblTagsCreation beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:9 inSection:0]];
+    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblTagsCreation endUpdates];
 }
 
 @end
