@@ -80,7 +80,7 @@
     cell.txtSignUp.placeholder=[arrNames objectAtIndex: indexPath.row];
     cell.txtSignUp.delegate=self;
     cell.imgSignUp.image=[UIImage imageNamed:[arrImages objectAtIndex:indexPath.row]];
-    [cell.txtSignUp setValue:[UIColor colorWithRed:98.0/255.0 green:105.0/255.0 blue:108.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    [cell.txtSignUp setValue:[UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0]forKeyPath:@"_placeholderLabel.textColor"];
     cell.txtSignUp.tag=indexPath.row;
     [cell.txtSignUp addTarget:self action:@selector(textFieldEditing:) forControlEvents:UIControlEventEditingChanged];
     cell.backgroundColor=[UIColor clearColor];

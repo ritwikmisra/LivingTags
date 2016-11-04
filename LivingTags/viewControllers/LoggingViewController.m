@@ -42,13 +42,18 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     lblOR.layer.masksToBounds=YES;
     btnSignIn.layer.cornerRadius=5.0f;
     btnSignUp.layer.cornerRadius=5.0f;
-    [txtEmail setValue:[UIColor colorWithRed:98.0/255.0 green:105.0/255.0 blue:108.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
-    [txtPassword setValue:[UIColor colorWithRed:98.0/255.0 green:105.0/255.0 blue:108.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    [txtEmail setValue:[UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    [txtPassword setValue:[UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
     [GIDSignInButton class];
     GIDSignIn *signIn = [GIDSignIn sharedInstance];
     signIn.shouldFetchBasicProfile = YES;
     signIn.delegate = self;
     signIn.uiDelegate = self;
+    if (txtEmail.text.length>0)
+    {
+        txtEmail.text=@"";
+        txtPassword.text=@"";
+    }
     txtEmail.text=@"ritwik.misra@appsbee.com";
     txtPassword.text=@"123456";
     

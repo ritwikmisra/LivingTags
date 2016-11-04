@@ -10,16 +10,16 @@
 
 @implementation PersonNameCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
-    UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
+    UIColor *color = [UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0];
     self.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Person Name" attributes:@{NSForegroundColorAttributeName: color}];
-
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 

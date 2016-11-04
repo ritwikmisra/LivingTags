@@ -101,7 +101,7 @@
     tblTagsCreation.dataSource=self;
     arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Business Name",@"Contact Name",@"Title",@"Business Address",@"Business Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
     strDate=@"";
-    
+    strCategory=@"Category";
     cloudinary = [[CLCloudinary alloc] init];
     [cloudinary.config setValue:@"dw2w2nb2e" forKey:@"cloud_name"];
     [cloudinary.config setValue:@"963284535365757" forKey:@"api_key"];
@@ -396,6 +396,7 @@
                     [cellVoice.sliderRecorder setMinimumValue:0.0f];
                     [cellVoice.btnRecordPlay addTarget:self action:@selector(btnPlayPressed:) forControlEvents:UIControlEventTouchUpInside];
                     [cellVoice.sliderRecorder addTarget:self action:@selector(updateSlider) forControlEvents:UIControlEventValueChanged];
+                    [cellVoice.btnClose addTarget:self action:@selector(btnDeleteVoicePressed:) forControlEvents:UIControlEventTouchUpInside];
                     cell=cellVoice;
                 }
                 else
@@ -468,6 +469,7 @@
                     cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
                 }
                 cellPerson.txtPersonName.delegate=self;
+                cellPerson.txtPersonName.placeholder=@"Pet Name";
                 cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
                 [cellPerson.txtPersonName addTarget:self action:@selector(textFieldEdited:) forControlEvents:UIControlEventEditingChanged];
                 if (strPersonName.length>0)
@@ -606,6 +608,7 @@
                     [cellVoice.sliderRecorder setMinimumValue:0.0f];
                     [cellVoice.btnRecordPlay addTarget:self action:@selector(btnPlayPressed:) forControlEvents:UIControlEventTouchUpInside];
                     [cellVoice.sliderRecorder addTarget:self action:@selector(updateSlider) forControlEvents:UIControlEventValueChanged];
+                    [cellVoice.btnClose addTarget:self action:@selector(btnDeleteVoicePressed:) forControlEvents:UIControlEventTouchUpInside];
                     cell=cellVoice;
                 }
                 else
@@ -678,7 +681,7 @@
                 {
                     cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
                 }
-                UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
+                UIColor *color = [UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0];
                 cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Title/Name" attributes:@{NSForegroundColorAttributeName: color}];
                 cellPerson.txtPersonName.delegate=self;
                 cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
@@ -698,7 +701,8 @@
                 {
                     cellCategory=[[[NSBundle mainBundle]loadNibNamed:@"CategoryCell" owner:self options:nil]objectAtIndex:0];
                 }
-                
+                cellCategory.lblCategory.text=strCategory;
+                [cellCategory.btnCategory addTarget:self action:@selector(btnCategoryClicked:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellCategory;
                 
             }
@@ -711,12 +715,8 @@
                 {
                     cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:1];
                 }
-                UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
+                UIColor *color = [UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0];
                 cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Contact Info" attributes:@{NSForegroundColorAttributeName: color}];
-                if (strContact.length>0)
-                {
-                    cellPerson.txtPersonName.text=strContact;
-                }
                 [cellPerson.btnContact addTarget:self action:@selector(btnContactPressed:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellPerson;
             }
@@ -789,6 +789,7 @@
                     [cellVoice.sliderRecorder setMinimumValue:0.0f];
                     [cellVoice.btnRecordPlay addTarget:self action:@selector(btnPlayPressed:) forControlEvents:UIControlEventTouchUpInside];
                     [cellVoice.sliderRecorder addTarget:self action:@selector(updateSlider) forControlEvents:UIControlEventValueChanged];
+                    [cellVoice.btnClose addTarget:self action:@selector(btnDeleteVoicePressed:) forControlEvents:UIControlEventTouchUpInside];
                     cell=cellVoice;
                 }
                 else
@@ -860,10 +861,11 @@
                 cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
             }
             cellPerson.txtPersonName.delegate=self;
+
             cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
             cellPerson.txtPersonName.placeholder=[arrPlaceHolders objectAtIndex:indexPath.row];
             cellPerson.txtPersonName.tag=indexPath.row;
-            UIColor *color = [UIColor colorWithRed:76/255.0f green:87/255.0f blue:95/255.0f alpha:1.0];
+            UIColor *color = [UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0];
             cellPerson.txtPersonName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[arrPlaceHolders objectAtIndex:indexPath.row] attributes:@{NSForegroundColorAttributeName: color}];
             [cellPerson.txtPersonName addTarget:self action:@selector(textFieldEdited:) forControlEvents:UIControlEventEditingChanged];
             switch (indexPath.row)
@@ -996,6 +998,7 @@
                 [cellVoice.sliderRecorder setMinimumValue:0.0f];
                 [cellVoice.btnRecordPlay addTarget:self action:@selector(btnPlayPressed:) forControlEvents:UIControlEventTouchUpInside];
                 [cellVoice.sliderRecorder addTarget:self action:@selector(updateSlider) forControlEvents:UIControlEventValueChanged];
+                [cellVoice.btnClose addTarget:self action:@selector(btnDeleteVoicePressed:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellVoice;
             }
             else
@@ -1061,6 +1064,27 @@
 #pragma mark IBACTIONS
 #pragma mark
 
+-(void)btnDeleteVoicePressed:(id)sender
+{
+    appDel.strAudioURL=@"";
+    if ([self.strTagName isEqualToString:@"Business"])
+    {
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:14 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+        
+    }
+    else
+    {
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+    }
+
+}
+
 -(void)btnCategoryClicked:(id)sender
 {
     [[CategoryService service] callCategoryServiceWithCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
@@ -1089,6 +1113,7 @@
 -(void)btnContactPressed:(id)sender
 {
     master=[[ContactsPopupController alloc]initWithNibName:@"ContactsPopupController" bundle:nil];
+    master.objPopUPTemplates=objTemplates;
     master.view.frame=[UIScreen mainScreen].bounds;
     [self.view addSubview:master.view];
     [self addChildViewController:master];
@@ -1546,6 +1571,7 @@
         NSLog(@"%@",strBirthDate);
         if (strDeathDate.length>0)
         {
+            
             NSDate *deathDate=[dateFormatter dateFromString:strDeathDate];
             if ([deathDate compare:selectedDate]==NSOrderedAscending)
             {
@@ -2326,6 +2352,7 @@
                         }
                         else
                         {
+                            
                             [tblTagsCreation beginUpdates];
                             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
                             [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
@@ -2342,6 +2369,11 @@
             {
                 
             }
+        }
+        else
+        {
+            [self hideNetworkActivity];
+            [self displayErrorWithMessage:errorResult];
         }
     } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
         
@@ -2418,6 +2450,11 @@
             {
                 
             }
+        }
+        else
+        {
+            [self hideNetworkActivity];
+            [self displayErrorWithMessage:errorResult];
         }
     } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
         
@@ -2649,10 +2686,21 @@
 -(void)selectedCategoryWithName:(NSString *)strName
 {
     strCategory=strName;
-    [tblTagsCreation beginUpdates];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:9 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    if ([self.strTagName isEqualToString:@"Business"])
+    {
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:9 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+    }
+    else
+    {
+        [tblTagsCreation beginUpdates];
+        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
+        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblTagsCreation endUpdates];
+
+    }
 }
 
 @end

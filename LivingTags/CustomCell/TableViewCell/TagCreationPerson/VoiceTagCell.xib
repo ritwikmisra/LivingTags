@@ -94,7 +94,7 @@
             <connections>
                 <outlet property="btnVoice" destination="ACU-wU-LjZ" id="fDB-ON-w4s"/>
             </connections>
-            <point key="canvasLocation" x="252" y="141"/>
+            <point key="canvasLocation" x="390" y="138"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Lgd-dA-1S8" customClass="VoiceTagCell">
             <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
@@ -109,6 +109,13 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="fgO-v2-D6i">
                         <rect key="frame" x="68" y="0.0" width="299" height="91"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhg-ec-4F4">
+                        <rect key="frame" x="345" y="2" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Vhg-ec-4F4" secondAttribute="height" id="ITH-FG-5Yo"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="cross.png"/>
+                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrc-07-jYL">
                         <rect key="frame" x="76" y="61" width="291" height="30"/>
                         <subviews>
@@ -172,6 +179,7 @@
                     <constraint firstItem="fgO-v2-D6i" firstAttribute="leading" secondItem="1ag-zV-2zG" secondAttribute="trailing" multiplier="1.25" id="1AY-GA-yEe"/>
                     <constraint firstItem="Pod-vP-mfx" firstAttribute="height" secondItem="1ag-zV-2zG" secondAttribute="height" multiplier="2.2" id="1cP-ZC-Iut"/>
                     <constraint firstItem="Pod-vP-mfx" firstAttribute="top" secondItem="LV9-e3-3tj" secondAttribute="top" id="2F7-mn-SBd"/>
+                    <constraint firstItem="fgO-v2-D6i" firstAttribute="height" secondItem="Vhg-ec-4F4" secondAttribute="height" multiplier="4.5" id="4MM-X8-C36"/>
                     <constraint firstItem="Pod-vP-mfx" firstAttribute="width" secondItem="LV9-e3-3tj" secondAttribute="width" id="5Ti-rz-7Zr"/>
                     <constraint firstItem="Pod-vP-mfx" firstAttribute="width" secondItem="fgO-v2-D6i" secondAttribute="width" multiplier="1.25" id="FQE-YH-cJk"/>
                     <constraint firstItem="fgO-v2-D6i" firstAttribute="height" secondItem="Pod-vP-mfx" secondAttribute="height" id="HUV-uE-xHY"/>
@@ -180,13 +188,16 @@
                     <constraint firstAttribute="height" secondItem="Pod-vP-mfx" secondAttribute="height" multiplier="1.2" id="RP9-ve-4PV"/>
                     <constraint firstItem="fgO-v2-D6i" firstAttribute="width" secondItem="lrc-07-jYL" secondAttribute="width" multiplier="1.03" id="Wzm-Np-kSS"/>
                     <constraint firstItem="1ag-zV-2zG" firstAttribute="top" secondItem="Pod-vP-mfx" secondAttribute="top" id="XOr-gO-fZL"/>
+                    <constraint firstItem="Vhg-ec-4F4" firstAttribute="top" secondItem="fgO-v2-D6i" secondAttribute="top" constant="2" id="gOJ-Eq-4qZ"/>
                     <constraint firstItem="Pod-vP-mfx" firstAttribute="centerX" secondItem="LV9-e3-3tj" secondAttribute="centerX" id="iyZ-Hl-62O"/>
                     <constraint firstItem="lrc-07-jYL" firstAttribute="bottom" secondItem="fgO-v2-D6i" secondAttribute="bottom" id="kI5-1Z-scv"/>
+                    <constraint firstItem="fgO-v2-D6i" firstAttribute="trailing" secondItem="Vhg-ec-4F4" secondAttribute="trailing" constant="2" id="pg0-zn-3bO"/>
                     <constraint firstItem="fgO-v2-D6i" firstAttribute="height" secondItem="lrc-07-jYL" secondAttribute="height" multiplier="3" id="wdY-3b-PmC"/>
                     <constraint firstItem="Pod-vP-mfx" firstAttribute="trailing" secondItem="fgO-v2-D6i" secondAttribute="trailing" multiplier="1.02" id="zwy-cy-i0w"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnClose" destination="Vhg-ec-4F4" id="GM4-VC-DQe"/>
                 <outlet property="btnRecordPlay" destination="Cs3-dR-FVz" id="tzr-VD-Hzw"/>
                 <outlet property="sliderRecorder" destination="9Ka-Mb-Q4c" id="r5q-7D-HNl"/>
             </connections>
@@ -198,6 +209,7 @@
         <image name="audio.png" width="163" height="150"/>
         <image name="box_bg.png" width="891" height="310"/>
         <image name="circle.png" width="181" height="181"/>
+        <image name="cross.png" width="50" height="50"/>
         <image name="play_button.png" width="24" height="24"/>
         <image name="txt_audio.png" width="891" height="310"/>
     </resources>

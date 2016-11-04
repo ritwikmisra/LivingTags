@@ -28,7 +28,7 @@
     [super viewDidLoad];
     btnReset.layer.cornerRadius=5.0f;
     btnCancel.layer.cornerRadius=5.0f;
-    [txtEmail setValue:[UIColor colorWithRed:98.0/255.0 green:105.0/255.0 blue:108.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
+    [txtEmail setValue:[UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
     lblPassword.text=@"We will send you an email with instruction to reset  your Password.";
 }
 

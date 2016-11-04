@@ -226,7 +226,16 @@
         {
             self.strWebsite=@"";
         }
-        
+        //temail
+        if ([dict objectForKey:@"temail"] && ![[dict objectForKey:@"temail"] isKindOfClass:[NSNull class]])//
+        {
+            self.strEmail=[dict objectForKey:@"temail"];
+        }
+        else
+        {
+            self.strEmail=@"";
+        }
+
     }
     return self;
 }

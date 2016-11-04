@@ -55,7 +55,7 @@
         if ([[self.appDel.arrImageSet objectAtIndex:indexPath.row]isKindOfClass:[NSString class]])
         {
             PersonImageCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
-            [cell.btnFooter setTitle:@"ADD IMAGES" forState:UIControlStateNormal];
+            [cell.btnFooter setTitle:@"ADD PHOTO" forState:UIControlStateNormal];
             cell.img.image=[UIImage imageNamed:@"pic"];
             [cell.btn addTarget:self action:@selector(btnImagesClicked:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
@@ -72,7 +72,7 @@
     else
     {
         PersonImageCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
-        [cell.btnFooter setTitle:@"ADD IMAGES" forState:UIControlStateNormal];
+        [cell.btnFooter setTitle:@"ADD PHOTO" forState:UIControlStateNormal];
         cell.img.image=[UIImage imageNamed:@"pic"];
         [cell.btn addTarget:self action:@selector(btnImagesClicked:) forControlEvents:UIControlEventTouchUpInside];
         return cell;

@@ -257,6 +257,11 @@
         [self displayNetworkActivity];
         [uploader upload:dataVoice options:dict withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
             NSLog(@"%@",errorResult);
+            if (errorResult.length>0)
+            {
+                [self hideNetworkActivity];
+                [self displayErrorWithMessage:@"Failure in uploading voice"];
+            }
             NSLog(@"%@",successResult);
             if (successResult.count>0)
             {

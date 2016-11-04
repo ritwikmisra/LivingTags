@@ -8,6 +8,7 @@
 
 #import "ViewControllerBaseClassViewController.h"
 #import "ModelFolders.h"
+#import"ModelCreateTagsSecondStep.h"
 
 @protocol CallContactsServiceDelegate <NSObject>
 
@@ -18,5 +19,6 @@
 
 @property(nonatomic,strong) ModelFolders *objFolders;
 @property(nonatomic,weak)id<CallContactsServiceDelegate>delegate;
+@property(nonatomic,strong)ModelCreateTagsSecondStep *objPopUPTemplates;
 
 @end

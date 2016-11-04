@@ -36,7 +36,23 @@
     txtFax.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Fax" attributes:@{NSForegroundColorAttributeName: color}];
     txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email ID" attributes:@{NSForegroundColorAttributeName: color}];
     dict=[[NSMutableDictionary alloc]init];
+    NSLog(@"%@",self.objPopUPTemplates.strTcname);
+    txtName.text=strName=self.objPopUPTemplates.strTcname;
+    txtPhone.text=strphone=self.objPopUPTemplates.strTphone;
+    txtFax.text=strFax=self.objPopUPTemplates.strTfax;
+    txtFax.text=strEmail=self.objPopUPTemplates.strEmail;
+    if (strName.length>0)
+    {
+        [dict setObject:strName forKey:@"tcname"];
+        [dict setObject:strphone forKey:@"tphone"];
+        [dict setObject:strFax forKey:@"tfax"];
+        [dict setObject:strEmail forKey:@"temail"];
+    }
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,7 +108,6 @@
     {
         [self viewDown];
     }
-
     if ([self alertChecking])
     {
         if (self.delegate && [self.delegate respondsToSelector:@selector(callWebServiceWithDict:)])
@@ -183,6 +198,11 @@
     if (strEmail.length==0)
     {
         [self displayErrorWithMessage:@"All fields are mandatory."];
+        return NO;
+    }
+    if ([strName isEqualToString:self.objPopUPTemplates.strTcname] && [strphone isEqualToString:self.objPopUPTemplates.strTphone] && [strFax isEqualToString:self.objPopUPTemplates.strTfax] && [strEmail isEqualToString:self.objPopUPTemplates.strEmail])
+    {
+        [self displayErrorWithMessage:@"Please update atleast one value"];
         return NO;
     }
     return YES;

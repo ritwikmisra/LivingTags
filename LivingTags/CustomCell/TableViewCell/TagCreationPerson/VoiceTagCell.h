@@ -15,5 +15,7 @@
 @property(nonatomic,strong)IBOutlet UIButton *btnRecordPlay;
 @property(nonatomic,strong)IBOutlet UISlider *sliderRecorder;
 
+@property(nonatomic,strong)IBOutlet UIButton *btnClose;
+
 
 @end
