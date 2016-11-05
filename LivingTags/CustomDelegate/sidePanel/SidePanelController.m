@@ -166,7 +166,11 @@
     vw=[[UIView alloc]initWithFrame:CGRectMake(0, 0,5, cell.contentView.frame.size.height)];
     vw.backgroundColor=[UIColor colorWithRed:87.0f/255.0f green:198.0f/255.0f blue:249.0f/255.0f alpha:1];
     [cell.contentView addSubview:vw];
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectedRowAtIndexPath:)])
+    {
+        [self.delegate selectedRowAtIndexPath:indexPath];
+    }
+
     //[self tableView:tblSidePanel didDeselectRowAtIndexPath:indexPath];
 }
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

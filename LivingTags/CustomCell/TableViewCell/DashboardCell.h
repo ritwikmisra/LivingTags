@@ -26,4 +26,7 @@
 @property(nonatomic,strong)IBOutlet UILabel *lblLeft;
 @property(nonatomic,strong)IBOutlet UILabel *lblRight;
 
+@property(nonatomic,strong)IBOutlet UILabel *lbBatchCountLeft;
+@property(nonatomic,strong)IBOutlet UILabel *lblBatchCountRight;
+
 @end

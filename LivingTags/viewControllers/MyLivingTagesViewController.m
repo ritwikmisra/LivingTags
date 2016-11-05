@@ -7,28 +7,17 @@
 
 
 #import "MyLivingTagesViewController.h"
-#import "LivingTagsCell.h"
-#import "LivingTagsListingService.h"
-#import "ModelListing.h"
-#import "UIImageView+WebCache.h"
-#import "MyLivingTagsMapViewController.h"
-#import "LivingTagsViewController.h"
+#import "DashboardCell.h"
+#import "LivingTagsSecondStepViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "MyTagsListingController.h"
 
-@interface MyLivingTagesViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UITextFieldDelegate,RemoveMapFromListDelegate>
+@interface MyLivingTagesViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    IBOutlet UITextField *txtSearch;
-    IBOutlet UITableView *tblTags;
-    IBOutlet UIView *vwList;
-    NSMutableArray *arrNames,*arrList,*arrMaps;
-    BOOL isScrollDown,isCreated;
-    int i;
-    MyLivingTagsMapViewController *master;
-    BOOL isLazyLoading;
-    ModelListing *objSegue;
-    IBOutlet UIView *vwCreatedTags;
-    IBOutlet UIView *vwPendingTags;
-    IBOutlet UIButton *btnCreatedTags;
-    IBOutlet UIButton *btnPendingTags;
+    IBOutlet UITableView *tblMyTagsCategory;
+    NSMutableArray *arrPics,*arrLabel,*arrSelected;
+    NSString *strTags;
+
 }
 @end
 
@@ -37,55 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [txtSearch setValue:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
-    [tblTags setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Persons",@"Place",@"Thing",@"Pet",@"Business", @"Others",nil];
+    arrPics=[[NSMutableArray alloc]initWithObjects:@"person_icon",@"place_icon",@"thing_icon",@"pet_icon",@"business_icon",@"other_icon", nil];
+    tblMyTagsCategory.separatorStyle=UITableViewCellSeparatorStyleNone;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    isCreated=YES;
-    vwCreatedTags.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
-    [btnCreatedTags setTitleColor:[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1] forState:UIControlStateNormal];
-    vwPendingTags.backgroundColor=[UIColor clearColor];
-    [btnPendingTags setTitleColor:[UIColor colorWithRed:142/255.0f green:142/255.0f blue:142/255.0f alpha:1] forState:UIControlStateNormal];
-    tblTags.delegate=self;
-    tblTags.dataSource=self;
-    i=0;
-    arrList=[[NSMutableArray alloc]init];
-    arrMaps=[[NSMutableArray alloc]init];
-    NSLog(@"%@",arrList);
-    isLazyLoading=YES;
-    /*[[LivingTagsListingService service]callListingServiceWithUserID:appDel.objUser.strUserID  paging:i name:txtSearch.text withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            if ([result isKindOfClass:[NSMutableArray class]])
-            {
-                arrNames=(id)result;
-                for (int k=0; k<arrNames.count; k++)
-                {
-                    ModelListing *obj=[[ModelListing alloc]initWithDictionary:[arrNames objectAtIndex:k]];
-                    if ([obj.strPublished isEqualToString:@"P"])
-                    {
-                        [arrMaps addObject:obj];
-                    }
-                    [arrList addObject:obj];
-                }
-                NSLog(@"%@",arrList);
-                NSLog(@"%lu",(unsigned long)arrNames.count);
-            }
-            else
-            {
-                [arrNames removeAllObjects];
-                [self displayErrorWithMessage:strMsg];
-            }
-            [tblTags reloadData];
-        }
-    }];*/
+    arrSelected=[[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0",@"0", nil];
+    tblMyTagsCategory.delegate=self;
+    tblMyTagsCategory.dataSource=self;
+
 }
 - (void)didReceiveMemoryWarning
 {
@@ -93,36 +45,7 @@
 }
 
 #pragma mark
-#pragma mark textfield delegate
-#pragma mark
-
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField
-{
-    
-}
-
--(IBAction)textfieldEdited:(id)sender
-{
-    UITextField *textfield=(id)sender;
-    if (textfield.text.length==0)
-    {
-        //[self callWebService];
-    }
-}
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-#pragma mark
-#pragma mark tableview delegate and datasource
+#pragma mark tableview delegates and datasource
 #pragma mark
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -130,212 +53,146 @@
     return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    //return arrNames.count;
-    if (isCreated==YES)
-    {
-        return 7;
-    }
-    return 4;
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (___isIphone4_4s)
+    if (___isIphone6Plus)
     {
-        return 90.0f;
+        return 200.0f;
     }
-    return 100.0f;
+    if (___isIphone6)
+    {
+        return 170.0f;
+    }
+    if (___isIphone5_5s)
+    {
+        return 150.0f;
+    }
+    return 135.0f;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (isCreated==YES)
+    DashboardCell *cell=[tableView dequeueReusableCellWithIdentifier:@"identifiew"];
+    if (!cell)
     {
-        LivingTagsCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
-        if (!cell)
-        {
-            cell=[[[NSBundle mainBundle]loadNibNamed:@"LivingTagsCell" owner:self options:nil]objectAtIndex:0];
-        }
-//        NSMutableDictionary *dic=[arrNames objectAtIndex:indexPath.row];
-//        ModelListing *obj=[[ModelListing alloc] initWithDictionary:dic];
-//        cell.lblName.text=obj.strName;
-//        cell.lblDate.text=[NSString stringWithFormat:@"Created on %@",obj.strCreated];
-//        cell.lblLocation.text=obj.strAddress1;
-        /*NSURL *url=[NSURL URLWithString:obj.strPicURI];
-         dispatch_async(dispatch_get_main_queue(), ^{
-         [cell.imgTag sd_setImageWithURL:url
-         placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
-         options:SDWebImageHighPriority
-         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-         if (cell.actIndicatorTag)
-         {
-         [cell.actIndicatorTag startAnimating];
-         }
-         }
-         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-         [cell.actIndicatorTag stopAnimating];
-         }];
-         });*/
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        cell.backgroundColor=[UIColor clearColor];
-        return cell;
+        cell=[[[NSBundle mainBundle]loadNibNamed:@"DashboardCell" owner:self options:nil] objectAtIndex:2];
     }
-    else
-    {
-        LivingTagsCell *cell=[tableView dequeueReusableCellWithIdentifier:@"str"];
-        if (!cell)
-        {
-            cell=[[[NSBundle mainBundle]loadNibNamed:@"LivingTagsCell" owner:self options:nil]objectAtIndex:1];
-        }
-        //NSMutableDictionary *dic=[arrNames objectAtIndex:indexPath.row];
-//        ModelListing *obj=[[ModelListing alloc] initWithDictionary:dic];
-//        cell.lblName.text=obj.strName;
-//        cell.lblDate.text=[NSString stringWithFormat:@"Created on %@",obj.strCreated];
-//        cell.lblLocation.text=obj.strAddress1;
-        /*NSURL *url=[NSURL URLWithString:obj.strPicURI];
-         dispatch_async(dispatch_get_main_queue(), ^{
-         [cell.imgTag sd_setImageWithURL:url
-         placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
-         options:SDWebImageHighPriority
-         progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-         if (cell.actIndicatorTag)
-         {
-         [cell.actIndicatorTag startAnimating];
-         }
-         }
-         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-         [cell.actIndicatorTag stopAnimating];
-         }];
-         });*/
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        cell.backgroundColor=[UIColor clearColor];
-        return cell;
+    cell.btnLeft.tag=indexPath.row*2;
+    cell.btnRIght.tag=indexPath.row*2+1;
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    cell.lblLeft.text=[arrLabel objectAtIndex:cell.btnLeft.tag];
+    cell.lblRight.text=[arrLabel objectAtIndex:cell.btnRIght.tag];
+    cell.imgIconleft.image=[UIImage imageNamed:[arrPics objectAtIndex:cell.btnLeft.tag]];
+    cell.imgIconRight.image=[UIImage imageNamed:[arrPics objectAtIndex:cell.btnRIght.tag]];
+    cell.backgroundColor=[UIColor clearColor];
+    [cell.btnRIght addTarget:self action:@selector(btnRightPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnLeft addTarget:self action:@selector(btnLeftPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    cell.lblBatchCountRight.layer.cornerRadius=self.view.frame.size.height/65;
+    cell.lblBatchCountRight.layer.masksToBounds=YES;
+    
+    cell.lbBatchCountLeft.layer.cornerRadius=self.view.frame.size.height/65;
+    cell.lbBatchCountLeft.layer.masksToBounds=YES;
 
+    if ([[arrSelected objectAtIndex:cell.btnLeft.tag]isEqualToString:@"1"])
+    {
+        cell.imgBackgroundLeft.image=[UIImage imageNamed:@"bg_btn_hover"];
     }
+    else if ([[arrSelected objectAtIndex:cell.btnRIght.tag]isEqualToString:@"1"])
+    {
+        cell.imgBackgroundRight.image=[UIImage imageNamed:@"bg_btn_hover"];
+        
+    }
+    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    objSegue=[arrList objectAtIndex:indexPath.row];
-    if ([objSegue.strPublished isEqualToString:@"P"])
+    
+    if (indexPath.row==1)
     {
-        //[self performSegueWithIdentifier:@"segueLivingTagsDetails" sender:self];
+        //        appDel.isCreateTagTappedFromDashboard = YES;
+        //        appDel.isMyTagTappedFromDashboard = NO;
+        //        appDel.isReadTagTappedFromDashboard = NO;
     }
+    /*if (indexPath.row==2)
+     {
+     appDel.isMyTagTappedFromDashboard = YES;
+     appDel.isCreateTagTappedFromDashboard = NO;
+     appDel.isReadTagTappedFromDashboard = NO;
+     [self performSegueWithIdentifier:@"segueDashboardToMyTags" sender:self];
+     }
+     if (indexPath.row==0)
+     {
+     appDel.isReadTagTappedFromDashboard = YES;
+     appDel.isMyTagTappedFromDashboard = NO;
+     appDel.isCreateTagTappedFromDashboard = NO;
+     [self performSegueWithIdentifier:@"segueDashBoardToReadTags" sender:self];
+     }*/
 }
+
 #pragma mark
-#pragma mark scroll view delegate
+#pragma mark IBACTIONS
 #pragma mark
 
-
-/*-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+-(void)btnLeftPressed:(id)sender
 {
-    if ([scrollView.panGestureRecognizer translationInView:scrollView].y > 0)
+    strTags=[arrLabel objectAtIndex:[sender tag]];
+    if ([arrSelected containsObject:@"1"])
     {
-        // down
-        isScrollDown=NO;
-    } else
-    {
-        // up
-        isScrollDown=YES;
+        int index=[arrSelected indexOfObject:@"1"];
+        [arrSelected replaceObjectAtIndex:index withObject:@"0"];
     }
+    [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
+    [tblMyTagsCategory reloadData];
+    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.3];
 }
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+
+-(void)btnRightPressed:(id)sender
 {
-    NSArray *visibleRows = [tblTags visibleCells];
-    UITableViewCell *lastVisibleCell = [visibleRows lastObject];
-    NSIndexPath *path = [tblTags indexPathForCell:lastVisibleCell];
-    NSLog(@"%ld",(long)path.row);
-    if(path.row == arrNames.count-1 && isScrollDown==YES && isLazyLoading==YES)
+    strTags=[arrLabel objectAtIndex:[sender tag]];
+    if ([arrSelected containsObject:@"1"])
     {
-         NSLog(@"Load more");
-        i=i+1;
-        [self callWebService];
+        int index=[arrSelected indexOfObject:@"1"];
+        [arrSelected replaceObjectAtIndex:index withObject:@"0"];
     }
-    else
-    {
-        
-    }
-}*/
-
-#pragma mark
-#pragma mark IBACTION
-#pragma mark
-
--(IBAction)btnMapPressed:(id)sender
-{
-    master=[MyLivingTagsMapViewController instance];
-    master.view.frame=CGRectMake(vwList.frame.origin.x,0,vwList.frame.size.width, vwList.frame.size.height);
-    [self addChildViewController:master];
-    [master didMoveToParentViewController:self];
-    NSLog(@"%@",arrMaps);
-    //master.arrListFromMap=arrMaps;
-    [vwList addSubview:master.view];
-    master.delegate=self;
-}
-
--(IBAction)btnPendingtagsPressed:(id)sender
-{
-    [btnCreatedTags setTitleColor:[UIColor colorWithRed:142/255.0f green:142/255.0f blue:142/255.0f alpha:1] forState:UIControlStateNormal];
-    [btnPendingTags setTitleColor:[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1] forState:UIControlStateNormal];
-    vwPendingTags.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
-    vwCreatedTags.backgroundColor=[UIColor clearColor];
-    isCreated=NO;
-    [tblTags reloadData];
-}
-
--(IBAction)btnCreatedTagsPressed:(id)sender
-{
-    [btnCreatedTags setTitleColor:[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1] forState:UIControlStateNormal];
-    [btnPendingTags setTitleColor:[UIColor colorWithRed:142/255.0f green:142/255.0f blue:142/255.0f alpha:1] forState:UIControlStateNormal];
-    vwPendingTags.backgroundColor=[UIColor clearColor];
-    vwCreatedTags.backgroundColor=[UIColor colorWithRed:246/255.0f green:132/255.0f blue:31/255.0f alpha:1];
-    isCreated=YES;
-    [tblTags reloadData];
-}
-
--(IBAction)btnSearchPressed:(id)sender
-{
-
-}
-
-
-#pragma mark
-#pragma mark Custom Mapview Delegate
-#pragma mark
-
--(void)removeMapFromSuperview;
-{
-    master=[MyLivingTagsMapViewController instance];
-    [master.view removeFromSuperview];
-    [master removeFromParentViewController];
-    master=nil;
+    [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
+    [tblMyTagsCategory reloadData];
+    //[self performSegueWithIdentifier:@"segueTagCreation" sender:self];
+    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.3];
 }
 
 #pragma mark
-#pragma mark prepare for segue
+#pragma mark WEB SERVICE CALLED
 #pragma mark
+
+-(void)moveToTagCreation
+{
+    [self performSegueWithIdentifier:@"segueMyTagsListing" sender:self];
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segueLivingTagsDetails"])
+    if ([segue.identifier isEqualToString:@"segueMyTagsListing"])
     {
-        LivingTagsViewController *master1=[segue destinationViewController];
-        master1.objHTML=objSegue;
+        MyTagsListingController *master=[segue destinationViewController];
+        master.strTagName=strTags;
     }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSLog(@"Disappear");
-    NSLog(@"Names:%@\n List:%@",arrNames,arrList);
-    [arrNames removeAllObjects];
-    [arrList removeAllObjects];
-    [arrMaps removeAllObjects];
-    NSLog(@"Names:%@\n List:%@",arrNames,arrList);
-    tblTags.delegate=nil;
-    tblTags.dataSource=nil;
+    [arrSelected removeAllObjects];
+    arrSelected=nil;
+    tblMyTagsCategory.delegate=nil;
+    tblMyTagsCategory.dataSource=nil;
 }
+
+
  @end

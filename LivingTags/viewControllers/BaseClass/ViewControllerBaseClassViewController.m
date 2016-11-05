@@ -217,6 +217,34 @@
     [self closeSlider];
 }
 
+-(void)selectedRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self closeSlider];
+    UINavigationController *navController=(UINavigationController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    [UIView animateWithDuration:0.2 animations:^{
+        navController.view.frame=CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width,  [[UIScreen mainScreen] bounds].size.height);
+    } completion:^(BOOL finished) {
+        [slideMenu setIsSlideMenuVisible:NO];
+        UIViewController *controller;
+        UIStoryboard *mainStoryboard=[UIStoryboard storyboardWithName:@"Main"bundle: nil];
+        switch (indexPath.row)
+        {
+            case 1:
+                controller=(MyLivingTagesViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
+                break;
+                
+            default:
+                break;
+        }
+        NSLog(@"%@",self.navigationController.topViewController);
+        if (![[self.navigationController topViewController] isKindOfClass:[controller class]] )
+        {
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+    }];
+}
+
+
 #pragma mark
 #pragma mark Keyboard helping Methods
 #pragma mark

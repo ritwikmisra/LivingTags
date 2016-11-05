@@ -11,7 +11,6 @@
 #import "TemplateCell.h"
 #import "UIImageView+WebCache.h"
 #import "ModelLivingTagsTemplateList.h"
-#import "CreateLivingTagsViewController.h"
 #import "TemplateSelectionService.h"
 #import "LivingTagsSecondStepViewController.h"
 

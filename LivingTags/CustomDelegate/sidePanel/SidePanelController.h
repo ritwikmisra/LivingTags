@@ -13,6 +13,7 @@
 
 @optional
 -(void)swipeToCloseSidePanel;
+-(void)selectedRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @interface SidePanelController : ViewControllerBaseClassViewController
