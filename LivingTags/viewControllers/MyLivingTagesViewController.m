@@ -11,11 +11,13 @@
 #import "LivingTagsSecondStepViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MyTagsListingController.h"
+#import "MyTagsBatchCountService.h"
+#import "ModelMyTagsCount.h"
 
 @interface MyLivingTagesViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     IBOutlet UITableView *tblMyTagsCategory;
-    NSMutableArray *arrPics,*arrLabel,*arrSelected;
+    NSMutableArray *arrPics,*arrLabel,*arrSelected,*arrResponse;
     NSString *strTags;
 
 }
@@ -37,6 +39,17 @@
     arrSelected=[[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0",@"0", nil];
     tblMyTagsCategory.delegate=self;
     tblMyTagsCategory.dataSource=self;
+    [[MyTagsBatchCountService service] getMyTagsBatchCountServiceWithCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            arrResponse=(id)result;
+            [tblMyTagsCategory reloadData];
+        }
+    }];
 
 }
 - (void)didReceiveMemoryWarning
@@ -95,7 +108,28 @@
     
     cell.lblBatchCountRight.layer.cornerRadius=self.view.frame.size.height/65;
     cell.lblBatchCountRight.layer.masksToBounds=YES;
+    ModelMyTagsCount *objLeft=[arrResponse objectAtIndex:cell.btnLeft.tag];
+    ModelMyTagsCount *objRight=[arrResponse objectAtIndex:cell.btnRIght.tag];
+    if ([objLeft.strTotaltags integerValue]==0)
+    {
+        cell.lbBatchCountLeft.hidden=YES;
+    }
+    else
+    {
+        cell.lbBatchCountLeft.hidden=NO;
+        cell.lbBatchCountLeft.text=objLeft.strTotaltags;
+    }
     
+    if ([objRight.strTotaltags integerValue]==0)
+    {
+        cell.lblBatchCountRight.hidden=YES;
+    }
+    else
+    {
+        cell.lblBatchCountRight.hidden=NO;
+        cell.lblBatchCountRight.text=objRight.strTotaltags;
+    }
+
     cell.lbBatchCountLeft.layer.cornerRadius=self.view.frame.size.height/65;
     cell.lbBatchCountLeft.layer.masksToBounds=YES;
 
@@ -150,7 +184,7 @@
     }
     [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
     [tblMyTagsCategory reloadData];
-    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(moveToTagCreation:) withObject:sender afterDelay:0.3];
 }
 
 -(void)btnRightPressed:(id)sender
@@ -164,16 +198,31 @@
     [arrSelected replaceObjectAtIndex:[sender tag] withObject:@"1"];
     [tblMyTagsCategory reloadData];
     //[self performSegueWithIdentifier:@"segueTagCreation" sender:self];
-    [self performSelector:@selector(moveToTagCreation) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(moveToTagCreation:) withObject:sender afterDelay:0.3];
 }
 
 #pragma mark
 #pragma mark WEB SERVICE CALLED
 #pragma mark
 
--(void)moveToTagCreation
+-(void)moveToTagCreation:(id)sender
 {
-    [self performSegueWithIdentifier:@"segueMyTagsListing" sender:self];
+    if (arrResponse.count>0)
+    {
+        ModelMyTagsCount *obj=[arrResponse objectAtIndex:[sender tag]];
+        if ([obj.strTotaltags integerValue]>0)
+        {
+            [self performSegueWithIdentifier:@"segueMyTagsListing" sender:self];
+        }
+        else
+        {
+            [self displayErrorWithMessage:@"You dont have any tags in this category"];
+        }
+    }
+    else
+    {
+        [self displayErrorWithMessage:@"There was an issue loading the page...Please reload the page..."];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

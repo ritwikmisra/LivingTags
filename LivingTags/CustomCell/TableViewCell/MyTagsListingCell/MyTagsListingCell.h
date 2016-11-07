@@ -20,6 +20,7 @@
 
 @property(nonatomic,strong)IBOutlet UIImageView *imgPerson;
 @property(nonatomic,strong)IBOutlet UIImageView *imgTagType;
+@property(nonatomic,strong)IBOutlet UIImageView *imgBottom;
 
 @property(nonatomic,strong)IBOutlet UIButton *btnEdit;
 @end

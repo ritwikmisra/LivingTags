@@ -1,17 +1,18 @@
 //
-//  LivingTagsCell.m
+//  ProfileCell.m
 //  LivingTags
 //
-//  Created by appsbeetech on 09/05/16.
+//  Created by appsbeetech on 07/11/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
 //
 
-#import "LivingTagsCell.h"
+#import "ProfileCell.h"
 
-@implementation LivingTagsCell
+@implementation ProfileCell
 
 - (void)awakeFromNib {
-    [self.actIndicatorTag setHidesWhenStopped:YES];
+    [super awakeFromNib];
+    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

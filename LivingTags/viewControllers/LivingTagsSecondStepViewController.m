@@ -1907,7 +1907,7 @@
 
 -(void)deleteVideosFromIndex:(NSInteger)i
 {
-    [[DeleteAssetService service]deleteAssetWithkey:[arrDeleteImages objectAtIndex:i] withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+    [[DeleteAssetService service]deleteAssetWithkey:[arrDeleteVideos objectAtIndex:i] withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
             [self displayErrorWithMessage:strMsg];

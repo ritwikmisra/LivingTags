@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0D066AD11D2A815C00C910E8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D066ACF1D2A815C00C910E8 /* Fabric.framework */; };
 		0D066AD21D2A815C00C910E8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D066AD01D2A815C00C910E8 /* Crashlytics.framework */; };
-		0D066ADC1D2A8DA800C910E8 /* ReadAllTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D066ADB1D2A8DA800C910E8 /* ReadAllTagsViewController.m */; };
 		0D066ADF1D2AA5FF00C910E8 /* AllTagsReadService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D066ADE1D2AA5FF00C910E8 /* AllTagsReadService.m */; };
 		0D0EA380B8B6AC9032F35B48 /* libPods-LivingTags.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24846D52E42744797AB50C9B /* libPods-LivingTags.a */; };
 		0D10ECFC1DCDEBB8006130C5 /* MyTagsListingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D10ECFB1DCDEBB8006130C5 /* MyTagsListingController.m */; };
@@ -48,12 +47,10 @@
 		0D1DDF811DA7BB5B0063F2F9 /* thing_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1DDF7A1DA7BB5B0063F2F9 /* thing_icon.png */; };
 		0D1DDF841DA7DFDB0063F2F9 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1DDF821DA7DFDB0063F2F9 /* logo.png */; };
 		0D1DDF851DA7DFDB0063F2F9 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1DDF831DA7DFDB0063F2F9 /* logo1.png */; };
-		0D1FBC951D6F18DB00028727 /* TagItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1FBC941D6F18DB00028727 /* TagItViewController.m */; };
 		0D1FBC9A1D6F41B500028727 /* CameraVideoTextSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1FBC991D6F41B500028727 /* CameraVideoTextSelectionViewController.m */; };
 		0D1FC5C41D644E940039B962 /* ModelImageUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1FC5C31D644E940039B962 /* ModelImageUpload.m */; };
 		0D20AEB81D47B2FF00851994 /* CreateTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D20AEB61D47B2FF00851994 /* CreateTagsCell.m */; };
 		0D20AEB91D47B2FF00851994 /* CreateTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D20AEB71D47B2FF00851994 /* CreateTagsCell.xib */; };
-		0D23053D1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */; };
 		0D2305471D54C76C00115A34 /* SidePanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2305451D54C76C00115A34 /* SidePanelCell.m */; };
 		0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2305461D54C76C00115A34 /* SidePanelCell.xib */; };
 		0D28FE961DC8B8910079FFDF /* PublishTagService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D28FE951DC8B8910079FFDF /* PublishTagService.m */; };
@@ -86,6 +83,16 @@
 		0D3A40141DB5159F0040D6D4 /* back_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A40131DB5159F0040D6D4 /* back_icon.png */; };
 		0D56FA531DC2156000972DF0 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D56FA511DC2156000972DF0 /* PersonCell.m */; };
 		0D56FA541DC2156000972DF0 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D56FA521DC2156000972DF0 /* PersonCell.xib */; };
+		0D59039D1DD07D9A0048B5EF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59039C1DD07D9A0048B5EF /* SettingsViewController.m */; };
+		0D5903A21DD081470048B5EF /* SettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5903A01DD081470048B5EF /* SettingsCell.m */; };
+		0D5903A31DD081470048B5EF /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D5903A11DD081470048B5EF /* SettingsCell.xib */; };
+		0D5903A61DD099330048B5EF /* MyTagsBatchCountService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5903A51DD099330048B5EF /* MyTagsBatchCountService.m */; };
+		0D5903A91DD09B8A0048B5EF /* ModelMyTagsCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5903A81DD09B8A0048B5EF /* ModelMyTagsCount.m */; };
+		0D5903AE1DD0C5140048B5EF /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5903AC1DD0C5140048B5EF /* ProfileCell.m */; };
+		0D5903AF1DD0C5140048B5EF /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D5903AD1DD0C5140048B5EF /* ProfileCell.xib */; };
+		0D5903B41DD0CDB40048B5EF /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D5903B11DD0CDB40048B5EF /* email.png */; };
+		0D5903B51DD0CDB40048B5EF /* my_Profile_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D5903B21DD0CDB40048B5EF /* my_Profile_tag.png */; };
+		0D5903B61DD0CDB40048B5EF /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D5903B31DD0CDB40048B5EF /* password.png */; };
 		0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2301CCB416200CA0DAE /* RegistrationViewController.m */; };
 		0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2331CCB545500CA0DAE /* RegistrationCellTableViewCell.m */; };
 		0D5EA23A1CCB6A0000CA0DAE /* NetworkActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2381CCB6A0000CA0DAE /* NetworkActivityViewController.m */; };
@@ -145,8 +152,6 @@
 		0D79E2191D4A4F7E007E4B35 /* CreateTagsThirdStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79E2181D4A4F7E007E4B35 /* CreateTagsThirdStepService.m */; };
 		0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */; };
 		0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */; };
-		0D7BA23D1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BA23B1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m */; };
-		0D7BA23E1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7BA23C1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib */; };
 		0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7DD3441CFEEB5000B6C4B9 /* myView.xib */; };
 		0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */; };
 		0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD34A1CFF0F1500B6C4B9 /* LivingTagsViewController.m */; };
@@ -166,11 +171,7 @@
 		0D8934E41DB11C7900A48562 /* add_logo_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934E31DB11C7900A48562 /* add_logo_button.png */; };
 		0D8934E61DB13FFD00A48562 /* txt_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934E51DB13FFD00A48562 /* txt_map.png */; };
 		0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */; };
-		0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6D501CE08EA2003A28C7 /* LivingTagsCell.m */; };
-		0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */; };
 		0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A6D551CE0BECE003A28C7 /* ListingService.m */; };
-		0D8AC8CE1D364F47001EFEBA /* CreateTagsSecondStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AC8CC1D364F47001EFEBA /* CreateTagsSecondStepCell.m */; };
-		0D8AC8CF1D364F47001EFEBA /* CreateTagsSecondStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AC8CD1D364F47001EFEBA /* CreateTagsSecondStepCell.xib */; };
 		0D8BE0911D2E62E700527345 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8BE0901D2E62E700527345 /* Contacts.framework */; };
 		0D901B9A1D3E57CD002B6735 /* TemplateSelectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D901B991D3E57CD002B6735 /* TemplateSelectionService.m */; };
 		0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D901B9C1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m */; };
@@ -187,8 +188,6 @@
 		0D9350BB1CDB61F800E403B2 /* YTVimeoExtractorOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9350B31CDB61F800E403B2 /* YTVimeoExtractorOperation.m */; };
 		0D9350BC1CDB61F800E403B2 /* YTVimeoURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9350B51CDB61F800E403B2 /* YTVimeoURLParser.m */; };
 		0D9350BD1CDB61F800E403B2 /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9350B81CDB61F800E403B2 /* YTVimeoVideo.m */; };
-		0D939D321CD34B5B002C954B /* EditProfilePicCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D939D301CD34B5B002C954B /* EditProfilePicCellTableViewCell.m */; };
-		0D939D331CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D939D311CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib */; };
 		0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9472A91D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m */; };
 		0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9472AC1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m */; };
 		0D9472B01D0AF74F00A85677 /* LivingTagsTemplateListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */; };
@@ -199,7 +198,6 @@
 		0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */; };
 		0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB867891DC09F4E00D428F2 /* CustomdatePickerViewController.m */; };
 		0DB8678C1DC09F4E00D428F2 /* CustomdatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB8678A1DC09F4E00D428F2 /* CustomdatePickerViewController.xib */; };
-		0DB9A45A1D4629CF007671E9 /* LivingTagsThirdStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */; };
 		0DC2F5981DC72BBD00AB1795 /* DeleteAssetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2F5971DC72BBD00AB1795 /* DeleteAssetService.m */; };
 		0DC2F5A11DC74A2700AB1795 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59A1DC74A2700AB1795 /* pause.png */; };
 		0DC2F5A21DC74A2700AB1795 /* play_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59B1DC74A2700AB1795 /* play_disable.png */; };
@@ -281,8 +279,6 @@
 /* Begin PBXFileReference section */
 		0D066ACF1D2A815C00C910E8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		0D066AD01D2A815C00C910E8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		0D066ADA1D2A8DA800C910E8 /* ReadAllTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadAllTagsViewController.h; sourceTree = "<group>"; };
-		0D066ADB1D2A8DA800C910E8 /* ReadAllTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadAllTagsViewController.m; sourceTree = "<group>"; };
 		0D066ADD1D2AA5FF00C910E8 /* AllTagsReadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTagsReadService.h; sourceTree = "<group>"; };
 		0D066ADE1D2AA5FF00C910E8 /* AllTagsReadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTagsReadService.m; sourceTree = "<group>"; };
 		0D10ECFA1DCDEBB8006130C5 /* MyTagsListingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagsListingController.h; sourceTree = "<group>"; };
@@ -324,8 +320,6 @@
 		0D1DDF7A1DA7BB5B0063F2F9 /* thing_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thing_icon.png; sourceTree = "<group>"; };
 		0D1DDF821DA7DFDB0063F2F9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		0D1DDF831DA7DFDB0063F2F9 /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
-		0D1FBC931D6F18DB00028727 /* TagItViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagItViewController.h; sourceTree = "<group>"; };
-		0D1FBC941D6F18DB00028727 /* TagItViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagItViewController.m; sourceTree = "<group>"; };
 		0D1FBC981D6F41B500028727 /* CameraVideoTextSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraVideoTextSelectionViewController.h; sourceTree = "<group>"; };
 		0D1FBC991D6F41B500028727 /* CameraVideoTextSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraVideoTextSelectionViewController.m; sourceTree = "<group>"; };
 		0D1FC5C21D644E940039B962 /* ModelImageUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelImageUpload.h; sourceTree = "<group>"; };
@@ -333,8 +327,6 @@
 		0D20AEB51D47B2FF00851994 /* CreateTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsCell.h; sourceTree = "<group>"; };
 		0D20AEB61D47B2FF00851994 /* CreateTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsCell.m; sourceTree = "<group>"; };
 		0D20AEB71D47B2FF00851994 /* CreateTagsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTagsCell.xib; sourceTree = "<group>"; };
-		0D23053B1D54BEBC00115A34 /* LivingTagsFourthStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsFourthStepViewController.h; sourceTree = "<group>"; };
-		0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsFourthStepViewController.m; sourceTree = "<group>"; };
 		0D2305441D54C76200115A34 /* SidePanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidePanelCell.h; sourceTree = "<group>"; };
 		0D2305451D54C76C00115A34 /* SidePanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidePanelCell.m; sourceTree = "<group>"; };
 		0D2305461D54C76C00115A34 /* SidePanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidePanelCell.xib; sourceTree = "<group>"; };
@@ -400,6 +392,21 @@
 		0D56FA501DC2156000972DF0 /* PersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
 		0D56FA511DC2156000972DF0 /* PersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
 		0D56FA521DC2156000972DF0 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
+		0D59039B1DD07D9A0048B5EF /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		0D59039C1DD07D9A0048B5EF /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		0D59039F1DD081470048B5EF /* SettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCell.h; sourceTree = "<group>"; };
+		0D5903A01DD081470048B5EF /* SettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCell.m; sourceTree = "<group>"; };
+		0D5903A11DD081470048B5EF /* SettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
+		0D5903A41DD099330048B5EF /* MyTagsBatchCountService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagsBatchCountService.h; sourceTree = "<group>"; };
+		0D5903A51DD099330048B5EF /* MyTagsBatchCountService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagsBatchCountService.m; sourceTree = "<group>"; };
+		0D5903A71DD09B8A0048B5EF /* ModelMyTagsCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelMyTagsCount.h; sourceTree = "<group>"; };
+		0D5903A81DD09B8A0048B5EF /* ModelMyTagsCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelMyTagsCount.m; sourceTree = "<group>"; };
+		0D5903AB1DD0C5140048B5EF /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		0D5903AC1DD0C5140048B5EF /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		0D5903AD1DD0C5140048B5EF /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		0D5903B11DD0CDB40048B5EF /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		0D5903B21DD0CDB40048B5EF /* my_Profile_tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_Profile_tag.png; sourceTree = "<group>"; };
+		0D5903B31DD0CDB40048B5EF /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
 		0D5EA22F1CCB416200CA0DAE /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		0D5EA2301CCB416200CA0DAE /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		0D5EA2321CCB545500CA0DAE /* RegistrationCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationCellTableViewCell.h; sourceTree = "<group>"; };
@@ -481,9 +488,6 @@
 		0D7BA2351D6B062100F2AD49 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
-		0D7BA23A1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsThirdStepCell.h; sourceTree = "<group>"; };
-		0D7BA23B1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsThirdStepCell.m; sourceTree = "<group>"; };
-		0D7BA23C1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTagsThirdStepCell.xib; sourceTree = "<group>"; };
 		0D7DD3441CFEEB5000B6C4B9 /* myView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myView.xib; sourceTree = "<group>"; };
 		0D7DD3451CFEEB5000B6C4B9 /* TMAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAnnotationView.h; sourceTree = "<group>"; };
 		0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAnnotationView.m; sourceTree = "<group>"; };
@@ -513,14 +517,8 @@
 		0D898E961CCF51E300B35D04 /* AppConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstant.h; sourceTree = "<group>"; };
 		0D898E991CCF58E400B35D04 /* ModelBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBaseClass.h; sourceTree = "<group>"; };
 		0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBaseClass.m; sourceTree = "<group>"; };
-		0D8A6D4F1CE08EA2003A28C7 /* LivingTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsCell.h; sourceTree = "<group>"; };
-		0D8A6D501CE08EA2003A28C7 /* LivingTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsCell.m; sourceTree = "<group>"; };
-		0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LivingTagsCell.xib; sourceTree = "<group>"; };
 		0D8A6D541CE0BECE003A28C7 /* ListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingService.h; sourceTree = "<group>"; };
 		0D8A6D551CE0BECE003A28C7 /* ListingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingService.m; sourceTree = "<group>"; };
-		0D8AC8CB1D364F47001EFEBA /* CreateTagsSecondStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTagsSecondStepCell.h; sourceTree = "<group>"; };
-		0D8AC8CC1D364F47001EFEBA /* CreateTagsSecondStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTagsSecondStepCell.m; sourceTree = "<group>"; };
-		0D8AC8CD1D364F47001EFEBA /* CreateTagsSecondStepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTagsSecondStepCell.xib; sourceTree = "<group>"; };
 		0D8BE0901D2E62E700527345 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		0D901B981D3E57CD002B6735 /* TemplateSelectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateSelectionService.h; sourceTree = "<group>"; };
 		0D901B991D3E57CD002B6735 /* TemplateSelectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateSelectionService.m; sourceTree = "<group>"; };
@@ -549,9 +547,6 @@
 		0D9350B61CDB61F800E403B2 /* YTVimeoVideo+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTVimeoVideo+Private.h"; sourceTree = "<group>"; };
 		0D9350B71CDB61F800E403B2 /* YTVimeoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoVideo.h; sourceTree = "<group>"; };
 		0D9350B81CDB61F800E403B2 /* YTVimeoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoVideo.m; sourceTree = "<group>"; };
-		0D939D2F1CD34B5B002C954B /* EditProfilePicCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfilePicCellTableViewCell.h; sourceTree = "<group>"; };
-		0D939D301CD34B5B002C954B /* EditProfilePicCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfilePicCellTableViewCell.m; sourceTree = "<group>"; };
-		0D939D311CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfilePicCellTableViewCell.xib; sourceTree = "<group>"; };
 		0D9472A81D0AF36800A85677 /* GetAllLivingTagsTemplatesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAllLivingTagsTemplatesService.h; sourceTree = "<group>"; };
 		0D9472A91D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAllLivingTagsTemplatesService.m; sourceTree = "<group>"; };
 		0D9472AB1D0AF5B200A85677 /* ModelLivingTagsTemplateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLivingTagsTemplateList.h; sourceTree = "<group>"; };
@@ -572,8 +567,6 @@
 		0DB867881DC09F4E00D428F2 /* CustomdatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomdatePickerViewController.h; sourceTree = "<group>"; };
 		0DB867891DC09F4E00D428F2 /* CustomdatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomdatePickerViewController.m; sourceTree = "<group>"; };
 		0DB8678A1DC09F4E00D428F2 /* CustomdatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomdatePickerViewController.xib; sourceTree = "<group>"; };
-		0DB9A4581D4629CE007671E9 /* LivingTagsThirdStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsThirdStepViewController.h; sourceTree = "<group>"; };
-		0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsThirdStepViewController.m; sourceTree = "<group>"; };
 		0DC2F5961DC72BBD00AB1795 /* DeleteAssetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteAssetService.h; sourceTree = "<group>"; };
 		0DC2F5971DC72BBD00AB1795 /* DeleteAssetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteAssetService.m; sourceTree = "<group>"; };
 		0DC2F59A1DC74A2700AB1795 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -875,6 +868,36 @@
 			path = PersonImageCell;
 			sourceTree = "<group>";
 		};
+		0D59039E1DD0811B0048B5EF /* SettingsCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D59039F1DD081470048B5EF /* SettingsCell.h */,
+				0D5903A01DD081470048B5EF /* SettingsCell.m */,
+				0D5903A11DD081470048B5EF /* SettingsCell.xib */,
+			);
+			path = SettingsCell;
+			sourceTree = "<group>";
+		};
+		0D5903AA1DD0C4EF0048B5EF /* ProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D5903AB1DD0C5140048B5EF /* ProfileCell.h */,
+				0D5903AC1DD0C5140048B5EF /* ProfileCell.m */,
+				0D5903AD1DD0C5140048B5EF /* ProfileCell.xib */,
+			);
+			path = ProfileCell;
+			sourceTree = "<group>";
+		};
+		0D5903B01DD0CDB40048B5EF /* my profile */ = {
+			isa = PBXGroup;
+			children = (
+				0D5903B11DD0CDB40048B5EF /* email.png */,
+				0D5903B21DD0CDB40048B5EF /* my_Profile_tag.png */,
+				0D5903B31DD0CDB40048B5EF /* password.png */,
+			);
+			path = "my profile";
+			sourceTree = "<group>";
+		};
 		0D5EA23C1CCB6A0B00CA0DAE /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -1014,22 +1037,14 @@
 				0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */,
 				0D764E6F1D1806AC00298BBE /* RecordViewController.h */,
 				0D764E701D1806AC00298BBE /* RecordViewController.m */,
-				0D066ADA1D2A8DA800C910E8 /* ReadAllTagsViewController.h */,
-				0D066ADB1D2A8DA800C910E8 /* ReadAllTagsViewController.m */,
 				0DE967511D353D680088C508 /* LivingTagsSecondStepViewController.h */,
 				0DE967521D353D690088C508 /* LivingTagsSecondStepViewController.m */,
-				0DB9A4581D4629CE007671E9 /* LivingTagsThirdStepViewController.h */,
-				0DB9A4591D4629CF007671E9 /* LivingTagsThirdStepViewController.m */,
-				0D23053B1D54BEBC00115A34 /* LivingTagsFourthStepViewController.h */,
-				0D23053C1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m */,
 				0DF7CFA21D4F9A5900A28CA1 /* PreviewViewController.h */,
 				0DF7CFA31D4F9A5900A28CA1 /* PreviewViewController.m */,
 				0D66C57D1D5A01C800230261 /* DashboardViewController.h */,
 				0D66C57E1D5A01C800230261 /* DashboardViewController.m */,
 				0D66C5801D5A320500230261 /* QRCodeViewController.h */,
 				0D66C5811D5A320500230261 /* QRCodeViewController.m */,
-				0D1FBC931D6F18DB00028727 /* TagItViewController.h */,
-				0D1FBC941D6F18DB00028727 /* TagItViewController.m */,
 				0D1FBC981D6F41B500028727 /* CameraVideoTextSelectionViewController.h */,
 				0D1FBC991D6F41B500028727 /* CameraVideoTextSelectionViewController.m */,
 				0D6659431DA6A89300566879 /* CreateTagsTypeControllerViewController.h */,
@@ -1038,6 +1053,8 @@
 				0DD198241DB63A4E003BB828 /* QRCodeScanViewController.m */,
 				0D10ECFA1DCDEBB8006130C5 /* MyTagsListingController.h */,
 				0D10ECFB1DCDEBB8006130C5 /* MyTagsListingController.m */,
+				0D59039B1DD07D9A0048B5EF /* SettingsViewController.h */,
+				0D59039C1DD07D9A0048B5EF /* SettingsViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1078,30 +1095,20 @@
 		0D698D1C1CC8D79000F64745 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D5903AA1DD0C4EF0048B5EF /* ProfileCell */,
+				0D59039E1DD0811B0048B5EF /* SettingsCell */,
 				0D10ECFD1DCDEF65006130C5 /* MyTagsListingCell */,
 				0D8934DD1DB119C200A48562 /* BusinessCell */,
 				0D8934D71DB100DD00A48562 /* TagPlaceCreation */,
 				0DF0084D1DAF925B00BD39C3 /* TagCreationPerson */,
-				0D7BA23A1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.h */,
-				0D7BA23B1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m */,
-				0D7BA23C1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib */,
 				0D2305441D54C76200115A34 /* SidePanelCell.h */,
 				0D2305451D54C76C00115A34 /* SidePanelCell.m */,
 				0D2305461D54C76C00115A34 /* SidePanelCell.xib */,
 				0D5EA2321CCB545500CA0DAE /* RegistrationCellTableViewCell.h */,
 				0D5EA2331CCB545500CA0DAE /* RegistrationCellTableViewCell.m */,
-				0D939D2F1CD34B5B002C954B /* EditProfilePicCellTableViewCell.h */,
-				0D939D301CD34B5B002C954B /* EditProfilePicCellTableViewCell.m */,
-				0D939D311CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib */,
-				0D8A6D4F1CE08EA2003A28C7 /* LivingTagsCell.h */,
-				0D8A6D501CE08EA2003A28C7 /* LivingTagsCell.m */,
-				0D8A6D511CE08EA2003A28C7 /* LivingTagsCell.xib */,
 				0D80DAFC1CFDA7E100B79C6B /* GroupPopupCell.h */,
 				0D80DAFD1CFDA7E100B79C6B /* GroupPopupCell.m */,
 				0D80DAFE1CFDA7E100B79C6B /* GroupPopupCell.xib */,
-				0D8AC8CB1D364F47001EFEBA /* CreateTagsSecondStepCell.h */,
-				0D8AC8CC1D364F47001EFEBA /* CreateTagsSecondStepCell.m */,
-				0D8AC8CD1D364F47001EFEBA /* CreateTagsSecondStepCell.xib */,
 				0D66C5711D59FEF100230261 /* DashboardCell.h */,
 				0D66C5721D59FEF100230261 /* DashboardCell.m */,
 				0D66C5731D59FEF100230261 /* DashboardCell.xib */,
@@ -1138,6 +1145,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D5903B01DD0CDB40048B5EF /* my profile */,
 				0D10ED031DCDF120006130C5 /* myTagsListing */,
 				0DC2F5991DC74A2700AB1795 /* Recording */,
 				0D19165A1DBF8F72004D02DA /* side */,
@@ -1196,6 +1204,8 @@
 				0D28FE981DC8E3CC0079FFDF /* PreviewAdService.m */,
 				0DE4CF361DCB5CEF00798B1F /* CategoryService.h */,
 				0DE4CF371DCB5CEF00798B1F /* CategoryService.m */,
+				0D5903A41DD099330048B5EF /* MyTagsBatchCountService.h */,
+				0D5903A51DD099330048B5EF /* MyTagsBatchCountService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1298,6 +1308,8 @@
 				0D1FC5C31D644E940039B962 /* ModelImageUpload.m */,
 				0D3121211DC357AC00F00B8F /* ModelFolders.h */,
 				0D3121221DC357AC00F00B8F /* ModelFolders.m */,
+				0D5903A71DD09B8A0048B5EF /* ModelMyTagsCount.h */,
+				0D5903A81DD09B8A0048B5EF /* ModelMyTagsCount.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -1594,6 +1606,7 @@
 				0DE4CF4B1DCB655000798B1F /* BusinessCategoryCell.xib in Resources */,
 				0DF008A61DAFB76500BD39C3 /* radio_off.png in Resources */,
 				0D1DDF7C1DA7BB5B0063F2F9 /* business_icon.png in Resources */,
+				0D5903B41DD0CDB40048B5EF /* email.png in Resources */,
 				0D1916691DBF8F72004D02DA /* contact.png in Resources */,
 				0D10ED181DCDF120006130C5 /* timing.png in Resources */,
 				0DF008A31DAFB76500BD39C3 /* map_pin.png in Resources */,
@@ -1602,6 +1615,7 @@
 				0DF008B61DAFE6F200BD39C3 /* find_button.png in Resources */,
 				0DE5FE2F1DAE5471004B06E5 /* Signika-Semibold.otf in Resources */,
 				0D77F6B01CD736AE00671159 /* Assets.bundle in Resources */,
+				0D5903A31DD081470048B5EF /* SettingsCell.xib in Resources */,
 				0DF008AE1DAFB76500BD39C3 /* vid_play.png in Resources */,
 				0D10ED0F1DCDF120006130C5 /* business_small.png in Resources */,
 				0DF008521DAF93E600BD39C3 /* PersonNameCell.xib in Resources */,
@@ -1620,6 +1634,7 @@
 				0DF008971DAFB76500BD39C3 /* add_pic.png in Resources */,
 				0D6659421DA6A14800566879 /* Signika-Bold.otf in Resources */,
 				0DF008611DAF9BFC00BD39C3 /* AddImageCell.xib in Resources */,
+				0D5903B61DD0CDB40048B5EF /* password.png in Resources */,
 				0D698D111CC8CF2500F64745 /* LaunchScreen.storyboard in Resources */,
 				0D19166B1DBF8F72004D02DA /* help.png in Resources */,
 				0DC2F5A51DC74A2700AB1795 /* recording.png in Resources */,
@@ -1648,6 +1663,7 @@
 				0D6659361DA67CAF00566879 /* memorial_tag.png in Resources */,
 				0D6659341DA67CAF00566879 /* add_icon.png in Resources */,
 				0DF0089A1DAFB76500BD39C3 /* audio.png in Resources */,
+				0D5903AF1DD0C5140048B5EF /* ProfileCell.xib in Resources */,
 				0DF008A41DAFB76500BD39C3 /* memorial.png in Resources */,
 				0D1DDF7B1DA7BB5B0063F2F9 /* bg_btn.png in Resources */,
 				0D3A40121DB50EF40040D6D4 /* g_plus-1.png in Resources */,
@@ -1661,6 +1677,7 @@
 				0D10ED151DCDF120006130C5 /* pic3.png in Resources */,
 				0D10ED121DCDF120006130C5 /* other_small.png in Resources */,
 				0DF008A81DAFB76500BD39C3 /* scroll_arrow.png in Resources */,
+				0D5903B51DD0CDB40048B5EF /* my_Profile_tag.png in Resources */,
 				0D1DDF7E1DA7BB5B0063F2F9 /* person_icon.png in Resources */,
 				0DF008991DAFB76500BD39C3 /* add_vid.png in Resources */,
 				0D5EA23B1CCB6A0000CA0DAE /* NetworkActivityViewController.xib in Resources */,
@@ -1689,7 +1706,6 @@
 				0D1DDF7F1DA7BB5B0063F2F9 /* pet_icon.png in Resources */,
 				0DE96D741DC9F958000981B1 /* ContactsPopupController.xib in Resources */,
 				0D8934E21DB11A0200A48562 /* AddLogoCell.xib in Resources */,
-				0D8A6D531CE08EA2003A28C7 /* LivingTagsCell.xib in Resources */,
 				0D19166E1DBF8F72004D02DA /* setting.png in Resources */,
 				0D19166F1DBF8F72004D02DA /* Side_shadow.png in Resources */,
 				0D6659261DA666E400566879 /* mail_icon.png in Resources */,
@@ -1697,8 +1713,6 @@
 				0D2305481D54C76C00115A34 /* SidePanelCell.xib in Resources */,
 				0D56FA541DC2156000972DF0 /* PersonCell.xib in Resources */,
 				0DC2F5A41DC74A2700AB1795 /* record.png in Resources */,
-				0D8AC8CF1D364F47001EFEBA /* CreateTagsSecondStepCell.xib in Resources */,
-				0D7BA23E1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.xib in Resources */,
 				0D1916661DBF8F72004D02DA /* about.png in Resources */,
 				0DF008A11DAFB76500BD39C3 /* living_button.png in Resources */,
 				0DF0089C1DAFB76500BD39C3 /* calender.png in Resources */,
@@ -1713,7 +1727,6 @@
 				0D1DDF801DA7BB5B0063F2F9 /* place_icon.png in Resources */,
 				0D20AEB91D47B2FF00851994 /* CreateTagsCell.xib in Resources */,
 				0D80DB001CFDA7E100B79C6B /* GroupPopupCell.xib in Resources */,
-				0D939D331CD34B5B002C954B /* EditProfilePicCellTableViewCell.xib in Resources */,
 				0D1916591DBF6A15004D02DA /* SidePanelController.xib in Resources */,
 				0D6659351DA67CAF00566879 /* create_tag.png in Resources */,
 				0D8934E61DB13FFD00A48562 /* txt_map.png in Resources */,
@@ -1790,6 +1803,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D5903A91DD09B8A0048B5EF /* ModelMyTagsCount.m in Sources */,
 				CD757A8F1D50C5E60033CF5D /* ProfileViewController.m in Sources */,
 				0D37314B1CD8A10B00EDC547 /* UIImageView+HighlightedWebCache.m in Sources */,
 				0D5EA23F1CCB6A0B00CA0DAE /* WebServiceBaseClass.m in Sources */,
@@ -1799,6 +1813,7 @@
 				0D3731411CD8A10B00EDC547 /* SDWebImageCompat.m in Sources */,
 				0D94FF581D3CCCB400502FC8 /* CKCalendarView.m in Sources */,
 				0D3731551CD8B71F00EDC547 /* ForgetPasswordViewController.m in Sources */,
+				0D5903A61DD099330048B5EF /* MyTagsBatchCountService.m in Sources */,
 				0D1FBC9A1D6F41B500028727 /* CameraVideoTextSelectionViewController.m in Sources */,
 				0D8934E11DB11A0200A48562 /* AddLogoCell.m in Sources */,
 				0D3731461CD8A10B00EDC547 /* SDWebImagePrefetcher.m in Sources */,
@@ -1811,7 +1826,6 @@
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
 				0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */,
 				0D28FE991DC8E3CC0079FFDF /* PreviewAdService.m in Sources */,
-				0D066ADC1D2A8DA800C910E8 /* ReadAllTagsViewController.m in Sources */,
 				0DD198211DB62615003BB828 /* PreviewPopUpController.m in Sources */,
 				0D3731471CD8A10B00EDC547 /* UIButton+WebCache.m in Sources */,
 				0D922FAE1CF8664300EC1945 /* CustomAnnotationSingle.m in Sources */,
@@ -1820,7 +1834,6 @@
 				0DF008561DAF952500BD39C3 /* PersonGenderCell.m in Sources */,
 				0DC937FD1CEB5F8E0049BEC2 /* LivingTagsListingService.m in Sources */,
 				0D9350BD1CDB61F800E403B2 /* YTVimeoVideo.m in Sources */,
-				0D8A6D521CE08EA2003A28C7 /* LivingTagsCell.m in Sources */,
 				0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */,
 				0DE4CF3D1DCB5EF900798B1F /* CategoryController.m in Sources */,
 				0D1FC5C41D644E940039B962 /* ModelImageUpload.m in Sources */,
@@ -1840,7 +1853,6 @@
 				0DC2F5981DC72BBD00AB1795 /* DeleteAssetService.m in Sources */,
 				0DF008511DAF93E600BD39C3 /* PersonNameCell.m in Sources */,
 				0D80DAF71CFD9B0E00B79C6B /* GroupPopupController.m in Sources */,
-				0D939D321CD34B5B002C954B /* EditProfilePicCellTableViewCell.m in Sources */,
 				0D79E2191D4A4F7E007E4B35 /* CreateTagsThirdStepService.m in Sources */,
 				0D698D2F1CC8D90500F64745 /* LandingViewController.m in Sources */,
 				0DF008741DAFA6B100BD39C3 /* AddLocationCell.m in Sources */,
@@ -1858,7 +1870,6 @@
 				0D698D261CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m in Sources */,
 				0D80DAFF1CFDA7E100B79C6B /* GroupPopupCell.m in Sources */,
 				0DF7CFA41D4F9A5900A28CA1 /* PreviewViewController.m in Sources */,
-				0D7BA23D1D6B76DE00F2AD49 /* CreateTagsThirdStepCell.m in Sources */,
 				0D3731491CD8A10B00EDC547 /* UIImage+MultiFormat.m in Sources */,
 				0D28FE961DC8B8910079FFDF /* PublishTagService.m in Sources */,
 				0D10ED011DCDEF81006130C5 /* MyTagsListingCell.m in Sources */,
@@ -1870,14 +1881,16 @@
 				0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */,
 				0D6030651D58B97000DB3333 /* LivingTagsFourthStepService.m in Sources */,
 				0D3731441CD8A10B00EDC547 /* SDWebImageDownloaderOperation.m in Sources */,
+				0D5903AE1DD0C5140048B5EF /* ProfileCell.m in Sources */,
+				0D5903A21DD081470048B5EF /* SettingsCell.m in Sources */,
 				0D3731521CD8A8C600EDC547 /* UpdateProfileService.m in Sources */,
-				0D1FBC951D6F18DB00028727 /* TagItViewController.m in Sources */,
 				0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */,
 				0DF008651DAF9F6F00BD39C3 /* AddVideoCell.m in Sources */,
 				0D3121231DC357AC00F00B8F /* ModelFolders.m in Sources */,
 				0D66C5821D5A320500230261 /* QRCodeViewController.m in Sources */,
 				0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */,
 				0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */,
+				0D59039D1DD07D9A0048B5EF /* SettingsViewController.m in Sources */,
 				0D698D001CC8CF2500F64745 /* main.m in Sources */,
 				0D9350BC1CDB61F800E403B2 /* YTVimeoURLParser.m in Sources */,
 				0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */,
@@ -1888,16 +1901,13 @@
 				0D5EA2311CCB416200CA0DAE /* RegistrationViewController.m in Sources */,
 				0DE7A1E21CDA49460053AF1A /* ImportContactsViewController.m in Sources */,
 				0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */,
-				0D23053D1D54BEBC00115A34 /* LivingTagsFourthStepViewController.m in Sources */,
 				0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */,
-				0DB9A45A1D4629CF007671E9 /* LivingTagsThirdStepViewController.m in Sources */,
 				0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */,
 				0D56FA531DC2156000972DF0 /* PersonCell.m in Sources */,
 				0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */,
 				0D5EA2421CCB7CFA00CA0DAE /* RegistrationService.m in Sources */,
 				0D1916581DBF6A15004D02DA /* SidePanelController.m in Sources */,
 				0D37314C1CD8A10B00EDC547 /* UIImageView+WebCache.m in Sources */,
-				0D8AC8CE1D364F47001EFEBA /* CreateTagsSecondStepCell.m in Sources */,
 				0DE4CF381DCB5CF000798B1F /* CategoryService.m in Sources */,
 				0DD198251DB63A4E003BB828 /* QRCodeScanViewController.m in Sources */,
 				0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */,

@@ -33,7 +33,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3co-Py-Bgf">
-                        <rect key="frame" x="77" y="0.0" width="321" height="76"/>
+                        <rect key="frame" x="74" y="0.0" width="321" height="76"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Linda Lopez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGR-4M-kL4">
                                 <rect key="frame" x="0.0" y="18" width="107" height="15"/>
@@ -59,8 +59,8 @@
                                 <color key="textColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDK-gP-Udr">
-                                <rect key="frame" x="204" y="19" width="71" height="15"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDK-gP-Udr">
+                                <rect key="frame" x="204" y="19" width="72" height="15"/>
                                 <color key="backgroundColor" red="0.3411764706" green="0.77647058820000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Edit">
@@ -73,14 +73,14 @@
                                 <color key="textColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="views.png" translatesAutoresizingMaskIntoConstraints="NO" id="igI-o2-NDj">
-                                <rect key="frame" x="60" y="40" width="12" height="13"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="views.png" translatesAutoresizingMaskIntoConstraints="NO" id="igI-o2-NDj">
+                                <rect key="frame" x="60" y="40" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="igI-o2-NDj" secondAttribute="height" id="32I-hv-6BI"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="comments.png" translatesAutoresizingMaskIntoConstraints="NO" id="tkM-xj-oMN">
-                                <rect key="frame" x="121" y="40" width="12" height="13"/>
+                                <rect key="frame" x="120" y="40" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tkM-xj-oMN" secondAttribute="height" id="Vxr-RL-oDQ"/>
                                 </constraints>
@@ -92,19 +92,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="data_size.png" translatesAutoresizingMaskIntoConstraints="NO" id="T1Y-2a-vwk">
-                                <rect key="frame" x="195" y="40" width="12" height="13"/>
+                                <rect key="frame" x="194" y="40" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" secondItem="T1Y-2a-vwk" secondAttribute="width" id="10e-nE-oj0"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 mb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1T-vx-J59">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="22 mb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1T-vx-J59">
                                 <rect key="frame" x="210" y="39" width="40" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeW-ZO-CzO">
-                                <rect key="frame" x="76" y="39" width="40" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="22 views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeW-ZO-CzO">
+                                <rect key="frame" x="77" y="39" width="40" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -161,7 +161,7 @@
                 <constraints>
                     <constraint firstItem="D92-Pi-ehu" firstAttribute="leading" secondItem="yaZ-yk-Vt1" secondAttribute="leading" constant="10" id="6gv-9e-ebY"/>
                     <constraint firstItem="yaZ-yk-Vt1" firstAttribute="height" secondItem="D92-Pi-ehu" secondAttribute="height" multiplier="1.4" id="DHA-Of-l0w"/>
-                    <constraint firstItem="3co-Py-Bgf" firstAttribute="leading" secondItem="D92-Pi-ehu" secondAttribute="trailing" multiplier="1.2" id="Lde-Iz-Kzw"/>
+                    <constraint firstItem="3co-Py-Bgf" firstAttribute="leading" secondItem="D92-Pi-ehu" secondAttribute="trailing" multiplier="1.15" id="Lde-Iz-Kzw"/>
                     <constraint firstItem="yaZ-yk-Vt1" firstAttribute="width" secondItem="3co-Py-Bgf" secondAttribute="width" multiplier="1.28" id="Mgq-CV-PoD"/>
                     <constraint firstItem="yaZ-yk-Vt1" firstAttribute="height" secondItem="3co-Py-Bgf" secondAttribute="height" id="QcZ-R2-fWp"/>
                     <constraint firstItem="yaZ-yk-Vt1" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VUc-gH-3Ve"/>
@@ -177,6 +177,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnEdit" destination="NDK-gP-Udr" id="8yY-jN-Txn"/>
+                <outlet property="imgBottom" destination="I4Q-BC-qgd" id="l9S-dL-HbG"/>
                 <outlet property="imgPerson" destination="D92-Pi-ehu" id="iax-Nt-5Ez"/>
                 <outlet property="imgTagType" destination="5Ip-fU-HYQ" id="VWu-Cw-Xzm"/>
                 <outlet property="lblDiskSpace" destination="Q1T-vx-J59" id="YhS-vh-1Kf"/>
@@ -186,7 +187,7 @@
                 <outlet property="lblTagViews" destination="PeW-ZO-CzO" id="2j3-I3-Y7M"/>
                 <outlet property="lblTiming" destination="nig-PA-u5W" id="0y7-bq-ry4"/>
             </connections>
-            <point key="canvasLocation" x="326.5" y="197.5"/>
+            <point key="canvasLocation" x="500.5" y="199.5"/>
         </tableViewCell>
     </objects>
     <resources>

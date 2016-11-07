@@ -8,7 +8,6 @@
 
 #import "WebServiceBaseClass.h"
 #import "NetworkActivityViewController.h"
-#import "CreateTagsThirdStepCell.h"
 
 //http://carlifestyle.digiopia.in/user/registration
 
@@ -44,7 +43,8 @@ NSString *const strAPI[]={
     [CLOUDINARY_DELETE_IMAGE]=@"Tags/removeTagAsset",
     [WEB_SERVICE_PUBLISH_TAG]=@"Tags/publishTag",
     [WEB_SERVICE_PREVIEW_TAG]=@"Tags/previewTag",
-    [WEBSERVICE_CATEGORY]   =@"Tags/getCategories"
+    [WEBSERVICE_CATEGORY]   =@"Tags/getCategories",
+    [WEB_SERVICE_MY_TAGS_BATCH_COUNT]=@"Tags/templateCategoryLists"
 };
 
 

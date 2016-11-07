@@ -13,10 +13,8 @@
 #import "LoggingViewController.h"
 #import "LivingTagsTemplateListController.h"
 #import "NetworkActivityViewController.h"
-#import "ReadAllTagsViewController.h"
-#import "ImportContactsViewController.h"
-#import "DashboardViewController.h"
 #import "SidePanelController.h"
+#import "SettingsViewController.h"
 
 
 @interface ViewControllerBaseClassViewController ()<SidePanelSwipeDelegate>
@@ -233,6 +231,16 @@
                 controller=(MyLivingTagesViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
                 break;
                 
+                //SettingsViewController
+                
+            case 5:
+                controller=(ProfileViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+                break;
+
+            case 6:
+                controller=(SettingsViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+                break;
+
             default:
                 break;
         }

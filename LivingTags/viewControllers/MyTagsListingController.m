@@ -66,6 +66,10 @@
     cell.imgPerson.clipsToBounds=YES;
     cell.btnEdit.tag=indexPath.row;
     [cell.btnEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
+    if (indexPath.row==5)
+    {
+        cell.imgBottom.hidden=YES;
+    }
     return cell;
 }
 
