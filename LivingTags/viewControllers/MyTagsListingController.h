@@ -11,5 +11,7 @@
 @interface MyTagsListingController : ViewControllerBaseClassViewController
 
 @property(nonatomic,strong) NSString *strTagName;
+@property(nonatomic,strong) NSString *strTCKey;
+
 
 @end

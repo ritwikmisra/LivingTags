@@ -18,7 +18,7 @@
 {
     IBOutlet UITableView *tblMyTagsCategory;
     NSMutableArray *arrPics,*arrLabel,*arrSelected,*arrResponse;
-    NSString *strTags;
+    NSString *strTags,*strSegueTCKEY;
 
 }
 @end
@@ -28,14 +28,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Persons",@"Place",@"Thing",@"Pet",@"Business", @"Others",nil];
-    arrPics=[[NSMutableArray alloc]initWithObjects:@"person_icon",@"place_icon",@"thing_icon",@"pet_icon",@"business_icon",@"other_icon", nil];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Person",@"Business",@"Pet",@"Place",@"Thing", @"Other",nil];
+    arrPics=[[NSMutableArray alloc]initWithObjects:@"person_icon",@"business_icon",@"pet_icon",@"place_icon",@"thing_icon",@"other_icon", nil];
+
     tblMyTagsCategory.separatorStyle=UITableViewCellSeparatorStyleNone;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSString *str=[arrLabel firstObject];
+    NSLog(@"%@",[str uppercaseString]);
     arrSelected=[[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0",@"0", nil];
     tblMyTagsCategory.delegate=self;
     tblMyTagsCategory.dataSource=self;
@@ -85,7 +88,11 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    if (arrResponse.count>0)
+    {
+        return 3;
+    }
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,8 +115,11 @@
     
     cell.lblBatchCountRight.layer.cornerRadius=self.view.frame.size.height/65;
     cell.lblBatchCountRight.layer.masksToBounds=YES;
+
+    cell.lbBatchCountLeft.layer.cornerRadius=self.view.frame.size.height/65;
+    cell.lbBatchCountLeft.layer.masksToBounds=YES;
+    
     ModelMyTagsCount *objLeft=[arrResponse objectAtIndex:cell.btnLeft.tag];
-    ModelMyTagsCount *objRight=[arrResponse objectAtIndex:cell.btnRIght.tag];
     if ([objLeft.strTotaltags integerValue]==0)
     {
         cell.lbBatchCountLeft.hidden=YES;
@@ -119,6 +129,7 @@
         cell.lbBatchCountLeft.hidden=NO;
         cell.lbBatchCountLeft.text=objLeft.strTotaltags;
     }
+    ModelMyTagsCount *objRight=[arrResponse objectAtIndex:cell.btnRIght.tag];
     
     if ([objRight.strTotaltags integerValue]==0)
     {
@@ -129,9 +140,6 @@
         cell.lblBatchCountRight.hidden=NO;
         cell.lblBatchCountRight.text=objRight.strTotaltags;
     }
-
-    cell.lbBatchCountLeft.layer.cornerRadius=self.view.frame.size.height/65;
-    cell.lbBatchCountLeft.layer.masksToBounds=YES;
 
     if ([[arrSelected objectAtIndex:cell.btnLeft.tag]isEqualToString:@"1"])
     {
@@ -210,6 +218,7 @@
     if (arrResponse.count>0)
     {
         ModelMyTagsCount *obj=[arrResponse objectAtIndex:[sender tag]];
+        strSegueTCKEY =obj.strTCKey;
         if ([obj.strTotaltags integerValue]>0)
         {
             [self performSegueWithIdentifier:@"segueMyTagsListing" sender:self];
@@ -231,6 +240,8 @@
     {
         MyTagsListingController *master=[segue destinationViewController];
         master.strTagName=strTags;
+        master.strTCKey=strSegueTCKEY;
+        
     }
 }
 

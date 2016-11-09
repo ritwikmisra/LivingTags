@@ -44,7 +44,9 @@ NSString *const strAPI[]={
     [WEB_SERVICE_PUBLISH_TAG]=@"Tags/publishTag",
     [WEB_SERVICE_PREVIEW_TAG]=@"Tags/previewTag",
     [WEBSERVICE_CATEGORY]   =@"Tags/getCategories",
-    [WEB_SERVICE_MY_TAGS_BATCH_COUNT]=@"Tags/templateCategoryLists"
+    [WEB_SERVICE_MY_TAGS_BATCH_COUNT]=@"Tags/templateCategoryLists",
+    [WEB_SERVICE_TAG_LIST_CATEGORY]=@"Tags/tagListsByCategory",
+    [EDIT_TAGS_GET_DETAILS]=@"Tags/getTagDetails"
 };
 
 

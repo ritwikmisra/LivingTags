@@ -235,7 +235,63 @@
         {
             self.strEmail=@"";
         }
+        
+        //tvoice
+        
+        if ([dict objectForKey:@"tvoice"] && ![[dict objectForKey:@"tvoice"] isKindOfClass:[NSNull class]])//
+        {
+            self.strVoiceURL=[dict objectForKey:@"tvoice"];
+        }
+        else
+        {
+            self.strVoiceURL=@"";
+        }
 
+        
+        //tckey
+        
+        if ([dict objectForKey:@"tckey"] && ![[dict objectForKey:@"tckey"] isKindOfClass:[NSNull class]])//
+        {
+            self.strTckey=[dict objectForKey:@"tckey"];
+        }
+        else
+        {
+            self.strTckey=@"";
+        }
+
+        
+        //tagAudioFolder
+        
+        if ([dict objectForKey:@"tagAudioFolder"] && ![[dict objectForKey:@"tagAudioFolder"] isKindOfClass:[NSNull class]])//
+        {
+            self.strtagAudioFolder=[dict objectForKey:@"tagAudioFolder"];
+        }
+        else
+        {
+            self.strtagAudioFolder=@"";
+        }
+
+        
+        //tagImageFolder
+        
+        if ([dict objectForKey:@"tagImageFolder"] && ![[dict objectForKey:@"tagImageFolder"] isKindOfClass:[NSNull class]])//
+        {
+            self.strtagImageFolder=[dict objectForKey:@"tagImageFolder"];
+        }
+        else
+        {
+            self.strtagImageFolder=@"";
+        }
+        //tagVideoFolder
+        
+        if ([dict objectForKey:@"tagVideoFolder"] && ![[dict objectForKey:@"tagVideoFolder"] isKindOfClass:[NSNull class]])//
+        {
+            self.strtagVideoFolder=[dict objectForKey:@"tagVideoFolder"];
+        }
+        else
+        {
+            self.strtagVideoFolder=@"";
+        }
     }
     return self;
 }

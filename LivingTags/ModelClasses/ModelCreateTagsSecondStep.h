@@ -39,6 +39,12 @@
 @property(nonatomic,strong)NSString *strMobile;
 @property(nonatomic,strong)NSString *strWebsite;
 
+@property(nonatomic,strong)NSString *strVoiceURL;
+@property(nonatomic,strong)NSString *strTckey;
+@property(nonatomic,strong)NSString *strtagAudioFolder;
+@property(nonatomic,strong)NSString *strtagImageFolder;
+@property(nonatomic,strong)NSString *strtagVideoFolder;
+
 
 
 -(id)initWithDictionary:(NSDictionary *)dict;

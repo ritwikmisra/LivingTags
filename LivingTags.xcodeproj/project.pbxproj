@@ -101,6 +101,11 @@
 		0D5EA2421CCB7CFA00CA0DAE /* RegistrationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2411CCB7CFA00CA0DAE /* RegistrationService.m */; };
 		0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EA2451CCB7F3000CA0DAE /* Reachability.m */; };
 		0D6030651D58B97000DB3333 /* LivingTagsFourthStepService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */; };
+		0D64F4011DD3081800297FF3 /* MyTagsEditModeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D64F4001DD3081700297FF3 /* MyTagsEditModeController.m */; };
+		0D64F4041DD32FC100297FF3 /* MyTagListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D64F4031DD32FC100297FF3 /* MyTagListService.m */; };
+		0D64F4071DD3314700297FF3 /* ModelEditTagsListing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D64F4061DD3314700297FF3 /* ModelEditTagsListing.m */; };
+		0D64F40A1DD3502800297FF3 /* EditTagsGetDetailsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D64F4091DD3502800297FF3 /* EditTagsGetDetailsService.m */; };
+		0D64F40D1DD380A200297FF3 /* ModelImageAndVideoAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D64F40C1DD380A200297FF3 /* ModelImageAndVideoAssets.m */; };
 		0D6659251DA666E400566879 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6659211DA666E400566879 /* facebook_icon.png */; };
 		0D6659261DA666E400566879 /* mail_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6659221DA666E400566879 /* mail_icon.png */; };
 		0D6659271DA666E400566879 /* name_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6659231DA666E400566879 /* name_icon.png */; };
@@ -422,6 +427,16 @@
 		0D5EA2451CCB7F3000CA0DAE /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0D6030631D58B97000DB3333 /* LivingTagsFourthStepService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsFourthStepService.h; sourceTree = "<group>"; };
 		0D6030641D58B97000DB3333 /* LivingTagsFourthStepService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsFourthStepService.m; sourceTree = "<group>"; };
+		0D64F3FF1DD3081700297FF3 /* MyTagsEditModeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagsEditModeController.h; sourceTree = "<group>"; };
+		0D64F4001DD3081700297FF3 /* MyTagsEditModeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagsEditModeController.m; sourceTree = "<group>"; };
+		0D64F4021DD32FC100297FF3 /* MyTagListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagListService.h; sourceTree = "<group>"; };
+		0D64F4031DD32FC100297FF3 /* MyTagListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagListService.m; sourceTree = "<group>"; };
+		0D64F4051DD3314700297FF3 /* ModelEditTagsListing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEditTagsListing.h; sourceTree = "<group>"; };
+		0D64F4061DD3314700297FF3 /* ModelEditTagsListing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEditTagsListing.m; sourceTree = "<group>"; };
+		0D64F4081DD3502800297FF3 /* EditTagsGetDetailsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTagsGetDetailsService.h; sourceTree = "<group>"; };
+		0D64F4091DD3502800297FF3 /* EditTagsGetDetailsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTagsGetDetailsService.m; sourceTree = "<group>"; };
+		0D64F40B1DD380A200297FF3 /* ModelImageAndVideoAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelImageAndVideoAssets.h; sourceTree = "<group>"; };
+		0D64F40C1DD380A200297FF3 /* ModelImageAndVideoAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelImageAndVideoAssets.m; sourceTree = "<group>"; };
 		0D6659211DA666E400566879 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_icon.png; sourceTree = "<group>"; };
 		0D6659221DA666E400566879 /* mail_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail_icon.png; sourceTree = "<group>"; };
 		0D6659231DA666E400566879 /* name_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = name_icon.png; sourceTree = "<group>"; };
@@ -1055,6 +1070,8 @@
 				0D10ECFB1DCDEBB8006130C5 /* MyTagsListingController.m */,
 				0D59039B1DD07D9A0048B5EF /* SettingsViewController.h */,
 				0D59039C1DD07D9A0048B5EF /* SettingsViewController.m */,
+				0D64F3FF1DD3081700297FF3 /* MyTagsEditModeController.h */,
+				0D64F4001DD3081700297FF3 /* MyTagsEditModeController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1206,6 +1223,10 @@
 				0DE4CF371DCB5CEF00798B1F /* CategoryService.m */,
 				0D5903A41DD099330048B5EF /* MyTagsBatchCountService.h */,
 				0D5903A51DD099330048B5EF /* MyTagsBatchCountService.m */,
+				0D64F4021DD32FC100297FF3 /* MyTagListService.h */,
+				0D64F4031DD32FC100297FF3 /* MyTagListService.m */,
+				0D64F4081DD3502800297FF3 /* EditTagsGetDetailsService.h */,
+				0D64F4091DD3502800297FF3 /* EditTagsGetDetailsService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1310,6 +1331,10 @@
 				0D3121221DC357AC00F00B8F /* ModelFolders.m */,
 				0D5903A71DD09B8A0048B5EF /* ModelMyTagsCount.h */,
 				0D5903A81DD09B8A0048B5EF /* ModelMyTagsCount.m */,
+				0D64F4051DD3314700297FF3 /* ModelEditTagsListing.h */,
+				0D64F4061DD3314700297FF3 /* ModelEditTagsListing.m */,
+				0D64F40B1DD380A200297FF3 /* ModelImageAndVideoAssets.h */,
+				0D64F40C1DD380A200297FF3 /* ModelImageAndVideoAssets.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -1818,6 +1843,7 @@
 				0D8934E11DB11A0200A48562 /* AddLogoCell.m in Sources */,
 				0D3731461CD8A10B00EDC547 /* SDWebImagePrefetcher.m in Sources */,
 				0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */,
+				0D64F4071DD3314700297FF3 /* ModelEditTagsListing.m in Sources */,
 				0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */,
 				0D066ADF1D2AA5FF00C910E8 /* AllTagsReadService.m in Sources */,
 				0D3731401CD8A10B00EDC547 /* SDImageCache.m in Sources */,
@@ -1860,6 +1886,7 @@
 				0D922FB11CF86D3E00EC1945 /* customAnnotationGroups.m in Sources */,
 				0D3731481CD8A10B00EDC547 /* UIImage+GIF.m in Sources */,
 				0D9472B01D0AF74F00A85677 /* LivingTagsTemplateListController.m in Sources */,
+				0D64F4011DD3081800297FF3 /* MyTagsEditModeController.m in Sources */,
 				0D80DF871CEDA30B000FE698 /* MyLivingTagsMapViewController.m in Sources */,
 				0DF0086A1DAFA2D600BD39C3 /* AddVideoTagCell.m in Sources */,
 				0D37314D1CD8A10B00EDC547 /* UIView+WebCacheOperation.m in Sources */,
@@ -1881,6 +1908,7 @@
 				0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */,
 				0D6030651D58B97000DB3333 /* LivingTagsFourthStepService.m in Sources */,
 				0D3731441CD8A10B00EDC547 /* SDWebImageDownloaderOperation.m in Sources */,
+				0D64F40A1DD3502800297FF3 /* EditTagsGetDetailsService.m in Sources */,
 				0D5903AE1DD0C5140048B5EF /* ProfileCell.m in Sources */,
 				0D5903A21DD081470048B5EF /* SettingsCell.m in Sources */,
 				0D3731521CD8A8C600EDC547 /* UpdateProfileService.m in Sources */,
@@ -1890,6 +1918,7 @@
 				0D66C5821D5A320500230261 /* QRCodeViewController.m in Sources */,
 				0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */,
 				0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */,
+				0D64F40D1DD380A200297FF3 /* ModelImageAndVideoAssets.m in Sources */,
 				0D59039D1DD07D9A0048B5EF /* SettingsViewController.m in Sources */,
 				0D698D001CC8CF2500F64745 /* main.m in Sources */,
 				0D9350BC1CDB61F800E403B2 /* YTVimeoURLParser.m in Sources */,
@@ -1910,6 +1939,7 @@
 				0D37314C1CD8A10B00EDC547 /* UIImageView+WebCache.m in Sources */,
 				0DE4CF381DCB5CF000798B1F /* CategoryService.m in Sources */,
 				0DD198251DB63A4E003BB828 /* QRCodeScanViewController.m in Sources */,
+				0D64F4041DD32FC100297FF3 /* MyTagListService.m in Sources */,
 				0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */,
 				0D66C5741D59FEF100230261 /* DashboardCell.m in Sources */,
 				0D5EA23A1CCB6A0000CA0DAE /* NetworkActivityViewController.m in Sources */,

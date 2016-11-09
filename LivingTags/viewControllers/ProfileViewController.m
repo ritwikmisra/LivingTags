@@ -74,7 +74,7 @@
         {
             cellProfile=[[[NSBundle mainBundle]loadNibNamed:@"ProfileCell" owner:self options:nil]objectAtIndex:0];
         }
-        cellProfile.imgProfilePic.layer.cornerRadius=self.view.frame.size.height/9;
+        cellProfile.imgProfilePic.layer.cornerRadius=self.view.frame.size.height/12;
         cellProfile.imgProfilePic.clipsToBounds=YES;
         cell=cellProfile;
     }

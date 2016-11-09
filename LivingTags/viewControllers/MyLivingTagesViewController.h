@@ -8,6 +8,7 @@
 
 #import "ViewControllerBaseClassViewController.h"
 
+
 @interface MyLivingTagesViewController : ViewControllerBaseClassViewController
 
 @end

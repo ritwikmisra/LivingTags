@@ -19,6 +19,7 @@
 
 @property(nonatomic,strong) NSMutableArray *arrCategoryList;
 @property(nonatomic,strong)ModelFolders *objFolders;
+@property(nonatomic,strong)NSString *strTKey;
 @property(nonatomic,weak)id<SelectCategoryProtocol> delegate;
 
 @end

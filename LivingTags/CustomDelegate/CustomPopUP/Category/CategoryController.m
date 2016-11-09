@@ -68,20 +68,41 @@
     NSLog(@"%@",cell.lblCategoryName.text);
     //tdata[tcategories],
     [dict setObject:cell.lblCategoryName.text forKey:@"tcategories"];
-    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            [self.view removeFromSuperview];
-            if (_delegate && [_delegate respondsToSelector:@selector(selectedCategoryWithName:)])
+    if (self.strTKey.length>0)
+    {
+        [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:self.strTKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
             {
-                [self.delegate selectedCategoryWithName:cell.lblCategoryName.text];
+                [self displayErrorWithMessage:strMsg];
             }
-        }
-    }];
+            else
+            {
+                [self.view removeFromSuperview];
+                if (_delegate && [_delegate respondsToSelector:@selector(selectedCategoryWithName:)])
+                {
+                    [self.delegate selectedCategoryWithName:cell.lblCategoryName.text];
+                }
+            }
+        }];
+
+    }
+    else
+    {
+        [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+            {
+                [self.view removeFromSuperview];
+                if (_delegate && [_delegate respondsToSelector:@selector(selectedCategoryWithName:)])
+                {
+                    [self.delegate selectedCategoryWithName:cell.lblCategoryName.text];
+                }
+            }
+        }];
+    }
 }
 
 

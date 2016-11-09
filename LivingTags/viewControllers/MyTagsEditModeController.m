@@ -1,11 +1,13 @@
 //
-//  LivingTagsSecondStepViewController.m
+//  MyTagsEditModeController.m
 //  LivingTags
 //
-//  Created by appsbeetech on 12/07/16.
+//  Created by appsbeetech on 09/11/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
+//
 
-#import "LivingTagsSecondStepViewController.h"
+#import "MyTagsEditModeController.h"
+#import "MyTagListService.h"
 #import "PersonNameCell.h"
 #import "PersonGenderCell.h"
 #import "BirthDeathDateCell.h"
@@ -40,11 +42,13 @@
 #import "ContactsPopupController.h"
 #import "CategoryService.h"
 #import "CategoryController.h"
+#import "EditTagsGetDetailsService.h"
 
 
-@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
+@interface MyTagsEditModeController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
+
 {
-    IBOutlet UITableView *tblTagsCreation;
+    IBOutlet UITableView *tblEditTags;
     NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags,*strPlace,*strContact,*strBusinessName,*strBusinessContactName,*strBusinessTitle,*strBusinessAddress,*strBusinessPhone,*strBusinessCellPhone,*strBusinessFax,*strBusinessEmail,*strBusinessWebsite,*strCategory;////////// variables to be sent to the server
     BOOL isLiving,isLocation,isTextViewClicked;
     NSMutableArray *arrPlaceHolders;
@@ -81,25 +85,24 @@
     
     ////////contact info view controller
     ContactsPopupController *master;
-
 }
-
 @end
 
-@implementation LivingTagsSecondStepViewController
+@implementation MyTagsEditModeController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   // tblEditTags.separatorStyle=UITableViewCellSeparatorStyleNone;
     appDel.arrImageSet=[[NSMutableArray alloc]init];
     appDel.arrVideoSet=[[NSMutableArray alloc]init];
     dictAPI=[[NSMutableDictionary alloc]init];
     arrDeleteImages=[[NSMutableArray alloc]init];
     arrDeleteVideos=[[NSMutableArray alloc]init];
+    tblEditTags.separatorStyle=UITableViewCellSeparatorStyleNone;
+    tblEditTags.delegate=self;
+    tblEditTags.dataSource=self;
     NSLog(@"%@",self.strTagName);
-    tblTagsCreation.separatorStyle=UITableViewCellSeparatorStyleNone;
-    tblTagsCreation.delegate=self;
-    tblTagsCreation.dataSource=self;
     arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Business Name",@"Contact Name",@"Title",@"Business Address",@"Business Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
     strDate=@"";
     strCategory=@"Category";
@@ -118,20 +121,66 @@
     UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
     AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute,
                             sizeof(audioRouteOverride), &audioRouteOverride);
-
+    
     NSDictionary *recordSetting2 = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
                                     [NSNumber numberWithInt:AVAudioQualityMin], AVEncoderAudioQualityKey,
                                     [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
                                     [NSNumber numberWithFloat:8000.0], AVSampleRateKey,
                                     nil];
-
+    
+    [[EditTagsGetDetailsService service]getTagDetailsWithtKEy:self.strTKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:result];
+            strPersonName=objTemplates.strtname;
+            strGender=objTemplates.strtgender;
+            strBirthDate=objTemplates.strtborn;
+            strDeathDate=objTemplates.strtdied;
+            if (objTemplates.strMemorialQuote.length>0)
+            {
+                isTextViewClicked=YES;
+                strTextVwTags=objTemplates.strMemorialQuote;
+            }
+            if (objTemplates.strVoiceURL.length>0)
+            {
+                appDel.strAudioURL=objTemplates.strtagAudioFolder;
+            }
+            if (objTemplates.strtlat1.length>0)
+            {
+                isLocation=YES;
+                locationUser.latitude=[objTemplates.strtlat1 doubleValue];
+                locationUser.longitude=[objTemplates.strtlong1 doubleValue];
+            }
+            if (objTemplates.strTcategories.length>0)
+            {
+                strCategory=objTemplates.strTcategories;
+            }
+            else
+            {
+                strCategory=@"Category";
+            }
+            strBusinessContactName=objTemplates.strTcname;
+            strBusinessTitle=objTemplates.strSlogan;
+            strBusinessAddress=objTemplates.strAddress2;
+            strBusinessPhone=objTemplates.strTphone;
+            strBusinessCellPhone=objTemplates.strMobile;
+            strBusinessFax=objTemplates.strTfax;
+            // email and website left
+            [tblEditTags reloadData];
+        }
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [tblTagsCreation reloadData];
+    
+    [tblEditTags reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -140,7 +189,7 @@
 }
 
 #pragma mark
-#pragma mark tableview delegates and datasource
+#pragma mark tableview delegate and datasource
 #pragma mark
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -150,7 +199,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.strTagName isEqualToString:@"Persons"])
+    if ([self.strTagName isEqualToString:@"Person"])
     {
         switch (indexPath.row)
         {
@@ -192,7 +241,7 @@
                 break;
         }
     }
-    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Others"])
+    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Other"])
     {
         switch (indexPath.row)
         {
@@ -248,7 +297,7 @@
 {
     static NSString *strIdentifier=@"tableviewCell";
     UITableViewCell *cell=nil;
-    if ([self.strTagName isEqualToString:@"Persons"])
+    if ([self.strTagName isEqualToString:@"Person"])
     {
         switch (indexPath.row)
         {
@@ -671,7 +720,7 @@
                 break;
         }
     }
-    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Others"])
+    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Other"])
     {
         switch (indexPath.row)
         {
@@ -862,7 +911,7 @@
                 cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
             }
             cellPerson.txtPersonName.delegate=self;
-
+            
             cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
             cellPerson.txtPersonName.placeholder=[arrPlaceHolders objectAtIndex:indexPath.row];
             cellPerson.txtPersonName.tag=indexPath.row;
@@ -910,7 +959,7 @@
                     cellPerson.txtPersonName.keyboardType=UIKeyboardTypeURL;
                     cellPerson.txtPersonName.text=strBusinessWebsite;
                     break;
-
+                    
                     
                 default:
                     break;
@@ -1070,20 +1119,20 @@
     appDel.strAudioURL=@"";
     if ([self.strTagName isEqualToString:@"Business"])
     {
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:14 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
         
     }
     else
     {
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
     }
-
+    
 }
 
 -(void)btnCategoryClicked:(id)sender
@@ -1100,7 +1149,7 @@
             {
                 CategoryController *master1=[[CategoryController alloc]initWithNibName:@"CategoryController" bundle:nil];
                 master1.arrCategoryList=result;
-                master1.objFolders=self.objFolders;
+                master1.strTKey=objTemplates.strtKey;
                 master1.view.frame=[[UIScreen mainScreen]bounds];
                 [self.view addSubview:master1.view];
                 [self addChildViewController:master1];
@@ -1126,10 +1175,10 @@
 {
     [self.view endEditing:YES];
     strGender=@"M";
-    [tblTagsCreation beginUpdates];
+    [tblEditTags beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblEditTags endUpdates];
     [self checkGender];
 }
 
@@ -1137,10 +1186,10 @@
 {
     [self.view endEditing:YES];
     strGender=@"F";
-    [tblTagsCreation beginUpdates];
+    [tblEditTags beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblEditTags endUpdates];
     [self checkGender];
 }
 
@@ -1154,10 +1203,10 @@
     {
         isLiving=YES;
     }
-    [tblTagsCreation beginUpdates];
+    [tblEditTags beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblEditTags endUpdates];
 }
 
 -(void)btnNextPressed:(id)sender
@@ -1218,18 +1267,18 @@
                  
                  if ([self.strTagName isEqualToString:@"Business"])
                  {
-                     [tblTagsCreation beginUpdates];
+                     [tblEditTags beginUpdates];
                      NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:15  inSection:0]];
-                     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                     [tblTagsCreation endUpdates];
+                     [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                     [tblEditTags endUpdates];
                      
                  }
                  else
                  {
-                     [tblTagsCreation beginUpdates];
+                     [tblEditTags beginUpdates];
                      NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
-                     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                     [tblTagsCreation endUpdates];
+                     [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                     [tblEditTags endUpdates];
                      
                  }
                  NSLog(@"reverse geocoding results:");
@@ -1269,18 +1318,18 @@
     if ([self.strTagName isEqualToString:@"Business"])
     {
         isLocation=NO;
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:15 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
     }
     else
     {
         isLocation=NO;
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:7 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
     }
 }
 
@@ -1289,23 +1338,23 @@
     if ([self.strTagName isEqualToString:@"Business"])
     {
         isTextViewClicked=YES;
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:13 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
-
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
+        
     }
     else
     {
         isTextViewClicked=YES;
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
     }
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblTagsCreation];
-    NSIndexPath *indexPath = [tblTagsCreation indexPathForRowAtPoint:buttonPosition];
-    AddVideoTagCell *cell=[tblTagsCreation cellForRowAtIndexPath:indexPath];
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblEditTags];
+    NSIndexPath *indexPath = [tblEditTags indexPathForRowAtPoint:buttonPosition];
+    AddVideoTagCell *cell=[tblEditTags cellForRowAtIndexPath:indexPath];
     [cell.txtTags becomeFirstResponder];
 }
 
@@ -1316,19 +1365,19 @@
     isTextViewClicked=NO;
     if ([self.strTagName isEqualToString:@"Business"])
     {
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:13 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
-
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
+        
     }
     else
     {
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
-
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
+        
     }
 }
 
@@ -1339,15 +1388,15 @@
 
 -(void)btnPlayPressed:(id)sender
 {
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblTagsCreation];
-    NSIndexPath *indexPath = [tblTagsCreation indexPathForRowAtPoint:buttonPosition];
-    cellVoiceRecord=[tblTagsCreation cellForRowAtIndexPath:indexPath];
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblEditTags];
+    NSIndexPath *indexPath = [tblEditTags indexPathForRowAtPoint:buttonPosition];
+    cellVoiceRecord=[tblEditTags cellForRowAtIndexPath:indexPath];
     [cellVoiceRecord.sliderRecorder setValue:0.0f];
     if (!player.playing)
     {
         NSData *objectData = [NSData dataWithContentsOfURL:[NSURL URLWithString:appDel.strAudioURL]];
         NSError *error;
-
+        
         player = [[AVAudioPlayer alloc] initWithData:objectData error:&error];
         NSLog(@"%@",[error description]);
         [player setDelegate:self];
@@ -1367,45 +1416,6 @@
     [cellVoiceRecord.sliderRecorder setValue:[player currentTime]];
 }
 
-#pragma mark
-#pragma mark Custom delegate preview popup
-#pragma mark
-
--(void)previewButtonPressed
-{
-    if ([self alertChecking])
-    {
-        [[PreviewAdService service]previewAdServiceWithKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-            if (isError)
-            {
-                [self displayErrorWithMessage:strMsg];
-            }
-            else
-            {
-                NSLog(@"%@",[result objectForKey:@"previewUrl"]);
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[result objectForKey:@"previewUrl"]]];
-                exit(0);
-
-            }
-        }];
-    }
-}
-
--(void)publishButtonPressed
-{
-    [[PublishTagService service]publishTagServiceWithKey:self.objFolders.strTkey tName:objTemplates.strtname aFolder:appDel.objUser.strAfolder tFolder:self.objFolders.strTFolder withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-        }
-        else
-        {
-            NSLog(@"%@",result);
-            dictQRCode=(NSMutableDictionary *)result;
-            [self performSegueWithIdentifier:@"segueQRCode" sender:self];
-        }
-    }];
-}
 
 #pragma mark
 #pragma mark textfield delegate methods
@@ -1481,17 +1491,17 @@
             case 8:
                 strBusinessWebsite=textField.text;
                 break;
-
+                
                 
             default:
                 break;
         }
-
+        
     }
     else
     {
         strPersonName=textField.text;
-
+        
     }
 }
 
@@ -1533,7 +1543,7 @@
                     [self checkBusinessWebsite];
                 }
                 break;
-               
+                
             default:
                 break;
         }
@@ -1600,10 +1610,10 @@
             [self checkDatesTo];
         }
     }
-    [tblTagsCreation beginUpdates];
+    [tblEditTags beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
-    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [tblTagsCreation endUpdates];
+    [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblEditTags endUpdates];
     
 }
 
@@ -1651,7 +1661,7 @@
 
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [tblTagsCreation setContentOffset:CGPointMake(0, 300) animated:YES];
+    [tblEditTags setContentOffset:CGPointMake(0, 300) animated:YES];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView
@@ -1661,7 +1671,7 @@
     {
         [self checkMemorialQuotes];
     }
-
+    
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -1669,7 +1679,7 @@
     if([text isEqualToString:@"\n"])
     {
         [textView resignFirstResponder];
-        [tblTagsCreation setContentOffset:CGPointMake(0, 0) animated:YES];
+        [tblEditTags setContentOffset:CGPointMake(0, 0) animated:YES];
         return NO;
     }
     return YES;
@@ -1828,11 +1838,11 @@
         {
             [arrDeleteImages removeObjectAtIndex:i];
             [appDel.arrImageSet removeObjectAtIndex:i];
-            [tblTagsCreation beginUpdates];
+            [tblEditTags beginUpdates];
             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
-            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            [tblTagsCreation endUpdates];
-
+            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+            [tblEditTags endUpdates];
+            
         }
     }];
 }
@@ -1917,11 +1927,11 @@
         {
             [arrDeleteVideos removeObjectAtIndex:i];
             [appDel.arrVideoSet removeObjectAtIndex:i];
-            [tblTagsCreation beginUpdates];
+            [tblEditTags beginUpdates];
             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
-            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            [tblTagsCreation endUpdates];
-
+            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+            [tblEditTags endUpdates];
+            
         }
     }];
 }
@@ -1953,7 +1963,7 @@
         [dictAPI setObject:strBusinessContactName forKey:@"tcname"];
         [self updateDictionaryForServiceForKey:@"tcname"];
     }
-
+    
 }
 
 -(void)checkBusinessTitle
@@ -1977,7 +1987,7 @@
         [dictAPI setObject:strBusinessTitle forKey:@"tslogan"];
         [self updateDictionaryForServiceForKey:@"tslogan"];
     }
-
+    
 }
 
 -(void)checkBusinessPhone
@@ -2023,7 +2033,7 @@
         [dictAPI setObject:strBusinessCellPhone forKey:@"tmobile"];
         [self updateDictionaryForServiceForKey:@"tmobile"];
     }
-
+    
 }
 
 -(void)checkBusinessFaxNumber
@@ -2046,7 +2056,7 @@
         [dictAPI setObject:strBusinessFax forKey:@"tfax"];
         [self updateDictionaryForServiceForKey:@"tfax"];
     }
-
+    
 }
 
 -(void)checkBusinessEmail
@@ -2113,7 +2123,7 @@
         [dictAPI setObject:strBusinessAddress forKey:@"taddress2"];
         [self updateDictionaryForServiceForKey:@"taddress2"];
     }
-
+    
 }
 
 -(void)checkName
@@ -2141,23 +2151,23 @@
 
 -(void)checkDatesFrom
 {       if (objTemplates)
+{
+    NSLog(@"%@",objTemplates.strtborn);
+    if ([objTemplates.strtborn isEqualToString:strBirthDate])
     {
-        NSLog(@"%@",objTemplates.strtborn);
-        if ([objTemplates.strtborn isEqualToString:strBirthDate])
-        {
-            [dictAPI removeObjectForKey:@"tborn"];
-        }
-        else
-        {
-            [dictAPI setObject:strBirthDate forKey:@"tborn"];
-            [self updateDictionaryForServiceForKey:@"tborn"];
-        }
+        [dictAPI removeObjectForKey:@"tborn"];
     }
     else
     {
         [dictAPI setObject:strBirthDate forKey:@"tborn"];
         [self updateDictionaryForServiceForKey:@"tborn"];
     }
+}
+else
+{
+    [dictAPI setObject:strBirthDate forKey:@"tborn"];
+    [self updateDictionaryForServiceForKey:@"tborn"];
+}
 }
 
 -(void)checkGender
@@ -2205,12 +2215,12 @@
 -(void)checkLocationWithAddress:(NSString *)strAddress
 {
     /*tdata[taddress1],
-    tdata[tlat1],
-    tdata[tlong1]*/
-
+     tdata[tlat1],
+     tdata[tlong1]*/
+    
     NSString *strLat=[NSString stringWithFormat:@"%f",locationUser.latitude];
     NSString *strLong=[NSString stringWithFormat:@"%f",locationUser.longitude];
-
+    
     NSLog(@"%@",strAddress);
     if (objTemplates)
     {
@@ -2242,7 +2252,7 @@
         [dictAPI setObject:strLong forKey:@"tlong1"];
         [self updateDictionaryForServiceForKey:@"taddress1"];
     }
-
+    
 }
 
 -(void)checkDatesTo
@@ -2262,7 +2272,7 @@
     else
     {
         [dictAPI setObject:strDeathDate forKey:@"tdied"];
-         [self updateDictionaryForServiceForKey:@"tdied"];
+        [self updateDictionaryForServiceForKey:@"tdied"];
     }
 }
 
@@ -2275,9 +2285,7 @@
 {
     NSLog(@"%@",dictAPI);
     //self.objFolders.strTkey
-    NSLog(@"%@",self.objFolders.strTkey);
-
-    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI tKey:objTemplates.strtKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
             objTemplates=nil;
@@ -2296,7 +2304,7 @@
             {
                 [dictAPI removeObjectForKey:strKey];
             }
-
+            
             NSDictionary *dict=(id)result;
             objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:dict];
         }
@@ -2312,7 +2320,7 @@
     NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
     CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
     NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-    NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strImageFolder,strTimestamp];
+    NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",objTemplates.strtagImageFolder,strTimestamp];
     // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
     [self displayNetworkActivity];
     [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
@@ -2326,7 +2334,7 @@
                 NSString *strCreated=[successResult objectForKey:@"created_at"];
                 NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
                 NSLog(@"%@",strFileName);
-                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:objTemplates.strtKey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                     if (isError)
                     {
                         [self displayErrorWithMessage:strMsg];
@@ -2345,19 +2353,19 @@
                         [appDel.arrImageSet addObject:@"1"];
                         if ([self.strTagName isEqualToString:@"Business"])
                         {
-                            [tblTagsCreation beginUpdates];
+                            [tblEditTags beginUpdates];
                             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
-                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblTagsCreation endUpdates];
-
+                            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            [tblEditTags endUpdates];
+                            
                         }
                         else
                         {
                             
-                            [tblTagsCreation beginUpdates];
+                            [tblEditTags beginUpdates];
                             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
-                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblTagsCreation endUpdates];
+                            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            [tblEditTags endUpdates];
                         }
                     }
                 }];
@@ -2386,14 +2394,14 @@
 {
     CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
     NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-    NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strVideoFolder,strTimestamp];
+    NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",objTemplates.strtagVideoFolder,strTimestamp];
     // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
     [self displayNetworkActivity];
     //@{@"public_id":strPublicKey,@"resource_type":@"video"}
     NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
     [dict setObject:strPublicKey forKey:@"public_id"];
     [dict setObject:@"video" forKey:@"resource_type"];
-
+    
     [uploader upload:dataVideo options:dict withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
         NSLog(@"%@",errorResult);
         NSLog(@"%@",successResult);
@@ -2406,7 +2414,7 @@
                 NSString *strCreated=[successResult objectForKey:@"created_at"];
                 NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
                 NSLog(@"%@",strFileName);
-                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"V" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:objTemplates.strtKey type:@"V" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                     if (isError)
                     {
                         [self displayErrorWithMessage:strMsg];
@@ -2425,20 +2433,20 @@
                         [appDel.arrVideoSet addObject:@"1"];
                         if ([self.strTagName isEqualToString:@"Business"])
                         {
-                            [tblTagsCreation beginUpdates];
+                            [tblEditTags beginUpdates];
                             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:12 inSection:0]];
-                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblTagsCreation endUpdates];
+                            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            [tblEditTags endUpdates];
                             
                         }
                         else
                         {
-                            [tblTagsCreation beginUpdates];
+                            [tblEditTags beginUpdates];
                             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
-                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblTagsCreation endUpdates];
+                            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            [tblEditTags endUpdates];
                         }
-
+                        
                         
                     }
                 }];
@@ -2472,14 +2480,13 @@
     if ([segue.identifier isEqualToString:@"segueAudio"])
     {
         RecordViewController *master1=[segue destinationViewController];
-        master1.objFolders=self.objFolders;
     }
     if ([segue.identifier isEqualToString:@"segueQRCode"])
     {
         QRCodeScanViewController *master2=[segue destinationViewController];
         master2.dictQR=dictQRCode;
     }
-
+    
 }
 
 #pragma mark
@@ -2490,7 +2497,7 @@
 {
     [timer invalidate];
     [cellVoiceRecord.sliderRecorder setValue:appDel.audioLength];
-
+    
 }
 
 #pragma mark
@@ -2654,13 +2661,13 @@
     return YES;
 }
 
-#pragma mark 
+#pragma mark
 #pragma mark CONTACT INFO CUSTOM DELEGATES
 #pragma mark
 
 -(void)callWebServiceWithDict:(NSMutableDictionary *)dict
 {
-    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:objTemplates.strtKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
             [self displayErrorWithMessage:strMsg];
@@ -2671,11 +2678,11 @@
             [master.view removeFromSuperview];
             [master removeFromParentViewController];
             strContact=[NSString stringWithFormat:@"%@,%@,%@",objTemplates.strTcname,objTemplates.strTphone,objTemplates.strTfax];
-            [tblTagsCreation beginUpdates];
+            [tblEditTags beginUpdates];
             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
-            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            [tblTagsCreation endUpdates];
-
+            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+            [tblEditTags endUpdates];
+            
         }
     }];
 }
@@ -2689,19 +2696,19 @@
     strCategory=strName;
     if ([self.strTagName isEqualToString:@"Business"])
     {
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:9 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
     }
     else
     {
-        [tblTagsCreation beginUpdates];
+        [tblEditTags beginUpdates];
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
-
+        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        [tblEditTags endUpdates];
     }
 }
+
 
 @end
