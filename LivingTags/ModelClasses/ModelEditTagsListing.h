@@ -20,6 +20,7 @@
 @property(nonatomic,strong)NSString *strTotal_comments;
 @property(nonatomic,strong)NSString *strTotal_views;
 @property(nonatomic,strong)NSString *strTsize;
+@property(nonatomic,strong)NSString *strTLink;
 
 
 -(id)initWithDictionary:(NSDictionary *)dict;

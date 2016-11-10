@@ -110,6 +110,18 @@
         {
             self.strPosted_time=@"";
         }
+        
+        //tlink
+        
+        if ([dict objectForKey:@"tlink"] && ![[dict objectForKey:@"tlink"] isKindOfClass:[NSNull class]])
+        {
+            self.strTLink=[dict objectForKey:@"tlink"];
+        }
+        else
+        {
+            self.strTLink=@"";
+        }
+
     }
     return self;
 }

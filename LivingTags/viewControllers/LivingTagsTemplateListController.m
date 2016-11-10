@@ -120,7 +120,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //segueTemplateSecondStep
-    ModelLivingTagsTemplateList *obj=[arrTemplates objectAtIndex:indexPath.row];
+
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section

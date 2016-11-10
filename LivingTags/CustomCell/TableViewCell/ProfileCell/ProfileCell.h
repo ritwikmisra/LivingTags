@@ -14,4 +14,5 @@
 @property(nonatomic,strong)IBOutlet UILabel *lblName;
 @property(nonatomic,strong)IBOutlet UILabel *lblEmail;
 @property(nonatomic,strong)IBOutlet UILabel *lblOthers;
+@property(nonatomic,strong)IBOutlet UIButton *btnProfileImage;
 @end

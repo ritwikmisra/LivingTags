@@ -150,7 +150,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.strTagName isEqualToString:@"Persons"])
+    if ([self.strTagName isEqualToString:@"Person"])
     {
         switch (indexPath.row)
         {
@@ -192,7 +192,7 @@
                 break;
         }
     }
-    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Others"])
+    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Other"])
     {
         switch (indexPath.row)
         {
@@ -248,7 +248,7 @@
 {
     static NSString *strIdentifier=@"tableviewCell";
     UITableViewCell *cell=nil;
-    if ([self.strTagName isEqualToString:@"Persons"])
+    if ([self.strTagName isEqualToString:@"Person"])
     {
         switch (indexPath.row)
         {
@@ -671,7 +671,7 @@
                 break;
         }
     }
-    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Others"])
+    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Other.0"])
     {
         switch (indexPath.row)
         {
@@ -1384,7 +1384,6 @@
             {
                 NSLog(@"%@",[result objectForKey:@"previewUrl"]);
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[result objectForKey:@"previewUrl"]]];
-                exit(0);
 
             }
         }];
@@ -2324,7 +2323,7 @@
                 NSString *strBytes=[successResult objectForKey:@"bytes"];
                 NSString *strPublicID=[successResult objectForKey:@"public_id"];
                 NSString *strCreated=[successResult objectForKey:@"created_at"];
-                NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
+                NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
                 NSLog(@"%@",strFileName);
                 [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                     if (isError)
@@ -2404,7 +2403,7 @@
                 NSString *strBytes=[successResult objectForKey:@"bytes"];
                 NSString *strPublicID=[successResult objectForKey:@"public_id"];
                 NSString *strCreated=[successResult objectForKey:@"created_at"];
-                NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
+                NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
                 NSLog(@"%@",strFileName);
                 [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"V" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                     if (isError)

@@ -9,6 +9,9 @@
 #import "AddVideoCell.h"
 #import "PersonImageCell.h"
 #import "PersonCell.h"
+#import "UIImageView+WebCache.h"
+#import "ModelImageAndVideoAssets.h"
+
 
 @implementation AddVideoCell
 
@@ -61,11 +64,32 @@
             [cell.btn addTarget:self action:@selector(btnVideoClicked:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
-        else
+        else if([[self.appDel.arrVideoSet objectAtIndex:indexPath.row]isKindOfClass:[UIImage class]])
         {
             PersonCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier2 forIndexPath:indexPath];
             cell.imgPicl.image=[self.appDel.arrVideoSet objectAtIndex:indexPath.row];
-            cell.imgPicl.transform = CGAffineTransformMakeRotation(M_PI_2);
+            cell.btnDelete.tag=indexPath.row;
+            [cell.btnDelete addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
+            return cell;
+        }
+        else
+        {
+            ModelImageAndVideoAssets *obj=[self.appDel.arrVideoSet objectAtIndex:indexPath.row];
+            NSLog(@"%@",obj.strPicURI);
+            PersonCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier2 forIndexPath:indexPath];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [cell.imgPicl sd_setImageWithURL:[NSURL URLWithString:obj.strVideoThumb]
+                                placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                                         options:SDWebImageHighPriority
+                                        progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                            [cell.actImages startAnimating];
+                                        }
+                                       completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                           [cell.actImages stopAnimating];
+                                           
+                                       }];
+            });
+            
             cell.btnDelete.tag=indexPath.row;
             [cell.btnDelete addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
             return cell;

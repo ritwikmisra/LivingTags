@@ -10,6 +10,11 @@
 
 @interface ModelImageAndVideoAssets : ModelBaseClass
 
-@property(non)
+@property(nonatomic,strong)NSString *strTkey;
+@property(nonatomic,strong)NSString *strPicURI;
+@property(nonatomic,strong)NSString  *strVideoThumb;
+@property(nonatomic,strong)NSString *strTAKey;
+
+-(id)initWithDictionary:(NSDictionary *)dict;
 
 @end

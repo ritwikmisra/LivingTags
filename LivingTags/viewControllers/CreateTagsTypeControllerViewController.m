@@ -18,6 +18,7 @@
     NSMutableArray *arrPics,*arrLabel,*arrSelected;
     NSString *strTags,*strTkey;
     ModelFolders *objSegueFolders;
+    NSString *strSegue;
 }
 
 @end
@@ -27,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Persons",@"Place",@"Thing",@"Pet",@"Business", @"Others",nil];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Person",@"Place",@"Thing",@"Pet",@"Business", @"Other",nil];
     arrPics=[[NSMutableArray alloc]initWithObjects:@"person_icon",@"place_icon",@"thing_icon",@"pet_icon",@"business_icon",@"other_icon", nil];
     tblTypes.backgroundColor=[UIColor clearColor];
     tblTypes.separatorStyle=UITableViewCellSeparatorStyleNone;
@@ -140,6 +141,8 @@
 -(void)btnLeftPressed:(id)sender
 {
     strTags=[arrLabel objectAtIndex:[sender tag]];
+    strSegue=[strTags uppercaseString];
+    
     if ([arrSelected containsObject:@"1"])
     {
         int index=[arrSelected indexOfObject:@"1"];
@@ -153,6 +156,7 @@
 -(void)btnRightPressed:(id)sender
 {
     strTags=[arrLabel objectAtIndex:[sender tag]];
+    strSegue=[strTags uppercaseString];
     if ([arrSelected containsObject:@"1"])
     {
         int index=[arrSelected indexOfObject:@"1"];
@@ -170,7 +174,7 @@
 
 -(void)moveToTagCreation
 {
-    [[CreateTagsPublishService service]callPublishServiceWithLivingTagsID:appDel.objUser.strAfolder tcKey:@"1" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+    [[CreateTagsPublishService service]callPublishServiceWithLivingTagsID:appDel.objUser.strAfolder tcKey:strSegue withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
             [self displayErrorWithMessage:strMsg];

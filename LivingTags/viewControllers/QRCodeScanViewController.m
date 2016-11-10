@@ -84,7 +84,6 @@
 -(IBAction)btnViewYourLivingTagPressed:(id)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.dictQR objectForKey:@"tagUrl"]]];
-    exit(0);
 }
 
 @end

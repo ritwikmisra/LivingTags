@@ -43,6 +43,7 @@
 #import "CategoryService.h"
 #import "CategoryController.h"
 #import "EditTagsGetDetailsService.h"
+#import "ModelImageAndVideoAssets.h"
 
 
 @interface MyTagsEditModeController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
@@ -71,7 +72,6 @@
     // cloudinary instance
     CLCloudinary *cloudinary;
     
-    
     AVAudioPlayer *player;
     VoiceTagCell *cellVoiceRecord;
     NSTimer *timer;
@@ -81,7 +81,6 @@
     
     ///delete image array
     NSMutableArray *arrDeleteImages,*arrDeleteVideos;
-    
     
     ////////contact info view controller
     ContactsPopupController *master;
@@ -136,6 +135,26 @@
         }
         else
         {
+            NSDictionary *dictAssets=[result objectForKey:@"assetsData"];
+            NSMutableArray *arrImages=[dictAssets objectForKey:@"images"];
+            NSMutableArray *arrVideos=[dictAssets objectForKey:@"videos"];
+            for (int i=0; i<arrImages.count; i++)
+            {
+                ModelImageAndVideoAssets *obj=[[ModelImageAndVideoAssets alloc]initWithDictionary:[arrImages objectAtIndex:i]];
+                [appDel.arrImageSet addObject:obj];
+                [arrDeleteImages addObject:obj.strTAKey];
+             }
+            [appDel.arrImageSet addObject:@"1"];
+            for (int i=0; i<arrVideos.count; i++)
+            {
+                ModelImageAndVideoAssets *obj=[[ModelImageAndVideoAssets alloc]initWithDictionary:[arrVideos objectAtIndex:i]];
+                [appDel.arrVideoSet addObject:obj];
+                [arrDeleteVideos addObject:obj.strTAKey];
+            }
+            [appDel.arrVideoSet addObject:@"1"];
+
+            NSLog(@"Images%@.....Videos %@",appDel.arrImageSet,appDel.arrVideoSet);
+            
             objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:result];
             strPersonName=objTemplates.strtname;
             strGender=objTemplates.strtgender;
@@ -148,7 +167,8 @@
             }
             if (objTemplates.strVoiceURL.length>0)
             {
-                appDel.strAudioURL=objTemplates.strtagAudioFolder;
+                NSLog(@"%@",appDel.strAudioURL);
+                appDel.strAudioURL=objTemplates.strVoiceURL;
             }
             if (objTemplates.strtlat1.length>0)
             {
@@ -434,6 +454,7 @@
                 
             case 6 :
             {
+                NSLog(@"%@",appDel.strAudioURL);
                 if (appDel.strAudioURL.length>0)
                 {
                     VoiceTagCell *cellVoice=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
@@ -1383,7 +1404,7 @@
 
 -(void)btnVoicePressed:(id)sender
 {
-    [self performSegueWithIdentifier:@"segueAudio" sender:self];
+    [self performSegueWithIdentifier:@"segueAudioEditTags" sender:self];
 }
 
 -(void)btnPlayPressed:(id)sender
@@ -2332,7 +2353,7 @@ else
                 NSString *strBytes=[successResult objectForKey:@"bytes"];
                 NSString *strPublicID=[successResult objectForKey:@"public_id"];
                 NSString *strCreated=[successResult objectForKey:@"created_at"];
-                NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
+                NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
                 NSLog(@"%@",strFileName);
                 [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:objTemplates.strtKey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                     if (isError)
@@ -2412,7 +2433,7 @@ else
                 NSString *strBytes=[successResult objectForKey:@"bytes"];
                 NSString *strPublicID=[successResult objectForKey:@"public_id"];
                 NSString *strCreated=[successResult objectForKey:@"created_at"];
-                NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
+                NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
                 NSLog(@"%@",strFileName);
                 [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:objTemplates.strtKey type:@"V" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
                     if (isError)
@@ -2421,15 +2442,21 @@ else
                     }
                     else
                     {
+                        NSLog(@"%@",arrDeleteVideos);
+                        NSLog(@"%@",appDel.arrVideoSet);
                         [arrDeleteVideos addObject:result];
                         if ([appDel.arrVideoSet containsObject:@"1"])
                         {
-                            [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgaThumb];
+                            [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrVideoSet.count-1 withObject:imgaThumb];
+                            NSLog(@"%@",arrDeleteVideos);
+                            NSLog(@"%@",appDel.arrVideoSet);
                         }
                         else
                         {
                             [appDel.arrVideoSet addObject:imgaThumb];
                         }
+                        NSLog(@"%@",arrDeleteVideos);
+                        NSLog(@"%@",appDel.arrVideoSet);
                         [appDel.arrVideoSet addObject:@"1"];
                         if ([self.strTagName isEqualToString:@"Business"])
                         {
@@ -2477,16 +2504,12 @@ else
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segueAudio"])
+    if ([segue.identifier isEqualToString:@"segueAudioEditTags"])
     {
         RecordViewController *master1=[segue destinationViewController];
+        master1.strAudioFolder=objTemplates.strtagAudioFolder;
+        master1.strTKey=objTemplates.strtKey;
     }
-    if ([segue.identifier isEqualToString:@"segueQRCode"])
-    {
-        QRCodeScanViewController *master2=[segue destinationViewController];
-        master2.dictQR=dictQRCode;
-    }
-    
 }
 
 #pragma mark
@@ -2709,6 +2732,7 @@ else
         [tblEditTags endUpdates];
     }
 }
+
 
 
 @end

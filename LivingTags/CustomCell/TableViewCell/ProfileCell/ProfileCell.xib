@@ -25,6 +25,9 @@
                             <constraint firstAttribute="width" secondItem="gm7-f0-VOr" secondAttribute="height" id="WSK-hU-zU3"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0Z-VP-58f">
+                        <rect key="frame" x="116" y="12" width="88" height="88"/>
+                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5NL-F4-wdK">
                         <rect key="frame" x="15" y="143" width="290" height="29"/>
                         <subviews>
@@ -67,7 +70,11 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="u0Z-VP-58f" firstAttribute="centerY" secondItem="gm7-f0-VOr" secondAttribute="centerY" id="5u0-Ub-hgX"/>
+                    <constraint firstItem="u0Z-VP-58f" firstAttribute="height" secondItem="gm7-f0-VOr" secondAttribute="height" id="Aw8-af-6fd"/>
                     <constraint firstItem="t9G-kw-cQy" firstAttribute="height" secondItem="wGb-15-xsi" secondAttribute="height" multiplier="7" id="C9s-Np-VMS"/>
+                    <constraint firstItem="u0Z-VP-58f" firstAttribute="centerX" secondItem="gm7-f0-VOr" secondAttribute="centerX" id="GcM-ME-Qqn"/>
+                    <constraint firstItem="u0Z-VP-58f" firstAttribute="width" secondItem="gm7-f0-VOr" secondAttribute="width" id="Gnx-MF-GFF"/>
                     <constraint firstItem="t9G-kw-cQy" firstAttribute="width" secondItem="5NL-F4-wdK" secondAttribute="width" multiplier="1.1" id="Hv6-9r-QSb"/>
                     <constraint firstItem="5NL-F4-wdK" firstAttribute="centerX" secondItem="t9G-kw-cQy" secondAttribute="centerX" id="Ilt-mf-CWv"/>
                     <constraint firstItem="t9G-kw-cQy" firstAttribute="width" secondItem="wGb-15-xsi" secondAttribute="width" multiplier="1.5" id="NyA-SU-MWD"/>
@@ -88,6 +95,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnProfileImage" destination="u0Z-VP-58f" id="3Dc-BG-sDY"/>
                 <outlet property="imgProfilePic" destination="gm7-f0-VOr" id="8II-Lo-h0X"/>
                 <outlet property="lblEmail" destination="npC-tm-Ceq" id="nP9-I3-aTX"/>
                 <outlet property="lblName" destination="wGb-15-xsi" id="qP5-lE-xLj"/>

@@ -34,7 +34,8 @@
     
     // cloudinary instance
     CLCloudinary *cloudinary;
-    }
+    NSString *strPublicKey;
+}
 
 @end
 
@@ -248,7 +249,14 @@
     if (dataVoice.length>0)
     {
         NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-        NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strAudioFolder,strTimestamp];
+        if (_objFolders)
+        {
+            strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strAudioFolder,strTimestamp];
+        }
+        else
+        {
+            strPublicKey=[NSString stringWithFormat:@"%@/%@",self.strAudioFolder,strTimestamp];
+        }
         
         CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
         NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
@@ -269,7 +277,7 @@
                 {
                     NSString *strBytes=[successResult objectForKey:@"bytes"];
                     NSString *strPublicID=[successResult objectForKey:@"public_id"];
-                    NSString *strFileName=[[successResult objectForKey:@"secure_url"] lastPathComponent];
+                    NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
                     appDel.strAudioURL=[successResult objectForKey:@"secure_url"];
                     appDel.audioLength=[[successResult objectForKey:@"duration"] floatValue];
                     NSLog(@"%f",appDel.audioLength);
@@ -280,17 +288,35 @@
                     [dict setObject:strPublicID forKey:@"public_id"];
                     
                     //web service called
-                    [[LivingTagsSecondStepService service]callCloudinaryAudioServiceWithDIctionary:dict tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-                        if (isError)
-                        {
-                            [self displayErrorWithMessage:strMsg];
-                        }
-                        else
-                        {
-                            [self.navigationController popViewControllerAnimated:YES];
-                            
-                        }
-                    }];
+                    if (_objFolders)
+                    {
+                        [[LivingTagsSecondStepService service]callCloudinaryAudioServiceWithDIctionary:dict tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                            if (isError)
+                            {
+                                [self displayErrorWithMessage:strMsg];
+                            }
+                            else
+                            {
+                                [self.navigationController popViewControllerAnimated:YES];
+                                
+                            }
+                        }];
+                    }
+                    else
+                    {
+                        [[LivingTagsSecondStepService service]callCloudinaryAudioServiceWithDIctionary:dict tKey:self.strTKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                            if (isError)
+                            {
+                                [self displayErrorWithMessage:strMsg];
+                            }
+                            else
+                            {
+                                [self.navigationController popViewControllerAnimated:YES];
+                                
+                            }
+                        }];
+                    }
+
                 }
                 @catch (NSException *exception)
                 {

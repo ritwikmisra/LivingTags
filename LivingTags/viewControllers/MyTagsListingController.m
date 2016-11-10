@@ -89,17 +89,23 @@
         cell=[[[NSBundle mainBundle]loadNibNamed:@"MyTagsListingCell" owner:self options:nil]objectAtIndex:0];
     }
     ModelEditTagsListing *obj=[arrResponse objectAtIndex:indexPath.row];
+    NSLog(@"%@",obj.strTLink);
     cell.backgroundColor=[UIColor whiteColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.imgPerson.layer.cornerRadius=self.view.frame.size.width/11;
     cell.imgPerson.clipsToBounds=YES;
     cell.btnEdit.tag=indexPath.row;
+    cell.btnPreviewOnImage.tag=indexPath.row;
+    cell.btnPreviewOnName.tag=indexPath.row;
     cell.lblName.text=obj.strTname;
     cell.lblTiming.text=obj.strPosted_time;
     cell.lblTagViews.text=obj.strTotal_views;
     cell.lblTagType.text=self.strTagName;
     cell.lblTagComments.text=obj.strTotal_comments;
     [cell.btnEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnPreviewOnName addTarget:self action:@selector(btnLivingTagsPreviewPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnPreviewOnImage addTarget:self action:@selector(btnLivingTagsPreviewPressed:) forControlEvents:UIControlEventTouchUpInside];
+
     if (indexPath.row==5)
     {
         cell.imgBottom.hidden=YES;
@@ -117,6 +123,13 @@
     ModelEditTagsListing *obj=[arrResponse objectAtIndex:[sender tag]];
     strTkey=obj.strtkey;
     [self performSegueWithIdentifier:@"segueMyTagsEdit" sender:self];
+}
+
+-(void)btnLivingTagsPreviewPressed:(id)sender
+{
+    ModelEditTagsListing *obj=[arrResponse objectAtIndex:[sender tag]];
+    NSLog(@"%@",obj.strTLink);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.strTLink]];
 }
 
 

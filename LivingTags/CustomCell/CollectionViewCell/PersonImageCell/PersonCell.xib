@@ -28,18 +28,28 @@
                         </constraints>
                         <state key="normal" backgroundImage="cross.png"/>
                     </button>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ffq-Zv-GGm">
+                        <rect key="frame" x="60" y="60" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="co5-QL-2oO"/>
+                            <constraint firstAttribute="width" constant="20" id="eJF-fo-qaV"/>
+                        </constraints>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="NJ1-Ed-3WE" firstAttribute="top" secondItem="LxA-l3-X80" secondAttribute="top" id="13p-Na-Tj6"/>
                 <constraint firstItem="LxA-l3-X80" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="3oh-Hp-tsD"/>
+                <constraint firstItem="Ffq-Zv-GGm" firstAttribute="centerY" secondItem="LxA-l3-X80" secondAttribute="centerY" id="J3w-gA-576"/>
+                <constraint firstItem="Ffq-Zv-GGm" firstAttribute="centerX" secondItem="LxA-l3-X80" secondAttribute="centerX" id="LA4-xE-dt1"/>
                 <constraint firstItem="LxA-l3-X80" firstAttribute="height" secondItem="NJ1-Ed-3WE" secondAttribute="height" multiplier="4" id="TPv-1C-dDQ"/>
                 <constraint firstItem="LxA-l3-X80" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="huy-ao-iG5"/>
                 <constraint firstItem="NJ1-Ed-3WE" firstAttribute="trailing" secondItem="LxA-l3-X80" secondAttribute="trailing" id="oFt-2X-Qkm"/>
                 <constraint firstAttribute="height" secondItem="LxA-l3-X80" secondAttribute="height" multiplier="1.1" id="qfq-H8-yib"/>
             </constraints>
             <connections>
+                <outlet property="actImages" destination="Ffq-Zv-GGm" id="Ma9-gD-8Qw"/>
                 <outlet property="btnDelete" destination="NJ1-Ed-3WE" id="RmK-qn-fP9"/>
                 <outlet property="imgPicl" destination="LxA-l3-X80" id="Coz-gL-auJ"/>
             </connections>

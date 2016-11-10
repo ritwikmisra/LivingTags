@@ -19,5 +19,7 @@
 
 @property(weak,nonatomic)id<RecordVoiceDelegate>delegate;
 @property(nonatomic,strong)ModelFolders *objFolders;
+@property(nonatomic,strong)NSString *strAudioFolder;
+@property(nonatomic,strong)NSString *strTKey;
 
 @end

@@ -9,7 +9,7 @@
 #import "UIImageView+WebCache.h"
 #import "ProfileCell.h"
 
-@interface ProfileViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ProfileViewController ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     IBOutlet UITableView *tblProfile;
 }
@@ -76,6 +76,7 @@
         }
         cellProfile.imgProfilePic.layer.cornerRadius=self.view.frame.size.height/12;
         cellProfile.imgProfilePic.clipsToBounds=YES;
+        [cellProfile.btnProfileImage addTarget:self action:@selector(btnProfileImageClicked:) forControlEvents:UIControlEventTouchUpInside];
         cell=cellProfile;
     }
     else
@@ -100,4 +101,54 @@
     return cell;
 }
 
+#pragma mark
+#pragma mark IBACTIONS
+#pragma mark
+
+-(void)btnProfileImageClicked:(id)sender
+{
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to click a photograph or select it from gallery?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCAMERA=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePhotoFromCamera];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePhotoFromGallery];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    
+    UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+
+    [alertController addAction:actionOK];
+    [alertController addAction:actionCAMERA];
+    [alertController addAction:actionGallery];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+}
+
+#pragma mark
+#pragma mark CAMERA GALLERY METHODS AND IMAGE PICKER CONTROLLER DELEGATES
+#pragma mark
+
+-(void)takePhotoFromCamera
+{
+    NSLog(@"Camera pressed");
+}
+
+
+-(void)takePhotoFromGallery
+{
+    NSLog(@"Gallery pressed");
+}
 @end

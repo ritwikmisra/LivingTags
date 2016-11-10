@@ -81,6 +81,9 @@
 		0D3A400E1DB4E3110040D6D4 /* txt_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A400D1DB4E3110040D6D4 /* txt_box.png */; };
 		0D3A40121DB50EF40040D6D4 /* g_plus-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A40111DB50EF40040D6D4 /* g_plus-1.png */; };
 		0D3A40141DB5159F0040D6D4 /* back_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A40131DB5159F0040D6D4 /* back_icon.png */; };
+		0D569A341DD4D2A600012D60 /* DashboardSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D569A331DD4D2A500012D60 /* DashboardSpaceViewController.m */; };
+		0D569A391DD4D40C00012D60 /* DashboardSizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D569A371DD4D40C00012D60 /* DashboardSizeCell.m */; };
+		0D569A3A1DD4D40C00012D60 /* DashboardSizeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D569A381DD4D40C00012D60 /* DashboardSizeCell.xib */; };
 		0D56FA531DC2156000972DF0 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D56FA511DC2156000972DF0 /* PersonCell.m */; };
 		0D56FA541DC2156000972DF0 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D56FA521DC2156000972DF0 /* PersonCell.xib */; };
 		0D59039D1DD07D9A0048B5EF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D59039C1DD07D9A0048B5EF /* SettingsViewController.m */; };
@@ -394,6 +397,11 @@
 		0D3A400D1DB4E3110040D6D4 /* txt_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = txt_box.png; sourceTree = "<group>"; };
 		0D3A40111DB50EF40040D6D4 /* g_plus-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g_plus-1.png"; sourceTree = "<group>"; };
 		0D3A40131DB5159F0040D6D4 /* back_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_icon.png; sourceTree = "<group>"; };
+		0D569A321DD4D2A500012D60 /* DashboardSpaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardSpaceViewController.h; sourceTree = "<group>"; };
+		0D569A331DD4D2A500012D60 /* DashboardSpaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardSpaceViewController.m; sourceTree = "<group>"; };
+		0D569A361DD4D40C00012D60 /* DashboardSizeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardSizeCell.h; sourceTree = "<group>"; };
+		0D569A371DD4D40C00012D60 /* DashboardSizeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardSizeCell.m; sourceTree = "<group>"; };
+		0D569A381DD4D40C00012D60 /* DashboardSizeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardSizeCell.xib; sourceTree = "<group>"; };
 		0D56FA501DC2156000972DF0 /* PersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
 		0D56FA511DC2156000972DF0 /* PersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
 		0D56FA521DC2156000972DF0 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
@@ -873,6 +881,16 @@
 			path = LivingTags/SDWebImage;
 			sourceTree = "<group>";
 		};
+		0D569A351DD4D3E000012D60 /* DasboardSizeCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D569A361DD4D40C00012D60 /* DashboardSizeCell.h */,
+				0D569A371DD4D40C00012D60 /* DashboardSizeCell.m */,
+				0D569A381DD4D40C00012D60 /* DashboardSizeCell.xib */,
+			);
+			path = DasboardSizeCell;
+			sourceTree = "<group>";
+		};
 		0D56FA471DC2148900972DF0 /* PersonImageCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,6 +1090,8 @@
 				0D59039C1DD07D9A0048B5EF /* SettingsViewController.m */,
 				0D64F3FF1DD3081700297FF3 /* MyTagsEditModeController.h */,
 				0D64F4001DD3081700297FF3 /* MyTagsEditModeController.m */,
+				0D569A321DD4D2A500012D60 /* DashboardSpaceViewController.h */,
+				0D569A331DD4D2A500012D60 /* DashboardSpaceViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1112,6 +1132,7 @@
 		0D698D1C1CC8D79000F64745 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D569A351DD4D3E000012D60 /* DasboardSizeCell */,
 				0D5903AA1DD0C4EF0048B5EF /* ProfileCell */,
 				0D59039E1DD0811B0048B5EF /* SettingsCell */,
 				0D10ECFD1DCDEF65006130C5 /* MyTagsListingCell */,
@@ -1717,6 +1738,7 @@
 				0DF0086B1DAFA2D600BD39C3 /* AddVideoTagCell.xib in Resources */,
 				0DC2F5A91DC76A5200AB1795 /* play_button.png in Resources */,
 				0D1DDF851DA7DFDB0063F2F9 /* logo1.png in Resources */,
+				0D569A3A1DD4D40C00012D60 /* DashboardSizeCell.xib in Resources */,
 				0D6659371DA67CAF00566879 /* menu_icon2.png in Resources */,
 				0D6659381DA67CAF00566879 /* other_tag.png in Resources */,
 				0D8934DC1DB1013300A48562 /* CategoryCell.xib in Resources */,
@@ -1833,6 +1855,7 @@
 				0D37314B1CD8A10B00EDC547 /* UIImageView+HighlightedWebCache.m in Sources */,
 				0D5EA23F1CCB6A0B00CA0DAE /* WebServiceBaseClass.m in Sources */,
 				0D9350BA1CDB61F800E403B2 /* YTVimeoExtractor.m in Sources */,
+				0D569A391DD4D40C00012D60 /* DashboardSizeCell.m in Sources */,
 				0D3731451CD8A10B00EDC547 /* SDWebImageManager.m in Sources */,
 				0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */,
 				0D3731411CD8A10B00EDC547 /* SDWebImageCompat.m in Sources */,
@@ -1915,6 +1938,7 @@
 				0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */,
 				0DF008651DAF9F6F00BD39C3 /* AddVideoCell.m in Sources */,
 				0D3121231DC357AC00F00B8F /* ModelFolders.m in Sources */,
+				0D569A341DD4D2A600012D60 /* DashboardSpaceViewController.m in Sources */,
 				0D66C5821D5A320500230261 /* QRCodeViewController.m in Sources */,
 				0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */,
 				0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */,
