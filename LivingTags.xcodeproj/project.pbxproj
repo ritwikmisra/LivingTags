@@ -176,6 +176,9 @@
 		0D80DF871CEDA30B000FE698 /* MyLivingTagsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D80DF851CEDA30B000FE698 /* MyLivingTagsMapViewController.m */; };
 		0D80DF881CEDA30B000FE698 /* MyLivingTagsMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D80DF861CEDA30B000FE698 /* MyLivingTagsMapViewController.xib */; };
 		0D80DF8A1CEDB0BA000FE698 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D80DF891CEDB0B9000FE698 /* MapKit.framework */; };
+		0D89232B1DD757ED0018A7CD /* MyTagsPrivacyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D89232A1DD757ED0018A7CD /* MyTagsPrivacyController.m */; };
+		0D8923301DD7599D0018A7CD /* MyTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D89232E1DD7599D0018A7CD /* MyTagsCell.m */; };
+		0D8923311DD7599D0018A7CD /* MyTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D89232F1DD7599D0018A7CD /* MyTagsCell.xib */; };
 		0D8934D51DB0CEA700A48562 /* PersonImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8934D31DB0CEA700A48562 /* PersonImageCell.m */; };
 		0D8934D61DB0CEA700A48562 /* PersonImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934D41DB0CEA700A48562 /* PersonImageCell.xib */; };
 		0D8934DB1DB1013300A48562 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8934D91DB1013300A48562 /* CategoryCell.m */; };
@@ -228,6 +231,7 @@
 		0DD198251DB63A4E003BB828 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD198241DB63A4E003BB828 /* QRCodeScanViewController.m */; };
 		0DD1982A1DB66477003BB828 /* logo_pin_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD198281DB66476003BB828 /* logo_pin_logo.png */; };
 		0DD1982C1DB66C6F003BB828 /* get_LT.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD1982B1DB66C6F003BB828 /* get_LT.png */; };
+		0DD9BED81DD71EDD008328C6 /* DashboardMyTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD9BED71DD71EDD008328C6 /* DashboardMyTagsListingService.m */; };
 		0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */; };
 		0DE4CF381DCB5CF000798B1F /* CategoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4CF371DCB5CEF00798B1F /* CategoryService.m */; };
 		0DE4CF3D1DCB5EF900798B1F /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4CF3B1DCB5EF900798B1F /* CategoryController.m */; };
@@ -538,6 +542,11 @@
 		0D80DF851CEDA30B000FE698 /* MyLivingTagsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLivingTagsMapViewController.m; sourceTree = "<group>"; };
 		0D80DF861CEDA30B000FE698 /* MyLivingTagsMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyLivingTagsMapViewController.xib; sourceTree = "<group>"; };
 		0D80DF891CEDB0B9000FE698 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0D8923291DD757ED0018A7CD /* MyTagsPrivacyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagsPrivacyController.h; sourceTree = "<group>"; };
+		0D89232A1DD757ED0018A7CD /* MyTagsPrivacyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagsPrivacyController.m; sourceTree = "<group>"; };
+		0D89232D1DD7599D0018A7CD /* MyTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagsCell.h; sourceTree = "<group>"; };
+		0D89232E1DD7599D0018A7CD /* MyTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagsCell.m; sourceTree = "<group>"; };
+		0D89232F1DD7599D0018A7CD /* MyTagsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTagsCell.xib; sourceTree = "<group>"; };
 		0D8934D21DB0CEA700A48562 /* PersonImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageCell.h; sourceTree = "<group>"; };
 		0D8934D31DB0CEA700A48562 /* PersonImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonImageCell.m; sourceTree = "<group>"; };
 		0D8934D41DB0CEA700A48562 /* PersonImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonImageCell.xib; sourceTree = "<group>"; };
@@ -623,6 +632,8 @@
 		0DD198241DB63A4E003BB828 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		0DD198281DB66476003BB828 /* logo_pin_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_pin_logo.png; sourceTree = "<group>"; };
 		0DD1982B1DB66C6F003BB828 /* get_LT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_LT.png; sourceTree = "<group>"; };
+		0DD9BED61DD71EDD008328C6 /* DashboardMyTagsListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardMyTagsListingService.h; sourceTree = "<group>"; };
+		0DD9BED71DD71EDD008328C6 /* DashboardMyTagsListingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardMyTagsListingService.m; sourceTree = "<group>"; };
 		0DDFC9AE1CE37288004D5D46 /* SocialLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialLoginService.h; sourceTree = "<group>"; };
 		0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialLoginService.m; sourceTree = "<group>"; };
 		0DE4CF361DCB5CEF00798B1F /* CategoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryService.h; sourceTree = "<group>"; };
@@ -1105,6 +1116,8 @@
 				0D64F4001DD3081700297FF3 /* MyTagsEditModeController.m */,
 				0D569A321DD4D2A500012D60 /* DashboardSpaceViewController.h */,
 				0D569A331DD4D2A500012D60 /* DashboardSpaceViewController.m */,
+				0D8923291DD757ED0018A7CD /* MyTagsPrivacyController.h */,
+				0D89232A1DD757ED0018A7CD /* MyTagsPrivacyController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1145,6 +1158,7 @@
 		0D698D1C1CC8D79000F64745 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D89232C1DD759850018A7CD /* MyTagsPrivacyCell */,
 				0D569A351DD4D3E000012D60 /* DasboardSizeCell */,
 				0D5903AA1DD0C4EF0048B5EF /* ProfileCell */,
 				0D59039E1DD0811B0048B5EF /* SettingsCell */,
@@ -1262,6 +1276,8 @@
 				0D64F4031DD32FC100297FF3 /* MyTagListService.m */,
 				0D64F4081DD3502800297FF3 /* EditTagsGetDetailsService.h */,
 				0D64F4091DD3502800297FF3 /* EditTagsGetDetailsService.m */,
+				0DD9BED61DD71EDD008328C6 /* DashboardMyTagsListingService.h */,
+				0DD9BED71DD71EDD008328C6 /* DashboardMyTagsListingService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1317,6 +1333,16 @@
 				0DD1981D1DB62554003BB828 /* previewPopUP */,
 			);
 			path = CustomPopUP;
+			sourceTree = "<group>";
+		};
+		0D89232C1DD759850018A7CD /* MyTagsPrivacyCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D89232D1DD7599D0018A7CD /* MyTagsCell.h */,
+				0D89232E1DD7599D0018A7CD /* MyTagsCell.m */,
+				0D89232F1DD7599D0018A7CD /* MyTagsCell.xib */,
+			);
+			path = MyTagsPrivacyCell;
 			sourceTree = "<group>";
 		};
 		0D8934D11DB0CE8800A48562 /* PersonTagCell */ = {
@@ -1702,6 +1728,7 @@
 				0D19166C1DBF8F72004D02DA /* my_profile.png in Resources */,
 				0DC2F5A61DC74A2700AB1795 /* stop.png in Resources */,
 				0D10ED101DCDF120006130C5 /* comments.png in Resources */,
+				0D8923311DD7599D0018A7CD /* MyTagsCell.xib in Resources */,
 				0DF008961DAFB76500BD39C3 /* add_memorial.png in Resources */,
 				0DC2F5A31DC74A2700AB1795 /* play_enable.png in Resources */,
 				0D19166D1DBF8F72004D02DA /* product.png in Resources */,
@@ -1891,6 +1918,7 @@
 				0D3731451CD8A10B00EDC547 /* SDWebImageManager.m in Sources */,
 				0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */,
 				0D3731411CD8A10B00EDC547 /* SDWebImageCompat.m in Sources */,
+				0D8923301DD7599D0018A7CD /* MyTagsCell.m in Sources */,
 				0D94FF581D3CCCB400502FC8 /* CKCalendarView.m in Sources */,
 				0D3731551CD8B71F00EDC547 /* ForgetPasswordViewController.m in Sources */,
 				0D5903A61DD099330048B5EF /* MyTagsBatchCountService.m in Sources */,
@@ -1904,6 +1932,7 @@
 				0D3731401CD8A10B00EDC547 /* SDImageCache.m in Sources */,
 				0D3121311DC3646700F00B8F /* CloudinaryImageUploadService.m in Sources */,
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
+				0DD9BED81DD71EDD008328C6 /* DashboardMyTagsListingService.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
 				0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */,
 				0D28FE991DC8E3CC0079FFDF /* PreviewAdService.m in Sources */,
@@ -1932,6 +1961,7 @@
 				0D10ECFC1DCDEBB8006130C5 /* MyTagsListingController.m in Sources */,
 				0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */,
 				0DC2F5981DC72BBD00AB1795 /* DeleteAssetService.m in Sources */,
+				0D89232B1DD757ED0018A7CD /* MyTagsPrivacyController.m in Sources */,
 				0DF008511DAF93E600BD39C3 /* PersonNameCell.m in Sources */,
 				0D80DAF71CFD9B0E00B79C6B /* GroupPopupController.m in Sources */,
 				0D79E2191D4A4F7E007E4B35 /* CreateTagsThirdStepService.m in Sources */,

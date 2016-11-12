@@ -103,7 +103,35 @@
         {
             self.strTkey=@"";
         }
-
+        //astorage
+        if ([dict objectForKey:@"astorage"] && ![[dict objectForKey:@"astorage"] isKindOfClass:[NSNull class]])
+        {
+            self.strTotalStorage=[dict objectForKey:@"astorage"];
+        }
+        else
+        {
+            self.strTotalStorage=@"";
+        }
+        //tsize
+        
+        if ([dict objectForKey:@"tsize"] && ![[dict objectForKey:@"tsize"] isKindOfClass:[NSNull class]])
+        {
+            self.strStorageUsed=[dict objectForKey:@"tsize"];
+        }
+        else
+        {
+            self.strStorageUsed=@"";
+        }
+        //tag_counts
+        
+        if ([dict objectForKey:@"tag_counts"] && ![[dict objectForKey:@"tag_counts"] isKindOfClass:[NSNull class]])
+        {
+            self.strTagCounts=[dict objectForKey:@"tag_counts"];
+        }
+        else
+        {
+            self.strTagCounts=@"";
+        }
     }
     return self;
 }

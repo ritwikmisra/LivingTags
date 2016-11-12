@@ -97,10 +97,8 @@
         {
             cellProfile=[[[NSBundle mainBundle]loadNibNamed:@"ProfileCell" owner:self options:nil]objectAtIndex:0];
         }
-        cellProfile.imgProfilePic.layer.cornerRadius=self.view.frame.size.height/14;
+        cellProfile.imgProfilePic.layer.cornerRadius=self.view.frame.size.height/18;
         cellProfile.imgProfilePic.clipsToBounds=YES;
-        cellProfile.imgProfilePic.layer.borderWidth=1.0f;
-        cellProfile.imgProfilePic.layer.borderColor=[UIColor colorWithRed:87/255.0f green:198/255.0f blue:249/255.0f alpha:1.0f].CGColor;
         if (imgChosen)
         {
             cellProfile.imgProfilePic.image=imgChosen;

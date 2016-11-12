@@ -88,4 +88,13 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0)
+    {
+        [self performSegueWithIdentifier:@"segueMyTagsPrivacy" sender:self];
+    }
+}
+
 @end

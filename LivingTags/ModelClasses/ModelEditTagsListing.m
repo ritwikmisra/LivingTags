@@ -121,6 +121,19 @@
         {
             self.strTLink=@"";
         }
+        
+        //tcname
+        
+        if ([dict objectForKey:@"tcname"] && ![[dict objectForKey:@"tcname"] isKindOfClass:[NSNull class]])
+        {
+            self.strTCName=[dict objectForKey:@"tcname"];
+        }
+        else
+        {
+            self.strTCName=@"";
+        }
+        
+
 
     }
     return self;

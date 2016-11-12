@@ -22,6 +22,10 @@
 @property(nonatomic,strong)NSString *strProfilePicFolder;
 @property(nonatomic,strong)NSString *strTkey;
 @property(nonatomic,strong)NSString *strAkey;
+@property(nonatomic,strong)NSString *strTotalStorage;
+@property(nonatomic,strong)NSString *strStorageUsed;
+@property(nonatomic,strong)NSString *strTagCounts;
+
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 

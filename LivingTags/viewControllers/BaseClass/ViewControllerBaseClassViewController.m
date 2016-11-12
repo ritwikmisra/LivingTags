@@ -15,6 +15,7 @@
 #import "NetworkActivityViewController.h"
 #import "SidePanelController.h"
 #import "SettingsViewController.h"
+#import "DashboardSpaceViewController.h"
 
 
 @interface ViewControllerBaseClassViewController ()<SidePanelSwipeDelegate>
@@ -227,6 +228,11 @@
         UIStoryboard *mainStoryboard=[UIStoryboard storyboardWithName:@"Main"bundle: nil];
         switch (indexPath.row)
         {
+               //DashboardSpaceViewController
+            case 0:
+                controller=(DashboardSpaceViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"DashboardSpaceViewController"];
+                break;
+
             case 1:
                 controller=(MyLivingTagesViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
                 break;
