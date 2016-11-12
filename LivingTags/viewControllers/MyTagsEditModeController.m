@@ -1232,15 +1232,7 @@
 
 -(void)btnNextPressed:(id)sender
 {
-    if ([self alertChecking])
-    {
-        PreviewPopUpController *master3=[[PreviewPopUpController alloc]initWithNibName:@"PreviewPopUpController" bundle:nil];
-        master3.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:master3.view];
-        [self addChildViewController:master3];
-        master3.myDelegate=self;
-        [master3 didMoveToParentViewController:self];
-    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

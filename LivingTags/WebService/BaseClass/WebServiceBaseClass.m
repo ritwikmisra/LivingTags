@@ -24,7 +24,7 @@
 NSString *const strAPI[]={
     [WEB_SERVICES_REGISTRATION]                  =          @"auths/signup",
     [WEB_SERVICES_LOGIN]                                  =          @"Auths/signin",
-    [WEB_SERVICES_GET_PROFILE]                     =          @"t",
+    [WEB_SERVICES_GET_PROFILE]                     =          @"accounts/getAccount",
     [WEB_SERVICES_UPDATE_PROFILE]             =          @"",
     [WEB_SERVICES_FORGET_PASSWORD]        =          @"Auths/forgotpass",
     [WEB_SERVICES_LIVING_TAG_LISTING]      =          @"",

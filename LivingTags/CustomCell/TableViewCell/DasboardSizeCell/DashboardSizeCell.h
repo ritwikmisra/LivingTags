@@ -10,4 +10,7 @@
 
 @interface DashboardSizeCell : UITableViewCell
 
+@property(nonatomic,strong)IBOutlet UIImageView *imgPic;
+@property(nonatomic,strong)IBOutlet UILabel *lblComment;
+
 @end

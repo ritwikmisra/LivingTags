@@ -15,4 +15,7 @@
 @property(nonatomic,strong)IBOutlet UILabel *lblEmail;
 @property(nonatomic,strong)IBOutlet UILabel *lblOthers;
 @property(nonatomic,strong)IBOutlet UIButton *btnProfileImage;
+@property(nonatomic,strong)IBOutlet UIImageView *imgLabelName;
+@property(nonatomic,strong)IBOutlet UIButton *btnEdit;
+@property(nonatomic,strong)IBOutlet UIActivityIndicatorView *actIndicatorProfilePic;
 @end

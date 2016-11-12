@@ -86,6 +86,23 @@
         {
             self.strAfolder=@"";
         }
+        if ([dict objectForKey:@"profileImageFolder"] && ![[dict objectForKey:@"profileImageFolder"] isKindOfClass:[NSNull class]])
+        {
+            self.strProfilePicFolder=[dict objectForKey:@"profileImageFolder"];
+        }
+        else
+        {
+            self.strProfilePicFolder=@"";
+        }
+        
+        if ([dict objectForKey:@"tkey"] && ![[dict objectForKey:@"tkey"] isKindOfClass:[NSNull class]])
+        {
+            self.strTkey=[dict objectForKey:@"tkey"];
+        }
+        else
+        {
+            self.strTkey=@"";
+        }
 
     }
     return self;

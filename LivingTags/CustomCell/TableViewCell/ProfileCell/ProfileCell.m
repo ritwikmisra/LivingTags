@@ -10,9 +10,11 @@
 
 @implementation ProfileCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
-    // Initialization code
+    self.btnEdit.layer.cornerRadius=10.0f;
+    [self.actIndicatorProfilePic setHidesWhenStopped:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

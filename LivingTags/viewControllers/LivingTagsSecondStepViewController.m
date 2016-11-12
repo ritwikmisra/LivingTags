@@ -2415,7 +2415,7 @@
                         [arrDeleteVideos addObject:result];
                         if ([appDel.arrVideoSet containsObject:@"1"])
                         {
-                            [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:imgaThumb];
+                            [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrVideoSet.count-1 withObject:imgaThumb];
                         }
                         else
                         {

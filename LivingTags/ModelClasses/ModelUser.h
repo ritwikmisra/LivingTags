@@ -19,6 +19,9 @@
 @property(nonatomic,strong)NSString *strLat;
 @property(nonatomic,strong)NSString *strLong;
 @property(nonatomic,strong)NSString *strAfolder;
+@property(nonatomic,strong)NSString *strProfilePicFolder;
+@property(nonatomic,strong)NSString *strTkey;
+@property(nonatomic,strong)NSString *strAkey;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 

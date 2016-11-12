@@ -8,6 +8,7 @@
 
 #import "ProfileGetService.h"
 #import "ModelLivingTagsViewedAndCreated.h"
+#import "ModelUser.h"
 
 @implementation ProfileGetService
 
@@ -23,17 +24,13 @@
 
 -(void)callProfileEditServiceWithUserID:(NSString *)strUserID withCompletionHandler:(WebServiceCompletion)handler
 {
-    if (strUserID.length==0)
-    {
-        strUserID=[[NSUserDefaults standardUserDefaults]valueForKey:@"user_id"];
-    }
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"account_id=%@",strUserID]];
+        [arr addObject:[NSString stringWithFormat:@"akey=%@",strUserID]];
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         //postParams=[postParams stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-        NSLog(@"postParams = %@",postParams);
+        NSLog(@"%@",postParams);
         NSLog(@"%@",[urlForService absoluteString]);
         NSError *errorConversion;
         //NSData *postData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&errorConversion];
@@ -51,10 +48,10 @@
             [request setHTTPMethod:@"POST"];
             [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setValue:@"Basic YWRtaW46MTIzNDU2" forHTTPHeaderField:@"Authorization"];
+            NSLog(@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"token"]);
+            [request setValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"token"] forHTTPHeaderField:@"token"];
             [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-            [request addValue:strUserID forHTTPHeaderField:@"id"];
-            NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
-            [request addValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"] forHTTPHeaderField:@"token"];
             [request setTimeoutInterval:60.0];
             [request setHTTPBody:postData];
             [self displayNetworkActivity];
@@ -79,7 +76,9 @@
                         {
                             if ([[responseDict objectForKey:@"status"]boolValue])
                             {
-                                handler([responseDict objectForKey:@"response"],NO,nil);
+                                NSDictionary *dict=[[responseDict objectForKey:@"response"] objectForKey:@"account"];
+                                appDel.objUser=[[ModelUser alloc]initWithDictionary:dict];
+                                handler(nil,NO,nil);
                             }
                             else
                             {

@@ -125,6 +125,5 @@
     {
         completionHandler(nil,YES,NO_NETWORK);
     }
-
 }
 @end
