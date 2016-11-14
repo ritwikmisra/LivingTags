@@ -13,6 +13,7 @@
 #import "CLUploader.h"
 #import "LivingTagsSecondStepService.h"
 #import "ProfileGetService.h"
+#import "MyTagsEditModeController.h"
 
 
 @interface ProfileViewController ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CLUploaderDelegate>
@@ -97,8 +98,16 @@
         {
             cellProfile=[[[NSBundle mainBundle]loadNibNamed:@"ProfileCell" owner:self options:nil]objectAtIndex:0];
         }
-        cellProfile.imgProfilePic.layer.cornerRadius=self.view.frame.size.height/18;
+        if(___isIphone6Plus || ___isIphone6)
+        {
+            cellProfile.imgProfilePic.layer.cornerRadius=self.view.frame.size.height/18;
+        }
+        else
+        {
+            cellProfile.imgProfilePic.layer.cornerRadius=self.view.frame.size.height/14;
+        }
         cellProfile.imgProfilePic.clipsToBounds=YES;
+        cellProfile.lblName.text=appDel.objUser.strName;
         if (imgChosen)
         {
             cellProfile.imgProfilePic.image=imgChosen;
@@ -151,7 +160,7 @@
 
 -(void)btnEditClicked:(id)sender
 {
-
+    [self performSegueWithIdentifier:@"segueProfileToEditTags" sender:self];
 }
 
 -(void)btnProfileImageClicked:(id)sender
@@ -280,5 +289,19 @@
     }];
 }
 
+
+#pragma mark
+#pragma mark Prepare for segue
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueProfileToEditTags"])
+    {
+        MyTagsEditModeController *master=[segue destinationViewController];
+        master.strTKey=appDel.objUser.strTkey;
+        master.strTagName=@"Person";
+    }
+}
 
 @end

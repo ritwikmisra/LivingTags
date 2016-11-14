@@ -39,7 +39,6 @@
 @property(nonatomic,strong)    NSString *strAudioURL;
 @property(nonatomic,assign)float audioLength;
 
-
 ///// Model user
 @property(nonatomic,strong)ModelUser *objUser;
 - (void)saveContext;

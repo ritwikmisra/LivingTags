@@ -76,6 +76,12 @@
             NSLog(@"%2f",percentage);
             lblPercentage.text=[NSString stringWithFormat:@"%.02f %%",percentage];
             lblTags.text=[NSString stringWithFormat:@"Total n o of tags : %@",appDel.objUser.strTagCounts];
+            NSString *strTotalSpace=[self transformedValue:appDel.objUser.strTotalStorage];
+            NSLog(@"%@",strTotalSpace);
+            lblTotalSpace.text=[NSString stringWithFormat:@"Total space : %@",strTotalSpace];
+            NSString *strSpaceUtilized=[self transformedValue:appDel.objUser.strStorageUsed];
+            lblFreeSpace.text=[NSString stringWithFormat:@"Space used : %@",strSpaceUtilized];
+            
         }
     }];
 

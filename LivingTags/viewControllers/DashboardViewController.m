@@ -10,6 +10,7 @@
 #import "ProfileGetService.h"
 #import "DashboardCell.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ProfileGetService.h"
 
 @interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>
 {
@@ -29,6 +30,17 @@
     tblDashboard.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblDashboard.bounces=NO;
     [self callLocationManager];
+    [[ProfileGetService service]callProfileEditServiceWithUserID:[[NSUserDefaults standardUserDefaults]valueForKey:@"akey"] withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+        }
+    }];
+
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated

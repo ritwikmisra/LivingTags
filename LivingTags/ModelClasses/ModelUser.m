@@ -17,6 +17,9 @@
         if ([dict objectForKey:@"akey"] && ![[dict objectForKey:@"akey"] isKindOfClass:[NSNull class]])
         {
             self.strKey=[dict objectForKey:@"akey"];
+            [[NSUserDefaults standardUserDefaults]setObject:self.strKey forKey:@"akey"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            NSLog(@"Original ID:%@.....ID from cache..%@",self.strKey,[[NSUserDefaults standardUserDefaults] objectForKey:@"akey"]);
         }
         else
         {

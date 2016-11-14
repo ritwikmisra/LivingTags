@@ -139,7 +139,7 @@
         <!--Navigation Controller-->
         <scene sceneID="y2h-fL-Rj8">
             <objects>
-                <navigationController storyboardIdentifier="baseNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zRp-Ot-prd" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="zRp-Ot-prd" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -148,12 +148,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="4Sb-Zd-sf4" kind="relationship" relationship="rootViewController" id="opL-Kc-e0T"/>
+                        <segue destination="Tj9-0a-9KG" kind="relationship" relationship="rootViewController" id="sIa-AC-50k"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAN-Xo-Knt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-305" y="357"/>
+            <point key="canvasLocation" x="-956" y="357"/>
         </scene>
         <!--Import Contacts View Controller-->
         <scene sceneID="WuN-w4-3JB">
@@ -525,7 +525,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5A-Gr-cjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="-1186"/>
+            <point key="canvasLocation" x="1601" y="-1150"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="ciH-XA-SWX">
@@ -1238,11 +1238,12 @@
                     </view>
                     <connections>
                         <outlet property="tblProfile" destination="DII-RG-bhN" id="9II-hM-EDX"/>
+                        <segue destination="b15-56-id4" kind="show" identifier="segueProfileToEditTags" id="j9D-QB-8Bq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKj-gE-U59" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="-1844"/>
+            <point key="canvasLocation" x="886" y="-1925"/>
         </scene>
         <!--Landing View Controller-->
         <scene sceneID="9iv-rA-dqW">
@@ -1259,27 +1260,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="hyF-uh-Eaf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="mJa-GQ-oDL">
-                                <rect key="frame" x="69" y="223" width="462" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q1m-LQ-byU">
+                                <rect key="frame" x="69" y="181" width="462" height="100"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpd-SC-vBY" userLabel="vw1">
-                                <rect key="frame" x="0.0" y="590" width="300" height="10"/>
-                                <color key="backgroundColor" red="0.94117647058823528" green="0.50588235294117645" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="592" width="300" height="8"/>
+                                <color key="backgroundColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PxE-HH-mI9" userLabel="vw1">
-                                <rect key="frame" x="300" y="590" width="300" height="10"/>
+                                <rect key="frame" x="300" y="592" width="300" height="8"/>
                                 <color key="backgroundColor" red="0.31372549019607843" green="0.72156862745098038" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright@livingtags.com, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dd-42-BXP">
-                                <rect key="frame" x="69" y="503" width="462" height="75"/>
+                                <rect key="frame" x="69" y="535" width="462" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.42352941179999998" green="0.45098039220000002" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5O-ys-7Ox">
-                                <rect key="frame" x="69" y="323" width="462" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="0.38431372549999998" green="0.41176470590000003" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1287,15 +1282,13 @@
                         <constraints>
                             <constraint firstItem="PxE-HH-mI9" firstAttribute="centerY" secondItem="Tpd-SC-vBY" secondAttribute="centerY" id="0Jr-bY-lfG"/>
                             <constraint firstItem="PxE-HH-mI9" firstAttribute="height" secondItem="Tpd-SC-vBY" secondAttribute="height" id="3Gc-v9-Bcs"/>
-                            <constraint firstItem="y5O-ys-7Ox" firstAttribute="trailing" secondItem="mJa-GQ-oDL" secondAttribute="trailing" id="5oV-ow-xHe"/>
+                            <constraint firstItem="hyF-uh-Eaf" firstAttribute="centerY" secondItem="Q1m-LQ-byU" secondAttribute="centerY" multiplier="1.3" id="5yy-Iz-37y"/>
                             <constraint firstItem="hyF-uh-Eaf" firstAttribute="centerY" secondItem="uXu-M4-sjX" secondAttribute="centerY" id="6CJ-sO-114"/>
-                            <constraint firstItem="y5O-ys-7Ox" firstAttribute="top" secondItem="mJa-GQ-oDL" secondAttribute="bottom" id="6Vw-bP-mhM"/>
-                            <constraint firstItem="hyF-uh-Eaf" firstAttribute="height" secondItem="mJa-GQ-oDL" secondAttribute="height" multiplier="6" id="A4b-Tt-6yt"/>
-                            <constraint firstItem="hyF-uh-Eaf" firstAttribute="width" secondItem="mJa-GQ-oDL" secondAttribute="width" multiplier="1.3" id="B3E-Zw-cSk"/>
+                            <constraint firstItem="hyF-uh-Eaf" firstAttribute="height" secondItem="Q1m-LQ-byU" secondAttribute="height" multiplier="6" id="7tW-en-6Jr"/>
+                            <constraint firstItem="hyF-uh-Eaf" firstAttribute="width" secondItem="Q1m-LQ-byU" secondAttribute="width" multiplier="1.3" id="JYH-e8-zVB"/>
                             <constraint firstItem="Tpd-SC-vBY" firstAttribute="leading" secondItem="uXu-M4-sjX" secondAttribute="leading" id="KuG-43-iGM"/>
-                            <constraint firstItem="2dd-42-BXP" firstAttribute="centerY" secondItem="hyF-uh-Eaf" secondAttribute="centerY" multiplier="1.8" id="ROt-gO-zUY"/>
-                            <constraint firstAttribute="height" secondItem="Tpd-SC-vBY" secondAttribute="height" multiplier="60" id="SVe-aw-Qge"/>
-                            <constraint firstItem="mJa-GQ-oDL" firstAttribute="height" secondItem="y5O-ys-7Ox" secondAttribute="height" multiplier="2" id="UG2-Lk-JON"/>
+                            <constraint firstItem="2dd-42-BXP" firstAttribute="centerY" secondItem="hyF-uh-Eaf" secondAttribute="centerY" multiplier="1.85" id="ROt-gO-zUY"/>
+                            <constraint firstAttribute="height" secondItem="Tpd-SC-vBY" secondAttribute="height" multiplier="72" id="SVe-aw-Qge"/>
                             <constraint firstItem="hyF-uh-Eaf" firstAttribute="height" secondItem="uXu-M4-sjX" secondAttribute="height" id="XL1-Nl-cXJ"/>
                             <constraint firstItem="hyF-uh-Eaf" firstAttribute="centerX" secondItem="uXu-M4-sjX" secondAttribute="centerX" id="Zjh-nm-6Bu"/>
                             <constraint firstAttribute="width" secondItem="Tpd-SC-vBY" secondAttribute="width" multiplier="2" id="dxp-Xz-NS3"/>
@@ -1303,22 +1296,21 @@
                             <constraint firstItem="hyF-uh-Eaf" firstAttribute="width" secondItem="2dd-42-BXP" secondAttribute="width" multiplier="1.3" id="gOw-eB-yLW"/>
                             <constraint firstItem="hyF-uh-Eaf" firstAttribute="width" secondItem="uXu-M4-sjX" secondAttribute="width" id="kDs-Wp-WEu"/>
                             <constraint firstItem="PxE-HH-mI9" firstAttribute="leading" secondItem="Tpd-SC-vBY" secondAttribute="trailing" id="lZl-s3-a3i"/>
-                            <constraint firstItem="hyF-uh-Eaf" firstAttribute="height" secondItem="2dd-42-BXP" secondAttribute="height" multiplier="8" id="lye-QL-soG"/>
+                            <constraint firstItem="hyF-uh-Eaf" firstAttribute="height" secondItem="2dd-42-BXP" secondAttribute="height" multiplier="15" id="lye-QL-soG"/>
                             <constraint firstItem="J2d-IX-lQa" firstAttribute="top" secondItem="Tpd-SC-vBY" secondAttribute="bottom" id="mc6-rF-446"/>
                             <constraint firstItem="PxE-HH-mI9" firstAttribute="width" secondItem="Tpd-SC-vBY" secondAttribute="width" id="tam-mz-tbC"/>
-                            <constraint firstItem="mJa-GQ-oDL" firstAttribute="centerX" secondItem="hyF-uh-Eaf" secondAttribute="centerX" id="vZp-iK-8hM"/>
-                            <constraint firstItem="mJa-GQ-oDL" firstAttribute="width" secondItem="y5O-ys-7Ox" secondAttribute="width" id="zDy-mt-5UY"/>
-                            <constraint firstItem="hyF-uh-Eaf" firstAttribute="centerY" secondItem="mJa-GQ-oDL" secondAttribute="centerY" multiplier="1.1" id="zjs-6J-6kk"/>
+                            <constraint firstItem="Q1m-LQ-byU" firstAttribute="centerX" secondItem="hyF-uh-Eaf" secondAttribute="centerX" id="zfL-nW-JN6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Nu7-Zn-7xq"/>
                     <connections>
-                        <outlet property="lblLifeCelebrated" destination="y5O-ys-7Ox" id="ox8-gI-RfD"/>
+                        <segue destination="4Sb-Zd-sf4" kind="show" identifier="segueToLogin" id="Q3c-DN-3NA"/>
+                        <segue destination="aIn-rF-jKc" kind="show" identifier="segueLandingToDashBoard" id="cUO-lk-bNp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djo-0a-vhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3730" y="-3223"/>
+            <point key="canvasLocation" x="-276" y="367"/>
         </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="h7f-Tl-GIl">
@@ -2087,6 +2079,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HBG-78-dmO" secondAttribute="height" id="anA-HS-0rH"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="btnSlidePanelPressed:" destination="muh-lL-wub" eventType="touchUpInside" id="Ilh-tE-3uQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44O-WN-el2">
                                 <rect key="frame" x="185" y="15" width="230" height="30"/>
@@ -2826,11 +2821,12 @@
                     </view>
                     <connections>
                         <outlet property="tblSettings" destination="x1O-pW-S89" id="awi-Bd-5j7"/>
+                        <segue destination="4Sb-Zd-sf4" kind="show" identifier="segueLogoutToLogin" id="46W-rc-l29"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdT-q2-nJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-550" y="-1854"/>
+            <point key="canvasLocation" x="-235" y="-329"/>
         </scene>
         <!--Dashboard Space View Controller-->
         <scene sceneID="Ykn-zc-xK1">
@@ -2887,7 +2883,7 @@
                                             <constraint firstAttribute="width" secondItem="FVe-9o-rDG" secondAttribute="width" multiplier="1.2" id="i8v-ga-TVH"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="used" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tum-NO-9sb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tum-NO-9sb">
                                         <rect key="frame" x="89" y="52" width="49" height="11"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3310,6 +3306,7 @@
         <image name="facebook_icon.png" width="138" height="138"/>
         <image name="g_plus-1.png" width="92" height="92"/>
         <image name="get_LT.png" width="1023" height="156"/>
+        <image name="logo.png" width="964" height="280"/>
         <image name="logo1.png" width="964" height="208"/>
         <image name="logo_1.png" width="2286" height="595"/>
         <image name="mail_icon.png" width="86" height="58"/>
@@ -3325,7 +3322,9 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WIR-cR-3VA"/>
         <segue reference="Kpd-s1-MQV"/>
+        <segue reference="j9D-QB-8Bq"/>
+        <segue reference="Q3c-DN-3NA"/>
+        <segue reference="cUO-lk-bNp"/>
     </inferredMetricsTieBreakers>
 </document>

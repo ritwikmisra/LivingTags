@@ -20,24 +20,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *string =@"Life Celebrated...";
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:string forKey:@"string"];
-    [dict setObject:@0 forKey:@"currentCount"];
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(typingLabel:) userInfo:dict repeats:YES];
-    [timer fire];
+    //segueToLogin  //segueLandingToDashBoard
 }
 
-
--(void)viewWillAppear:(BOOL)animated
+ -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 }
 
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"akey"]);
+    if ([[NSUserDefaults standardUserDefaults]valueForKey:@"akey"])
+    {
+        [self performSegueWithIdentifier:@"segueLandingToDashBoard" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"segueToLogin" sender:self];
+    }
 }
 
 #pragma mark

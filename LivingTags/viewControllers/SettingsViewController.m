@@ -93,8 +93,41 @@
 {
     if (indexPath.row==0)
     {
-        [self performSegueWithIdentifier:@"segueMyTagsPrivacy" sender:self];
+        //[self performSegueWithIdentifier:@"segueMyTagsPrivacy" sender:self];
     }
+    if (indexPath.row==arrSettingsLabel.count-1)
+    {
+        [self didPressLogout];
+    }
+}
+
+#pragma mark
+#pragma mark logout functionality 
+#pragma mark
+
+-(void)didPressLogout
+{
+    //segueLogoutToLogin
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to logout?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"akey"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        [self performSegueWithIdentifier:@"segueLogoutToLogin" sender:self];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+
+    [alertController addAction:actionOK];
+    [alertController addAction:actionCancel];
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 
 @end

@@ -32,4 +32,5 @@
 -(void)hideNetworkActivity;
 -(void)viewUp;
 -(void)viewDown;
+- (id)transformedValue:(id)value;
 @end
