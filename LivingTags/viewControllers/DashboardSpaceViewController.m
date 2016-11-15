@@ -158,8 +158,6 @@
         cell.lblTagType.text=obj.strCname;
         cell.lblTagComments.text=obj.strTotal_comments;
         [cell.btnEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btnPreviewOnName addTarget:self action:@selector(btnLivingTagsPreviewPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btnPreviewOnImage addTarget:self action:@selector(btnLivingTagsPreviewPressed:) forControlEvents:UIControlEventTouchUpInside];
         if (indexPath.row==5)
         {
             cell.imgBottom.hidden=YES;
@@ -188,6 +186,8 @@
 
 -(IBAction)btnMyTagsPressed:(id)sender
 {
+    i=0;
+    isLazyLoading=YES;
     isRecentComments=NO;
     [imgRecentComments setImage:[UIImage imageNamed:@"comment_inactive"]];
     [lblRecentComments setTextColor:[UIColor whiteColor]];

@@ -49,11 +49,6 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
     signIn.shouldFetchBasicProfile = YES;
     signIn.delegate = self;
     signIn.uiDelegate = self;
-    if (txtEmail.text.length>0)
-    {
-        txtEmail.text=@"";
-        txtPassword.text=@"";
-    }
 }
 
 -(void)viewDidLayoutSubviews
@@ -63,6 +58,11 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (txtEmail.text.length>0)
+    {
+        txtEmail.text=@"";
+        txtPassword.text=@"";
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -147,7 +147,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
                      strEmail=[dict objectForKey:@"email"];
                      strName=[dict objectForKey:@"name"];
                      strID=[dict objectForKey:@"id"];
-                     strImageURL=[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&redirect=true&width=1000&height=1000 ",strID];
+                     strImageURL=[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&redirect=true&width=1000&height=1000",strID];
                      strSocialSite=@"FACEBOOK";
                      [self callSocialLoginWebservice];
                  }
