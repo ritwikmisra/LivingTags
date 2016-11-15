@@ -53,6 +53,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
 
 -(void)viewDidLayoutSubviews
 {
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
