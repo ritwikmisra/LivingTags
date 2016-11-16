@@ -10,5 +10,6 @@
 
 @interface PreviewViewController : ViewControllerBaseClassViewController
 @property(nonatomic,strong)NSString *str;
+@property(nonatomic,strong)NSString *strLabel;
 
 @end

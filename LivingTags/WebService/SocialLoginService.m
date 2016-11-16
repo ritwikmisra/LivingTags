@@ -26,7 +26,7 @@
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"pic_url=%@",strPic]];
+        [arr addObject:[NSString stringWithFormat:@"pic_uri=%@",strPic]];
         [arr addObject:[NSString stringWithFormat:@"social=%@",strSocial]];
         [arr addObject:[NSString stringWithFormat:@"name=%@",strName]];
         [arr addObject:[NSString stringWithFormat:@"email=%@",strEmail]];

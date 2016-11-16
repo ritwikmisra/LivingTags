@@ -12,6 +12,7 @@
 @interface PreviewViewController ()<UIWebViewDelegate>
 {
     IBOutlet UIWebView *webPreview;
+    IBOutlet UILabel *lblHeader;
 }
 
 @end
@@ -21,7 +22,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    webPreview.backgroundColor=[UIColor clearColor];
     webPreview.delegate=self;
+    lblHeader.text=self.strLabel;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -59,6 +62,7 @@
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    [self hideNetworkActivity];
     UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:@"Error!"
                                   message:@"Failed to load the form. Please refresh."

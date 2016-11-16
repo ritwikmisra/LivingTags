@@ -209,6 +209,7 @@
 		0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9472AC1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m */; };
 		0D9472B01D0AF74F00A85677 /* LivingTagsTemplateListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */; };
 		0D94FF581D3CCCB400502FC8 /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94FF571D3CCCB400502FC8 /* CKCalendarView.m */; };
+		0D96CB931DDC754400703E28 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D96CB921DDC754400703E28 /* back.png */; };
 		0DA2265E1CD1F87E00B3A5BC /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2265D1CD1F87E00B3A5BC /* LoginService.m */; };
 		0DA226611CD2020800B3A5BC /* ModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA226601CD2020800B3A5BC /* ModelUser.m */; };
 		0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */; };
@@ -599,6 +600,7 @@
 		0D9472AF1D0AF74F00A85677 /* LivingTagsTemplateListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsTemplateListController.m; sourceTree = "<group>"; };
 		0D94FF561D3CCCB400502FC8 /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
 		0D94FF571D3CCCB400502FC8 /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
+		0D96CB921DDC754400703E28 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		0DA2265C1CD1F87E00B3A5BC /* LoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginService.h; sourceTree = "<group>"; };
 		0DA2265D1CD1F87E00B3A5BC /* LoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginService.m; sourceTree = "<group>"; };
 		0DA2265F1CD2020800B3A5BC /* ModelUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelUser.h; sourceTree = "<group>"; };
@@ -1210,6 +1212,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D96CB921DDC754400703E28 /* back.png */,
 				0D78439E1DD600E50078A904 /* DashboardSpaceList */,
 				0D5903B01DD0CDB40048B5EF /* my profile */,
 				0D10ED031DCDF120006130C5 /* myTagsListing */,
@@ -1715,6 +1718,7 @@
 				0DE5FE2F1DAE5471004B06E5 /* Signika-Semibold.otf in Resources */,
 				0D77F6B01CD736AE00671159 /* Assets.bundle in Resources */,
 				0D5903A31DD081470048B5EF /* SettingsCell.xib in Resources */,
+				0D96CB931DDC754400703E28 /* back.png in Resources */,
 				0DF008AE1DAFB76500BD39C3 /* vid_play.png in Resources */,
 				0D10ED0F1DCDF120006130C5 /* business_small.png in Resources */,
 				0DF008521DAF93E600BD39C3 /* PersonNameCell.xib in Resources */,
@@ -2095,7 +2099,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "19fef296-7202-4d0b-a5a3-5478d18cefc3";
+				PROVISIONING_PROFILE = "c62421ec-dfc9-4173-a50d-a1c57eac2fe5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2133,7 +2137,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "19fef296-7202-4d0b-a5a3-5478d18cefc3";
+				PROVISIONING_PROFILE = "c62421ec-dfc9-4173-a50d-a1c57eac2fe5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2144,8 +2148,8 @@
 			baseConfigurationReference = 8BAAF325124145B15E317F6D /* Pods-LivingTags.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2162,7 +2166,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "19fef296-7202-4d0b-a5a3-5478d18cefc3";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -2172,8 +2176,8 @@
 			baseConfigurationReference = EB3E586A24EEF2747F22B398 /* Pods-LivingTags.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Isabelle Thornton (35K8QN3W45)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2190,7 +2194,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = appsbee.com.LivingTags;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "19fef296-7202-4d0b-a5a3-5478d18cefc3";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;

@@ -40,6 +40,7 @@
 #import "ContactsPopupController.h"
 #import "CategoryService.h"
 #import "CategoryController.h"
+#import"PreviewViewController.h"
 
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
@@ -81,7 +82,7 @@
     
     ////////contact info view controller
     ContactsPopupController *master;
-
+    NSString *strURL;
 }
 
 @end
@@ -1383,7 +1384,9 @@
             else
             {
                 NSLog(@"%@",[result objectForKey:@"previewUrl"]);
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[result objectForKey:@"previewUrl"]]];
+                strURL=[result objectForKey:@"previewUrl"];
+                //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[result objectForKey:@"previewUrl"]]];
+                [self performSegueWithIdentifier:@"seguePreview" sender:self];
 
             }
         }];
@@ -2478,7 +2481,13 @@
         QRCodeScanViewController *master2=[segue destinationViewController];
         master2.dictQR=dictQRCode;
     }
-
+    //seguePreview
+    if ([segue.identifier isEqualToString:@"seguePreview"])
+    {
+        PreviewViewController *masterPreview=[segue destinationViewController];
+        masterPreview.str=strURL;
+        masterPreview.strLabel=@"PREVIEW TAG";
+    }
 }
 
 #pragma mark

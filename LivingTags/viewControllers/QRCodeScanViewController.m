@@ -9,7 +9,7 @@
 #import "QRCodeScanViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageView+WebCache.h"
-
+#import "PreviewViewController.h"
 
 @interface QRCodeScanViewController ()
 {
@@ -83,7 +83,22 @@
 
 -(IBAction)btnViewYourLivingTagPressed:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.dictQR objectForKey:@"tagUrl"]]];
+   // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self.dictQR objectForKey:@"tagUrl"]]];
+    [self performSegueWithIdentifier:@"seguePublish" sender:self];
+}
+
+#pragma mark
+#pragma mark PREPARE FOR SEGUE
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"seguePublish"])
+    {
+        PreviewViewController *master=[segue destinationViewController];
+        master.str=[self.dictQR objectForKey:@"tagUrl"];
+        master.strLabel=@"PUBLISHED TAG";
+    }
 }
 
 @end
