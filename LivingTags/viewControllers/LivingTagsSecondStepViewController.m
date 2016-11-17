@@ -1,3 +1,4 @@
+
 //
 //  LivingTagsSecondStepViewController.m
 //  LivingTags
@@ -41,6 +42,7 @@
 #import "CategoryService.h"
 #import "CategoryController.h"
 #import"PreviewViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
@@ -1849,7 +1851,7 @@
 {
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to shoot a video or select it from gallery??" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self imageUploadFromCamera];
+        [self takeVideoFromCamera];
         [alertController dismissViewControllerAnimated:YES completion:^{
             
         }];
@@ -2398,73 +2400,92 @@
     [dict setObject:strPublicKey forKey:@"public_id"];
     [dict setObject:@"video" forKey:@"resource_type"];
 
-    [uploader upload:dataVideo options:dict withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
-        NSLog(@"%@",errorResult);
-        NSLog(@"%@",successResult);
-        if (successResult.count>0)
-        {
-            @try
+    
+    UIApplication*    app = [UIApplication sharedApplication];
+    __block UIBackgroundTaskIdentifier task;
+    task = [app beginBackgroundTaskWithExpirationHandler:^{
+        [app endBackgroundTask:task];
+        task = UIBackgroundTaskInvalid;
+    }];
+    // Start the long-running task and return immediately.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        // Do the work associated with the task.
+        NSLog(@"Started background task timeremaining = %f", [app backgroundTimeRemaining]);
+        [uploader upload:dataVideo options:dict withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+            NSLog(@"%@",errorResult);
+            NSLog(@"%@",successResult);
+            if (successResult.count>0)
             {
-                NSString *strBytes=[successResult objectForKey:@"bytes"];
-                NSString *strPublicID=[successResult objectForKey:@"public_id"];
-                NSString *strCreated=[successResult objectForKey:@"created_at"];
-                NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
-                NSLog(@"%@",strFileName);
-                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"V" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-                    if (isError)
-                    {
-                        [self displayErrorWithMessage:strMsg];
-                    }
-                    else
-                    {
-                        [arrDeleteVideos addObject:result];
-                        if ([appDel.arrVideoSet containsObject:@"1"])
+                @try
+                {
+                    NSString *strBytes=[successResult objectForKey:@"bytes"];
+                    NSString *strPublicID=[successResult objectForKey:@"public_id"];
+                    NSString *strCreated=[successResult objectForKey:@"created_at"];
+                    NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
+                    NSLog(@"%@",strFileName);
+                    [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"V" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                        [app endBackgroundTask:task];
+                        task = UIBackgroundTaskInvalid;
+                        if (isError)
                         {
-                            [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrVideoSet.count-1 withObject:imgaThumb];
+                            [self displayErrorWithMessage:strMsg];
                         }
                         else
                         {
-                            [appDel.arrVideoSet addObject:imgaThumb];
-                        }
-                        [appDel.arrVideoSet addObject:@"1"];
-                        if ([self.strTagName isEqualToString:@"Business"])
-                        {
-                            [tblTagsCreation beginUpdates];
-                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:12 inSection:0]];
-                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblTagsCreation endUpdates];
+                            [self displayErrorWithMessage:strMsg];
+                            [arrDeleteVideos addObject:result];
+                            if ([appDel.arrVideoSet containsObject:@"1"])
+                            {
+                                [appDel.arrVideoSet replaceObjectAtIndex:appDel.arrVideoSet.count-1 withObject:imgaThumb];
+                            }
+                            else
+                            {
+                                [appDel.arrVideoSet addObject:imgaThumb];
+                            }
+                            [appDel.arrVideoSet addObject:@"1"];
+                            if ([self.strTagName isEqualToString:@"Business"])
+                            {
+                                [tblTagsCreation beginUpdates];
+                                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:12 inSection:0]];
+                                [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                                [tblTagsCreation endUpdates];
+                                
+                            }
+                            else
+                            {
+                                [tblTagsCreation beginUpdates];
+                                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
+                                [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                                [tblTagsCreation endUpdates];
+                            }
+                            
                             
                         }
-                        else
-                        {
-                            [tblTagsCreation beginUpdates];
-                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
-                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblTagsCreation endUpdates];
-                        }
-
-                        
-                    }
-                }];
+                    }];
+                }
+                @catch (NSException *exception)
+                {
+                    [self displayErrorWithMessage:exception.reason];
+                    [app endBackgroundTask:task];
+                    task = UIBackgroundTaskInvalid;
+                }
+                @finally
+                {
+                    
+                }
             }
-            @catch (NSException *exception)
+            else
             {
-                [self displayErrorWithMessage:exception.reason];
+                [self hideNetworkActivity];
+                [self displayErrorWithMessage:errorResult];
+                [app endBackgroundTask:task];
+                task = UIBackgroundTaskInvalid;
             }
-            @finally
-            {
-                
-            }
-        }
-        else
-        {
-            [self hideNetworkActivity];
-            [self displayErrorWithMessage:errorResult];
-        }
-    } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
-        
-    }];
-    
+        } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+            
+        }];
+    });
 }
 
 #pragma mark
@@ -2529,7 +2550,7 @@
             [self displayErrorWithMessage:@"Please enter  name."];
             return NO;
         }
-        if (strGender.length==0)
+        /*if (strGender.length==0)
         {
             [self displayErrorWithMessage:@"Please enter gender."];
             return NO;
@@ -2557,7 +2578,7 @@
         {
             [self displayErrorWithMessage:@"Please enter a location."];
             return NO;
-        }
+        }*/
     }
     else if([self.strTagName isEqualToString:@"Persons"])
     {
@@ -2566,7 +2587,7 @@
             [self displayErrorWithMessage:@"Please enter  name."];
             return NO;
         }
-        if (strGender.length==0)
+      /*  if (strGender.length==0)
         {
             [self displayErrorWithMessage:@"Please enter gender."];
             return NO;
@@ -2596,7 +2617,7 @@
         {
             [self displayErrorWithMessage:@"Please enter a location."];
             return NO;
-        }
+        }*/
     }
     else if([self.strTagName isEqualToString:@"Business"])
     {
@@ -2605,7 +2626,7 @@
             [self displayErrorWithMessage:@"Please enter Business name"];
             return NO;
         }
-        if (strBusinessContactName.length==0)
+        /*if (strBusinessContactName.length==0)
         {
             [self displayErrorWithMessage:@"Please enter business contact name."];
             return NO;
@@ -2634,7 +2655,7 @@
         {
             [self displayErrorWithMessage:@"Please enter location."];
             return NO;
-        }
+        }*/
     }
     else
     {
@@ -2643,7 +2664,7 @@
             [self displayErrorWithMessage:@"Please enter the title"];
             return NO;
         }
-        if (strCategory.length==0)
+       /* if (strCategory.length==0)
         {
             [self displayErrorWithMessage:@"Please enter the category name"];
             return NO;
@@ -2657,7 +2678,7 @@
         {
             [self displayErrorWithMessage:@"Please enter the location"];
             return NO;
-        }
+        }*/
     }
     return YES;
 }

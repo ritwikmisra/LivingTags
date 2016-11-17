@@ -24,8 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    arrPics=[[NSMutableArray alloc]initWithObjects:@"scan_tag",@"create_tag",@"view_local_tags",@"add_icon",nil];
-    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Scan a Tag",@"Create a Tag",@"View Local Tags",@"Add to an Existing Tag", nil];
     tblDashboard.backgroundColor=[UIColor clearColor];
     tblDashboard.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblDashboard.bounces=NO;
@@ -37,6 +35,17 @@
         }
         else
         {
+            if ([appDel.objUser.strTagCounts integerValue]==1)
+            {
+                arrPics=[[NSMutableArray alloc]initWithObjects:@"scan_tag",@"create_tag",@"view_local_tags",nil];
+                arrLabel=[[NSMutableArray alloc]initWithObjects:@"Scan a Tag",@"Create a Tag",@"View Local Tags", nil];
+            }
+            else
+            {
+                arrPics=[[NSMutableArray alloc]initWithObjects:@"scan_tag",@"create_tag",@"view_local_tags",@"add_icon",nil];
+                arrLabel=[[NSMutableArray alloc]initWithObjects:@"Scan a Tag",@"Create a Tag",@"View Local Tags",@"Add to an Existing Tag", nil];
+            }
+            [tblDashboard reloadData];
         }
     }];
 
@@ -85,19 +94,39 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (___isIphone6Plus)
+    if ([appDel.objUser.strTagCounts integerValue])
     {
-        return 150.0f;
+        if (___isIphone6Plus)
+        {
+            return 180.0f;
+        }
+        if (___isIphone6)
+        {
+            return 160.0f;
+        }
+        if (___isIphone5_5s)
+        {
+            return 140.0f;
+        }
+        return 105.0f;
+
     }
-    if (___isIphone6)
+    else
     {
-        return 150.0f;
+        if (___isIphone6Plus)
+        {
+            return 150.0f;
+        }
+        if (___isIphone6)
+        {
+            return 150.0f;
+        }
+        if (___isIphone5_5s)
+        {
+            return 110.0f;
+        }
+        return 95.0f;
     }
-    if (___isIphone5_5s)
-    {
-        return 110.0f;
-    }
-    return 95.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

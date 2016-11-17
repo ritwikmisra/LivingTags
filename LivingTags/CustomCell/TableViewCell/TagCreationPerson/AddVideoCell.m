@@ -68,6 +68,7 @@
         {
             PersonCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier2 forIndexPath:indexPath];
             cell.imgPicl.image=[self.appDel.arrVideoSet objectAtIndex:indexPath.row];
+            cell.imgPicl.transform=CGAffineTransformMakeRotation(M_PI_2);
             cell.btnDelete.tag=indexPath.row;
             [cell.btnDelete addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
             return cell;

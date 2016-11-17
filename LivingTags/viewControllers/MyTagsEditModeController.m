@@ -2541,37 +2541,35 @@ else
             [self displayErrorWithMessage:@"Please enter  name."];
             return NO;
         }
-        if (strGender.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter gender."];
-            return NO;
-            
-        }
-        if (isLiving==NO)
-        {
-            if (strDeathDate.length==0)
-            {
-                [self displayErrorWithMessage:@"Please enter death date."];
-                return NO;
-                
-            }
-        }
-        if (strBirthDate.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter birth date."];
-            return NO;
-            
-        }
-        if (strTextVwTags.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter a memorial quote."];
-            return NO;
-        }
-        if (isLocation==NO)
-        {
-            [self displayErrorWithMessage:@"Please enter a location."];
-            return NO;
-        }
+        /*if (strGender.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter gender."];
+         return NO;
+         }
+         if (isLiving==NO)
+         {
+         if (strDeathDate.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter death date."];
+         return NO;
+         }
+         }
+         if (strBirthDate.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter birth date."];
+         return NO;
+         
+         }
+         if (strTextVwTags.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter a memorial quote."];
+         return NO;
+         }
+         if (isLocation==NO)
+         {
+         [self displayErrorWithMessage:@"Please enter a location."];
+         return NO;
+         }*/ 
     }
     else if([self.strTagName isEqualToString:@"Persons"])
     {
@@ -2580,37 +2578,37 @@ else
             [self displayErrorWithMessage:@"Please enter  name."];
             return NO;
         }
-        if (strGender.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter gender."];
-            return NO;
-            
-        }
-        if (isLiving==NO)
-        {
-            if (strDeathDate.length==0)
-            {
-                [self displayErrorWithMessage:@"Please enter death date."];
-                return NO;
-                
-            }
-        }
-        if (strBirthDate.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter birth date."];
-            return NO;
-            
-        }
-        if (strTextVwTags.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter a memorial quote."];
-            return NO;
-        }
-        if (isLocation==NO)
-        {
-            [self displayErrorWithMessage:@"Please enter a location."];
-            return NO;
-        }
+        /*  if (strGender.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter gender."];
+         return NO;
+         
+         }
+         if (isLiving==NO)
+         {
+         if (strDeathDate.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter death date."];
+         return NO;
+         
+         }
+         }
+         if (strBirthDate.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter birth date."];
+         return NO;
+         
+         }
+         if (strTextVwTags.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter a memorial quote."];
+         return NO;
+         }
+         if (isLocation==NO)
+         {
+         [self displayErrorWithMessage:@"Please enter a location."];
+         return NO;
+         }*/
     }
     else if([self.strTagName isEqualToString:@"Business"])
     {
@@ -2619,36 +2617,36 @@ else
             [self displayErrorWithMessage:@"Please enter Business name"];
             return NO;
         }
-        if (strBusinessContactName.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter business contact name."];
-            return NO;
-        }
-        if (strBusinessTitle.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter business title."];
-            return NO;
-        }
-        if (strBusinessPhone.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter business phone number."];
-            return NO;
-        }
-        if (strBusinessEmail.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter business email"];
-            return NO;
-        }
-        if (strTextVwTags.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter Memorial quote."];
-            return NO;
-        }
-        if (isLocation==NO)
-        {
-            [self displayErrorWithMessage:@"Please enter location."];
-            return NO;
-        }
+        /*if (strBusinessContactName.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter business contact name."];
+         return NO;
+         }
+         if (strBusinessTitle.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter business title."];
+         return NO;
+         }
+         if (strBusinessPhone.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter business phone number."];
+         return NO;
+         }
+         if (strBusinessEmail.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter business email"];
+         return NO;
+         }
+         if (strTextVwTags.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter Memorial quote."];
+         return NO;
+         }
+         if (isLocation==NO)
+         {
+         [self displayErrorWithMessage:@"Please enter location."];
+         return NO;
+         }*/
     }
     else
     {
@@ -2657,21 +2655,21 @@ else
             [self displayErrorWithMessage:@"Please enter the title"];
             return NO;
         }
-        if (strCategory.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter the category name"];
-            return NO;
-        }
-        if (strTextVwTags.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter the memorial quote"];
-            return NO;
-        }
-        if (isLocation==NO)
-        {
-            [self displayErrorWithMessage:@"Please enter the location"];
-            return NO;
-        }
+        /* if (strCategory.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter the category name"];
+         return NO;
+         }
+         if (strTextVwTags.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter the memorial quote"];
+         return NO;
+         }
+         if (isLocation==NO)
+         {
+         [self displayErrorWithMessage:@"Please enter the location"];
+         return NO;
+         }*/
     }
     return YES;
 }

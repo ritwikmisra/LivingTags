@@ -95,7 +95,7 @@
                                 if ([[responseDict objectForKey:@"response"] isKindOfClass:[NSDictionary class]])
                                 {
                                     NSString *strTAKey=[[responseDict objectForKey:@"response"] objectForKey:@"takey"];
-                                    completionHandler(strTAKey,NO,nil);
+                                    completionHandler(strTAKey,NO,@"abvd");
                                 }
                             }
                             else

@@ -74,15 +74,27 @@
                         }
                         else
                         {
-                            if ([[responseDict objectForKey:@"status"]boolValue])
+                            @try
                             {
-                                NSDictionary *dict=[[responseDict objectForKey:@"response"] objectForKey:@"account"];
-                                appDel.objUser=[[ModelUser alloc]initWithDictionary:dict];
-                                handler(nil,NO,nil);
+                                if ([[responseDict objectForKey:@"status"]boolValue])
+                                {
+                                    NSDictionary *dict=[[responseDict objectForKey:@"response"] objectForKey:@"account"];
+                                    appDel.objUser=[[ModelUser alloc]initWithDictionary:dict];
+                                    handler(nil,NO,nil);
+                                }
+                                else
+                                {
+                                    handler(nil,YES,[responseDict objectForKey:@"error"]);
+                                }
+
                             }
-                            else
+                            @catch (NSException *exception)
                             {
-                                handler(nil,YES,[responseDict objectForKey:@"error"]);
+                                [[[UIAlertView alloc]initWithTitle:exception.reason message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+                            }
+                            @finally
+                            {
+                                
                             }
                         }
                     }
