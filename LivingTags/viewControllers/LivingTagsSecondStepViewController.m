@@ -1385,6 +1385,8 @@
             {
                 NSLog(@"%@",[result objectForKey:@"previewUrl"]);
                 strURL=[result objectForKey:@"previewUrl"];
+                strURL=[strURL stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
+                NSLog(@"%@",strURL);
                 //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[result objectForKey:@"previewUrl"]]];
                 [self performSegueWithIdentifier:@"seguePreview" sender:self];
 
@@ -2531,7 +2533,6 @@
         {
             [self displayErrorWithMessage:@"Please enter gender."];
             return NO;
-            
         }
         if (isLiving==NO)
         {
@@ -2539,7 +2540,6 @@
             {
                 [self displayErrorWithMessage:@"Please enter death date."];
                 return NO;
-                
             }
         }
         if (strBirthDate.length==0)

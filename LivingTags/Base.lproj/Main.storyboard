@@ -569,8 +569,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="nzx-Eb-15G">
                                 <rect key="frame" x="0.0" y="60" width="600" height="9"/>
                             </imageView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfO-r8-mJL">
-                                <rect key="frame" x="14" y="75" width="572" height="522"/>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PfO-r8-mJL">
+                                <rect key="frame" x="0.0" y="75" width="600" height="522"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="7W3-Am-qL3" id="fOl-Wi-a5g"/>
@@ -589,7 +589,7 @@
                             <constraint firstItem="pgZ-Cz-x3y" firstAttribute="trailing" secondItem="g91-Ay-G8u" secondAttribute="trailing" id="JP4-mJ-lq8"/>
                             <constraint firstItem="g91-Ay-G8u" firstAttribute="centerY" secondItem="Axx-Wh-xDr" secondAttribute="centerY" id="K4N-AY-W9y"/>
                             <constraint firstItem="nzx-Eb-15G" firstAttribute="top" secondItem="t9w-l4-Kgt" secondAttribute="bottom" id="OIW-Ry-CRa"/>
-                            <constraint firstItem="0FU-Mw-Yim" firstAttribute="width" secondItem="PfO-r8-mJL" secondAttribute="width" multiplier="1.05" id="PhH-TX-usO"/>
+                            <constraint firstItem="0FU-Mw-Yim" firstAttribute="width" secondItem="PfO-r8-mJL" secondAttribute="width" id="PhH-TX-usO"/>
                             <constraint firstItem="0FU-Mw-Yim" firstAttribute="height" secondItem="t9w-l4-Kgt" secondAttribute="height" multiplier="10" id="Qzq-Ir-F8I"/>
                             <constraint firstItem="PfO-r8-mJL" firstAttribute="centerX" secondItem="0FU-Mw-Yim" secondAttribute="centerX" id="RM2-4P-1Ss"/>
                             <constraint firstItem="Axx-Wh-xDr" firstAttribute="centerX" secondItem="t9w-l4-Kgt" secondAttribute="centerX" id="UaC-WD-liv"/>

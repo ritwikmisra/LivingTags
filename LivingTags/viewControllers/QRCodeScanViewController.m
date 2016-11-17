@@ -96,7 +96,9 @@
     if ([segue.identifier isEqualToString:@"seguePublish"])
     {
         PreviewViewController *master=[segue destinationViewController];
-        master.str=[self.dictQR objectForKey:@"tagUrl"];
+        NSString *str=[self.dictQR objectForKey:@"tagUrl"];
+        str=[str stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
+        master.str=str;
         master.strLabel=@"PUBLISHED TAG";
     }
 }
