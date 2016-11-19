@@ -84,6 +84,7 @@
     
     ////////contact info view controller
     ContactsPopupController *master;
+    BOOL isBusinessLogo;
 }
 @end
 
@@ -138,23 +139,6 @@
             NSDictionary *dictAssets=[result objectForKey:@"assetsData"];
             NSMutableArray *arrImages=[dictAssets objectForKey:@"images"];
             NSMutableArray *arrVideos=[dictAssets objectForKey:@"videos"];
-            for (int i=0; i<arrImages.count; i++)
-            {
-                ModelImageAndVideoAssets *obj=[[ModelImageAndVideoAssets alloc]initWithDictionary:[arrImages objectAtIndex:i]];
-                [appDel.arrImageSet addObject:obj];
-                [arrDeleteImages addObject:obj.strTAKey];
-             }
-            [appDel.arrImageSet addObject:@"1"];
-            for (int i=0; i<arrVideos.count; i++)
-            {
-                ModelImageAndVideoAssets *obj=[[ModelImageAndVideoAssets alloc]initWithDictionary:[arrVideos objectAtIndex:i]];
-                [appDel.arrVideoSet addObject:obj];
-                [arrDeleteVideos addObject:obj.strTAKey];
-            }
-            [appDel.arrVideoSet addObject:@"1"];
-
-            NSLog(@"Images%@.....Videos %@",appDel.arrImageSet,appDel.arrVideoSet);
-            
             objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:result];
             strPersonName=objTemplates.strtname;
             strGender=objTemplates.strtgender;
@@ -184,6 +168,12 @@
             {
                 strCategory=@"Category";
             }
+            if (objTemplates.strUserPicURI.length>0)
+            {
+                isBusinessLogo=YES;
+                [appDel.arrImageSet addObject:objTemplates.strUserPicURI];
+                [arrDeleteImages addObject:@""];
+            }
             strBusinessContactName=objTemplates.strTcname;
             strBusinessTitle=objTemplates.strSlogan;
             strBusinessAddress=objTemplates.strAddress2;
@@ -191,6 +181,21 @@
             strBusinessCellPhone=objTemplates.strMobile;
             strBusinessFax=objTemplates.strTfax;
             // email and website left
+            for (int i=0; i<arrImages.count; i++)
+            {
+                ModelImageAndVideoAssets *obj=[[ModelImageAndVideoAssets alloc]initWithDictionary:[arrImages objectAtIndex:i]];
+                [appDel.arrImageSet addObject:obj];
+                [arrDeleteImages addObject:obj.strTAKey];
+            }
+            for (int i=0; i<arrVideos.count; i++)
+            {
+                ModelImageAndVideoAssets *obj=[[ModelImageAndVideoAssets alloc]initWithDictionary:[arrVideos objectAtIndex:i]];
+                [appDel.arrVideoSet addObject:obj];
+                [arrDeleteVideos addObject:obj.strTAKey];
+            }
+            [appDel.arrImageSet addObject:@"1"];
+            [appDel.arrVideoSet addObject:@"1"];
+            NSLog(@"Images%@.....Videos %@",appDel.arrImageSet,appDel.arrVideoSet);
             [tblEditTags reloadData];
         }
     }];
@@ -973,11 +978,13 @@
                     
                 case 7:
                     cellPerson.txtPersonName.keyboardType=UIKeyboardTypeEmailAddress;
+                    cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeNone;
                     cellPerson.txtPersonName.text=strBusinessEmail;
                     break;
                     
                 case 8:
                     cellPerson.txtPersonName.keyboardType=UIKeyboardTypeURL;
+                    cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeNone;
                     cellPerson.txtPersonName.text=strBusinessWebsite;
                     break;
                     
@@ -1005,9 +1012,14 @@
             {
                 cellButton=[[[NSBundle mainBundle]loadNibNamed:@"AddLogoCell" owner:self options:nil]objectAtIndex:0];
             }
-            [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+            cellButton.btnAddLogo.tag=indexPath.row;
+            cellButton.txtAddLogo.userInteractionEnabled=NO;
+            [cellButton.btnAddLogo addTarget:self action:@selector(btnAddLogoPressed:) forControlEvents:UIControlEventTouchUpInside];
+            if (isBusinessLogo)
+            {
+                cellButton.txtAddLogo.text=@"Logo Updated";
+            }
             cell=cellButton;
-            
         }
         else if (indexPath.row==11)
         {
@@ -1135,6 +1147,12 @@
 #pragma mark IBACTIONS
 #pragma mark
 
+-(void)btnAddLogoPressed:(id)sender
+{
+    [self selectImageForBusinessLogo:[sender tag]];
+}
+
+
 -(void)btnDeleteVoicePressed:(id)sender
 {
     appDel.strAudioURL=@"";
@@ -1158,6 +1176,7 @@
 
 -(void)btnCategoryClicked:(id)sender
 {
+    [self.view endEditing:YES];
     [[CategoryService service] callCategoryServiceWithCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
@@ -1705,6 +1724,7 @@
 
 -(void)selectImages
 {
+    isBusinessLogo=NO;
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to take a picture or select it from gallery??" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self takePictureFromCamera];
@@ -1851,10 +1871,22 @@
         {
             [arrDeleteImages removeObjectAtIndex:i];
             [appDel.arrImageSet removeObjectAtIndex:i];
-            [tblEditTags beginUpdates];
-            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
-            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            [tblEditTags endUpdates];
+            if ([self.strTagName isEqualToString:@"Business"])
+            {
+                [tblEditTags beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
+                [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblEditTags endUpdates];
+                
+            }
+            else
+            {
+                
+                [tblEditTags beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
+                [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblEditTags endUpdates];
+            }
             
         }
     }];
@@ -2330,77 +2362,149 @@ else
 
 -(void)uploadImageToCloudinary:(UIImage *)img
 {
-    NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
-    CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
-    NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-    NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",objTemplates.strtagImageFolder,strTimestamp];
-    // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
-    [self displayNetworkActivity];
-    [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
-        NSLog(@"%@",successResult);
-        if (successResult.count>0)
-        {
-            @try
-            {
-                NSString *strBytes=[successResult objectForKey:@"bytes"];
-                NSString *strPublicID=[successResult objectForKey:@"public_id"];
-                NSString *strCreated=[successResult objectForKey:@"created_at"];
-                NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
-                NSLog(@"%@",strFileName);
-                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:objTemplates.strtKey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-                    if (isError)
-                    {
-                        [self displayErrorWithMessage:strMsg];
-                    }
-                    else
-                    {
-                        [arrDeleteImages addObject:result];
-                        if ([appDel.arrImageSet containsObject:@"1"])
-                        {
-                            [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
-                        }
-                        else
-                        {
-                            [appDel.arrImageSet addObject:img];
-                        }
-                        [appDel.arrImageSet addObject:@"1"];
-                        if ([self.strTagName isEqualToString:@"Business"])
-                        {
-                            [tblEditTags beginUpdates];
-                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
-                            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblEditTags endUpdates];
-                            
-                        }
-                        else
-                        {
-                            
-                            [tblEditTags beginUpdates];
-                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
-                            [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblEditTags endUpdates];
-                        }
-                    }
-                }];
-            }
-            @catch (NSException *exception)
-            {
-                [self displayErrorWithMessage:exception.reason];
-            }
-            @finally
-            {
-                
-            }
-        }
-        else
-        {
-            [self hideNetworkActivity];
-            [self displayErrorWithMessage:errorResult];
-        }
-    } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+    if (isBusinessLogo==YES)
+    {
         
-    }];
-    
+        NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
+        CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+        NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+        NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",objTemplates.strtagProfileFolder,strTimestamp];
+        // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
+        [self displayNetworkActivity];
+        [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+            NSLog(@"%@",successResult);
+            if (successResult.count>0)
+            {
+                @try
+                {
+                    NSString *strBytes=[successResult objectForKey:@"bytes"];
+                    NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
+                    NSLog(@"%@",strFileName);
+                    NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+                    [dict setObject:strFileName forKey:@"tphoto"];
+                    [dict setObject:strBytes forKey:@"tphotosize"];
+                    [dict setObject:@"I" forKey:@"tphototype"];
+                    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:self.strTKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                        [self hideNetworkActivity];
+                        if (isError)
+                        {
+                            [self displayErrorWithMessage:strMsg];
+                        }
+                        else
+                        {
+                            [arrDeleteImages addObject:result];
+                            if ([appDel.arrImageSet containsObject:@"1"])
+                            {
+                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
+                            }
+                            else
+                            {
+                                [appDel.arrImageSet addObject:img];
+                            }
+                            [appDel.arrImageSet addObject:@"1"];
+                            [tblEditTags beginUpdates];
+                            NSIndexPath* indexPath1 = [NSIndexPath indexPathForRow:10 inSection:0];
+                            NSIndexPath* indexPath2 = [NSIndexPath indexPathForRow:11 inSection:0];
+                            // Add them in an index path array
+                            NSArray* indexArray = [NSArray arrayWithObjects:indexPath1, indexPath2, nil];
+                            // Launch reload for the two index path
+                            [tblEditTags reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationFade];
+                            [tblEditTags endUpdates];
+                        }
+                    }];
+                }
+                @catch (NSException *exception)
+                {
+                    [self displayErrorWithMessage:exception.reason];
+                }
+                @finally
+                {
+                    
+                }
+            }
+            else
+            {
+                [self hideNetworkActivity];
+                [self displayErrorWithMessage:errorResult];
+            }
+        } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+            
+        }];
+        
+    }
+    else
+    {
+        NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
+        CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+        NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+        NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",objTemplates.strtagImageFolder,strTimestamp];
+        // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
+        [self displayNetworkActivity];
+        [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+            NSLog(@"%@",successResult);
+            if (successResult.count>0)
+            {
+                @try
+                {
+                    NSString *strBytes=[successResult objectForKey:@"bytes"];
+                    NSString *strPublicID=[successResult objectForKey:@"public_id"];
+                    NSString *strCreated=[successResult objectForKey:@"created_at"];
+                    NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
+                    NSLog(@"%@",strFileName);
+                    [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.strTKey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                        if (isError)
+                        {
+                            [self displayErrorWithMessage:strMsg];
+                        }
+                        else
+                        {
+                            [arrDeleteImages addObject:result];
+                            if ([appDel.arrImageSet containsObject:@"1"])
+                            {
+                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
+                            }
+                            else
+                            {
+                                [appDel.arrImageSet addObject:img];
+                            }
+                            [appDel.arrImageSet addObject:@"1"];
+                            if ([self.strTagName isEqualToString:@"Business"])
+                            {
+                                [tblEditTags beginUpdates];
+                                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
+                                [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                                [tblEditTags endUpdates];
+                                
+                            }
+                            else
+                            {
+                                
+                                [tblEditTags beginUpdates];
+                                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
+                                [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                                [tblEditTags endUpdates];
+                            }
+                        }
+                    }];
+                }
+                @catch (NSException *exception)
+                {
+                    [self displayErrorWithMessage:exception.reason];
+                }
+                @finally
+                {
+                    
+                }
+            }
+            else
+            {
+                [self hideNetworkActivity];
+                [self displayErrorWithMessage:errorResult];
+            }
+        } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+            
+        }];
+    }
 }
 
 -(void)uploadVideoToCloudinary:(NSData *)dataVideo image:(UIImage *)imgaThumb
@@ -2721,6 +2825,38 @@ else
         [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         [tblEditTags endUpdates];
     }
+}
+
+#pragma mark
+#pragma mark business logo
+#pragma mark
+
+-(void)selectImageForBusinessLogo:(NSInteger)i
+{
+    NSLog(@"%d",i);
+    isBusinessLogo=YES;
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to take a picture or select it from gallery??" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePictureFromCamera];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePictureFromGallery];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+    }];
+    
+    [alertController addAction:actionCamera];
+    [alertController addAction:actionGallery];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 
 

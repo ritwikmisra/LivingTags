@@ -292,6 +292,16 @@
         {
             self.strtagVideoFolder=@"";
         }
+        //tagProfileFolder
+        if ([dict objectForKey:@"tagProfileFolder"] && ![[dict objectForKey:@"tagProfileFolder"] isKindOfClass:[NSNull class]])//
+        {
+            self.strtagProfileFolder=[dict objectForKey:@"tagProfileFolder"];
+        }
+        else
+        {
+            self.strtagProfileFolder=@"";
+        }
+
     }
     return self;
 }

@@ -1,4 +1,5 @@
 
+
 //
 //  LivingTagsSecondStepViewController.m
 //  LivingTags
@@ -85,6 +86,7 @@
     ////////contact info view controller
     ContactsPopupController *master;
     NSString *strURL;
+    BOOL isBusinessLogo;
 }
 
 @end
@@ -113,6 +115,7 @@
     strGender=@"";
     isLiving=NO;
     isLocation=NO;
+    isBusinessLogo=NO;
     isTextViewClicked=NO;
     strPlace=@"";
     
@@ -906,11 +909,13 @@
                     
                 case 7:
                     cellPerson.txtPersonName.keyboardType=UIKeyboardTypeEmailAddress;
+                    cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeNone;
                     cellPerson.txtPersonName.text=strBusinessEmail;
                     break;
                     
                 case 8:
                     cellPerson.txtPersonName.keyboardType=UIKeyboardTypeURL;
+                    cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeNone;
                     cellPerson.txtPersonName.text=strBusinessWebsite;
                     break;
 
@@ -938,9 +943,14 @@
             {
                 cellButton=[[[NSBundle mainBundle]loadNibNamed:@"AddLogoCell" owner:self options:nil]objectAtIndex:0];
             }
-            [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
+            cellButton.btnAddLogo.tag=indexPath.row;
+            cellButton.txtAddLogo.userInteractionEnabled=NO;
+            [cellButton.btnAddLogo addTarget:self action:@selector(btnAddLogoPressed:) forControlEvents:UIControlEventTouchUpInside];
+            if (isBusinessLogo)
+            {
+                cellButton.txtAddLogo.text=@"Logo Updated";
+            }
             cell=cellButton;
-            
         }
         else if (indexPath.row==11)
         {
@@ -1068,6 +1078,11 @@
 #pragma mark IBACTIONS
 #pragma mark
 
+-(void)btnAddLogoPressed:(id)sender
+{
+    [self selectImageForBusinessLogo:[sender tag]];
+}
+
 -(void)btnDeleteVoicePressed:(id)sender
 {
     appDel.strAudioURL=@"";
@@ -1091,6 +1106,7 @@
 
 -(void)btnCategoryClicked:(id)sender
 {
+    [self.view endEditing:YES];
     [[CategoryService service] callCategoryServiceWithCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
@@ -2315,77 +2331,149 @@
 
 -(void)uploadImageToCloudinary:(UIImage *)img
 {
-    NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
-    CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
-    NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-    NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strImageFolder,strTimestamp];
-    // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
-    [self displayNetworkActivity];
-    [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
-        NSLog(@"%@",successResult);
-        if (successResult.count>0)
-        {
-            @try
+    if (isBusinessLogo==YES)
+    {
+   
+        NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
+        CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+        NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+        NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strProfileFolder,strTimestamp];
+        // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
+        [self displayNetworkActivity];
+        [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+            NSLog(@"%@",successResult);
+            if (successResult.count>0)
             {
-                NSString *strBytes=[successResult objectForKey:@"bytes"];
-                NSString *strPublicID=[successResult objectForKey:@"public_id"];
-                NSString *strCreated=[successResult objectForKey:@"created_at"];
-                NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
-                NSLog(@"%@",strFileName);
-                [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-                    if (isError)
-                    {
-                        [self displayErrorWithMessage:strMsg];
-                    }
-                    else
-                    {
-                        [arrDeleteImages addObject:result];
-                        if ([appDel.arrImageSet containsObject:@"1"])
+                @try
+                {
+                    NSString *strBytes=[successResult objectForKey:@"bytes"];
+                    NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
+                    NSLog(@"%@",strFileName);
+                    NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+                    [dict setObject:strFileName forKey:@"tphoto"];
+                    [dict setObject:strBytes forKey:@"tphotosize"];
+                    [dict setObject:@"I" forKey:@"tphototype"];
+                    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                        [self hideNetworkActivity];
+                        if (isError)
                         {
-                            [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
+                            [self displayErrorWithMessage:strMsg];
                         }
                         else
                         {
-                            [appDel.arrImageSet addObject:img];
-                        }
-                        [appDel.arrImageSet addObject:@"1"];
-                        if ([self.strTagName isEqualToString:@"Business"])
-                        {
+                            [arrDeleteImages addObject:result];
+                            if ([appDel.arrImageSet containsObject:@"1"])
+                            {
+                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
+                            }
+                            else
+                            {
+                                [appDel.arrImageSet addObject:img];
+                            }
+                            [appDel.arrImageSet addObject:@"1"];
                             [tblTagsCreation beginUpdates];
-                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
-                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                            NSIndexPath* indexPath1 = [NSIndexPath indexPathForRow:10 inSection:0];
+                            NSIndexPath* indexPath2 = [NSIndexPath indexPathForRow:11 inSection:0];
+                            // Add them in an index path array
+                            NSArray* indexArray = [NSArray arrayWithObjects:indexPath1, indexPath2, nil];
+                            // Launch reload for the two index path
+                            [tblTagsCreation reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationFade];
                             [tblTagsCreation endUpdates];
+                        }
+                    }];
+                }
+                @catch (NSException *exception)
+                {
+                    [self displayErrorWithMessage:exception.reason];
+                }
+                @finally
+                {
+                    
+                }
+            }
+            else
+            {
+                [self hideNetworkActivity];
+                [self displayErrorWithMessage:errorResult];
+            }
+        } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+            
+        }];
 
+    }
+    else
+    {
+        NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
+        CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+        NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+        NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strImageFolder,strTimestamp];
+        // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
+        [self displayNetworkActivity];
+        [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+            NSLog(@"%@",successResult);
+            if (successResult.count>0)
+            {
+                @try
+                {
+                    NSString *strBytes=[successResult objectForKey:@"bytes"];
+                    NSString *strPublicID=[successResult objectForKey:@"public_id"];
+                    NSString *strCreated=[successResult objectForKey:@"created_at"];
+                    NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
+                    NSLog(@"%@",strFileName);
+                    [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                        if (isError)
+                        {
+                            [self displayErrorWithMessage:strMsg];
                         }
                         else
                         {
-                            
-                            [tblTagsCreation beginUpdates];
-                            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
-                            [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                            [tblTagsCreation endUpdates];
+                            [arrDeleteImages addObject:result];
+                            if ([appDel.arrImageSet containsObject:@"1"])
+                            {
+                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
+                            }
+                            else
+                            {
+                                [appDel.arrImageSet addObject:img];
+                            }
+                            [appDel.arrImageSet addObject:@"1"];
+                            if ([self.strTagName isEqualToString:@"Business"])
+                            {
+                                [tblTagsCreation beginUpdates];
+                                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
+                                [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                                [tblTagsCreation endUpdates];
+                                
+                            }
+                            else
+                            {
+                                
+                                [tblTagsCreation beginUpdates];
+                                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
+                                [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                                [tblTagsCreation endUpdates];
+                            }
                         }
-                    }
-                }];
+                    }];
+                }
+                @catch (NSException *exception)
+                {
+                    [self displayErrorWithMessage:exception.reason];
+                }
+                @finally
+                {
+                    
+                }
             }
-            @catch (NSException *exception)
+            else
             {
-                [self displayErrorWithMessage:exception.reason];
+                [self hideNetworkActivity];
+                [self displayErrorWithMessage:errorResult];
             }
-            @finally
-            {
-                
-            }
-        }
-        else
-        {
-            [self hideNetworkActivity];
-            [self displayErrorWithMessage:errorResult];
-        }
-    } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
-        
-    }];
-    
+        } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+            
+        }];
+    }
 }
 
 -(void)uploadVideoToCloudinary:(NSData *)dataVideo image:(UIImage *)imgaThumb
@@ -2731,6 +2819,38 @@
         [tblTagsCreation endUpdates];
 
     }
+}
+
+#pragma mark
+#pragma mark business logo
+#pragma mark
+
+-(void)selectImageForBusinessLogo:(NSInteger)i
+{
+    NSLog(@"%d",i);
+    isBusinessLogo=YES;
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to take a picture or select it from gallery??" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionCamera=[UIAlertAction actionWithTitle:@"CAMERA" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePictureFromCamera];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }];
+    
+    UIAlertAction *actionGallery=[UIAlertAction actionWithTitle:@"GALLERY" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self takePictureFromGallery];
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+    }];
+    
+    [alertController addAction:actionCamera];
+    [alertController addAction:actionGallery];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 
 @end

@@ -94,7 +94,7 @@
             <connections>
                 <outlet property="cllvwImages" destination="tnw-7w-vCo" id="eQj-cW-9Kz"/>
             </connections>
-            <point key="canvasLocation" x="176" y="103"/>
+            <point key="canvasLocation" x="209" y="94"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -8,11 +8,13 @@
 
 #import "SettingsViewController.h"
 #import "SettingsCell.h"
+#import "PrivacyViewController.h"
 
 @interface SettingsViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     IBOutlet UITableView *tblSettings;
     NSMutableArray *arrSettingsLabel;
+    NSString *strSegue;
 }
 
 @end
@@ -91,6 +93,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.row==0)
     {
         //[self performSegueWithIdentifier:@"segueMyTagsPrivacy" sender:self];
@@ -98,6 +101,11 @@
     if (indexPath.row==arrSettingsLabel.count-1)
     {
         [self didPressLogout];
+    }
+    if (indexPath.row==2 || indexPath.row==3)
+    {
+        strSegue=[arrSettingsLabel objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"seguePrivacyPolicyHTML" sender:self];
     }
 }
 
@@ -129,5 +137,21 @@
         
     }];
 }
+
+#pragma mark
+#pragma mark prepare for segue
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"seguePrivacyPolicyHTML"])
+    {
+        PrivacyViewController *master=[segue destinationViewController];
+        master.str=strSegue;
+    }
+}
+
+
+
 
 @end

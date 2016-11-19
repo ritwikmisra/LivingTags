@@ -54,9 +54,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnAddLogo" destination="kvL-U8-3B2" id="1Q4-tK-1To"/>
                 <outlet property="txtAddLogo" destination="B8n-Q5-Q73" id="5WE-el-Yez"/>
             </connections>
-            <point key="canvasLocation" x="248" y="150"/>
+            <point key="canvasLocation" x="288" y="70"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="RAd-Bb-td4" customClass="AddLogoCell">
             <rect key="frame" x="0.0" y="0.0" width="342" height="58"/>

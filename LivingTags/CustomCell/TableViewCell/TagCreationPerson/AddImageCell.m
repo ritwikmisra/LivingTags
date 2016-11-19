@@ -52,15 +52,40 @@
 {
     static NSString   *strIdentifier=@"PersonImageCell";
     static NSString   *strIdentifier2=@"PersonCell";
+    NSLog(@"%@",self.appDel.arrImageSet);
     if (self.appDel.arrImageSet.count>0)
     {
         if ([[self.appDel.arrImageSet objectAtIndex:indexPath.row]isKindOfClass:[NSString class]])
         {
-            PersonImageCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
-            [cell.btnFooter setTitle:@"ADD PHOTO" forState:UIControlStateNormal];
-            cell.img.image=[UIImage imageNamed:@"pic"];
-            [cell.btn addTarget:self action:@selector(btnImagesClicked:) forControlEvents:UIControlEventTouchUpInside];
-            return cell;
+            if ([[self.appDel.arrImageSet objectAtIndex:indexPath.row]isEqualToString:@"1"])
+            {
+                PersonImageCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier forIndexPath:indexPath];
+                [cell.btnFooter setTitle:@"ADD PHOTO" forState:UIControlStateNormal];
+                cell.img.image=[UIImage imageNamed:@"pic"];
+                [cell.btn addTarget:self action:@selector(btnImagesClicked:) forControlEvents:UIControlEventTouchUpInside];
+                return cell;
+            }
+            else
+            {
+                PersonCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier2 forIndexPath:indexPath];
+                NSLog(@"%@",[self.appDel.arrImageSet objectAtIndex:indexPath.row]);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [cell.imgPicl sd_setImageWithURL:[NSURL URLWithString:[self.appDel.arrImageSet objectAtIndex:indexPath.row]]
+                                    placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                                             options:SDWebImageHighPriority
+                                            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                [cell.actImages startAnimating];
+                                            }
+                                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                               [cell.actImages stopAnimating];
+                                               
+                                           }];
+                });
+                
+                cell.btnDelete.tag=indexPath.row;
+                cell.btnDelete.hidden=YES;
+                return cell;
+            }
         }
         else if([[self.appDel.arrImageSet objectAtIndex:indexPath.row]isKindOfClass:[UIImage class]])
         {
@@ -73,6 +98,7 @@
         else
         {
             ModelImageAndVideoAssets *obj=[self.appDel.arrImageSet objectAtIndex:indexPath.row];
+            NSLog(@"%@",obj.strPicURI);
             NSLog(@"%@",obj.strPicURI);
             PersonCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier2 forIndexPath:indexPath];
             dispatch_async(dispatch_get_main_queue(), ^{

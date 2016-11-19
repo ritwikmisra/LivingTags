@@ -94,7 +94,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([appDel.objUser.strTagCounts integerValue])
+    if ([appDel.objUser.strTagCounts integerValue]==1)
     {
         if (___isIphone6Plus)
         {

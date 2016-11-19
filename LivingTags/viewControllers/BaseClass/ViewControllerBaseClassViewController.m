@@ -16,7 +16,8 @@
 #import "SidePanelController.h"
 #import "SettingsViewController.h"
 #import "DashboardSpaceViewController.h"
-
+#import "ProductListingViewController.h"
+#import "AboutUsController.h"
 
 @interface ViewControllerBaseClassViewController ()<SidePanelSwipeDelegate>
 {
@@ -236,15 +237,27 @@
             case 1:
                 controller=(MyLivingTagesViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
                 break;
+                //ProductListingViewController
                 
-                //SettingsViewController
-                
+            case 3:
+                controller=(ProductListingViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProductListingViewController"];
+                break;
+
             case 5:
                 controller=(ProfileViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
                 break;
 
             case 6:
                 controller=(SettingsViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+                break;
+                
+                //AboutUsController
+            case 8:
+                controller=(AboutUsController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"AboutUsController"];
+                break;
+
+            case 9:
+                controller=(AboutUsController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"AboutUsController"];
                 break;
 
             default:
@@ -266,7 +279,7 @@
 -(void)viewUp
 {
     [UIView animateWithDuration:0.5 animations:^{
-        self.view.frame=CGRectMake(self.view.frame.origin.x,-150, self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame=CGRectMake(self.view.frame.origin.x,-170, self.view.frame.size.width, self.view.frame.size.height);
     } completion:^(BOOL finished) {
         isViewUp=YES;
     }];
@@ -293,7 +306,8 @@
     
     NSArray *tokens = [NSArray arrayWithObjects:@"bytes",@"KB",@"MB",@"GB",@"TB",nil];
     
-    while (convertedValue > 1024) {
+    while (convertedValue > 1024)
+    {
         convertedValue /= 1024;
         multiplyFactor++;
     }

@@ -55,6 +55,16 @@
         {
             self.strTFolder=@"";
         }
+        //tagProfileFolder
+        if ([dict objectForKey:@"tagProfileFolder"]&& ![[dict objectForKey:@"tagProfileFolder"] isKindOfClass:[NSNull class]])
+        {
+            self.strProfileFolder=[dict objectForKey:@"tagProfileFolder"];
+        }
+        else
+        {
+            self.strProfileFolder=@"";
+        }
+
     }
     return self;
 }
