@@ -47,7 +47,9 @@ NSString *const strAPI[]={
     [WEB_SERVICE_MY_TAGS_BATCH_COUNT]=@"Tags/templateCategoryLists",
     [WEB_SERVICE_TAG_LIST_CATEGORY]=@"Tags/tagListsByCategory",
     [EDIT_TAGS_GET_DETAILS]=@"Tags/getTagDetails",
-    [WEBSERVICE_DASHBOARD_MY_TAGS ]=@"Tags/tagLists"
+    [WEBSERVICE_DASHBOARD_MY_TAGS ]=@"Tags/tagLists",
+    [WEB_SERVICE_PRODUCT_LISTING]=@"products/productLists",
+    [WEB_SERVICE_PRODUCT_DETAILS]=@"products/productDetails"
 };
 
 

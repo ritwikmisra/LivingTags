@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     appDel=(AppDelegate*)[[UIApplication sharedApplication] delegate];
-    strDateFormat=@"yyyy-MM-dd";
+    strDateFormat=@"MM-dd-yyyy";
     dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:strDateFormat];
    // [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
