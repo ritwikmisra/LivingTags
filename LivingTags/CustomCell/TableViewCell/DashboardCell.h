@@ -29,4 +29,6 @@
 @property(nonatomic,strong)IBOutlet UILabel *lbBatchCountLeft;
 @property(nonatomic,strong)IBOutlet UILabel *lblBatchCountRight;
 
+@property(nonatomic,strong)IBOutlet UIButton *btnScanTag;
+
 @end

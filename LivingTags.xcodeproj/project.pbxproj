@@ -247,6 +247,12 @@
 		0DD198251DB63A4E003BB828 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD198241DB63A4E003BB828 /* QRCodeScanViewController.m */; };
 		0DD1982A1DB66477003BB828 /* logo_pin_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD198281DB66476003BB828 /* logo_pin_logo.png */; };
 		0DD1982C1DB66C6F003BB828 /* get_LT.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD1982B1DB66C6F003BB828 /* get_LT.png */; };
+		0DD712541DE2F19E00F0BDD4 /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD712531DE2F19D00F0BDD4 /* ContactUsController.m */; };
+		0DD712611DE3178100F0BDD4 /* QRCameraSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD712571DE3178100F0BDD4 /* QRCameraSwitchButton.m */; };
+		0DD712621DE3178100F0BDD4 /* QRCodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD712591DE3178100F0BDD4 /* QRCodeReader.m */; };
+		0DD712631DE3178100F0BDD4 /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD7125C1DE3178100F0BDD4 /* QRCodeReaderView.m */; };
+		0DD712641DE3178100F0BDD4 /* QRCodeReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD7125E1DE3178100F0BDD4 /* QRCodeReaderViewController.m */; };
+		0DD712651DE3178100F0BDD4 /* QRToggleTorchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD712601DE3178100F0BDD4 /* QRToggleTorchButton.m */; };
 		0DD9BED81DD71EDD008328C6 /* DashboardMyTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD9BED71DD71EDD008328C6 /* DashboardMyTagsListingService.m */; };
 		0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */; };
 		0DE4CF381DCB5CF000798B1F /* CategoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4CF371DCB5CEF00798B1F /* CategoryService.m */; };
@@ -673,6 +679,19 @@
 		0DD198241DB63A4E003BB828 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		0DD198281DB66476003BB828 /* logo_pin_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_pin_logo.png; sourceTree = "<group>"; };
 		0DD1982B1DB66C6F003BB828 /* get_LT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = get_LT.png; sourceTree = "<group>"; };
+		0DD712521DE2F19D00F0BDD4 /* ContactUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsController.h; sourceTree = "<group>"; };
+		0DD712531DE2F19D00F0BDD4 /* ContactUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsController.m; sourceTree = "<group>"; };
+		0DD712561DE3178100F0BDD4 /* QRCameraSwitchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCameraSwitchButton.h; sourceTree = "<group>"; };
+		0DD712571DE3178100F0BDD4 /* QRCameraSwitchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCameraSwitchButton.m; sourceTree = "<group>"; };
+		0DD712581DE3178100F0BDD4 /* QRCodeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReader.h; sourceTree = "<group>"; };
+		0DD712591DE3178100F0BDD4 /* QRCodeReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReader.m; sourceTree = "<group>"; };
+		0DD7125A1DE3178100F0BDD4 /* QRCodeReaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderDelegate.h; sourceTree = "<group>"; };
+		0DD7125B1DE3178100F0BDD4 /* QRCodeReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderView.h; sourceTree = "<group>"; };
+		0DD7125C1DE3178100F0BDD4 /* QRCodeReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderView.m; sourceTree = "<group>"; };
+		0DD7125D1DE3178100F0BDD4 /* QRCodeReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderViewController.h; sourceTree = "<group>"; };
+		0DD7125E1DE3178100F0BDD4 /* QRCodeReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderViewController.m; sourceTree = "<group>"; };
+		0DD7125F1DE3178100F0BDD4 /* QRToggleTorchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRToggleTorchButton.h; sourceTree = "<group>"; };
+		0DD712601DE3178100F0BDD4 /* QRToggleTorchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRToggleTorchButton.m; sourceTree = "<group>"; };
 		0DD9BED61DD71EDD008328C6 /* DashboardMyTagsListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardMyTagsListingService.h; sourceTree = "<group>"; };
 		0DD9BED71DD71EDD008328C6 /* DashboardMyTagsListingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardMyTagsListingService.m; sourceTree = "<group>"; };
 		0DDFC9AE1CE37288004D5D46 /* SocialLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialLoginService.h; sourceTree = "<group>"; };
@@ -1075,6 +1094,7 @@
 		0D698CF21CC8CF2400F64745 = {
 			isa = PBXGroup;
 			children = (
+				0DD712551DE3178100F0BDD4 /* QRCodeReaderViewController */,
 				0D3121241DC35BED00F00B8F /* cloudinary */,
 				0D8BE0901D2E62E700527345 /* Contacts.framework */,
 				0D7DD3431CFEEB5000B6C4B9 /* CustomAnnotationView */,
@@ -1187,6 +1207,8 @@
 				0D66FC701DE05960006058AD /* AboutUsController.m */,
 				0D33084F1DE077290085848E /* PrivacyViewController.h */,
 				0D3308501DE077290085848E /* PrivacyViewController.m */,
+				0DD712521DE2F19D00F0BDD4 /* ContactUsController.h */,
+				0DD712531DE2F19D00F0BDD4 /* ContactUsController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1622,6 +1644,25 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
+		0DD712551DE3178100F0BDD4 /* QRCodeReaderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0DD712561DE3178100F0BDD4 /* QRCameraSwitchButton.h */,
+				0DD712571DE3178100F0BDD4 /* QRCameraSwitchButton.m */,
+				0DD712581DE3178100F0BDD4 /* QRCodeReader.h */,
+				0DD712591DE3178100F0BDD4 /* QRCodeReader.m */,
+				0DD7125A1DE3178100F0BDD4 /* QRCodeReaderDelegate.h */,
+				0DD7125B1DE3178100F0BDD4 /* QRCodeReaderView.h */,
+				0DD7125C1DE3178100F0BDD4 /* QRCodeReaderView.m */,
+				0DD7125D1DE3178100F0BDD4 /* QRCodeReaderViewController.h */,
+				0DD7125E1DE3178100F0BDD4 /* QRCodeReaderViewController.m */,
+				0DD7125F1DE3178100F0BDD4 /* QRToggleTorchButton.h */,
+				0DD712601DE3178100F0BDD4 /* QRToggleTorchButton.m */,
+			);
+			name = QRCodeReaderViewController;
+			path = LivingTags/QRCodeReaderViewController;
+			sourceTree = "<group>";
+		};
 		0DE4CF391DCB5EE000798B1F /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -2023,8 +2064,10 @@
 				0D5903A61DD099330048B5EF /* MyTagsBatchCountService.m in Sources */,
 				0D1FBC9A1D6F41B500028727 /* CameraVideoTextSelectionViewController.m in Sources */,
 				0D8934E11DB11A0200A48562 /* AddLogoCell.m in Sources */,
+				0DD712631DE3178100F0BDD4 /* QRCodeReaderView.m in Sources */,
 				0D3731461CD8A10B00EDC547 /* SDWebImagePrefetcher.m in Sources */,
 				0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */,
+				0DD712541DE2F19E00F0BDD4 /* ContactUsController.m in Sources */,
 				0D64F4071DD3314700297FF3 /* ModelEditTagsListing.m in Sources */,
 				0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */,
 				0D066ADF1D2AA5FF00C910E8 /* AllTagsReadService.m in Sources */,
@@ -2056,6 +2099,7 @@
 				0D20AEB81D47B2FF00851994 /* CreateTagsCell.m in Sources */,
 				0D77F6B41CD7874C00671159 /* ProfileGetService.m in Sources */,
 				0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */,
+				0DD712641DE3178100F0BDD4 /* QRCodeReaderViewController.m in Sources */,
 				0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */,
 				0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */,
 				0DE4CF4A1DCB655000798B1F /* BusinessCategoryCell.m in Sources */,
@@ -2084,6 +2128,8 @@
 				0D698D261CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m in Sources */,
 				0D80DAFF1CFDA7E100B79C6B /* GroupPopupCell.m in Sources */,
 				0DF7CFA41D4F9A5900A28CA1 /* PreviewViewController.m in Sources */,
+				0DD712621DE3178100F0BDD4 /* QRCodeReader.m in Sources */,
+				0DD712611DE3178100F0BDD4 /* QRCameraSwitchButton.m in Sources */,
 				0D3731491CD8A10B00EDC547 /* UIImage+MultiFormat.m in Sources */,
 				0D28FE961DC8B8910079FFDF /* PublishTagService.m in Sources */,
 				0D10ED011DCDEF81006130C5 /* MyTagsListingCell.m in Sources */,
@@ -2122,6 +2168,7 @@
 				0D8FCDE01DDF575600B8846D /* ProductDetailsService.m in Sources */,
 				0D8FCDD01DDF185700B8846D /* ProductCell.m in Sources */,
 				0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */,
+				0DD712651DE3178100F0BDD4 /* QRToggleTorchButton.m in Sources */,
 				0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */,
 				0D8A6D561CE0BECE003A28C7 /* ListingService.m in Sources */,
 				0D56FA531DC2156000972DF0 /* PersonCell.m in Sources */,

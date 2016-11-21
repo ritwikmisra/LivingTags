@@ -11,11 +11,16 @@
 #import "DashboardCell.h"
 #import <CoreLocation/CoreLocation.h>
 #import "ProfileGetService.h"
+#import "QRCodeReaderViewController.h"
+#import "QRCodeReader.h"
+#import "PreviewViewController.h"
 
-@interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>
+
+@interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,QRCodeReaderDelegate>
 {
     IBOutlet UITableView *tblDashboard;
     NSMutableArray *arrPics,*arrLabel;
+    NSString *strSegue;
 }
 
 @end
@@ -141,6 +146,15 @@
     {
         cell=[[[NSBundle mainBundle]loadNibNamed:@"DashboardCell" owner:self options:nil] objectAtIndex:0];
     }
+    if (indexPath.row==0)
+    {
+        cell.btnScanTag.userInteractionEnabled=YES;
+    }
+    else
+    {
+        cell.btnScanTag.userInteractionEnabled=NO;
+    }
+    [cell.btnScanTag addTarget:self action:@selector(btnScannerTapped:) forControlEvents:UIControlEventTouchUpInside];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor clearColor];
     cell.imgDashboard.image=[UIImage imageNamed:[arrPics objectAtIndex:indexPath.row]];
@@ -213,6 +227,85 @@
             NSLog(@"%@", error.debugDescription);
         }
     }];
+}
+
+#pragma mark
+#pragma mark IBACTIONS
+#pragma mark
+
+-(void)btnScannerTapped:(id)sender
+{
+    if ([QRCodeReader supportsMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]])
+    {
+        static QRCodeReaderViewController *vc = nil;
+        static dispatch_once_t onceToken;
+        
+        dispatch_once(&onceToken, ^{
+            QRCodeReader *reader = [QRCodeReader readerWithMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]];
+            vc                   = [QRCodeReaderViewController readerWithCancelButtonTitle:@"Cancel" codeReader:reader startScanningAtLoad:YES showSwitchCameraButton:YES showTorchButton:YES];
+            vc.modalPresentationStyle = UIModalPresentationFormSheet;
+        });
+        vc.delegate = self;
+        [vc setCompletionWithBlock:^(NSString *resultAsString) {
+            NSLog(@"Completion with result: %@", resultAsString);
+        }];
+        [self presentViewController:vc animated:YES completion:NULL];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Reader not supported by the current device" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+#pragma mark
+#pragma mark - QRCodeReader Delegate Methods
+#pragma mark
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    [reader stopScanning];
+    strSegue=result;
+    [self dismissViewControllerAnimated:YES completion:^{
+        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:result message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OPEN" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if ([result containsString:@"livingtags.com"])
+            {
+                [self performSegueWithIdentifier:@"segueScannerToWebview" sender:self];
+            }
+            else
+            {
+                
+            }
+           [alertController dismissViewControllerAnimated:YES completion:^{
+               
+           }];
+        }];
+        [alertController addAction:actionOK];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }];
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark
+#pragma mark PREPARE FOR SEGUE
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueScannerToWebview"])
+    {
+        PreviewViewController *master=[segue destinationViewController];
+        strSegue=[strSegue stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
+        master.strLabel=@"PUBLISH";
+        master.str=strSegue;
+    }
 }
 
 @end

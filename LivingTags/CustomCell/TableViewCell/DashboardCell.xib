@@ -38,19 +38,27 @@
                         <color key="textColor" red="0.29803921568627451" green="0.3411764705882353" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zoe-mf-z5g">
+                        <rect key="frame" x="49" y="13" width="101" height="101"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="Zoe-mf-z5g" firstAttribute="centerX" secondItem="FFa-5U-165" secondAttribute="centerX" id="1Si-EQ-q7t"/>
                     <constraint firstItem="FFa-5U-165" firstAttribute="height" secondItem="APT-yh-HbQ" secondAttribute="height" multiplier="3.8" id="2EQ-SF-HQX"/>
                     <constraint firstItem="APT-yh-HbQ" firstAttribute="centerX" secondItem="FFa-5U-165" secondAttribute="centerX" id="5dR-Rq-pfG"/>
+                    <constraint firstItem="Zoe-mf-z5g" firstAttribute="width" secondItem="FFa-5U-165" secondAttribute="width" id="6Uj-vr-wEr"/>
                     <constraint firstItem="FFa-5U-165" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="90m-k4-vbe"/>
+                    <constraint firstItem="Zoe-mf-z5g" firstAttribute="centerY" secondItem="FFa-5U-165" secondAttribute="centerY" id="HOh-10-hoO"/>
                     <constraint firstAttribute="height" secondItem="FFa-5U-165" secondAttribute="height" multiplier="1.5" id="Lha-Cm-9GH"/>
                     <constraint firstItem="APT-yh-HbQ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="P9u-QS-24E"/>
+                    <constraint firstItem="Zoe-mf-z5g" firstAttribute="height" secondItem="FFa-5U-165" secondAttribute="height" id="Zph-LQ-G4H"/>
                     <constraint firstAttribute="centerY" secondItem="FFa-5U-165" secondAttribute="centerY" multiplier="1.2" id="lUc-kA-39B"/>
                     <constraint firstItem="APT-yh-HbQ" firstAttribute="top" secondItem="FFa-5U-165" secondAttribute="bottom" multiplier="1.06" id="qBT-c5-8Ue"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnScanTag" destination="Zoe-mf-z5g" id="u7x-c2-jzW"/>
                 <outlet property="imgDashboard" destination="FFa-5U-165" id="l95-gm-jtt"/>
                 <outlet property="lblName" destination="APT-yh-HbQ" id="WBF-qt-t5a"/>
             </connections>

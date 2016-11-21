@@ -116,7 +116,7 @@
                 cellP=[[[NSBundle mainBundle]loadNibNamed:@"ProductDetailsCell" owner:self options:nil]objectAtIndex:indexPath.row];
             }
             NSLog(@"%@",obj.strPrice);
-            cellP.lblPrice.text=obj.strPrice;
+            cellP.lblPrice.text=[NSString stringWithFormat:@"$ %@",obj.strPrice];
             cell=cellP;
             break;
         }

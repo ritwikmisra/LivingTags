@@ -105,7 +105,7 @@
     tblTagsCreation.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblTagsCreation.delegate=self;
     tblTagsCreation.dataSource=self;
-    arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Business Name",@"Contact Name",@"Title",@"Business Address",@"Business Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
+    arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Name",@"Contact Name",@"Title",@"Address",@"Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
     strDate=@"";
     strCategory=@"Category";
     cloudinary = [[CLCloudinary alloc] init];

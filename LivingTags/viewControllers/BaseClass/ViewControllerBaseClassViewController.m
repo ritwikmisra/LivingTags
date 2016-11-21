@@ -18,6 +18,8 @@
 #import "DashboardSpaceViewController.h"
 #import "ProductListingViewController.h"
 #import "AboutUsController.h"
+#import "ContactUsController.h"
+#import "DashboardViewController.h"
 
 @interface ViewControllerBaseClassViewController ()<SidePanelSwipeDelegate>
 {
@@ -134,7 +136,7 @@
 }
 
 #pragma mark
-#pragma mark back button
+#pragma mark Button actions
 #pragma mark
 
 -(IBAction)btnBackPressed:(id)sender
@@ -154,6 +156,15 @@
         [self closeSlider];
     }
 }
+
+-(IBAction)btnDashboardPressed:(id)sender
+{
+   // [self performSegueWithIdentifier:@"segueDashboardFromOtherPages" sender:self];
+    UIStoryboard *mainStoryboard=[UIStoryboard storyboardWithName:@"Main"bundle: nil];
+    DashboardViewController *master=[mainStoryboard instantiateViewControllerWithIdentifier:@"DashboardViewController"];
+    [self.navigationController pushViewController:master  animated:YES];
+}
+
 
 #pragma mark
 #pragma mark open slider and close slider
@@ -198,15 +209,6 @@
     [netwokActivity changeAnimatingStatusTo:NO];
 }
 
-
-#pragma mark
-#pragma mark button dashboard pressed
-#pragma mark
-
--(IBAction)btnDashboardPressed:(id)sender
-{
-    [self performSegueWithIdentifier:@"segueDashboardFromOtherPages" sender:self];
-}
 
 #pragma mark
 #pragma mark side panel delegate
@@ -257,7 +259,7 @@
                 break;
 
             case 9:
-                controller=(AboutUsController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"AboutUsController"];
+                controller=(ContactUsController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ContactUsController"];
                 break;
 
             default:
