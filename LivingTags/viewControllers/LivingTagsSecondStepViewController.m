@@ -677,7 +677,7 @@
                 break;
         }
     }
-    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Other.0"])
+    else if ([self.strTagName isEqualToString:@"Place"] || [self.strTagName isEqualToString:@"Thing"] || [self.strTagName isEqualToString:@"Other"])
     {
         switch (indexPath.row)
         {
@@ -1080,6 +1080,7 @@
 
 -(void)btnAddLogoPressed:(id)sender
 {
+    [self.view endEditing:YES];
     [self selectImageForBusinessLogo:[sender tag]];
 }
 
@@ -2348,6 +2349,7 @@
                 {
                     NSString *strBytes=[successResult objectForKey:@"bytes"];
                     NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
+                    NSString *strURLPic=[successResult objectForKey:@"url"];
                     NSLog(@"%@",strFileName);
                     NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
                     [dict setObject:strFileName forKey:@"tphoto"];
@@ -2361,14 +2363,16 @@
                         }
                         else
                         {
+                            NSLog(@"%@",result);
                             [arrDeleteImages addObject:result];
+                            NSLog(@"%@",strURLPic);
                             if ([appDel.arrImageSet containsObject:@"1"])
                             {
-                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
+                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:strURLPic];
                             }
                             else
                             {
-                                [appDel.arrImageSet addObject:img];
+                                [appDel.arrImageSet addObject:strURLPic];
                             }
                             [appDel.arrImageSet addObject:@"1"];
                             [tblTagsCreation beginUpdates];

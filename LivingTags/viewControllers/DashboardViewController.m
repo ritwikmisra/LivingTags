@@ -307,5 +307,5 @@
         master.str=strSegue;
     }
 }
-
+ 
 @end
