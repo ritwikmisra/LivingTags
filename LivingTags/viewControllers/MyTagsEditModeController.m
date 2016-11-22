@@ -45,7 +45,6 @@
 #import "EditTagsGetDetailsService.h"
 #import "ModelImageAndVideoAssets.h"
 
-
 @interface MyTagsEditModeController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
 
 {
@@ -1134,6 +1133,7 @@
             {
                 cellButton=[[[NSBundle mainBundle]loadNibNamed:@"AddLogoCell" owner:self options:nil]objectAtIndex:1];
             }
+            [cellButton.btnNext setTitle:@"DONE" forState:UIControlStateNormal];
             [cellButton.btnNext addTarget:self action:@selector(btnNextPressed:) forControlEvents:UIControlEventTouchUpInside];
             cell=cellButton;
         }
@@ -2379,6 +2379,7 @@ else
                 {
                     NSString *strBytes=[successResult objectForKey:@"bytes"];
                     NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
+                    NSString *strURLPic=[successResult objectForKey:@"url"];
                     NSLog(@"%@",strFileName);
                     NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
                     [dict setObject:strFileName forKey:@"tphoto"];
@@ -2395,11 +2396,11 @@ else
                             [arrDeleteImages addObject:result];
                             if ([appDel.arrImageSet containsObject:@"1"])
                             {
-                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
+                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:strURLPic];
                             }
                             else
                             {
-                                [appDel.arrImageSet addObject:img];
+                                [appDel.arrImageSet addObject:strURLPic];
                             }
                             [appDel.arrImageSet addObject:@"1"];
                             [tblEditTags beginUpdates];

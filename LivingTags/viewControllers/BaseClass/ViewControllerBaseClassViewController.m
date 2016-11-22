@@ -20,6 +20,7 @@
 #import "AboutUsController.h"
 #import "ContactUsController.h"
 #import "DashboardViewController.h"
+#import "FAQViewController.h"
 
 @interface ViewControllerBaseClassViewController ()<SidePanelSwipeDelegate>
 {
@@ -253,6 +254,11 @@
                 controller=(SettingsViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
                 break;
                 
+                //FAQViewController
+            case 7:
+                controller=(FAQViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"FAQViewController"];
+                break;
+
                 //AboutUsController
             case 8:
                 controller=(AboutUsController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"AboutUsController"];
@@ -261,6 +267,7 @@
             case 9:
                 controller=(ContactUsController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ContactUsController"];
                 break;
+                
 
             default:
                 break;
