@@ -1,38 +1,32 @@
 //
-//  LivingTagsListingService.m
+//  DeleteVoiceService.m
 //  LivingTags
 //
-//  Created by appsbeetech on 17/05/16.
+//  Created by appsbeetech on 23/11/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
+//
 
+#import "DeleteVoiceService.h"
 
-#import "LivingTagsListingService.h"
-
-@implementation LivingTagsListingService
+@implementation DeleteVoiceService
 
 +(id)service
 {
-    static LivingTagsListingService *master=nil;
+    static DeleteVoiceService *master=nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        master=[[LivingTagsListingService alloc] initWithService:WEB_SERVICES_LIVING_TAG_LISTING];
+        master=[[DeleteVoiceService alloc] initWithService:WEB_SERVICE_DELETE_VOICE];
     });
     return master;
 }
 
-
--(void)callListingServiceWithUserID:(NSString *)strUser paging:(int)i name:(NSString *)strName withCompletionHandler:(WebServiceCompletion)handler
+-(void)deleteVoiceServiceWithTKey:(NSString *)strTkey aKey:(NSString *)strAkey withCompletionHandler:(WebServiceCompletion)handler
 {
-    if (strName.length==0)
-    {
-        strName=@"";
-    }
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"account_id=%@",strUser]];
-        [arr addObject:[NSString stringWithFormat:@"page=%d",i]];
-        [arr addObject:[NSString stringWithFormat:@"name=%@",strName]];
+        [arr addObject:[NSString stringWithFormat:@"tkey=%@",strTkey]];
+        [arr addObject:[NSString stringWithFormat:@"akey=%@",strAkey]];
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         //postParams=[postParams stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         NSLog(@"postParams = %@",postParams);
@@ -52,10 +46,8 @@
             [request setHTTPMethod:@"POST"];
             [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setValue:@"Basic YWRtaW46MTIzNDU2" forHTTPHeaderField:@"Authorization"];
             [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-            [request addValue:strUser  forHTTPHeaderField:@"id"];
-            NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"]);
-            [request addValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"] forHTTPHeaderField:@"token"];
             [request setTimeoutInterval:60.0];
             [request setHTTPBody:postData];
             [self displayNetworkActivity];
@@ -78,21 +70,24 @@
                         }
                         else
                         {
-                            if ([[responseDict objectForKey:@"status"]boolValue])
+                            @try
                             {
-                                if ([[[responseDict objectForKey:@"response"]objectForKey:@"data"] isKindOfClass:[NSArray class]])
+                                if ([[responseDict objectForKey:@"status"]boolValue])
                                 {
-                                    NSMutableArray *arr=[[[responseDict objectForKey:@"response"]objectForKey:@"data"] mutableCopy];
-                                    handler(arr,NO,nil );
+                                    handler([responseDict objectForKey:@"response"],NO,nil);
                                 }
                                 else
                                 {
-                                    handler(nil,NO,[[responseDict objectForKey:@"response"]objectForKey:@"message"] );
+                                    handler(nil,YES,[responseDict objectForKey:@"error"] );
                                 }
                             }
-                            else
+                            @catch (NSException *exception)
                             {
-                                handler(nil,YES,[responseDict objectForKey:@"error"] );
+                                [[[UIAlertView alloc]initWithTitle:exception.reason message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]show];
+                            }
+                            @finally
+                            {
+                                
                             }
                         }
                     }
@@ -108,5 +103,7 @@
     {
         handler(nil,YES,NO_NETWORK);
     }
+
 }
+
 @end

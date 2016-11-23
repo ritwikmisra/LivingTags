@@ -44,6 +44,7 @@
 #import "CategoryController.h"
 #import "EditTagsGetDetailsService.h"
 #import "ModelImageAndVideoAssets.h"
+#import "DeleteVoiceService.h"
 
 @interface MyTagsEditModeController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
 
@@ -1155,23 +1156,30 @@
 
 -(void)btnDeleteVoicePressed:(id)sender
 {
-    appDel.strAudioURL=@"";
-    if ([self.strTagName isEqualToString:@"Business"])
-    {
-        [tblEditTags beginUpdates];
-        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:14 inSection:0]];
-        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblEditTags endUpdates];
-        
-    }
-    else
-    {
-        [tblEditTags beginUpdates];
-        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]];
-        [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblEditTags endUpdates];
-    }
-    
+    [[DeleteVoiceService service] deleteVoiceServiceWithTKey:objTemplates.strtKey aKey:appDel.objUser.strAkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            appDel.strAudioURL=@"";
+            if ([self.strTagName isEqualToString:@"Business"])
+            {
+                [tblEditTags beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:14 inSection:0]];
+                [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblEditTags endUpdates];
+            }
+            else
+            {
+                [tblEditTags beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]];
+                [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblEditTags endUpdates];
+            }
+        }
+    }];
 }
 
 -(void)btnCategoryClicked:(id)sender
@@ -2364,7 +2372,6 @@ else
 {
     if (isBusinessLogo==YES)
     {
-        
         NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
         CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
         NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];

@@ -48,7 +48,9 @@ NSString *const strAPI[]={
     [EDIT_TAGS_GET_DETAILS]=@"Tags/getTagDetails",
     [WEBSERVICE_DASHBOARD_MY_TAGS ]=@"Tags/tagLists",
     [WEB_SERVICE_PRODUCT_LISTING]=@"products/productLists",
-    [WEB_SERVICE_PRODUCT_DETAILS]=@"products/productDetails"
+    [WEB_SERVICE_PRODUCT_DETAILS]=@"products/productDetails",
+    [WEB_SERVICE_DELETE_VOICE]=@"Tags/removeTagVoice",
+    [WEB_SERVICE_VIEW_LOCAL_TAGS]=@"tags/getLocalTagLists"
 };
 
 

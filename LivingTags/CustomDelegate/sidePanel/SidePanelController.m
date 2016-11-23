@@ -68,13 +68,12 @@
 {
     [super viewDidLoad];
     [_imgBackGround setUserInteractionEnabled:YES];
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     
     // Setting the swipe direction.
-    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
     
     // Adding the swipe gesture on image view
-    [_imgBackGround addGestureRecognizer:swipeLeft];
+    [_imgBackGround addGestureRecognizer:tapGesture];
     _tblSidePanel.delegate=self;
     _tblSidePanel.dataSource=self;
     _tblSidePanel.backgroundColor=[UIColor clearColor];
@@ -93,14 +92,11 @@
 #pragma mark swipe gesture
 #pragma mark
 
-- (void)handleSwipe:(UISwipeGestureRecognizer *)swipe
+- (void)handleTap:(UITapGestureRecognizer *)swipe
 {
-    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft)
+    if (self.delegate && [self.delegate respondsToSelector:@selector(swipeToCloseSidePanel)])
     {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(swipeToCloseSidePanel)])
-        {
-            [self.delegate swipeToCloseSidePanel];
-        }
+        [self.delegate swipeToCloseSidePanel];
     }
 }
 

@@ -11,7 +11,6 @@
 #import "ProfileViewController.h"
 #import "MyLivingTagesViewController.h"
 #import "LoggingViewController.h"
-#import "LivingTagsTemplateListController.h"
 #import "NetworkActivityViewController.h"
 #import "SidePanelController.h"
 #import "SettingsViewController.h"

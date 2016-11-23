@@ -19,109 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LivingTags/viewControllers/LivingTagsSecondStepViewController.m"
-            timestampString = "501510551.218825"
+            filePath = "LivingTags/WebService/ViewLocalTagsService.m"
+            timestampString = "501602576.150236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2341"
-            endingLineNumber = "2341"
-            landmarkName = "-uploadImageToCloudinary:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LivingTags/viewControllers/LivingTagsSecondStepViewController.m"
-            timestampString = "501510681.381036"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2345"
-            endingLineNumber = "2345"
-            landmarkName = "-uploadImageToCloudinary:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LivingTags/WebService/LivingTagsSecondStepService.m"
-            timestampString = "501510731.710877"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-callSecondStepServiceWithDIctionary:tKey:withCompletionHandler:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LivingTags/WebService/LivingTagsSecondStepService.m"
-            timestampString = "501510737.487164"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "-callSecondStepServiceWithDIctionary:tKey:withCompletionHandler:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LivingTags/viewControllers/MyTagsEditModeController.m"
-            timestampString = "501511513.920153"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2381"
-            endingLineNumber = "2381"
-            landmarkName = "-uploadImageToCloudinary:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LivingTags/viewControllers/MyTagsEditModeController.m"
-            timestampString = "501511516.746882"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2387"
-            endingLineNumber = "2387"
-            landmarkName = "-uploadImageToCloudinary:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LivingTags/viewControllers/MyTagsEditModeController.m"
-            timestampString = "501511624.198813"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2365"
-            endingLineNumber = "2365"
-            landmarkName = "-uploadImageToCloudinary:"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-getLocalLivingTagsWithAKey:page:withCompletionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

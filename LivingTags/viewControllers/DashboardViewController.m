@@ -124,7 +124,7 @@
         }
         if (___isIphone6)
         {
-            return 150.0f;
+            return 130.0f;
         }
         if (___isIphone5_5s)
         {
@@ -188,6 +188,10 @@
     if (indexPath.row==arrLabel.count-1)
     {
         [self performSegueWithIdentifier:@"segueDashboardToMyTags" sender:self];
+    }
+    if (indexPath.row==2)
+    {
+        [self performSegueWithIdentifier:@"segueViewOtherTags" sender:self];
     }
 }
 

@@ -1,5 +1,3 @@
-
-
 //
 //  LivingTagsSecondStepViewController.m
 //  LivingTags
@@ -44,6 +42,7 @@
 #import "CategoryController.h"
 #import"PreviewViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import"DeleteVoiceService.h"
 
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
@@ -1086,23 +1085,31 @@
 
 -(void)btnDeleteVoicePressed:(id)sender
 {
-    appDel.strAudioURL=@"";
-    if ([self.strTagName isEqualToString:@"Business"])
-    {
-        [tblTagsCreation beginUpdates];
-        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:14 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
-        
-    }
-    else
-    {
-        [tblTagsCreation beginUpdates];
-        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]];
-        [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [tblTagsCreation endUpdates];
-    }
-
+    [[DeleteVoiceService service] deleteVoiceServiceWithTKey:self.objFolders.strTkey aKey:appDel.objUser.strAkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            appDel.strAudioURL=@"";
+            if ([self.strTagName isEqualToString:@"Business"])
+            {
+                [tblTagsCreation beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:14 inSection:0]];
+                [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblTagsCreation endUpdates];
+                
+            }
+            else
+            {
+                [tblTagsCreation beginUpdates];
+                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]];
+                [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                [tblTagsCreation endUpdates];
+            }
+        }
+    }];
 }
 
 -(void)btnCategoryClicked:(id)sender
@@ -2525,7 +2532,6 @@
                         }
                         else
                         {
-                            [self displayErrorWithMessage:strMsg];
                             [arrDeleteVideos addObject:result];
                             if ([appDel.arrVideoSet containsObject:@"1"])
                             {

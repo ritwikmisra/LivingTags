@@ -12,7 +12,6 @@
 {
     IBOutlet UILabel *lblLifeCelebrated;
 }
-
 @end
 
 @implementation LandingViewController

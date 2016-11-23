@@ -108,6 +108,7 @@
         }
         cellProfile.imgProfilePic.clipsToBounds=YES;
         cellProfile.lblName.text=appDel.objUser.strName;
+        cellProfile.lblEmail.text=appDel.objUser.strEmail;
         if (imgChosen)
         {
             cellProfile.imgProfilePic.image=imgChosen;

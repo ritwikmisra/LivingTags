@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *strhtmlFile=[[NSBundle mainBundle]pathForResource:@"about" ofType:@"html"] ;
+    NSString *strhtmlFile=[[NSBundle mainBundle]pathForResource:@"privacy_policy" ofType:@"html"] ;
     NSString *strHtml=[NSString stringWithContentsOfFile:strhtmlFile encoding:NSUTF8StringEncoding error:nil] ;
     [wbViewAboutUS loadHTMLString:strHtml baseURL:nil] ;
 }
