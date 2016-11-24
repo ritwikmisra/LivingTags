@@ -36,12 +36,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMq-BB-s1k">
                         <rect key="frame" x="0.0" y="4" width="358" height="80"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic3.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-UJ-LcW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-UJ-LcW">
                                 <rect key="frame" x="0.0" y="9" width="62" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Wn2-UJ-LcW" secondAttribute="height" multiplier="15:15" id="Pa1-gB-OLR"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ax8-gc-7Nk">
+                                <rect key="frame" x="13" y="21" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="CNO-hT-vng"/>
+                                    <constraint firstAttribute="width" constant="37" id="q2z-S3-QIO"/>
+                                </constraints>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Robert Thomas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2f-3y-5mS">
                                 <rect key="frame" x="68" y="14" width="256" height="16"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
@@ -74,8 +82,10 @@
                             <constraint firstItem="ZN7-qF-UMM" firstAttribute="width" secondItem="Fj1-jw-oaF" secondAttribute="width" multiplier="1.12" id="1vq-O3-fXK"/>
                             <constraint firstItem="Fj1-jw-oaF" firstAttribute="centerY" secondItem="g23-d1-qc5" secondAttribute="centerY" id="4Ip-VZ-TQC"/>
                             <constraint firstItem="J2f-3y-5mS" firstAttribute="leading" secondItem="Wn2-UJ-LcW" secondAttribute="trailing" multiplier="1.1" id="6V1-8c-nIA"/>
+                            <constraint firstItem="Ax8-gc-7Nk" firstAttribute="centerX" secondItem="Wn2-UJ-LcW" secondAttribute="centerX" id="9vU-FT-Cuf"/>
                             <constraint firstItem="ZN7-qF-UMM" firstAttribute="centerX" secondItem="J2f-3y-5mS" secondAttribute="centerX" id="Etb-Gr-2TD"/>
                             <constraint firstItem="Wn2-UJ-LcW" firstAttribute="leading" secondItem="hMq-BB-s1k" secondAttribute="leading" id="FQD-ok-YM4"/>
+                            <constraint firstItem="Ax8-gc-7Nk" firstAttribute="centerY" secondItem="Wn2-UJ-LcW" secondAttribute="centerY" id="GXw-B4-KUq"/>
                             <constraint firstAttribute="height" secondItem="Wn2-UJ-LcW" secondAttribute="height" multiplier="1.3" id="HH9-wp-1g3"/>
                             <constraint firstAttribute="height" secondItem="J2f-3y-5mS" secondAttribute="height" multiplier="5" id="Kfv-wp-wUb"/>
                             <constraint firstItem="Wn2-UJ-LcW" firstAttribute="centerY" secondItem="hMq-BB-s1k" secondAttribute="centerY" id="KoV-W0-BjX"/>
@@ -105,6 +115,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="actIndicatorTag" destination="Ax8-gc-7Nk" id="j71-eF-KVw"/>
                 <outlet property="imgTag" destination="Wn2-UJ-LcW" id="qzC-HT-hhe"/>
                 <outlet property="lblDate" destination="ZN7-qF-UMM" id="Ee4-cJ-Ext"/>
                 <outlet property="lblLocation" destination="Fj1-jw-oaF" id="D66-oC-2ED"/>
@@ -115,6 +126,5 @@
     </objects>
     <resources>
         <image name="map_icon.png" width="37" height="48"/>
-        <image name="pic3.png" width="187" height="208"/>
     </resources>
 </document>

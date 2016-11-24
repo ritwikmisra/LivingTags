@@ -9,14 +9,12 @@
 
 #import "MyLivingTagsMapViewController.h"
 #import <MapKit/MapKit.h>
-#import "ModelListing.h"
 #import "CustomAnnotationSingle.h"
 #import "customAnnotationGroups.h"
 #import "GroupPopupController.h"
 #import "UIImageView+WebCache.h"
 #import "TMAnnotationView.h"
-#import "LivingTagsViewController.h"
-#import "LivingTagsViewController.h"
+#import "ModelViewLocalTags.h"
 
 @interface MyLivingTagsMapViewController ()<MKMapViewDelegate,RemovePopUpDelegate>
 {
@@ -99,7 +97,7 @@
     while (arrLocations.count>0)
     {
         // create a new group for the key
-        ModelListing *obj=[arrLocations objectAtIndex:0];
+        ModelViewLocalTags *obj=[arrLocations objectAtIndex:0];
         CLLocation *locObj1=[[CLLocation alloc]initWithLatitude:[obj.strLat1 doubleValue] longitude:[obj.strLong1 doubleValue]];
         NSString *str=[NSString stringWithFormat:@"%d",i];
         NSMutableSet *set=[[NSMutableSet alloc] init];
@@ -108,8 +106,7 @@
         //traverse the array and compare other item with the key
         for (int j=1; j<arrLocations.count; j++)
         {
-            ModelListing *objTraverse=[arrLocations objectAtIndex:j];
-            NSLog(@"%@ %@",obj.strID,objTraverse.strID);
+            ModelViewLocalTags *objTraverse=[arrLocations objectAtIndex:j];
             CLLocation *locObjTraverse=[[CLLocation alloc]initWithLatitude:[objTraverse.strLat1 doubleValue] longitude:[objTraverse.strLong1 doubleValue]];
             if ((int)[locObjTraverse distanceFromLocation:locObj1]<=20)
             {
@@ -148,7 +145,7 @@
         if (arr.count==1)
         {
             NSLog(@"%d",k);
-            ModelListing *objSingle=[arr firstObject];
+            ModelViewLocalTags *objSingle=[arr firstObject];
             // creating custom class for annotation of single point
             CustomAnnotationSingle *annotationSingle=[[CustomAnnotationSingle alloc]initWithCoordinate:CLLocationCoordinate2DMake([objSingle.strLat1 doubleValue], [objSingle.strLong1 doubleValue])];
             annotationSingle.tag=k;
@@ -173,7 +170,7 @@
         if (arr.count>1)
         {
             NSLog(@"%d",k);
-            ModelListing *objSingle=[arr firstObject];
+            ModelViewLocalTags *objSingle=[arr firstObject];
             // creating custom class for annotation of group point
             customAnnotationGroups *annotationGroups=[[customAnnotationGroups alloc]initWithCoordinate:CLLocationCoordinate2DMake([objSingle.strLat1 doubleValue], [objSingle.strLong1 doubleValue])];
             annotationGroups.groupTags=k;
@@ -198,15 +195,14 @@
 
 -(void)btnClosePressed:(id)sender
 {
-    NSLog(@"%ld",(long)calloutTag);
+    /*NSLog(@"%ld",(long)calloutTag);
     NSString *str=[NSString stringWithFormat:@"%ld",(long)calloutTag];
     NSMutableSet *set=[dict objectForKey:str];
     NSMutableArray *arr=[[set allObjects] mutableCopy];
-    ModelListing *objSegue=[arr firstObject];
-    NSLog(@"%@",objSegue.strPicURI);
+    ModelViewLocalTags *objSegue=[arr firstObject];
     LivingTagsViewController *controller=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LivingTagsViewController"];
     controller.objHTML=objSegue;
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:YES];*/
 }
 
 #pragma mark
@@ -224,7 +220,7 @@
     {
         CustomAnnotationSingle *annotationPoint=(CustomAnnotationSingle *)annotation;
         TMAnnotationView *annotationView = (TMAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass([TMAnnotationView class])];
-        UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pin_main"]];//
+        UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_icon1"]];//
         annotationView = [[TMAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:NSStringFromClass([TMAnnotationView class])pinView:img];
         NSLog(@"Title: %@",annotation.title);
         [annotationView setTag:annotationPoint.tag];
@@ -259,7 +255,7 @@
         [annotationView addSubview:lblAnnotatation];
         lblAnnotatation.textAlignment=NSTextAlignmentCenter;
         NSLog(@"Title: %@",annotation.title);
-        annotationView.image=[UIImage imageNamed:@"pin_main"];
+        annotationView.image=[UIImage imageNamed:@"map_icon2"];
         [annotationView setTag:annotationPoint.groupTags];
         NSString *str=[NSString stringWithFormat:@"%d",annotationPoint.groupTags];
         NSMutableSet *set=[dict objectForKey:str];
@@ -329,12 +325,11 @@
     NSMutableSet *set=[dict objectForKey:str];
     NSMutableArray *arr=[[set allObjects] mutableCopy];
     
-    ModelListing *obj=[arr firstObject];
+    ModelViewLocalTags *obj=[arr firstObject];
     lblName.text=obj.strName;
-    lblDied.text=[NSString stringWithFormat:@"Died-%@",obj.strDied];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [img sd_setImageWithURL:[NSURL URLWithString:obj.strPicURI]
+        [img sd_setImageWithURL:[NSURL URLWithString:obj.strTPhoto]
                             placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
                                      options:SDWebImageHighPriority
                                     progress:^(NSInteger receivedSize, NSInteger expectedSize) {
@@ -393,13 +388,13 @@
     master=nil;
 }
 
--(void)removePopupWithRow:(ModelListing *)objSelect;
+-(void)removePopupWithRow:(ModelViewLocalTags *)objSelect;
 {
-    [master.view removeFromSuperview];
+  /*  [master.view removeFromSuperview];
     master=nil;
     LivingTagsViewController *controller=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LivingTagsViewController"];
     controller.objHTML=objSelect;
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:YES];*/
 }
 
 

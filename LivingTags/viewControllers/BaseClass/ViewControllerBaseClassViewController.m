@@ -54,6 +54,11 @@
     [myWindow addSubview:slideMenu.view];
     ////////
 }
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

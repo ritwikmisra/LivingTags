@@ -41,7 +41,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    ModelListing *obj=[self.arrGroupPopup firstObject];
+    ModelViewLocalTags *obj=[self.arrGroupPopup firstObject];
     NSLog(@"%@",self.arrGroupPopup);
     NSString *str=[NSString stringWithFormat:@"%@ and %u others",obj.strName,self.arrGroupPopup.count-1];
     self.lblHeader.text=str;
@@ -83,11 +83,10 @@
     }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor clearColor];
-    ModelListing *obj=[self.arrGroupPopup objectAtIndex:indexPath.row];
+    ModelViewLocalTags *obj=[self.arrGroupPopup objectAtIndex:indexPath.row];
     NSLog(@"%@",obj.strName);
     cell.lblName.text=obj.strName;
-    cell.lblDied.text=[NSString stringWithFormat:@"Died-%@",obj.strDied];
-    NSURL *url=[NSURL URLWithString:obj.strPicURI];
+    NSURL *url=[NSURL URLWithString:obj.strTPhoto];
     dispatch_async(dispatch_get_main_queue(), ^{
         [cell.img sd_setImageWithURL:url
                        placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
@@ -107,7 +106,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ModelListing *obj=[self.arrGroupPopup objectAtIndex:indexPath.row];
+    ModelViewLocalTags *obj=[self.arrGroupPopup objectAtIndex:indexPath.row];
     if (self.delegate && [self.delegate respondsToSelector:@selector(removePopupWithRow:)])
     {
         [self.delegate removePopupWithRow:obj];

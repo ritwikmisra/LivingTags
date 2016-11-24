@@ -14,6 +14,7 @@
 #import "QRCodeReaderViewController.h"
 #import "QRCodeReader.h"
 #import "PreviewViewController.h"
+#import "LivingTagsSecondStepService.h"
 
 
 @interface DashboardViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,QRCodeReaderDelegate>
@@ -21,6 +22,7 @@
     IBOutlet UITableView *tblDashboard;
     NSMutableArray *arrPics,*arrLabel;
     NSString *strSegue;
+    NSMutableDictionary *dictLatLong;
 }
 
 @end
@@ -29,10 +31,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dictLatLong=[[NSMutableDictionary alloc]init];
     tblDashboard.backgroundColor=[UIColor clearColor];
     tblDashboard.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblDashboard.bounces=NO;
-    [self callLocationManager];
     [[ProfileGetService service]callProfileEditServiceWithUserID:[[NSUserDefaults standardUserDefaults]valueForKey:@"akey"] withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
@@ -40,6 +42,7 @@
         }
         else
         {
+            [self callLocationManager];
             if ([appDel.objUser.strTagCounts integerValue]==1)
             {
                 arrPics=[[NSMutableArray alloc]initWithObjects:@"scan_tag",@"create_tag",@"view_local_tags",nil];
@@ -217,6 +220,9 @@
     [appDel.locationManager stopUpdatingLocation];
     appDel.location=newLocation;
     appDel.center=newLocation.coordinate;
+    [dictLatLong setObject:[NSString stringWithFormat:@"%f",appDel.center.latitude] forKey:@"tlat1"];
+    [dictLatLong setObject:[NSString stringWithFormat:@"%f",appDel.center.longitude] forKey:@"tlong1"];
+    NSLog(@"%@",dictLatLong);
     NSLog(@"%f,%f",appDel.center.latitude,appDel.center.longitude);
     NSLog(@"Resolving The Address");
     [appDel.geoCoder reverseGeocodeLocation:appDel.location completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -229,6 +235,18 @@
             //NSLog(@"%@:%@:%@:%@:%@",strAddress,placemark.country,placemark.administrativeArea,placemark.subAdministrativeArea,placemark.subLocality) ;
             NSString *str1=[NSString stringWithFormat:@"%@,%@:%@",appDel.placemark.subAdministrativeArea,appDel.placemark.country,appDel.placemark.administrativeArea];
             NSLog(@"%@",str1);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictLatLong tKey:appDel.objUser.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                    if (isError)
+                    {
+                        [self displayErrorWithMessage:strMsg];
+                    }
+                    else
+                    {
+                        NSLog(@"%@",result);
+                    }
+                }];
+            });
         }
         else
         {

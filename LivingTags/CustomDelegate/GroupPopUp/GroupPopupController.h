@@ -7,14 +7,14 @@
 //
 
 #import "ViewControllerBaseClassViewController.h"
-#import "ModelListing.h"
+#import "ModelViewLocalTags.h"
 
 
 @protocol RemovePopUpDelegate <NSObject>
 
 @optional
 -(void)removePopup;
--(void)removePopupWithRow:(ModelListing *)objSelect;
+-(void)removePopupWithRow:(ModelViewLocalTags *)objSelect;
 @end
 
 @interface GroupPopupController : ViewControllerBaseClassViewController

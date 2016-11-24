@@ -7,6 +7,7 @@
 //
 
 #import "ViewLocalTagsService.h"
+#import "ModelViewLocalTags.h"
 
 @implementation ViewLocalTagsService
 
@@ -79,9 +80,11 @@
                                     NSMutableArray *arrResponse=[[NSMutableArray alloc]initWithCapacity:arr.count];
                                     for (int i=0; i<arr.count; i++)
                                     {
-                                        
+                                        NSMutableDictionary *dict=[arr objectAtIndex:i];
+                                        ModelViewLocalTags *obj=[[ModelViewLocalTags alloc]initWithDictionary:dict];
+                                        [arrResponse addObject:obj];
                                     }
-                                    handler([responseDict objectForKey:@"response"],NO,nil);
+                                    handler(arrResponse,NO,nil);
                                 }
                                 else
                                 {

@@ -293,10 +293,6 @@
 }
 
 #pragma mark
-#pragma mark scrollview delegate
-#pragma mark
-
-#pragma mark
 #pragma mark scroll view delegate
 #pragma mark
 

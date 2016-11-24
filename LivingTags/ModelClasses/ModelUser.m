@@ -135,6 +135,16 @@
         {
             self.strTagCounts=@"";
         }
+        //akey
+        if ([dict objectForKey:@"akey"] && ![[dict objectForKey:@"akey"] isKindOfClass:[NSNull class]])
+        {
+            self.strAkey=[dict objectForKey:@"akey"];
+        }
+        else
+        {
+            self.strAkey=@"";
+        }
+
     }
     return self;
 }

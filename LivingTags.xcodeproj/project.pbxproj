@@ -173,7 +173,6 @@
 		0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */; };
 		0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7DD3441CFEEB5000B6C4B9 /* myView.xib */; };
 		0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */; };
-		0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD34A1CFF0F1500B6C4B9 /* LivingTagsViewController.m */; };
 		0D7F7B791DE450E30067992A /* FAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F7B781DE450E30067992A /* FAQViewController.m */; };
 		0D80DAF71CFD9B0E00B79C6B /* GroupPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D80DAF51CFD9B0E00B79C6B /* GroupPopupController.m */; };
 		0D80DAF81CFD9B0E00B79C6B /* GroupPopupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D80DAF61CFD9B0E00B79C6B /* GroupPopupController.xib */; };
@@ -247,7 +246,6 @@
 		0DC2F5A61DC74A2700AB1795 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59F1DC74A2700AB1795 /* stop.png */; };
 		0DC2F5A71DC74A2700AB1795 /* stop_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F5A01DC74A2700AB1795 /* stop_enable.png */; };
 		0DC2F5A91DC76A5200AB1795 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F5A81DC76A5200AB1795 /* play_button.png */; };
-		0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC937F91CEB43970049BEC2 /* ModelListing.m */; };
 		0DD198211DB62615003BB828 /* PreviewPopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1981F1DB62615003BB828 /* PreviewPopUpController.m */; };
 		0DD198221DB62615003BB828 /* PreviewPopUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD198201DB62615003BB828 /* PreviewPopUpController.xib */; };
 		0DD198251DB63A4E003BB828 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD198241DB63A4E003BB828 /* QRCodeScanViewController.m */; };
@@ -563,8 +561,6 @@
 		0D7DD3441CFEEB5000B6C4B9 /* myView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myView.xib; sourceTree = "<group>"; };
 		0D7DD3451CFEEB5000B6C4B9 /* TMAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAnnotationView.h; sourceTree = "<group>"; };
 		0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAnnotationView.m; sourceTree = "<group>"; };
-		0D7DD3491CFF0F1500B6C4B9 /* LivingTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivingTagsViewController.h; sourceTree = "<group>"; };
-		0D7DD34A1CFF0F1500B6C4B9 /* LivingTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivingTagsViewController.m; sourceTree = "<group>"; };
 		0D7F7B771DE450E30067992A /* FAQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQViewController.h; sourceTree = "<group>"; };
 		0D7F7B781DE450E30067992A /* FAQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQViewController.m; sourceTree = "<group>"; };
 		0D80DAF41CFD9B0E00B79C6B /* GroupPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GroupPopupController.h; path = GroupPopUp/GroupPopupController.h; sourceTree = "<group>"; };
@@ -680,8 +676,6 @@
 		0DC2F59F1DC74A2700AB1795 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		0DC2F5A01DC74A2700AB1795 /* stop_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_enable.png; sourceTree = "<group>"; };
 		0DC2F5A81DC76A5200AB1795 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
-		0DC937F81CEB43970049BEC2 /* ModelListing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelListing.h; sourceTree = "<group>"; };
-		0DC937F91CEB43970049BEC2 /* ModelListing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelListing.m; sourceTree = "<group>"; };
 		0DD1981E1DB62615003BB828 /* PreviewPopUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewPopUpController.h; sourceTree = "<group>"; };
 		0DD1981F1DB62615003BB828 /* PreviewPopUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewPopUpController.m; sourceTree = "<group>"; };
 		0DD198201DB62615003BB828 /* PreviewPopUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewPopUpController.xib; sourceTree = "<group>"; };
@@ -1189,8 +1183,6 @@
 				0DE7A1E11CDA49460053AF1A /* ImportContactsViewController.m */,
 				0D389B981CDC8CA100841691 /* MyLivingTagesViewController.h */,
 				0D389B991CDC8CA100841691 /* MyLivingTagesViewController.m */,
-				0D7DD3491CFF0F1500B6C4B9 /* LivingTagsViewController.h */,
-				0D7DD34A1CFF0F1500B6C4B9 /* LivingTagsViewController.m */,
 				0D764E6F1D1806AC00298BBE /* RecordViewController.h */,
 				0D764E701D1806AC00298BBE /* RecordViewController.m */,
 				0DE967511D353D680088C508 /* LivingTagsSecondStepViewController.h */,
@@ -1529,8 +1521,6 @@
 				0DA226601CD2020800B3A5BC /* ModelUser.m */,
 				0D3730361CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.h */,
 				0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */,
-				0DC937F81CEB43970049BEC2 /* ModelListing.h */,
-				0DC937F91CEB43970049BEC2 /* ModelListing.m */,
 				0D9472AB1D0AF5B200A85677 /* ModelLivingTagsTemplateList.h */,
 				0D9472AC1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m */,
 				0D901B9B1D3E7C04002B6735 /* ModelCreateTagsSecondStep.h */,
@@ -2102,7 +2092,6 @@
 				0D8934E11DB11A0200A48562 /* AddLogoCell.m in Sources */,
 				0DD712631DE3178100F0BDD4 /* QRCodeReaderView.m in Sources */,
 				0D3731461CD8A10B00EDC547 /* SDWebImagePrefetcher.m in Sources */,
-				0D7DD34B1CFF0F1500B6C4B9 /* LivingTagsViewController.m in Sources */,
 				0DD712541DE2F19E00F0BDD4 /* ContactUsController.m in Sources */,
 				0D64F4071DD3314700297FF3 /* ModelEditTagsListing.m in Sources */,
 				0D5EA2341CCB545500CA0DAE /* RegistrationCellTableViewCell.m in Sources */,
@@ -2137,7 +2126,6 @@
 				0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */,
 				0DD712641DE3178100F0BDD4 /* QRCodeReaderViewController.m in Sources */,
 				0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */,
-				0DC937FA1CEB43970049BEC2 /* ModelListing.m in Sources */,
 				0DE4CF4A1DCB655000798B1F /* BusinessCategoryCell.m in Sources */,
 				0D10ECFC1DCDEBB8006130C5 /* MyTagsListingController.m in Sources */,
 				0D9472AA1D0AF36800A85677 /* GetAllLivingTagsTemplatesService.m in Sources */,
