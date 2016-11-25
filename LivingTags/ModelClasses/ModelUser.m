@@ -52,6 +52,10 @@
         if ([dict objectForKey:@"tphoto"] && ![[dict objectForKey:@"tphoto"] isKindOfClass:[NSNull class]])
         {
             self.strPicURI=[dict objectForKey:@"tphoto"];
+            if ([self.strPicURI containsString:@"https"])
+            {
+                self.strPicURI=[self.strPicURI stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
+            }
         }
         else
         {

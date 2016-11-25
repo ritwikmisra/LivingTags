@@ -7,8 +7,10 @@
 //
 
 #import "ContactUsController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ContactUsController ()
+
+@interface ContactUsController ()<MFMailComposeViewControllerDelegate>
 {
     IBOutlet UIWebView *wbViewAboutUS;
 
@@ -20,24 +22,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *strhtmlFile=[[NSBundle mainBundle]pathForResource:@"privacy_policy" ofType:@"html"] ;
-    NSString *strHtml=[NSString stringWithContentsOfFile:strhtmlFile encoding:NSUTF8StringEncoding error:nil] ;
-    [wbViewAboutUS loadHTMLString:strHtml baseURL:nil] ;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark
+#pragma mark IBACTIONS
+#pragma mark
+
+-(IBAction)btnEmailInfoPressed:(id)sender
+{
+    MFMailComposeViewController *comp=[[MFMailComposeViewController alloc]init];
+    [comp setMailComposeDelegate:self];
+    if([MFMailComposeViewController canSendMail]) {
+        [comp setToRecipients:[NSArray arrayWithObjects:@"", nil]];
+        [comp setSubject:@"Living Tags"];
+        [comp setMessageBody:@"" isHTML:NO];
+        [comp setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [self presentViewController:comp animated:YES completion:nil];
+    }
 }
-*/
+
+-(IBAction)btnEmailBizdevPressed:(id)sender
+{
+    MFMailComposeViewController *comp=[[MFMailComposeViewController alloc]init];
+    [comp setMailComposeDelegate:self];
+    if([MFMailComposeViewController canSendMail])
+    {
+        [comp setToRecipients:[NSArray arrayWithObjects:@"", nil]];
+        [comp setSubject:@"Living Tags"];
+        [comp setMessageBody:@"" isHTML:NO];
+        [comp setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [self presentViewController:comp animated:YES completion:nil];
+    }
+}
+
+#pragma mark
+#pragma mark MAIL COMPOSER DELEGATES
+#pragma mark
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    if(error) {
+        UIAlertView *alrt=[[UIAlertView alloc]initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil, nil];
+        [alrt show];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 
 @end

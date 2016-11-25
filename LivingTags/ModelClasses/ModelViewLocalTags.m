@@ -19,6 +19,10 @@
         if ([dict objectForKey:@"tphoto"] && ![[dict objectForKey:@"tphoto"] isKindOfClass:[NSNull class]])
         {
             self.strTPhoto=[dict objectForKey:@"tphoto"];
+            if ([self.strTPhoto containsString:@"https"])
+            {
+                self.strTPhoto=[self.strTPhoto stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
+            }
         }
         else
         {
@@ -93,7 +97,6 @@
         {
             self.strPostedOn=@"";
         }
-
     }
     return self;
 }

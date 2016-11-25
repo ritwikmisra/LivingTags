@@ -87,6 +87,7 @@
     cell.lblName.text=obj.strName;
     cell.lblDate.text=obj.strPostedOn;
     cell.lblLocation.text=[NSString stringWithFormat:@"%@ miles away",obj.strDistance];
+    NSLog(@"%@",obj.strTPhoto);
     dispatch_async(dispatch_get_main_queue(), ^{
         [cell.imgTag sd_setImageWithURL:[NSURL URLWithString:obj.strTPhoto]
                                      placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
@@ -198,6 +199,17 @@
     [vwTable addSubview:master.view];
     [self addChildViewController:master];
     [master didMoveToParentViewController:self];
+}
+
+#pragma mark
+#pragma mark CUSTOM DELEGATE FOR MAP DELEGATE
+#pragma mark
+
+-(void)removeMapFromSuperview
+{
+    [master.view removeFromSuperview];
+    [master removeFromParentViewController];
+    master=nil;
 }
 
 @end

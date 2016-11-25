@@ -28,13 +28,13 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTt-Dt-XaN">
-                    <rect key="frame" x="0.0" y="0.0" width="462" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fu4-od-ydv">
-                            <rect key="frame" x="0.0" y="0.0" width="462" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MENU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnc-tG-ssa">
-                                    <rect key="frame" x="47" y="0.0" width="369" height="50"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MENU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnc-tG-ssa">
+                                    <rect key="frame" x="41" y="0.0" width="319" height="50"/>
                                     <fontDescription key="fontDescription" name="Signika-Semibold" family="Signika" pointSize="22"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F0U-Wa-qap">
-                            <rect key="frame" x="0.0" y="65" width="462" height="522"/>
+                            <rect key="frame" x="0.0" y="65" width="375" height="522"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="pv3-H0-W6F"/>
@@ -70,14 +70,14 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Side_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="85G-7h-64Y">
-                    <rect key="frame" x="462" y="0.0" width="24" height="600"/>
+                    <rect key="frame" x="375" y="0.0" width="24" height="600"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="KTt-Dt-XaN" firstAttribute="height" secondItem="lE5-XY-Cun" secondAttribute="height" id="1Si-rW-JpP"/>
                 <constraint firstItem="lE5-XY-Cun" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="4gN-u9-RX2"/>
-                <constraint firstItem="lE5-XY-Cun" firstAttribute="width" secondItem="KTt-Dt-XaN" secondAttribute="width" multiplier="1.3" id="5MP-PE-cBF"/>
+                <constraint firstItem="lE5-XY-Cun" firstAttribute="width" secondItem="KTt-Dt-XaN" secondAttribute="width" multiplier="1.6" id="5MP-PE-cBF"/>
                 <constraint firstItem="lE5-XY-Cun" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="Ese-VD-ZfP"/>
                 <constraint firstItem="lE5-XY-Cun" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Ipr-ev-Ctv"/>
                 <constraint firstItem="85G-7h-64Y" firstAttribute="centerY" secondItem="KTt-Dt-XaN" secondAttribute="centerY" id="MfZ-c2-mIX"/>

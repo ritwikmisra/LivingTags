@@ -98,6 +98,7 @@
     {
         // create a new group for the key
         ModelViewLocalTags *obj=[arrLocations objectAtIndex:0];
+        NSLog(@"%f",[obj.strLat1 doubleValue]);
         CLLocation *locObj1=[[CLLocation alloc]initWithLatitude:[obj.strLat1 doubleValue] longitude:[obj.strLong1 doubleValue]];
         NSString *str=[NSString stringWithFormat:@"%d",i];
         NSMutableSet *set=[[NSMutableSet alloc] init];
@@ -342,25 +343,6 @@
     return callOutView;
 }
 
-#pragma mark
-#pragma mark textfield delegate
-#pragma mark
-
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField
-{
-    
-}
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
 
 -(void)viewWillDisappear:(BOOL)animated
 {

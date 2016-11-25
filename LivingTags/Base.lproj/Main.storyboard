@@ -3536,11 +3536,6 @@
                                     <action selector="btnDashboardPressed:" destination="pVI-Hh-n8Q" eventType="touchUpInside" id="IPI-OM-H6V"/>
                                 </connections>
                             </button>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldb-oI-vft">
-                                <rect key="frame" x="14" y="109" width="572" height="476"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </webView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8P-TX-TP6">
                                 <rect key="frame" x="541" y="14" width="28" height="27"/>
                                 <constraints>
@@ -3551,41 +3546,90 @@
                                     <action selector="btnBackPressed:" destination="pVI-Hh-n8Q" eventType="touchUpInside" id="9Vh-zx-9CA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y09-lH-Gsb">
+                                <rect key="frame" x="150" y="286" width="300" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="info@livingtags.com">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAH-Uo-U3L">
+                                <rect key="frame" x="150" y="286" width="300" height="28"/>
+                                <connections>
+                                    <action selector="btnEmailInfoPressed:" destination="pVI-Hh-n8Q" eventType="touchUpInside" id="IMg-eG-asE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wit-OS-NvN">
+                                <rect key="frame" x="150" y="314" width="300" height="27"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="bizdev@gmail.com">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUi-tV-pBA">
+                                <rect key="frame" x="150" y="314" width="300" height="27"/>
+                                <connections>
+                                    <action selector="btnEmailBizdevPressed:" destination="pVI-Hh-n8Q" eventType="touchUpInside" id="5Av-F9-dtt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CAp-kZ-0eJ" firstAttribute="centerY" secondItem="NBh-Q9-LJd" secondAttribute="centerY" id="3E0-Uc-efv"/>
                             <constraint firstItem="A5Q-Qv-EYL" firstAttribute="height" secondItem="M8P-TX-TP6" secondAttribute="height" multiplier="2" id="5QA-Xi-95T"/>
                             <constraint firstItem="res-71-5oE" firstAttribute="top" secondItem="rOb-Ju-uat" secondAttribute="bottom" id="7mt-B1-Dgo"/>
+                            <constraint firstItem="wit-OS-NvN" firstAttribute="height" secondItem="y09-lH-Gsb" secondAttribute="height" id="89r-FJ-DDi"/>
                             <constraint firstItem="rOb-Ju-uat" firstAttribute="top" secondItem="A5Q-Qv-EYL" secondAttribute="bottom" id="8oC-yn-aIH"/>
-                            <constraint firstItem="CAp-kZ-0eJ" firstAttribute="width" secondItem="Ldb-oI-vft" secondAttribute="width" multiplier="1.05" id="Euh-HT-GSX"/>
+                            <constraint firstItem="CAH-Uo-U3L" firstAttribute="width" secondItem="y09-lH-Gsb" secondAttribute="width" id="9uH-Cv-o6i"/>
                             <constraint firstItem="rOb-Ju-uat" firstAttribute="centerX" secondItem="A5Q-Qv-EYL" secondAttribute="centerX" id="Iv4-Gm-LtJ"/>
                             <constraint firstItem="CAp-kZ-0eJ" firstAttribute="width" secondItem="NBh-Q9-LJd" secondAttribute="width" id="Kmw-bj-Y3o"/>
+                            <constraint firstItem="hUi-tV-pBA" firstAttribute="width" secondItem="wit-OS-NvN" secondAttribute="width" id="Kyi-bD-K06"/>
                             <constraint firstItem="rOb-Ju-uat" firstAttribute="width" secondItem="A5Q-Qv-EYL" secondAttribute="width" id="LQn-c7-aem"/>
+                            <constraint firstItem="CAp-kZ-0eJ" firstAttribute="height" secondItem="y09-lH-Gsb" secondAttribute="height" multiplier="22" id="NFf-x6-VnN"/>
+                            <constraint firstItem="wit-OS-NvN" firstAttribute="centerX" secondItem="y09-lH-Gsb" secondAttribute="centerX" id="Nch-UR-3zq"/>
                             <constraint firstItem="CAp-kZ-0eJ" firstAttribute="centerX" secondItem="NBh-Q9-LJd" secondAttribute="centerX" id="O4Q-Jj-6qI"/>
                             <constraint firstItem="res-71-5oE" firstAttribute="centerX" secondItem="rOb-Ju-uat" secondAttribute="centerX" id="PEl-Hx-d45"/>
                             <constraint firstItem="A5Q-Qv-EYL" firstAttribute="height" secondItem="res-71-5oE" secondAttribute="height" multiplier="1.35" id="Pw1-eg-fUq"/>
+                            <constraint firstItem="CAH-Uo-U3L" firstAttribute="height" secondItem="y09-lH-Gsb" secondAttribute="height" id="Qn8-Jq-ke1"/>
                             <constraint firstItem="CAp-kZ-0eJ" firstAttribute="height" secondItem="A5Q-Qv-EYL" secondAttribute="height" multiplier="11" id="SpY-6k-0uW"/>
-                            <constraint firstItem="CAp-kZ-0eJ" firstAttribute="height" secondItem="Ldb-oI-vft" secondAttribute="height" multiplier="1.26" id="TPe-du-0Ks"/>
+                            <constraint firstItem="wit-OS-NvN" firstAttribute="top" secondItem="y09-lH-Gsb" secondAttribute="bottom" id="TQS-ol-T6t"/>
+                            <constraint firstItem="hUi-tV-pBA" firstAttribute="centerX" secondItem="wit-OS-NvN" secondAttribute="centerX" id="UXg-wZ-Y3C"/>
+                            <constraint firstItem="CAH-Uo-U3L" firstAttribute="centerY" secondItem="y09-lH-Gsb" secondAttribute="centerY" id="Xbg-tQ-L0W"/>
                             <constraint firstItem="A5Q-Qv-EYL" firstAttribute="width" secondItem="t7k-6Q-kH3" secondAttribute="width" multiplier="2.6" id="YPd-vC-OTb"/>
                             <constraint firstItem="res-71-5oE" firstAttribute="width" secondItem="rOb-Ju-uat" secondAttribute="width" id="YSO-yg-dgR"/>
                             <constraint firstItem="t7k-6Q-kH3" firstAttribute="centerY" secondItem="A5Q-Qv-EYL" secondAttribute="centerY" id="aIU-pb-B4B"/>
                             <constraint firstItem="t7k-6Q-kH3" firstAttribute="centerX" secondItem="A5Q-Qv-EYL" secondAttribute="centerX" id="bYP-1o-mYr"/>
                             <constraint firstItem="A5Q-Qv-EYL" firstAttribute="height" secondItem="t7k-6Q-kH3" secondAttribute="height" multiplier="2" id="cC9-wb-6gC"/>
-                            <constraint firstItem="Ldb-oI-vft" firstAttribute="top" secondItem="res-71-5oE" secondAttribute="bottom" multiplier="1.05" id="fY8-iE-O1c"/>
                             <constraint firstItem="A5Q-Qv-EYL" firstAttribute="centerX" secondItem="CAp-kZ-0eJ" secondAttribute="centerX" id="j8f-Gh-RI5"/>
                             <constraint firstItem="M8P-TX-TP6" firstAttribute="centerY" secondItem="A5Q-Qv-EYL" secondAttribute="centerY" id="k7q-8G-1bQ"/>
-                            <constraint firstItem="Ldb-oI-vft" firstAttribute="centerX" secondItem="res-71-5oE" secondAttribute="centerX" id="ptB-L3-G3o"/>
+                            <constraint firstItem="y09-lH-Gsb" firstAttribute="centerX" secondItem="CAp-kZ-0eJ" secondAttribute="centerX" id="mAB-hI-NNJ"/>
+                            <constraint firstItem="wit-OS-NvN" firstAttribute="width" secondItem="y09-lH-Gsb" secondAttribute="width" id="oyo-aM-eMi"/>
                             <constraint firstItem="A5Q-Qv-EYL" firstAttribute="top" secondItem="CAp-kZ-0eJ" secondAttribute="top" id="qZb-Lq-lTN"/>
                             <constraint firstItem="M8P-TX-TP6" firstAttribute="centerX" secondItem="A5Q-Qv-EYL" secondAttribute="centerX" multiplier="1.85" id="qhE-QP-K1i"/>
                             <constraint firstItem="A5Q-Qv-EYL" firstAttribute="height" secondItem="rOb-Ju-uat" secondAttribute="height" multiplier="6" id="rsJ-qM-YPK"/>
+                            <constraint firstItem="hUi-tV-pBA" firstAttribute="height" secondItem="wit-OS-NvN" secondAttribute="height" id="sbO-uZ-UrE"/>
                             <constraint firstItem="CAp-kZ-0eJ" firstAttribute="height" secondItem="NBh-Q9-LJd" secondAttribute="height" id="tKe-Z7-0k1"/>
+                            <constraint firstItem="CAp-kZ-0eJ" firstAttribute="width" secondItem="y09-lH-Gsb" secondAttribute="width" multiplier="2" id="uc8-4Y-Z2v"/>
+                            <constraint firstItem="CAH-Uo-U3L" firstAttribute="centerX" secondItem="y09-lH-Gsb" secondAttribute="centerX" id="v1l-2y-PyM"/>
+                            <constraint firstItem="y09-lH-Gsb" firstAttribute="centerY" secondItem="CAp-kZ-0eJ" secondAttribute="centerY" id="wx4-4X-1bU"/>
                             <constraint firstItem="A5Q-Qv-EYL" firstAttribute="width" secondItem="CAp-kZ-0eJ" secondAttribute="width" id="yBS-fj-ShX"/>
+                            <constraint firstItem="hUi-tV-pBA" firstAttribute="centerY" secondItem="wit-OS-NvN" secondAttribute="centerY" id="yNZ-Pn-66y"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="wbViewAboutUS" destination="Ldb-oI-vft" id="pFk-1E-iyq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQh-Ks-Klo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
