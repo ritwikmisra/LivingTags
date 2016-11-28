@@ -196,14 +196,7 @@
 
 -(void)btnClosePressed:(id)sender
 {
-    /*NSLog(@"%ld",(long)calloutTag);
-    NSString *str=[NSString stringWithFormat:@"%ld",(long)calloutTag];
-    NSMutableSet *set=[dict objectForKey:str];
-    NSMutableArray *arr=[[set allObjects] mutableCopy];
-    ModelViewLocalTags *objSegue=[arr firstObject];
-    LivingTagsViewController *controller=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LivingTagsViewController"];
-    controller.objHTML=objSegue;
-    [self.navigationController pushViewController:controller animated:YES];*/
+    
 }
 
 #pragma mark
@@ -328,7 +321,6 @@
     
     ModelViewLocalTags *obj=[arr firstObject];
     lblName.text=obj.strName;
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         [img sd_setImageWithURL:[NSURL URLWithString:obj.strTPhoto]
                             placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
@@ -372,7 +364,7 @@
 
 -(void)removePopupWithRow:(ModelViewLocalTags *)objSelect;
 {
-  /*  [master.view removeFromSuperview];
+ /*  [master.view removeFromSuperview];
     master=nil;
     LivingTagsViewController *controller=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LivingTagsViewController"];
     controller.objHTML=objSelect;
