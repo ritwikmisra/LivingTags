@@ -23,6 +23,7 @@
 @property(nonatomic,strong)IBOutlet UIImageView *imgBottom;
 @property(nonatomic,strong)IBOutlet UIButton *btnPreviewOnImage;
 @property(nonatomic,strong)IBOutlet UIButton *btnPreviewOnName;
+@property(nonatomic,strong)IBOutlet UIActivityIndicatorView *actMyTags;
 
 
 @property(nonatomic,strong)IBOutlet UIButton *btnEdit;

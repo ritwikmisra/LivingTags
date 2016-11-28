@@ -12,6 +12,7 @@
 #import "ModelViewLocalTags.h"
 #import "MyLivingTagsMapViewController.h"
 #import "UIImageView+WebCache.h"
+#import "PreviewViewController.h"
 
 
 @interface ViewOtherTagsController ()<UITableViewDelegate,UITableViewDataSource,RemoveMapFromListDelegate>
@@ -23,6 +24,7 @@
     int i;
     MyLivingTagsMapViewController *master;
     IBOutlet UIView *vwTable;
+    NSString *strSegueLink;
 }
 
 @end
@@ -210,6 +212,28 @@
     [master.view removeFromSuperview];
     [master removeFromParentViewController];
     master=nil;
+}
+
+-(void)moveToWebview:(NSString *)str
+{
+    strSegueLink=str;
+    [master.view removeFromSuperview];
+    [master removeFromParentViewController];
+    master=nil;
+    [self performSegueWithIdentifier:@"segueMapToPreview" sender:self];
+}
+
+#pragma mark
+#pragma mark PREPARE FOR SEGUE
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueMapToPreview"])
+    {
+        PreviewViewController *master=[segue destinationViewController];
+        master.str=strSegueLink;
+    }
 }
 
 @end

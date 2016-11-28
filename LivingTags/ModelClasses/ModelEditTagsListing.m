@@ -40,6 +40,7 @@
         if ([dict objectForKey:@"tphoto"] && ![[dict objectForKey:@"tphoto"] isKindOfClass:[NSNull class]])
         {
             self.strtphoto=[dict objectForKey:@"tphoto"];
+            self.strtphoto=[self.strtphoto stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
         }
         else
         {

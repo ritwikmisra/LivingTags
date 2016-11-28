@@ -11,6 +11,7 @@
 #import "MyTagListService.h"
 #import "ModelEditTagsListing.h"
 #import "MyTagsEditModeController.h"
+#import "UIImageView+WebCache.h"
 
 @interface MyTagsListingController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -105,7 +106,17 @@
     [cell.btnEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
     [cell.btnPreviewOnName addTarget:self action:@selector(btnLivingTagsPreviewPressed:) forControlEvents:UIControlEventTouchUpInside];
     [cell.btnPreviewOnImage addTarget:self action:@selector(btnLivingTagsPreviewPressed:) forControlEvents:UIControlEventTouchUpInside];
-
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [cell.imgPerson sd_setImageWithURL:[NSURL URLWithString:obj.strtphoto]
+                          placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                                   options:SDWebImageHighPriority
+                                  progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                      [cell.actMyTags startAnimating];
+                                  }
+                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                     [cell.actMyTags stopAnimating];
+                                 }];
+    });
     if (indexPath.row==5)
     {
         cell.imgBottom.hidden=YES;

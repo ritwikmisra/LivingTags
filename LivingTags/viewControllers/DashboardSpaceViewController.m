@@ -13,6 +13,8 @@
 #import "MyTagsEditModeController.h"
 #import "DashboardMyTagsListingService.h"
 #import "ProfileGetService.h"
+#import "UIImageView+WebCache.h"
+
 
 @interface DashboardSpaceViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
@@ -157,6 +159,19 @@
         cell.lblTagViews.text=obj.strTotal_views;
         cell.lblTagType.text=obj.strCname;
         cell.lblTagComments.text=obj.strTotal_comments;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.imgPerson sd_setImageWithURL:[NSURL URLWithString:obj.strtphoto]
+                                         placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                                                  options:SDWebImageHighPriority
+                                                 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                     [cell.actMyTags startAnimating];
+                                                 }
+                                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                                    [cell.actMyTags stopAnimating];
+                                                }];
+
+        });
+
         [cell.btnEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
         if (indexPath.row==5)
         {

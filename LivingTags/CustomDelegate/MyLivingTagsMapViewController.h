@@ -12,6 +12,7 @@
 
 @optional
 -(void)removeMapFromSuperview;
+-(void)moveToWebview:(NSString *)str;
 
 @end
 

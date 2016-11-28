@@ -29,6 +29,7 @@
     UIView *callOutView;
     NSInteger calloutTag;
     int i;
+    ModelViewLocalTags *objSingleAnnotation;
 }
 @end
 
@@ -196,7 +197,11 @@
 
 -(void)btnClosePressed:(id)sender
 {
-    
+    NSLog(@"%@",objSingleAnnotation.strLink);
+    if (self.delegate && [self.delegate respondsToSelector:@selector(moveToWebview:)])
+    {
+        [self.delegate moveToWebview:objSingleAnnotation.strLink];
+    }
 }
 
 #pragma mark
@@ -319,10 +324,10 @@
     NSMutableSet *set=[dict objectForKey:str];
     NSMutableArray *arr=[[set allObjects] mutableCopy];
     
-    ModelViewLocalTags *obj=[arr firstObject];
-    lblName.text=obj.strName;
+    objSingleAnnotation=[arr firstObject];
+    lblName.text=objSingleAnnotation.strName;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [img sd_setImageWithURL:[NSURL URLWithString:obj.strTPhoto]
+        [img sd_setImageWithURL:[NSURL URLWithString:objSingleAnnotation.strTPhoto]
                             placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
                                      options:SDWebImageHighPriority
                                     progress:^(NSInteger receivedSize, NSInteger expectedSize) {

@@ -4,6 +4,7 @@
 //
 //  Created by appsbeetech on 12/07/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
+//
 
 #import "LivingTagsSecondStepViewController.h"
 #import "PersonNameCell.h"
@@ -86,6 +87,7 @@
     ContactsPopupController *master;
     NSString *strURL;
     BOOL isBusinessLogo;
+    NSString *strLiving;
 }
 
 @end
@@ -112,7 +114,7 @@
     [cloudinary.config setValue:@"963284535365757" forKey:@"api_key"];
     [cloudinary.config setValue:@"m7Op_O9CtqVTUOVkdbDdfA4u_6o" forKey:@"api_secret"];
     strGender=@"";
-    isLiving=NO;
+    isLiving=YES;
     isLocation=NO;
     isBusinessLogo=NO;
     isTextViewClicked=NO;
@@ -123,14 +125,14 @@
     UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
     AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute,
                             sizeof(audioRouteOverride), &audioRouteOverride);
-
+    
     NSDictionary *recordSetting2 = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
                                     [NSNumber numberWithInt:AVAudioQualityMin], AVEncoderAudioQualityKey,
                                     [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
                                     [NSNumber numberWithFloat:8000.0], AVSampleRateKey,
                                     nil];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -867,7 +869,7 @@
                 cellPerson=[[[NSBundle mainBundle]loadNibNamed:@"PersonNameCell" owner:self options:nil]objectAtIndex:0];
             }
             cellPerson.txtPersonName.delegate=self;
-
+            
             cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeWords;
             cellPerson.txtPersonName.placeholder=[arrPlaceHolders objectAtIndex:indexPath.row];
             cellPerson.txtPersonName.tag=indexPath.row;
@@ -917,7 +919,7 @@
                     cellPerson.txtPersonName.autocapitalizationType=UITextAutocapitalizationTypeNone;
                     cellPerson.txtPersonName.text=strBusinessWebsite;
                     break;
-
+                    
                     
                 default:
                     break;
@@ -1180,6 +1182,7 @@
     else
     {
         isLiving=YES;
+        [self checkDatesTo];
     }
     [tblTagsCreation beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
@@ -1320,7 +1323,7 @@
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:13 inSection:0]];
         [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         [tblTagsCreation endUpdates];
-
+        
     }
     else
     {
@@ -1347,7 +1350,7 @@
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:13 inSection:0]];
         [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         [tblTagsCreation endUpdates];
-
+        
     }
     else
     {
@@ -1355,7 +1358,7 @@
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]];
         [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         [tblTagsCreation endUpdates];
-
+        
     }
 }
 
@@ -1374,7 +1377,7 @@
     {
         NSData *objectData = [NSData dataWithContentsOfURL:[NSURL URLWithString:appDel.strAudioURL]];
         NSError *error;
-
+        
         player = [[AVAudioPlayer alloc] initWithData:objectData error:&error];
         NSLog(@"%@",[error description]);
         [player setDelegate:self];
@@ -1415,7 +1418,7 @@
                 NSLog(@"%@",strURL);
                 //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[result objectForKey:@"previewUrl"]]];
                 [self performSegueWithIdentifier:@"seguePreview" sender:self];
-
+                
             }
         }];
     }
@@ -1511,17 +1514,17 @@
             case 8:
                 strBusinessWebsite=textField.text;
                 break;
-
+                
                 
             default:
                 break;
         }
-
+        
     }
     else
     {
         strPersonName=textField.text;
-
+        
     }
 }
 
@@ -1563,7 +1566,7 @@
                     [self checkBusinessWebsite];
                 }
                 break;
-               
+                
             default:
                 break;
         }
@@ -1617,6 +1620,7 @@
     }
     else
     {
+        
         strDeathDate=[dateFormatter stringFromDate:selectedDate];
         [datePickerController.view removeFromSuperview];
         NSDate *birthDate=[dateFormatter dateFromString:strBirthDate];
@@ -1634,7 +1638,6 @@
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
     [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [tblTagsCreation endUpdates];
-    
 }
 
 -(void)didCancel
@@ -1691,7 +1694,7 @@
     {
         [self checkMemorialQuotes];
     }
-
+    
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -1862,7 +1865,7 @@
             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
             [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
             [tblTagsCreation endUpdates];
-
+            
         }
     }];
 }
@@ -1951,7 +1954,7 @@
             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:4 inSection:0]];
             [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
             [tblTagsCreation endUpdates];
-
+            
         }
     }];
 }
@@ -1983,7 +1986,7 @@
         [dictAPI setObject:strBusinessContactName forKey:@"tcname"];
         [self updateDictionaryForServiceForKey:@"tcname"];
     }
-
+    
 }
 
 -(void)checkBusinessTitle
@@ -2007,7 +2010,7 @@
         [dictAPI setObject:strBusinessTitle forKey:@"tslogan"];
         [self updateDictionaryForServiceForKey:@"tslogan"];
     }
-
+    
 }
 
 -(void)checkBusinessPhone
@@ -2053,7 +2056,7 @@
         [dictAPI setObject:strBusinessCellPhone forKey:@"tmobile"];
         [self updateDictionaryForServiceForKey:@"tmobile"];
     }
-
+    
 }
 
 -(void)checkBusinessFaxNumber
@@ -2076,7 +2079,7 @@
         [dictAPI setObject:strBusinessFax forKey:@"tfax"];
         [self updateDictionaryForServiceForKey:@"tfax"];
     }
-
+    
 }
 
 -(void)checkBusinessEmail
@@ -2143,7 +2146,7 @@
         [dictAPI setObject:strBusinessAddress forKey:@"taddress2"];
         [self updateDictionaryForServiceForKey:@"taddress2"];
     }
-
+    
 }
 
 -(void)checkName
@@ -2171,23 +2174,23 @@
 
 -(void)checkDatesFrom
 {       if (objTemplates)
+{
+    NSLog(@"%@",objTemplates.strtborn);
+    if ([objTemplates.strtborn isEqualToString:strBirthDate])
     {
-        NSLog(@"%@",objTemplates.strtborn);
-        if ([objTemplates.strtborn isEqualToString:strBirthDate])
-        {
-            [dictAPI removeObjectForKey:@"tborn"];
-        }
-        else
-        {
-            [dictAPI setObject:strBirthDate forKey:@"tborn"];
-            [self updateDictionaryForServiceForKey:@"tborn"];
-        }
+        [dictAPI removeObjectForKey:@"tborn"];
     }
     else
     {
         [dictAPI setObject:strBirthDate forKey:@"tborn"];
         [self updateDictionaryForServiceForKey:@"tborn"];
     }
+}
+else
+{
+    [dictAPI setObject:strBirthDate forKey:@"tborn"];
+    [self updateDictionaryForServiceForKey:@"tborn"];
+}
 }
 
 -(void)checkGender
@@ -2235,12 +2238,12 @@
 -(void)checkLocationWithAddress:(NSString *)strAddress
 {
     /*tdata[taddress1],
-    tdata[tlat1],
-    tdata[tlong1]*/
-
+     tdata[tlat1],
+     tdata[tlong1]*/
+    
     NSString *strLat=[NSString stringWithFormat:@"%f",locationUser.latitude];
     NSString *strLong=[NSString stringWithFormat:@"%f",locationUser.longitude];
-
+    
     NSLog(@"%@",strAddress);
     if (objTemplates)
     {
@@ -2272,27 +2275,22 @@
         [dictAPI setObject:strLong forKey:@"tlong1"];
         [self updateDictionaryForServiceForKey:@"taddress1"];
     }
-
+    
 }
 
 -(void)checkDatesTo
 {
-    if (objTemplates)
+    if (isLiving)
     {
-        if ([objTemplates.strtdied isEqualToString:strDeathDate])
-        {
-            [dictAPI removeObjectForKey:@"tdied"];
-        }
-        else
-        {
-            [dictAPI setObject:strDeathDate forKey:@"tdied"];
-            [self updateDictionaryForServiceForKey:@"tdied"];
-        }
+        [dictAPI setObject:@"" forKey:@"tdied"];
+        [dictAPI setObject:@"N" forKey:@"tliving"];
+        [self updateDictionaryForServiceForKey:@"tdied"];
     }
     else
     {
         [dictAPI setObject:strDeathDate forKey:@"tdied"];
-         [self updateDictionaryForServiceForKey:@"tdied"];
+        [dictAPI setObject:@"Y" forKey:@"tliving"];
+        [self updateDictionaryForServiceForKey:@"tdied"];
     }
 }
 
@@ -2306,7 +2304,7 @@
     NSLog(@"%@",dictAPI);
     //self.objFolders.strTkey
     NSLog(@"%@",self.objFolders.strTkey);
-
+    
     [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
@@ -2316,6 +2314,10 @@
         else
         {
             NSLog(@"%@",result);
+            if ([strKey isEqualToString:@"tdied"])
+            {
+                [dictAPI removeAllObjects];
+            }
             if ([strKey isEqualToString:@"taddress1"])
             {
                 [dictAPI removeObjectForKey:@"tlat1"];
@@ -2326,7 +2328,7 @@
             {
                 [dictAPI removeObjectForKey:strKey];
             }
-
+            
             NSDictionary *dict=(id)result;
             objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:dict];
         }
@@ -2341,7 +2343,7 @@
 {
     if (isBusinessLogo==YES)
     {
-   
+        
         NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
         CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
         NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
@@ -2410,7 +2412,7 @@
         } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
             
         }];
-
+        
     }
     else
     {
@@ -2498,7 +2500,7 @@
     NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
     [dict setObject:strPublicKey forKey:@"public_id"];
     [dict setObject:@"video" forKey:@"resource_type"];
-
+    
     
     UIApplication*    app = [UIApplication sharedApplication];
     __block UIBackgroundTaskIdentifier task;
@@ -2619,7 +2621,7 @@
 {
     [timer invalidate];
     [cellVoiceRecord.sliderRecorder setValue:appDel.audioLength];
-
+    
 }
 
 #pragma mark
@@ -2649,34 +2651,34 @@
             return NO;
         }
         /*if (strGender.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter gender."];
-            return NO;
-        }
-        if (isLiving==NO)
-        {
-            if (strDeathDate.length==0)
-            {
-                [self displayErrorWithMessage:@"Please enter death date."];
-                return NO;
-            }
-        }
-        if (strBirthDate.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter birth date."];
-            return NO;
-            
-        }
-        if (strTextVwTags.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter a memorial quote."];
-            return NO;
-        }
-        if (isLocation==NO)
-        {
-            [self displayErrorWithMessage:@"Please enter a location."];
-            return NO;
-        }*/
+         {
+         [self displayErrorWithMessage:@"Please enter gender."];
+         return NO;
+         }
+         if (isLiving==NO)
+         {
+         if (strDeathDate.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter death date."];
+         return NO;
+         }
+         }
+         if (strBirthDate.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter birth date."];
+         return NO;
+         
+         }
+         if (strTextVwTags.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter a memorial quote."];
+         return NO;
+         }
+         if (isLocation==NO)
+         {
+         [self displayErrorWithMessage:@"Please enter a location."];
+         return NO;
+         }*/
     }
     else if([self.strTagName isEqualToString:@"Persons"])
     {
@@ -2685,37 +2687,37 @@
             [self displayErrorWithMessage:@"Please enter  name."];
             return NO;
         }
-      /*  if (strGender.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter gender."];
-            return NO;
-            
-        }
-        if (isLiving==NO)
-        {
-            if (strDeathDate.length==0)
-            {
-                [self displayErrorWithMessage:@"Please enter death date."];
-                return NO;
-                
-            }
-        }
-        if (strBirthDate.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter birth date."];
-            return NO;
-            
-        }
-        if (strTextVwTags.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter a memorial quote."];
-            return NO;
-        }
-        if (isLocation==NO)
-        {
-            [self displayErrorWithMessage:@"Please enter a location."];
-            return NO;
-        }*/
+        /*  if (strGender.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter gender."];
+         return NO;
+         
+         }
+         if (isLiving==NO)
+         {
+         if (strDeathDate.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter death date."];
+         return NO;
+         
+         }
+         }
+         if (strBirthDate.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter birth date."];
+         return NO;
+         
+         }
+         if (strTextVwTags.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter a memorial quote."];
+         return NO;
+         }
+         if (isLocation==NO)
+         {
+         [self displayErrorWithMessage:@"Please enter a location."];
+         return NO;
+         }*/
     }
     else if([self.strTagName isEqualToString:@"Business"])
     {
@@ -2725,35 +2727,35 @@
             return NO;
         }
         /*if (strBusinessContactName.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter business contact name."];
-            return NO;
-        }
-        if (strBusinessTitle.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter business title."];
-            return NO;
-        }
-        if (strBusinessPhone.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter business phone number."];
-            return NO;
-        }
-        if (strBusinessEmail.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter business email"];
-            return NO;
-        }
-        if (strTextVwTags.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter Memorial quote."];
-            return NO;
-        }
-        if (isLocation==NO)
-        {
-            [self displayErrorWithMessage:@"Please enter location."];
-            return NO;
-        }*/
+         {
+         [self displayErrorWithMessage:@"Please enter business contact name."];
+         return NO;
+         }
+         if (strBusinessTitle.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter business title."];
+         return NO;
+         }
+         if (strBusinessPhone.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter business phone number."];
+         return NO;
+         }
+         if (strBusinessEmail.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter business email"];
+         return NO;
+         }
+         if (strTextVwTags.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter Memorial quote."];
+         return NO;
+         }
+         if (isLocation==NO)
+         {
+         [self displayErrorWithMessage:@"Please enter location."];
+         return NO;
+         }*/
     }
     else
     {
@@ -2762,26 +2764,26 @@
             [self displayErrorWithMessage:@"Please enter the title"];
             return NO;
         }
-       /* if (strCategory.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter the category name"];
-            return NO;
-        }
-        if (strTextVwTags.length==0)
-        {
-            [self displayErrorWithMessage:@"Please enter the memorial quote"];
-            return NO;
-        }
-        if (isLocation==NO)
-        {
-            [self displayErrorWithMessage:@"Please enter the location"];
-            return NO;
-        }*/
+        /* if (strCategory.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter the category name"];
+         return NO;
+         }
+         if (strTextVwTags.length==0)
+         {
+         [self displayErrorWithMessage:@"Please enter the memorial quote"];
+         return NO;
+         }
+         if (isLocation==NO)
+         {
+         [self displayErrorWithMessage:@"Please enter the location"];
+         return NO;
+         }*/
     }
     return YES;
 }
 
-#pragma mark 
+#pragma mark
 #pragma mark CONTACT INFO CUSTOM DELEGATES
 #pragma mark
 
@@ -2802,7 +2804,7 @@
             NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
             [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
             [tblTagsCreation endUpdates];
-
+            
         }
     }];
 }
@@ -2827,7 +2829,7 @@
         NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]];
         [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         [tblTagsCreation endUpdates];
-
+        
     }
 }
 

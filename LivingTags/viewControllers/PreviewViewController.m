@@ -22,6 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.str=[self.str stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
     webPreview.backgroundColor=[UIColor clearColor];
     webPreview.delegate=self;
     lblHeader.text=self.strLabel;

@@ -111,7 +111,7 @@
     [cloudinary.config setValue:@"963284535365757" forKey:@"api_key"];
     [cloudinary.config setValue:@"m7Op_O9CtqVTUOVkdbDdfA4u_6o" forKey:@"api_secret"];
     strGender=@"";
-    isLiving=NO;
+    isLiving=YES;
     isLocation=NO;
     isTextViewClicked=NO;
     strPlace=@"";
@@ -1250,6 +1250,7 @@
     else
     {
         isLiving=YES;
+        [self checkDatesTo];
     }
     [tblEditTags beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
@@ -1618,7 +1619,7 @@
     if ([strDate isEqualToString:@"birth"])
     {
         strBirthDate=[dateFormatter stringFromDate:selectedDate];
-        [datePickerController.view removeFromSuperview];
+         [datePickerController.view removeFromSuperview];
         NSLog(@"%@",strBirthDate);
         if (strDeathDate.length>0)
         {
@@ -2310,21 +2311,16 @@ else
 
 -(void)checkDatesTo
 {
-    if (objTemplates)
+    if (isLiving)
     {
-        if ([objTemplates.strtdied isEqualToString:strDeathDate])
-        {
-            [dictAPI removeObjectForKey:@"tdied"];
-        }
-        else
-        {
-            [dictAPI setObject:strDeathDate forKey:@"tdied"];
-            [self updateDictionaryForServiceForKey:@"tdied"];
-        }
+        [dictAPI setObject:@"" forKey:@"tdied"];
+        [dictAPI setObject:@"N" forKey:@"tliving"];
+        [self updateDictionaryForServiceForKey:@"tdied"];
     }
     else
     {
         [dictAPI setObject:strDeathDate forKey:@"tdied"];
+        [dictAPI setObject:@"Y" forKey:@"tliving"];
         [self updateDictionaryForServiceForKey:@"tdied"];
     }
 }
