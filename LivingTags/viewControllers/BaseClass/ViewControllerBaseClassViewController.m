@@ -20,6 +20,7 @@
 #import "ContactUsController.h"
 #import "DashboardViewController.h"
 #import "FAQViewController.h"
+#import "CommentListController.h"
 
 @interface ViewControllerBaseClassViewController ()<SidePanelSwipeDelegate>
 {
@@ -244,8 +245,14 @@
             case 1:
                 controller=(MyLivingTagesViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"MyLivingTagesViewController"];
                 break;
-                //ProductListingViewController
                 
+                //CommentListController
+                
+            case 2:
+                controller=(CommentListController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"CommentListController"];
+                break;
+
+                //ProductListingViewController
             case 3:
                 controller=(ProductListingViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProductListingViewController"];
                 break;

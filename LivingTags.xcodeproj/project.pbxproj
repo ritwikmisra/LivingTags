@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0D066AD11D2A815C00C910E8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D066ACF1D2A815C00C910E8 /* Fabric.framework */; };
 		0D066AD21D2A815C00C910E8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D066AD01D2A815C00C910E8 /* Crashlytics.framework */; };
+		0D0786311DED93F7002B1195 /* ModelCommentDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0786301DED93F7002B1195 /* ModelCommentDetails.m */; };
+		0D0786341DED9DA5002B1195 /* CommentListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0786331DED9DA5002B1195 /* CommentListController.m */; };
+		0D0786371DEDC466002B1195 /* CommentListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0786361DEDC466002B1195 /* CommentListingService.m */; };
 		0D0EA380B8B6AC9032F35B48 /* libPods-LivingTags.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24846D52E42744797AB50C9B /* libPods-LivingTags.a */; };
 		0D10ECFC1DCDEBB8006130C5 /* MyTagsListingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D10ECFB1DCDEBB8006130C5 /* MyTagsListingController.m */; };
 		0D10ED011DCDEF81006130C5 /* MyTagsListingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D10ECFF1DCDEF81006130C5 /* MyTagsListingCell.m */; };
@@ -324,6 +327,12 @@
 /* Begin PBXFileReference section */
 		0D066ACF1D2A815C00C910E8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		0D066AD01D2A815C00C910E8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		0D07862F1DED93F6002B1195 /* ModelCommentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelCommentDetails.h; sourceTree = "<group>"; };
+		0D0786301DED93F7002B1195 /* ModelCommentDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelCommentDetails.m; sourceTree = "<group>"; };
+		0D0786321DED9DA5002B1195 /* CommentListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListController.h; sourceTree = "<group>"; };
+		0D0786331DED9DA5002B1195 /* CommentListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListController.m; sourceTree = "<group>"; };
+		0D0786351DEDC466002B1195 /* CommentListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListingService.h; sourceTree = "<group>"; };
+		0D0786361DEDC466002B1195 /* CommentListingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListingService.m; sourceTree = "<group>"; };
 		0D10ECFA1DCDEBB8006130C5 /* MyTagsListingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagsListingController.h; sourceTree = "<group>"; };
 		0D10ECFB1DCDEBB8006130C5 /* MyTagsListingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagsListingController.m; sourceTree = "<group>"; };
 		0D10ECFE1DCDEF81006130C5 /* MyTagsListingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagsListingCell.h; sourceTree = "<group>"; };
@@ -1223,6 +1232,8 @@
 				0D7F7B781DE450E30067992A /* FAQViewController.m */,
 				0D822CB21DE5D23700AC48E4 /* ViewOtherTagsController.h */,
 				0D822CB31DE5D23700AC48E4 /* ViewOtherTagsController.m */,
+				0D0786321DED9DA5002B1195 /* CommentListController.h */,
+				0D0786331DED9DA5002B1195 /* CommentListController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1387,6 +1398,8 @@
 				0D822CB81DE5D82C00AC48E4 /* DeleteVoiceService.m */,
 				0D822CB51DE5D30E00AC48E4 /* ViewLocalTagsService.h */,
 				0D822CB61DE5D30E00AC48E4 /* ViewLocalTagsService.m */,
+				0D0786351DEDC466002B1195 /* CommentListingService.h */,
+				0D0786361DEDC466002B1195 /* CommentListingService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1542,6 +1555,8 @@
 				0D8FCDD31DDF1D5D00B8846D /* ModelProduct.m */,
 				0D822CBA1DE5E64E00AC48E4 /* ModelViewLocalTags.h */,
 				0D822CBB1DE5E64E00AC48E4 /* ModelViewLocalTags.m */,
+				0D07862F1DED93F6002B1195 /* ModelCommentDetails.h */,
+				0D0786301DED93F7002B1195 /* ModelCommentDetails.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -2168,10 +2183,12 @@
 				0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */,
 				0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */,
 				0D3731441CD8A10B00EDC547 /* SDWebImageDownloaderOperation.m in Sources */,
+				0D0786341DED9DA5002B1195 /* CommentListController.m in Sources */,
 				0D64F40A1DD3502800297FF3 /* EditTagsGetDetailsService.m in Sources */,
 				0D5903AE1DD0C5140048B5EF /* ProfileCell.m in Sources */,
 				0D5903A21DD081470048B5EF /* SettingsCell.m in Sources */,
 				0D3731521CD8A8C600EDC547 /* UpdateProfileService.m in Sources */,
+				0D0786371DEDC466002B1195 /* CommentListingService.m in Sources */,
 				0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */,
 				0DF008651DAF9F6F00BD39C3 /* AddVideoCell.m in Sources */,
 				0D3121231DC357AC00F00B8F /* ModelFolders.m in Sources */,
@@ -2197,6 +2214,7 @@
 				0D8FCDE01DDF575600B8846D /* ProductDetailsService.m in Sources */,
 				0D8FCDD01DDF185700B8846D /* ProductCell.m in Sources */,
 				0D9472AD1D0AF5B200A85677 /* ModelLivingTagsTemplateList.m in Sources */,
+				0D0786311DED93F7002B1195 /* ModelCommentDetails.m in Sources */,
 				0DD712651DE3178100F0BDD4 /* QRToggleTorchButton.m in Sources */,
 				0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */,
 				0D56FA531DC2156000972DF0 /* PersonCell.m in Sources */,
