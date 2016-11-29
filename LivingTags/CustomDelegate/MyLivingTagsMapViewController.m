@@ -15,6 +15,7 @@
 #import "UIImageView+WebCache.h"
 #import "TMAnnotationView.h"
 #import "ModelViewLocalTags.h"
+#import "PreviewViewController.h"
 
 @interface MyLivingTagsMapViewController ()<MKMapViewDelegate,RemovePopUpDelegate>
 {
@@ -369,11 +370,12 @@
 
 -(void)removePopupWithRow:(ModelViewLocalTags *)objSelect;
 {
- /*  [master.view removeFromSuperview];
+  [master.view removeFromSuperview];
     master=nil;
-    LivingTagsViewController *controller=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LivingTagsViewController"];
-    controller.objHTML=objSelect;
-    [self.navigationController pushViewController:controller animated:YES];*/
+    PreviewViewController *controller=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PreviewViewController"];
+    controller.str=objSelect.strLink;
+    controller.strLabel=@"Published tags";
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

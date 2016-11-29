@@ -231,8 +231,9 @@
 {
     if ([segue.identifier isEqualToString:@"segueMapToPreview"])
     {
-        PreviewViewController *master=[segue destinationViewController];
-        master.str=strSegueLink;
+        PreviewViewController *masterPreview=[segue destinationViewController];
+        masterPreview.str=strSegueLink;
+        masterPreview.strLabel=@"Published tags";
     }
 }
 

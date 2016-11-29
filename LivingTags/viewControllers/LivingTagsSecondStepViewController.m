@@ -50,7 +50,7 @@
 {
     IBOutlet UITableView *tblTagsCreation;
     NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags,*strPlace,*strContact,*strBusinessName,*strBusinessContactName,*strBusinessTitle,*strBusinessAddress,*strBusinessPhone,*strBusinessCellPhone,*strBusinessFax,*strBusinessEmail,*strBusinessWebsite,*strCategory;////////// variables to be sent to the server
-    BOOL isLiving,isLocation,isTextViewClicked;
+    BOOL isLiving,isLocation,isTextViewClicked,isDead;
     NSMutableArray *arrPlaceHolders;
     CustomdatePickerViewController *datePickerController ;
     NSString *strDate;//// to see if the birth date button is clicked or death date button is clicked
@@ -114,7 +114,8 @@
     [cloudinary.config setValue:@"963284535365757" forKey:@"api_key"];
     [cloudinary.config setValue:@"m7Op_O9CtqVTUOVkdbDdfA4u_6o" forKey:@"api_secret"];
     strGender=@"";
-    isLiving=YES;
+    isLiving=NO;
+    isDead=NO;
     isLocation=NO;
     isBusinessLogo=NO;
     isTextViewClicked=NO;
@@ -168,7 +169,11 @@
                 return 40.0f;
                 break;
             case 2:
-                return 95.0f;
+                if (isDead)
+                {
+                    return 95.0f;
+                }
+                return 40.0f;
                 break;
             case 8:
                 return 50.0f;
@@ -309,31 +314,62 @@
                 
             case 2 :
             {
-                BirthDeathDateCell *cellBirth=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
-                if (!cellBirth)
+                if (!isDead)
                 {
-                    cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:0];
-                }
-                
-                if (isLiving==NO)
-                {
-                    cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
+                    BirthDeathDateCell *cellBirth=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellBirth)
+                    {
+                        cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:1];
+                    }
+                    
+                    if (isLiving==NO)
+                    {
+                        cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
+                    }
+                    else
+                    {
+                        cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
+                       // cellBirth.btnDeathDate.userInteractionEnabled=NO;
+                        cellBirth.txtDeath.text=@"Death Date";
+                        strDeathDate=@"";
+                    }
+                    cellBirth.txtBirth.userInteractionEnabled=NO;
+                    cellBirth.txtDeath.userInteractionEnabled=NO;
+                    cellBirth.txtBirth.text=strBirthDate;
+                    cellBirth.txtDeath.text=strDeathDate;
+                    [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellBirth;
                 }
                 else
                 {
-                    cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
-                    cellBirth.btnDeathDate.userInteractionEnabled=NO;
-                    cellBirth.txtDeath.text=@"Death Date";
-                    strDeathDate=@"";
+                    BirthDeathDateCell *cellBirth=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellBirth)
+                    {
+                        cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:0];
+                    }
+                    
+                    if (isLiving==NO)
+                    {
+                        cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
+                    }
+                    else
+                    {
+                        cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
+                        //cellBirth.btnDeathDate.userInteractionEnabled=NO;
+                        cellBirth.txtDeath.text=@"Death Date";
+                        strDeathDate=@"";
+                    }
+                    cellBirth.txtBirth.userInteractionEnabled=NO;
+                    cellBirth.txtDeath.userInteractionEnabled=NO;
+                    cellBirth.txtBirth.text=strBirthDate;
+                    cellBirth.txtDeath.text=strDeathDate;
+                    [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellBirth;
                 }
-                cellBirth.txtBirth.userInteractionEnabled=NO;
-                cellBirth.txtDeath.userInteractionEnabled=NO;
-                cellBirth.txtBirth.text=strBirthDate;
-                cellBirth.txtDeath.text=strDeathDate;
-                [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
-                [cellBirth.btnBirthDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
-                [cellBirth.btnDeathDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
-                cell=cellBirth;
             }
                 
                 break;
@@ -1175,6 +1211,8 @@
 
 -(void)btnLivingPressed:(id)sender
 {
+    isDead=NO;
+    strDeathDate=@"";
     if (isLiving)
     {
         isLiving=NO;
@@ -1206,13 +1244,17 @@
 
 -(void)btnDeathDatePressed:(id)sender
 {
-    strDate=@"birth";
+    strDate=@"death";
+    isDead=YES;
+    isLiving=NO;
     [self datePickerOpen];
 }
 
 -(void)btnBirthDatePressed:(id)sender
 {
-    strDate=@"death";
+    strDate=@"birth";
+    isLiving=YES;
+    isDead=NO;
     [self datePickerOpen];
 }
 
@@ -2173,24 +2215,10 @@
 }
 
 -(void)checkDatesFrom
-{       if (objTemplates)
-{
-    NSLog(@"%@",objTemplates.strtborn);
-    if ([objTemplates.strtborn isEqualToString:strBirthDate])
-    {
-        [dictAPI removeObjectForKey:@"tborn"];
-    }
-    else
-    {
-        [dictAPI setObject:strBirthDate forKey:@"tborn"];
-        [self updateDictionaryForServiceForKey:@"tborn"];
-    }
-}
-else
 {
     [dictAPI setObject:strBirthDate forKey:@"tborn"];
+    [dictAPI setObject:@"Y" forKey:@"tliving"];
     [self updateDictionaryForServiceForKey:@"tborn"];
-}
 }
 
 -(void)checkGender
@@ -2280,18 +2308,9 @@ else
 
 -(void)checkDatesTo
 {
-    if (isLiving)
-    {
-        [dictAPI setObject:@"" forKey:@"tdied"];
-        [dictAPI setObject:@"N" forKey:@"tliving"];
-        [self updateDictionaryForServiceForKey:@"tdied"];
-    }
-    else
-    {
-        [dictAPI setObject:strDeathDate forKey:@"tdied"];
-        [dictAPI setObject:@"Y" forKey:@"tliving"];
-        [self updateDictionaryForServiceForKey:@"tdied"];
-    }
+    [dictAPI setObject:strDeathDate forKey:@"tdied"];
+    [dictAPI setObject:@"N" forKey:@"tliving"];
+    [self updateDictionaryForServiceForKey:@"tdied"];
 }
 
 
@@ -2314,10 +2333,11 @@ else
         else
         {
             NSLog(@"%@",result);
-            if ([strKey isEqualToString:@"tdied"])
+            if ([strKey isEqualToString:@"tdied"] || [strKey isEqualToString:@"tborn"])
             {
                 [dictAPI removeAllObjects];
             }
+            
             if ([strKey isEqualToString:@"taddress1"])
             {
                 [dictAPI removeObjectForKey:@"tlat1"];
