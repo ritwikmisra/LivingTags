@@ -46,7 +46,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 attachments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQf-1V-L6J">
                         <rect key="frame" x="88" y="49" width="87" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -55,7 +55,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22mb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOK-AC-SMo">
                         <rect key="frame" x="193" y="49" width="40" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -64,7 +64,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12hrs ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vnd-1K-sc9">
                         <rect key="frame" x="252" y="49" width="83" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -111,7 +111,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgPic" destination="xvC-lz-bKx" id="0wk-yt-P0p"/>
+                <outlet property="lblAttachment" destination="hQf-1V-L6J" id="Wom-oT-l1U"/>
                 <outlet property="lblComment" destination="GUI-QM-wq3" id="SPl-2P-U34"/>
+                <outlet property="lblSize" destination="FOK-AC-SMo" id="oze-LE-XYU"/>
+                <outlet property="lblViewed" destination="Vnd-1K-sc9" id="iNo-7E-U4g"/>
             </connections>
             <point key="canvasLocation" x="483" y="168.5"/>
         </tableViewCell>

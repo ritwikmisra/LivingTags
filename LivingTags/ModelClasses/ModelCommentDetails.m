@@ -88,6 +88,7 @@
         if ([dict objectForKey:@"commenter_photo"] && ![[dict objectForKey:@"commenter_photo"] isKindOfClass:[NSNull class]])
         {
             self.strTCommenterPhoto=[dict objectForKey:@"commenter_photo"];
+            self.strTCommenterPhoto=[self.strTCommenterPhoto stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
         }
         else
         {
@@ -143,11 +144,20 @@
         {
             self.strTCommentTime=@"";
         }
+        //comment_size
+        if ([dict objectForKey:@"comment_size"] && ![[dict objectForKey:@"comment_size"] isKindOfClass:[NSNull class]])
+        {
+            self.strSize=[dict objectForKey:@"comment_size"];
+        }
+        else
+        {
+            self.strSize=@"";
+        }
 
         //comment_asset
         if ([dict objectForKey:@"comment_asset"])
         {
-            
+            self.arrCommentAsset=[dict objectForKey:@"comment_asset"];
         }
     }
     return self;

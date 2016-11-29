@@ -12,5 +12,8 @@
 
 @property(nonatomic,strong)IBOutlet UIImageView *imgPic;
 @property(nonatomic,strong)IBOutlet UILabel *lblComment;
+@property(nonatomic,strong)IBOutlet UILabel *lblViewed;
+@property(nonatomic,strong)IBOutlet UILabel *lblAttachment;
+@property(nonatomic,strong)IBOutlet UILabel *lblSize;
 
 @end

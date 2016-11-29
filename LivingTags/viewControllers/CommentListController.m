@@ -8,6 +8,10 @@
 
 #import "CommentListController.h"
 #import "DashboardSizeCell.h"
+#import "ModelCommentDetails.h"
+#import "CommentListingService.h"
+#import "UIImageView+WebCache.h"
+
 
 @interface CommentListController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -74,11 +78,33 @@
     NSLog(@"%d",isPublish);
     if (isPublish)
     {
-        
+        [[CommentListingService service] callChatListingServiceWithAKey:appDel.objUser.strAkey page:0 published:@"Y" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+            {
+                arrResponse=(id)result;
+            }
+            [tblComments reloadData];
+        }];
     }
     else
     {
-        
+        [[CommentListingService service] callChatListingServiceWithAKey:appDel.objUser.strAkey page:0 published:@"N" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+                [arrResponse removeAllObjects];
+            }
+            else
+            {
+                arrResponse=(id)result;
+            }
+            [tblComments reloadData];
+        }];
+
     }
 }
 
@@ -107,6 +133,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ModelCommentDetails *obj=[arrResponse objectAtIndex:indexPath.row];
     DashboardSizeCell *cell=[tableView dequeueReusableCellWithIdentifier:@"identifier"];
     if (!cell)
     {
@@ -114,10 +141,25 @@
     }
     cell.imgPic.layer.cornerRadius=self.view.frame.size.width/12;
     cell.imgPic.clipsToBounds=YES;
-    
-    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [cell.imgPic sd_setImageWithURL:[NSURL URLWithString:obj.strTCommenterPhoto]
+                                     placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                                              options:SDWebImageHighPriority
+                                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                             }
+                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                                
+                                            }];
+    });
+    cell.lblComment.text=[NSString stringWithFormat:@"%@ :%@",obj.strTCommenterName,obj.strTCommenter];
+     cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    cell.lblViewed.text=obj.strTCommentTime;
+    NSString *strSpace=[self transformedValue:obj.strSize];
+    cell.lblAttachment.text=[NSString stringWithFormat:@"%d attachments",obj.arrCommentAsset.count];
+    cell.lblSize.text=strSpace;
     return cell;
 }
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

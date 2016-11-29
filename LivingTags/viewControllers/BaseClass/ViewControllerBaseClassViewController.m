@@ -257,25 +257,25 @@
                 controller=(ProductListingViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProductListingViewController"];
                 break;
 
-            case 5:
+            case 4:
                 controller=(ProfileViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
                 break;
 
-            case 6:
+            case 5:
                 controller=(SettingsViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
                 break;
                 
                 //FAQViewController
-            case 7:
+            case 6:
                 controller=(FAQViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"FAQViewController"];
                 break;
 
                 //AboutUsController
-            case 8:
+            case 7:
                 controller=(AboutUsController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"AboutUsController"];
                 break;
 
-            case 9:
+            case 8:
                 controller=(ContactUsController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"ContactUsController"];
                 break;
                 

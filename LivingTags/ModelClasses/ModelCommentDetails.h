@@ -24,6 +24,7 @@
 @property(nonatomic,strong) NSString *strTPublished;
 @property(nonatomic,strong) NSString *strTCommentTime;
 @property(nonatomic,strong) NSMutableArray *arrCommentAsset;
+@property(nonatomic,strong)NSString *strSize;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 

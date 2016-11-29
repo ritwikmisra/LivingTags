@@ -50,7 +50,8 @@ NSString *const strAPI[]={
     [WEB_SERVICE_PRODUCT_LISTING]=@"products/productLists",
     [WEB_SERVICE_PRODUCT_DETAILS]=@"products/productDetails",
     [WEB_SERVICE_DELETE_VOICE]=@"Tags/removeTagVoice",
-    [WEB_SERVICE_VIEW_LOCAL_TAGS]=@"tags/getLocalTagLists"
+    [WEB_SERVICE_VIEW_LOCAL_TAGS]=@"tags/getLocalTagLists",
+    [WEB_SERVICE_COMMENT_LISTING]=@"tagcomments/getMyTagComments"
 };
 
 

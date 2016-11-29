@@ -78,8 +78,8 @@
     _tblSidePanel.dataSource=self;
     _tblSidePanel.backgroundColor=[UIColor clearColor];
     _tblSidePanel.separatorStyle=UITableViewCellSeparatorStyleNone;
-    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Dashboard",@"My Tags",@"Comments",@"Products",@"Analytics",@"My Profile",@"Settings",@"Help",@"About Us",@"Contact Us", nil];
-    arrImages=[[NSMutableArray alloc]initWithObjects:@"dashborad",@"tags",@"comment",@"product",@"analytics",@"my_profile",@"setting",@"help",@"about",@"contact", nil];
+    arrLabel=[[NSMutableArray alloc]initWithObjects:@"Dashboard",@"My Tags",@"Comments",@"Products",@"My Profile",@"Settings",@"Help",@"About Us",@"Contact Us", nil];
+    arrImages=[[NSMutableArray alloc]initWithObjects:@"dashborad",@"tags",@"comment",@"product",@"my_profile",@"setting",@"help",@"about",@"contact", nil];
 
 }
 
