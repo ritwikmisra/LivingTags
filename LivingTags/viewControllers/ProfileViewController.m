@@ -34,9 +34,17 @@
     tblProfile.backgroundColor=[UIColor clearColor];
     tblProfile.bounces=NO;
     cloudinary = [[CLCloudinary alloc] init];
-    [cloudinary.config setValue:@"dlivingtags" forKey:@"cloud_name"];
+    
+    ///////// developer cloudinary//////////////////
+    /*[cloudinary.config setValue:@"dlivingtags" forKey:@"cloud_name"];
     [cloudinary.config setValue:@"354245266233988" forKey:@"api_key"];
-    [cloudinary.config setValue:@"4bNjgpPL3q-UnNH54aeHdLDs_3U" forKey:@"api_secret"];
+    [cloudinary.config setValue:@"4bNjgpPL3q-UnNH54aeHdLDs_3U" forKey:@"api_secret"];*/
+    
+    /////////////////////staging cloudinary///////////////////
+    [cloudinary.config setValue:@"livingtags-staging" forKey:@"cloud_name"];
+    [cloudinary.config setValue:@"886456191378635" forKey:@"api_key"];
+    [cloudinary.config setValue:@"0Zh1hG_DxqNaVaFEX8uP3qR6h4Y" forKey:@"api_secret"];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated

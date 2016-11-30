@@ -14,7 +14,8 @@
 #import "DashboardMyTagsListingService.h"
 #import "ProfileGetService.h"
 #import "UIImageView+WebCache.h"
-
+#import "CommentListingService.h"
+#import "ModelCommentDetails.h"
 
 @interface DashboardSpaceViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
@@ -27,7 +28,7 @@
     IBOutlet UILabel *lblRecentComments;
     IBOutlet UILabel *lblMyTags;
     BOOL isRecentComments;
-    NSMutableArray *arrResponse,*arrLabel;
+    NSMutableArray *arrResponse,*arrLabel,*arrComments;
     NSString *strTkey,*strSegueKey;
     IBOutlet UILabel *lblTotalSpace;
     IBOutlet UILabel *lblFreeSpace;
@@ -58,12 +59,11 @@
     [btnMyTags setBackgroundColor:[UIColor colorWithRed:36/255.0f green:93/255.0f blue:149/255.0f alpha:1.0]];
     arrResponse=[[NSMutableArray alloc]init];
     arrLabel=[[NSMutableArray alloc]initWithObjects:@"Person",@"Business",@"Pet",@"Place",@"Thing", @"Other",nil];
-
 }
 
--(void)viewDidLayoutSubviews
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLayoutSubviews];
+    [super viewWillAppear:animated];
     i=0;
     isLazyLoading=YES;
     vwColour.layer.cornerRadius=vwColour.frame.size.height/2;
@@ -83,9 +83,25 @@
             lblTotalSpace.text=[NSString stringWithFormat:@"Total space : %@",strTotalSpace];
             NSString *strSpaceUtilized=[self transformedValue:appDel.objUser.strStorageUsed];
             lblFreeSpace.text=[NSString stringWithFormat:@"Space used : %@",strSpaceUtilized];
-            
+            [[CommentListingService service] callChatListingServiceWithAKey:appDel.objUser.strAkey page:i published:@"Y" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                if (isError)
+                {
+                    [self displayErrorWithMessage:strMsg];
+                }
+                else
+                {
+                    arrComments=(id)result;
+                }
+                [tblComments reloadData];
+            }];
         }
     }];
+
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,7 +123,7 @@
 {
     if (isRecentComments==YES)
     {
-        return 6;
+        return arrComments.count;
     }
     return arrResponse.count;
 }
@@ -126,6 +142,7 @@
 {
     if (isRecentComments==YES)
     {
+        ModelCommentDetails *obj=[arrComments objectAtIndex:indexPath.row];
         DashboardSizeCell *cell=[tableView dequeueReusableCellWithIdentifier:@"identifier"];
         if (!cell)
         {
@@ -133,8 +150,22 @@
         }
         cell.imgPic.layer.cornerRadius=self.view.frame.size.width/12;
         cell.imgPic.clipsToBounds=YES;
-
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.imgPic sd_setImageWithURL:[NSURL URLWithString:obj.strTCommenterPhoto]
+                           placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                                    options:SDWebImageHighPriority
+                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                   }
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                      
+                                  }];
+        });
+        cell.lblComment.text=[NSString stringWithFormat:@"%@ :%@",obj.strTCommenterName,obj.strTCommenter];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.lblViewed.text=obj.strTCommentTime;
+        NSString *strSpace=[self transformedValue:obj.strSize];
+        cell.lblAttachment.text=[NSString stringWithFormat:@"%d attachments",obj.arrCommentAsset.count];
+        cell.lblSize.text=strSpace;
         return cell;
     }
     else
@@ -187,6 +218,7 @@
 
 -(IBAction)btnRecentCommentsPressed:(id)sender
 {
+    i=0;
     isRecentComments=YES;
     [imgRecentComments setImage:[UIImage imageNamed:@"comment_active"]];
     [lblRecentComments setTextColor:[UIColor colorWithRed:36/255.0f green:93/255.0f blue:149/255.0f alpha:1.0]];
@@ -277,33 +309,51 @@
 
 -(void)callWebService
 {
-    [[DashboardMyTagsListingService service]callDashboardMyTagsListServiceWithAkey:appDel.objUser.strKey page:i withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-        if (isError)
-        {
-            [self displayErrorWithMessage:strMsg];
-            isLazyLoading=NO;
-        }
-        else
-        {
-            if (i==0)
+    if (!isRecentComments)
+    {
+        [[DashboardMyTagsListingService service]callDashboardMyTagsListServiceWithAkey:appDel.objUser.strKey page:i withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
             {
-                arrResponse=(id)result;
+                [self displayErrorWithMessage:strMsg];
+                isLazyLoading=NO;
             }
             else
             {
-                NSMutableArray *arr=(id)result;
-                NSLog(@"%@",arr);
-                if (arr.count>0)
+                if (i==0)
                 {
-                    for (int k=0; k<arr.count; k++)
+                    arrResponse=(id)result;
+                }
+                else
+                {
+                    NSMutableArray *arr=(id)result;
+                    NSLog(@"%@",arr);
+                    if (arr.count>0)
                     {
-                        [arrResponse addObject:[arr objectAtIndex:k]];
+                        for (int k=0; k<arr.count; k++)
+                        {
+                            [arrResponse addObject:[arr objectAtIndex:k]];
+                        }
                     }
                 }
+                [tblComments reloadData];
+            }
+        }];
+    }
+    else
+    {
+        [[CommentListingService service] callChatListingServiceWithAKey:appDel.objUser.strAkey page:i published:@"Y" withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+                
+            }
+            else
+            {
+                arrComments=(id)result;
             }
             [tblComments reloadData];
-        }
-    }];
+        }];
+    }
 }
 
 #pragma mark

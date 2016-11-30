@@ -45,6 +45,10 @@
 #import "EditTagsGetDetailsService.h"
 #import "ModelImageAndVideoAssets.h"
 #import "DeleteVoiceService.h"
+#import "PublishTagService.h"
+#import "PreviewAdService.h"
+#import "PreviewViewController.h"
+
 
 @interface MyTagsEditModeController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
 
@@ -65,6 +69,8 @@
     
     //// model tag creation
     ModelCreateTagsSecondStep *objTemplates;
+    NSString *strURL;
+
     
     ////dictionary for update to server
     NSMutableDictionary *dictAPI;
@@ -107,9 +113,17 @@
     strDate=@"";
     strCategory=@"Category";
     cloudinary = [[CLCloudinary alloc] init];
-    [cloudinary.config setValue:@"dlivingtags" forKey:@"cloud_name"];
+    
+    /////////////// developer cloudinary////////////////////
+   /* [cloudinary.config setValue:@"dlivingtags" forKey:@"cloud_name"];
     [cloudinary.config setValue:@"354245266233988" forKey:@"api_key"];
-    [cloudinary.config setValue:@"4bNjgpPL3q-UnNH54aeHdLDs_3U" forKey:@"api_secret"];
+    [cloudinary.config setValue:@"4bNjgpPL3q-UnNH54aeHdLDs_3U" forKey:@"api_secret"];*/
+    
+    /////////////////////staging cloudinary///////////////////
+    [cloudinary.config setValue:@"livingtags-staging" forKey:@"cloud_name"];
+    [cloudinary.config setValue:@"886456191378635" forKey:@"api_key"];
+    [cloudinary.config setValue:@"0Zh1hG_DxqNaVaFEX8uP3qR6h4Y" forKey:@"api_secret"];
+
     strGender=@"";
     isLocation=NO;
     isTextViewClicked=NO;
@@ -1306,7 +1320,27 @@
 
 -(void)btnNextPressed:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    if ([self alertChecking])
+    {
+        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Success" message:@"Do you want to preview your application or get back to the previous page?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionPreview=[UIAlertAction actionWithTitle:@"Preview" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self previewButtonPressed];
+            [alertController dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }];
+        
+        UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        [alertController addAction:actionPreview];
+        [alertController addAction:actionCancel];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
+
 }
 
 
@@ -2307,10 +2341,8 @@
     /*tdata[taddress1],
      tdata[tlat1],
      tdata[tlong1]*/
-    
     NSString *strLat=[NSString stringWithFormat:@"%f",locationUser.latitude];
     NSString *strLong=[NSString stringWithFormat:@"%f",locationUser.longitude];
-    
     NSLog(@"%@",strAddress);
     if (objTemplates)
     {
@@ -2342,7 +2374,6 @@
         [dictAPI setObject:strLong forKey:@"tlong1"];
         [self updateDictionaryForServiceForKey:@"taddress1"];
     }
-    
 }
 
 -(void)checkDatesTo
@@ -2351,7 +2382,6 @@
     [dictAPI setObject:@"N" forKey:@"tliving"];
     [self updateDictionaryForServiceForKey:@"tdied"];
 }
-
 
 #pragma mark
 #pragma mark CALL WEBSERVICE
@@ -2637,6 +2667,11 @@
         master1.strAudioFolder=objTemplates.strtagAudioFolder;
         master1.strTKey=objTemplates.strtKey;
     }
+    if ([segue.identifier isEqualToString:@"segueEditTagsToPreview"])
+    {
+        PreviewViewController *masterPreview=[segue destinationViewController];
+        masterPreview.str=strURL;
+    }
 }
 
 #pragma mark
@@ -2890,6 +2925,32 @@
     }];
 }
 
+#pragma mark
+#pragma mark popup button
+#pragma mark
+
+-(void)previewButtonPressed
+{
+    if ([self alertChecking])
+    {
+        [[PreviewAdService service]previewAdServiceWithKey:objTemplates.strtKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+            {
+                NSLog(@"%@",[result objectForKey:@"previewUrl"]);
+                strURL=[result objectForKey:@"previewUrl"];
+                strURL=[strURL stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
+                NSLog(@"%@",strURL);
+                //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[result objectForKey:@"previewUrl"]]];
+                [self performSegueWithIdentifier:@"segueEditTagsToPreview" sender:self];
+                
+            }
+        }];
+    }
+}
 
 
 @end

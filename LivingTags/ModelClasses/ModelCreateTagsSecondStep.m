@@ -301,6 +301,16 @@
         {
             self.strtagProfileFolder=@"";
         }
+//        /tfolder
+        if ([dict objectForKey:@"tfolder"] && ![[dict objectForKey:@"tfolder"] isKindOfClass:[NSNull class]])//
+        {
+            self.strTfolder=[dict objectForKey:@"tfolder"];
+        }
+        else
+        {
+            self.strTfolder=@"";
+        }
+
 
     }
     return self;

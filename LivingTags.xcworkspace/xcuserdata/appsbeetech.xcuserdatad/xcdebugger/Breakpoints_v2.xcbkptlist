@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LivingTags/viewControllers/LoggingViewController.m"
-            timestampString = "502185367.168902"
+            filePath = "LivingTags/WebService/PreviewAdService.m"
+            timestampString = "502193807.235379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-btnFacebookPressed:"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-previewAdServiceWithKey:withCompletionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,14 +25,24 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LivingTags/viewControllers/LoggingViewController.m"
-            timestampString = "502185370.090201"
+            filePath = "LivingTags/viewControllers/MyTagsEditModeController.m"
+            timestampString = "502209669.466636"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "-btnFacebookPressed:"
+            startingLineNumber = "2943"
+            endingLineNumber = "2943"
+            landmarkName = "-previewButtonPressed"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

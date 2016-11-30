@@ -188,7 +188,7 @@
         appDel.isCreateTagTappedFromDashboard = NO;
         [self performSegueWithIdentifier:@"segueDashBoardToReadTags" sender:self];
     }*/
-    if (indexPath.row==arrLabel.count-1)
+    if (indexPath.row==3)
     {
         [self performSegueWithIdentifier:@"segueDashboardToMyTags" sender:self];
     }

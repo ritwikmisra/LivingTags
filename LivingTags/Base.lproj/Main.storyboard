@@ -523,7 +523,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5A-Gr-cjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1601" y="-1150"/>
+            <point key="canvasLocation" x="1627" y="-1068"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="ciH-XA-SWX">
@@ -604,7 +604,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTn-Dk-Uvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2563" y="367"/>
+            <point key="canvasLocation" x="2281" y="-1150"/>
         </scene>
         <!--My Tags Listing Controller-->
         <scene sceneID="JHp-hK-Pat">
@@ -807,6 +807,7 @@
                     <connections>
                         <outlet property="tblEditTags" destination="Igh-cx-arV" id="6iB-ax-eWw"/>
                         <segue destination="jc9-Lh-bc1" kind="show" identifier="segueAudioEditTags" id="Kpd-s1-MQV"/>
+                        <segue destination="7W3-Am-qL3" kind="show" identifier="segueEditTagsToPreview" id="iOT-IX-ChH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGu-pU-7rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1254,21 +1255,34 @@
                                     <outlet property="delegate" destination="FHX-bE-hp2" id="m7Z-vx-muZ"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3T-xW-N50">
+                                <rect key="frame" x="541" y="14" width="28" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="D3T-xW-N50" secondAttribute="height" id="678-dm-s8y"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="back.png"/>
+                                <connections>
+                                    <action selector="btnBackPressed:" destination="FHX-bE-hp2" eventType="touchUpInside" id="VHA-xS-zBE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ld5-qo-Kbn" firstAttribute="height" secondItem="yOP-Y3-tkN" secondAttribute="height" multiplier="1.35" id="2xw-w2-QyJ"/>
+                            <constraint firstItem="D3T-xW-N50" firstAttribute="centerY" secondItem="zJJ-CS-HuI" secondAttribute="centerY" id="A6k-Kp-jGi"/>
                             <constraint firstItem="wu8-Sw-FMp" firstAttribute="top" secondItem="nlI-h1-p12" secondAttribute="bottom" id="FAy-WZ-cBC"/>
                             <constraint firstItem="yOP-Y3-tkN" firstAttribute="centerX" secondItem="ON1-au-bkO" secondAttribute="centerX" id="Mp5-fY-FFY"/>
                             <constraint firstItem="zJJ-CS-HuI" firstAttribute="height" secondItem="nlI-h1-p12" secondAttribute="height" multiplier="6" id="P1P-a2-f3e"/>
                             <constraint firstItem="Ld5-qo-Kbn" firstAttribute="height" secondItem="PQ4-Ix-794" secondAttribute="height" id="QWd-me-3ou"/>
                             <constraint firstItem="wu8-Sw-FMp" firstAttribute="height" secondItem="ON1-au-bkO" secondAttribute="height" multiplier="1.15" id="RGJ-Lc-B9y"/>
+                            <constraint firstItem="D3T-xW-N50" firstAttribute="centerX" secondItem="zJJ-CS-HuI" secondAttribute="centerX" multiplier="1.85" id="SWE-bi-vVy"/>
                             <constraint firstItem="nlI-h1-p12" firstAttribute="centerX" secondItem="zJJ-CS-HuI" secondAttribute="centerX" id="TQC-Gz-hfI"/>
                             <constraint firstItem="zJJ-CS-HuI" firstAttribute="height" secondItem="pJA-FI-7ZT" secondAttribute="height" multiplier="2" id="Tv9-Rw-xzT"/>
                             <constraint firstItem="zJJ-CS-HuI" firstAttribute="width" secondItem="pJA-FI-7ZT" secondAttribute="width" multiplier="2.6" id="UeC-0v-S5H"/>
                             <constraint firstItem="Ld5-qo-Kbn" firstAttribute="width" secondItem="PQ4-Ix-794" secondAttribute="width" id="Vsh-Op-0pG"/>
                             <constraint firstItem="ON1-au-bkO" firstAttribute="top" secondItem="wu8-Sw-FMp" secondAttribute="bottom" multiplier="1.05" id="YSL-SX-bIG"/>
                             <constraint firstItem="wu8-Sw-FMp" firstAttribute="centerX" secondItem="nlI-h1-p12" secondAttribute="centerX" id="ZHu-DO-eCR"/>
+                            <constraint firstItem="zJJ-CS-HuI" firstAttribute="height" secondItem="D3T-xW-N50" secondAttribute="height" multiplier="2" id="aCv-75-DHM"/>
                             <constraint firstItem="wu8-Sw-FMp" firstAttribute="width" secondItem="ON1-au-bkO" secondAttribute="width" multiplier="1.1" id="cln-5G-gLY"/>
                             <constraint firstItem="nlI-h1-p12" firstAttribute="width" secondItem="zJJ-CS-HuI" secondAttribute="width" id="ds2-4b-sj5"/>
                             <constraint firstItem="pJA-FI-7ZT" firstAttribute="centerY" secondItem="zJJ-CS-HuI" secondAttribute="centerY" id="fcs-rf-gh0"/>
@@ -2471,7 +2485,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4N4-vI-b0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2509" y="-324"/>
+            <point key="canvasLocation" x="2905" y="-316"/>
         </scene>
         <!--Living Tags Third Step View Controller-->
         <scene sceneID="628-YE-gn4">
@@ -3784,10 +3798,10 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cUO-lk-bNp"/>
-        <segue reference="mMP-uS-LCv"/>
-        <segue reference="pyo-xk-72c"/>
         <segue reference="46W-rc-l29"/>
+        <segue reference="cUO-lk-bNp"/>
+        <segue reference="iOT-IX-ChH"/>
         <segue reference="WIR-cR-3VA"/>
+        <segue reference="Kpd-s1-MQV"/>
     </inferredMetricsTieBreakers>
 </document>

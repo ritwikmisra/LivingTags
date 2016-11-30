@@ -46,6 +46,8 @@
 @property(nonatomic,strong)NSString *strtagVideoFolder;
 @property(nonatomic,strong)NSString *strtagProfileFolder;
 
+@property(nonatomic,strong)NSString *strTfolder;
+
 
 
 

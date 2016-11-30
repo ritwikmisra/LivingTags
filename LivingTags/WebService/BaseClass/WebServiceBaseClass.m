@@ -11,7 +11,9 @@
 
 //http://carlifestyle.digiopia.in/user/registration
 
-#define BASE_URL @"http://developer.livingtags.com/api/"
+//#define BASE_URL @"http://developer.livingtags.com/api/"
+#define BASE_URL @"http://staging.livingtags.com/api/"
+
 //#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
 //http://developer.livingtags.com/api/Auths/signin
 
@@ -22,18 +24,18 @@
 //readtags
 
 NSString *const strAPI[]={
-    [WEB_SERVICES_REGISTRATION]                  =          @"auths/signup",
-    [WEB_SERVICES_LOGIN]                                  =          @"Auths/signin",
+    [WEB_SERVICES_REGISTRATION]                  =           @"auths/signup",
+    [WEB_SERVICES_LOGIN]                                  =         @"Auths/signin",
     [WEB_SERVICES_GET_PROFILE]                     =          @"accounts/getAccount",
-    [WEB_SERVICES_UPDATE_PROFILE]             =          @"",
+    [WEB_SERVICES_UPDATE_PROFILE]             =           @"",
     [WEB_SERVICES_FORGET_PASSWORD]        =          @"Auths/forgotpass",
-    [WEB_SERVICES_LIVING_TAG_LISTING]      =          @"",
-    [WEB_SERVICE_SOCIAL_LOGIN]                     =          @"Auths/socialSignup",
-    [WEB_SERVICES_GET_ALL_TEMPLATES]     =          @"",
+    [WEB_SERVICES_LIVING_TAG_LISTING]      =            @"",
+    [WEB_SERVICE_SOCIAL_LOGIN]                     =         @"Auths/socialSignup",
+    [WEB_SERVICES_GET_ALL_TEMPLATES]     =            @"",
     [WEB_SERVICES_READ_ALL_TAGS]               =          @"",
-    [WEB_SERVICES_TEMPLATE_SELECTION]   =           @"",
-    [WEB_SERVICES_LIVING_TAGS_SECOND_STEP] =@"",
-    [WEB_SERVICES_LIVING_TAGS_THIRD_STEP]   =@"",
+    [WEB_SERVICES_TEMPLATE_SELECTION]   =            @"",
+    [WEB_SERVICES_LIVING_TAGS_SECOND_STEP] =   @"",
+    [WEB_SERVICES_LIVING_TAGS_THIRD_STEP]   =      @"",
     [WEB_SERVICES_CREATE_TEMPLATES_UPLOAD_PROFILE_PIC]=@"",
     [WEB_SERVICES_CREATE_TEMPLATES_UPLOAD_COVER_PIC]=@"i",
     [WEB_SERVICES_CREATE_TAGS]=@"Tags/createTag",

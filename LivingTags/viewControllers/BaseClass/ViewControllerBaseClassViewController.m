@@ -332,7 +332,7 @@
         multiplyFactor++;
     }
     
-    return [NSString stringWithFormat:@"%d %@",(int)convertedValue, [tokens objectAtIndex:multiplyFactor]];
+    return [NSString stringWithFormat:@"%4.2f %@",convertedValue, [tokens objectAtIndex:multiplyFactor]];
 }
 
 
