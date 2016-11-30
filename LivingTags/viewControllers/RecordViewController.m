@@ -78,9 +78,9 @@
     
     //cloudinary initialisation
     cloudinary = [[CLCloudinary alloc] init];
-    [cloudinary.config setValue:@"dw2w2nb2e" forKey:@"cloud_name"];
-    [cloudinary.config setValue:@"963284535365757" forKey:@"api_key"];
-    [cloudinary.config setValue:@"m7Op_O9CtqVTUOVkdbDdfA4u_6o" forKey:@"api_secret"];
+    [cloudinary.config setValue:@"dlivingtags" forKey:@"cloud_name"];
+    [cloudinary.config setValue:@"354245266233988" forKey:@"api_key"];
+    [cloudinary.config setValue:@"4bNjgpPL3q-UnNH54aeHdLDs_3U" forKey:@"api_secret"];
 
 }
 

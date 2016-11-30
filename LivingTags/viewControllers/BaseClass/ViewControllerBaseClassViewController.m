@@ -326,13 +326,13 @@
     
     NSArray *tokens = [NSArray arrayWithObjects:@"bytes",@"KB",@"MB",@"GB",@"TB",nil];
     
-    while (convertedValue > 1024)
+    while (convertedValue >= 1024)
     {
         convertedValue /= 1024;
         multiplyFactor++;
     }
     
-    return [NSString stringWithFormat:@"%4.2f %@",convertedValue, [tokens objectAtIndex:multiplyFactor]];
+    return [NSString stringWithFormat:@"%d %@",(int)convertedValue, [tokens objectAtIndex:multiplyFactor]];
 }
 
 

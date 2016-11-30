@@ -77,7 +77,7 @@
             float percentage=(([appDel.objUser.strTotalStorage floatValue]-[appDel.objUser.strStorageUsed floatValue])/[appDel.objUser.strTotalStorage floatValue])*100;
             NSLog(@"%2f",percentage);
             lblPercentage.text=[NSString stringWithFormat:@"%.02f %%",percentage];
-            lblTags.text=[NSString stringWithFormat:@"Total n o of tags : %@",appDel.objUser.strTagCounts];
+            lblTags.text=[NSString stringWithFormat:@"Total no of tags : %@",appDel.objUser.strTagCounts];
             NSString *strTotalSpace=[self transformedValue:appDel.objUser.strTotalStorage];
             NSLog(@"%@",strTotalSpace);
             lblTotalSpace.text=[NSString stringWithFormat:@"Total space : %@",strTotalSpace];
@@ -86,7 +86,6 @@
             
         }
     }];
-
 }
 
 - (void)didReceiveMemoryWarning
