@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="151" id="KGk-i7-Jjw" customClass="CommentDetailsCell">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fDi-hC-Uhn">
+                        <rect key="frame" x="0.0" y="0.0" width="328" height="150"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fDi-hC-Uhn" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="3BQ-Qm-Fwd"/>
+                    <constraint firstItem="fDi-hC-Uhn" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Ktg-Z7-4Ay"/>
+                    <constraint firstItem="fDi-hC-Uhn" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="Yhb-M2-rPd"/>
+                    <constraint firstItem="fDi-hC-Uhn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="est-9Q-00b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="354" y="127.5"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="151" id="hCL-4O-D2B" customClass="CommentDetailsCell">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hCL-4O-D2B" id="43d-Tf-Sof">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Jc-Tc-6jo">
+                        <rect key="frame" x="0.0" y="0.0" width="328" height="150"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3Jc-Tc-6jo" firstAttribute="width" secondItem="43d-Tf-Sof" secondAttribute="width" id="bXB-3U-EZB"/>
+                    <constraint firstItem="3Jc-Tc-6jo" firstAttribute="centerY" secondItem="43d-Tf-Sof" secondAttribute="centerY" id="nfY-bC-Z0w"/>
+                    <constraint firstItem="3Jc-Tc-6jo" firstAttribute="centerX" secondItem="43d-Tf-Sof" secondAttribute="centerX" id="oLx-GV-PQm"/>
+                    <constraint firstItem="3Jc-Tc-6jo" firstAttribute="height" secondItem="43d-Tf-Sof" secondAttribute="height" id="udL-gA-4wx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="344" y="326.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -216,6 +216,8 @@
 		0D8934E41DB11C7900A48562 /* add_logo_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934E31DB11C7900A48562 /* add_logo_button.png */; };
 		0D8934E61DB13FFD00A48562 /* txt_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8934E51DB13FFD00A48562 /* txt_map.png */; };
 		0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */; };
+		0D8A38181DF5AE1E00601812 /* CommentDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A38161DF5AE1D00601812 /* CommentDetailsCell.m */; };
+		0D8A38191DF5AE1E00601812 /* CommentDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A38171DF5AE1D00601812 /* CommentDetailsCell.xib */; };
 		0D8BE0911D2E62E700527345 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8BE0901D2E62E700527345 /* Contacts.framework */; };
 		0D8FCDC91DDF02A200B8846D /* ProductListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FCDC81DDF02A200B8846D /* ProductListingViewController.m */; };
 		0D8FCDCB1DDF14BA00B8846D /* product_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8FCDCA1DDF14BA00B8846D /* product_search.png */; };
@@ -641,6 +643,9 @@
 		0D898E961CCF51E300B35D04 /* AppConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstant.h; sourceTree = "<group>"; };
 		0D898E991CCF58E400B35D04 /* ModelBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBaseClass.h; sourceTree = "<group>"; };
 		0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBaseClass.m; sourceTree = "<group>"; };
+		0D8A38151DF5AE1D00601812 /* CommentDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailsCell.h; sourceTree = "<group>"; };
+		0D8A38161DF5AE1D00601812 /* CommentDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailsCell.m; sourceTree = "<group>"; };
+		0D8A38171DF5AE1D00601812 /* CommentDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentDetailsCell.xib; sourceTree = "<group>"; };
 		0D8BE0901D2E62E700527345 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		0D8FCDC71DDF02A200B8846D /* ProductListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductListingViewController.h; sourceTree = "<group>"; };
 		0D8FCDC81DDF02A200B8846D /* ProductListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListingViewController.m; sourceTree = "<group>"; };
@@ -1299,6 +1304,7 @@
 		0D698D1C1CC8D79000F64745 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D8A38141DF5ADF900601812 /* CommentDetails */,
 				0D79BE361DF0742B004B373E /* FindObituaryCell */,
 				0D822CAC1DE5C10300AC48E4 /* ViewLocalTagsCell */,
 				0D2D9A851DE463480077C75A /* FAQCell */,
@@ -1620,6 +1626,16 @@
 				0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */,
 			);
 			path = ModelBaseClass;
+			sourceTree = "<group>";
+		};
+		0D8A38141DF5ADF900601812 /* CommentDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0D8A38151DF5AE1D00601812 /* CommentDetailsCell.h */,
+				0D8A38161DF5AE1D00601812 /* CommentDetailsCell.m */,
+				0D8A38171DF5AE1D00601812 /* CommentDetailsCell.xib */,
+			);
+			path = CommentDetails;
 			sourceTree = "<group>";
 		};
 		0D8FCDCC1DDF182A00B8846D /* ProductCell */ = {
@@ -1964,6 +1980,7 @@
 				0DF008611DAF9BFC00BD39C3 /* AddImageCell.xib in Resources */,
 				0D5903B61DD0CDB40048B5EF /* password.png in Resources */,
 				0D698D111CC8CF2500F64745 /* LaunchScreen.storyboard in Resources */,
+				0D8A38191DF5AE1E00601812 /* CommentDetailsCell.xib in Resources */,
 				0D19166B1DBF8F72004D02DA /* help.png in Resources */,
 				0D8FCDD11DDF185700B8846D /* ProductCell.xib in Resources */,
 				0DC2F5A51DC74A2700AB1795 /* recording.png in Resources */,
@@ -2240,6 +2257,7 @@
 				0D3731421CD8A10B00EDC547 /* SDWebImageDecoder.m in Sources */,
 				0DF0085B1DAF984000BD39C3 /* BirthDeathDateCell.m in Sources */,
 				0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */,
+				0D8A38181DF5AE1E00601812 /* CommentDetailsCell.m in Sources */,
 				0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */,
 				0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */,
 				0D3731441CD8A10B00EDC547 /* SDWebImageDownloaderOperation.m in Sources */,

@@ -11,8 +11,8 @@
 
 //http://carlifestyle.digiopia.in/user/registration
 
-//#define BASE_URL @"http://developer.livingtags.com/api/"
-#define BASE_URL @"http://staging.livingtags.com/api/"
+#define BASE_URL @"http://developer.livingtags.com/api/"
+//#define BASE_URL @"http://staging.livingtags.com/api/"
 
 //#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
 //http://developer.livingtags.com/api/Auths/signin
