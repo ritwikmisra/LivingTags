@@ -11,7 +11,7 @@
 
 //http://carlifestyle.digiopia.in/user/registration
 
-//#define BASE_URL @"http://developer.livingtags.com/api/"
+//#define BASE_URL @"http://developer.livingtags.com/api/"
 #define BASE_URL @"http://staging.livingtags.com/api/"
 
 //#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
@@ -53,7 +53,9 @@ NSString *const strAPI[]={
     [WEB_SERVICE_PRODUCT_DETAILS]=@"products/productDetails",
     [WEB_SERVICE_DELETE_VOICE]=@"Tags/removeTagVoice",
     [WEB_SERVICE_VIEW_LOCAL_TAGS]=@"tags/getLocalTagLists",
-    [WEB_SERVICE_COMMENT_LISTING]=@"tagcomments/getMyTagComments"
+    [WEB_SERVICE_COMMENT_LISTING]=@"tagcomments/getMyTagComments",
+    [WEB_SERVICE_GET_OBITUARIES]=@"obituaries/findObituaryData",
+    [WEB_SERVICE_UPDATE_OBITUARIES]=@"obituaries/UpdateTagByObituaryData"
 };
 
 

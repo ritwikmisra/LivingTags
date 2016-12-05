@@ -1177,6 +1177,99 @@
             </objects>
             <point key="canvasLocation" x="217" y="-2606"/>
         </scene>
+        <!--Comment Details Controller-->
+        <scene sceneID="WzF-R1-tOK">
+            <objects>
+                <viewController id="E5B-jQ-s3i" customClass="CommentDetailsController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cnB-KV-SEC"/>
+                        <viewControllerLayoutGuide type="bottom" id="KZI-iY-PSx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fVY-x2-6EU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_image" translatesAutoresizingMaskIntoConstraints="NO" id="mZd-gZ-aWA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P1Q-5w-qFw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="6AM-7P-Rl1">
+                                <rect key="frame" x="0.0" y="55" width="600" height="9"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-7O-GGu">
+                                <rect key="frame" x="541" y="14" width="28" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gw6-7O-GGu" secondAttribute="height" id="15K-W8-kEr"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="back.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AL3-6N-Mtm">
+                                <rect key="frame" x="185" y="14" width="230" height="27"/>
+                                <state key="normal" backgroundImage="top_header_logo.png"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbi-MJ-16d">
+                                <rect key="frame" x="39" y="76" width="522" height="66"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic3.png" translatesAutoresizingMaskIntoConstraints="NO" id="mCQ-YY-hBJ">
+                                        <rect key="frame" x="37" y="5" width="56" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mCQ-YY-hBJ" secondAttribute="height" id="5i4-nC-nnU"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="mCQ-YY-hBJ" secondAttribute="height" multiplier="1.2" id="SHU-H5-1ll"/>
+                                    <constraint firstItem="mCQ-YY-hBJ" firstAttribute="centerY" secondItem="sbi-MJ-16d" secondAttribute="centerY" id="hRI-Lb-d6t"/>
+                                    <constraint firstAttribute="centerX" secondItem="mCQ-YY-hBJ" secondAttribute="centerX" multiplier="4" id="vdX-W0-ILW"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qP6-Rd-l4m">
+                                <rect key="frame" x="39" y="151" width="522" height="429"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6AM-7P-Rl1" firstAttribute="centerX" secondItem="P1Q-5w-qFw" secondAttribute="centerX" id="3j5-S6-t10"/>
+                            <constraint firstItem="6AM-7P-Rl1" firstAttribute="width" secondItem="P1Q-5w-qFw" secondAttribute="width" id="45z-LX-CAY"/>
+                            <constraint firstItem="sbi-MJ-16d" firstAttribute="top" secondItem="6AM-7P-Rl1" secondAttribute="bottom" multiplier="1.2" id="5Xv-Tq-Nix"/>
+                            <constraint firstItem="AL3-6N-Mtm" firstAttribute="centerY" secondItem="P1Q-5w-qFw" secondAttribute="centerY" id="5a4-Kf-oks"/>
+                            <constraint firstItem="mZd-gZ-aWA" firstAttribute="height" secondItem="sbi-MJ-16d" secondAttribute="height" multiplier="9" id="8Wa-IV-37Y"/>
+                            <constraint firstItem="Gw6-7O-GGu" firstAttribute="centerY" secondItem="P1Q-5w-qFw" secondAttribute="centerY" id="9Rr-uo-TfE"/>
+                            <constraint firstItem="AL3-6N-Mtm" firstAttribute="centerX" secondItem="P1Q-5w-qFw" secondAttribute="centerX" id="9f5-cL-Th8"/>
+                            <constraint firstItem="qP6-Rd-l4m" firstAttribute="width" secondItem="sbi-MJ-16d" secondAttribute="width" id="Aic-00-KtS"/>
+                            <constraint firstItem="mZd-gZ-aWA" firstAttribute="height" secondItem="fVY-x2-6EU" secondAttribute="height" id="EpN-NV-Uho"/>
+                            <constraint firstItem="mZd-gZ-aWA" firstAttribute="width" secondItem="fVY-x2-6EU" secondAttribute="width" id="HD0-PQ-Bof"/>
+                            <constraint firstItem="sbi-MJ-16d" firstAttribute="centerX" secondItem="6AM-7P-Rl1" secondAttribute="centerX" id="HPf-Zh-ZWF"/>
+                            <constraint firstItem="Gw6-7O-GGu" firstAttribute="centerX" secondItem="P1Q-5w-qFw" secondAttribute="centerX" multiplier="1.85" id="Hf2-1G-J6k"/>
+                            <constraint firstItem="6AM-7P-Rl1" firstAttribute="top" secondItem="P1Q-5w-qFw" secondAttribute="bottom" id="KWy-yO-XiY"/>
+                            <constraint firstItem="P1Q-5w-qFw" firstAttribute="height" secondItem="6AM-7P-Rl1" secondAttribute="height" multiplier="6" id="MhJ-N4-g4i"/>
+                            <constraint firstItem="mZd-gZ-aWA" firstAttribute="centerY" secondItem="fVY-x2-6EU" secondAttribute="centerY" id="PIO-MA-p5h"/>
+                            <constraint firstItem="P1Q-5w-qFw" firstAttribute="top" secondItem="mZd-gZ-aWA" secondAttribute="top" id="SXl-e0-jVK"/>
+                            <constraint firstItem="qP6-Rd-l4m" firstAttribute="centerX" secondItem="sbi-MJ-16d" secondAttribute="centerX" id="Wrl-uo-GiW"/>
+                            <constraint firstItem="P1Q-5w-qFw" firstAttribute="width" secondItem="mZd-gZ-aWA" secondAttribute="width" id="bev-0K-8YA"/>
+                            <constraint firstItem="qP6-Rd-l4m" firstAttribute="top" secondItem="sbi-MJ-16d" secondAttribute="bottom" multiplier="1.07" id="cZB-mO-xPJ"/>
+                            <constraint firstItem="P1Q-5w-qFw" firstAttribute="width" secondItem="AL3-6N-Mtm" secondAttribute="width" multiplier="2.6" id="eIs-WN-Poz"/>
+                            <constraint firstItem="P1Q-5w-qFw" firstAttribute="height" secondItem="AL3-6N-Mtm" secondAttribute="height" multiplier="2" id="hct-NB-7iq"/>
+                            <constraint firstItem="mZd-gZ-aWA" firstAttribute="height" secondItem="qP6-Rd-l4m" secondAttribute="height" multiplier="1.4" id="kF5-Cw-P9y"/>
+                            <constraint firstItem="mZd-gZ-aWA" firstAttribute="height" secondItem="P1Q-5w-qFw" secondAttribute="height" multiplier="11" id="mJh-U7-v3v"/>
+                            <constraint firstItem="P1Q-5w-qFw" firstAttribute="centerX" secondItem="mZd-gZ-aWA" secondAttribute="centerX" id="nsJ-IY-igA"/>
+                            <constraint firstItem="mZd-gZ-aWA" firstAttribute="centerX" secondItem="fVY-x2-6EU" secondAttribute="centerX" id="vP2-w8-aEg"/>
+                            <constraint firstItem="mZd-gZ-aWA" firstAttribute="width" secondItem="sbi-MJ-16d" secondAttribute="width" multiplier="1.15" id="xcR-Kh-4KD"/>
+                            <constraint firstItem="P1Q-5w-qFw" firstAttribute="height" secondItem="Gw6-7O-GGu" secondAttribute="height" multiplier="2" id="yGZ-DB-lAW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgComment" destination="mCQ-YY-hBJ" id="prk-jg-OUY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8M-dm-XDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1648" y="-1186"/>
+        </scene>
         <!--Comment List Controller-->
         <scene sceneID="Rem-vP-meP">
             <objects>
@@ -1309,7 +1402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCc-99-L9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1034" y="-1186"/>
+            <point key="canvasLocation" x="-1037" y="-1186"/>
         </scene>
         <!--My Living Tages View Controller-->
         <scene sceneID="66P-iW-VjV">
@@ -3789,6 +3882,7 @@
         <image name="map_view.png" width="235" height="235"/>
         <image name="menu_icon2.png" width="95" height="60"/>
         <image name="password_icon.png" width="73" height="94"/>
+        <image name="pic3.png" width="187" height="208"/>
         <image name="play_disable.png" width="169" height="172"/>
         <image name="product_search.png" width="512" height="512"/>
         <image name="record.png" width="169" height="172"/>

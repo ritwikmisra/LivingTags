@@ -17,5 +17,5 @@
 
 @property(nonatomic,strong)IBOutlet UIButton *btnBirthDate;
 @property(nonatomic,strong)IBOutlet UIButton *btnDeathDate;
-
+@property(nonatomic,strong)IBOutlet UIButton *btnFindObituary;
 @end

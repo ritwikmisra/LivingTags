@@ -171,6 +171,7 @@
             <connections>
                 <outlet property="btnBirthDate" destination="Lij-sL-mJq" id="KFU-aK-3wN"/>
                 <outlet property="btnDeathDate" destination="Dqu-Vx-p6b" id="05L-Ct-eOP"/>
+                <outlet property="btnFindObituary" destination="hml-dm-BmW" id="Ggx-4B-v1k"/>
                 <outlet property="btnLiving" destination="qeh-dh-1T3" id="RAr-Ve-kSX"/>
                 <outlet property="imgLiving" destination="Ab1-y9-V4e" id="Jox-7U-H5W"/>
                 <outlet property="txtBirth" destination="dQU-Q5-EbE" id="Qjd-Tw-aZq"/>

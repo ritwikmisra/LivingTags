@@ -44,9 +44,12 @@
 #import"PreviewViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import"DeleteVoiceService.h"
+#import "FindObituaryService.h"
+#import "FindObituaryPopUPController.h"
+#import "ModelFindObituary.h"
+#import "UpdateObituaryService.h"
 
-
-@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate>
+@interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate,SelectedObituaryDelegate>
 {
     IBOutlet UITableView *tblTagsCreation;
     NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags,*strPlace,*strContact,*strBusinessName,*strBusinessContactName,*strBusinessTitle,*strBusinessAddress,*strBusinessPhone,*strBusinessCellPhone,*strBusinessFax,*strBusinessEmail,*strBusinessWebsite,*strCategory;////////// variables to be sent to the server
@@ -376,6 +379,7 @@
                     [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
                     [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
                     [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellBirth.btnFindObituary addTarget:self action:@selector(btnFindObituaryPressed:) forControlEvents:UIControlEventTouchUpInside];
                     cell=cellBirth;
                 }
             }
@@ -1122,6 +1126,28 @@
 #pragma mark
 #pragma mark IBACTIONS
 #pragma mark
+
+-(void)btnFindObituaryPressed:(id)sender
+{
+    NSLog(@"Find obituary pressed");
+    [[FindObituaryService service]callFindObituaryServiceWIthTkey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            NSLog(@"%@",result);
+            FindObituaryPopUPController *obituaryPopUP=[[FindObituaryPopUPController alloc]initWithNibName:@"FindObituaryPopUPController" bundle:nil];
+            obituaryPopUP.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+            obituaryPopUP.arrObituary=result;
+            [self.view addSubview:obituaryPopUP.view];
+            [self addChildViewController:obituaryPopUP];
+            obituaryPopUP.delegate=self;
+            [obituaryPopUP didMoveToParentViewController:self];
+        }
+    }];
+}
 
 -(void)btnAddLogoPressed:(id)sender
 {
@@ -2316,9 +2342,19 @@
 
 -(void)checkDatesTo
 {
-    [dictAPI setObject:strDeathDate forKey:@"tdied"];
-    [dictAPI setObject:@"N" forKey:@"tliving"];
-    [self updateDictionaryForServiceForKey:@"tdied"];
+    if (isLiving==YES)
+    {
+        [dictAPI setObject:@"" forKey:@"tdied"];
+        [dictAPI setObject:@"Y" forKey:@"tliving"];
+        [self updateDictionaryForServiceForKey:@"tdied"];
+    }
+    else
+    {
+        [dictAPI setObject:strDeathDate forKey:@"tdied"];
+        [dictAPI setObject:@"N" forKey:@"tliving"];
+        [self updateDictionaryForServiceForKey:@"tdied"];
+
+    }
 }
 
 
@@ -2892,5 +2928,41 @@
         
     }];
 }
+
+
+#pragma mark
+#pragma mark FIND OBITUARY DELEGATE
+#pragma mark
+
+-(void)selectedObituary:(ModelFindObituary *)objObituary
+{
+    [[UpdateObituaryService service] callUpdateObituaryServiceWithTKey:self.objFolders.strTkey obituaryID:objObituary.strID withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:result];
+            strPersonName=objTemplates.strtname;
+            strBirthDate=objTemplates.strtborn;
+            strDeathDate=objTemplates.strtdied;
+            strTextVwTags=objTemplates.strMemorialQuote;
+            if (objTemplates.strUserPicURI.length>0)
+            {
+                if (appDel.arrImageSet.count>0)
+                {
+                    [appDel.arrImageSet removeAllObjects];
+                }
+                [appDel.arrImageSet addObject:objTemplates.strUserPicURI];
+                [arrDeleteImages addObject:@""];
+                [appDel.arrImageSet addObject:@"1"];
+            }
+            [tblTagsCreation reloadData];
+        }
+    }];
+}
+
+
 
 @end

@@ -135,7 +135,6 @@
         return 100.0f;
     }
     return 80.0f;
-
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

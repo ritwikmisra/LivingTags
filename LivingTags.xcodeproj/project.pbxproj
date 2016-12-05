@@ -172,6 +172,14 @@
 		0D7843A61DD600E60078A904 /* comment_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7843A11DD600E60078A904 /* comment_inactive.png */; };
 		0D7843A71DD600E60078A904 /* tags_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7843A21DD600E60078A904 /* tags_active.png */; };
 		0D7843A81DD600E60078A904 /* tags_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7843A31DD600E60078A904 /* tags_inactive.png */; };
+		0D79BE2C1DF01BD5004B373E /* CommentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE2B1DF01BD5004B373E /* CommentDetailsController.m */; };
+		0D79BE311DF05358004B373E /* FindObituaryPopUPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE2F1DF05358004B373E /* FindObituaryPopUPController.m */; };
+		0D79BE321DF05358004B373E /* FindObituaryPopUPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D79BE301DF05358004B373E /* FindObituaryPopUPController.xib */; };
+		0D79BE351DF05B9F004B373E /* FindObituaryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE341DF05B9F004B373E /* FindObituaryService.m */; };
+		0D79BE3A1DF0744D004B373E /* FindObituaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE381DF0744C004B373E /* FindObituaryCell.m */; };
+		0D79BE3B1DF0744D004B373E /* FindObituaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D79BE391DF0744D004B373E /* FindObituaryCell.xib */; };
+		0D79BE3E1DF076E3004B373E /* ModelFindObituary.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE3D1DF076E3004B373E /* ModelFindObituary.m */; };
+		0D79BE411DF07D39004B373E /* UpdateObituaryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE401DF07D39004B373E /* UpdateObituaryService.m */; };
 		0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */; };
 		0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */; };
 		0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7DD3441CFEEB5000B6C4B9 /* myView.xib */; };
@@ -565,6 +573,20 @@
 		0D7843A11DD600E60078A904 /* comment_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment_inactive.png; sourceTree = "<group>"; };
 		0D7843A21DD600E60078A904 /* tags_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tags_active.png; sourceTree = "<group>"; };
 		0D7843A31DD600E60078A904 /* tags_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tags_inactive.png; sourceTree = "<group>"; };
+		0D79BE2A1DF01BD5004B373E /* CommentDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailsController.h; sourceTree = "<group>"; };
+		0D79BE2B1DF01BD5004B373E /* CommentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailsController.m; sourceTree = "<group>"; };
+		0D79BE2E1DF05358004B373E /* FindObituaryPopUPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindObituaryPopUPController.h; sourceTree = "<group>"; };
+		0D79BE2F1DF05358004B373E /* FindObituaryPopUPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindObituaryPopUPController.m; sourceTree = "<group>"; };
+		0D79BE301DF05358004B373E /* FindObituaryPopUPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindObituaryPopUPController.xib; sourceTree = "<group>"; };
+		0D79BE331DF05B9F004B373E /* FindObituaryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindObituaryService.h; sourceTree = "<group>"; };
+		0D79BE341DF05B9F004B373E /* FindObituaryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindObituaryService.m; sourceTree = "<group>"; };
+		0D79BE371DF0744C004B373E /* FindObituaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindObituaryCell.h; sourceTree = "<group>"; };
+		0D79BE381DF0744C004B373E /* FindObituaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindObituaryCell.m; sourceTree = "<group>"; };
+		0D79BE391DF0744D004B373E /* FindObituaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindObituaryCell.xib; sourceTree = "<group>"; };
+		0D79BE3C1DF076E3004B373E /* ModelFindObituary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelFindObituary.h; sourceTree = "<group>"; };
+		0D79BE3D1DF076E3004B373E /* ModelFindObituary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelFindObituary.m; sourceTree = "<group>"; };
+		0D79BE3F1DF07D39004B373E /* UpdateObituaryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateObituaryService.h; sourceTree = "<group>"; };
+		0D79BE401DF07D39004B373E /* UpdateObituaryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateObituaryService.m; sourceTree = "<group>"; };
 		0D7BA2351D6B062100F2AD49 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -1234,6 +1256,8 @@
 				0D822CB31DE5D23700AC48E4 /* ViewOtherTagsController.m */,
 				0D0786321DED9DA5002B1195 /* CommentListController.h */,
 				0D0786331DED9DA5002B1195 /* CommentListController.m */,
+				0D79BE2A1DF01BD5004B373E /* CommentDetailsController.h */,
+				0D79BE2B1DF01BD5004B373E /* CommentDetailsController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1275,6 +1299,7 @@
 		0D698D1C1CC8D79000F64745 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D79BE361DF0742B004B373E /* FindObituaryCell */,
 				0D822CAC1DE5C10300AC48E4 /* ViewLocalTagsCell */,
 				0D2D9A851DE463480077C75A /* FAQCell */,
 				0D3308541DE097750085848E /* ProductCell */,
@@ -1400,6 +1425,10 @@
 				0D822CB61DE5D30E00AC48E4 /* ViewLocalTagsService.m */,
 				0D0786351DEDC466002B1195 /* CommentListingService.h */,
 				0D0786361DEDC466002B1195 /* CommentListingService.m */,
+				0D79BE331DF05B9F004B373E /* FindObituaryService.h */,
+				0D79BE341DF05B9F004B373E /* FindObituaryService.m */,
+				0D79BE3F1DF07D39004B373E /* UpdateObituaryService.h */,
+				0D79BE401DF07D39004B373E /* UpdateObituaryService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1434,6 +1463,26 @@
 				0D7843A31DD600E60078A904 /* tags_inactive.png */,
 			);
 			path = DashboardSpaceList;
+			sourceTree = "<group>";
+		};
+		0D79BE2D1DF05331004B373E /* FindObituaryPopup */ = {
+			isa = PBXGroup;
+			children = (
+				0D79BE2E1DF05358004B373E /* FindObituaryPopUPController.h */,
+				0D79BE2F1DF05358004B373E /* FindObituaryPopUPController.m */,
+				0D79BE301DF05358004B373E /* FindObituaryPopUPController.xib */,
+			);
+			path = FindObituaryPopup;
+			sourceTree = "<group>";
+		};
+		0D79BE361DF0742B004B373E /* FindObituaryCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D79BE371DF0744C004B373E /* FindObituaryCell.h */,
+				0D79BE381DF0744C004B373E /* FindObituaryCell.m */,
+				0D79BE391DF0744D004B373E /* FindObituaryCell.xib */,
+			);
+			path = FindObituaryCell;
 			sourceTree = "<group>";
 		};
 		0D7DD3431CFEEB5000B6C4B9 /* CustomAnnotationView */ = {
@@ -1473,6 +1522,7 @@
 		0D85A7DE1D63071B003F4427 /* CustomPopUP */ = {
 			isa = PBXGroup;
 			children = (
+				0D79BE2D1DF05331004B373E /* FindObituaryPopup */,
 				0DE4CF391DCB5EE000798B1F /* Category */,
 				0DE96D6F1DC9F8E7000981B1 /* ContactsPopUP */,
 				0DD1981D1DB62554003BB828 /* previewPopUP */,
@@ -1557,6 +1607,8 @@
 				0D822CBB1DE5E64E00AC48E4 /* ModelViewLocalTags.m */,
 				0D07862F1DED93F6002B1195 /* ModelCommentDetails.h */,
 				0D0786301DED93F7002B1195 /* ModelCommentDetails.m */,
+				0D79BE3C1DF076E3004B373E /* ModelFindObituary.h */,
+				0D79BE3D1DF076E3004B373E /* ModelFindObituary.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -1945,6 +1997,7 @@
 				0D6659341DA67CAF00566879 /* add_icon.png in Resources */,
 				0DF0089A1DAFB76500BD39C3 /* audio.png in Resources */,
 				0D5903AF1DD0C5140048B5EF /* ProfileCell.xib in Resources */,
+				0D79BE321DF05358004B373E /* FindObituaryPopUPController.xib in Resources */,
 				0DF008A41DAFB76500BD39C3 /* memorial.png in Resources */,
 				0D1DDF7B1DA7BB5B0063F2F9 /* bg_btn.png in Resources */,
 				0D3A40121DB50EF40040D6D4 /* g_plus-1.png in Resources */,
@@ -2009,6 +2062,7 @@
 				0DB8678C1DC09F4E00D428F2 /* CustomdatePickerViewController.xib in Resources */,
 				0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */,
 				0D3308531DE0788A0085848E /* privacy_policy.html in Resources */,
+				0D79BE3B1DF0744D004B373E /* FindObituaryCell.xib in Resources */,
 				0D3308591DE097A10085848E /* ProductDetailsCell.xib in Resources */,
 				0D10ED111DCDF120006130C5 /* data_size.png in Resources */,
 				0D6659281DA666E400566879 /* password_icon.png in Resources */,
@@ -2097,6 +2151,7 @@
 				0D5903A91DD09B8A0048B5EF /* ModelMyTagsCount.m in Sources */,
 				CD757A8F1D50C5E60033CF5D /* ProfileViewController.m in Sources */,
 				0D37314B1CD8A10B00EDC547 /* UIImageView+HighlightedWebCache.m in Sources */,
+				0D79BE3A1DF0744D004B373E /* FindObituaryCell.m in Sources */,
 				0D5EA23F1CCB6A0B00CA0DAE /* WebServiceBaseClass.m in Sources */,
 				0D9350BA1CDB61F800E403B2 /* YTVimeoExtractor.m in Sources */,
 				0D569A391DD4D40C00012D60 /* DashboardSizeCell.m in Sources */,
@@ -2108,6 +2163,7 @@
 				0D8923301DD7599D0018A7CD /* MyTagsCell.m in Sources */,
 				0D3731551CD8B71F00EDC547 /* ForgetPasswordViewController.m in Sources */,
 				0D5903A61DD099330048B5EF /* MyTagsBatchCountService.m in Sources */,
+				0D79BE3E1DF076E3004B373E /* ModelFindObituary.m in Sources */,
 				0D8934E11DB11A0200A48562 /* AddLogoCell.m in Sources */,
 				0DD712631DE3178100F0BDD4 /* QRCodeReaderView.m in Sources */,
 				0D3731461CD8A10B00EDC547 /* SDWebImagePrefetcher.m in Sources */,
@@ -2120,6 +2176,8 @@
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
 				0DD9BED81DD71EDD008328C6 /* DashboardMyTagsListingService.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
+				0D79BE2C1DF01BD5004B373E /* CommentDetailsController.m in Sources */,
+				0D79BE311DF05358004B373E /* FindObituaryPopUPController.m in Sources */,
 				0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */,
 				0D28FE991DC8E3CC0079FFDF /* PreviewAdService.m in Sources */,
 				0D822CB91DE5D82C00AC48E4 /* DeleteVoiceService.m in Sources */,
@@ -2141,6 +2199,7 @@
 				0D9350BB1CDB61F800E403B2 /* YTVimeoExtractorOperation.m in Sources */,
 				0D20AEB81D47B2FF00851994 /* CreateTagsCell.m in Sources */,
 				0D77F6B41CD7874C00671159 /* ProfileGetService.m in Sources */,
+				0D79BE351DF05B9F004B373E /* FindObituaryService.m in Sources */,
 				0D2D9A891DE463680077C75A /* FAQCell.m in Sources */,
 				0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */,
 				0DD712641DE3178100F0BDD4 /* QRCodeReaderViewController.m in Sources */,
@@ -2175,6 +2234,7 @@
 				0D3731491CD8A10B00EDC547 /* UIImage+MultiFormat.m in Sources */,
 				0D822CB41DE5D23700AC48E4 /* ViewOtherTagsController.m in Sources */,
 				0D28FE961DC8B8910079FFDF /* PublishTagService.m in Sources */,
+				0D79BE411DF07D39004B373E /* UpdateObituaryService.m in Sources */,
 				0D10ED011DCDEF81006130C5 /* MyTagsListingCell.m in Sources */,
 				0DE96D731DC9F958000981B1 /* ContactsPopupController.m in Sources */,
 				0D3731421CD8A10B00EDC547 /* SDWebImageDecoder.m in Sources */,
