@@ -39,31 +39,19 @@
                             <constraint firstAttribute="height" secondItem="CiU-JE-iiu" secondAttribute="height" id="snd-WL-aaz"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61W-Gn-iSX">
-                        <rect key="frame" x="294" y="15" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="61W-Gn-iSX" secondAttribute="height" id="cZq-oT-Hod"/>
-                        </constraints>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="living_button_off.png"/>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fDi-hC-Uhn" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="3BQ-Qm-Fwd"/>
-                    <constraint firstItem="61W-Gn-iSX" firstAttribute="leading" secondItem="7dm-Z6-X87" secondAttribute="trailing" multiplier="1.05" id="7Yp-Pj-z4S"/>
                     <constraint firstItem="fDi-hC-Uhn" firstAttribute="centerX" secondItem="7dm-Z6-X87" secondAttribute="centerX" multiplier="1.1" id="Cs1-R1-jHQ"/>
                     <constraint firstItem="fDi-hC-Uhn" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Ktg-Z7-4Ay"/>
                     <constraint firstItem="7dm-Z6-X87" firstAttribute="centerY" secondItem="fDi-hC-Uhn" secondAttribute="centerY" id="Ofc-mg-Zev"/>
-                    <constraint firstItem="61W-Gn-iSX" firstAttribute="top" secondItem="7dm-Z6-X87" secondAttribute="top" id="RVe-zC-zIf"/>
                     <constraint firstItem="fDi-hC-Uhn" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="Yhb-M2-rPd"/>
                     <constraint firstItem="fDi-hC-Uhn" firstAttribute="height" secondItem="7dm-Z6-X87" secondAttribute="height" multiplier="1.25" id="bh3-WO-UT2"/>
                     <constraint firstItem="fDi-hC-Uhn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="est-9Q-00b"/>
                     <constraint firstItem="fDi-hC-Uhn" firstAttribute="width" secondItem="7dm-Z6-X87" secondAttribute="width" multiplier="1.25" id="s1r-Z2-I4G"/>
-                    <constraint firstItem="7dm-Z6-X87" firstAttribute="height" secondItem="61W-Gn-iSX" secondAttribute="height" multiplier="6" id="sHi-yY-msh"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnTick" destination="61W-Gn-iSX" id="s9Q-o8-o8V"/>
                 <outlet property="txtVwComments" destination="CiU-JE-iiu" id="TdX-hn-5Lu"/>
             </connections>
             <point key="canvasLocation" x="354" y="127.5"/>
@@ -81,15 +69,25 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MdJ-zN-ddu">
                         <rect key="frame" x="18" y="15" width="262" height="120"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yoJ-pH-18V">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yoJ-pH-18V">
                                 <rect key="frame" x="0.0" y="0.0" width="262" height="120"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MyU-9c-B0K">
+                                <rect key="frame" x="113" y="41" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="7GV-4G-zUD"/>
+                                    <constraint firstAttribute="height" constant="37" id="aJC-PN-Ngc"/>
+                                </constraints>
+                                <color key="color" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yoJ-pH-18V" firstAttribute="centerY" secondItem="MdJ-zN-ddu" secondAttribute="centerY" id="9OC-Vi-syB"/>
+                            <constraint firstItem="MyU-9c-B0K" firstAttribute="centerY" secondItem="yoJ-pH-18V" secondAttribute="centerY" id="CEc-zc-llw"/>
                             <constraint firstItem="yoJ-pH-18V" firstAttribute="width" secondItem="MdJ-zN-ddu" secondAttribute="width" id="aOp-LE-VMy"/>
                             <constraint firstItem="yoJ-pH-18V" firstAttribute="centerX" secondItem="MdJ-zN-ddu" secondAttribute="centerX" id="gO6-zr-BJh"/>
+                            <constraint firstItem="MyU-9c-B0K" firstAttribute="centerX" secondItem="yoJ-pH-18V" secondAttribute="centerX" id="xD0-SU-WSt"/>
                             <constraint firstItem="yoJ-pH-18V" firstAttribute="height" secondItem="MdJ-zN-ddu" secondAttribute="height" id="z3Y-AP-CVB"/>
                         </constraints>
                     </view>
@@ -117,6 +115,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="actIndicator" destination="MyU-9c-B0K" id="ZXH-to-IeU"/>
                 <outlet property="btnTick" destination="V8Y-EL-2QD" id="Hyk-EN-AlF"/>
                 <outlet property="imgAssets" destination="yoJ-pH-18V" id="B5P-xq-2S1"/>
             </connections>
@@ -125,6 +124,5 @@
     </objects>
     <resources>
         <image name="living_button_off.png" width="45" height="43"/>
-        <image name="logo.png" width="964" height="280"/>
     </resources>
 </document>

@@ -48,6 +48,10 @@
         if ([dict objectForKey:@"tcaasset_thumb"] && ![[dict objectForKey:@"tcaasset_thumb"] isKindOfClass:[NSNull class]])
         {
             self.strAssetsThumb=[dict objectForKey:@"tcaasset_thumb"];
+            if ([self.strAssetsThumb containsString:@"https"])
+            {
+                self.strAssetsThumb=[self.strAssetsThumb stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
+            }
         }
         else
         {
@@ -67,6 +71,11 @@
         if ([dict objectForKey:@"tcaasset"] && ![[dict objectForKey:@"tcaasset"] isKindOfClass:[NSNull class]])
         {
             self.strAssets=[dict objectForKey:@"tcaasset"];
+            if ([self.strAssets containsString:@"https"])
+            {
+                self.strAssets=[self.strAssets stringByReplacingOccurrencesOfString:@"https" withString:@"http"];
+            }
+
         }
         else
         {

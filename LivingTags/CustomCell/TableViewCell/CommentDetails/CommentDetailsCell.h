@@ -13,5 +13,9 @@
 @property(nonatomic,strong)IBOutlet UITextView *txtVwComments;
 @property(nonatomic,strong)IBOutlet UIButton *btnTick;
 @property(nonatomic,strong)IBOutlet UIImageView *imgAssets;
+@property(nonatomic,strong)IBOutlet UIActivityIndicatorView *actIndicator;
+
+@property(nonatomic,strong)IBOutlet UIImageView *imgVideo;
+@property(nonatomic,strong)IBOutlet UIButton *btnVideoPlay;
 
 @end

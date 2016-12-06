@@ -184,6 +184,7 @@
 		0D7C7D101DF6D8A8003FD4DC /* CommentDetailsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C7D0F1DF6D8A8003FD4DC /* CommentDetailsService.m */; };
 		0D7C7D131DF6DA20003FD4DC /* ModelAssetDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C7D121DF6DA20003FD4DC /* ModelAssetDetails.m */; };
 		0D7C7D151DF6E66B003FD4DC /* CommentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C7D141DF6E66B003FD4DC /* CommentDetailsController.m */; };
+		0D7C7D181DF70D98003FD4DC /* DeleteCommentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C7D171DF70D98003FD4DC /* DeleteCommentService.m */; };
 		0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7DD3441CFEEB5000B6C4B9 /* myView.xib */; };
 		0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */; };
 		0D7F7B791DE450E30067992A /* FAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F7B781DE450E30067992A /* FAQViewController.m */; };
@@ -598,6 +599,8 @@
 		0D7C7D111DF6DA20003FD4DC /* ModelAssetDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAssetDetails.h; sourceTree = "<group>"; };
 		0D7C7D121DF6DA20003FD4DC /* ModelAssetDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAssetDetails.m; sourceTree = "<group>"; };
 		0D7C7D141DF6E66B003FD4DC /* CommentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailsController.m; sourceTree = "<group>"; };
+		0D7C7D161DF70D98003FD4DC /* DeleteCommentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteCommentService.h; sourceTree = "<group>"; };
+		0D7C7D171DF70D98003FD4DC /* DeleteCommentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteCommentService.m; sourceTree = "<group>"; };
 		0D7DD3441CFEEB5000B6C4B9 /* myView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myView.xib; sourceTree = "<group>"; };
 		0D7DD3451CFEEB5000B6C4B9 /* TMAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAnnotationView.h; sourceTree = "<group>"; };
 		0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAnnotationView.m; sourceTree = "<group>"; };
@@ -1366,6 +1369,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D7C7D191DF71958003FD4DC /* comment */,
 				0DB08FA41DE851160058C4D6 /* pop_map.png */,
 				0D822CBD1DE5E72200AC48E4 /* viewOtherTags */,
 				0D66FC6C1DE05936006058AD /* html */,
@@ -1443,6 +1447,8 @@
 				0D79BE401DF07D39004B373E /* UpdateObituaryService.m */,
 				0D7C7D0E1DF6D8A8003FD4DC /* CommentDetailsService.h */,
 				0D7C7D0F1DF6D8A8003FD4DC /* CommentDetailsService.m */,
+				0D7C7D161DF70D98003FD4DC /* DeleteCommentService.h */,
+				0D7C7D171DF70D98003FD4DC /* DeleteCommentService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1497,6 +1503,13 @@
 				0D79BE391DF0744D004B373E /* FindObituaryCell.xib */,
 			);
 			path = FindObituaryCell;
+			sourceTree = "<group>";
+		};
+		0D7C7D191DF71958003FD4DC /* comment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = comment;
 			sourceTree = "<group>";
 		};
 		0D7DD3431CFEEB5000B6C4B9 /* CustomAnnotationView */ = {
@@ -2278,6 +2291,7 @@
 				0D5903A21DD081470048B5EF /* SettingsCell.m in Sources */,
 				0D3731521CD8A8C600EDC547 /* UpdateProfileService.m in Sources */,
 				0D0786371DEDC466002B1195 /* CommentListingService.m in Sources */,
+				0D7C7D181DF70D98003FD4DC /* DeleteCommentService.m in Sources */,
 				0DE967531D353D690088C508 /* LivingTagsSecondStepViewController.m in Sources */,
 				0DF008651DAF9F6F00BD39C3 /* AddVideoCell.m in Sources */,
 				0D3121231DC357AC00F00B8F /* ModelFolders.m in Sources */,

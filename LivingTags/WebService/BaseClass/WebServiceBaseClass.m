@@ -54,7 +54,8 @@ NSString *const strAPI[]={
     [WEB_SERVICE_COMMENT_LISTING]=@"tagcomments/getMyTagComments",
     [WEB_SERVICE_GET_OBITUARIES]=@"obituaries/findObituaryData",
     [WEB_SERVICE_UPDATE_OBITUARIES]=@"obituaries/UpdateTagByObituaryData",
-    [WEB_SERVICE_COMMENT_DETAILS]=@"tagcomments/getTagCommentDetails"
+    [WEB_SERVICE_COMMENT_DETAILS]=@"tagcomments/getTagCommentDetails",
+    [WEB_SERVICE_DELETE_COMMENT]=@"tagcomments/deleteTagComment"
 };
 
 

@@ -1221,8 +1221,8 @@
                                             <constraint firstAttribute="width" secondItem="mCQ-YY-hBJ" secondAttribute="height" id="5i4-nC-nnU"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Robert has commented on A Beautiful plase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLh-Eu-QnE">
-                                        <rect key="frame" x="112" y="12" width="380" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Robert has commented on A Beautiful plase" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLh-Eu-QnE">
+                                        <rect key="frame" x="112" y="7" width="380" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1230,7 +1230,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" secondItem="NLh-Eu-QnE" secondAttribute="height" multiplier="3" id="ExZ-nf-dGO"/>
+                                    <constraint firstAttribute="height" secondItem="NLh-Eu-QnE" secondAttribute="height" multiplier="2" id="ExZ-nf-dGO"/>
                                     <constraint firstItem="NLh-Eu-QnE" firstAttribute="leading" secondItem="mCQ-YY-hBJ" secondAttribute="trailing" multiplier="1.2" id="FWI-qP-883"/>
                                     <constraint firstAttribute="trailing" secondItem="NLh-Eu-QnE" secondAttribute="trailing" multiplier="1.06" id="NQx-8z-q1v"/>
                                     <constraint firstItem="mCQ-YY-hBJ" firstAttribute="centerY" secondItem="NLh-Eu-QnE" secondAttribute="centerY" multiplier="1.4" id="PdQ-kW-sPn"/>
@@ -1252,12 +1252,6 @@
                                                     <constraint firstAttribute="height" constant="1" id="OeO-iz-QTn"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA USED :   25 mb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEd-fc-oob">
-                                                <rect key="frame" x="25" y="0.0" width="209" height="43"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCa-c3-j2t">
                                                 <rect key="frame" x="400" y="13" width="87" height="17"/>
                                                 <color key="backgroundColor" red="0.3411764706" green="0.77647058820000003" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1265,6 +1259,9 @@
                                                 <state key="normal" title="Delete">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnDeletePressed:" destination="E5B-jQ-s3i" eventType="touchUpInside" id="Kv2-l5-cWO"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLg-y0-bRx">
                                                 <rect key="frame" x="301" y="13" width="87" height="17"/>
@@ -1273,7 +1270,16 @@
                                                 <state key="normal" title="Publish">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnPublishPressed:" destination="E5B-jQ-s3i" eventType="touchUpInside" id="bIn-JX-4rt"/>
+                                                </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATA USED :   25 mb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEd-fc-oob">
+                                                <rect key="frame" x="25" y="0.0" width="249" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1283,7 +1289,7 @@
                                             <constraint firstItem="iIS-xM-ee9" firstAttribute="centerX" secondItem="c2R-Ul-zTq" secondAttribute="centerX" id="3fv-tf-7pE"/>
                                             <constraint firstItem="hCa-c3-j2t" firstAttribute="centerX" secondItem="c2R-Ul-zTq" secondAttribute="centerX" multiplier="1.7" id="7ze-xD-RiU"/>
                                             <constraint firstAttribute="bottom" secondItem="iIS-xM-ee9" secondAttribute="bottom" id="FwM-uj-mYI"/>
-                                            <constraint firstAttribute="width" secondItem="GEd-fc-oob" secondAttribute="width" multiplier="2.5" id="N7u-ze-2mj"/>
+                                            <constraint firstAttribute="width" secondItem="GEd-fc-oob" secondAttribute="width" multiplier="2.1" id="N7u-ze-2mj"/>
                                             <constraint firstItem="gLg-y0-bRx" firstAttribute="width" secondItem="hCa-c3-j2t" secondAttribute="width" id="Rb6-U8-M5H"/>
                                             <constraint firstItem="gLg-y0-bRx" firstAttribute="centerY" secondItem="hCa-c3-j2t" secondAttribute="centerY" id="S6P-Ie-Prb"/>
                                             <constraint firstAttribute="height" secondItem="hCa-c3-j2t" secondAttribute="height" multiplier="2.5" id="Ybl-hH-9ku"/>

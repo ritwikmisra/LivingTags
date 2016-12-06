@@ -13,6 +13,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self.actIndicator setHidesWhenStopped:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

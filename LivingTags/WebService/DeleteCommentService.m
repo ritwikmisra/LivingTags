@@ -1,34 +1,33 @@
 //
-//  CommentDetailsService.m
+//  DeleteCommentService.m
 //  LivingTags
 //
 //  Created by appsbeetech on 06/12/16.
 //  Copyright © 2016 appsbeetech. All rights reserved.
 //
 
-#import "CommentDetailsService.h"
-#import "ModelCommentDetails.h"
+#import "DeleteCommentService.h"
 
-
-@implementation CommentDetailsService
+@implementation DeleteCommentService
 
 +(id)service
 {
-    static CommentDetailsService *master=nil;
+    static DeleteCommentService *master=nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        master=[[CommentDetailsService alloc] initWithService:WEB_SERVICE_COMMENT_DETAILS];
+        master=[[DeleteCommentService alloc] initWithService:WEB_SERVICE_DELETE_COMMENT];
     });
     return master;
-    
+
 }
 
--(void)callCommentDetailsServiceWithAKey:(NSString *)strAkey tcKey:(NSString *)strTCKey withCompletionHandler:(WebServiceCompletion)handler
+
+-(void)callDeleteServiceWithAKey:(NSString *)strAKey tcKey:(NSString *)strTCKey withCompletionHandler:(WebServiceCompletion)handler
 {
     if (appDel.isRechable)
     {
         NSMutableArray *arr=[[NSMutableArray alloc] init];
-        [arr addObject:[NSString stringWithFormat:@"akey=%@",strAkey]];
+        [arr addObject:[NSString stringWithFormat:@"akey=%@",strAKey]];
         [arr addObject:[NSString stringWithFormat:@"tckey=%@",strTCKey]];
         
         NSString *postParams = [[arr componentsJoinedByString:@"&"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -79,8 +78,7 @@
                             {
                                 if ([[responseDict objectForKey:@"status"]boolValue])
                                 {
-                                    NSDictionary *dict=[[responseDict objectForKey:@"response"] objectForKey:@"data"];
-                                    handler(dict,NO,nil);
+                                    handler(nil,NO,nil);
                                 }
                                 else
                                 {
@@ -109,7 +107,7 @@
     {
         handler(nil,YES,NO_NETWORK);
     }
-    
+
 }
 
 @end
