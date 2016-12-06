@@ -7,6 +7,7 @@
 //
 
 #import "ModelCommentDetails.h"
+#import "ModelAssetDetails.h"
 
 @implementation ModelCommentDetails
 
@@ -158,7 +159,7 @@
         if ([dict objectForKey:@"comment_asset"])
         {
             self.arrCommentAsset=[dict objectForKey:@"comment_asset"];
-        }
+       }
     }
     return self;
 }

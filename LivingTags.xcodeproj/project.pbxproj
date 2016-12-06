@@ -172,7 +172,6 @@
 		0D7843A61DD600E60078A904 /* comment_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7843A11DD600E60078A904 /* comment_inactive.png */; };
 		0D7843A71DD600E60078A904 /* tags_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7843A21DD600E60078A904 /* tags_active.png */; };
 		0D7843A81DD600E60078A904 /* tags_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7843A31DD600E60078A904 /* tags_inactive.png */; };
-		0D79BE2C1DF01BD5004B373E /* CommentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE2B1DF01BD5004B373E /* CommentDetailsController.m */; };
 		0D79BE311DF05358004B373E /* FindObituaryPopUPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE2F1DF05358004B373E /* FindObituaryPopUPController.m */; };
 		0D79BE321DF05358004B373E /* FindObituaryPopUPController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D79BE301DF05358004B373E /* FindObituaryPopUPController.xib */; };
 		0D79BE351DF05B9F004B373E /* FindObituaryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE341DF05B9F004B373E /* FindObituaryService.m */; };
@@ -182,6 +181,9 @@
 		0D79BE411DF07D39004B373E /* UpdateObituaryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79BE401DF07D39004B373E /* UpdateObituaryService.m */; };
 		0D7BA2381D6B062100F2AD49 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */; };
 		0D7BA2391D6B062100F2AD49 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */; };
+		0D7C7D101DF6D8A8003FD4DC /* CommentDetailsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C7D0F1DF6D8A8003FD4DC /* CommentDetailsService.m */; };
+		0D7C7D131DF6DA20003FD4DC /* ModelAssetDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C7D121DF6DA20003FD4DC /* ModelAssetDetails.m */; };
+		0D7C7D151DF6E66B003FD4DC /* CommentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C7D141DF6E66B003FD4DC /* CommentDetailsController.m */; };
 		0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7DD3441CFEEB5000B6C4B9 /* myView.xib */; };
 		0D7DD3481CFEEB5000B6C4B9 /* TMAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */; };
 		0D7F7B791DE450E30067992A /* FAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F7B781DE450E30067992A /* FAQViewController.m */; };
@@ -576,7 +578,6 @@
 		0D7843A21DD600E60078A904 /* tags_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tags_active.png; sourceTree = "<group>"; };
 		0D7843A31DD600E60078A904 /* tags_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tags_inactive.png; sourceTree = "<group>"; };
 		0D79BE2A1DF01BD5004B373E /* CommentDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailsController.h; sourceTree = "<group>"; };
-		0D79BE2B1DF01BD5004B373E /* CommentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailsController.m; sourceTree = "<group>"; };
 		0D79BE2E1DF05358004B373E /* FindObituaryPopUPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindObituaryPopUPController.h; sourceTree = "<group>"; };
 		0D79BE2F1DF05358004B373E /* FindObituaryPopUPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindObituaryPopUPController.m; sourceTree = "<group>"; };
 		0D79BE301DF05358004B373E /* FindObituaryPopUPController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindObituaryPopUPController.xib; sourceTree = "<group>"; };
@@ -592,6 +593,11 @@
 		0D7BA2351D6B062100F2AD49 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		0D7BA2361D6B062100F2AD49 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		0D7BA2371D6B062100F2AD49 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		0D7C7D0E1DF6D8A8003FD4DC /* CommentDetailsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailsService.h; sourceTree = "<group>"; };
+		0D7C7D0F1DF6D8A8003FD4DC /* CommentDetailsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailsService.m; sourceTree = "<group>"; };
+		0D7C7D111DF6DA20003FD4DC /* ModelAssetDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelAssetDetails.h; sourceTree = "<group>"; };
+		0D7C7D121DF6DA20003FD4DC /* ModelAssetDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelAssetDetails.m; sourceTree = "<group>"; };
+		0D7C7D141DF6E66B003FD4DC /* CommentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailsController.m; sourceTree = "<group>"; };
 		0D7DD3441CFEEB5000B6C4B9 /* myView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myView.xib; sourceTree = "<group>"; };
 		0D7DD3451CFEEB5000B6C4B9 /* TMAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAnnotationView.h; sourceTree = "<group>"; };
 		0D7DD3461CFEEB5000B6C4B9 /* TMAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAnnotationView.m; sourceTree = "<group>"; };
@@ -1262,7 +1268,7 @@
 				0D0786321DED9DA5002B1195 /* CommentListController.h */,
 				0D0786331DED9DA5002B1195 /* CommentListController.m */,
 				0D79BE2A1DF01BD5004B373E /* CommentDetailsController.h */,
-				0D79BE2B1DF01BD5004B373E /* CommentDetailsController.m */,
+				0D7C7D141DF6E66B003FD4DC /* CommentDetailsController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1435,6 +1441,8 @@
 				0D79BE341DF05B9F004B373E /* FindObituaryService.m */,
 				0D79BE3F1DF07D39004B373E /* UpdateObituaryService.h */,
 				0D79BE401DF07D39004B373E /* UpdateObituaryService.m */,
+				0D7C7D0E1DF6D8A8003FD4DC /* CommentDetailsService.h */,
+				0D7C7D0F1DF6D8A8003FD4DC /* CommentDetailsService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -1615,6 +1623,8 @@
 				0D0786301DED93F7002B1195 /* ModelCommentDetails.m */,
 				0D79BE3C1DF076E3004B373E /* ModelFindObituary.h */,
 				0D79BE3D1DF076E3004B373E /* ModelFindObituary.m */,
+				0D7C7D111DF6DA20003FD4DC /* ModelAssetDetails.h */,
+				0D7C7D121DF6DA20003FD4DC /* ModelAssetDetails.m */,
 			);
 			path = ModelClasses;
 			sourceTree = "<group>";
@@ -2193,7 +2203,6 @@
 				0D389B9A1CDC8CA100841691 /* MyLivingTagesViewController.m in Sources */,
 				0DD9BED81DD71EDD008328C6 /* DashboardMyTagsListingService.m in Sources */,
 				0D77F6B11CD736AE00671159 /* YTPlayerView.m in Sources */,
-				0D79BE2C1DF01BD5004B373E /* CommentDetailsController.m in Sources */,
 				0D79BE311DF05358004B373E /* FindObituaryPopUPController.m in Sources */,
 				0D66C57F1D5A01C800230261 /* DashboardViewController.m in Sources */,
 				0D28FE991DC8E3CC0079FFDF /* PreviewAdService.m in Sources */,
@@ -2202,11 +2211,13 @@
 				0DD198211DB62615003BB828 /* PreviewPopUpController.m in Sources */,
 				0D3308581DE097A10085848E /* ProductDetailsCell.m in Sources */,
 				0D3731471CD8A10B00EDC547 /* UIButton+WebCache.m in Sources */,
+				0D7C7D131DF6DA20003FD4DC /* ModelAssetDetails.m in Sources */,
 				0D922FAE1CF8664300EC1945 /* CustomAnnotationSingle.m in Sources */,
 				0D698D031CC8CF2500F64745 /* AppDelegate.m in Sources */,
 				0DF7CFA11D4F648300A28CA1 /* CreateTagsPublishService.m in Sources */,
 				0DF008561DAF952500BD39C3 /* PersonGenderCell.m in Sources */,
 				0D9350BD1CDB61F800E403B2 /* YTVimeoVideo.m in Sources */,
+				0D7C7D101DF6D8A8003FD4DC /* CommentDetailsService.m in Sources */,
 				0D924F501D3F8A2B00BC8193 /* LivingTagsSecondStepService.m in Sources */,
 				0DE4CF3D1DCB5EF900798B1F /* CategoryController.m in Sources */,
 				0D1FC5C41D644E940039B962 /* ModelImageUpload.m in Sources */,
@@ -2278,6 +2289,7 @@
 				0D8FCDD41DDF1D5D00B8846D /* ModelProduct.m in Sources */,
 				0D64F40D1DD380A200297FF3 /* ModelImageAndVideoAssets.m in Sources */,
 				0D59039D1DD07D9A0048B5EF /* SettingsViewController.m in Sources */,
+				0D7C7D151DF6E66B003FD4DC /* CommentDetailsController.m in Sources */,
 				0D698D001CC8CF2500F64745 /* main.m in Sources */,
 				0D9350BC1CDB61F800E403B2 /* YTVimeoURLParser.m in Sources */,
 				0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */,

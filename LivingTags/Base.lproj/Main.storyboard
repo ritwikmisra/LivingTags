@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="E5B-jQ-s3i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zRp-Ot-prd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1204,6 +1204,9 @@
                                     <constraint firstAttribute="width" secondItem="Gw6-7O-GGu" secondAttribute="height" id="15K-W8-kEr"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="back.png"/>
+                                <connections>
+                                    <action selector="btnBackPressed:" destination="E5B-jQ-s3i" eventType="touchUpInside" id="OR9-Bi-0w2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AL3-6N-Mtm">
                                 <rect key="frame" x="185" y="14" width="230" height="27"/>
@@ -1301,7 +1304,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="47N-5y-baI">
-                                <rect key="frame" x="39" y="194" width="522" height="380"/>
+                                <rect key="frame" x="39" y="200" width="522" height="380"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1331,7 +1334,7 @@
                             <constraint firstItem="47N-5y-baI" firstAttribute="width" secondItem="c2R-Ul-zTq" secondAttribute="width" id="S5u-OZ-ByS"/>
                             <constraint firstItem="P1Q-5w-qFw" firstAttribute="top" secondItem="mZd-gZ-aWA" secondAttribute="top" id="SXl-e0-jVK"/>
                             <constraint firstItem="qP6-Rd-l4m" firstAttribute="centerX" secondItem="sbi-MJ-16d" secondAttribute="centerX" id="Wrl-uo-GiW"/>
-                            <constraint firstItem="47N-5y-baI" firstAttribute="top" secondItem="c2R-Ul-zTq" secondAttribute="bottom" id="YIy-QM-wEg"/>
+                            <constraint firstItem="47N-5y-baI" firstAttribute="top" secondItem="c2R-Ul-zTq" secondAttribute="bottom" multiplier="1.03" id="YIy-QM-wEg"/>
                             <constraint firstItem="qP6-Rd-l4m" firstAttribute="height" secondItem="47N-5y-baI" secondAttribute="height" multiplier="1.13" id="bBb-dZ-WtO"/>
                             <constraint firstItem="P1Q-5w-qFw" firstAttribute="width" secondItem="mZd-gZ-aWA" secondAttribute="width" id="bev-0K-8YA"/>
                             <constraint firstItem="qP6-Rd-l4m" firstAttribute="top" secondItem="sbi-MJ-16d" secondAttribute="bottom" multiplier="1.07" id="cZB-mO-xPJ"/>
@@ -1355,7 +1358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8M-dm-XDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1648" y="-1186"/>
+            <point key="canvasLocation" x="-1660" y="-1186"/>
         </scene>
         <!--Comment List Controller-->
         <scene sceneID="Rem-vP-meP">
@@ -1485,6 +1488,7 @@
                         <outlet property="btnPublish" destination="hSb-c1-AJF" id="lGE-i2-Jpm"/>
                         <outlet property="btnUnpublish" destination="NYU-6v-yOJ" id="1Gr-KJ-VGN"/>
                         <outlet property="tblComments" destination="yOP-Y3-tkN" id="flh-oJ-Au0"/>
+                        <segue destination="E5B-jQ-s3i" kind="show" identifier="segueCommentDetails" id="EU5-OB-k2e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCc-99-L9V" userLabel="First Responder" sceneMemberID="firstResponder"/>

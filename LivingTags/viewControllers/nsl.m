@@ -17,6 +17,7 @@
     IBOutlet UIButton *btnPublish;
     IBOutlet UILabel *lblSize;
     IBOutlet UITableView *tblCommentDetails;
+    NSMutableArray *arrTickStatus;
 }
 
 @end
@@ -34,14 +35,36 @@
     }
     tblCommentDetails.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblCommentDetails.backgroundColor=[UIColor clearColor];
+    arrTickStatus=[[NSMutableArray alloc]init];
+    for (int i=0; i<10; i++)
+    {
+        [arrTickStatus addObject:@"0"];
+    }
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"%@",self.objService.strTCKey);
+    [[CommentDetailsService service]callCommentDetailsServiceWithAKey:appDel.objUser.strAkey tcKey:self.objService.strTCKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            
+        }
+    }];
+
+}
 
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     imgComment.layer.cornerRadius=imgComment.frame.size.width/2;
     imgComment.clipsToBounds=YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,7 +83,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 10;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,6 +101,16 @@
         {
             cell1=[[[NSBundle mainBundle]loadNibNamed:@"CommentDetailsCell" owner:self options:nil] objectAtIndex:0];
         }
+        cell1.btnTick.tag=indexPath.row;
+        if ([[arrTickStatus objectAtIndex:indexPath.row] isEqualToString:@"0"])
+        {
+            [cell1.btnTick setBackgroundImage:[UIImage imageNamed:@"living_button_off"] forState:UIControlStateNormal];
+        }
+        else
+        {
+            [cell1.btnTick setBackgroundImage:[UIImage imageNamed:@"living_button"] forState:UIControlStateNormal];
+        }
+        [cell1.btnTick addTarget:self action:@selector(btnTickClicked:) forControlEvents:UIControlEventTouchUpInside];
         cell=cell1;
     }
     else
@@ -87,12 +120,41 @@
         {
             cell2=[[[NSBundle mainBundle]loadNibNamed:@"CommentDetailsCell" owner:self options:nil] objectAtIndex:1];
         }
+        cell2.btnTick.tag=indexPath.row;
+        if ([[arrTickStatus objectAtIndex:indexPath.row] isEqualToString:@"0"])
+        {
+            [cell2.btnTick setBackgroundImage:[UIImage imageNamed:@"living_button_off"] forState:UIControlStateNormal];
+        }
+        else
+        {
+            [cell2.btnTick setBackgroundImage:[UIImage imageNamed:@"living_button"] forState:UIControlStateNormal];
+        }
+        [cell2.btnTick addTarget:self action:@selector(btnTickClicked:) forControlEvents:UIControlEventTouchUpInside];
         cell=cell2;
     }
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    cell.backgroundColor=[UIColor clearColor];
+    cell.backgroundColor=[UIColor whiteColor];
     return cell;
 }
 
+#pragma mark
+#pragma mark IBACTION
+#pragma mark
 
+-(void)btnTickClicked:(id)sender
+{
+    UIButton *btn=(id)sender;
+    if ([[arrTickStatus objectAtIndex:[sender tag]]isEqualToString:@"1"])
+    {
+        [arrTickStatus replaceObjectAtIndex:[sender tag] withObject:@"0"];
+    }
+    else
+    {
+        [arrTickStatus replaceObjectAtIndex:[sender tag] withObject:@"1"];
+    }
+    [tblCommentDetails beginUpdates];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+    [tblCommentDetails reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+    [tblCommentDetails endUpdates];
+}
 @end

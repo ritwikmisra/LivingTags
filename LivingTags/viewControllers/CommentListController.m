@@ -11,6 +11,7 @@
 #import "ModelCommentDetails.h"
 #import "CommentListingService.h"
 #import "UIImageView+WebCache.h"
+#import "CommentDetailsController.h"
 
 
 @interface CommentListController ()<UITableViewDelegate,UITableViewDataSource>
@@ -20,6 +21,7 @@
     BOOL isPublish;
     NSMutableArray *arrResponse;
     IBOutlet UITableView *tblComments;
+    ModelCommentDetails *objSegue;
 }
 
 @end
@@ -163,7 +165,23 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    //segueCommentDetails
+    objSegue=[arrResponse objectAtIndex:indexPath.row];
+    NSLog(@"%@",objSegue.strTCKey);
+    [self performSegueWithIdentifier:@"segueCommentDetails" sender:self];
+}
+
+#pragma mark
+#pragma mark prepare for segue
+#pragma mark
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueCommentDetails"])
+    {
+        CommentDetailsController *master=[segue destinationViewController];
+        master.objService=objSegue;
+    }
 }
 
 @end

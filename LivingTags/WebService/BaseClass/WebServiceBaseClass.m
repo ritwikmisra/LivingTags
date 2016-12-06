@@ -13,9 +13,7 @@
 
 #define BASE_URL @"http://developer.livingtags.com/api/"
 //#define BASE_URL @"http://staging.livingtags.com/api/"
-
 //#define BASE_URL @"http://192.168.0.1/LivingTags/www/api/"
-//http://developer.livingtags.com/api/Auths/signin
 
 #define K_NOTIFICATION_CREATE_TAGS_IMAGES_UPLOAD @"IMAGE_UPLOAD_CREATE_TAGS"
 #define K_NOTIFICATION_CREATE_TAGS_VIDEO_UPLOAD @"VIDEO_UPLOAD_CREATE_TAGS"
@@ -55,7 +53,8 @@ NSString *const strAPI[]={
     [WEB_SERVICE_VIEW_LOCAL_TAGS]=@"tags/getLocalTagLists",
     [WEB_SERVICE_COMMENT_LISTING]=@"tagcomments/getMyTagComments",
     [WEB_SERVICE_GET_OBITUARIES]=@"obituaries/findObituaryData",
-    [WEB_SERVICE_UPDATE_OBITUARIES]=@"obituaries/UpdateTagByObituaryData"
+    [WEB_SERVICE_UPDATE_OBITUARIES]=@"obituaries/UpdateTagByObituaryData",
+    [WEB_SERVICE_COMMENT_DETAILS]=@"tagcomments/getTagCommentDetails"
 };
 
 

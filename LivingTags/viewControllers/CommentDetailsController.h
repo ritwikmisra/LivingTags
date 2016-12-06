@@ -7,7 +7,10 @@
 //
 
 #import "ViewControllerBaseClassViewController.h"
+#import "ModelCommentDetails.h"
 
 @interface CommentDetailsController : ViewControllerBaseClassViewController
+
+@property(nonatomic,strong)ModelCommentDetails *objService;
 
 @end
