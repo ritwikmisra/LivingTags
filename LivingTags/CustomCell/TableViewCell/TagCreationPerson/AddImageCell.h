@@ -14,6 +14,7 @@
 @optional
 -(void)selectImages;
 -(void)deleteImagesFromIndex:(NSInteger)i;
+-(void)editProfilePicPressed;
 
 @end
 @interface AddImageCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>

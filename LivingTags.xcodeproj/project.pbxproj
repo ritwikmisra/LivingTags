@@ -221,6 +221,8 @@
 		0D898E9B1CCF58E400B35D04 /* ModelBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D898E9A1CCF58E400B35D04 /* ModelBaseClass.m */; };
 		0D8A38181DF5AE1E00601812 /* CommentDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A38161DF5AE1D00601812 /* CommentDetailsCell.m */; };
 		0D8A38191DF5AE1E00601812 /* CommentDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A38171DF5AE1D00601812 /* CommentDetailsCell.xib */; };
+		0D8BDBAB1DF80D350075EA00 /* PersonProfilePicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BDBA91DF80D350075EA00 /* PersonProfilePicCell.m */; };
+		0D8BDBAC1DF80D350075EA00 /* PersonProfilePicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8BDBAA1DF80D350075EA00 /* PersonProfilePicCell.xib */; };
 		0D8BE0911D2E62E700527345 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8BE0901D2E62E700527345 /* Contacts.framework */; };
 		0D8FCDC91DDF02A200B8846D /* ProductListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FCDC81DDF02A200B8846D /* ProductListingViewController.m */; };
 		0D8FCDCB1DDF14BA00B8846D /* product_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8FCDCA1DDF14BA00B8846D /* product_search.png */; };
@@ -655,6 +657,9 @@
 		0D8A38151DF5AE1D00601812 /* CommentDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailsCell.h; sourceTree = "<group>"; };
 		0D8A38161DF5AE1D00601812 /* CommentDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailsCell.m; sourceTree = "<group>"; };
 		0D8A38171DF5AE1D00601812 /* CommentDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentDetailsCell.xib; sourceTree = "<group>"; };
+		0D8BDBA81DF80D350075EA00 /* PersonProfilePicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonProfilePicCell.h; sourceTree = "<group>"; };
+		0D8BDBA91DF80D350075EA00 /* PersonProfilePicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonProfilePicCell.m; sourceTree = "<group>"; };
+		0D8BDBAA1DF80D350075EA00 /* PersonProfilePicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonProfilePicCell.xib; sourceTree = "<group>"; };
 		0D8BE0901D2E62E700527345 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		0D8FCDC71DDF02A200B8846D /* ProductListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductListingViewController.h; sourceTree = "<group>"; };
 		0D8FCDC81DDF02A200B8846D /* ProductListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListingViewController.m; sourceTree = "<group>"; };
@@ -1297,6 +1302,7 @@
 		0D698D1B1CC8D79000F64745 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0D8BDBA71DF80D100075EA00 /* ProfileImageCell */,
 				0D8FCDCC1DDF182A00B8846D /* ProductCell */,
 				0D56FA471DC2148900972DF0 /* PersonImageCell */,
 				0D8934D11DB0CE8800A48562 /* PersonTagCell */,
@@ -1659,6 +1665,16 @@
 				0D8A38171DF5AE1D00601812 /* CommentDetailsCell.xib */,
 			);
 			path = CommentDetails;
+			sourceTree = "<group>";
+		};
+		0D8BDBA71DF80D100075EA00 /* ProfileImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D8BDBA81DF80D350075EA00 /* PersonProfilePicCell.h */,
+				0D8BDBA91DF80D350075EA00 /* PersonProfilePicCell.m */,
+				0D8BDBAA1DF80D350075EA00 /* PersonProfilePicCell.xib */,
+			);
+			path = ProfileImageCell;
 			sourceTree = "<group>";
 		};
 		0D8FCDCC1DDF182A00B8846D /* ProductCell */ = {
@@ -2033,6 +2049,7 @@
 				0D66FC6E1DE05936006058AD /* about.html in Resources */,
 				0D698D0E1CC8CF2500F64745 /* Assets.xcassets in Resources */,
 				0D66593D1DA67CAF00566879 /* view_local_tags.png in Resources */,
+				0D8BDBAC1DF80D350075EA00 /* PersonProfilePicCell.xib in Resources */,
 				0D6659361DA67CAF00566879 /* memorial_tag.png in Resources */,
 				0D6659341DA67CAF00566879 /* add_icon.png in Resources */,
 				0DF0089A1DAFB76500BD39C3 /* audio.png in Resources */,
@@ -2235,6 +2252,7 @@
 				0DE4CF3D1DCB5EF900798B1F /* CategoryController.m in Sources */,
 				0D1FC5C41D644E940039B962 /* ModelImageUpload.m in Sources */,
 				0D8934DB1DB1013300A48562 /* CategoryCell.m in Sources */,
+				0D8BDBAB1DF80D350075EA00 /* PersonProfilePicCell.m in Sources */,
 				0D901B9D1D3E7C04002B6735 /* ModelCreateTagsSecondStep.m in Sources */,
 				0D37314A1CD8A10B00EDC547 /* UIImage+WebP.m in Sources */,
 				0D9350BB1CDB61F800E403B2 /* YTVimeoExtractorOperation.m in Sources */,
