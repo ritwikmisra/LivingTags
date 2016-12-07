@@ -79,7 +79,6 @@
     NSMutableDictionary *dictAPI;
     
     // cloudinary instance
-    CLCloudinary *cloudinary;
     
     AVAudioPlayer *player;
     VoiceTagCell *cellVoiceRecord;
@@ -115,18 +114,7 @@
     arrPlaceHolders=[[NSMutableArray alloc]initWithObjects:@"Business Name",@"Contact Name",@"Title",@"Business Address",@"Business Phone",@"Cell Phone",@"Fax",@"Email",@"Website", nil];
     strDate=@"";
     strCategory=@"Category";
-    cloudinary = [[CLCloudinary alloc] init];
     
-    /////////////// developer cloudinary////////////////////
-   /* [cloudinary.config setValue:@"dlivingtags" forKey:@"cloud_name"];
-    [cloudinary.config setValue:@"354245266233988" forKey:@"api_key"];
-    [cloudinary.config setValue:@"4bNjgpPL3q-UnNH54aeHdLDs_3U" forKey:@"api_secret"];*/
-    
-    /////////////////////staging cloudinary///////////////////
-    [cloudinary.config setValue:@"livingtags-staging" forKey:@"cloud_name"];
-    [cloudinary.config setValue:@"886456191378635" forKey:@"api_key"];
-    [cloudinary.config setValue:@"0Zh1hG_DxqNaVaFEX8uP3qR6h4Y" forKey:@"api_secret"];
-
     strGender=@"";
     isLocation=NO;
     isTextViewClicked=NO;
