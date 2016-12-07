@@ -83,18 +83,18 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="comments.png" translatesAutoresizingMaskIntoConstraints="NO" id="tkM-xj-oMN">
-                                <rect key="frame" x="120" y="40" width="13" height="13"/>
+                                <rect key="frame" x="121" y="40" width="12" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tkM-xj-oMN" secondAttribute="height" id="Vxr-RL-oDQ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBw-bE-F95">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBw-bE-F95">
                                 <rect key="frame" x="137" y="39" width="53" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="7"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="data_size.png" translatesAutoresizingMaskIntoConstraints="NO" id="T1Y-2a-vwk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="data_size.png" translatesAutoresizingMaskIntoConstraints="NO" id="T1Y-2a-vwk">
                                 <rect key="frame" x="193" y="40" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" secondItem="T1Y-2a-vwk" secondAttribute="width" id="10e-nE-oj0"/>
