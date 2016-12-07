@@ -11,7 +11,6 @@
 #import "UIImageView+WebCache.h"
 #import "PersonCell.h"
 #import "ModelImageAndVideoAssets.h"
-#import "PersonProfilePicCell.h"
 
 @implementation AddImageCell
 
@@ -21,8 +20,8 @@
     UINib *cellNib = [UINib nibWithNibName:@"PersonImageCell" bundle:nil];
     [self.cllvwImages registerNib:cellNib forCellWithReuseIdentifier:@"PersonImageCell"];
     
-    UINib *cellNib1 = [UINib nibWithNibName:@"PersonProfilePicCell" bundle:nil];
-    [self.cllvwImages registerNib:cellNib1 forCellWithReuseIdentifier:@"PersonProfilePicCell"];
+    UINib *cellNib1 = [UINib nibWithNibName:@"PersonCell" bundle:nil];
+    [self.cllvwImages registerNib:cellNib1 forCellWithReuseIdentifier:@"PersonCell"];
 
     
     self.cllvwImages.dataSource=self;
@@ -52,7 +51,7 @@
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString   *strIdentifier=@"PersonImageCell";
-    static NSString   *strIdentifier2=@"PersonProfilePicCell";
+    static NSString   *strIdentifier2=@"PersonCell";
     NSLog(@"%@",self.appDel.arrImageSet);
     if (self.appDel.arrImageSet.count>0)
     {
@@ -68,19 +67,23 @@
             }
             else
             {
-                PersonProfilePicCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier2 forIndexPath:indexPath];
+                PersonCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:strIdentifier2 forIndexPath:indexPath];
                 NSLog(@"%@",[self.appDel.arrImageSet objectAtIndex:indexPath.row]);
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [cell.imgProfilePic sd_setImageWithURL:[NSURL URLWithString:[self.appDel.arrImageSet objectAtIndex:indexPath.row]]
+                    [cell.imgPicl sd_setImageWithURL:[NSURL URLWithString:[self.appDel.arrImageSet objectAtIndex:indexPath.row]]
                                     placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
                                              options:SDWebImageHighPriority
                                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                [cell.actImages startAnimating];
                                             }
                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                               [cell.actImages stopAnimating];
                                                
                                            }];
                 });
-                [cell.btnEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
+                
+                cell.btnDelete.tag=indexPath.row;
+                cell.btnDelete.hidden=YES;
                 return cell;
             }
         }
@@ -110,6 +113,7 @@
 
                                            }];
             });
+
             cell.btnDelete.tag=indexPath.row;
             [cell.btnDelete addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
@@ -166,14 +170,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(deleteImagesFromIndex:)])
     {
         [self.delegate deleteImagesFromIndex:[sender tag]];
-    }
-}
-
--(void)btnEditPressed:(id)sender
-{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(editProfilePicPressed)])
-    {
-        [self.delegate editProfilePicPressed];
     }
 
 }

@@ -17,7 +17,6 @@
 @property(nonatomic,strong)NSString *strImageFolder;
 @property(nonatomic,strong)NSString *strTFolder;
 @property(nonatomic,strong)NSString *strProfileFolder;
-@property(nonatomic,strong)NSString *strCoverPicFolder;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 @end

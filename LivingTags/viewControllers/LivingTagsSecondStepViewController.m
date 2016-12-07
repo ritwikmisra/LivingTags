@@ -115,14 +115,14 @@
     cloudinary = [[CLCloudinary alloc] init];
     
     //////////// developer cloudinary//////////////////
-    [cloudinary.config setValue:@"dlivingtags" forKey:@"cloud_name"];
+    /*[cloudinary.config setValue:@"dlivingtags" forKey:@"cloud_name"];
     [cloudinary.config setValue:@"354245266233988" forKey:@"api_key"];
-    [cloudinary.config setValue:@"4bNjgpPL3q-UnNH54aeHdLDs_3U" forKey:@"api_secret"];
+    [cloudinary.config setValue:@"4bNjgpPL3q-UnNH54aeHdLDs_3U" forKey:@"api_secret"];*/
     
     /////////////////////staging cloudinary///////////////////
-  /*  [cloudinary.config setValue:@"livingtags-staging" forKey:@"cloud_name"];
+    [cloudinary.config setValue:@"livingtags-staging" forKey:@"cloud_name"];
     [cloudinary.config setValue:@"886456191378635" forKey:@"api_key"];
-    [cloudinary.config setValue:@"0Zh1hG_DxqNaVaFEX8uP3qR6h4Y" forKey:@"api_secret"];*/
+    [cloudinary.config setValue:@"0Zh1hG_DxqNaVaFEX8uP3qR6h4Y" forKey:@"api_secret"];
 
     strGender=@"";
     isLiving=NO;
@@ -1789,32 +1789,6 @@
 #pragma mark Add Images delegate
 #pragma mark
 
--(void)editProfilePicPressed
-{
-    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to edit your profile picture??" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self selectImages];
-        [alertController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }];
-    
-    UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [alertController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-        
-    }];
-    
-    [alertController addAction:actionOK];
-    [alertController addAction:actionCancel];
-    
-    [self presentViewController:alertController animated:YES completion:^{
-        
-    }];
-
-}
-
 -(void)selectImages
 {
     UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"Do you want to take a picture or select it from gallery??" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -2437,8 +2411,6 @@
         NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
         CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
         NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-        strTimestamp=[strTimestamp stringByReplacingOccurrencesOfString:@"." withString:@""];
-        NSLog(@"%@",strTimestamp);
         NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strProfileFolder,strTimestamp];
         // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
         [self displayNetworkActivity];
@@ -2508,155 +2480,76 @@
     }
     else
     {
-        if (appDel.arrImageSet.count>0)    //////////******************** for asset image uploading*****************////////////////////////
-        {
-            NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
-            CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
-            NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-            strTimestamp=[strTimestamp stringByReplacingOccurrencesOfString:@"." withString:@""];
-            NSLog(@"%@",strTimestamp);
-            NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strImageFolder,strTimestamp];
-            // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
-            [self displayNetworkActivity];
-            [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
-                NSLog(@"%@",successResult);
-                if (successResult.count>0)
+        NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
+        CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+        NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+        NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strImageFolder,strTimestamp];
+        // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
+        [self displayNetworkActivity];
+        [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
+            NSLog(@"%@",successResult);
+            if (successResult.count>0)
+            {
+                @try
                 {
-                    @try
-                    {
-                        NSString *strBytes=[successResult objectForKey:@"bytes"];
-                        NSString *strPublicID=[successResult objectForKey:@"public_id"];
-                        NSString *strCreated=[successResult objectForKey:@"created_at"];
-                        NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
-                        NSLog(@"%@",strFileName);
-                        [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-                            if (isError)
+                    NSString *strBytes=[successResult objectForKey:@"bytes"];
+                    NSString *strPublicID=[successResult objectForKey:@"public_id"];
+                    NSString *strCreated=[successResult objectForKey:@"created_at"];
+                    NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
+                    NSLog(@"%@",strFileName);
+                    [[CloudinaryImageUploadService service]callCloudinaryImageUploadServiceWithBytes:strBytes created_date:strCreated fileName:strFileName k_key:self.objFolders.strTkey type:@"I" public_id:strPublicID  withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+                        if (isError)
+                        {
+                            [self displayErrorWithMessage:strMsg];
+                        }
+                        else
+                        {
+                            [arrDeleteImages addObject:result];
+                            if ([appDel.arrImageSet containsObject:@"1"])
                             {
-                                [self displayErrorWithMessage:strMsg];
+                                [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
                             }
                             else
                             {
-                                [arrDeleteImages addObject:result];
-                                if ([appDel.arrImageSet containsObject:@"1"])
-                                {
-                                    [appDel.arrImageSet replaceObjectAtIndex:appDel.arrImageSet.count-1 withObject:img];
-                                }
-                                else
-                                {
-                                    [appDel.arrImageSet addObject:img];
-                                }
-                                [appDel.arrImageSet addObject:@"1"];
-                                if ([self.strTagName isEqualToString:@"Business"])
-                                {
-                                    [tblTagsCreation beginUpdates];
-                                    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
-                                    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                                    [tblTagsCreation endUpdates];
-                                    
-                                }
-                                else
-                                {
-                                    
-                                    [tblTagsCreation beginUpdates];
-                                    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
-                                    [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-                                    [tblTagsCreation endUpdates];
-                                }
+                                [appDel.arrImageSet addObject:img];
                             }
-                        }];
-                    }
-                    @catch (NSException *exception)
-                    {
-                        [self displayErrorWithMessage:exception.reason];
-                    }
-                    @finally
-                    {
-                        
-                    }
-                }
-                else
-                {
-                    [self hideNetworkActivity];
-                    [self displayErrorWithMessage:errorResult];
-                }
-            } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
-                
-            }];
-        }
-        else                 ///////////////////////************************ cover pic upload...first pic will be cover pic***************///////////////////////
-        {
-            NSLog(@"cover pic");
-            NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
-            CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
-            NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-            strTimestamp=[strTimestamp stringByReplacingOccurrencesOfString:@"." withString:@""];
-            NSLog(@"%@",strTimestamp);
-            NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strCoverPicFolder,strTimestamp];
-            // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
-            [self displayNetworkActivity];
-            [uploader upload:imageData options:@{@"public_id":strPublicKey} withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context) {
-                NSLog(@"%@",successResult);
-                if (successResult.count>0)
-                {
-                    @try
-                    {
-                        /*
-                         tdata[tcover],
-                         tdata[tcoversize]
-
-                         */
-                        NSString *strBytes=[successResult objectForKey:@"bytes"];
-                        NSString *strFileName=[[successResult objectForKey:@"public_id"] lastPathComponent];
-                        NSLog(@"%@",strFileName);
-                        NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
-                        [dict setObject:strBytes forKey:@"tcoversize"];
-                        [dict setObject:strFileName forKey:@"tcover"];
-                        [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:self.objFolders.strTkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
-                            [self hideNetworkActivity];
-                            if (isError)
+                            [appDel.arrImageSet addObject:@"1"];
+                            if ([self.strTagName isEqualToString:@"Business"])
                             {
-                                [self displayErrorWithMessage:strMsg];
+                                [tblTagsCreation beginUpdates];
+                                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:11 inSection:0]];
+                                [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+                                [tblTagsCreation endUpdates];
+                                
                             }
                             else
                             {
-                                NSLog(@"%@",result);
-                                objTemplates=[[ModelCreateTagsSecondStep alloc]initWithDictionary:result];
-                                NSLog(@"%@",objTemplates.strCoverURI);
-                                NSLog(@"%d",appDel.arrImageSet.count);
-                                if (appDel.arrImageSet.count>0)
-                                {
-                                    [appDel.arrImageSet replaceObjectAtIndex:0 withObject:objTemplates.strCoverURI];
-                                }
-                                else
-                                {
-                                    [appDel.arrImageSet addObject:objTemplates.strCoverURI];
-                                }
-                                [appDel.arrImageSet addObject:@"1"];
+                                
                                 [tblTagsCreation beginUpdates];
                                 NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:3 inSection:0]];
                                 [tblTagsCreation reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
                                 [tblTagsCreation endUpdates];
                             }
-                        }];
-                    }
-                    @catch (NSException *exception)
-                    {
-                        [self displayErrorWithMessage:exception.reason];
-                    }
-                    @finally
-                    {
-                        
-                    }
+                        }
+                    }];
                 }
-                else
+                @catch (NSException *exception)
                 {
-                    [self hideNetworkActivity];
-                    [self displayErrorWithMessage:errorResult];
+                    [self displayErrorWithMessage:exception.reason];
                 }
-            } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
-                
-            }];
-        }
+                @finally
+                {
+                    
+                }
+            }
+            else
+            {
+                [self hideNetworkActivity];
+                [self displayErrorWithMessage:errorResult];
+            }
+        } andProgress:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite, id context) {
+            
+        }];
     }
 }
 

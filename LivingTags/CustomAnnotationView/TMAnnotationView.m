@@ -47,7 +47,7 @@
         self.clipsToBounds = NO;
         self.pinView = pinView;
         self.pinView.userInteractionEnabled = YES;
-             self.pinView.frame=CGRectMake(0, 0, 34, 38);
+             self.pinView.frame=CGRectMake(0, 0, 50, 70);
         [self addSubview:self.pinView];
         self.frame = [self calculateFrame];
         self.backgroundColor=[UIColor clearColor];

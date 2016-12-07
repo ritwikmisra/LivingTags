@@ -109,6 +109,20 @@
 }
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ModelViewLocalTags *obj=[arrResponse objectAtIndex:indexPath.row];
+    strSegueLink=obj.strLink;
+    if (strSegueLink.length>0)
+    {
+        [self performSegueWithIdentifier:@"segueMapToPreview" sender:self];
+    }
+    else
+    {
+        [self displayErrorWithMessage:@"No link available"];
+    }
+}
+
 #pragma mark
 #pragma mark call webservice
 #pragma mark
@@ -220,7 +234,14 @@
     [master.view removeFromSuperview];
     [master removeFromParentViewController];
     master=nil;
-    [self performSegueWithIdentifier:@"segueMapToPreview" sender:self];
+    if (strSegueLink.length>0)
+    {
+        [self performSegueWithIdentifier:@"segueMapToPreview" sender:self];
+    }
+    else
+    {
+        [self displayErrorWithMessage:@"No link available"];
+    }
 }
 
 #pragma mark

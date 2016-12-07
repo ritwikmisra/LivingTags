@@ -22,7 +22,6 @@
     IBOutlet MKMapView *mapTags;
     NSMutableArray *arrClusters,*arrSingle,*arrDuplicate;
     NSMutableDictionary *dict;
-    UILabel *lblAnnotatation;
     GroupPopupController *master;
     UIImageView *pinView;
     UIView *vwAnotationDetails;
@@ -68,7 +67,7 @@
     arrSingle=[[NSMutableArray alloc]init];
     dict=[[NSMutableDictionary alloc]init];
     arrDuplicate=[[NSMutableArray alloc]init];
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(appDel.center,900000, 90000);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(appDel.center,5000, 5000);
     MKCoordinateRegion adjustedRegion = [mapTags regionThatFits:viewRegion];
     [mapTags setRegion:adjustedRegion animated:YES];
     mapTags.showsUserLocation = YES;
@@ -220,7 +219,7 @@
     {
         CustomAnnotationSingle *annotationPoint=(CustomAnnotationSingle *)annotation;
         TMAnnotationView *annotationView = (TMAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass([TMAnnotationView class])];
-        UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_icon1"]];//
+        UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"new_map_icon1"]];//
         annotationView = [[TMAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:NSStringFromClass([TMAnnotationView class])pinView:img];
         NSLog(@"Title: %@",annotation.title);
         [annotationView setTag:annotationPoint.tag];
@@ -242,25 +241,9 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                           reuseIdentifier:strIdentifier];
         }
-        if (lblAnnotatation)
-        {
-        
-        }
-        else
-        {
-            lblAnnotatation=[[UILabel alloc]initWithFrame:CGRectMake(annotationView.frame.origin.x+4.0f,annotationView.frame.origin.y+5.0f,18,15)];
-        }
-        [lblAnnotatation setFont:[UIFont systemFontOfSize:8.0f]];
-        lblAnnotatation.textColor=[UIColor whiteColor];
-        [annotationView addSubview:lblAnnotatation];
-        lblAnnotatation.textAlignment=NSTextAlignmentCenter;
         NSLog(@"Title: %@",annotation.title);
-        annotationView.image=[UIImage imageNamed:@"map_icon2"];
+        annotationView.image=[UIImage imageNamed:@"new_map_icon2"];
         [annotationView setTag:annotationPoint.groupTags];
-        NSString *str=[NSString stringWithFormat:@"%d",annotationPoint.groupTags];
-        NSMutableSet *set=[dict objectForKey:str];
-        NSMutableArray *arr=[[set allObjects] mutableCopy];
-        lblAnnotatation.text=[NSString stringWithFormat:@"%lu",(unsigned long)arr.count];
         annotationView.canShowCallout=NO;
         return annotationView;
     }

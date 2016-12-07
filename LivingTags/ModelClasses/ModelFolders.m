@@ -64,15 +64,6 @@
         {
             self.strProfileFolder=@"";
         }
-        //tagCoverFolder
-        if ([dict objectForKey:@"tagCoverFolder"]&& ![[dict objectForKey:@"tagCoverFolder"] isKindOfClass:[NSNull class]])
-        {
-            self.strCoverPicFolder=[dict objectForKey:@"tagCoverFolder"];
-        }
-        else
-        {
-            self.strCoverPicFolder=@"";
-        }
 
     }
     return self;
