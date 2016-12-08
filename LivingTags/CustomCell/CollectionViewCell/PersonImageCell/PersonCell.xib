@@ -28,6 +28,12 @@
                         </constraints>
                         <state key="normal" backgroundImage="cross.png"/>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="7m8-55-AOO">
+                        <rect key="frame" x="54" y="54" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="7m8-55-AOO" secondAttribute="height" id="0SZ-x8-7mj"/>
+                        </constraints>
+                    </imageView>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ffq-Zv-GGm">
                         <rect key="frame" x="60" y="60" width="20" height="20"/>
                         <constraints>
@@ -41,9 +47,12 @@
             <constraints>
                 <constraint firstItem="NJ1-Ed-3WE" firstAttribute="top" secondItem="LxA-l3-X80" secondAttribute="top" id="13p-Na-Tj6"/>
                 <constraint firstItem="LxA-l3-X80" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="3oh-Hp-tsD"/>
+                <constraint firstItem="LxA-l3-X80" firstAttribute="height" secondItem="7m8-55-AOO" secondAttribute="height" multiplier="4" id="ILX-Kg-mfO"/>
                 <constraint firstItem="Ffq-Zv-GGm" firstAttribute="centerY" secondItem="LxA-l3-X80" secondAttribute="centerY" id="J3w-gA-576"/>
                 <constraint firstItem="Ffq-Zv-GGm" firstAttribute="centerX" secondItem="LxA-l3-X80" secondAttribute="centerX" id="LA4-xE-dt1"/>
+                <constraint firstItem="7m8-55-AOO" firstAttribute="centerX" secondItem="LxA-l3-X80" secondAttribute="centerX" id="SMt-qn-S4y"/>
                 <constraint firstItem="LxA-l3-X80" firstAttribute="height" secondItem="NJ1-Ed-3WE" secondAttribute="height" multiplier="4" id="TPv-1C-dDQ"/>
+                <constraint firstItem="7m8-55-AOO" firstAttribute="centerY" secondItem="LxA-l3-X80" secondAttribute="centerY" id="WNr-XF-ZCo"/>
                 <constraint firstItem="LxA-l3-X80" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="huy-ao-iG5"/>
                 <constraint firstItem="NJ1-Ed-3WE" firstAttribute="trailing" secondItem="LxA-l3-X80" secondAttribute="trailing" id="oFt-2X-Qkm"/>
                 <constraint firstAttribute="height" secondItem="LxA-l3-X80" secondAttribute="height" multiplier="1.1" id="qfq-H8-yib"/>
@@ -52,10 +61,13 @@
                 <outlet property="actImages" destination="Ffq-Zv-GGm" id="Ma9-gD-8Qw"/>
                 <outlet property="btnDelete" destination="NJ1-Ed-3WE" id="RmK-qn-fP9"/>
                 <outlet property="imgPicl" destination="LxA-l3-X80" id="Coz-gL-auJ"/>
+                <outlet property="imgPlay" destination="7m8-55-AOO" id="6XH-MI-mYy"/>
             </connections>
+            <point key="canvasLocation" x="158" y="90"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="cross.png" width="50" height="50"/>
+        <image name="right-arrow.png" width="32" height="32"/>
     </resources>
 </document>

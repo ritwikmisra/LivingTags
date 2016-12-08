@@ -293,7 +293,7 @@
     [reader stopScanning];
     strSegue=result;
     [self dismissViewControllerAnimated:YES completion:^{
-        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:result message:nil preferredStyle:UIAlertControllerStyleAlert];
+       /* UIAlertController *alertController=[UIAlertController alertControllerWithTitle:result message:nil preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *actionOK=[UIAlertAction actionWithTitle:@"OPEN" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             if ([result containsString:@"livingtags.com"])
             {
@@ -310,7 +310,8 @@
         [alertController addAction:actionOK];
         [self presentViewController:alertController animated:YES completion:^{
             
-        }];
+        }];*/
+        [self performSegueWithIdentifier:@"segueScannerToWebview" sender:self];
     }];
 }
 

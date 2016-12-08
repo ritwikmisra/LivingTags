@@ -81,7 +81,7 @@
                                                
                                            }];
                 });
-                
+                cell.imgPlay.hidden=YES;
                 cell.btnDelete.tag=indexPath.row;
                 cell.btnDelete.hidden=YES;
                 return cell;
@@ -93,6 +93,7 @@
             cell.imgPicl.image=[self.appDel.arrImageSet objectAtIndex:indexPath.row];
             cell.btnDelete.tag=indexPath.row;
             [cell.btnDelete addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
+            cell.imgPlay.hidden=YES;
             return cell;
         }
         else
@@ -113,7 +114,7 @@
 
                                            }];
             });
-
+            cell.imgPlay.hidden=YES;
             cell.btnDelete.tag=indexPath.row;
             [cell.btnDelete addTarget:self action:@selector(btnDeletePressed:) forControlEvents:UIControlEventTouchUpInside];
             return cell;

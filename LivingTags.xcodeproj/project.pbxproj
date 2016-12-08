@@ -251,6 +251,7 @@
 		0DA226611CD2020800B3A5BC /* ModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA226601CD2020800B3A5BC /* ModelUser.m */; };
 		0DAD38F61D0EA9F90044B7A7 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */; };
 		0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */; };
+		0DB064671DF9C40A00BB6BD1 /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB064661DF9C40A00BB6BD1 /* right-arrow.png */; };
 		0DB08FA51DE851160058C4D6 /* pop_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB08FA41DE851160058C4D6 /* pop_map.png */; };
 		0DB8678B1DC09F4E00D428F2 /* CustomdatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB867891DC09F4E00D428F2 /* CustomdatePickerViewController.m */; };
 		0DB8678C1DC09F4E00D428F2 /* CustomdatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB8678A1DC09F4E00D428F2 /* CustomdatePickerViewController.xib */; };
@@ -709,6 +710,7 @@
 		0DAD38F31D0EA9F90044B7A7 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCell.h; sourceTree = "<group>"; };
 		0DAD38F41D0EA9F90044B7A7 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCell.m; sourceTree = "<group>"; };
 		0DAD38F51D0EA9F90044B7A7 /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateCell.xib; sourceTree = "<group>"; };
+		0DB064661DF9C40A00BB6BD1 /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
 		0DB08FA41DE851160058C4D6 /* pop_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pop_map.png; sourceTree = "<group>"; };
 		0DB867881DC09F4E00D428F2 /* CustomdatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomdatePickerViewController.h; sourceTree = "<group>"; };
 		0DB867891DC09F4E00D428F2 /* CustomdatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomdatePickerViewController.m; sourceTree = "<group>"; };
@@ -922,6 +924,7 @@
 		0D1DDF731DA7BB5B0063F2F9 /* CreateTagsCategory */ = {
 			isa = PBXGroup;
 			children = (
+				0DB064661DF9C40A00BB6BD1 /* right-arrow.png */,
 				0DE5FE301DAE5DA0004B06E5 /* bg_btn_hover.png */,
 				0D1DDF741DA7BB5B0063F2F9 /* bg_btn.png */,
 				0D1DDF751DA7BB5B0063F2F9 /* business_icon.png */,
@@ -2038,6 +2041,7 @@
 				0DF0089A1DAFB76500BD39C3 /* audio.png in Resources */,
 				0D5903AF1DD0C5140048B5EF /* ProfileCell.xib in Resources */,
 				0D79BE321DF05358004B373E /* FindObituaryPopUPController.xib in Resources */,
+				0DB064671DF9C40A00BB6BD1 /* right-arrow.png in Resources */,
 				0DF008A41DAFB76500BD39C3 /* memorial.png in Resources */,
 				0D1DDF7B1DA7BB5B0063F2F9 /* bg_btn.png in Resources */,
 				0D3A40121DB50EF40040D6D4 /* g_plus-1.png in Resources */,

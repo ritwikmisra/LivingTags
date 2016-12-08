@@ -13,4 +13,5 @@
 @property(nonatomic,strong)IBOutlet UIImageView *imgPicl;
 @property(nonatomic,strong)IBOutlet UIButton *btnDelete;
 @property(nonatomic,strong)IBOutlet UIActivityIndicatorView *actImages;
+@property(nonatomic,strong)IBOutlet UIImageView *imgPlay;
 @end

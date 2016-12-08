@@ -132,7 +132,7 @@
     [[ViewLocalTagsService service]getLocalLivingTagsWithAKey:appDel.objUser.strAkey page:i withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
-            [self displayErrorWithMessage:strMsg];
+            //[self displayErrorWithMessage:strMsg];
             isLazyLoading=NO;
         }
         else

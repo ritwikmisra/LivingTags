@@ -17,4 +17,6 @@
 
 @property(nonatomic,strong)IBOutlet UIActivityIndicatorView *actIndicatorTag;
 
+@property(nonatomic,strong)IBOutlet UIButton *btnSelectRow;
+
 @end
