@@ -16,6 +16,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    NSLog(@"ritwik");
     self.cllvwImages.backgroundColor=[UIColor clearColor];
     UINib *cellNib = [UINib nibWithNibName:@"PersonImageCell" bundle:nil];
     [self.cllvwImages registerNib:cellNib forCellWithReuseIdentifier:@"PersonImageCell"];
