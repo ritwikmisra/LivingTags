@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LivingTags/WebService/DeleteCommentService.m"
-            timestampString = "502730827.854021"
+            filePath = "LivingTags/WebService/MyTagListService.m"
+            timestampString = "503250229.806205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-callDeleteServiceWithAKey:tcKey:withCompletionHandler:"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-callListServiceWithakey:tcKey:withCompletionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LivingTags/CustomDelegate/MyLivingTagsMapViewController.m"
-            timestampString = "502818256.434296"
+            filePath = "LivingTags/viewControllers/MyTagsListingController.m"
+            timestampString = "503252038.282217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "-removePopupWithRow:"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LivingTags/CustomDelegate/CustomPopUP/previewPopUP/PreviewPopUpController.m"
-            timestampString = "502818314.100298"
+            filePath = "LivingTags/viewControllers/MyTagsListingController.m"
+            timestampString = "503252038.282217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "-btnClosePressed:"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "-deleteTags:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

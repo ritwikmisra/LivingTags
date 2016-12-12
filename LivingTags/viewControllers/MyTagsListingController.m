@@ -12,8 +12,10 @@
 #import "ModelEditTagsListing.h"
 #import "MyTagsEditModeController.h"
 #import "UIImageView+WebCache.h"
+#import "DeleteTagService.h"
 
-@interface MyTagsListingController ()<UITableViewDataSource,UITableViewDelegate>
+
+@interface MyTagsListingController ()<UITableViewDataSource,UITableViewDelegate,DeleteTagsProtocol>
 {
     IBOutlet UITableView *tblListing;
     NSMutableArray *arrResponse;
@@ -84,7 +86,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MyTagsListingCell *cell=[tableView dequeueReusableCellWithIdentifier:@"identifier"];
+    /*MyTagsListingCell *cell=[tableView dequeueReusableCellWithIdentifier:@"identifier"];
     if (!cell)
     {
         cell=[[[NSBundle mainBundle]loadNibNamed:@"MyTagsListingCell" owner:self options:nil]objectAtIndex:0];
@@ -121,7 +123,55 @@
     {
         cell.imgBottom.hidden=YES;
     }
+    return cell;*/
+    MyTagsListingCell *cell=[tableView dequeueReusableCellWithIdentifier:@"identifier"];
+     if (!cell)
+     {
+         cell=[[[NSBundle mainBundle]loadNibNamed:@"MyTagsListingCell" owner:self options:nil]objectAtIndex:2];
+     }
+    ModelEditTagsListing *obj=[arrResponse objectAtIndex:indexPath.row];
+    NSLog(@"%@",obj.strTLink);
+    cell.backgroundColor=[UIColor whiteColor];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    cell.imgPerson.layer.cornerRadius=self.view.frame.size.width/11;
+    cell.imgPerson.clipsToBounds=YES;
+    cell.btnEdit.tag=indexPath.row;
+    cell.btnPreviewOnImage.tag=indexPath.row;
+    cell.btnPreviewOnName.tag=indexPath.row;
+    cell.lblName.text=obj.strTname;
+    cell.lblTiming.text=obj.strPosted_time;
+    cell.lblTagViews.text=obj.strTotal_views;
+    cell.lblTagType.text=self.strTagName;
+    cell.delegate=self;
+    cell.lblTagComments.text=obj.strTotal_comments;
+    [cell.btnEdit addTarget:self action:@selector(btnEditPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnPreviewOnName addTarget:self action:@selector(btnLivingTagsPreviewPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.btnPreviewOnImage addTarget:self action:@selector(btnLivingTagsPreviewPressed:) forControlEvents:UIControlEventTouchUpInside];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [cell.imgPerson sd_setImageWithURL:[NSURL URLWithString:obj.strtphoto]
+                          placeholderImage:[UIImage imageNamed:@"defltmale_user_icon"]
+                                   options:SDWebImageHighPriority
+                                  progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                      [cell.actMyTags startAnimating];
+                                  }
+                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                     [cell.actMyTags stopAnimating];
+                                 }];
+    });
+    if (indexPath.row==5)
+    {
+        cell.imgBottom.hidden=YES;
+    }
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   ModelEditTagsListing *obj=[arrResponse objectAtIndex:indexPath.row];
+    strTkey=obj.strtkey;
+    [self performSegueWithIdentifier:@"segueMyTagsEdit" sender:self];
 }
 
 #pragma mark
@@ -159,5 +209,28 @@
     }
 }
 
+#pragma mark
+#pragma mark delete tags functionality
+#pragma mark
+
+-(void)deleteTags:(id)sender
+{
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblListing];
+    NSIndexPath *indexPath = [tblListing indexPathForRowAtPoint:buttonPosition];
+    NSLog(@"%d",indexPath.row);
+    ModelEditTagsListing *obj=[arrResponse objectAtIndex:indexPath.row];
+
+    [[DeleteTagService service]deleteTagWithTKey:obj.strtkey aKey:appDel.objUser.strAkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            [arrResponse removeObjectAtIndex:indexPath.row];
+            [tblListing reloadData];
+        }
+    }];
+}
 
 @end

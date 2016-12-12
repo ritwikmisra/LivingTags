@@ -146,6 +146,7 @@
 		0D698D261CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D251CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m */; };
 		0D698D2F1CC8D90500F64745 /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D2E1CC8D90500F64745 /* LandingViewController.m */; };
 		0D698D321CC9026900F64745 /* LoggingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D311CC9026900F64745 /* LoggingViewController.m */; };
+		0D6B7DF31DFEDFBD0039E803 /* ic_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6B7DF21DFEDFBD0039E803 /* ic_delete.png */; };
 		0D7165B71CE323FA00C8B288 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D7165B61CE323FA00C8B288 /* GoogleService-Info.plist */; };
 		0D7165BB1CE32D5500C8B288 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D7165B91CE32D5500C8B288 /* GoogleSignIn.bundle */; };
 		0D7165BC1CE32D5500C8B288 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7165BA1CE32D5500C8B288 /* GoogleSignIn.framework */; };
@@ -264,6 +265,7 @@
 		0DC2F5A61DC74A2700AB1795 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F59F1DC74A2700AB1795 /* stop.png */; };
 		0DC2F5A71DC74A2700AB1795 /* stop_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F5A01DC74A2700AB1795 /* stop_enable.png */; };
 		0DC2F5A91DC76A5200AB1795 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DC2F5A81DC76A5200AB1795 /* play_button.png */; };
+		0DC89DFC1DFADEFF003F2764 /* DeleteTagService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC89DFB1DFADEFF003F2764 /* DeleteTagService.m */; };
 		0DD198211DB62615003BB828 /* PreviewPopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1981F1DB62615003BB828 /* PreviewPopUpController.m */; };
 		0DD198221DB62615003BB828 /* PreviewPopUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD198201DB62615003BB828 /* PreviewPopUpController.xib */; };
 		0DD198251DB63A4E003BB828 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD198241DB63A4E003BB828 /* QRCodeScanViewController.m */; };
@@ -550,6 +552,7 @@
 		0D698D2E1CC8D90500F64745 /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
 		0D698D301CC9026900F64745 /* LoggingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingViewController.h; sourceTree = "<group>"; };
 		0D698D311CC9026900F64745 /* LoggingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingViewController.m; sourceTree = "<group>"; };
+		0D6B7DF21DFEDFBD0039E803 /* ic_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_delete.png; sourceTree = "<group>"; };
 		0D7165B61CE323FA00C8B288 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0D7165B91CE32D5500C8B288 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		0D7165BA1CE32D5500C8B288 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
@@ -725,6 +728,8 @@
 		0DC2F59F1DC74A2700AB1795 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		0DC2F5A01DC74A2700AB1795 /* stop_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_enable.png; sourceTree = "<group>"; };
 		0DC2F5A81DC76A5200AB1795 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
+		0DC89DFA1DFADEFF003F2764 /* DeleteTagService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteTagService.h; sourceTree = "<group>"; };
+		0DC89DFB1DFADEFF003F2764 /* DeleteTagService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteTagService.m; sourceTree = "<group>"; };
 		0DD1981E1DB62615003BB828 /* PreviewPopUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewPopUpController.h; sourceTree = "<group>"; };
 		0DD1981F1DB62615003BB828 /* PreviewPopUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewPopUpController.m; sourceTree = "<group>"; };
 		0DD198201DB62615003BB828 /* PreviewPopUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewPopUpController.xib; sourceTree = "<group>"; };
@@ -1372,6 +1377,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D6B7DF21DFEDFBD0039E803 /* ic_delete.png */,
 				0D7C7D191DF71958003FD4DC /* comment */,
 				0DB08FA41DE851160058C4D6 /* pop_map.png */,
 				0D822CBD1DE5E72200AC48E4 /* viewOtherTags */,
@@ -1452,6 +1458,8 @@
 				0D7C7D0F1DF6D8A8003FD4DC /* CommentDetailsService.m */,
 				0D7C7D161DF70D98003FD4DC /* DeleteCommentService.h */,
 				0D7C7D171DF70D98003FD4DC /* DeleteCommentService.m */,
+				0DC89DFA1DFADEFF003F2764 /* DeleteTagService.h */,
+				0DC89DFB1DFADEFF003F2764 /* DeleteTagService.m */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -2083,6 +2091,7 @@
 				0D10ED171DCDF120006130C5 /* thing_small.png in Resources */,
 				0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */,
 				0D8FCDCB1DDF14BA00B8846D /* product_search.png in Resources */,
+				0D6B7DF31DFEDFBD0039E803 /* ic_delete.png in Resources */,
 				0D3A40141DB5159F0040D6D4 /* back_icon.png in Resources */,
 				0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */,
 				0D1DDF7F1DA7BB5B0063F2F9 /* pet_icon.png in Resources */,
@@ -2309,6 +2318,7 @@
 				0D59039D1DD07D9A0048B5EF /* SettingsViewController.m in Sources */,
 				0D7C7D151DF6E66B003FD4DC /* CommentDetailsController.m in Sources */,
 				0D698D001CC8CF2500F64745 /* main.m in Sources */,
+				0DC89DFC1DFADEFF003F2764 /* DeleteTagService.m in Sources */,
 				0D9350BC1CDB61F800E403B2 /* YTVimeoURLParser.m in Sources */,
 				0DE7A1DF1CDA32C50053AF1A /* ForgetPasswordService.m in Sources */,
 				0D7F7B791DE450E30067992A /* FAQViewController.m in Sources */,
