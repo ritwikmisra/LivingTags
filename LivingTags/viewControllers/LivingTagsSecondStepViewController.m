@@ -145,7 +145,6 @@
                                     [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
                                     [NSNumber numberWithFloat:8000.0], AVSampleRateKey,
                                     nil];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -583,7 +582,7 @@
                 else
                 {
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
-                    cellBirth.btnDeathDate.userInteractionEnabled=NO;
+                    //cellBirth.btnDeathDate.userInteractionEnabled=NO;
                     cellBirth.txtDeath.text=@"Death Date";
                     strDeathDate=@"";
                 }
@@ -592,8 +591,8 @@
                 cellBirth.txtBirth.text=strBirthDate;
                 cellBirth.txtDeath.text=strDeathDate;
                 [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
-                [cellBirth.btnBirthDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
-                [cellBirth.btnDeathDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellBirth;
             }
                 
@@ -1021,7 +1020,6 @@
             }
             cellVideo.delegate=self;
             cell=cellVideo;
-            
         }
         else if (indexPath.row==13)
         {
@@ -2984,7 +2982,4 @@
         }
     }];
 }
-
-
-
 @end

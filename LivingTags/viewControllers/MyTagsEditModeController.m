@@ -175,10 +175,15 @@
                 isTextViewClicked=YES;
                 strTextVwTags=objTemplates.strMemorialQuote;
             }
+            NSLog(@"%@",objTemplates.strVoiceURL);
             if (objTemplates.strVoiceURL.length>0)
             {
                 NSLog(@"%@",appDel.strAudioURL);
                 appDel.strAudioURL=objTemplates.strVoiceURL;
+            }
+            else
+            {
+                appDel.strAudioURL=@"";
             }
             if (objTemplates.strtlat1.length>0)
             {
@@ -230,7 +235,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [tblEditTags reloadData];
 }
 
@@ -664,7 +668,7 @@
                 else
                 {
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
-                    cellBirth.btnDeathDate.userInteractionEnabled=NO;
+                    //cellBirth.btnDeathDate.userInteractionEnabled=NO;
                     cellBirth.txtDeath.text=@"Death Date";
                     strDeathDate=@"";
                 }
@@ -673,8 +677,8 @@
                 cellBirth.txtBirth.text=strBirthDate;
                 cellBirth.txtDeath.text=strDeathDate;
                 [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
-                [cellBirth.btnBirthDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
-                [cellBirth.btnDeathDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellBirth;
             }
                 
@@ -1548,7 +1552,6 @@
     {
         NSData *objectData = [NSData dataWithContentsOfURL:[NSURL URLWithString:appDel.strAudioURL]];
         NSError *error;
-        
         player = [[AVAudioPlayer alloc] initWithData:objectData error:&error];
         NSLog(@"%@",[error description]);
         [player setDelegate:self];
@@ -2708,6 +2711,7 @@
     {
         PreviewViewController *masterPreview=[segue destinationViewController];
         masterPreview.str=strURL;
+        masterPreview.strLabel=@"PREVIEW TAG";
     }
 }
 
@@ -2719,7 +2723,6 @@
 {
     [timer invalidate];
     [cellVoiceRecord.sliderRecorder setValue:appDel.audioLength];
-    
 }
 
 #pragma mark
@@ -3020,6 +3023,12 @@
             [tblEditTags reloadData];
         }
     }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    player.delegate=nil;
 }
 
 
