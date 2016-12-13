@@ -36,6 +36,7 @@
     [super viewDidLoad];
     tblOtherTags.backgroundColor=[UIColor clearColor];
     tblOtherTags.separatorStyle=UITableViewCellSeparatorStyleNone;
+    [tblOtherTags allowsSelection];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -102,25 +103,11 @@
                                                 
                                             }];
     });
-
+    cell.btnTags.tag=indexPath.row;
+    [cell.btnTags addTarget:self action:@selector(btnTagsClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.backgroundColor=[UIColor clearColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
-}
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    ModelViewLocalTags *obj=[arrResponse objectAtIndex:indexPath.row];
-    strSegueLink=obj.strLink;
-    if (strSegueLink.length>0)
-    {
-        [self performSegueWithIdentifier:@"segueMapToPreview" sender:self];
-    }
-    else
-    {
-        [self displayErrorWithMessage:@"No link available"];
-    }
 }
 
 #pragma mark
@@ -215,6 +202,21 @@
     [vwTable addSubview:master.view];
     [self addChildViewController:master];
     [master didMoveToParentViewController:self];
+}
+
+-(void)btnTagsClicked:(id)sender
+{
+    ModelViewLocalTags *obj=[arrResponse objectAtIndex:[sender tag]];
+    strSegueLink=obj.strLink;
+    if (strSegueLink.length>0)
+    {
+        [self performSegueWithIdentifier:@"segueMapToPreview" sender:self];
+    }
+    else
+    {
+        [self displayErrorWithMessage:@"No link available"];
+    }
+
 }
 
 #pragma mark

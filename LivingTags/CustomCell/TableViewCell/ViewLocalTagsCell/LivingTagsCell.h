@@ -14,6 +14,7 @@
 @property(nonatomic,strong)IBOutlet UILabel *lblName;
 @property(nonatomic,strong)IBOutlet UILabel *lblDate;
 @property(nonatomic,strong)IBOutlet UILabel *lblLocation;
+@property(nonatomic,strong)IBOutlet UIButton *btnTags;
 
 @property(nonatomic,strong)IBOutlet UIActivityIndicatorView *actIndicatorTag;
 

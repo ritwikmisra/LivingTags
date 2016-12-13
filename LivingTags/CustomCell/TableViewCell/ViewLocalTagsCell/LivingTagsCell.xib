@@ -123,6 +123,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="actIndicatorTag" destination="Ax8-gc-7Nk" id="j71-eF-KVw"/>
+                <outlet property="btnTags" destination="UWa-7c-WpU" id="NVc-3u-zce"/>
                 <outlet property="imgTag" destination="Wn2-UJ-LcW" id="qzC-HT-hhe"/>
                 <outlet property="lblDate" destination="ZN7-qF-UMM" id="Ee4-cJ-Ext"/>
                 <outlet property="lblLocation" destination="Fj1-jw-oaF" id="D66-oC-2ED"/>

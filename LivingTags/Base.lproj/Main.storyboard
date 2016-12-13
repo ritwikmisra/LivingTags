@@ -2456,7 +2456,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="back.png"/>
                                 <connections>
-                                    <action selector="btnBackPressed:" destination="5fP-4K-Kaz" eventType="touchUpInside" id="cqY-Fi-Jbg"/>
+                                    <action selector="btnBackBtnPressed:" destination="5fP-4K-Kaz" eventType="touchUpInside" id="Gv7-7Y-WKj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeP-E4-CWV">
@@ -3021,14 +3021,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81S-lp-Kvv">
                                 <rect key="frame" x="27" y="80" width="546" height="500"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddK-to-5Lt">
-                                        <rect key="frame" x="0.0" y="0.0" width="546" height="500"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="qiJ-2z-BjB" id="bMu-Dm-XLo"/>
-                                            <outlet property="delegate" destination="qiJ-2z-BjB" id="P9N-U9-FLh"/>
-                                        </connections>
-                                    </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZZ-aS-QJe">
                                         <rect key="frame" x="490" y="444" width="56" height="56"/>
                                         <constraints>
@@ -3039,6 +3031,14 @@
                                             <action selector="btnMapPressed:" destination="qiJ-2z-BjB" eventType="touchUpInside" id="IFQ-Fi-tWf"/>
                                         </connections>
                                     </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddK-to-5Lt">
+                                        <rect key="frame" x="0.0" y="0.0" width="546" height="500"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="qiJ-2z-BjB" id="bMu-Dm-XLo"/>
+                                            <outlet property="delegate" destination="qiJ-2z-BjB" id="P9N-U9-FLh"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -4006,8 +4006,8 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="VpI-oa-ddS"/>
         <segue reference="46W-rc-l29"/>
-        <segue reference="cUO-lk-bNp"/>
         <segue reference="pyo-xk-72c"/>
         <segue reference="yhg-1Q-rAD"/>
         <segue reference="WIR-cR-3VA"/>

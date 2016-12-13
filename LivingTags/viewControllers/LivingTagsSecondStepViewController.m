@@ -48,6 +48,7 @@
 #import "FindObituaryPopUPController.h"
 #import "ModelFindObituary.h"
 #import "UpdateObituaryService.h"
+#import "DeleteTagService.h"
 
 @interface LivingTagsSecondStepViewController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate,SelectedObituaryDelegate>
 {
@@ -1471,6 +1472,27 @@
 -(void)updateSlider
 {
     [cellVoiceRecord.sliderRecorder setValue:[player currentTime]];
+}
+
+-(IBAction)btnBackBtnPressed:(id)sender
+{
+    if (strPersonName.length>0)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [[DeleteTagService service]deleteTagWithTKey:self.objFolders.strTkey aKey:appDel.objUser.strAkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }
 }
 
 #pragma mark
