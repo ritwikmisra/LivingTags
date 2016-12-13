@@ -1772,7 +1772,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djo-0a-vhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="367"/>
+            <point key="canvasLocation" x="-282" y="357"/>
         </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="h7f-Tl-GIl">
@@ -2513,7 +2513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2FE-CA-LYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1898" y="-329"/>
+            <point key="canvasLocation" x="1893" y="-329"/>
         </scene>
         <!--Code Scan View Controller-->
         <scene sceneID="8k8-qd-a6P">
@@ -3021,6 +3021,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81S-lp-Kvv">
                                 <rect key="frame" x="27" y="80" width="546" height="500"/>
                                 <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddK-to-5Lt">
+                                        <rect key="frame" x="0.0" y="0.0" width="546" height="500"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="qiJ-2z-BjB" id="bMu-Dm-XLo"/>
+                                            <outlet property="delegate" destination="qiJ-2z-BjB" id="P9N-U9-FLh"/>
+                                        </connections>
+                                    </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZZ-aS-QJe">
                                         <rect key="frame" x="490" y="444" width="56" height="56"/>
                                         <constraints>
@@ -3031,14 +3039,6 @@
                                             <action selector="btnMapPressed:" destination="qiJ-2z-BjB" eventType="touchUpInside" id="IFQ-Fi-tWf"/>
                                         </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ddK-to-5Lt">
-                                        <rect key="frame" x="0.0" y="0.0" width="546" height="500"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="qiJ-2z-BjB" id="bMu-Dm-XLo"/>
-                                            <outlet property="delegate" destination="qiJ-2z-BjB" id="P9N-U9-FLh"/>
-                                        </connections>
-                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -4006,10 +4006,10 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VpI-oa-ddS"/>
-        <segue reference="46W-rc-l29"/>
+        <segue reference="cUO-lk-bNp"/>
+        <segue reference="Q3c-DN-3NA"/>
         <segue reference="pyo-xk-72c"/>
-        <segue reference="yhg-1Q-rAD"/>
+        <segue reference="zeF-Zh-2iX"/>
         <segue reference="WIR-cR-3VA"/>
     </inferredMetricsTieBreakers>
 </document>
