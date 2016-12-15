@@ -103,17 +103,43 @@
 
 -(IBAction)btnSavePressed:(id)sender
 {
+
+    if (strName.length==0)
+    {
+        strName=@"";
+    }
+    if (strphone.length==0)
+    {
+        strphone=@"";
+    }
+    if (strEmail.length==0)
+    {
+        strEmail=@"";
+    }
+    if (strFax.length==0)
+    {
+        strFax=@"";
+    }
+    [dict setObject:strphone forKey:@"tphone"];
+    [dict setObject:strEmail forKey:@"temail"];
+    [dict setObject:strName forKey:@"tcname"];
+    [dict setObject:strFax forKey:@"tfax"];
+
     [self.view endEditing:YES];
     if (isViewUp)
     {
         [self viewDown];
     }
-    if ([self alertChecking])
+   /* if ([self alertChecking])
     {
         if (self.delegate && [self.delegate respondsToSelector:@selector(callWebServiceWithDict:)])
         {
             [self.delegate callWebServiceWithDict:dict];
         }
+    }*/
+    if (self.delegate && [self.delegate respondsToSelector:@selector(callWebServiceWithDict:)])
+    {
+        [self.delegate callWebServiceWithDict:dict];
     }
 }
 
@@ -150,25 +176,20 @@
     if (textField.tag==1)
     {
         strName=textField.text;
-        [dict setObject:strName forKey:@"tcname"];
     }
     else if (textField.tag==2)
     {
         strphone=textField.text;
-        [dict setObject:strphone forKey:@"tphone"];
 
     }
     else if (textField.tag==3)
     {
         strFax=textField.text;
-        [dict setObject:strFax forKey:@"tfax"];
 
     }
     else
     {
         strEmail=textField.text;
-        [dict setObject:strEmail forKey:@"temail"];
-
     }
 }
 

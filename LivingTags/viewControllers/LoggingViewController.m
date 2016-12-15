@@ -64,7 +64,7 @@ static NSString *const kPlaceholderAvatarImageName = @"PlaceholderAvatar.png";
         txtEmail.text=@"";
         txtPassword.text=@"";
     } 
-    txtEmail.text=@"sourav.hazra@appsbee.com";
+    txtEmail.text=@"lindsey@appsbeesoftware.com";
     txtPassword.text=@"123456";
 }
 

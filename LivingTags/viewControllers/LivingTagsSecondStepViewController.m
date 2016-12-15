@@ -344,6 +344,7 @@
                         cellBirth.txtDeath.text=@"Death Date";
                         strDeathDate=@"";
                     }
+                    cellBirth.lblMemorial.hidden=YES;
                     cellBirth.txtBirth.userInteractionEnabled=NO;
                     cellBirth.txtDeath.userInteractionEnabled=NO;
                     cellBirth.txtBirth.text=strBirthDate;
@@ -363,6 +364,8 @@
                     
                     if (isLiving==NO)
                     {
+                        cellBirth.vwLiving.hidden=YES;
+                        cellBirth.lblMemorial.hidden=NO;
                         cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
                     }
                     else
@@ -370,6 +373,8 @@
                         cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
                         //cellBirth.btnDeathDate.userInteractionEnabled=NO;
                         cellBirth.txtDeath.text=@"Death Date";
+                        cellBirth.vwLiving.hidden=NO;
+                        cellBirth.lblMemorial.hidden=YES;
                         strDeathDate=@"";
                     }
                     cellBirth.txtBirth.userInteractionEnabled=NO;
@@ -574,9 +579,10 @@
                 {
                     cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:1];
                 }
-                
                 if (isLiving==NO)
                 {
+                    cellBirth.vwLiving.hidden=YES;
+                    cellBirth.lblMemorial.hidden=NO;
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
                 }
                 else
@@ -584,6 +590,8 @@
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
                     //cellBirth.btnDeathDate.userInteractionEnabled=NO;
                     cellBirth.txtDeath.text=@"Death Date";
+                    cellBirth.vwLiving.hidden=NO;
+                    cellBirth.lblMemorial.hidden=YES;
                     strDeathDate=@"";
                 }
                 cellBirth.txtBirth.userInteractionEnabled=NO;
@@ -595,7 +603,6 @@
                 [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellBirth;
             }
-                
                 break;
                 
             case 3 :
@@ -2503,6 +2510,7 @@
         NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
         CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
         NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+        strTimestamp=[strTimestamp stringByReplacingOccurrencesOfString:@"." withString:@""];
         NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strImageFolder,strTimestamp];
         // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
         [self displayNetworkActivity];
@@ -2577,6 +2585,7 @@
 {
     CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
     NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    strTimestamp=[strTimestamp stringByReplacingOccurrencesOfString:@"." withString:@""];
     NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",self.objFolders.strVideoFolder,strTimestamp];
     // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
     [self displayNetworkActivity];

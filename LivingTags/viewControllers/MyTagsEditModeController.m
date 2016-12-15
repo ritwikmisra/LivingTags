@@ -429,6 +429,7 @@
                         cellBirth.txtDeath.text=@"Death Date";
                         strDeathDate=@"";
                     }
+                    cellBirth.lblMemorial.hidden=YES;
                     cellBirth.txtBirth.userInteractionEnabled=NO;
                     cellBirth.txtDeath.userInteractionEnabled=NO;
                     cellBirth.txtBirth.text=strBirthDate;
@@ -448,6 +449,8 @@
                     
                     if (isLiving==NO)
                     {
+                        cellBirth.vwLiving.hidden=YES;
+                        cellBirth.lblMemorial.hidden=NO;
                         cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
                     }
                     else
@@ -455,6 +458,8 @@
                         cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
                         //cellBirth.btnDeathDate.userInteractionEnabled=NO;
                         cellBirth.txtDeath.text=@"Death Date";
+                        cellBirth.vwLiving.hidden=NO;
+                        cellBirth.lblMemorial.hidden=YES;
                         strDeathDate=@"";
                     }
                     cellBirth.txtBirth.userInteractionEnabled=NO;
@@ -663,6 +668,8 @@
                 
                 if (isLiving==NO)
                 {
+                    cellBirth.vwLiving.hidden=NO;
+                    cellBirth.lblMemorial.hidden=YES;
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
                 }
                 else
@@ -670,6 +677,8 @@
                     cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
                     //cellBirth.btnDeathDate.userInteractionEnabled=NO;
                     cellBirth.txtDeath.text=@"Death Date";
+                    cellBirth.vwLiving.hidden=YES;
+                    cellBirth.lblMemorial.hidden=NO;
                     strDeathDate=@"";
                 }
                 cellBirth.txtBirth.userInteractionEnabled=NO;
@@ -1362,7 +1371,7 @@
             }];
         }];
         
-        UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self.navigationController popViewControllerAnimated:YES];
         }];
         [alertController addAction:actionPreview];
@@ -2468,6 +2477,7 @@
         NSData *imageData=UIImageJPEGRepresentation(img, 0.2);
         CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
         NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+        strTimestamp=[strTimestamp stringByReplacingOccurrencesOfString:@"." withString:@""];
         NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",objTemplates.strtagProfileFolder,strTimestamp];
         // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
         [self displayNetworkActivity];
@@ -2612,6 +2622,7 @@
 {
     CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
     NSString * strTimestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    strTimestamp=[strTimestamp stringByReplacingOccurrencesOfString:@"." withString:@""];
     NSString *strPublicKey=[NSString stringWithFormat:@"%@/%@",objTemplates.strtagVideoFolder,strTimestamp];
     // [uploader upload:imageData options:@{@"public_id":strPublicKey}];
     [self displayNetworkActivity];

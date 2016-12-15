@@ -18,4 +18,6 @@
 @property(nonatomic,strong)IBOutlet UIButton *btnBirthDate;
 @property(nonatomic,strong)IBOutlet UIButton *btnDeathDate;
 @property(nonatomic,strong)IBOutlet UIButton *btnFindObituary;
+@property(nonatomic,strong)IBOutlet UILabel *lblMemorial;
+@property(nonatomic,strong)IBOutlet UIView *vwLiving;
 @end
