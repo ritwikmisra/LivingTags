@@ -12,7 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.contentView.layer.borderWidth=1.0f;
+    self.contentView.layer.borderColor=[UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

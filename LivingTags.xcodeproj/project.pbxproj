@@ -278,6 +278,10 @@
 		0DD712641DE3178100F0BDD4 /* QRCodeReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD7125E1DE3178100F0BDD4 /* QRCodeReaderViewController.m */; };
 		0DD712651DE3178100F0BDD4 /* QRToggleTorchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD712601DE3178100F0BDD4 /* QRToggleTorchButton.m */; };
 		0DD9BED81DD71EDD008328C6 /* DashboardMyTagsListingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD9BED71DD71EDD008328C6 /* DashboardMyTagsListingService.m */; };
+		0DDCC12B1E08193200FB265F /* CategoryGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDCC1291E08193200FB265F /* CategoryGridCell.m */; };
+		0DDCC12C1E08193200FB265F /* CategoryGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DDCC12A1E08193200FB265F /* CategoryGridCell.xib */; };
+		0DDCC1301E081D2700FB265F /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDCC12E1E081D2700FB265F /* cross.png */; };
+		0DDCC1311E081D2700FB265F /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDCC12F1E081D2700FB265F /* plus.png */; };
 		0DDFC9B01CE37288004D5D46 /* SocialLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */; };
 		0DE4CF381DCB5CF000798B1F /* CategoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4CF371DCB5CEF00798B1F /* CategoryService.m */; };
 		0DE4CF3D1DCB5EF900798B1F /* CategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4CF3B1DCB5EF900798B1F /* CategoryController.m */; };
@@ -752,6 +756,11 @@
 		0DD712601DE3178100F0BDD4 /* QRToggleTorchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRToggleTorchButton.m; sourceTree = "<group>"; };
 		0DD9BED61DD71EDD008328C6 /* DashboardMyTagsListingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardMyTagsListingService.h; sourceTree = "<group>"; };
 		0DD9BED71DD71EDD008328C6 /* DashboardMyTagsListingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardMyTagsListingService.m; sourceTree = "<group>"; };
+		0DDCC1281E08193200FB265F /* CategoryGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryGridCell.h; sourceTree = "<group>"; };
+		0DDCC1291E08193200FB265F /* CategoryGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryGridCell.m; sourceTree = "<group>"; };
+		0DDCC12A1E08193200FB265F /* CategoryGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryGridCell.xib; sourceTree = "<group>"; };
+		0DDCC12E1E081D2700FB265F /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
+		0DDCC12F1E081D2700FB265F /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		0DDFC9AE1CE37288004D5D46 /* SocialLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialLoginService.h; sourceTree = "<group>"; };
 		0DDFC9AF1CE37288004D5D46 /* SocialLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialLoginService.m; sourceTree = "<group>"; };
 		0DE4CF361DCB5CEF00798B1F /* CategoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryService.h; sourceTree = "<group>"; };
@@ -1305,6 +1314,7 @@
 		0D698D1B1CC8D79000F64745 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0DDCC1271E08190100FB265F /* CategoryGridViewCell */,
 				0D8FCDCC1DDF182A00B8846D /* ProductCell */,
 				0D56FA471DC2148900972DF0 /* PersonImageCell */,
 				0D8934D11DB0CE8800A48562 /* PersonTagCell */,
@@ -1377,6 +1387,7 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DDCC12D1E081D2700FB265F /* Category */,
 				0D6B7DF21DFEDFBD0039E803 /* ic_delete.png */,
 				0D7C7D191DF71958003FD4DC /* comment */,
 				0DB08FA41DE851160058C4D6 /* pop_map.png */,
@@ -1803,6 +1814,25 @@
 			path = LivingTags/QRCodeReaderViewController;
 			sourceTree = "<group>";
 		};
+		0DDCC1271E08190100FB265F /* CategoryGridViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0DDCC1281E08193200FB265F /* CategoryGridCell.h */,
+				0DDCC1291E08193200FB265F /* CategoryGridCell.m */,
+				0DDCC12A1E08193200FB265F /* CategoryGridCell.xib */,
+			);
+			path = CategoryGridViewCell;
+			sourceTree = "<group>";
+		};
+		0DDCC12D1E081D2700FB265F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0DDCC12E1E081D2700FB265F /* cross.png */,
+				0DDCC12F1E081D2700FB265F /* plus.png */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		0DE4CF391DCB5EE000798B1F /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -2000,6 +2030,7 @@
 				0D78439D1DD5C7FE0078A904 /* camera.png in Resources */,
 				0DC2F5A11DC74A2700AB1795 /* pause.png in Resources */,
 				0D19166C1DBF8F72004D02DA /* my_profile.png in Resources */,
+				0DDCC1311E081D2700FB265F /* plus.png in Resources */,
 				0DC2F5A61DC74A2700AB1795 /* stop.png in Resources */,
 				0D822CC81DE5E72200AC48E4 /* map_view.png in Resources */,
 				0D10ED101DCDF120006130C5 /* comments.png in Resources */,
@@ -2027,6 +2058,7 @@
 				0DF008701DAFA53200BD39C3 /* VoiceTagCell.xib in Resources */,
 				0D7DD3471CFEEB5000B6C4B9 /* myView.xib in Resources */,
 				0D8934D61DB0CEA700A48562 /* PersonImageCell.xib in Resources */,
+				0DDCC1301E081D2700FB265F /* cross.png in Resources */,
 				0D822CC51DE5E72200AC48E4 /* map_icon.png in Resources */,
 				0DF0089F1DAFB76500BD39C3 /* cross.png in Resources */,
 				0DC2F5A71DC74A2700AB1795 /* stop_enable.png in Resources */,
@@ -2045,6 +2077,7 @@
 				0D66593D1DA67CAF00566879 /* view_local_tags.png in Resources */,
 				0D6659361DA67CAF00566879 /* memorial_tag.png in Resources */,
 				0D8BDBAF1DF85EE60075EA00 /* new_map_icon1.png in Resources */,
+				0DDCC12C1E08193200FB265F /* CategoryGridCell.xib in Resources */,
 				0D6659341DA67CAF00566879 /* add_icon.png in Resources */,
 				0DF0089A1DAFB76500BD39C3 /* audio.png in Resources */,
 				0D5903AF1DD0C5140048B5EF /* ProfileCell.xib in Resources */,
@@ -2341,6 +2374,7 @@
 				0D1916581DBF6A15004D02DA /* SidePanelController.m in Sources */,
 				0D37314C1CD8A10B00EDC547 /* UIImageView+WebCache.m in Sources */,
 				0DE4CF381DCB5CF000798B1F /* CategoryService.m in Sources */,
+				0DDCC12B1E08193200FB265F /* CategoryGridCell.m in Sources */,
 				0DD198251DB63A4E003BB828 /* QRCodeScanViewController.m in Sources */,
 				0D64F4041DD32FC100297FF3 /* MyTagListService.m in Sources */,
 				0D5EA2461CCB7F3000CA0DAE /* Reachability.m in Sources */,

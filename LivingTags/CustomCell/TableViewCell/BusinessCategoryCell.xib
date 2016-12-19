@@ -20,29 +20,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="348" height="53"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LFn-1L-11B">
-                        <rect key="frame" x="0.0" y="0.0" width="348" height="53"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yns-uX-Iw0">
-                        <rect key="frame" x="16" y="5" width="316" height="35"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsk-lV-ms0">
+                        <rect key="frame" x="5" y="0.0" width="338" height="53"/>
                         <fontDescription key="fontDescription" name="Signika-Semibold" family="Signika" pointSize="15"/>
-                        <color key="textColor" red="0.30196078430000001" green="0.3411764706" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="LFn-1L-11B" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="1PB-fj-eRz"/>
-                    <constraint firstItem="Yns-uX-Iw0" firstAttribute="centerX" secondItem="LFn-1L-11B" secondAttribute="centerX" id="bay-5Y-xLQ"/>
-                    <constraint firstItem="LFn-1L-11B" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dCn-h9-Sxe"/>
-                    <constraint firstItem="LFn-1L-11B" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="euB-NH-xQK"/>
-                    <constraint firstItem="LFn-1L-11B" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="exu-il-j4V"/>
-                    <constraint firstItem="LFn-1L-11B" firstAttribute="width" secondItem="Yns-uX-Iw0" secondAttribute="width" multiplier="1.1" id="ie3-cg-LR3"/>
-                    <constraint firstItem="LFn-1L-11B" firstAttribute="centerY" secondItem="Yns-uX-Iw0" secondAttribute="centerY" multiplier="1.2" id="yDw-Te-s2H"/>
-                    <constraint firstItem="LFn-1L-11B" firstAttribute="height" secondItem="Yns-uX-Iw0" secondAttribute="height" multiplier="1.5" id="zXa-KC-4YG"/>
+                    <constraint firstItem="vsk-lV-ms0" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="0KQ-OG-7dl"/>
+                    <constraint firstAttribute="width" secondItem="vsk-lV-ms0" secondAttribute="width" multiplier="1.03" id="0Na-eM-7cH"/>
+                    <constraint firstItem="vsk-lV-ms0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="f41-sj-PEH"/>
+                    <constraint firstItem="vsk-lV-ms0" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="is0-Dt-1PO"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="lblCategoryName" destination="Yns-uX-Iw0" id="mjo-5M-56v"/>
+                <outlet property="lblCategoryName" destination="vsk-lV-ms0" id="pc5-S8-7zj"/>
             </connections>
             <point key="canvasLocation" x="397" y="159"/>
         </tableViewCell>

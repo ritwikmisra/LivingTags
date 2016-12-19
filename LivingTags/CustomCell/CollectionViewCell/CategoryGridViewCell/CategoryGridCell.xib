@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Signika-Semibold.otf">
+            <string>Signika-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryGridCell" id="gTV-IL-0wX" customClass="CategoryGridCell">
+            <rect key="frame" x="0.0" y="0.0" width="159" height="38"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="159" height="38"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZc-bc-JLB">
+                        <rect key="frame" x="7" y="2" width="145" height="34"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qm-yq-dk1">
+                                <rect key="frame" x="4" y="6" width="104" height="22"/>
+                                <fontDescription key="fontDescription" name="Signika-Semibold" family="Signika" pointSize="11"/>
+                                <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ8-gL-nrW">
+                                <rect key="frame" x="117" y="6" width="21" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fZ8-gL-nrW" secondAttribute="height" id="bN0-Q0-EUh"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="cross.png"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="1qm-yq-dk1" secondAttribute="width" multiplier="1.4" id="1or-ns-AWb"/>
+                            <constraint firstItem="fZ8-gL-nrW" firstAttribute="centerY" secondItem="VZc-bc-JLB" secondAttribute="centerY" id="49k-9a-xRz"/>
+                            <constraint firstAttribute="height" secondItem="fZ8-gL-nrW" secondAttribute="height" multiplier="1.6" id="8N9-7I-TXR"/>
+                            <constraint firstAttribute="height" secondItem="1qm-yq-dk1" secondAttribute="height" multiplier="1.5" id="NT5-PX-5Ge"/>
+                            <constraint firstItem="1qm-yq-dk1" firstAttribute="centerY" secondItem="VZc-bc-JLB" secondAttribute="centerY" id="Qr7-Z9-jb1"/>
+                            <constraint firstAttribute="trailing" secondItem="fZ8-gL-nrW" secondAttribute="trailing" multiplier="1.05" id="ZwD-b9-MBh"/>
+                            <constraint firstItem="1qm-yq-dk1" firstAttribute="leading" secondItem="VZc-bc-JLB" secondAttribute="leading" constant="4" id="yhP-7i-mn2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="VZc-bc-JLB" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="29l-OJ-BaS"/>
+                <constraint firstAttribute="width" secondItem="VZc-bc-JLB" secondAttribute="width" multiplier="1.1" id="Ier-Ai-mgU"/>
+                <constraint firstItem="VZc-bc-JLB" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="YFw-Wz-4Iu"/>
+                <constraint firstAttribute="height" secondItem="VZc-bc-JLB" secondAttribute="height" multiplier="1.1" id="xlz-IX-BZJ"/>
+            </constraints>
+            <size key="customSize" width="159" height="38"/>
+            <connections>
+                <outlet property="btnCross" destination="fZ8-gL-nrW" id="qCU-Kd-5B2"/>
+                <outlet property="lblCategory" destination="1qm-yq-dk1" id="J3g-pY-E3f"/>
+                <outlet property="vwLabel" destination="VZc-bc-JLB" id="KU4-Iy-dtm"/>
+            </connections>
+            <point key="canvasLocation" x="47.5" y="18"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="cross.png" width="44" height="45"/>
+    </resources>
+</document>

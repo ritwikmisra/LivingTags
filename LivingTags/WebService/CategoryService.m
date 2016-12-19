@@ -29,6 +29,7 @@
         NSLog(@"urlService=%@",urlForService.absoluteString);
         [request setHTTPMethod:@"POST"];
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:[[NSUserDefaults standardUserDefaults] valueForKey:@"token"] forHTTPHeaderField:@"token"];
         [request setValue:@"Basic YWRtaW46MTIzNDU2" forHTTPHeaderField:@"Authorization"];
         [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setTimeoutInterval:60.0];
@@ -56,7 +57,15 @@
                         {
                             if ([[responseDict objectForKey:@"status"]boolValue])
                             {
-                                handler([[responseDict objectForKey:@"response"] objectForKey:@"tagCategories"],NO,nil);
+                                NSMutableArray *arr=[[responseDict objectForKey:@"response"]objectForKey:@"tagCategories"];
+                                NSMutableArray *arrResponse=[[NSMutableArray alloc]initWithCapacity:arr.count];
+                                for (NSDictionary *dict in arr)
+                                {
+                                    NSString *str=[dict objectForKey:@"kname"];
+                                    [arrResponse addObject:str];
+                                }
+                                NSLog(@"%@ \n %@,",arrResponse,arr);
+                                handler(arrResponse,NO,nil);
                             }
                             else
                             {
