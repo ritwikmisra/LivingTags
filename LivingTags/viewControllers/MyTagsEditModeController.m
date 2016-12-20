@@ -52,6 +52,8 @@
 #import "ModelFindObituary.h"
 #import "UpdateObituaryService.h"
 #import "FindObituaryService.h"
+#import "PublishTagService.h"
+#import "DeleteTagService.h"
 
 @interface MyTagsEditModeController ()<UITableViewDelegate,UITableViewDataSource,PreviewPopupDelegate,UITextFieldDelegate,CustomdatePickerViewControllerDelegate,MKMapViewDelegate,TagsCreateImageSelect,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TagsCreateVideosSelect,CLUploaderDelegate,AVAudioPlayerDelegate,UIScrollViewDelegate,CallContactsServiceDelegate,SelectCategoryProtocol,UITextViewDelegate,SelectedObituaryDelegate>
 
@@ -1223,6 +1225,28 @@
 #pragma mark IBACTIONS
 #pragma mark
 
+-(IBAction)btnBackBtnPressed:(id)sender
+{
+    if (strPersonName.length>0)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [[DeleteTagService service]deleteTagWithTKey:objTemplates.strtKey aKey:appDel.objUser.strAkey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }
+}
+
+
 -(void)btnFindObituaryPressed:(id)sender
 {
     NSLog(@"Find obituary pressed");
@@ -1372,7 +1396,15 @@
         }];
         
         UIAlertAction *actionCancel=[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.navigationController popViewControllerAnimated:YES];
+            if ([objTemplates.strPublished isEqualToString:@"P"])
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+
+            }
+            else
+            {
+                [self callPublishWebService];
+            }
         }];
         [alertController addAction:actionPreview];
         [alertController addAction:actionCancel];
@@ -2724,6 +2756,11 @@
         masterPreview.str=strURL;
         masterPreview.strLabel=@"PREVIEW TAG";
     }
+    if ([segue.identifier isEqualToString:@"segueQRCodeEdit"])
+    {
+        QRCodeScanViewController *master2=[segue destinationViewController];
+        master2.dictQR=dictQRCode;
+    }
 }
 
 #pragma mark
@@ -3040,6 +3077,26 @@
 {
     [super viewWillDisappear:animated];
     player.delegate=nil;
+}
+
+#pragma mark 
+#pragma mark Call publish webservice
+#pragma mark
+
+-(void)callPublishWebService
+{
+    [[PublishTagService service]publishTagServiceWithKey:objTemplates.strtKey tName:objTemplates.strtname aFolder:appDel.objUser.strAfolder tFolder:objTemplates.strTfolder withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+        if (isError)
+        {
+            [self displayErrorWithMessage:strMsg];
+        }
+        else
+        {
+            NSLog(@"%@",result);
+            dictQRCode=(NSMutableDictionary *)result;
+            [self performSegueWithIdentifier:@"segueQRCodeEdit" sender:self];
+        }
+    }];
 }
 
 

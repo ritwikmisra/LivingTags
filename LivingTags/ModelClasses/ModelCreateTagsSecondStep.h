@@ -48,7 +48,7 @@
 
 @property(nonatomic,strong)NSString *strTfolder;
 
-
+@property(nonatomic,strong)NSString *strPublished;
 
 
 -(id)initWithDictionary:(NSDictionary *)dict;

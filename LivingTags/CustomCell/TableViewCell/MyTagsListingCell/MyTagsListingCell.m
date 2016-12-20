@@ -174,7 +174,7 @@
 {
     //return CGRectGetWidth(self.frame) - CGRectGetMinX(self.changeTextBtn.frame)-8;
     //return self.changeTextBtn.frame.size.width*2-9;
-    return self.vwDeleteButton.frame.size.width-9;
+    return self.vwDeleteButton.frame.size.width*2-9;
 
 }
 
@@ -252,6 +252,16 @@
     {
         [self.delegate deleteTags:sender];
     }
+}
+
+-(IBAction)btnViewClicked:(id)sender
+{
+    [self resetConstraintContstantsToZero:YES notifyDelegateDidClose:YES];
+    if (_delegate && [_delegate respondsToSelector:@selector(viewQRCode:)])
+    {
+        [self.delegate viewQRCode:sender];
+    }
+
 }
 
 

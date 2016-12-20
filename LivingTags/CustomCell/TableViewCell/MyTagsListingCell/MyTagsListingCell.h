@@ -12,6 +12,7 @@ static CGFloat const kBounceValue = 10.0f;
 @protocol DeleteTagsProtocol <NSObject>
 
 -(void)deleteTags:(id)sender;
+-(void)viewQRCode:(id)sender;
 
 @end
 

@@ -13,7 +13,7 @@
 #import "MyTagsEditModeController.h"
 #import "UIImageView+WebCache.h"
 #import "DeleteTagService.h"
-
+#import "QRCodeImagePopUpController.h"
 
 @interface MyTagsListingController ()<UITableViewDataSource,UITableViewDelegate,DeleteTagsProtocol>
 {
@@ -231,6 +231,29 @@
             [tblListing reloadData];
         }
     }];
+}
+
+-(void)viewQRCode:(id)sender
+{
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:tblListing];
+    NSIndexPath *indexPath = [tblListing indexPathForRowAtPoint:buttonPosition];
+    NSLog(@"%d",indexPath.row);
+    ModelEditTagsListing *obj=[arrResponse objectAtIndex:indexPath.row];
+    NSLog(@"%@",obj.strQRCodeImage);
+    if (obj.strQRCodeImage.length>0)
+    {
+        QRCodeImagePopUpController *masterQRPopup=[[QRCodeImagePopUpController alloc]initWithNibName:@"QRCodeImagePopUpController" bundle:nil];
+        masterQRPopup.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        masterQRPopup.strQRLink=obj.strQRCodeImage;
+        [self.view addSubview:masterQRPopup.view];
+        [self addChildViewController:masterQRPopup];
+        [masterQRPopup didMoveToParentViewController:self];
+
+    }
+    else
+    {
+        [self displayErrorWithMessage:@"Tag has not been published.Please publish it to get the QR code."];
+    }
 }
 
 @end

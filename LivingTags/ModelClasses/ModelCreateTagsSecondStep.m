@@ -310,7 +310,15 @@
         {
             self.strTfolder=@"";
         }
-
+        //tpublished
+        if ([dict objectForKey:@"tpublished"] && ![[dict objectForKey:@"tpublished"] isKindOfClass:[NSNull class]])//
+        {
+            self.strPublished=[dict objectForKey:@"tpublished"];
+        }
+        else
+        {
+            self.strPublished=@"";
+        }
 
     }
     return self;

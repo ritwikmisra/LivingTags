@@ -66,6 +66,10 @@
 		0D3308531DE0788A0085848E /* privacy_policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 0D3308521DE0788A0085848E /* privacy_policy.html */; };
 		0D3308581DE097A10085848E /* ProductDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3308561DE097A10085848E /* ProductDetailsCell.m */; };
 		0D3308591DE097A10085848E /* ProductDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3308571DE097A10085848E /* ProductDetailsCell.xib */; };
+		0D33546C1E095D9700155854 /* ic_delete_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D33546B1E095D9700155854 /* ic_delete_white.png */; };
+		0D33546E1E095F8100155854 /* view.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D33546D1E095F8100155854 /* view.png */; };
+		0D3354731E09640700155854 /* QRCodeImagePopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3354711E09640700155854 /* QRCodeImagePopUpController.m */; };
+		0D3354741E09640700155854 /* QRCodeImagePopUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3354721E09640700155854 /* QRCodeImagePopUpController.xib */; };
 		0D3730381CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */; };
 		0D37313E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D37311E1CD8A10B00EDC547 /* MKAnnotationView+WebCache.m */; };
 		0D37313F1CD8A10B00EDC547 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3731201CD8A10B00EDC547 /* NSData+ImageContentType.m */; };
@@ -146,7 +150,6 @@
 		0D698D261CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D251CC8D7CC00F64745 /* ViewControllerBaseClassViewController.m */; };
 		0D698D2F1CC8D90500F64745 /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D2E1CC8D90500F64745 /* LandingViewController.m */; };
 		0D698D321CC9026900F64745 /* LoggingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D698D311CC9026900F64745 /* LoggingViewController.m */; };
-		0D6B7DF31DFEDFBD0039E803 /* ic_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D6B7DF21DFEDFBD0039E803 /* ic_delete.png */; };
 		0D7165B71CE323FA00C8B288 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D7165B61CE323FA00C8B288 /* GoogleService-Info.plist */; };
 		0D7165BB1CE32D5500C8B288 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D7165B91CE32D5500C8B288 /* GoogleSignIn.bundle */; };
 		0D7165BC1CE32D5500C8B288 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7165BA1CE32D5500C8B288 /* GoogleSignIn.framework */; };
@@ -425,6 +428,11 @@
 		0D3308551DE097A10085848E /* ProductDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailsCell.h; sourceTree = "<group>"; };
 		0D3308561DE097A10085848E /* ProductDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailsCell.m; sourceTree = "<group>"; };
 		0D3308571DE097A10085848E /* ProductDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailsCell.xib; sourceTree = "<group>"; };
+		0D33546B1E095D9700155854 /* ic_delete_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_delete_white.png; sourceTree = "<group>"; };
+		0D33546D1E095F8100155854 /* view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view.png; sourceTree = "<group>"; };
+		0D3354701E09640700155854 /* QRCodeImagePopUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeImagePopUpController.h; sourceTree = "<group>"; };
+		0D3354711E09640700155854 /* QRCodeImagePopUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeImagePopUpController.m; sourceTree = "<group>"; };
+		0D3354721E09640700155854 /* QRCodeImagePopUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeImagePopUpController.xib; sourceTree = "<group>"; };
 		0D3730361CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLivingTagsViewedAndCreated.h; sourceTree = "<group>"; };
 		0D3730371CD8885E00EDC547 /* ModelLivingTagsViewedAndCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLivingTagsViewedAndCreated.m; sourceTree = "<group>"; };
 		0D37311D1CD8A10B00EDC547 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -556,7 +564,6 @@
 		0D698D2E1CC8D90500F64745 /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
 		0D698D301CC9026900F64745 /* LoggingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingViewController.h; sourceTree = "<group>"; };
 		0D698D311CC9026900F64745 /* LoggingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingViewController.m; sourceTree = "<group>"; };
-		0D6B7DF21DFEDFBD0039E803 /* ic_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_delete.png; sourceTree = "<group>"; };
 		0D7165B61CE323FA00C8B288 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0D7165B91CE32D5500C8B288 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		0D7165BA1CE32D5500C8B288 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
@@ -1011,6 +1018,16 @@
 			path = ProductCell;
 			sourceTree = "<group>";
 		};
+		0D33546F1E0963B700155854 /* QRCodeImage */ = {
+			isa = PBXGroup;
+			children = (
+				0D3354701E09640700155854 /* QRCodeImagePopUpController.h */,
+				0D3354711E09640700155854 /* QRCodeImagePopUpController.m */,
+				0D3354721E09640700155854 /* QRCodeImagePopUpController.xib */,
+			);
+			path = QRCodeImage;
+			sourceTree = "<group>";
+		};
 		0D37311C1CD8A10B00EDC547 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1387,8 +1404,9 @@
 		0D698D1E1CC8D79000F64745 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D33546D1E095F8100155854 /* view.png */,
+				0D33546B1E095D9700155854 /* ic_delete_white.png */,
 				0DDCC12D1E081D2700FB265F /* Category */,
-				0D6B7DF21DFEDFBD0039E803 /* ic_delete.png */,
 				0D7C7D191DF71958003FD4DC /* comment */,
 				0DB08FA41DE851160058C4D6 /* pop_map.png */,
 				0D822CBD1DE5E72200AC48E4 /* viewOtherTags */,
@@ -1571,6 +1589,7 @@
 		0D85A7DE1D63071B003F4427 /* CustomPopUP */ = {
 			isa = PBXGroup;
 			children = (
+				0D33546F1E0963B700155854 /* QRCodeImage */,
 				0D79BE2D1DF05331004B373E /* FindObituaryPopup */,
 				0DE4CF391DCB5EE000798B1F /* Category */,
 				0DE96D6F1DC9F8E7000981B1 /* ContactsPopUP */,
@@ -2075,6 +2094,7 @@
 				0D66FC6E1DE05936006058AD /* about.html in Resources */,
 				0D698D0E1CC8CF2500F64745 /* Assets.xcassets in Resources */,
 				0D66593D1DA67CAF00566879 /* view_local_tags.png in Resources */,
+				0D33546C1E095D9700155854 /* ic_delete_white.png in Resources */,
 				0D6659361DA67CAF00566879 /* memorial_tag.png in Resources */,
 				0D8BDBAF1DF85EE60075EA00 /* new_map_icon1.png in Resources */,
 				0DDCC12C1E08193200FB265F /* CategoryGridCell.xib in Resources */,
@@ -2112,6 +2132,7 @@
 				0DF008981DAFB76500BD39C3 /* add_txt.png in Resources */,
 				0DF0086B1DAFA2D600BD39C3 /* AddVideoTagCell.xib in Resources */,
 				0DC2F5A91DC76A5200AB1795 /* play_button.png in Resources */,
+				0D3354741E09640700155854 /* QRCodeImagePopUpController.xib in Resources */,
 				0D1DDF851DA7DFDB0063F2F9 /* logo1.png in Resources */,
 				0D569A3A1DD4D40C00012D60 /* DashboardSizeCell.xib in Resources */,
 				0D6659371DA67CAF00566879 /* menu_icon2.png in Resources */,
@@ -2124,10 +2145,10 @@
 				0D10ED171DCDF120006130C5 /* thing_small.png in Resources */,
 				0DAD38F71D0EA9F90044B7A7 /* TemplateCell.xib in Resources */,
 				0D8FCDCB1DDF14BA00B8846D /* product_search.png in Resources */,
-				0D6B7DF31DFEDFBD0039E803 /* ic_delete.png in Resources */,
 				0D3A40141DB5159F0040D6D4 /* back_icon.png in Resources */,
 				0DE5FE311DAE5DA0004B06E5 /* bg_btn_hover.png in Resources */,
 				0D1DDF7F1DA7BB5B0063F2F9 /* pet_icon.png in Resources */,
+				0D33546E1E095F8100155854 /* view.png in Resources */,
 				0DB08FA51DE851160058C4D6 /* pop_map.png in Resources */,
 				0D822CB11DE5C10300AC48E4 /* LivingTagsCell.xib in Resources */,
 				0DE96D741DC9F958000981B1 /* ContactsPopupController.xib in Resources */,
@@ -2302,6 +2323,7 @@
 				0D698D2F1CC8D90500F64745 /* LandingViewController.m in Sources */,
 				0DF008741DAFA6B100BD39C3 /* AddLocationCell.m in Sources */,
 				0D8934D51DB0CEA700A48562 /* PersonImageCell.m in Sources */,
+				0D3354731E09640700155854 /* QRCodeImagePopUpController.m in Sources */,
 				0D922FB11CF86D3E00EC1945 /* customAnnotationGroups.m in Sources */,
 				0D3731481CD8A10B00EDC547 /* UIImage+GIF.m in Sources */,
 				0D64F4011DD3081800297FF3 /* MyTagsEditModeController.m in Sources */,

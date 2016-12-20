@@ -133,8 +133,24 @@
         {
             self.strTCName=@"";
         }
-        
-
+        //tpublished
+        if ([dict objectForKey:@"tpublished"] && ![[dict objectForKey:@"tpublished"] isKindOfClass:[NSNull class]])
+        {
+            self.strPublished=[dict objectForKey:@"tpublished"];
+        }
+        else
+        {
+            self.strPublished=@"";
+        }
+        //tqrcode
+        if ([dict objectForKey:@"tqrcode"] && ![[dict objectForKey:@"tqrcode"] isKindOfClass:[NSNull class]])
+        {
+            self.strQRCodeImage=[dict objectForKey:@"tqrcode"];
+        }
+        else
+        {
+            self.strQRCodeImage=@"";
+        }
 
     }
     return self;

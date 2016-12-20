@@ -780,7 +780,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="back.png"/>
                                 <connections>
-                                    <action selector="btnBackPressed:" destination="b15-56-id4" eventType="touchUpInside" id="O8p-2t-mFe"/>
+                                    <action selector="btnBackBtnPressed:" destination="b15-56-id4" eventType="touchUpInside" id="09s-Pn-WPc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -821,6 +821,7 @@
                         <outlet property="tblEditTags" destination="Igh-cx-arV" id="6iB-ax-eWw"/>
                         <segue destination="jc9-Lh-bc1" kind="show" identifier="segueAudioEditTags" id="Kpd-s1-MQV"/>
                         <segue destination="7W3-Am-qL3" kind="show" identifier="segueEditTagsToPreview" id="iOT-IX-ChH"/>
+                        <segue destination="muh-lL-wub" kind="show" identifier="segueQRCodeEdit" id="2nX-1O-Xol"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGu-pU-7rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2693,7 +2694,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4N4-vI-b0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2905" y="-316"/>
+            <point key="canvasLocation" x="2558" y="-343"/>
         </scene>
         <!--Living Tags Third Step View Controller-->
         <scene sceneID="628-YE-gn4">
@@ -4006,10 +4007,11 @@
         <image name="top_shadow.png" width="1242" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cUO-lk-bNp"/>
         <segue reference="Q3c-DN-3NA"/>
-        <segue reference="pyo-xk-72c"/>
-        <segue reference="zeF-Zh-2iX"/>
-        <segue reference="WIR-cR-3VA"/>
+        <segue reference="VpI-oa-ddS"/>
+        <segue reference="tWg-kP-kat"/>
+        <segue reference="2nX-1O-Xol"/>
+        <segue reference="Kpd-s1-MQV"/>
+        <segue reference="iOT-IX-ChH"/>
     </inferredMetricsTieBreakers>
 </document>

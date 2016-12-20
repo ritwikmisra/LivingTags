@@ -22,7 +22,8 @@
 @property(nonatomic,strong)NSString *strTsize;
 @property(nonatomic,strong)NSString *strTLink;
 @property(nonatomic,strong)NSString *strTCName;
-
+@property(nonatomic,strong)NSString *strPublished;
+@property(nonatomic,strong)NSString *strQRCodeImage;
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 
