@@ -284,6 +284,151 @@
             </connections>
             <point key="canvasLocation" x="231" y="348.5"/>
         </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="53" id="rrQ-Z7-vXj" customClass="BirthDeathDateCell">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="53"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rrQ-Z7-vXj" id="t4w-su-Iw0">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="52"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hpi-cp-tYR">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="52"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dws-Ce-gHB">
+                        <rect key="frame" x="0.0" y="0.0" width="134" height="47"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birth Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dma-xD-DMv">
+                                <rect key="frame" x="33" y="12" width="99" height="20"/>
+                                <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVd-Bn-BGd">
+                                <rect key="frame" x="33" y="12" width="99" height="20"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calender.png" translatesAutoresizingMaskIntoConstraints="NO" id="QUI-nc-1Bw">
+                                <rect key="frame" x="12" y="14" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QUI-nc-1Bw" secondAttribute="height" id="DG2-Er-xdm"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8KW-x3-p4P">
+                                <rect key="frame" x="12" y="33" width="120" height="1"/>
+                                <color key="backgroundColor" red="0.56470588239999997" green="0.57254901960000004" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="hfi-sN-RjO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QUI-nc-1Bw" firstAttribute="centerY" secondItem="dma-xD-DMv" secondAttribute="centerY" id="8W4-Qo-HzD"/>
+                            <constraint firstAttribute="centerY" secondItem="dma-xD-DMv" secondAttribute="centerY" multiplier="1.1" id="AKf-Z4-h0s"/>
+                            <constraint firstItem="dma-xD-DMv" firstAttribute="centerX" secondItem="dws-Ce-gHB" secondAttribute="centerX" multiplier="1.23" id="BgE-Ig-yxd"/>
+                            <constraint firstItem="nVd-Bn-BGd" firstAttribute="width" secondItem="dma-xD-DMv" secondAttribute="width" id="Ewx-di-FA9"/>
+                            <constraint firstItem="dma-xD-DMv" firstAttribute="leading" secondItem="QUI-nc-1Bw" secondAttribute="trailing" multiplier="1.16" id="LJP-Z0-36E"/>
+                            <constraint firstItem="8KW-x3-p4P" firstAttribute="bottom" secondItem="dma-xD-DMv" secondAttribute="bottom" multiplier="1.07" id="M3F-T3-Bay"/>
+                            <constraint firstItem="nVd-Bn-BGd" firstAttribute="centerY" secondItem="dma-xD-DMv" secondAttribute="centerY" id="Qz4-8H-Rnu"/>
+                            <constraint firstItem="8KW-x3-p4P" firstAttribute="leading" secondItem="QUI-nc-1Bw" secondAttribute="leading" id="TGp-B2-xVN"/>
+                            <constraint firstAttribute="width" secondItem="dma-xD-DMv" secondAttribute="width" multiplier="1.35" id="TWH-4I-nam"/>
+                            <constraint firstItem="dma-xD-DMv" firstAttribute="height" secondItem="QUI-nc-1Bw" secondAttribute="height" multiplier="1.2" id="fpg-fE-JTJ"/>
+                            <constraint firstItem="nVd-Bn-BGd" firstAttribute="centerX" secondItem="dma-xD-DMv" secondAttribute="centerX" id="lxL-jo-9lt"/>
+                            <constraint firstItem="8KW-x3-p4P" firstAttribute="trailing" secondItem="dma-xD-DMv" secondAttribute="trailing" id="tvG-Ff-bkb"/>
+                            <constraint firstAttribute="height" secondItem="dma-xD-DMv" secondAttribute="height" multiplier="2.3" id="zRN-oC-Q5i"/>
+                            <constraint firstItem="nVd-Bn-BGd" firstAttribute="height" secondItem="dma-xD-DMv" secondAttribute="height" id="zVu-CZ-qfD"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ryq-9S-ez9">
+                        <rect key="frame" x="242" y="0.0" width="134" height="47"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Death Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ywo-XY-FVt">
+                                <rect key="frame" x="18" y="12" width="99" height="20"/>
+                                <color key="textColor" red="0.29803921570000003" green="0.3411764706" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZd-LO-5En">
+                                <rect key="frame" x="18" y="12" width="99" height="20"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calender.png" translatesAutoresizingMaskIntoConstraints="NO" id="0rx-gz-ztR">
+                                <rect key="frame" x="-1" y="14" width="16" height="16"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6G-sJ-i2i">
+                                <rect key="frame" x="-1" y="33" width="118" height="1"/>
+                                <color key="backgroundColor" red="0.56470588239999997" green="0.57254901960000004" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="UMs-wu-rab"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ywo-XY-FVt" firstAttribute="centerX" secondItem="Ryq-9S-ez9" secondAttribute="centerX" id="2r6-4h-9wJ"/>
+                            <constraint firstAttribute="centerY" secondItem="Ywo-XY-FVt" secondAttribute="centerY" multiplier="1.1" id="3ew-wO-zwf"/>
+                            <constraint firstItem="eZd-LO-5En" firstAttribute="height" secondItem="Ywo-XY-FVt" secondAttribute="height" id="6CE-Lo-RWt"/>
+                            <constraint firstItem="0rx-gz-ztR" firstAttribute="centerY" secondItem="Ywo-XY-FVt" secondAttribute="centerY" id="6m9-dB-y9g"/>
+                            <constraint firstItem="O6G-sJ-i2i" firstAttribute="bottom" secondItem="Ywo-XY-FVt" secondAttribute="bottom" multiplier="1.07" id="DSl-ir-t1T"/>
+                            <constraint firstItem="O6G-sJ-i2i" firstAttribute="leading" secondItem="0rx-gz-ztR" secondAttribute="leading" id="IEh-D8-vAM"/>
+                            <constraint firstItem="Ywo-XY-FVt" firstAttribute="leading" secondItem="0rx-gz-ztR" secondAttribute="trailing" multiplier="1.2" id="WZW-jx-wlE"/>
+                            <constraint firstItem="eZd-LO-5En" firstAttribute="centerY" secondItem="Ywo-XY-FVt" secondAttribute="centerY" id="Wel-sv-n2L"/>
+                            <constraint firstItem="eZd-LO-5En" firstAttribute="centerX" secondItem="Ywo-XY-FVt" secondAttribute="centerX" id="ayx-HC-HTQ"/>
+                            <constraint firstItem="eZd-LO-5En" firstAttribute="width" secondItem="Ywo-XY-FVt" secondAttribute="width" id="hjC-g8-y0M"/>
+                            <constraint firstItem="O6G-sJ-i2i" firstAttribute="trailing" secondItem="Ywo-XY-FVt" secondAttribute="trailing" id="z9H-ZV-Q9i"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbV-8c-hCI">
+                        <rect key="frame" x="148" y="12" width="72" height="23"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HI9-zV-Uqf">
+                                <rect key="frame" x="0.0" y="0.0" width="72" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <state key="normal" title="Memorial">
+                                    <color key="titleColor" red="0.14117647059999999" green="0.36470588240000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HI9-zV-Uqf" firstAttribute="centerX" secondItem="DbV-8c-hCI" secondAttribute="centerX" id="UBp-ow-3h7"/>
+                            <constraint firstItem="HI9-zV-Uqf" firstAttribute="centerY" secondItem="DbV-8c-hCI" secondAttribute="centerY" id="YOQ-3g-fOg"/>
+                            <constraint firstItem="HI9-zV-Uqf" firstAttribute="width" secondItem="DbV-8c-hCI" secondAttribute="width" id="hQZ-qk-1km"/>
+                            <constraint firstItem="HI9-zV-Uqf" firstAttribute="height" secondItem="DbV-8c-hCI" secondAttribute="height" id="lKa-a3-Cuo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hpi-cp-tYR" firstAttribute="centerX" secondItem="t4w-su-Iw0" secondAttribute="centerX" id="10e-hB-CxF"/>
+                    <constraint firstItem="Ryq-9S-ez9" firstAttribute="trailing" secondItem="hpi-cp-tYR" secondAttribute="trailing" id="1hR-th-Bgg"/>
+                    <constraint firstItem="0rx-gz-ztR" firstAttribute="width" secondItem="QUI-nc-1Bw" secondAttribute="width" id="1wF-iQ-XYA"/>
+                    <constraint firstItem="hpi-cp-tYR" firstAttribute="width" secondItem="t4w-su-Iw0" secondAttribute="width" id="6DI-CM-qYJ"/>
+                    <constraint firstItem="Ryq-9S-ez9" firstAttribute="width" secondItem="dws-Ce-gHB" secondAttribute="width" id="6vZ-XY-BJY"/>
+                    <constraint firstItem="hpi-cp-tYR" firstAttribute="height" secondItem="dws-Ce-gHB" secondAttribute="height" multiplier="1.1" id="BCO-ae-xOA"/>
+                    <constraint firstItem="Ryq-9S-ez9" firstAttribute="leading" secondItem="DbV-8c-hCI" secondAttribute="trailing" multiplier="1.1" id="CMC-JH-hPu"/>
+                    <constraint firstItem="Ywo-XY-FVt" firstAttribute="width" secondItem="dma-xD-DMv" secondAttribute="width" id="ESm-l7-cwa"/>
+                    <constraint firstItem="dws-Ce-gHB" firstAttribute="leading" secondItem="hpi-cp-tYR" secondAttribute="leading" id="KGV-DD-OHJ"/>
+                    <constraint firstItem="hpi-cp-tYR" firstAttribute="width" secondItem="dws-Ce-gHB" secondAttribute="width" multiplier="2.8" id="SIZ-8b-jZm"/>
+                    <constraint firstItem="dws-Ce-gHB" firstAttribute="height" secondItem="DbV-8c-hCI" secondAttribute="height" multiplier="2.1" id="VZE-eo-Wwq"/>
+                    <constraint firstItem="DbV-8c-hCI" firstAttribute="leading" secondItem="dws-Ce-gHB" secondAttribute="trailing" multiplier="1.1" id="Vkg-8a-bAa"/>
+                    <constraint firstItem="dws-Ce-gHB" firstAttribute="top" secondItem="hpi-cp-tYR" secondAttribute="top" id="eHJ-lo-4YZ"/>
+                    <constraint firstItem="hpi-cp-tYR" firstAttribute="height" secondItem="t4w-su-Iw0" secondAttribute="height" id="fP9-0l-fhD"/>
+                    <constraint firstItem="DbV-8c-hCI" firstAttribute="centerY" secondItem="dws-Ce-gHB" secondAttribute="centerY" id="ghg-Gs-dqd"/>
+                    <constraint firstItem="Ryq-9S-ez9" firstAttribute="height" secondItem="dws-Ce-gHB" secondAttribute="height" id="jvV-w0-1qk"/>
+                    <constraint firstItem="hpi-cp-tYR" firstAttribute="centerY" secondItem="t4w-su-Iw0" secondAttribute="centerY" id="rOT-f5-QWX"/>
+                    <constraint firstItem="0rx-gz-ztR" firstAttribute="height" secondItem="QUI-nc-1Bw" secondAttribute="height" id="svM-cl-L5h"/>
+                    <constraint firstItem="Ywo-XY-FVt" firstAttribute="height" secondItem="dma-xD-DMv" secondAttribute="height" id="xDM-0b-G7r"/>
+                    <constraint firstItem="Ryq-9S-ez9" firstAttribute="top" secondItem="hpi-cp-tYR" secondAttribute="top" id="yh3-VZ-2SM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnBirthDate" destination="nVd-Bn-BGd" id="zKJ-AF-r0p"/>
+                <outlet property="btnDeathDate" destination="eZd-LO-5En" id="fj4-7a-gnk"/>
+                <outlet property="btnLiving" destination="HI9-zV-Uqf" id="hKT-6Q-Agq"/>
+                <outlet property="txtBirth" destination="dma-xD-DMv" id="qmd-bd-g5F"/>
+                <outlet property="txtDeath" destination="Ywo-XY-FVt" id="5KV-dF-LVm"/>
+                <outlet property="vwLiving" destination="DbV-8c-hCI" id="JL2-bu-gs1"/>
+            </connections>
+            <point key="canvasLocation" x="263" y="262.5"/>
+        </tableViewCell>
     </objects>
     <resources>
         <image name="calender.png" width="51" height="51"/>
