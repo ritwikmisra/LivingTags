@@ -11,13 +11,11 @@
 @interface BirthDeathDateCell : UITableViewCell
 
 @property(nonatomic,strong)IBOutlet UIButton *btnLiving;
-@property(nonatomic,strong)IBOutlet UIImageView *imgLiving;
 @property(nonatomic,strong)IBOutlet UITextField *txtBirth;
 @property(nonatomic,strong)IBOutlet UITextField *txtDeath;
 
 @property(nonatomic,strong)IBOutlet UIButton *btnBirthDate;
 @property(nonatomic,strong)IBOutlet UIButton *btnDeathDate;
 @property(nonatomic,strong)IBOutlet UIButton *btnFindObituary;
-@property(nonatomic,strong)IBOutlet UILabel *lblMemorial;
 @property(nonatomic,strong)IBOutlet UIView *vwLiving;
 @end

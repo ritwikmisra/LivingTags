@@ -60,7 +60,7 @@
 {
     IBOutlet UITableView *tblEditTags;
     NSString *strGender,*strBirthDate,*strDeathDate,*strPersonName,*strTextVwTags,*strPlace,*strContact,*strBusinessName,*strBusinessContactName,*strBusinessTitle,*strBusinessAddress,*strBusinessPhone,*strBusinessCellPhone,*strBusinessFax,*strBusinessEmail,*strBusinessWebsite,*strCategory;////////// variables to be sent to the server
-    BOOL isLiving,isLocation,isTextViewClicked,isDead;
+    BOOL isLocation,isTextViewClicked,isDead;
     NSMutableArray *arrPlaceHolders;
     CustomdatePickerViewController *datePickerController ;
     NSString *strDate;//// to see if the birth date button is clicked or death date button is clicked
@@ -75,7 +75,7 @@
     //// model tag creation
     ModelCreateTagsSecondStep *objTemplates;
     NSString *strURL;
-
+    
     
     ////dictionary for update to server
     NSMutableDictionary *dictAPI;
@@ -104,7 +104,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   // tblEditTags.separatorStyle=UITableViewCellSeparatorStyleNone;
+    isDead=NO;
+    // tblEditTags.separatorStyle=UITableViewCellSeparatorStyleNone;
     appDel.arrImageSet=[[NSMutableArray alloc]init];
     appDel.arrVideoSet=[[NSMutableArray alloc]init];
     dictAPI=[[NSMutableDictionary alloc]init];
@@ -126,9 +127,9 @@
     
     /////////////////////staging cloudinary///////////////////
     /*[cloudinary.config setValue:@"livingtags-staging" forKey:@"cloud_name"];
-    [cloudinary.config setValue:@"886456191378635" forKey:@"api_key"];
-    [cloudinary.config setValue:@"0Zh1hG_DxqNaVaFEX8uP3qR6h4Y" forKey:@"api_secret"];*/
-
+     [cloudinary.config setValue:@"886456191378635" forKey:@"api_key"];
+     [cloudinary.config setValue:@"0Zh1hG_DxqNaVaFEX8uP3qR6h4Y" forKey:@"api_secret"];*/
+    
     strGender=@"";
     isLocation=NO;
     isTextViewClicked=NO;
@@ -164,13 +165,11 @@
             strDeathDate=objTemplates.strtdied;
             if (objTemplates.strtborn.length>0)
             {
-                isLiving=YES;
                 isDead=NO;
             }
             if (objTemplates.strtdied.length>0)
             {
                 isDead=YES;
-                isLiving=NO;
             }
             if (objTemplates.strMemorialQuote.length>0)
             {
@@ -417,52 +416,7 @@
                     BirthDeathDateCell *cellBirth=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
                     if (!cellBirth)
                     {
-                        cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:1];
-                    }
-                    
-                    if (isLiving==NO)
-                    {
-                        cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
-                    }
-                    else
-                    {
-                        cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
-                        // cellBirth.btnDeathDate.userInteractionEnabled=NO;
-                        cellBirth.txtDeath.text=@"Death Date";
-                        strDeathDate=@"";
-                    }
-                    cellBirth.lblMemorial.hidden=YES;
-                    cellBirth.txtBirth.userInteractionEnabled=NO;
-                    cellBirth.txtDeath.userInteractionEnabled=NO;
-                    cellBirth.txtBirth.text=strBirthDate;
-                    cellBirth.txtDeath.text=strDeathDate;
-                    [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
-                    [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
-                    [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
-                    cell=cellBirth;
-                }
-                else
-                {
-                    BirthDeathDateCell *cellBirth=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
-                    if (!cellBirth)
-                    {
                         cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:0];
-                    }
-                    
-                    if (isLiving==NO)
-                    {
-                        cellBirth.vwLiving.hidden=YES;
-                        cellBirth.lblMemorial.hidden=NO;
-                        cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
-                    }
-                    else
-                    {
-                        cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
-                        //cellBirth.btnDeathDate.userInteractionEnabled=NO;
-                        cellBirth.txtDeath.text=@"Death Date";
-                        cellBirth.vwLiving.hidden=NO;
-                        cellBirth.lblMemorial.hidden=YES;
-                        strDeathDate=@"";
                     }
                     cellBirth.txtBirth.userInteractionEnabled=NO;
                     cellBirth.txtDeath.userInteractionEnabled=NO;
@@ -474,8 +428,23 @@
                     [cellBirth.btnFindObituary addTarget:self action:@selector(btnFindObituaryPressed:) forControlEvents:UIControlEventTouchUpInside];
                     cell=cellBirth;
                 }
+                else
+                {
+                    BirthDeathDateCell *cellBirth=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
+                    if (!cellBirth)
+                    {
+                        cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:1];
+                    }
+                    cellBirth.txtBirth.userInteractionEnabled=NO;
+                    cellBirth.txtDeath.userInteractionEnabled=NO;
+                    cellBirth.txtBirth.text=strBirthDate;
+                    cellBirth.txtDeath.text=strDeathDate;
+                    [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                    cell=cellBirth;
+                }
             }
-                
                 break;
                 
             case 3 :
@@ -655,7 +624,6 @@
                 }
                 [cellGender.btnMale addTarget:self action:@selector(btnMalePressed:) forControlEvents:UIControlEventTouchUpInside];
                 [cellGender.btnFemale addTarget:self action:@selector(btnFemalePressed:) forControlEvents:UIControlEventTouchUpInside];
-                
             }
                 
                 break;
@@ -665,34 +633,26 @@
                 BirthDeathDateCell *cellBirth=[tableView dequeueReusableCellWithIdentifier:strIdentifier];
                 if (!cellBirth)
                 {
-                    cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:1];
+                    cellBirth=[[[NSBundle mainBundle]loadNibNamed:@"BirthDeathDateCell" owner:self options:nil]objectAtIndex:0];
                 }
-                
-                if (isLiving==NO)
+                if (isDead)
                 {
                     cellBirth.vwLiving.hidden=NO;
-                    cellBirth.lblMemorial.hidden=YES;
-                    cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button_off"];
                 }
                 else
                 {
-                    cellBirth.imgLiving.image=[UIImage imageNamed:@"living_button"];
-                    //cellBirth.btnDeathDate.userInteractionEnabled=NO;
-                    cellBirth.txtDeath.text=@"Death Date";
                     cellBirth.vwLiving.hidden=YES;
-                    cellBirth.lblMemorial.hidden=NO;
-                    strDeathDate=@"";
                 }
                 cellBirth.txtBirth.userInteractionEnabled=NO;
                 cellBirth.txtDeath.userInteractionEnabled=NO;
                 cellBirth.txtBirth.text=strBirthDate;
                 cellBirth.txtDeath.text=strDeathDate;
                 [cellBirth.btnLiving addTarget:self action:@selector(btnLivingPressed:) forControlEvents:UIControlEventTouchUpInside];
-                [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
                 [cellBirth.btnDeathDate addTarget:self action:@selector(btnDeathDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnBirthDate addTarget:self action:@selector(btnBirthDatePressed:) forControlEvents:UIControlEventTouchUpInside];
+                [cellBirth.btnFindObituary addTarget:self action:@selector(btnFindObituaryPressed:) forControlEvents:UIControlEventTouchUpInside];
                 cell=cellBirth;
             }
-                
                 break;
                 
             case 3 :
@@ -1367,15 +1327,7 @@
 {
     isDead=NO;
     strDeathDate=@"";
-    if (isLiving)
-    {
-        isLiving=NO;
-    }
-    else
-    {
-        isLiving=YES;
-        [self checkDatesTo];
-    }
+    [self checkDatesTo];
     [tblEditTags beginUpdates];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
     [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
@@ -1399,7 +1351,7 @@
             if ([objTemplates.strPublished isEqualToString:@"P"])
             {
                 [self.navigationController popViewControllerAnimated:YES];
-
+                
             }
             else
             {
@@ -1412,23 +1364,19 @@
             
         }];
     }
-
+    
 }
 
 
 -(void)btnDeathDatePressed:(id)sender
 {
     strDate=@"death";
-    isDead=YES;
-    isLiving=NO;
     [self datePickerOpen];
 }
 
 -(void)btnBirthDatePressed:(id)sender
 {
     strDate=@"birth";
-    isLiving=YES;
-    isDead=NO;
     [self datePickerOpen];
 }
 
@@ -1773,8 +1721,9 @@
 {
     if ([strDate isEqualToString:@"birth"])
     {
+        isDead=NO;
         strBirthDate=[dateFormatter stringFromDate:selectedDate];
-         [datePickerController.view removeFromSuperview];
+        [datePickerController.view removeFromSuperview];
         NSLog(@"%@",strBirthDate);
         if (strDeathDate.length>0)
         {
@@ -1803,6 +1752,7 @@
         }
         else
         {
+            isDead=YES;
             [self checkDatesTo];
         }
     }
@@ -1810,7 +1760,6 @@
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
     [tblEditTags reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [tblEditTags endUpdates];
-    
 }
 
 -(void)didCancel
@@ -2449,18 +2398,17 @@
 
 -(void)checkDatesTo
 {
-    if (isLiving==YES)
-    {
-        [dictAPI setObject:@"" forKey:@"tdied"];
-        [dictAPI setObject:@"Y" forKey:@"tliving"];
-        [self updateDictionaryForServiceForKey:@"tdied"];
-    }
-    else
+    if (isDead)
     {
         [dictAPI setObject:strDeathDate forKey:@"tdied"];
         [dictAPI setObject:@"N" forKey:@"tliving"];
         [self updateDictionaryForServiceForKey:@"tdied"];
-        
+    }
+    else
+    {
+        [dictAPI setObject:@"" forKey:@"tdied"];
+        [dictAPI setObject:@"Y" forKey:@"tliving"];
+        [self updateDictionaryForServiceForKey:@"tdied"];
     }
 }
 
@@ -2472,7 +2420,7 @@
 {
     NSLog(@"%@",dictAPI);
     //self.objFolders.strTkey
-        [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI tKey:objTemplates.strtKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+    [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dictAPI tKey:objTemplates.strtKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
         if (isError)
         {
             objTemplates=nil;
@@ -2827,7 +2775,7 @@
          {
          [self displayErrorWithMessage:@"Please enter a location."];
          return NO;
-         }*/ 
+         }*/
     }
     else if([self.strTagName isEqualToString:@"Persons"])
     {
@@ -3079,7 +3027,7 @@
     player.delegate=nil;
 }
 
-#pragma mark 
+#pragma mark
 #pragma mark Call publish webservice
 #pragma mark
 
@@ -3098,6 +3046,4 @@
         }
     }];
 }
-
-
 @end
