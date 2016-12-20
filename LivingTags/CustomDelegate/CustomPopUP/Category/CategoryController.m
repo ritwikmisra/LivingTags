@@ -16,7 +16,6 @@
 {
     IBOutlet UIView *vw;
     IBOutlet UITableView *tblCategory;
-    NSMutableDictionary *dict;
     IBOutlet UIButton *btnOK;
     IBOutlet UIButton *btnCancel;
     IBOutlet UITextField *txtCategory;
@@ -35,7 +34,6 @@
     tblCategory.separatorStyle=UITableViewCellSeparatorStyleNone;
     tblCategory.backgroundColor=[UIColor clearColor];
     NSLog(@"%@",self.arrCategoryList);
-    dict=[[NSMutableDictionary alloc]init];
     [txtCategory setValue:[UIColor colorWithRed:144/255.0f green:146/255.0f blue:149/255.0f alpha:1.0] forKeyPath:@"_placeholderLabel.textColor"];
     [tblCategory setBackgroundColor:[UIColor clearColor]];
     UINib *cellNib1 = [UINib nibWithNibName:@"CategoryGridCell" bundle:nil];
@@ -127,7 +125,33 @@
 
 -(IBAction)btnOKPressed:(id)sender
 {
-    
+    if (arrCollectionView.count>0)
+    {
+        NSString * strCategory = [arrCollectionView  componentsJoinedByString:@","];
+        NSLog(@"%@",strCategory);
+        NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+        [dict setObject:strCategory forKey:@"tcategories"];
+        NSLog(@"%@",dict);
+        NSLog(@"%@",self.strTKey);
+        [[LivingTagsSecondStepService service]callSecondStepServiceWithDIctionary:dict tKey:self.strTKey withCompletionHandler:^(id  _Nullable result, BOOL isError, NSString * _Nullable strMsg) {
+            if (isError)
+            {
+                [self displayErrorWithMessage:strMsg];
+            }
+            else
+            {
+                [self.view removeFromSuperview];
+                if (_delegate && [_delegate respondsToSelector:@selector(selectedCategoryWithName:)])
+                {
+                    [self.delegate selectedCategoryWithName:strCategory];
+                }
+            }
+        }];
+    }
+    else
+    {
+        [self displayErrorWithMessage:@"Please add a category."];
+    }
 }
 
 -(IBAction)btnCancelPressed:(id)sender
@@ -231,20 +255,11 @@
     return CGSizeMake(100.0f,30.0f);
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 0;
-}
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 0;
-}
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    
-    return UIEdgeInsetsMake(0,0,0,0);  // top, left, bottom, right
+- (UIEdgeInsets)collectionView:
+(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(0,0,50,35);  // top, left, bottom, right
 }
 
 @end

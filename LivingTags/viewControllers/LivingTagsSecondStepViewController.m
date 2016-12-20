@@ -1205,7 +1205,7 @@
             {
                 CategoryController *master1=[[CategoryController alloc]initWithNibName:@"CategoryController" bundle:nil];
                 master1.arrCategoryList=result;
-                master1.objFolders=self.objFolders;
+                master1.strTKey=self.objFolders.strTkey;
                 master1.view.frame=[[UIScreen mainScreen]bounds];
                 [self.view addSubview:master1.view];
                 [self addChildViewController:master1];

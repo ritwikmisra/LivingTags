@@ -244,12 +244,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LivingTags/CustomDelegate/CustomPopUP/Category/CategoryController.m"
-            timestampString = "503851605.841834"
+            timestampString = "503924159.31074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-btnOKPressed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LivingTags/WebService/LivingTagsSecondStepService.m"
+            timestampString = "503924645.33427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-callSecondStepServiceWithDIctionary:tKey:withCompletionHandler:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LivingTags/viewControllers/MyTagsEditModeController.m"
+            timestampString = "503925369.613076"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1296"
+            endingLineNumber = "1296"
+            landmarkName = "-btnCategoryClicked:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LivingTags/viewControllers/MyTagsEditModeController.m"
+            timestampString = "503925393.920401"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2930"
+            endingLineNumber = "2930"
+            landmarkName = "-selectedCategoryWithName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
