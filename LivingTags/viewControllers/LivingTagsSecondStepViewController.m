@@ -1419,7 +1419,7 @@
         [player prepareToPlay];
         player.volume=3.0;
         [player play];
-        timer= [NSTimer scheduledTimerWithTimeInterval:0.0
+        timer= [NSTimer scheduledTimerWithTimeInterval:1.0
                                                 target:self
                                               selector:@selector(updateSlider)
                                               userInfo:nil
