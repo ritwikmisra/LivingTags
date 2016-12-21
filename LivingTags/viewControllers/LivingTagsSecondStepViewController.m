@@ -166,6 +166,7 @@
     return 1;
 }
 
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.strTagName isEqualToString:@"Person"])
@@ -314,11 +315,9 @@
                 {
                     cellGender.imgFemale.image=[UIImage imageNamed:@"radio_on"];
                     cellGender.imgMale.image=[UIImage imageNamed:@"radio_off"];
-                    
                 }
                 [cellGender.btnMale addTarget:self action:@selector(btnMalePressed:) forControlEvents:UIControlEventTouchUpInside];
                 [cellGender.btnFemale addTarget:self action:@selector(btnFemalePressed:) forControlEvents:UIControlEventTouchUpInside];
-                
             }
                 break;
                 
