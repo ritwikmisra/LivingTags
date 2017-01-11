@@ -272,7 +272,8 @@
             vc.modalPresentationStyle = UIModalPresentationFormSheet;
         });
         vc.delegate = self;
-        [vc setCompletionWithBlock:^(NSString *resultAsString) {
+        [vc setCompletionWithBlock:^(NSString *resultAsString)
+         {
             NSLog(@"Completion with result: %@", resultAsString);
         }];
         [self presentViewController:vc animated:YES completion:NULL];
